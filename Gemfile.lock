@@ -27,6 +27,7 @@ GEM
     liquid (2.2.2)
     maruku (0.6.0)
       syntax (>= 1.0.0)
+    nokogiri (1.5.5)
     posix-spawn (0.3.6)
     rack (1.4.1)
     rack-contrib (1.1.0)
@@ -48,6 +49,7 @@ DEPENDENCIES
   compass
   haml
   jekyll
+  nokogiri
   rack-contrib
   rack-rewrite
   rack-typekit
