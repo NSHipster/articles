@@ -11,8 +11,14 @@ layout: default
 </article>
 
 <aside>
-  <p><strong>NSHipster</strong> lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-  consequat.</p>
+  <p><strong>NSHipster</strong> is a publication about great Objective-C features and Cocoa APIs that you should know about.</p>
+
+  <section class="archive">
+    <h1>Archive</h1>
+    <ul>
+      {% for post in site.posts %}
+        <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
 </aside>
