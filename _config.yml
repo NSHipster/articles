@@ -1,1 +1,3 @@
-exclude:  [ Gemfile, Gemfile.lock, Procfile, vendor, gems]
+exclude:  [README.md, Gemfile, Gemfile.lock, Procfile, sass, config.rb, config.ru]
+permalink: /posts/:title/
+lsi: false
