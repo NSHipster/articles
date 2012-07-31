@@ -1,8 +1,8 @@
 source :rubygems
 
+gem 'nokogiri'
 gem 'jekyll'
 gem 'haml'
-gem 'nokogiri'
 
 gem 'rack-contrib', require: 'rack/contrib/try_static'
 gem 'rack-rewrite', require: 'rack/rewrite'
