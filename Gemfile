@@ -1,5 +1,6 @@
 source :rubygems
 
+gem 'nokogiri'
 gem 'jekyll'
 gem 'haml'
 
