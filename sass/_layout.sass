@@ -10,7 +10,15 @@ div[role="container"]
     margin-bottom: 1em
 
   & > header
-    margin-bottom: 2em
+    h1
+      +column(6)
+      +append(1)
+
+    aside
+      +column(17)
+
+  div[role="main"]
+    +clearfix
 
   article
     +column(16)
@@ -18,7 +26,10 @@ div[role="container"]
     margin-bottom: 2em
 
   article + aside
-    padding-top: 5.325em
+    padding-top: 3.9em
+
+    p
+      margin-bottom: 2.5em
 
   aside
     section

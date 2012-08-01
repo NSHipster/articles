@@ -4,8 +4,16 @@ html body
   pre code
     font-size: 83%
     
-header h1
-  font-weight: 700
+header
+  h1, span
+    margin-top: 0
+    padding-top: 0
+  h1
+    font-weight: 700
+
+  span
+    font-size: 1.75em
+    display: block
 
 article
   h1
@@ -34,3 +42,11 @@ a
 
   &:hover
     text-decoration: underline
+
+
+pre code
+  +border-radius(5px)
+  display: block
+  background: #f1f1f1
+  white-space: pre-wrap
+  padding: +span(1) / 2
