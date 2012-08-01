@@ -18,7 +18,7 @@ layout: default
     <h1>Archive</h1>
     <ul>
       {% for post in site.posts %}
-        {% if post.url != page.url %}
+        {% if post.id != page.id %}
           <li><a href="{{ post.url }}">{{ post.title }}</a></li>
         {% endif %}
       {% endfor %}
