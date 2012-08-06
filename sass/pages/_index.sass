@@ -1,7 +1,11 @@
 #posts article
-  +column(10)
+  +column(11)
+  +append(2)
   clear: left
+  margin-bottom: 2em
+  padding-bottom: 1em
 
   &:nth-child(even)
-    +column(10, true)
+    +column(11, true)
     clear: right
+    padding-right: 0

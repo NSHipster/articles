@@ -25,18 +25,19 @@ div[role="container"]
     +append(2)
     margin-bottom: 2em
 
-  article + aside
-    padding-top: 3.9em
-
-    p
-      margin-bottom: 2.5em
-
-  aside
-    section
-      margin-bottom: 1em
-
   footer
     clear: both
-    border-top: 1px #ccc solid
+    border-top: 1px #eee solid
     margin-top: 3em
     padding-top: 3em
+
+    section
+      +column(20)
+
+    aside
+      +column(4, true)
+      float: right
+      text-align: right
+
+      a
+        font-size: 2em
