@@ -40,7 +40,7 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 
 Since it would be expensive to compute all of the possible values, specify only the ones you'll use in subsequent calculations (joining with `|`, the bitwise `OR` operator).
 
-Another way you may use `NSDateComponents` would be to make relative date calculations, such as determining the date yesterday, next week, or 5 hours and 30 minuts from now. Use `NSCalendar -dateByAddingComponents:toDate:options:`:
+Another way you may use `NSDateComponents` would be to make relative date calculations, such as determining the date yesterday, next week, or 5 hours and 30 minutes from now. Use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
 
     NSCalendar *calendar = [NSCalendar currentCalendar];
