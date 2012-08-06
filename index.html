@@ -9,7 +9,12 @@ title: NSHipster
       <header>
         <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
       </header>
-      {{ post | only_first_p }}
+      {% if post.description %}
+        <p>{{ post.description }}</p>
+        <a class="readmore" href="{{ post.url }}">Read more</a>
+      {% else %}
+        {{ post | only_first_p }}
+      {% endif %}
     </article>
   {% endfor %}
 </section>

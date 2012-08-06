@@ -6,7 +6,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/CoreFOundation/Refe
 framework: Core Foundation
 rating: 9.1
 
-description: `NSString` is the crown jewel of Foundation. But as powerful as `NSString` / `NSMutableString` are, we would be remiss without mentioning their [toll-free bridged](http://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html) cousin, `CFMutableString`. Or more specifically, `CFStringTransform`.
+description: <tt>NSString</tt> is the crown jewel of Foundation. But as powerful as it is, we would be remiss without mentioning its toll-free bridged cousin, <tt>CFMutableString</tt>. Or more specifically, <tt>CFStringTransform</tt>.
 ---
 
 There are two indicators that can tell you everything you need to know about how nice a language is to use:
@@ -111,11 +111,13 @@ Let's say you want to build a searchable index of movies on the device, which in
 
 - First, apply the `kCFStringTransformToLatin` transform to transliterate all non-English text into a phonetic Latin alphabetic representation.
 
-> Hello! こんにちは! สวัสดี! مرحبا! 您好! → Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
+> Hello! こんにちは! สวัสดี! مرحبا! 您好! →  
+> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
 - Next, apply the `kCFStringTransformStripCombiningMarks` transform to remove any diacritics or accents.
 
-> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! → Hello! kon'nichiha! swasdi! mrhba! nin hao!
+> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →  
+> Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
 - Finally, downcase the text and use [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to split the text into tokens, and index the movie on them.
 
