@@ -35,13 +35,13 @@ As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation, w
 
 `kCFStringTransformToUnicodeName` allows you to determine the Unicode standard name for special characters, including Emoji. For instance, "🐑💨✨" becomes "{SHEEP} {DASH SYMBOL} {SPARKLES}".
 
-## Transcribe Between Orthographies
+## Transliterate Between Orthographies
 
 With the exception of English (with its complicated spelling inconsistencies), writing systems encode speech sounds into phonetic, written representations. European languages generally use the Latin alphabet with a few added diacritics, Russian uses Cyrillic, Japanese uses Hiragana & Katakana, and Thai, Korean, & Arabic each have their own scripts.
 
-Although each language has a particular inventory of sounds that other languages may not have, the overlap across all of the major writing systems is remarkably high--enough so that one can rather effectively [transcribe](http://en.wikipedia.org/wiki/Transcription_(linguistics)) from one to another (not to be confused with [translation](http://en.wikipedia.org/wiki/Translation)).
+Although each language has a particular inventory of sounds that other languages may not have, the overlap across all of the major writing systems is remarkably high--enough so that one can rather effectively [transliterate](http://en.wikipedia.org/wiki/Transliteration) from one to another (not to be confused with [translation](http://en.wikipedia.org/wiki/Translation)).
 
-`CFStringTransform` can transcribe between Latin and Arabic, Cyrillic, Greek, Korean (Hangul), Hebrew, Japanese (Hiragana & Katakana), Mandarin Chinese, and Thai. And not only that, but those transformations are all reversible:
+`CFStringTransform` can transliterate between Latin and Arabic, Cyrillic, Greek, Korean (Hangul), Hebrew, Japanese (Hiragana & Katakana), Mandarin Chinese, and Thai. And not only that, but those transformations are all reversible:
 
 <table>
   <thead>
