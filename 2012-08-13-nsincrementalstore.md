@@ -6,7 +6,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/
 framework: Foundation
 rating: 9.5
 published: true
-description: Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, beckoning to completely change the way we build apps.
+description: Even for a blog dedicated to obscure APIs, <tt>NSIncrementalStore</tt> sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
 ---
 
 Even for a blog dedicated to obscure APIs, `NSIncrementalStore` brings a new meaning to the word "obscure". 
