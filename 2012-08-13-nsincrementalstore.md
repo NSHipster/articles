@@ -68,15 +68,19 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 
 To make matters worse, this method requires very specific and very different return values depending on the request parameter (and the `resultType`, if it's an `NSFetchRequest`). The only way to explain it is to run through all of the possibilities:
 
-- Request Type: `NSFetchRequestType`
-  - Result Type: `NSManagedObjectResultType`, `NSManagedObjectIDResultType`, `NSDictionaryResultType`
-    - **Return**: `NSArray` of objects matching request
-  
-  - Result Type: `NSCountResultType`
-    - **Return**: `NSNumber` of count of objects matching request
+#### Request Type: `NSFetchRequestType`
 
-- Request Type: `NSSaveRequestType`
-  - **Return**: Empty `NSArray`
+- Result Type: `NSManagedObjectResultType`, `NSManagedObjectIDResultType`, or `NSDictionaryResultType`
+
+> **Return**: `NSArray` of objects matching request
+
+- Result Type: `NSCountResultType`
+  
+> **Return**: `NSNumber` of count of objects matching request
+
+#### Request Type: `NSSaveRequestType`
+  
+> **Return**: Empty `NSArray`
 
 So, one method to do all read _and_ write operations with a persistence backend. At least all of the heavy lifting goes to the same place, right?
 
