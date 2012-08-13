@@ -17,7 +17,7 @@ Its [programming guide](https://developer.apple.com/library/mac/#documentation/D
 
 If it weren't for an offhand remark during [WWDC 2011 Session 303](https://deimos.apple.com/WebObjects/Core.woa/BrowsePrivately/adc.apple.com.8266478284.08266478290.8365294535?i=2068798830), it may have gone completely unnoticed.
 
-And yet, NSIncrementalStore is arguably the most important thing to come out of iOS 5.
+And yet, `NSIncrementalStore` is arguably the most important thing to come out of iOS 5.
 
 ## At Last, A Foothold Into Core Data
 
@@ -112,17 +112,17 @@ Going through all of the necessary methods to override in an `NSIncrementalStore
 
 What makes `NSIncrementalStore` so exciting is that you _can_ build a store on your favorite technology, and drop that into any existing Core Data stack with little to no additional configuration.
 
-So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a web service. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
+So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
 
 ## AFIncrementalStore: The Holy Grail of Client-Server Applications
 
 [`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) is an NSIncrementalStore subclass that uses [AFNetworking](https://github.com/afnetworking/afnetworking) to automatically request resources as properties and relationships are needed.
 
-What this means is that you can now write apps that communicate with a webservice _without exposing any of the details about the underlying API_. Any time a fetch request is made or an attribute or relationship faults, an asynchronous network request will automatically be made to get that information. 
+What this means is that you can now write apps that communicate with a webservice _without exposing any of the details about the underlying API_. Any time a fetch request is made or an attribute or relationship faults, an asynchronous network request will fetch that information from the webservice.
 
 Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.
 
-And perhaps the best part is that all of this is possible in **just under 300 LOC**. No need to subclass `NSManagedObject` or add obtrusive categories on `NSManagedObjectContext`--it just works.
+Perhaps the best part is that all of this is possible in **just under 300 LOC**. No need to subclass `NSManagedObject` or add obtrusive categories on `NSManagedObjectContext`--it just works.
 
 ---
 
