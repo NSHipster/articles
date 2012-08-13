@@ -92,7 +92,7 @@ It returns an `NSIncrementalStoreNode`, which is a container for the ID and curr
 
 If an object with the specified `objectID` cannot be found, this method should return `nil`.
 
-### `-newValueForRelationship:forObjectWithID:withContext:error:`
+### `-newValueForRelationship:forObjectWithID: withContext:error:`
 
 This one is called when a relationship needs to be refreshed, either from a fault or by the managed object context. 
 
