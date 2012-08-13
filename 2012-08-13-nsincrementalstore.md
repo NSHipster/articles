@@ -71,8 +71,10 @@ To make matters worse, this method requires very specific and very different ret
 - Request Type: `NSFetchRequestType`
   - Result Type: `NSManagedObjectResultType`, `NSManagedObjectIDResultType`, `NSDictionaryResultType`
     - **Return**: `NSArray` of objects matching request
+  
   - Result Type: `NSCountResultType`
     - **Return**: `NSNumber` of count of objects matching request
+
 - Request Type: `NSSaveRequestType`
   - **Return**: Empty `NSArray`
 
@@ -86,7 +88,7 @@ It returns an `NSIncrementalStoreNode`, which is a container for the ID and curr
 
 If an object with the specified `objectID` cannot be found, this method should return `nil`.
 
-### `newValueForRelationship:forObjectWithID:withContext:error:`
+### `-newValueForRelationship:forObjectWithID:withContext:error:`
 
 This one is called when a relationship needs to be refreshed, either from a fault or by the managed object context. 
 
