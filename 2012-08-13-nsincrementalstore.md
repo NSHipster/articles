@@ -53,12 +53,10 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
 
 `loadMetadata:` is where the incremental store has a chance to configure itself. There is, however, a bit of Kabuki theater boilerplate that's necessary to get everything set up. Specifically, you need to set a UUID for the store, as well as the store type. Here's what that looks like:
 
-```
     NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
     [mutableMetadata setValue:[[NSProcessInfo processInfo] globallyUniqueString] forKey:NSStoreUUIDKey];
     [mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
     [self setMetadata:mutableMetadata];
-```
 
 ### `executeRequest:withContext:error:`
 
