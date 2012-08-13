@@ -58,7 +58,7 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
     [mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
     [self setMetadata:mutableMetadata];
 
-### `executeRequest:withContext:error:`
+### `-executeRequest:withContext:error:`
 
 Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint) 
 
@@ -69,16 +69,16 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 To make matters worse, this method requires very specific and very different return values depending on the request parameter (and the `resultType`, if it's an `NSFetchRequest`). The only way to explain it is to run through all of the possibilities:
 
 - Request Type: `NSFetchRequestType`
-    - Result Type: `NSManagedObjectResultType`, `NSManagedObjectIDResultType`, `NSDictionaryResultType`
-        - **Return**: `NSArray` of objects matching request
-    - Result Type: `NSCountResultType`
-        - **Return**: `NSNumber` of count of objects matching request
+  - Result Type: `NSManagedObjectResultType`, `NSManagedObjectIDResultType`, `NSDictionaryResultType`
+    - **Return**: `NSArray` of objects matching request
+  - Result Type: `NSCountResultType`
+    - **Return**: `NSNumber` of count of objects matching request
 - Request Type: `NSSaveRequestType`
-    - **Return**: Empty `NSArray`
+  - **Return**: Empty `NSArray`
 
 So, one method to do all read _and_ write operations with a persistence backend. At least all of the heavy lifting goes to the same place, right?
 
-### `newValuesForObjectWithID:withContext:error:`
+### `-newValuesForObjectWithID:withContext:error:`
 
 This method is called when an object faults, or has its values refreshed by the managed object context. 
 
@@ -96,7 +96,7 @@ Unlike the previous method, the return value will be just the current value for 
 - **to-many**: `NSSet` or `NSOrderedSet`
 - **non-existent**: `nil`
 
-### `obtainPermanentIDsForObjects:error:`
+### `-obtainPermanentIDsForObjects:error:`
 
 Finally, this method is called before `executeRequest:withContext:error:` with a save request, where permanent IDs should be assigned to newly-inserted objects. As you might expect, the array of permanent IDs should match up with the array of objects passed into this method.
 
