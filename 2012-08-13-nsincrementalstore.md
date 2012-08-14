@@ -64,9 +64,9 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 
 `executeRequest:withContext:error:` passes an `NSPersistentStoreRequest`, an `NSManagedObjectContext` and an `NSError` pointer.
 
-`NSPersistentStoreRequest`'s role here is incredibly confusing. The request parameter will either be of type `NSFetchRequestType` or an `NSSaveRequestType`. If it has a _fetch_ request type, the request parameter will actually be an instance of `NSFetchRequest`, which is a subclass of `NSPersistentStoreRequest`. So far so good... except that if it has a _save_ request type, it's still an `NSPersistentStoreRequest`, _because there's no corresponding `NSSaveRequest` class_.
+`NSPersistentStoreRequest`'s role here is as a sort of abstract subclass. The request parameter will either be of type `NSFetchRequestType` or an `NSSaveRequestType`. If it has a _fetch_ request type, the request parameter will actually be an instance of `NSFetchRequest`, which is a subclass of `NSPersistentStoreRequest`. Likewise, if it has a _save_ request type, it will be an instance of `NSSaveChangesRequest` (this article was originally mistaken by stating that there was no such a class).
 
-To make matters worse, this method requires very specific and very different return values depending on the request parameter (and the `resultType`, if it's an `NSFetchRequest`). The only way to explain it is to run through all of the possibilities:
+This method requires very specific and very different return values depending on the request parameter (and the `resultType`, if it's an `NSFetchRequest`). The only way to explain it is to run through all of the possibilities:
 
 #### Request Type: `NSFetchRequestType`
 
@@ -118,7 +118,7 @@ What makes `NSIncrementalStore` so exciting is that you _can_ build a store on y
 
 So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
 
-## AFIncrementalStore: The Holy Grail of Client-Server Applications
+## AFIncrementalStore: The Holy Grail of Client-Server Applications?
 
 [`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) is an NSIncrementalStore subclass that uses [AFNetworking](https://github.com/afnetworking/afnetworking) to automatically request resources as properties and relationships are needed.
 
@@ -128,8 +128,9 @@ Since the store abstracts all of the implementation details of the API away, you
 
 Perhaps the best part is that all of this is possible in **just under 300 LOC**. No need to subclass `NSManagedObject` or add obtrusive categories on `NSManagedObjectContext`--it just works.
 
----
-
-In the spirit of full disclosure, `NSIncrementalStore` was brought to my attention by [this blog post by Drew Crawford](http://sealedabstract.com/code/nsincrementalstore-the-future-of-web-services-in-ios-mac-os-x/). I caught wind of it around the time iOS 5 originally came out, but like everyone else, I paid it no mind.
-
 Even though `NSIncrementalStore` has been around since iOS 5, we're still a long way from even beginning to realize its full potential. The future is insanely bright, so you best don your aviators, grab an iced latte and start coding something amazing.
+
+> In the spirit of full disclosure, `NSIncrementalStore` was brought to my attention by [this blog post by Drew Crawford](http://sealedabstract.com/code/nsincrementalstore-the-future-of-web-services-in-ios-mac-os-x/). I caught wind of it around the time iOS 5 originally came out, but like everyone else, I paid it no mind.
+
+> Also, `AFIncrementalStore` is a project of mine, which is offered as one of only a few examples of an `NSIncrementalStore` subclass available. I don't mean to use NSHipster as a platform to promote my own code, but I thought this to be a particularly salient example.
+
