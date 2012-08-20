@@ -20,7 +20,7 @@ But simply wrapping computation into an object doesn't do much without a little 
 
 `NSOperationQueue` regulates the concurrent execution of operations. It acts as a priority queue, such that operations are executed in a roughly First-In-First-Out manner, with higher-priority (`NSOperation -queuePriority`) ones getting to jump ahead of lower-priority ones. `NSOperationQueue` also executes operations concurrently, with the option to limit the maximum number to be executed simultaneously (`maxConcurrentOperationCount`).
 
-To kick off an `NSOperation`, you can either call `-start`, or add it to an `NSOperationQueue`, which will automatically start the operation when the it reaches the front of the queue.
+To kick off an `NSOperation`, you can either call `-start`, or add it to an `NSOperationQueue`, which will automatically start the operation when it reaches the front of the queue.
 
 Let's go through the different parts of `NSOperation`, describing how they're used and how to implement them in subclasses:
 
