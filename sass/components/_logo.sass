@@ -1,5 +1,6 @@
 #logo
   +prevent-selection
+  +text-shadow(none)
   font-size: 1em
   margin-left: -10px
   margin-top: -1em
@@ -10,19 +11,21 @@
     margin: 0
 
     &:hover
+      background: transparent !important
+
       #moustache
-        -webkit-animation: tada 1s
+        +animation(tada 1s)
 
     &:active
       acronym
-        color: #666
+        color: $secondary-color
 
   acronym
     font-size: 10em
     font-weight: 900
     border-bottom: none
-    color: $accent-color
-    letter-spacing: -0.12em
+    color: $primary-color
+    letter-spacing: -0.13em
 
 
   strong

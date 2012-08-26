@@ -1,8 +1,14 @@
 html body
   font-size: 97%
+  +text-shadow(0 1px 1px #eee)
 
   pre code
     font-size: 83%
+
+  ::selection, ::-moz-selection
+    +text-shadow(0 1px 1px #222)
+    background: $secondary-color
+    color: white
     
 header
   h1, span
@@ -18,7 +24,10 @@ header
 article
   h1
     font-weight: 700
-    font-size: 2em
+    font-size: 2.5em
+
+  h2, h3
+    margin-top: 1.5em
 
   code
     color: #555
@@ -30,19 +39,26 @@ article
     border-left: 4px #eee solid
     padding-left: 1em
 
+  hr
+    border: none
+    border-bottom: 1px #eee solid
+    margin: 2em 0
+
+
 aside
   h1
     font-size: 1.5em
 
 a
-  color: $accent-color !important
+  color: $primary-color !important
 
   &:link
     text-decoration: none
 
   &:hover
+    +text-shadow(none)
     text-decoration: underline
-
+    color: $secondary-color !important
 
 pre code
   +border-radius(5px)
@@ -70,10 +86,12 @@ footer
 
       &:hover, &:active
         +border-radius(5px)
-        background: red
+        background: $secondary-color
         color: white
 
         &:before
           color: white
 
-
+figure
+  figcaption
+    display: none

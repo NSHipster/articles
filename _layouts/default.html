@@ -15,6 +15,9 @@
   <meta content='{{ site.url }}/images/nshipster.png' property='og:image'/>
   <meta content='{{ site.title }}' property='og:site_name'/>
   <meta content='{{ site.description | strip_html }}' property='og:description'/>
+
+  <script type="text/javascript" src="//use.typekit.net/nlj2rqt.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
@@ -30,7 +33,7 @@
 
       {% unless page.id %}
         <aside>
-          <span>{{ site.description }}</span>
+          <span class="tk-ff-providence-web-pro">{{ site.description }}</span>
         </aside>
       {% endunless %}
 
@@ -44,10 +47,18 @@
       <section class="credits colophon">
         <p>
           <span aria-hidden="true" class="icon-creative-commons"></span>
+          
           Created by <a href="http://mattt.me">Mattt Thompson</a>, and released under a <a href="http://creativecommons.org/licenses/by-nc/3.0/" rel="license">Creative Commons BY-NC License</a>.
+          
           <br/>
-          <small>Moustache graphic courtesy of <a href="http://thenounproject.com/noun/mustache/#icon-No1642">The Noun Project</a>. Icons by <a href="http://keyamoon.com/icomoon/">IcoMoon</a>.</small>
-          <br/>
+          
+          <small>
+            Delightful illustrations by <a href="http://www.conorheelan.com">Conor Heelan</a>.
+
+            Moustache courtesy of <a href="http://thenounproject.com/noun/mustache/#icon-No1642">The Noun Project</a>. 
+
+            Icons by <a href="http://keyamoon.com/icomoon/">IcoMoon</a>.
+          </small>
         </p>
       </section>
 

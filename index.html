@@ -3,8 +3,30 @@ layout: default
 title: NSHipster
 ---
 
-<section id="posts">
-  {% for post in site.posts %}
+<section id="latest">
+  <article>
+    <header>
+      <hgroup>
+        <small class="tk-ff-providence-web-pro">This Week...</small>
+        <h1><a href="{{ site.posts.first.url }}">{{ site.posts.first.title }}</a></h1>
+      </hgroup>
+    </header>
+
+    {% if site.posts.first.description %}
+      <p>{{ site.posts.first.description }}</p>
+      <a class="readmore" href="{{ post.url }}">Read more</a>
+    {% else %}
+      {{ site.posts.first | only_first_p }}
+    {% endif %}
+
+  </article>
+  <figure id="goat">
+    <figcaption>Mountain Goats are known for their hipster cred--or at the very least, their reactionary stance to the mainstream.</figcaption>
+  </figure>
+</section>
+
+<section id="archive">
+  {% for post in site.posts offset:1 %}
   	<article>
       <header>
         <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>

@@ -1,0 +1,14 @@
+figure#goat
+  background: image-url("goat.png") top center no-repeat
+  
+  &:hover
+    +animation(charge 2s)
+
+figure#suit
+  background: image-url("suit.png") top center no-repeat
+  
+  &:hover
+    +animation(bounce 1s)
+    animation-delay: 1s
+    -moz-animation-delay: 1s
+    -webkit-animation-delay: 1s
