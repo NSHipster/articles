@@ -17,6 +17,26 @@
 - Using content against the terms of its [Creative Commons BY-NC License](http://creativecommons.org/licenses/by-nc/3.0/)
 - Creating a mirror of NSHipster on a separate domain
 
+## Running Locally
+
+NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, static site generator in Ruby. You can run the site locally with:
+
+``` shell
+$ cd path/to/nshipster.com
+$ gem install jekyll
+$ jekyll --auto --server
+```
+
+### Compass
+
+In addition to the site content, CSS is generated using [Compass](http://compass-style.org),  an open-source CSS Authoring Framework. To run Compass locally, do:
+
+``` shell
+$ cd path/to/nshipster.com
+$ gem install compass
+$ compass watch .
+```
+
 ## Credits
 
 Site content, design, and concept were created by [Mattt Thompson](http://mattt.me/) ([@mattt](https://twitter.com/mattt))
