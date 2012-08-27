@@ -3,7 +3,7 @@ layout: post
 title: CFStringTransform
 
 ref: "https://developer.apple.com/library/mac/documentation/CoreFOundation/Reference/CFMutableStringRef/Reference/reference.html#//apple_ref/doc/uid/20001504-CH201-BCIGCACA"
-framework: Core Foundation
+framework: CoreFoundation
 rating: 9.1
 
 description: <tt>NSString</tt> is the crown jewel of Foundation. But as powerful as it is, we would be remiss no to mention its toll-free bridged cousin, <tt>CFMutableString</tt>. Or more specifically, <tt>CFStringTransform</tt>.
