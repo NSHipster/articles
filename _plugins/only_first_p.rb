@@ -1,5 +1,7 @@
 require 'nokogiri'
 
+# Courtesy of Sebastian Zuchmanski (@sebcioz)
+# https://github.com/sebcioz/jekyll-only_first_p
 module Jekyll
   module AssetFilter    
     @@only_first_p_config = nil
