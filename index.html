@@ -14,7 +14,7 @@ title: NSHipster
 
     {% if site.posts.first.description %}
       <p>{{ site.posts.first.description }}</p>
-      <a class="readmore" href="{{ post.url }}">Read more</a>
+      <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
     {% else %}
       {{ site.posts.first | only_first_p }}
     {% endif %}
