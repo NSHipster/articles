@@ -21,7 +21,7 @@ And yet, `NSIncrementalStore` is arguably the most important thing to come out o
 
 ## At Last, A Foothold Into Core Data
 
-`NSIncrementalStore` is an abstract subclass of `NSPersistentStore` designed to "create persistent stores which load and save data incrementally, allowing for the management of large and/or shared datasets". And while that may not sound like much, consider that nearly all of the database adapters we rely on load incrementally from large, shared data stores.What we have here is a goddamned miracle.
+`NSIncrementalStore` is an abstract subclass of `NSPersistentStore` designed to "create persistent stores which load and save data incrementally, allowing for the management of large and/or shared datasets". And while that may not sound like much, consider that nearly all of the database adapters we rely on load incrementally from large, shared data stores. What we have here is a goddamned miracle.
 
 For those of you not as well-versed in Core Data, here's some background: 
 
