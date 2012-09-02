@@ -54,14 +54,36 @@ div[role="container"]
 
 @media screen and (max-width: 640px)
   html, body
-    padding: 10px
+    padding: 10px 0 !important
 
   div[role="container"]
     width: 100%
 
   #logo
     margin: 0 auto
-  header, footer, article, aside
+    width: 100%
+    text-align: center
+    margin-top: -100px
+
+    acronym
+      width: 100%
+      display: block
+      margin: 0 auto
+      text-indent: -10px
+
+    #moustache
+      margin: 0 auto
+      display: block
+      left: 50%
+      margin-left: -100px
+      margin-top: -144px !important
+
+
+  div[role="container"] > header aside
+    font-size: 0.82em
+
+
+  header, footer, footer section, article, aside
     width: 100% !important
 
 
@@ -72,9 +94,29 @@ div[role="container"]
     table
       display: inline-block
 
+    margin-bottom: 0.5em !important
+
+  #latest hgroup small
+
   aside
     clear: both
-    margin: 10px auto
+    margin: 0px auto
+
+  article + aside p
+    display: none
 
   figure 
     display: none !important
+
+  footer section
+    p, small
+      margin-left: 0 !important
+
+    small
+      display: block
+      padding-top: 1em
+
+    span
+      display: none
+
+    
