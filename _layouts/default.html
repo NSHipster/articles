@@ -11,11 +11,17 @@
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/NSHipster"/>
   <link rel="stylesheet" href="/css/screen.css"/>
 
+  <meta content='{{ site.title }}' property='og:site_name'/>
+  <meta content='{{ site.url }}/images/suit.png' property='og:image'/>
+{% if page.id %}
+  <meta content='{{ page.title }}' property='og:title'/>
+  <meta content='{{ site.url }}{{ page.url }}' property='og:url'/>
+  <meta content='{{ page.description | strip_html }}' property='og:description'/>
+{% else %}
   <meta content='{{ site.title }}' property='og:title'/>
   <meta content='{{ site.url }}' property='og:url'/>
-  <meta content='{{ site.url }}/images/suit.png' property='og:image'/>
-  <meta content='{{ site.title }}' property='og:site_name'/>
   <meta content='{{ site.description | strip_html }}' property='og:description'/>
+{% endif %}
 
   <script type="text/javascript" src="//use.typekit.net/nlj2rqt.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -32,12 +38,12 @@
         </a>
       </h1>
 
-      {% unless page.id %}
-        <aside>
-          <span>{{ site.description }}</span>
-        </aside>
-      {% endunless %}
-
+    {% unless page.id %}
+      <aside>
+        <span>{{ site.description }}</span>
+      </aside>
+    {% endunless %}
+    
     </header>
 
     <div id="main" role="main">
