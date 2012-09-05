@@ -14,10 +14,11 @@ title: NSHipster
 
     {% if site.posts.first.description %}
       <p>{{ site.posts.first.description }}</p>
-      <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
     {% else %}
       {{ site.posts.first | only_first_p }}
     {% endif %}
+
+    <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
   </article>
 
   <figure id="chick">
@@ -33,10 +34,11 @@ title: NSHipster
       </header>
       {% if post.description %}
         <p>{{ post.description }}</p>
-        <a class="readmore" href="{{ post.url }}">Read more</a>
       {% else %}
         {{ post | only_first_p }}
       {% endif %}
+
+      <a class="readmore" href="{{ post.url }}">Read more</a>
     </article>
   {% endfor %}
 </section>

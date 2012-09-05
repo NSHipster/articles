@@ -6,7 +6,7 @@ module Jekyll
   module AssetFilter    
     @@only_first_p_config = nil
     @@only_first_p_default_config = {
-          "show_read_more_link" => true,
+          "show_read_more_link" => false,
           "read_more_link_text" => "Read more"
     }
     

@@ -13,15 +13,19 @@
 
   <meta content='{{ site.title }}' property='og:site_name'/>
   <meta content='{{ site.url }}/images/suit.png' property='og:image'/>
-{% if page.id %}
-  <meta content='{{ page.title }}' property='og:title'/>
-  <meta content='{{ site.url }}{{ page.url }}' property='og:url'/>
-  <meta content='{{ page.description | strip_html }}' property='og:description'/>
-{% else %}
-  <meta content='{{ site.title }}' property='og:title'/>
-  <meta content='{{ site.url }}' property='og:url'/>
-  <meta content='{{ site.description | strip_html }}' property='og:description'/>
-{% endif %}
+  {% if page.id %}
+    <meta content='{{ page.title }}' property='og:title'/>
+    <meta content='{{ site.url }}{{ page.url }}' property='og:url'/>
+    {% if page.description %}
+      <meta content='{{ page.description | strip_html }}' property='og:description'/>
+    {% else %}
+      <meta content='{{ page.content | truncate: 250 | strip_html }}' property='og:description'/>
+    {% endif %}
+  {% else %}
+    <meta content='{{ site.title }}' property='og:title'/>
+    <meta content='{{ site.url }}' property='og:url'/>
+    <meta content='{{ site.description | strip_html }}' property='og:description'/>
+  {% endif %}
 
   <script type="text/javascript" src="//use.typekit.net/nlj2rqt.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -38,12 +42,12 @@
         </a>
       </h1>
 
-    {% unless page.id %}
-      <aside>
-        <span>{{ site.description }}</span>
-      </aside>
-    {% endunless %}
-    
+      {% unless page.id %}
+        <aside>
+          <span>{{ site.description }}</span>
+        </aside>
+      {% endunless %}
+
     </header>
 
     <div id="main" role="main">
