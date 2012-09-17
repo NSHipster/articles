@@ -6,7 +6,7 @@ ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foun
 framework: Foundation
 rating: 8.5
 published: true
-description: Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: `NSCharacterSet`.
+description: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
 ---
 
 As mentioned [previously](http://nshipster.com/cfstringtransform/), Foundation boasts one of the best, most complete implementations of strings around.
@@ -70,7 +70,7 @@ Without further ado, here are the 9 _incorrect_ answers:
 - "Use a regular expression" - _Kinda works, except it doesn't handle leading and trailing whitespace. A regular expression is overkill anyway._
 - "Use Regexp Lite" - _No seriously, regular expressions are completely unnecessary. And it's definitely not worth the external dependency._
 - "Use OgreKit" - _Ditto any other third-party regexp library._
-- "Split the string into components, iterate over them to find components with non-zero length, and then re-combine" - _So close, but `componentsSeparatedByCharactersInSet:` already makes the iteration unnecessary.
+- "Split the string into components, iterate over them to find components with non-zero length, and then re-combine" - _So close, but `componentsSeparatedByCharactersInSet:` already makes the iteration unnecessary._
 - "Replace two-space strings with single-space strings in a while loop" - _Wrong and oh-so computationally wasteful_.
 - "Manually iterate over each `unichar` in the string and use `NSCharacterSet -characterIsMember:`" - _Shows a surprising level of sophistication for missing the method that does this in the standard library._
 - "Find and remove all of the tabs" - _Thanks all the same, but who said anything about tabs?_
