@@ -137,4 +137,4 @@ We first construct an `NSMutableCharacterSet` from the union of whitespace and p
 
 And if not being wrong isn't the most important thing about being an NSHipster, then I don't want to be right!
 
-> Ed. Speaking of ~~not~~ being wrong, the original version of this article contained errors in both code samples. These have since been corrected.
+> Ed. Speaking of (not) being wrong, the original version of this article contained errors in both code samples. These have since been corrected.
