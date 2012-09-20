@@ -51,11 +51,15 @@ It's important to note that this method _only_ strips the _first_ and _last_ con
 
 So let's say you do want to get rid of excessive inter-word spacing for that string you just stripped of whitespace. Here's a really easy way to do that:
 
-    NSString *string = @"Lorem    ipsum dolar   sit  amet ."
-    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
-    string = [[string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] componentsJoinedByString:@" "];
+    NSString *string = @"Lorem    ipsum dolar   sit  amet.";
+    string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
-First, trim the string of leading and trailing whitespace. Next, use `NSString -componentsSeparatedByCharactersInSet:` to split on the remaining whitespace to create an `NSArray`. Finally, use `NSArray -componentsJoinedByString:` to re-join the components with a single space. Note that this only works for languages like English that delimit words with whitespace.
+    NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
+    
+    string = [components componentsJoinedByString:@" "];
+
+First, trim the string of leading and trailing whitespace. Next, use `NSString -componentsSeparatedByCharactersInSet:` to split on the remaining whitespace to create an `NSArray`. Next, filter out the blank string components with an `NSPredicate`. Finally, use `NSArray -componentsJoinedByString:` to re-join the components with a single space. Note that this only works for languages like English that delimit words with whitespace.
 
 And now for the anti-patterns. Take a gander at [the answers to this question on StackOverflow](http://stackoverflow.com/questions/758212/how-can-i-strip-all-the-whitespaces-from-a-string-in-objective-c).
 
@@ -107,6 +111,7 @@ You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
     [hours enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
       NSScanner *scanner = [NSScanner scannerWithString:line];
+      [scanner setCharactersToBeSkipped:skippedCharacters];
 
       NSString *startDay, *endDay;
       NSUInteger startHour, startMinute, endHour, endMinute;
@@ -131,3 +136,5 @@ We first construct an `NSMutableCharacterSet` from the union of whitespace and p
 `NSCharacterSet` is but one piece to the Foundation string ecosystem, and perhaps the most misused and misunderstood of them all. By keeping these patterns and anti-patterns in mind, however, not only will you be able to do useful things like manage whitespace and scan information from strings, but--more importantly--you'll be able to avoid all of the wrong ways to do it.
 
 And if not being wrong isn't the most important thing about being an NSHipster, then I don't want to be right!
+
+> Ed. Speaking of ~~not~~ being wrong, the original version of this article contained errors in both code samples. These have since been corrected.
