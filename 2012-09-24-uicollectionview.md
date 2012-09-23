@@ -45,7 +45,7 @@ Each cell view can have multiple supplementary views associated with it--one for
 
 ### Decoration Views
 
-In addition to cell views and supplementary views, collections also have _decoration views_. A decoration view, as the name implies, is something that does not have any functional purpose other than to spern the hatred of anti-skeumorphic zealots across the interwebs. But really, if you're resigned to imbue your virtual book collection app with immacuately-textured woodgrained shelves, it might as well be easy to do, right?
+In addition to cell views and supplementary views, collections also have _decoration views_. A decoration view, as the name implies, is something that does not have any functional purpose other than to spurn the hatred of anti-skeuomorphic zealots across the interwebs. But really, if you're resigned to imbue your virtual book collection app with immaculately-textured wood-grained shelves, it might as well be easy to do, right?
 
 One thing to remember about decoration views is that they are entirely managed by the layout, unlike cell or supplementary views, which are under the jurisdiction of the collection view data source.
 
