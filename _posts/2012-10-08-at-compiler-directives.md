@@ -5,10 +5,10 @@ ref: ""
 framework: N/A
 rating: 8.7
 published: true
-description: "If we were to go code-watching for the elusive Objective-C species, what would we look for? Square brackets, ridiculously-long method names, and <tt>@</tt>'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
+description: "If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and <tt>@</tt>'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
 ---
 
-Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"][1]: those indefineable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"][1]: those indefinable characteristics unique to a particular kind of thing.
 
 This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixer](http://elixir-lang.org) at a glance.
 
@@ -226,7 +226,7 @@ In case all of the previous directives were old hat for you, there's a strong li
 
 For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improves the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](http://nshipster.com/uicollectionview/):
 
-    // Allows code to just use UICollectionView as if it would be avaiable on iOS SDK 5.
+    // Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
     // http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
     #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
     @compatibility_alias UICollectionViewController PSTCollectionViewController;
@@ -286,7 +286,7 @@ So to review:
 - `@{}`
 - `@()`
 
-**Objective-C Litearals**
+**Objective-C Literals**
 
 - `@selector()`
 - `@protocol()`
