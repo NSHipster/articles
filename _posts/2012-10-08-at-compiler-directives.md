@@ -10,7 +10,7 @@ description: "If we were to go code-watching for Objective-C, what would we look
 
 Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"][1]: those indefinable characteristics unique to a particular kind of thing.
 
-This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixer](http://elixir-lang.org) at a glance.
+This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixir](http://elixir-lang.org) at a glance.
 
 Some just stick out like sore thumbs:
 
