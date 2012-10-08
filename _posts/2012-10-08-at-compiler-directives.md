@@ -35,7 +35,7 @@ So if we were to go code-watching for the elusive Objective-C species, what woul
 - Ridiculously-long method names
 - `@`'s
 
-`@`, or "at" sign compiler directives, are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a () powerful, expressive language, and yet still compile all the way down to C.
+`@`, or "at" sign compiler directives, are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.
 
 Its uses are varied and disparate, to the point that the only accurate way to describe what `@` means by itself is "shorthand for something to do with Objective-C". They cover a broad range in usefulness and obscurity, from staples like `@interface` and `@implementation` to ones you could go your whole career without running into, like `@defs` and `@compatibility_alias`. 
 
