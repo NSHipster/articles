@@ -8,7 +8,7 @@ published: true
 description: "If we were to go code-watching for the elusive Objective-C species, what would we look for? Square brackets, ridiculously-long method names, and <tt>@</tt>'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
 ---
 
-Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](http://en.wikipedia.org/wiki/Jizz_(birding)): those indefineable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"][1]: those indefineable characteristics unique to a particular kind of thing.
 
 This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixer](http://elixir-lang.org) at a glance.
 
@@ -308,3 +308,5 @@ So to review:
 Thus concludes this exhaustive rundown of the many faces of `@`. It's a versatile, power-packed character, that embodies the underlying design and mechanisms of the language.
 
 > This should be a complete list, but there's always a chance that some new or long-forgotten ones slipped between the cracks. If you know of any `@` directives that were left out, be sure to let [@NSHipster](https://twitter.com/nshipster) know.
+
+[1]: http://en.wikipedia.org/wiki/Jizz_(birding)
