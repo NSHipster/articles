@@ -224,7 +224,7 @@ In case all of the previous directives were old hat for you, there's a strong li
 
 - `@compatibility_alias`: Allows existing classes to be aliased by a different name.
 
-For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improves the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](http://nshipster.com/uicollectionview/):
+For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improve the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](http://nshipster.com/uicollectionview/):
 
     // Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
     // http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
