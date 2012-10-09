@@ -131,7 +131,7 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
 
 ## Protocols
 
-There's a distinct point early in an Objective-C programmer's evolution, when she realizes that she can define their own protocols.
+There's a distinct point early in an Objective-C programmer's evolution, when she realizes that she can define her own protocols.
 
 The beauty of protocols is that they allow programmers to design contracts that can be adopted outside of a class hierarchy. It's the egalitarian mantra at the heart of the American Dream: that it doesn't matter who you are, or where you come from: anyone can achieve anything if they work hard enough. 
 
