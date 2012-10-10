@@ -207,9 +207,13 @@ For most of us, at least most of the time, coming into this knowledge is but an 
 - `@encode()`: Returns the [character string encoding](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at`.
 - `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
 
+<pre><code>
     struct { 
       @defs(NSObject) 
     }
+</code></pre>
+
+> Ed. As pointed out by readers [@secboffin](http://twitter.com/secboffin) & [@ameaijou](http://twitter.com/ameaijou), `@defs` is unavailable in the modern Objective-C runtime.
 
 ## Optimizations
 
