@@ -15,7 +15,7 @@ To use the framework, add both `AddressBook.framework` and `AddressBookUI.framew
 
 At first glance, it would seem that there's nothing really remarkable about the Address Book UI framework.
 
-> Actually, in iOS 6, there are some _fascinating_ inter-process shenanigans going on behind the scenes with modal controllers like `MFMailComposeViewController` and `ABNewPersonViewController`. Ole Begemann has an [excellent write-up on Remove View Controllers in iOS 6](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/) that's definitely worth a read.
+> Actually, in iOS 6, there are some _fascinating_ inter-process shenanigans going on behind the scenes with modal controllers like `MFMailComposeViewController` and `ABNewPersonViewController`. Ole Begemann has an [excellent write-up on Remote View Controllers in iOS 6](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/) that's definitely worth a read.
 
 However, tucked away from the rest of the controllers and protocols, there's a single Address Book UI function that's astoundingly useful:
 
