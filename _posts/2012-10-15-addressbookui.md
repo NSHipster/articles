@@ -6,6 +6,7 @@ ref: "http://developer.apple.com/library/ios/#documentation/AddressBookUI/Refere
 framework: AddressBookUI
 rating: 6.2
 published: true
+description: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
 ---
 
 [Address Book UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html) is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the [Message UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html) framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.
@@ -37,6 +38,8 @@ The second argument is a boolean flag, `addCountryName`. When `YES`, the name of
 
 Nowhere else in all of the other frameworks is this functionality provided. It's not part of [`NSLocale`](http://nshipster.com/nslocale/), or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it's surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.
 
+> Unfortunately, Address Book UI is not available in Mac OS X, and it would appear that there's no equivalent function provided on this platform.
+
 For you see, address formats vary greatly across different regions. For example, addresses in the United States take the form:
 
     Street Address
@@ -51,3 +54,5 @@ Whereas addresses in Japan follow a different convention:
     Country
 
 This is at least as jarring a difference in localization as [swapping periods for commas the radix point](http://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system), so make sure to use this function anytime you're displaying an address from its components.
+
+> One great way to take advantage of localized address book formatting would be to check out [FormatterKit](https://github.com/mattt/FormatterKit), which added `TTTAddressFormatter` in its 1.1 release.
