@@ -21,7 +21,7 @@ However, tucked away from the rest of the controllers and protocols, there's a s
 
 `ABCreateStringWithAddressDictionary()` - Returns a localized, formatted address string from components.
 
-The first argument for the function is a dictionary containing the date components, keyed by string constants:
+The first argument for the function is a dictionary containing the address components, keyed by string constants:
 
 - `kABPersonAddressStreetKey`
 - `kABPersonAddressCityKey`
