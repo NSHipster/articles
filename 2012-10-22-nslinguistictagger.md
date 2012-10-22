@@ -15,9 +15,9 @@ For most of us, this is far more power than we know what to do with. But perhaps
 
 ---
 
-Introduced with iOS 5, `NSLinguisticTagger` is a contemporary with Siri, leading some to speculate that it was a byproduct of the personal assistant's development.
+Introduced with iOS 5, `NSLinguisticTagger` is a contemporary to Siri, raising speculation that it was a byproduct of the personal assistant's development.
 
-For example, consider a typical question we might ask Siri:
+Consider a typical question we might ask Siri:
 
 > What is the weather in San Francisco?
 
@@ -41,7 +41,9 @@ This code would print the following:
 > in: _Preposition_  
 > San Francisco: _PlaceName_
 
-If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`. Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can figure out that we a reasonable course of action is to make an API request to determine the current weather conditions in San Francisco.
+If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`. 
+
+Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can figure out that we a reasonable course of action is to make an API request to determine the current weather conditions in San Francisco.
 
 ## Tagging Schemes
 
@@ -130,7 +132,7 @@ In addition to the available tagging schemes, there are several options you can 
 - `NSLinguisticTaggerOmitWhitespace`
 - `NSLinguisticTaggerOmitOther`
 
-Each of these options omits the broad categories of tags described. For example, `NSLinguisticTagSchemeLexicalClass`, which distinguishes between many different kinds of punctuation, all of those would be omitted with `NSLinguisticTaggerOmitPunctuation`. This is preferable to manually filtering these tag types in enumeration blocks or with predicates.
+Each of these options omit the broad categories of tags described. For example, `NSLinguisticTagSchemeLexicalClass`, which distinguishes between many different kinds of punctuation, all of those would be omitted with `NSLinguisticTaggerOmitPunctuation`. This is preferable to manually filtering these tag types in enumeration blocks or with predicates.
 
 The last option is specific to `NSLinguisticTagSchemeNameType`:
 
