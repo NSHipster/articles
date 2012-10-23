@@ -138,7 +138,7 @@ The last option is specific to `NSLinguisticTagSchemeNameType`:
 
 - `NSLinguisticTaggerJoinNames`
 
-By default, each token in a name are treated as separate tokens. In many circumstances, it makes sense to treat names like "San Francisco" as a single token, rather than two separate tokens. Passing this token makes this so.
+By default, each token in a name is treated as separate tokens. In many circumstances, it makes sense to treat names like "San Francisco" as a single token, rather than two separate tokens. Passing this token makes this so.
 
 ---
 
