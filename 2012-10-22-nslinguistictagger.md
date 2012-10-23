@@ -43,7 +43,7 @@ This code would print the following:
 
 If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`. 
 
-Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can figure out that we a reasonable course of action is to make an API request to determine the current weather conditions in San Francisco.
+Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can conclude that a reasonable course of action would be to make an API request to determine the current weather conditions in San Francisco.
 
 ## Tagging Schemes
 
