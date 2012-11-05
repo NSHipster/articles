@@ -108,8 +108,8 @@ Which brings us to this week's topic: `NSURLProtocol`.
 
 If you aren't already `mindblown.gif`, here are some examples of what this can be used for, _without changing anything else about how requests are loaded_:
 
-- Intercepting HTTP requests to serve images locally from the app bundle resources, if available
-- Mocking and stubbing HTTP responses for testing
+- [Intercepting HTTP requests to serve images locally from the app bundle resources, if available](http://stackoverflow.com/questions/5572258/ios-webview-remote-html-with-local-image-files)
+- [Mocking and stubbing HTTP responses for testing](http://www.infinite-loop.dk/blog/2011/09/using-nsurlprotocol-for-injecting-test-data/)
 - Normalizing headers and parameters of outgoing requests
 - Signing outgoing streaming media requests
 - Creating a proxy server for a local data transformation service with a URL request interface
