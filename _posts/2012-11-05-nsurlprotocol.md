@@ -10,7 +10,7 @@ description: Foundation’s URL Loading System is something that every iOS devel
 
 ---
 
-iOS as a platform is all about networking--whether it's reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.
+iOS is all about networking--whether it's reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.
 
 Because of this, Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i) is something that every iOS developer would do well to buddy up with.
 
