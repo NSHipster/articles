@@ -153,14 +153,14 @@ Each instance of a `NSURLProtocol` subclass has a `client` property, which is th
 
 #### `<NSURLProtocolClient>`
 
-– `-URLProtocol:cachedResponseIsValid:`
-– `-URLProtocol:didCancelAuthenticationChallenge:`
-– `-URLProtocol:didFailWithError:`
-– `-URLProtocol:didLoadData:`
-– `-URLProtocol:didReceiveAuthenticationChallenge:`
-– `-URLProtocol:didReceiveResponse:cacheStoragePolicy:`
-– `-URLProtocol:wasRedirectedToRequest:redirectResponse:`
-– `-URLProtocolDidFinishLoading:`
+* `-URLProtocol:cachedResponseIsValid:`
+* `-URLProtocol:didCancelAuthenticationChallenge:`
+* `-URLProtocol:didFailWithError:`
+* `-URLProtocol:didLoadData:`
+* `-URLProtocol:didReceiveAuthenticationChallenge:`
+* `-URLProtocol:didReceiveResponse:cacheStoragePolicy:`
+* `-URLProtocol:wasRedirectedToRequest:redirectResponse:`
+* `-URLProtocolDidFinishLoading:`
 
 In your implementation of `-startLoading` and `-stopLoading`, you will need to send each delegate method to your `client` when appropriate. For something simple, this may mean sending several in rapid succession, but it's important nonetheless. 
 
