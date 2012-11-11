@@ -35,9 +35,9 @@ Coming to our rescue is `UILocalizedIndexedCollation`.
 
 ---
 
-`UILocalizedIndexCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexCollation +currentCollation`
+`UILocalizedIndexedCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexedCollation +currentCollation`
 
-The first task for `UILocalizedIndexCollation` is to determine what section index titles to display for the current locale, which are can be read from the `sectionIndexTitles` property.
+The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which are can be read from the `sectionIndexTitles` property.
 
 To give you a better idea of how section index titles vary between locales:
 
@@ -135,7 +135,7 @@ To include the search icon in your table view, you would simply prepend the `NSS
 
 So remember, NSHipsters one and all: if you see an excessively long table view, kill it with fire!
 
-...which is to say, refactor your content with some combination of hierarchies, a search bar, and section indexes. And when implementing section index titles, take advantage of `UILocalizedIndexCollation`.
+...which is to say, refactor your content with some combination of hierarchies, a search bar, and section indexes. And when implementing section index titles, take advantage of `UILocalizedIndexedCollation`.
 
 Together, we can put an end to scroll view-induced repetitive stress injuries, and spend more time enjoying the finer things in life, like watching videos of pets playing with iPads.
 
