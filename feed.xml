@@ -8,6 +8,7 @@ layout: rss-feed
 		<title>{{ site.title }}</title>
 		<description>{{ site.description }}</description>
 		<link>{{ site.url }}</link>
+		<pubDate>{{ site.posts.first.date }}</pubDate>
 		{% for post in site.posts %}
 			<item>
 				<title>{{ post.title }}</title>
