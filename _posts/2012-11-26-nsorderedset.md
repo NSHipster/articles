@@ -67,7 +67,7 @@ This is perhaps even worse, as now `NSMutableOrderedSet` couldn't be used as a m
 
 No matter how we approach it, we can't stack a mutable / immutable class pair on top of another existing mutable / immutable class pair. It just won't work in Objective-C.
 
-Rather than subject ourselves to the perils of *shudder* [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as it does every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
+Rather than subject ourselves to the perils of [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as it does every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
 
 * `NSArray : NSObject <NSOrderedCollection>`
 * `NSSet : NSObject <NSUniqueCollection>`
