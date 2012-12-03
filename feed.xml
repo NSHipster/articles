@@ -13,7 +13,7 @@ layout: rss-feed
 			<item>
 				<title>{{ post.title }}</title>
 				<description>{{ post.content | xml_escape }}</description>
-				<published>{{ post.date }}</published>
+				<pubDate>{{ post.date }}</pubDate>
 				<link>{{ site.url }}{{ post.url }}</link>
 			</item>
 		{% endfor %}
