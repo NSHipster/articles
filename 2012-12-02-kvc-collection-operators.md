@@ -6,12 +6,12 @@ ref: "http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/Key
 framework: Foundation
 rating: 7.9
 published: true
-description: ""
+description: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."
 ---
 
 Rubyists laugh at Objective-C's bloated syntax. 
 
-Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and thier fancy [`Symbol#to_proc`](http://pragdave.pragprog.com/pragdave/2005/11/symbolto_proc.html).
+Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and their fancy [`Symbol#to_proc`](http://pragdave.pragprog.com/pragdave/2005/11/symbolto_proc.html).
 
 Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. `for`, `while`; even [fast enumeration expressions](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocFastEnumeration.html) are a drag. No matter how you sugar-coat loops will always be a block of code that does something that's much simpler to describe in natural language "get me the average salary of all of the employees in this array".
 
@@ -152,4 +152,4 @@ Is this insanely cool? You bet! This clever example has shown a possible directi
 
 KVC Collection Operators are a must-know for anyone who wants to save a few extra lines of code and look cool in the process. 
 
-While scripting langauges like Ruby boast considerably more flexibility in its one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;
+While scripting languages like Ruby boast considerably more flexibility in its one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;
