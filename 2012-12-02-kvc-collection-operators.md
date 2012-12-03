@@ -40,9 +40,11 @@ The best way to understand how these work is to see them in action. Consider a `
 
     @interface Product : NSObject
     @property NSString *name;
-    @property float price;
+    @property double price;
     @property NSDate *launchedOn;
     @end
+
+> Key-Value Coding automatically boxes and un-boxes scalars into `NSNumber` or `NSValue` as necessary to make everything work.
 
 <table>
   <thead>
@@ -92,7 +94,7 @@ _Example_:
     [products valueForKeyPath:@"@max.price"]; // 1699.00
     [products valueForKeyPath:@"@min.launchedOn"]; // June 11, 2012
 
-> Key-Value Coding automatically boxes and un-boxes scalars into `NSNumber` or `NSValue` as necessary to make everything work.
+> Pro Tip: To get the aggregate value of an array or set of `NSNumber`s, you can simply pass `self` as the key path after the operator, e.g. `[@[@(1), @(2), @(3)] valueForKeyPath:@"@max.self"]` (/via [@davandermobile](http://twitter.com/davandermobile), citing [Objective Sea](http://objectivesea.tumblr.com/post/34552840247/max-value-nsset-kvc))
 
 ### Object Operators
 
