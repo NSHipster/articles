@@ -13,7 +13,9 @@ Rubyists laugh at Objective-C's bloated syntax.
 
 Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and their fancy [`Symbol#to_proc`](http://pragdave.pragprog.com/pragdave/2005/11/symbolto_proc.html).
 
-Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. `for`, `while`; even [fast enumeration expressions](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocFastEnumeration.html) are a drag. No matter how you sugar-coat loops will always be a block of code that does something that's much simpler to describe in natural language "get me the average salary of all of the employees in this array".
+Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. `for`, `while`; even [fast enumeration expressions](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocFastEnumeration.html) are a drag. No matter how you sugar-coat them, loops will be a block of code that does something that is much simpler to describe in natural language.
+
+"get me the average salary of all of the employees in this array", versus...
 
     double totalSalary = 0.0;
     for (Employee *employee in employees) {
