@@ -64,7 +64,6 @@ While `instancetype` may seem to be a rather mundane, albeit welcome addition to
 [Jonathan Sterling](https://twitter.com/jonsterling) wrote [this quite interesting article](http://www.jonmsterling.com/posts/2012-02-05-typed-collections-with-self-types-in-objective-c.html), detailing how `instancetype` could be used to encode statically-typed collections, without [generics](http://en.wikipedia.org/wiki/Generic_programming):
 
     NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
-    NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
     [sites put:[NSURL URLWithString:@"http://www.jonmsterling.com/"]
             at:@"jon"];
     [sites put:[NSURL URLWithString:@"http://www.nshipster.com/"]
