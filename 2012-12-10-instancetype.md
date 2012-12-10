@@ -53,7 +53,7 @@ This is where the compiler steps in to resolve this timeless edge case to the Ob
 
 With `instancetype`, the compiler will correctly infer that the result of `+personWithName:` is an instance of a `Person`.
 
-Look for class constructors in Foundation to start using `instancetype` in the near future. New APIs, such as [UICollectionViewLayoutAttributes](http://developer.apple.com/library/ios/#documentation/uikit/reference/UICollectionViewLayoutAttributes_class/Reference/Reference.html) is using `instancetype` already.
+Look for class constructors in Foundation to start using `instancetype` in the near future. New APIs, such as [UICollectionViewLayoutAttributes](http://developer.apple.com/library/ios/#documentation/uikit/reference/UICollectionViewLayoutAttributes_class/Reference/Reference.html) are using `instancetype` already.
 
 ## Further Implications
 
