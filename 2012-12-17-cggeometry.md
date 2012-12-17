@@ -68,7 +68,7 @@ If you're using `CGRectInset` as a convenience function for resizing a rectangle
 
 It's important that `CGRect` values all are rounded to the nearest whole point. Fractional values cause the frame to be drawn on a _pixel boundary_. Because pixels are atomic units (cannot be subdivided†) a fractional value will cause the drawing to be averaged over the neighboring pixels, which looks blurry.
 
-`CGRectIntegral` will `floor` each origin and size value, which will ensure that your drawing code will crisply align on pixel boundaries.
+`CGRectIntegral` will `floor` each origin value, and `ceil` each size value, which will ensure that your drawing code will crisply align on pixel boundaries.
 
 As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
 
