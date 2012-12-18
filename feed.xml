@@ -6,15 +6,16 @@ layout: rss-feed
 <rss version="2.0">
 	<channel>
 		<title>{{ site.title }}</title>
-		<description>{{ site.description }}</description>
+		<description>{{ site.description | strip_html }}</description>
 		<link>{{ site.url }}</link>
-		<pubDate>{{ site.posts.first.date }}</pubDate>
+		<pubDate>{{ site.posts.first.date | date_to_rfc822 }}</pubDate>
 		{% for post in site.posts %}
 			<item>
-				<title>{{ post.title }}</title>
+				<title>{{ post.title | escape_once }}</title>
 				<description>{{ post.content | xml_escape }}</description>
-				<pubDate>{{ post.date }}</pubDate>
+				<pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
 				<link>{{ site.url }}{{ post.url }}</link>
+				<guid>{{ site.url }}{{ post.url }}</guid>
 			</item>
 		{% endfor %}
 	</channel>
