@@ -13,12 +13,12 @@ Thanks to [Cédric Luthi](https://github.com/0xced), [Jason Kozemczak](https://g
 ---
 
 
-Associated Objects in Class Extensions
---------------------------------------
+Associated Objects in Categories
+--------------------------------
 
 This first tip is so nice it was mentioned twice, both by [Jason Kozemczak](https://github.com/jaykz52) & [Jeff Kelley](https://github.com/SlaunchaMan).
 
-Class extensions are a well-known feature of Objective-C, allowing new methods to be added to existing classes. Much less well known is that with some `objc` runtime hacking, you can add new _properties_ as well. Observe!
+Categories are a well-known feature of Objective-C, allowing new methods to be added to existing classes. Much less well known is that with some `objc` runtime hacking, you can add new _properties_ as well. Observe!
 
 ### NSObject+IndieBandName.h
 
