@@ -37,11 +37,11 @@ Categories are a well-known feature of Objective-C, allowing new methods to be a
     @dynamic indieBandName;
 
     - (NSString *)indieBandName {
-        return objc_getAssociatedObject(self, IndieBandName);
+        return objc_getAssociatedObject(self, IndieBandNameKey);
     }
 
     - (void)setIndieBandName:(NSString *)indieBandName {
-        objc_setAssociatedObject(self, IndieBandName, indieBandName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+        objc_setAssociatedObject(self, IndieBandNameKey, indieBandName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
 
     @end
