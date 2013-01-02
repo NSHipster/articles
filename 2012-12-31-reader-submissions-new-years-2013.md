@@ -31,7 +31,7 @@ Categories are a well-known feature of Objective-C, allowing new methods to be a
     #import "NSObject+Extension.h"
     #import <objc/runtime.h>
 
-    static char const * const IndieBandNameKey = "IndieBandName";    
+    static const void *IndieBandNameKey = &IndieBandNameKey;    
 
     @implementation NSObject (IndieBandName)
     @dynamic indieBandName;
