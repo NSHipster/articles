@@ -59,7 +59,7 @@ LLDB View Hierarchy Dump
 
 ### ~/.lldbinit
 
-    command regex rd 's/^[[:space:]]*$/po [[UIApp keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
+    command regex rd 's/^[[:space:]]*$/po [[[UIApplication sharedApplication] keyWindow] recursiveDescription]/' 's/^(.+)$/po [%1 recursiveDescription]/'
 
 Now you can get a recursive hierarchy of any view in your iOS application with the LLDB debugger. You can try this for yourself by setting a breakpoint in a view controller, and type `rd self.view`. You may be surprised by what's under the hood with some of the built-in UI controls!
 
