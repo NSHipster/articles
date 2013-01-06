@@ -28,10 +28,12 @@ In another departure from the old-school table view way of doing things, the pro
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
-    if (!cell) {
-      cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
-    }
+~~~{objective-c}
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
+if (!cell) {
+  cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
+}
+~~~
 
 `UICollectionView` thankfully does away with this. `-dequeueReusableCellWithReuseIdentifier:forIndexPath:` is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a `UICollectionReusableView` subclass for a particular reuse identifier, and everything will work automatically. Thankfully, this behavior has been backported to `UITableView` as well with iOS 6.
 

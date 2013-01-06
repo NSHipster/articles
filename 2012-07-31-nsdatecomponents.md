@@ -13,11 +13,11 @@ Whereas dates represent a particular moment in time, date component depend on wh
 
 The most common use of `NSDateComponents` is to determine information about a given date, which may be used to group events by day or week, for instance. To do this, get the calendar for the current locale, and then use `NSCalendar -components:fromDate:`.
 
-
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *date = [NSDate date];
-    [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit) fromDate:date];
-
+~~~{objective-c}
+NSCalendar *calendar = [NSCalendar currentCalendar];
+NSDate *date = [NSDate date];
+[calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit) fromDate:date];
+~~~
 
 The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve:
 
@@ -42,32 +42,32 @@ Since it would be expensive to compute all of the possible values, specify only 
 
 Another way you may use `NSDateComponents` would be to make relative date calculations, such as determining the date yesterday, next week, or 5 hours and 30 minutes from now. Use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
+~~~{objective-c}
+NSCalendar *calendar = [NSCalendar currentCalendar];
+NSDate *date = [NSDate date];
 
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *date = [NSDate date];
-    
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setWeek:1];
-    [components setHour:12];
-    
-    NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:components toDate:date options:0]);
+NSDateComponents *components = [[NSDateComponents alloc] init];
+[components setWeek:1];
+[components setHour:12];
 
+NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:components toDate:date options:0]);
+~~~
 
 One last example of how you can use `NSDateComponents` would be to use them to create an `NSDate` object from components. `NSCalendar -dateFromComponents:` is the method you'll use here:
 
-
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-        
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setYear:1987];
-    [components setMonth:3];
-    [components setDay:17];
-    [components setHour:14];
-    [components setMinute:20];
-    [components setSecond:0];
+~~~{objective-c}
+NSCalendar *calendar = [NSCalendar currentCalendar];
     
-    NSLog(@"Awesome time: %@", [calendar dateFromComponents:components]);
+NSDateComponents *components = [[NSDateComponents alloc] init];
+[components setYear:1987];
+[components setMonth:3];
+[components setDay:17];
+[components setHour:14];
+[components setMinute:20];
+[components setSecond:0];
 
+NSLog(@"Awesome time: %@", [calendar dateFromComponents:components]);
+~~~
 
 What's particularly interesting about this approach is that a date can be determined by information other than the normal month/day/year approach. If you pass enough information to uniquely determine the date, such as the year (e.g. 2012), and day of the the year (e.g. 213 of 365) you would get 7/31/2012 at midnight (because no time was specified, it defaults to 0). Note that passing inconsistent components will either result in some information being discarded, or `nil` being returned. 
 

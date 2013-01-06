@@ -3,14 +3,13 @@ layout: post
 title: "Reader Submissions - New Year's 2013"
 category: "Reader Submissions"
 published: true
+framework: ""
 description: "In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."
 ---
 
 In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of _your_ favorite tips and tricks of the trade--to give y'all a chance to show off some of your NSHipster cred.
 
 Thanks to [Cédric Luthi](https://github.com/0xced), [Jason Kozemczak](https://github.com/jaykz52), [Jeff Kelley](https://github.com/SlaunchaMan), [Joel Parsons](https://github.com/joelparsons), [Maximilian Tagher](https://github.com/MaxGabriel), [Rob Mayoff](https://github.com/mayoff), [Vadim Shpakovski](https://github.com/shpakovski), & [@alextud](https://github.com/alextud) for [answering the call](https://gist.github.com/4148342) with _excellent_ submissions. 
-
----
 
 
 Associated Objects in Categories
@@ -22,29 +21,33 @@ Categories are a well-known feature of Objective-C, allowing new methods to be a
 
 ### NSObject+IndieBandName.h
 
-    @interface NSObject (IndieBandName)
-    @property (nonatomic, strong) NSString *indieBandName;
-    @end
+~~~{objective-c}
+@interface NSObject (IndieBandName)
+@property (nonatomic, strong) NSString *indieBandName;
+@end
+~~~
 
 ### NSObject+IndieBandName.m
 
-    #import "NSObject+Extension.h"
-    #import <objc/runtime.h>
+~~~{objective-c}
+#import "NSObject+Extension.h"
+#import <objc/runtime.h>
 
-    static const void *IndieBandNameKey = &IndieBandNameKey;    
+static const void *IndieBandNameKey = &IndieBandNameKey;    
 
-    @implementation NSObject (IndieBandName)
-    @dynamic indieBandName;
+@implementation NSObject (IndieBandName)
+@dynamic indieBandName;
 
-    - (NSString *)indieBandName {
-        return objc_getAssociatedObject(self, IndieBandNameKey);
-    }
+- (NSString *)indieBandName {
+    return objc_getAssociatedObject(self, IndieBandNameKey);
+}
 
-    - (void)setIndieBandName:(NSString *)indieBandName {
-        objc_setAssociatedObject(self, IndieBandNameKey, indieBandName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-    }
+- (void)setIndieBandName:(NSString *)indieBandName {
+    objc_setAssociatedObject(self, IndieBandNameKey, indieBandName, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
-    @end
+@end
+~~~
 
 This way, all of your objects can store and retrieve the name of their band, which--by the way--is performing this Wednesday night, and you should totally come.
 
@@ -86,8 +89,6 @@ Use `+initialize`, Not `+load`
 
 **tl;dr: Implement `+initialize`, not `+load`, if you need this automatic behavior.**
 
-`+initialize` is great for registering [`NSURLProtocol`](http://nshipster.com/nsurlprotocol/), [`NSValueTransformer`](NSValueTransformer), and [`NSIncrementalStore`](http://nshipster.com/nsincrementalstore/) subclasses, or any class that requires some kind of extra initialization step before being used.
-
 Xcode Snippets
 --------------
 
@@ -102,15 +103,16 @@ Macro for Measuring Execution Time
 
 Here's a helpful macro for easily measuring the elapsed time for executing a particular block of code, sent in from [@alextud](https://github.com/alextud):
 
-    NS_INLINE void MVComputeTimeWithNameAndBlock(const char *caller, void (^block)()) {
-        CFTimeInterval startTimeInterval = CACurrentMediaTime();
-        block();
-        CFTimeInterval nowTimeInterval = CACurrentMediaTime();
-        NSLog(@"%s - Time Running is: %f", caller, nowTimeInterval - startTimeInterval);
-    }
+~~~{objective-c}
+NS_INLINE void MVComputeTimeWithNameAndBlock(const char *caller, void (^block)()) {
+    CFTimeInterval startTimeInterval = CACurrentMediaTime();
+    block();
+    CFTimeInterval nowTimeInterval = CACurrentMediaTime();
+    NSLog(@"%s - Time Running is: %f", caller, nowTimeInterval - startTimeInterval);
+}
 
-    #define MVComputeTime(...) MVComputeTimeWithNameAndBlock(__PRETTY_FUNCTION__, (__VA_ARGS__))
-
+#define MVComputeTime(...) MVComputeTimeWithNameAndBlock(__PRETTY_FUNCTION__, (__VA_ARGS__))
+~~~
 
 Block Enumeration Methods
 -------------------------
@@ -129,15 +131,17 @@ Animate `NSLayoutConstraint.constant`
 
 This one goes out to all you fans of [Cocoa Auto Layout](https://developer.apple.com/library/mac/#documentation/UserExperience/Conceptual/AutolayoutPG/Articles/Introduction.html#//apple_ref/doc/uid/TP40010853), from [Vadim Shpakovski](https://github.com/shpakovski):
 
-    viewConstraint.constant = <#Constant Value From#>;
-    [view layoutIfNeeded];
+~~~{objective-c}
+viewConstraint.constant = <#Constant Value From#>;
+[view layoutIfNeeded];
 
-    viewConstraint.constant = <#Constant Value To#>;
-    [view setNeedsUpdateConstraints];
+viewConstraint.constant = <#Constant Value To#>;
+[view setNeedsUpdateConstraints];
 
-    [UIView animateWithDuration:ConstantAnimationDuration animations:^{
-         [view layoutIfNeeded];
-    }];
+[UIView animateWithDuration:ConstantAnimationDuration animations:^{
+     [view layoutIfNeeded];
+}];
+~~~
 
 Attentive readers may have already noted this, but the code above would make an _excellent_ Xcode Snippet, by the way.
 
@@ -146,11 +150,13 @@ Printing `NSCache` Usage
 
 Finishing up this batch of tips and tricks is [Cédric Luthi](https://github.com/0xced) again, this time unearthing the private method `cache_print` as a way to get some visibility into [`NSCache`](http://nshipster.com/nscache/):
 
-    extern void cache_print(void *cache);
+~~~{objective-c}
+extern void cache_print(void *cache);
 
-    - (void) printCache:(NSCache *)cache {
-        cache_print(*((void **)(__bridge void *)cache + 3));
-    }
+- (void) printCache:(NSCache *)cache {
+    cache_print(*((void **)(__bridge void *)cache + 3));
+}
+~~~
 
 This code sample has only been tested on iOS, and should only be used for debugging (i.e. take this out before submitting to Apple!).
 

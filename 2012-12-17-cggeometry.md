@@ -13,11 +13,11 @@ Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your 
 
 So for those of you who spent more time learning TI-BASIC than Euclidean geometry, here's the cheat-sheet for how geometry works in [Quartz 2D][1], the drawing system used in iOS and Mac OS X:
 
-- A **`CGPoint`** is a struct that represents a point in a two-dimensional coordinate system. For iOS, the origin is at the top-left, so points move right and down as their `x` and `y` values, respectively, increase. OS X, by contrast, is oriented with `(0, 0)` in the bottom left, with `y` moving up as it increases.
+- A `CGPoint` is a struct that represents a point in a two-dimensional coordinate system. For iOS, the origin is at the top-left, so points move right and down as their `x` and `y` values, respectively, increase. OS X, by contrast, is oriented with `(0, 0)` in the bottom left, with `y` moving up as it increases.
 
-- A **`CGSize`** is a struct that represents the dimensions of `width` and `height`.
+- A `CGSize` is a struct that represents the dimensions of `width` and `height`.
 
-- A **`CGRect`** is a struct with both a `CGPoint` (`origin`) and a `CGSize` (`size`), representing a rectangle drawn from its `origin` point with the `width` and `height` of its `size`.
+- A `CGRect` is a struct with both a `CGPoint` (`origin`) and a `CGSize` (`size`), representing a rectangle drawn from its `origin` point with the `width` and `height` of its `size`.
 
 Because `CGRect` is used to represent the `frame` of every view drawn on screen, a programmer's success in graphical programming is contingent on their ability to effectively manipulate rectangle geometry.
 
@@ -36,11 +36,13 @@ First on our list are the geometric transformations. These functions return a `C
 
 > `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
 
-    CGRect CGRectOffset(
-      CGRect rect,
-      CGFloat dx,
-      CGFloat dy
-    )
+~~~{objective-c}
+CGRect CGRectOffset(
+  CGRect rect,
+  CGFloat dx,
+  CGFloat dy
+)
+~~~
 
 Consider using this anytime you're changing the origin of a rectangle. Not only can it save a line of code when changing both the horizontal and vertical position, but more importantly, it represents the translation more semantically than manipulating the origin values individually. 
 
@@ -48,11 +50,13 @@ Consider using this anytime you're changing the origin of a rectangle. Not only 
 
 > `CGRectInset`: Returns a rectangle that is smaller or larger than the source rectangle, with the same center point.
 
-    CGRect CGRectInset(
-      CGRect rect,
-      CGFloat dx,
-      CGFloat dy
-    )
+~~~{objective-c}
+CGRect CGRectInset(
+  CGRect rect,
+  CGFloat dx,
+  CGFloat dy
+)
+~~~
 
 Want to make a view-within-a-view look good? Give it a nice 10pt padding with `CGRectInset`. Keep in mind that the rectangle will be resized around its center by ± `dx` on its left and right edge (for a total of `2 × dx`), and ± `dy` on its top and bottom edge (for a total of `2 × dy`). 
 
@@ -62,9 +66,11 @@ If you're using `CGRectInset` as a convenience function for resizing a rectangle
 
 > `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
 
-    CGRect CGRectIntegral (
-      CGRect rect
-    )
+~~~{objective-c}
+CGRect CGRectIntegral (
+  CGRect rect
+)
+~~~
 
 It's important that `CGRect` values all are rounded to the nearest whole point. Fractional values cause the frame to be drawn on a _pixel boundary_. Because pixels are atomic units (cannot be subdivided†) a fractional value will cause the drawing to be averaged over the neighboring pixels, which looks blurry.
 
@@ -83,18 +89,18 @@ These functions provide a shorthand way to calculate interesting dimensional val
 
 - `CGRectGetMinX`
 - `CGRectGetMinY`
-
 - `CGRectGetMidX`
 - `CGRectGetMidY`
-
 - `CGRectGetMaxX`
 - `CGRectGetMaxY`
 
 These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form: 
 
-    CGFloat CGRectGet[Min|Mid|Max][X|Y] (
-      CGRect rect
-    )
+~~~{objective-c}
+CGFloat CGRectGet[Min|Mid|Max][X|Y] (
+  CGRect rect
+)
+~~~
 
 These functions will replace code like `frame.origin.x + frame.size.width` with cleaner, more semantically expressive equivalents (especially with the mid and max functions).
 
@@ -102,15 +108,19 @@ These functions will replace code like `frame.origin.x + frame.size.width` with 
 
 > `CGRectGetHeight`: Returns the height of a rectangle.
 
-    CGFloat CGRectGetHeight (
-       CGRect rect
-    )
+~~~{objective-c}
+CGFloat CGRectGetHeight (
+   CGRect rect
+)
+~~~
 
 > `CGRectGetWidth`: Returns the width of a rectangle.
 
-    CGFloat CGRectGetWidth (
-       CGRect rect
-    )
+~~~{objective-c}
+CGFloat CGRectGetWidth (
+   CGRect rect
+)
+~~~
 
 Much like the previous functions, `CGRectGetWidth` & `CGRectGetHeight` are often preferable to returning the corresponding member of a `CGRect`'s `size`. While it's not extremely competitive in terms of character savings, remember that semantic clarity trumps brevity every time. 
 
@@ -140,13 +150,15 @@ Behold, the most obscure, misunderstood, and useful of the `CGGeometry` function
 
 > `CGRectDivide`: Divides a source rectangle into two component rectangles.
 
-    void CGRectDivide(
-      CGRect rect,
-      CGRect *slice,
-      CGRect *remainder,
-      CGFloat amount,
-      CGRectEdge edge
-    )
+~~~{objective-c}
+void CGRectDivide(
+  CGRect rect,
+  CGRect *slice,
+  CGRect *remainder,
+  CGFloat amount,
+  CGRectEdge edge
+)
+~~~
 
 `CGRectDivide` divides a rectangle into two components in the following way:
 
@@ -157,12 +169,14 @@ Behold, the most obscure, misunderstood, and useful of the `CGGeometry` function
 
 That `edge` argument takes a value from the `CGRectEdge` enum:
 
-    enum CGRectEdge {
-       CGRectMinXEdge,
-       CGRectMinYEdge,
-       CGRectMaxXEdge,
-       CGRectMaxYEdge
-    }
+~~~{objective-c}
+enum CGRectEdge {
+   CGRectMinXEdge,
+   CGRectMinYEdge,
+   CGRectMaxXEdge,
+   CGRectMaxYEdge
+}
+~~~
 
 `CGRectDivide` is perfect for dividing up available space among several views (call it on subsequent `remainder` amounts to accommodate more than two views). Give it a try next time you're manually laying-out a `UITableViewCell`.
 

@@ -54,22 +54,26 @@ Categories allow you to extend the behavior of existing classes by adding new cl
 
 #### MyObject+CategoryName.h
 
-    @interface MyObject (CategoryName)
-      - (void)foo;
-      - (BOOL)barWithBaz:(NSInteger)baz;
-    @end
+~~~{objective-c}
+@interface MyObject (CategoryName)
+  - (void)foo;
+  - (BOOL)barWithBaz:(NSInteger)baz;
+@end
+~~~
 
 #### MyObject+CategoryName.m
 
-    @implementation MyObject (CategoryName)
-      - (void)foo {
-        // ...
-      }
+~~~{objective-c}
+@implementation MyObject (CategoryName)
+  - (void)foo {
+    // ...
+  }
 
-      - (BOOL)barWithBaz:(NSInteger)baz {
-        return YES;
-      }
-    @end
+  - (BOOL)barWithBaz:(NSInteger)baz {
+    return YES;
+  }
+@end
+~~~
 
 Categories are particularly useful for convenience methods on standard framework classes (just don't go overboard with your utility functions).
 
@@ -77,17 +81,19 @@ Categories are particularly useful for convenience methods on standard framework
 
 Extensions look like categories, but omit the category name. These are typically declared before an `@implementation` to specify a private interface, and even override properties declared in the interface:
 
-      @interface MyObject ()
-      @property (readwrite, nonatomic, strong) NSString *name;
-      - (void)doSomething;
-      @end
+~~~{objective-c}
+@interface MyObject ()
+@property (readwrite, nonatomic, strong) NSString *name;
+- (void)doSomething;
+@end
 
-      @implementation MyObject
-      @synthesize name = _name;
+@implementation MyObject
+@synthesize name = _name;
 
-      // ...
+// ...
 
-      @end
+@end
+~~~
 
 ### Properties
 
@@ -120,14 +126,16 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
 - `@protected`: instance variable is only accessible to its class and derived classes
 - `@private`: instance variable is only accessible to its class
 
-      @interface Person : NSObject {
-        @public
-        NSString name;
-        int age;
-  
-        @private
-        int salary;
-      }
+~~~{objective-c}
+@interface Person : NSObject {
+  @public
+  NSString name;
+  int age;
+
+  @private
+  int salary;
+}
+~~~
 
 ## Protocols
 
@@ -147,11 +155,13 @@ You can further tailor a protocol by specifying methods as required or optional.
 
 The syntax for `@required` and `@optional` follows that of the visibility macros:
 
-    @protocol CustomControlDelegate
-      - (void)control:(CustomControl *)control didSucceedWithResult:(id)result;
-    @optional
-      - (void)control:(CustomControl *)control didFailWithError:(NSError *)error;
-    @end
+~~~{objective-c}
+@protocol CustomControlDelegate
+  - (void)control:(CustomControl *)control didSucceedWithResult:(id)result;
+@optional
+  - (void)control:(CustomControl *)control didFailWithError:(NSError *)error;
+@end
+~~~
 
 ## Exception Handling
 
@@ -159,20 +169,22 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
 
 `@` directives are used for the traditional convention of `try/catch/finally` blocks:
 
-    @try{
-      // attempt to execute the following statements
-      [self getValue:&value error:&error];
-      
-      // if an exception is raised, or explicitly thrown...
-      if (error) {
-        @throw exception;
-      }
-    } @catch(NSException *e) {
-      // ...handle the exception here
-    }  @finally {
-      // always execute this at the end of either the @try or @catch block
-      [self cleanup];
-    } 
+~~~{objective-c}
+@try{
+  // attempt to execute the following statements
+  [self getValue:&value error:&error];
+  
+  // if an exception is raised, or explicitly thrown...
+  if (error) {
+    @throw exception;
+  }
+} @catch(NSException *e) {
+  // ...handle the exception here
+}  @finally {
+  // always execute this at the end of either the @try or @catch block
+  [self cleanup];
+} 
+~~~
 
 ## Literals
 
@@ -207,11 +219,11 @@ For most of us, at least most of the time, coming into this knowledge is but an 
 - `@encode()`: Returns the [character string encoding](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at`.
 - `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
 
-<pre><code>
-    struct { 
-      @defs(NSObject) 
-    }
-</code></pre>
+~~~{objective-c}
+struct { 
+  @defs(NSObject) 
+}
+~~~
 
 > Ed. As pointed out by readers [@secboffin](http://twitter.com/secboffin) & [@ameaijou](http://twitter.com/ameaijou), `@defs` is unavailable in the modern Objective-C runtime.
 
@@ -230,19 +242,21 @@ In case all of the previous directives were old hat for you, there's a strong li
 
 For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improve the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](http://nshipster.com/uicollectionview/):
 
-    // Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
-    // http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
-    #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
-    @compatibility_alias UICollectionViewController PSTCollectionViewController;
-    @compatibility_alias UICollectionView PSTCollectionView;
-    @compatibility_alias UICollectionReusableView PSTCollectionReusableView;
-    @compatibility_alias UICollectionViewCell PSTCollectionViewCell;
-    @compatibility_alias UICollectionViewLayout PSTCollectionViewLayout;
-    @compatibility_alias UICollectionViewFlowLayout PSTCollectionViewFlowLayout;
-    @compatibility_alias UICollectionViewLayoutAttributes     PSTCollectionViewLayoutAttributes;
-    @protocol UICollectionViewDataSource <PSTCollectionViewDataSource> @end
-    @protocol UICollectionViewDelegate <PSTCollectionViewDelegate> @end
-    #endif
+~~~{objective-c}
+// Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
+// http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
+@compatibility_alias UICollectionViewController PSTCollectionViewController;
+@compatibility_alias UICollectionView PSTCollectionView;
+@compatibility_alias UICollectionReusableView PSTCollectionReusableView;
+@compatibility_alias UICollectionViewCell PSTCollectionViewCell;
+@compatibility_alias UICollectionViewLayout PSTCollectionViewLayout;
+@compatibility_alias UICollectionViewFlowLayout PSTCollectionViewFlowLayout;
+@compatibility_alias UICollectionViewLayoutAttributes     PSTCollectionViewLayoutAttributes;
+@protocol UICollectionViewDataSource <PSTCollectionViewDataSource> @end
+@protocol UICollectionViewDelegate <PSTCollectionViewDelegate> @end
+#endif
+~~~
 
 Using this clever combination of macros, a developer can develop with `UICollectionView` by including `PSTCollectionView`--without worrying about the deployment target of the final project. As a drop-in replacement, the same code works more-or-less identically on iOS 6 as it does on iOS 4.3.
 

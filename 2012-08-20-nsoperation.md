@@ -67,9 +67,11 @@ Depending on the complexity of your application, it may make sense to divide up 
 
 For example, to describe the process of of downloading and resizing an image from a server, you would probably want to divide up the networking into one operation, and resizing into another (perhaps to reuse the networking operation to download other resources, or reuse the resizing operation for images already on-disk). However, an image can't be resized until its  downloaded. Therefore, we say that the the networking operation is a _dependency_ of the resizing operation, and must be finished before the resizing operation can be started. Expressed in code:
 
-    [resizingOperation addDependency:networkingOperation];
-    [operationQueue addOperation:networkingOperation];
-    [operationQueue addOperation:resizingOperation];
+~~~{objective-c}
+[resizingOperation addDependency:networkingOperation];
+[operationQueue addOperation:networkingOperation];
+[operationQueue addOperation:resizingOperation];
+~~~
 
 An operation will not be started until all of its dependencies return `YES` to `isFinished`. It's important to remember to add all of the operations involved in a dependency graph to the operation queue, lest there be a gap somewhere along the way.
 

@@ -31,9 +31,11 @@ Class constructor methods, although they similarly return `id`, don't get the sa
 
 You can try this out for yourself:
 
-    [[[NSArray alloc] init] mediaPlaybackAllowsAirPlay]; // ❗ "No visible @interface for `NSArray` declares the selector `mediaPlaybackAllowsAirPlay`"
+~~~{objective-c}
+[[[NSArray alloc] init] mediaPlaybackAllowsAirPlay]; // ❗ "No visible @interface for `NSArray` declares the selector `mediaPlaybackAllowsAirPlay`"
 
-    [[NSArray array] mediaPlaybackAllowsAirPlay]; // (No error)
+[[NSArray array] mediaPlaybackAllowsAirPlay]; // (No error)
+~~~
 
 Because `alloc` and `init` follow the naming convention for being a related result type, the correct type check against `NSArray` is performed. However, the equivalent class constructor `array` does not follow that convention, and is interpreted as `id`.
 
@@ -45,9 +47,11 @@ This is where the compiler steps in to resolve this timeless edge case to the Ob
 
 `instancetype` is a contextual keyword that can be used as a result type to signal that a method returns a related result type. For example:
 
-    @interface Person
-    + (instancetype)personWithName:(NSString *)name;
-    @end
+~~~{objective-c}
+@interface Person
++ (instancetype)personWithName:(NSString *)name;
+@end
+~~~
 
 > `instancetype`, unlike `id`, can only be used as the result type in a method declaration.
 
@@ -63,13 +67,15 @@ While `instancetype` may seem to be a rather mundane, albeit welcome addition to
 
 [Jonathan Sterling](https://twitter.com/jonsterling) wrote [this quite interesting article](http://www.jonmsterling.com/posts/2012-02-05-typed-collections-with-self-types-in-objective-c.html), detailing how `instancetype` could be used to encode statically-typed collections, without [generics](http://en.wikipedia.org/wiki/Generic_programming):
 
-    NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
-    [sites put:[NSURL URLWithString:@"http://www.jonmsterling.com/"]
-            at:@"jon"];
-    [sites put:[NSURL URLWithString:@"http://www.nshipster.com/"]
-            at:@"nshipster"];
-    
-    NSURL *jonsSite = [sites at:@"jon"]; // => http://www.jonmsterling.com/
+~~~{objective-c}
+NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
+[sites put:[NSURL URLWithString:@"http://www.jonmsterling.com/"]
+        at:@"jon"];
+[sites put:[NSURL URLWithString:@"http://www.nshipster.com/"]
+        at:@"nshipster"];
+
+NSURL *jonsSite = [sites at:@"jon"]; // => http://www.jonmsterling.com/
+~~~
 
 Statically-typed collections would make APIs more expressive--no longer would a developer be unsure about what kinds of objects are allowed in a collection parameter.
 

@@ -17,18 +17,21 @@ Really, a lot of how elegant (or clever) a language is comes down to how well it
 
 "get me the average salary of all of the employees in this array", versus...
 
-    double totalSalary = 0.0;
-    for (Employee *employee in employees) {
-      totalSalary += [employee.salary doubleValue];
-    }
-    double averageSalary = totalSalary / [employees count];
+~~~{objective-c}
+double totalSalary = 0.0;
+for (Employee *employee in employees) {
+  totalSalary += [employee.salary doubleValue];
+}
+double averageSalary = totalSalary / [employees count];
+~~~
 
 Meh. 
 
 Fortunately, [Key-Value Coding](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html) gives us a much more concise--almost Ruby-like--way to do this:
 
-    [employees valueForKeyPath:@"@avg.salary"];
-
+~~~{objective-c}
+[employees valueForKeyPath:@"@avg.salary"];
+~~~
 
 [KVC Collection Operators](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html#//apple_ref/doc/uid/20002176-BAJEAIEE) allows actions to be performed on a collection using key path notation in `valueForKeyPath:`. Any time you see `@` in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.
 
@@ -40,11 +43,13 @@ Collection Operators fall into one of three different categories, according to t
 
 The best way to understand how these work is to see them in action. Consider a `Product` class, and a `products` array with the following data:
 
-    @interface Product : NSObject
-    @property NSString *name;
-    @property double price;
-    @property NSDate *launchedOn;
-    @end
+~~~{objective-c}
+@interface Product : NSObject
+@property NSString *name;
+@property double price;
+@property NSDate *launchedOn;
+@end
+~~~
 
 > Key-Value Coding automatically boxes and un-boxes scalars into `NSNumber` or `NSValue` as necessary to make everything work.
 
@@ -90,11 +95,13 @@ The best way to understand how these work is to see them in action. Consider a `
 
 _Example_:
 
-    [products valueForKeyPath:@"@count"]; // 4
-    [products valueForKeyPath:@"@sum.price"]; // 3526.00
-    [products valueForKeyPath:@"@avg.price"]; // 881.50
-    [products valueForKeyPath:@"@max.price"]; // 1699.00
-    [products valueForKeyPath:@"@min.launchedOn"]; // June 11, 2012
+~~~{objective-c}
+[products valueForKeyPath:@"@count"]; // 4
+[products valueForKeyPath:@"@sum.price"]; // 3526.00
+[products valueForKeyPath:@"@avg.price"]; // 881.50
+[products valueForKeyPath:@"@max.price"]; // 1699.00
+[products valueForKeyPath:@"@min.launchedOn"]; // June 11, 2012
+~~~
 
 > Pro Tip: To get the aggregate value of an array or set of `NSNumber`s, you can simply pass `self` as the key path after the operator, e.g. `[@[@(1), @(2), @(3)] valueForKeyPath:@"@max.self"]` (/via [@davandermobile](http://twitter.com/davandermobile), citing [Objective Sea](http://objectivesea.tumblr.com/post/34552840247/max-value-nsset-kvc))
 
@@ -102,14 +109,18 @@ _Example_:
 
 Let's say we have an `inventory` array, representing the current stock of our local Apple store (which is running low on iPad Mini, and doesn't have the new iMac, which hasn't shipped yet):
 
-    NSArray *inventory = @[iPhone5, iPhone5, iPhone5, iPadMini, macBookPro, macBookPro];
+~~~{objective-c}
+NSArray *inventory = @[iPhone5, iPhone5, iPhone5, iPadMini, macBookPro, macBookPro];
+~~~
 
 - `@unionOfObjects` / `@distinctUnionOfObjects`: Returns an array of the objects in the property specified in the key path to the right of the operator. `@distinctUnionOfObjects` removes duplicates, whereas `@unionOfObjects` does not.
 
 _Example_:
 
-    [inventory valueForKeyPath:@"@unionOfObjects.name"]; // "iPhone 5", "iPhone 5", "iPhone 5", "iPad Mini", "MacBook Pro", "MacBook Pro"
-    [inventory valueForKeyPath:@"@distinctUnionOfObjects.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"
+~~~{objective-c}
+[inventory valueForKeyPath:@"@unionOfObjects.name"]; // "iPhone 5", "iPhone 5", "iPhone 5", "iPad Mini", "MacBook Pro", "MacBook Pro"
+[inventory valueForKeyPath:@"@distinctUnionOfObjects.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"
+~~~
 
 ### Array and Set Operators
 
@@ -122,7 +133,9 @@ This would be useful if we were to, for example, compare the inventory of severa
 
 _Example_:
 
-    [@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"  
+~~~{objective-c}
+[@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"  
+~~~
 
 ---
 
@@ -138,13 +151,17 @@ However, as it turns out, it _is_ actually possible, with a little help from our
 
 [Guy English](https://twitter.com/gte) has a [pretty amazing post](http://kickingbear.com/blog/archives/9) wherein he [swizzles `valueForKeyPath:`](https://gist.github.com/4196641#file_kb_collection_extensions.m) to parse a custom-defined [DSL](http://en.wikipedia.org/wiki/Domain-specific_language), which extends the existing offerings to interesting effect:
 
-    NSArray *names = [allEmployees valueForKeyPath: @"[collect].{daysOff<10}.name"];
+~~~{objective-c}
+NSArray *names = [allEmployees valueForKeyPath: @"[collect].{daysOff<10}.name"];
+~~~
 
 This code would get the names of anyone who has taken fewer than 10 days off (to remind them to take a vacation, no doubt!).
 
 Or, taken to a ridiculous extreme:
 
-    NSArray *albumCovers = [records valueForKeyPath:@"[collect].{artist like 'Bon Iver'}.<NSUnarchiveFromDataTransformerName>.albumCoverImageData"];
+~~~{objective-c}
+NSArray *albumCovers = [records valueForKeyPath:@"[collect].{artist like 'Bon Iver'}.<NSUnarchiveFromDataTransformerName>.albumCoverImageData"];
+~~~
 
 Eat your heart out, Ruby. This one-liner filters a record collection for artists whose name matches "Bon Iver", and initializes an `NSImage` from the album cover image data of the matching albums.
 

@@ -57,49 +57,56 @@ Let's say that we have a `Person` object that has properties for `firstName` & `
   </tbody>
 </table>
 
-    @interface Person : NSObject
-    @property NSString *firstName;
-    @property NSString *lastName;
-    @property NSNumber *age;
-    @end
+~~~{objective-c}
+@interface Person : NSObject
+@property NSString *firstName;
+@property NSString *lastName;
+@property NSNumber *age;
+@end
 
-    @implementation Person
+@implementation Person
 
-    - (NSString *)description {
-        return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
-    }
+- (NSString *)description {
+    return [NSString stringWithFormat:@"%@ %@", self.firstName, self.lastName];
+}
 
-    @end
+@end
 
-    #pragma mark -
+#pragma mark -
 
-    NSArray *firstNames = @[ @"Alice", @"Bob", @"Charlie", @"Quentin" ];
-    NSArray *lastNames = @[ @"Smith", @"Jones", @"Smith", @"Alberts" ];
-    NSArray *ages = @[ @24, @27, @33, @31 ];
+NSArray *firstNames = @[ @"Alice", @"Bob", @"Charlie", @"Quentin" ];
+NSArray *lastNames = @[ @"Smith", @"Jones", @"Smith", @"Alberts" ];
+NSArray *ages = @[ @24, @27, @33, @31 ];
 
-    NSMutableArray *people = [NSMutableArray array];
-    [firstNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-        Person *person = [[Person alloc] init];
-        person.firstName = [firstNames objectAtIndex:idx];
-        person.lastName = [lastNames objectAtIndex:idx];
-        person.age = [ages objectAtIndex:idx];
-        [people addObject:person];
-    }];
+NSMutableArray *people = [NSMutableArray array];
+[firstNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    Person *person = [[Person alloc] init];
+    person.firstName = [firstNames objectAtIndex:idx];
+    person.lastName = [lastNames objectAtIndex:idx];
+    person.age = [ages objectAtIndex:idx];
+    [people addObject:person];
+}];
 
-    NSSortDescriptor *firstNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"firstName" ascending:YES selector:@selector(localizedStandardCompare:)];
-    NSSortDescriptor *lastNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastName" ascending:YES selector:@selector(localizedStandardCompare:)];
-    NSSortDescriptor *ageSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age" ascending:NO];
+NSSortDescriptor *firstNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"firstName" 
+  ascending:YES 
+  selector:@selector(localizedStandardCompare:)];
+NSSortDescriptor *lastNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastName" 
+  ascending:YES 
+  selector:@selector(localizedStandardCompare:)];
+NSSortDescriptor *ageSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age" 
+  ascending:NO];
 
-    NSLog(@"By age: %@", [people sortedArrayUsingDescriptors:@[ ageSortDescriptor ]]);
-    // "Charlie Smith", "Quentin Alberts", "Bob Jones", "Alice Smith"
+NSLog(@"By age: %@", [people sortedArrayUsingDescriptors:@[ ageSortDescriptor ]]);
+// "Charlie Smith", "Quentin Alberts", "Bob Jones", "Alice Smith"
 
 
-    NSLog(@"By first name: %@", [people sortedArrayUsingDescriptors:@[ firstNameSortDescriptor ]]);
-    // "Alice Smith", "Bob Jones", "Charlie Smith", "Quentin Alberts"
+NSLog(@"By first name: %@", [people sortedArrayUsingDescriptors:@[ firstNameSortDescriptor ]]);
+// "Alice Smith", "Bob Jones", "Charlie Smith", "Quentin Alberts"
 
 
-    NSLog(@"By last name, first name: %@", [people sortedArrayUsingDescriptors:@[ lastNameSortDescriptor, firstNameSortDescriptor ]]);
-    // "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
+NSLog(@"By last name, first name: %@", [people sortedArrayUsingDescriptors:@[ lastNameSortDescriptor, firstNameSortDescriptor ]]);
+// "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
+~~~
 
 Sort descriptors can be found throughout Foundation as well as most other frameworks--including a prominent role in Core Data. Anytime your own classes need to define sort ordering, follow the convention of specifying a `sortDescriptors` parameter as appropriate.
 

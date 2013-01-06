@@ -41,22 +41,26 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
 
 `+initialize` is automatically called the first time a class is loaded, so this is a good place to register with `NSPersistentStoreCoordinator`:
 
-    + (void)initialize {
-      [NSPersistentStoreCoordinator registerStoreClass:self forStoreType:[self type]];
-    }
-    
-    + (NSString *)type {
-      return NSStringFromClass(self);
-    }
+~~~{objective-c}
++ (void)initialize {
+  [NSPersistentStoreCoordinator registerStoreClass:self forStoreType:[self type]];
+}
+
++ (NSString *)type {
+  return NSStringFromClass(self);
+}
+~~~
 
 ### `-loadMetadata:`
 
 `loadMetadata:` is where the incremental store has a chance to configure itself. There is, however, a bit of Kabuki theater boilerplate that's necessary to get everything set up. Specifically, you need to set a UUID for the store, as well as the store type. Here's what that looks like:
 
-    NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
-    [mutableMetadata setValue:[[NSProcessInfo processInfo] globallyUniqueString] forKey:NSStoreUUIDKey];
-    [mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
-    [self setMetadata:mutableMetadata];
+~~~{objective-c}
+NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
+[mutableMetadata setValue:[[NSProcessInfo processInfo] globallyUniqueString] forKey:NSStoreUUIDKey];
+[mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
+[self setMetadata:mutableMetadata];
+~~~
 
 ### `-executeRequest:withContext:error:`
 
@@ -107,8 +111,10 @@ Unlike the previous method, the return value will be just the current value for 
 Finally, this method is called before `executeRequest:withContext:error:` with a save request, where permanent IDs should be assigned to newly-inserted objects. As you might expect, the array of permanent IDs should match up with the array of objects passed into this method.
 
 This usually corresponds with a write to the persistence layer, such as an `INSERT` statement in SQL. If, for example, the row corresponding to the object had an auto-incrementing `id` column, you could generate an objectID with:
-    
-    [self newObjectIDForEntity:entity referenceObject:[NSNumber numberWithUnsignedInteger:rowID]];
+
+~~~{objective-c}
+[self newObjectIDForEntity:entity referenceObject:[NSNumber numberWithUnsignedInteger:rowID]];
+~~~
 
 ## Roll Your Own Core Data Backend
 

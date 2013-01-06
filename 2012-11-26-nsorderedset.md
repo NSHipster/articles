@@ -27,21 +27,25 @@ As expertly demonstrated by [Tom Dalling](http://tomdalling.com) in [this Stack 
 
 To start, let's look at how `-mutableCopy` is supposed to work in a class cluster:
 
-    NSSet* immutable = [NSSet set];
-    NSMutableSet* mutable = [immutable mutableCopy];
+~~~{objective-c}
+NSSet* immutable = [NSSet set];
+NSMutableSet* mutable = [immutable mutableCopy];
 
-    [mutable isKindOfClass:[NSSet class]]; // YES
-    [mutable isKindOfClass:[NSMutableSet class]]; // YES
+[mutable isKindOfClass:[NSSet class]]; // YES
+[mutable isKindOfClass:[NSMutableSet class]]; // YES
+~~~
 
 Now let's suppose that `NSOrderedSet` was indeed a subclass of `NSSet`:
 
-    // @interface NSOrderedSet : NSSet
+~~~{objective-c}
+// @interface NSOrderedSet : NSSet
 
-    NSOrderedSet* immutable = [NSOrderedSet orderedSet];
-    NSMutableOrderedSet* mutable = [immutable mutableCopy];
+NSOrderedSet* immutable = [NSOrderedSet orderedSet];
+NSMutableOrderedSet* mutable = [immutable mutableCopy];
 
-    [mutable isKindOfClass:[NSSet class]]; // YES
-    [mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
+[mutable isKindOfClass:[NSSet class]]; // YES
+[mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
+~~~
 
 <object data="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.svg" type="image/svg+xml">
   <img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.png" />
@@ -49,15 +53,17 @@ Now let's suppose that `NSOrderedSet` was indeed a subclass of `NSSet`:
 
 That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
 
-    // @interface NSOrderedSet : NSSet
-    // @interface NSMutableOrderedSet : NSMutableSet
+~~~{objective-c}
+// @interface NSOrderedSet : NSSet
+// @interface NSMutableOrderedSet : NSMutableSet
 
-    NSOrderedSet* immutable = [NSOrderedSet orderedSet];
-    NSMutableOrderedSet* mutable = [immutable mutableCopy];
+NSOrderedSet* immutable = [NSOrderedSet orderedSet];
+NSMutableOrderedSet* mutable = [immutable mutableCopy];
 
-    [mutable isKindOfClass:[NSSet class]]; // YES
-    [mutable isKindOfClass:[NSMutableSet class]]; // YES
-    [mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
+[mutable isKindOfClass:[NSSet class]]; // YES
+[mutable isKindOfClass:[NSMutableSet class]]; // YES
+[mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
+~~~
 
 <object data="http://nshipster.s3.amazonaws.com/nsorderedset-case-2.svg" type="image/svg+xml">
   <img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-2.png" />
