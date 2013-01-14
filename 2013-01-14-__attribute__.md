@@ -56,7 +56,7 @@ GCC
 ~~~{objective-c}
 extern int
 my_printf (void *my_object, const char *my_format, ...)
-      __attribute__((format(printf, 2, 3)));
+  __attribute__((format(printf, 2, 3)));
 ~~~
 
 Objective-C programmers can also use the `__NSString__` format to enforce the same rules as format strings in `NSString +stringWithFormat:` and `NSLog()`. 
@@ -111,7 +111,7 @@ To check the availability of a particular attribute, you can use the `__has_attr
 > Clang introduces the availability attribute, which can be placed on declarations to describe the lifecycle of that declaration relative to operating system versions. Consider the function declaration for a hypothetical function f:
 
 ~~~{objective-c}
-void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6)));
+void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,obsoleted=10.7)));
 ~~~
 
 > The `availability` attribute states that `f` was introduced in Mac OS X 10.4, deprecated in Mac OS X 10.6, and obsoleted in Mac OS X 10.7. 
