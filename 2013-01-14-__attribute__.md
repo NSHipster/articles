@@ -108,7 +108,9 @@ To check the availability of a particular attribute, you can use the `__has_attr
 
 > Clang introduces the availability attribute, which can be placed on declarations to describe the lifecycle of that declaration relative to operating system versions. Consider the function declaration for a hypothetical function f:
 
+~~~{objective-c}
 void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6)));
+~~~
 
 > The `availability` attribute states that `f` was introduced in Mac OS X 10.4, deprecated in Mac OS X 10.6, and obsoleted in Mac OS X 10.7. 
 
