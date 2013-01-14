@@ -150,4 +150,4 @@ Context is king when it comes to compiler optimizations. By providing constraint
 
 And `__attribute__` isn't just for the compiler either: The next person to see the code will appreciate the extra context, too. So go the extra mile for the benefit of your collaborator, successor, or just 2-years-from-now-(and-you've-forgotten-everything-about–this-code) you.
 
-Because in the end, the love you give is equal to the love you get.
+Because in the end, the love you take is equal to the love you make.
