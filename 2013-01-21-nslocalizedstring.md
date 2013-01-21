@@ -110,6 +110,6 @@ For additional guidelines, see [Localizing String Resources from Apple's Interna
 
 `NSLocalizedString` is a remarkably reliable indicator of code quality. Those who care enough to take a few extra seconds to internationalize are very likely to be just as thoughtful when it comes to design and implementation.
 
-**Always wrap user-facing strings in `NSLocalizedString`.**
+**Always wrap user-facing strings with `NSLocalizedString`.**
 
 Even if you don't plan to localize your app into any other languages, there is _immense_ utility in being able to easily review all of the strings that a user will see. And if localization is in the cards, it's significantly easier to `NSLocalize` your strings as you go along the first time, then try to find all of them after-the-fact.
