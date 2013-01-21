@@ -79,7 +79,7 @@ NSString * NSLocalizedStringWithDefaultValue(
 
 ## Localizable.strings
 
-At runtime, `NSLocalizedString` determines the preferred language, and finds a corresponding `Localizable.strings` file in the app bundle. For example, if the user prefers French, the file `re.lproj/Localizable.strings` will be consulted. 
+At runtime, `NSLocalizedString` determines the preferred language, and finds a corresponding `Localizable.strings` file in the app bundle. For example, if the user prefers French, the file `fr.lproj/Localizable.strings` will be consulted. 
 
 Here's what that looks like:
 
