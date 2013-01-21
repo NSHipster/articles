@@ -6,12 +6,14 @@ ref: "https://developer.apple.com/library/mac/#documentation/cocoa/reference/fou
 framework: Foundation
 rating: 9.5
 published: true
-description: "Strings are perhaps the most important data type in computing. They're passed around as symbols, used to encode numeric values, associate keys to values, represent resource paths, store linguistic content, and format information. Being able to discern user-facing strings from all of the other purposes is essential to making a great user experience."
+description: "Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience."
 ---
 
-Strings are perhaps the most important data type in computing. They're passed around as symbols, used to encode numeric values, associate keys to values, represent resource paths, store linguistic content, and format information. Being able to discern user-facing strings from all of the other purposes is essential to making a great user experience.
+Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience.
 
-In Foundation, there is a convenient wrapper function for denoting strings as user-facing: `NSLocalizedString`. `NSLocalizedString` provides string localization in "compile-once / run everywhere" fashion, replacing all localized strings with their respective translation according to the language settings of the target platform.
+In Foundation, there is a convenient wrapper function for denoting strings as user-facing: `NSLocalizedString`.
+
+`NSLocalizedString` provides string localization in "compile-once / run everywhere" fashion, replacing all localized strings with their respective translation according to the string tables of the user settings. But even if you're not going to localize your app to any other markets, `NSLocalizedString` does wonders with respect to copy writing & editing.
 
 > For more information about Localization (l10n) and Internationalization (i18n) [see the NSHipster article about NSLocale](http://nshipster.com/nslocale/).
 
@@ -75,11 +77,30 @@ NSString * NSLocalizedStringWithDefaultValue(
 
 99% of the time, `NSLocalizedString` will suffice. If you're working in a library or shared component, `NSLocalizedStringFromTable` should be used instead.
 
+## Localizable.strings
+
+At runtime, `NSLocalizedString` determines the preferred language, and finds a corresponding `Localizable.strings` file in the app bundle. For example, if the user prefers French, the file `re.lproj/Localizable.strings` will be consulted. 
+
+Here's what that looks like:
+
+~~~
+/* No comment provided by engineer. */
+"Username"="nom d'utilisateur";
+/* {User First Name}'s Profile */
+"%@'s Profile"="%1$@ profil";
+~~~
+
+`Localizable.strings` files are initially generated with `genstrings`.
+
+>  The `genstrings` utility generates a .strings file(s) from the C or Objective-C (.c or .m) source code file(s) given as the argument(s).  A .strings file is used for localizing an application for different languages, as described under "Internationalization" in the Cocoa Developer Documentation.
+
+`genstrings` goes through each of the selected source files, and for each use of `NSLocalizedString`, appends the key and comment into a target file. It's up to the developer to then create a copy of that file for each targeted locale and have a localizer translate it.
+
 ## No Madlibs
 
 After reading that part about localized format strings, you may be tempted to take a clever, DRY approach by creating reusable grammar templates like `@"{Noun} {Verb} {Noun}", and localizing each word individually...
 
-**DON'T.** This cannot be stressed enough: _don't subdivide localized strings_. Context will be lost, grammatical constructions will be awkward and unidiomatic, verbs will be incorrectly-conjugated, and you'll have missed the point entirely—taking great effort to make something worse than if you hadn't bothered in the first place.
+**DON'T.** This cannot be stressed enough: _don't subdivide localized strings_. Context will be lost, grammatical constructions will be awkward and unidiomatic, verbs will be incorrectly conjugated, and you'll have missed the point entirely—taking great effort to make something worse than if you hadn't bothered in the first place.
 
 Numbers, dates, and similar values are almost always safe replacements. Nouns are subject to pluralization and verb conjugation, but usually safe as direct or indirect objects.
 
