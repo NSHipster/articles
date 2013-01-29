@@ -92,7 +92,7 @@ The [Accessibility Programming Guide](http://developer.apple.com/library/ios/#do
 
 ## Traits
 
-If you are using custom controls, or have taken liberties with the non-standard use of a standard control, you should make sure to specify the correct accessibility traits.
+If you are using custom controls, or have taken liberties with non-standard use of a standard control, you should make sure to specify the correct accessibility traits.
 
 Accessibility traits describe a set of traits that characterize how a control behaves or should be treated. Examples include distinctions like:
 

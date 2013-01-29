@@ -5,7 +5,6 @@ title: "__attribute__"
 ref: "http://clang.llvm.org/docs/LanguageExtensions.html"
 framework: ""
 published: true
-
 ---
 
 A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you. 
