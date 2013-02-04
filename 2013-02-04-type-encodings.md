@@ -22,7 +22,7 @@ It is in this spirit that we take a look at Objective-C Type Encodings in this w
 Here's a rundown of all of the different Objective-C Type Encodings:
 
 <table id="type-encodings">
-  <caption class="tablecaption">Objective-C Type Encodings</caption>
+  <caption>Objective-C Type Encodings</caption>
   <thead>
     <tr>
       <th>Code</th>
@@ -164,13 +164,14 @@ There are some interesting takeaways from this:
 - `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`.
 - Passing `NSObject` directly yields `#`. However, passing `[NSObject class]` yields a struct named `NSObject` wit ha single class field. That is, of course, the `isa` field, which all `NSObject` instances have to signify their type.
 
-## Method Encoding
+## Method Encodings
 
 As mentioned in Apple's ["Objective-C Runtime Programming Guide"](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html), there are a handful of type encodings that are used internally, but cannot be returned with `@encode`.
 
 These are the type qualifiers for methods declared in a protocol:
 
 <table id="method-encodings">
+  <caption>Objective-C Method Encodings</caption>
   <thead>
     <tr>
       <th>Code</th>
@@ -220,7 +221,7 @@ For example, parameters in distributed object messages were passed as proxies by
 So what do we gain from our newfound understanding of Objective-C Type Encodings?  
 Honestly, not that much.
 
-But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages (`DRINK MORE OVALTINE`?)
+But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.
 
 Looking at type encodings reveals details about Objective-C runtime internals, which is a noble pursuit in and of itself. Going further down the rabbit hole, and we come to the secret history of Distributed Objects, and the obscure parameter qualifiers that [still linger around to this day](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22).
 
