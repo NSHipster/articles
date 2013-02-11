@@ -219,7 +219,7 @@ For example, parameters in distributed object messages were passed as proxies by
 ---
 
 So what do we gain from our newfound understanding of Objective-C Type Encodings?  
-Honestly, not that much.
+Honestly, not that much (unless you're doing any crazy metaprogramming).
 
 But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.
 
