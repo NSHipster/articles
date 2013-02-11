@@ -146,7 +146,7 @@ When left unimplemented, `NSURLConnection` will simply use the cached response t
 
 Just like its unrelated-but-similarly-named cohort, [`NSCache`](http://nshipster.com/nscache/), `NSURLCache` is not without some peculiarities.
 
-As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests. Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache). 
+As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (though iOS 6 added support for this). Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache). 
 
 [Another article by Daniel Pasco at Black Pixel](http://blackpixel.com/blog/2012/05/caching-and-nsurlconnection.html) describes some unexpected default behavior when communicating with servers that don't set cache headers.
 
