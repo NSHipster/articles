@@ -36,7 +36,7 @@ Caching policies are specified in both the request (by the client) and in the re
 - `NSURLRequestReloadIgnoringLocalCacheData`: Data should be loaded from the originating source. No existing cache data should be used.
 - `NSURLRequestReloadIgnoringLocalAndRemoteCacheData`: Not only should the local cache data be ignored, but proxies and other intermediates should be instructed to disregard their caches so far as the protocol allows.
 - `NSURLRequestReturnCacheDataElseLoad`: Existing cached data should be used, regardless of its age or expiration date. If there is no existing data in the cache corresponding to the request, the data is loaded from the originating source.
-- `NSURLRequestReturnCacheDataDontLoad`: Existing cache data should be used, regardless of its age or expiration date. If there is no existing data in the corresponding to a URL load request, no attempt is made to load the data from the originating source, and the load is considered to have failed, (i.e. "offline" mode).
+- `NSURLRequestReturnCacheDataDontLoad`: Existing cache data should be used, regardless of its age or expiration date. If there is no existing data in the cache corresponding to the request, no attempt is made to load the data from the originating source, and the load is considered to have failed, (i.e. "offline" mode).
 - `NSURLRequestReloadRevalidatingCacheData`: Existing cache data may be used provided the origin source confirms its validity, otherwise the URL is loaded from the origin source.
 
 It may not surprise you that these values are poorly understood and often confused with one another. 
@@ -144,7 +144,7 @@ When left unimplemented, `NSURLConnection` will simply use the cached response t
 
 ## Caveats
 
-Staying true to its [`NSCache`](http://nshipster.com/nscache/) namesake, `NSURLCache` is not without some peculiarities.
+Just like its unrelated-but-similarly-named cohort, [`NSCache`](http://nshipster.com/nscache/), `NSURLCache` is not without some peculiarities.
 
 As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests. Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache). 
 
