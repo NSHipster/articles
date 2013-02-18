@@ -3,7 +3,7 @@ layout: post
 title: "__attribute__"
 
 ref: "http://clang.llvm.org/docs/LanguageExtensions.html"
-framework: ""
+framework: "Objective-C"
 published: true
 ---
 
