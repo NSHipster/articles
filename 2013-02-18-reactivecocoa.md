@@ -8,7 +8,7 @@ rating: 9.5
 description: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
 ---
 
-Languages are living things. They are nudged and challenged and bastardized and mashed-up in a perpetual cycle of undirected and rapid evolution. Technologies evolve, requirements change, corporate stewards and open source community come and go; obscure dialects are vaulted to prominence on the shoulders of exciting new frameworks, and thrust into a surprising new context after a long period of dormancy.
+Languages are living works. They are nudged and challenged and bastardized and mashed-up in a perpetual cycle of undirected and rapid evolution. Technologies evolve, requirements change, corporate stewards and open source community come and go; obscure dialects are vaulted to prominence on the shoulders of exciting new frameworks, and thrust into a surprising new context after a long period of dormancy.
 
 Objective-C has a remarkable history spanning four decades in as many acts: 
 
@@ -32,11 +32,11 @@ Breaking from a tradition of covering Apple APIs exclusively, this edition of NS
 
 > Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done.
 >
-> The input is all the sources of action for your app. Its taps. Its keyboard events. Its timer triggers, GPS events, and web service responses. These things are all inputs. They all feed into the app, and the app combines them all in some way to produce a result: the output.
+> The input is all the sources of action for your app. It's taps. It's keyboard events. It's timer triggers, GPS events, and web service responses. These things are all inputs. They all feed into the app, and the app combines them all in some way to produce a result: the output.
 >
-> The output is often a change in the app’s UI. A switch is toggled or a list gets a new item. Or it could be more than that. It could be a new file on the device’s disk, or it could be an API request. These things are the outputs of the app.
+> The output is often a change in the app's UI. A switch is toggled or a list gets a new item. Or it could be more than that. It could be a new file on the device's disk, or it could be an API request. These things are the outputs of the app.
 >
-> But unlike the classic input/output design, this input and output happens more than once. It’s not just a single input → work → output—the cycle continues while the app is open. The app is always consuming inputs and producing outputs based on them.
+> But unlike the classic input/output design, this input and output happens more than once. It's not just a single input → work → output—the cycle continues while the app is open. The app is always consuming inputs and producing outputs based on them.
 
 To illustrate the difference between the conventional, imperative paradigm of Objective-C programming versus a functional reactive approach, consider the common example of validating a signup form:
 
@@ -87,7 +87,9 @@ Here, all of the logic for validating form input is contained in a single chain 
 
 ## Overview
 
-ReactiveCocoa is comprised of two major components: `RACSignal` and `RACSequence`.
+ReactiveCocoa is comprised of two major components: [signals](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#signals) (`RACSignal`) and [sequences](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#sequences) (`RACSequence`).
+
+Both signals and sequences are kinds of [streams](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#streams), sharing many of the same operators. ReactiveCocoa has done well to abstract a wide scope of functionality into a semantically dense, consistent design: signals are a _push_-driven stream, and sequences are a _pull_-driven stream. 
 
 ### `RACSignal`
 
@@ -137,7 +139,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 ### RAC vs. KVO
 
-[Key-Value Observing](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html) is at the heart of all magic in Cocoa—indeed, it is the underlying mechanism used to implement ReactiveCocoa. However, KVO is neither pleasant nor easy to use: its API is overwrought with unused parameters and sorely lacking a blocks-based interface.
+[Key-Value Observing](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html) is at the heart of all magic in Cocoa—indeed, it is used extensively by ReactiveCocoa to react to property changes. However, KVO is neither pleasant nor easy to use: its API is overwrought with unused parameters and sorely lacking a blocks-based interface.
 
 ### RAC vs. Bindings
 
