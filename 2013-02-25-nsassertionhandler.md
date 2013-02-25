@@ -45,6 +45,8 @@ It's important to note that as of Xcode 4.2, [assertions are turned off by defau
 
 And while Foundation assertion macros are extremely useful in their own right—even when just used in development—the fun doesn't have to stop there. `NSAssertionHandler` provides a way to gracefully handle assertion failures in a way that preserves valuable real-world usage information.
 
+> That said, many seasoned Objective-C developers caution against actually using `NSAssertionHandler` in production applications. Foundation assertion handlers are something to understand and appreciate from a safe distance. **Proceed with caution if you decide to use this in a shipping application.**
+
 `NSAssertionHandler` is a straightforward class, with two methods to implement in your subclass: `-handleFailureInMethod:...` (called on a failed `NSAssert` / `NSParameterAssert`) and `-handleFailureInFunction:...` (called on a failed `NSCAssert` / `NSCParameterAssert`).
 
 `LoggingAssertionHandler` simply logs out the assertion failures, but those failures could also be logged to an external web service to be aggregated and analyzed, for example.
@@ -103,7 +105,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 ---
 
-`NSAssertionHandler` reminds us of the best practices around articulating our expectations as programmers, and provide a convenient mechanism to override behavior in those exceptional cases.
+`NSAssertionHandler` reminds us of the best practices around articulating our expectations as programmers through assert statements.
 
 But if we look deeper into `NSAssertionHandler`—and indeed, into our own hearts, there are lessons to be learned about our capacity for kindness and compassion; about our ability to forgive others, and to recover from our own missteps. We can't be right all of the time. We all make mistakes. By accepting limitations in ourselves and others, only then are we able to grow as individuals.
 
