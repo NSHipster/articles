@@ -5,7 +5,6 @@ title: NSAssertionHandler
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSAssertionHandler_Class/Reference/Reference.html"
 framework: Foundation
 rating: 5.6
-published: false
 ---
 
 "When at first you don't succeed, use an object-oriented injection point to override default exception handling." This is the sort of advice you would have learned at mother's knee if you were raised by `NSAssertionHandler`.
