@@ -13,7 +13,7 @@ Message vs. Medium.
 Rhetoric vs. Dialectic.  
 
 Is beauty merely skin deep, or is it somehow informed by deeper truths?  
-What does it mean for something to posses good design?
+What does it mean for something to posses good design?  
 Are aesthetic judgments relative, or absolute?
 
 These are deep questions that have been pondered by philosophers, artists, and makers alike for millenia.
@@ -81,7 +81,7 @@ Another major shortcoming of `UIAppearance` is that style rules are _imperative_
 
 Yes, if there's one idea to steal from web development, it's the separation of content and presentation. Say what you will about CSS, but stylesheets are _amazing_.
 
-Fellow stylesheet enthusiasts now have some options. [Pixate](http://www.pixate.com) is a commercial framework that uses CSS to style applications. [NUI](https://github.com/tombenner/nui), an open-source project by [Tom Benner](https://github.com/tombenner), does much the same with a CSS/SCSS-like language.
+Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.com) is a commercial framework that uses CSS to style applications. [NUI](https://github.com/tombenner/nui), an open-source project by [Tom Benner](https://github.com/tombenner), does much the same with a CSS/SCSS-like language.
 
 ---
 
