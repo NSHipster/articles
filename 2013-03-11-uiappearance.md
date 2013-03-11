@@ -81,7 +81,7 @@ Another major shortcoming of `UIAppearance` is that style rules are _imperative_
 
 Yes, if there's one idea to steal from web development, it's the separation of content and presentation. Say what you will about CSS, but stylesheets are _amazing_.
 
-Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.com) is a commercial framework that uses CSS to style applications. [NUI](https://github.com/tombenner/nui), an open-source project by [Tom Benner](https://github.com/tombenner), does much the same with a CSS/SCSS-like language.
+Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.com) is a commercial framework that uses CSS to style applications. [NUI](https://github.com/tombenner/nui), an open-source project by [Tom Benner](https://github.com/tombenner), does much the same with a CSS/SCSS-like language. Another open source project along the same lines is [UISS](https://github.com/robertwijas/UISS) by [Robert Wijas](https://github.com/robertwijas), which allows `UIAppearance` rules to be read from JSON.   
 
 ---
 
