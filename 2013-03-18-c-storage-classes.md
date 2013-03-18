@@ -46,7 +46,7 @@ Unlike automatic variables, `static` variables can be accessed and mutated by an
 
 ### Static Singletons
 
-A common pattern in Objective-C is the _`static` singleton_, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
+A common pattern in Objective-C is the `static` singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
 
 ~~~{objective-c}
 + (instancetype)sharedInstance {
