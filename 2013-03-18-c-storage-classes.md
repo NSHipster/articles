@@ -40,9 +40,12 @@ Registers offer faster access than RAM, but because of the complexities of memor
 
 ## `static`
 
-Finally, one that everyone's sure to recognize. `static` denotes global scope and storage within the source file in which its declared. 
+Finally, one that everyone's sure to recognize: `static`.
 
-Unlike automatic variables, `static` variables can be accessed and mutated by any function, regardless of the context in which they are declared—so long as those functions appear in the same file as the static variable. The same goes for `static` functions.
+As a keyword, `static` gets used in a lot of different, incompatible ways, so it can be confusing to figure out exactly what it means in every instance. When it comes to storage classes, `static` means one of two things.
+
+1. A `static` variable inside a method or function retains its value between invocations.
+2. A `static` variable declared globally can called by any function or method, so long as those functions appear in the same file as the `static` variable. The same goes for `static` functions.
 
 ### Static Singletons
 
