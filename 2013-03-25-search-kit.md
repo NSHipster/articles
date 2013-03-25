@@ -53,7 +53,7 @@ Along the same lines, words that mean basically the same thing should be reduced
 
 The end result of extracting, filtering, and reducing content into an array of normalized tokens is to form an [inverted index](http://en.wikipedia.org/wiki/Inverted_index), such that each token points to its origin in the index.
 
-After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching
+After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.
 
 ## Using Search Kit
 
