@@ -1,6 +1,6 @@
 ---
 layout: post
-title: NSLocalizedString
+title: Search Kit
 
 ref: "https://developer.apple.com/library/mac/#documentation/UserExperience/Reference/SearchKit/Reference/reference.html"
 framework: CoreServices
