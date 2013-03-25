@@ -6,7 +6,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/UserExperience/Refe
 framework: CoreServices
 rating: 9.1
 published: true
-description: ""
+description: "Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."
 ---
 
 NSHipsters love irony, right? How about this for irony:
