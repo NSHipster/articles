@@ -152,8 +152,8 @@ SKIndexCopyDocumentURLsForDocumentIDs(index, foundCount, documentIDs, urls);
 
 NSMutableArray *mutableResults = [NSMutableArray array];
 [[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, count)] enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
-    CFURLRef url = urls[i];
-    float relevance = scores[i];
+    CFURLRef url = urls[idx];
+    float relevance = scores[idx];
 
     NSLog(@"- %@: %f", url, relevance);
 
