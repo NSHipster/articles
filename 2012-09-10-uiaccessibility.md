@@ -16,7 +16,7 @@ You know what I wish everyone would copy from Apple? Their assistive technologie
 
 iPhones and iPads--magical as they are--become downright _life-changing_ for individuals with disabilities and their families because of Apple's commitment to accessibility. Look no further than the [WWDC 2012 Introduction Video](http://www.youtube.com/watch?v=MbP_pxR5cMk), which opens with Per Busch, a blind man who walks the woods of Kassel, Germany with the aid of [Ariadne GPS](http://www.ariadnegps.eu). It's a lovely reminder of the kind of impact our work can have on others.
 
-Accessibility, like [internationalizationn](http://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started: 
+Accessibility, like [internationalization](http://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started: 
 
 ---
 
