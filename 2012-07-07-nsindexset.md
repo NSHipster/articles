@@ -17,4 +17,4 @@ If you look hard enough, you may start to find aspects of your data model that c
 - Table view with a dynamic number of pre-defined sections? Same as before: `NSIndexSet` & `enum`, along with a giant `switch` statement.
 - Filtering a list of items by a set of composable conditions? Ditch the `NSPredicate`; instead, cache the indexes of objects that fulfill each condition, and then get the union of those indexes as conditions are added and removed.
 
-Overall, `NSIndex` is a solid class. A fair bit nerdier than its collection class siblings, but it has its place. It's at least a good reminder the useful things that you find by paying attention to what Foundation uses in its own APIs.
+Overall, `NSIndexSet` is a solid class. A fair bit nerdier than its collection class siblings, but it has its place. It's at least a good reminder the useful things that you find by paying attention to what Foundation uses in its own APIs.
