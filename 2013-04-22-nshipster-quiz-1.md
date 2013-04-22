@@ -76,7 +76,7 @@ You will be given the name of the class, and the description of the property or 
 5. `UITableView`: "Reloads the specified rows using a certain animation effect."
 6. `UITableViewDataSource`: "Tells the data source to return the number of rows in a given section of a table view."
 7. `UIWebView`: "Sets the main page content and base URL."
-8. `UIGetureRecognizer`: "Sent to the receiver when one or more fingers touch down in the associated view."
+8. `UIGestureRecognizer`: "Sent to the receiver when one or more fingers touch down in the associated view."
 9. `UIDictationPhrase`: "The most likely textual interpretation of a dictated phrase."
 
 ---
