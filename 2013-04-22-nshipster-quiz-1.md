@@ -5,6 +5,7 @@ title: "NSHipster Quiz #1"
 ref: "http://www.uikonf.com/2013/03/25/nshipster-quiz-night.html"
 framework: Trivia
 rating: 10.0
+description: "Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?"
 ---
 
 On April 9th, the first-ever [NSHipster Pub Quiz](http://www.uikonf.com/2013/04/11/nshipster-pub-quiz.html) was held in Berlin. Think of your traditional pub quiz crossed with "Stump the Experts", with questions about things that you know and care about: computers, programming, Apple trivia—that sort of thing. The event was hosted by [UIKonf](http://www.uikonf.com), and made possible by its organizers [Chris Eidhof](http://twitter.com/chriseidhof), [Matt Patterson](http://twitter.com/fidothe), and [Peter Bihr](http://twitter.com/peterbihr). Thanks again to Chris, Matt, and Peter, and everyone who came out to make it such an amazing event.
