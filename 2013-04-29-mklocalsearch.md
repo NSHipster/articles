@@ -42,7 +42,7 @@ If you keep a reference to your `MKLocalSearch` object, you can optionally `-can
 
 **API limits.** Or rather, the lack of them. Let me explain:
 
-Perhaps the most counter-intuitive things about MapKit in iOS 6 is that _it's still widely-used_. Nevermind the "Apple Maps-gate" melodrama, MapKit, even with the introduction of impressive iOS mapping SDKs from [Google](https://developers.google.com/maps/documentation/ios/) and [MapBox](http://mapbox.com/mobile/), [developers are still using MapKit](http://appleinsider.com/articles/13/03/18/developers-prefer-apples-ios-maps-sdk-over-google-maps).
+Perhaps the most counter-intuitive things about MapKit in iOS 6 is that _it's still widely used_. Nevermind the "Apple Maps-gate" melodrama, MapKit, even with the introduction of impressive iOS mapping SDKs from [Google](https://developers.google.com/maps/documentation/ios/) and [MapBox](http://mapbox.com/mobile/), [developers are still using MapKit](http://appleinsider.com/articles/13/03/18/developers-prefer-apples-ios-maps-sdk-over-google-maps).
 
 Part of this may be aesthetics, but a lot has to do with a certain level of home-field advantage, too. Because of MapKit's close ties to UIKit, it can be customized more easily and more extensively by third-party developers.
 
