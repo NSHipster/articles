@@ -11,7 +11,7 @@ description: "Strings are perhaps the most versatile data type in computing. The
 
 Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience.
 
-In Foundation, there is a convenient wrapper function for denoting strings as user-facing: `NSLocalizedString`.
+In Foundation, there is a convenient macro for denoting strings as user-facing: `NSLocalizedString`.
 
 `NSLocalizedString` provides string localization in "compile-once / run everywhere" fashion, replacing all localized strings with their respective translation according to the string tables of the user settings. But even if you're not going to localize your app to any other markets, `NSLocalizedString` does wonders with respect to copy writing & editing.
 
@@ -19,7 +19,7 @@ In Foundation, there is a convenient wrapper function for denoting strings as us
 
 ---
 
-`NSLocalizedString` is a Foundation function that returns a localized version of a string. It has two arguments: `key`, which uniquely identifies the string to be localized, and `comment`, a string that is used to provide sufficient context for accurate translation.
+`NSLocalizedString` is a Foundation macro that returns a localized version of a string. It has two arguments: `key`, which uniquely identifies the string to be localized, and `comment`, a string that is used to provide sufficient context for accurate translation.
 
 In practice, the `key` is often just the base translation string to be used, while `comment` is usually `nil`, unless there is an ambiguous context:
 
@@ -43,23 +43,23 @@ There are four varieties of `NSLocalizedString`, with increasing levels of contr
 
 ~~~{objective-c}
 NSString * NSLocalizedString(
-  NSString *key, 
+  NSString *key,
   NSString *comment
 )
 ~~~
 
 ~~~{objective-c}
 NSString * NSLocalizedStringFromTable(
-  NSString *key, 
-  NSString *tableName, 
+  NSString *key,
+  NSString *tableName,
   NSString *comment
 )
 ~~~
 
 ~~~{objective-c}
 NSString * NSLocalizedStringFromTableInBundle(
-  NSString *key, 
-  NSString *tableName, 
+  NSString *key,
+  NSString *tableName,
   NSBundle *bundle,
   NSString *comment
 )
@@ -79,7 +79,7 @@ NSString * NSLocalizedStringWithDefaultValue(
 
 ## Localizable.strings
 
-At runtime, `NSLocalizedString` determines the preferred language, and finds a corresponding `Localizable.strings` file in the app bundle. For example, if the user prefers French, the file `fr.lproj/Localizable.strings` will be consulted. 
+At runtime, `NSLocalizedString` determines the preferred language, and finds a corresponding `Localizable.strings` file in the app bundle. For example, if the user prefers French, the file `fr.lproj/Localizable.strings` will be consulted.
 
 Here's what that looks like:
 
