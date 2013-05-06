@@ -10,7 +10,7 @@ description: "Breaking from a tradition of covering Apple APIs exclusively, this
 
 Languages are living works. They are nudged and challenged and bastardized and mashed-up in a perpetual cycle of undirected and rapid evolution. Technologies evolve, requirements change, corporate stewards and open source community come and go; obscure dialects are vaulted to prominence on the shoulders of exciting new frameworks, and thrust into a surprising new context after a long period of dormancy.
 
-Objective-C has a remarkable history spanning four decades in as many acts: 
+Objective-C has a remarkable history spanning four acts in as many decades:
 
 **In its 1<sup>st</sup> act**, Objective-C was adopted as the language of NeXT, powering [NeXTSTEP](http://en.wikipedia.org/wiki/NeXTSTEP) and [the world's first web server](http://en.wikipedia.org/wiki/Web_server#History).
 
@@ -28,7 +28,7 @@ Breaking from a tradition of covering Apple APIs exclusively, this edition of NS
 
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) is an open source library that brings Functional Reactive Programming paradigm to Objective-C. It was created by [Josh Abernathy](https://github.com/joshaber) & [Justin Spahr-Summers](https://github.com/jspahrsummers) in the development of [GitHub for Mac](http://mac.github.com). Last week, ReactiveCocoa reached a major milestone with its [1.0 release](https://github.com/ReactiveCocoa/ReactiveCocoa/tree/v1.0.0).
 
-[Functional Reactive Programming](http://en.wikipedia.org/wiki/Functional_reactive_programming) (FRP) is a way of thinking about software in terms of transforming inputs to produce output continuously over time. [Josh Abernathy frames the paradigm thusly](http://blog.maybeapps.com/post/42894317939/input-and-output): 
+[Functional Reactive Programming](http://en.wikipedia.org/wiki/Functional_reactive_programming) (FRP) is a way of thinking about software in terms of transforming inputs to produce output continuously over time. [Josh Abernathy frames the paradigm thusly](http://blog.maybeapps.com/post/42894317939/input-and-output):
 
 > Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done.
 >
@@ -44,9 +44,9 @@ To illustrate the difference between the conventional, imperative paradigm of Ob
 
 ~~~{objective-c}
 - (BOOL)isFormValid {
-    return [self.usernameField.text length] > 0 && 
-            [self.emailField.text length] > 0 && 
-            [self.passwordField.text length] > 0 && 
+    return [self.usernameField.text length] > 0 &&
+            [self.emailField.text length] > 0 &&
+            [self.passwordField.text length] > 0 &&
             [self.passwordField.text isEqual:self.passwordVerificationField.text];
 }
 
@@ -79,7 +79,7 @@ RACSignal *formValid = [RACSignal
   reduce:^(NSString *username, NSString *email, NSString *password, NSString *passwordVerification) {
     return @([username length] > 0 && [email length] > 0 && [password length] > 8 && [password isEqual:passwordVerification]);
   }];
- 
+
 RAC(self.createButton.enabled) = formValid;
 ~~~
 
@@ -89,11 +89,11 @@ Here, all of the logic for validating form input is contained in a single chain 
 
 ReactiveCocoa is comprised of two major components: [signals](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#signals) (`RACSignal`) and [sequences](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#sequences) (`RACSequence`).
 
-Both signals and sequences are kinds of [streams](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#streams), sharing many of the same operators. ReactiveCocoa has done well to abstract a wide scope of functionality into a semantically dense, consistent design: signals are a _push_-driven stream, and sequences are a _pull_-driven stream. 
+Both signals and sequences are kinds of [streams](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#streams), sharing many of the same operators. ReactiveCocoa has done well to abstract a wide scope of functionality into a semantically dense, consistent design: signals are a _push_-driven stream, and sequences are a _pull_-driven stream.
 
 ### `RACSignal`
 
-> - **Handling Asynchronous Or Event-driven Data Sources**: Much of Cocoa programming is focused on reacting to user events or changes in application state. 
+> - **Handling Asynchronous Or Event-driven Data Sources**: Much of Cocoa programming is focused on reacting to user events or changes in application state.
 > - **Chaining Dependent Operations**: Dependencies are most often found in network requests, where a previous request to the server needs to complete before the next one can be constructed.
 > - **Parallelizing Independent Work**: Working with independent data sets in parallel and then combining them into a final result is non-trivial in Cocoa, and often involves a lot of synchronization.
 
@@ -119,7 +119,7 @@ one `error` or `completed` event (but not both).
 > Sequences are a kind of collection, similar in purpose to `NSArray`. Unlike
 an array, the values in a sequence are evaluated _lazily_ (i.e., only when they
 are needed) by default, potentially improving performance if only part of
-a sequence is used. Just like Cocoa collections, sequences cannot contain `nil`. 
+a sequence is used. Just like Cocoa collections, sequences cannot contain `nil`.
 >
 > `RACSequence` allows any Cocoa collection to be manipulated in a uniform and declarative way.
 
@@ -143,7 +143,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 ### RAC vs. Bindings
 
-[Bindings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html) are magic—voodoo, really. 
+[Bindings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html) are magic—voodoo, really.
 
 Although essential to managing the complexity of a Mac OS X application, Bindings' cultural relevance has waned for years, as the focus has shifted to iOS and UIKit, which notably lacks support. Bindings replace a lot of boilerplate glue code and allow programming to be done in Interface Builder, but they're severely limited and _impossible_ to debug. RAC offers a clear, understandable, and extensible code-based API that works in iOS and is apt to replace all but the most trivial uses of bindings in your OS X application.
 
