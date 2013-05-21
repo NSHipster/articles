@@ -88,16 +88,11 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/github/Mantle/tree/core-data-adapter">Mantle</a><sup>*</sup></td>
+      <td><a href="https://github.com/github/Mantle/tree/core-data-adapter">Mantle</a></td>
       <td><a href="https://github.com/GitHub">GitHub</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=github&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3"><sup>*</sup> Core Data adapter not yet merged into master.</td>
-    </tr>
-  </tfoot>
 
   <thead>
     <tr>
