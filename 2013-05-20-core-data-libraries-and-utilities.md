@@ -88,7 +88,7 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/github/Mantle/tree/core-data-adapter">Mantle</a></td>
+      <td><a href="https://github.com/github/Mantle/blob/master/Mantle/MTLManagedObjectAdapter.h">Mantle</a></td>
       <td><a href="https://github.com/GitHub">GitHub</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=github&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
@@ -213,7 +213,7 @@ Fortunately, there are a wealth of open-source libraries that can help alleviate
 
 > Overcoat is an [AFNetworking](https://github.com/AFNetworking/AFNetworking) extension that makes it super simple for developers to use Mantle model objects with a REST client.
 
-#### [Mantle](https://github.com/github/Mantle/tree/core-data-adapter)
+#### [Mantle](https://github.com/github/Mantle/blob/master/Mantle/MTLManagedObjectAdapter.h)
 
 > Mantle makes it easy to write a simple model layer for your Cocoa or Cocoa Touch application.
 
