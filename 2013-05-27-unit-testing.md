@@ -11,7 +11,7 @@ Unit Testing is an emotional topic for developers. It inspires a sense of superi
 
 It's as close to a religious debate as programmers get... nevermind the matter of tabs-versus-spaces.
 
-Objective-C developers have, for the most part, remained relatively apathetic to Unit Testing (_"There's that SenTest thing, but who uses that, really?"_). Between strong typing, typically manageable project sizes, and a compiler advanced enough to [rewrite code for you](http://clang.llvm.org/doxygen/Rewriter_8h_source.html), unit testing isn't as much of a necessity as it is for more dynamic languages like Ruby (at least in practice).
+Objective-C developers have, for the most part, remained relatively apathetic to Unit Testing (_"There's that SenTest thing, but who uses that, really?"_). Between static typing, typically manageable project sizes, and a compiler advanced enough to [rewrite code for you](http://clang.llvm.org/doxygen/Rewriter_8h_source.html), unit testing isn't as much of a necessity as it is for more dynamic languages like Ruby (at least in practice).
 
 But that's not to say that Objective-C developers wouldn't benefit from unit testing. In fact, as Objective-C continues to become more collaborative, with growing participation in the open source community, automated testing will become a necessity.
 
