@@ -19,7 +19,7 @@ This week NSHipster will explore the world of unit testing frameworks, and how t
 
 ---
 
-[Unit Testing](https://en.wikipedia.org/wiki/Unit_testing) is a tool, just like any other tool. It's purpose is to make us better at our jobs, which is to produce robust, maintainable software.
+[Unit Testing](https://en.wikipedia.org/wiki/Unit_testing) is a tool, just like any other tool. Its purpose is to make us better at our jobs, which is to produce robust, maintainable software.
 
 It's a simple enough premise: write code to construct environments that exercise the particular behavior of a given method, function, class, or feature. Variables are isolated in a scientific manner, so as to test assumptions with logical atomicity.
 
