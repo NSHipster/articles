@@ -25,7 +25,7 @@ It's a simple enough premise: write code to construct environments that exercise
 
 ## OCUnit
 
-[OCUnit](http://www.sente.ch/software/ocunit/), a.k.a. SenTestingKit, was integrated into Xcode 2.1 circa WWDC 2005, [as a result of its use in the development of Core Data 1.0](http://www.friday.com/bbum/2005/09/24/unit-testing). Developed by [Sen:Te](http://www.sente.ch), OCUnit is actually one of the first unit testing libraries written for any language.
+[OCUnit](http://www.sente.ch/software/ocunit/), a.k.a. SenTestingKit, was integrated into Xcode 2.1 circa WWDC 2005, [as a result of its use in the development of Core Data 1.0](http://www.friday.com/bbum/2005/09/24/unit-testing). Developed by [Sen:te](http://www.sente.ch), OCUnit is actually one of the first unit testing libraries written for any language.
 
 Unit Tests were added into a separate testing target in the Xcode Project. Each test file defines an `SenTestCase` subclass, which implements a series of methods beginning with the word `test`. C `assert`-style macros are used to fail tests if the specified condition is not met. Each test is run in sequence, independently of one another, with the results logged afterwards:
 
