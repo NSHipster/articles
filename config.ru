@@ -3,7 +3,8 @@ Bundler.require
 
 STDOUT.sync = true
 
-#use Rack::Typekit, :kit => "nlj2rqt"
+# use Rack::Typekit, :kit => "agk0bgp"
+use Rack::Static, urls: ["/css", "/images", "/js", "favicon.ico"], root: "."
 use Rack::TryStatic,
     :root => "_site",
     :urls => %w[/],

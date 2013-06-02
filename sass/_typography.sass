@@ -1,69 +1,95 @@
 html body
-  font-size: 97%
+  font-size: 87%
+  font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif
   +text-shadow(0 1px 1px #eee)
-
-  pre code
-    font-size: 83%
+  color: $text-color !important
 
   ::selection, ::-moz-selection
     +text-shadow(0 1px 1px #222)
-    background: $secondary-color
+    background: transparentize($secondary-color, 0.5)
     color: white
-    
-header
-  h1, span
-    margin-top: 0
-    padding-top: 0
-  h1
-    font-weight: 700
 
-  span
-    font-size: 1.75em
-    display: block
+  strong
+    font-weight: 600
+
+  a, a:visited
+    color: $primary-color !important
+
+    &:hover
+      text-decoration: none
+
+h1, h2, h3, h4
+  a
+    text-decoration: none
 
 article
+  header
+    margin-bottom: 1em
+    h1
+      margin-bottom: 0.25em
+    h2
+      margin-top: 0.25em
+      font-size: 1em
+      font-weight: 500
+      font-style: italic
+      opacity: 0.5
+
   h1
     font-weight: 700
-    font-size: 2.5em
+    font-style: italic
+    font-size: 3em
+    display: inline-block
+    width: 100%
 
   h2, h3
     margin-top: 1.5em
 
-  code
-    color: #555
+  h4
+    border-bottom: 1px #eee solid
+    padding-bottom: 0.25em
 
-  pre code
-    color: #000
+  p, blockquote, ul, ol
+    code
+      color: $secondary-color
 
-  blockquote
-    border-left: 4px #eee solid
-    padding-left: 1em
+  h2, h3, h4
+    code
+      color: lighten($text-color, 30%)
+
+  figure, object, p > img
+    display: block
+    margin: 1em auto
 
   ul
     li
       margin-bottom: 1em
 
-aside
-  h1
-    font-size: 1.5em
+  ol
+    li
+      margin-left: 2em
 
-a
-  color: $primary-color !important
+[role="main"] > article, section#latest article
+  font-size: 150%
 
-  &:link
-    text-decoration: none
+  header
+    small
+      font-style: italic
 
-  &:hover
-    +text-shadow(none)
-    text-decoration: underline
-    color: $secondary-color !important
+    h1
+      margin-top: 0.25em
 
-pre code
-  +border-radius(5px)
-  display: block
-  background: #f1f1f1
-  white-space: pre-wrap
-  padding: +span(1) / 2
+.highlight
+  padding: 0 20px
+  background-color: $border-color
+  +border-radius(10px)
+  text-shadow: none !important
+
+  pre code
+    +border-radius(5px)
+    font-size: 83%
+    display: block
+    white-space: pre-wrap
+    padding: +span(1) / 2
 
 
 table
@@ -71,31 +97,49 @@ table
   border-collapse: collapse
   margin: 1em 0
 
+  caption
+    display: none
+
   thead th
     background: transparent
-    border-bottom: 1px #ccc solid
+    border-bottom: 1px $border-color solid
+    padding-top: 2em
 
-footer
-  aside
-    a
-      margin-left: 0.25em
-      padding: 0.25em
-      text-decoration: none
-
-      &:hover, &:active
-        +border-radius(5px)
-        background: $secondary-color
-        color: white
-
-        &:before
-          color: white
+  tfoot td
+    border-top: 1px $border-color solid
+    font-size: 75%
+    padding-top: 1em
 
 hr
   border: none
-  border-bottom: 1px #eee solid
+  border-bottom: 1px $border-color solid
   margin: 2em 0
 
-figure
-  figcaption
-    display: none
-    
+#type-encodings, #method-encodings
+  tr > td:first-child
+    width: 12em
+    padding-left: 3em
+
+#gpuimage-benchmarks
+  td
+    text-align: center
+
+  td:first-child
+    text-align: left
+
+  td:last-child
+    text-align: right
+
+#gpuimage-filters
+  td
+    vertical-align: top
+    font-size: 75%
+
+
+table.core-data-versus-nskeyedarchiver
+  td
+    text-align: center
+
+  td:first-child
+    text-align: left
+    font-weight: bold

@@ -8,7 +8,6 @@
   <title>{{ page.title }}</title>
   {% endif %}
   <meta name="description" content="{{ site.description | strip_html }}"/>
-  <meta name="viewport" content="width=device-width; initial-scale=1.0"/>
   <meta name="author" content="Mattt Thompson"/>
   <meta name="revisit-after" content="3 days"/>
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"/>
@@ -32,71 +31,53 @@
   {% endif %}
 
   <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-  <script type="text/javascript" src="//use.typekit.net/nlj2rqt.js"></script>
+  <script type="text/javascript" src="//use.typekit.net/agk0bgp.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
   <div role="container">
-    <header>
-      <h1 id="logo">
+    <header role="banner">
+      <h1 id="logo" class="tk-nudista-web">
         <a href="/">
-          <acronym title="NeXT Step">NS</acronym>
+          <acronym title="NeXTSTEP/Sun">NS</acronym>
           <strong>Hipster</strong>
-          <img id="moustache" src="/images/moustache.svg" data-author="http://thenounproject.com/bnhw" />
+          <img id="moustache" src="/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" />
         </a>
       </h1>
 
       {% unless page.id %}
-        <aside>
-          <span>{{ site.description }}</span>
-        </aside>
+        <h2 class="tk-nudista-web">
+          {{ site.description }}
+        </h2>
       {% endunless %}
-
     </header>
 
     <div id="main" role="main">
       {{ content }}
     </div>
 
-    <footer>
+    <footer role="contentinfo">
       <section class="credits colophon">
         <p>
           <span aria-hidden="true" class="icon-creative-commons"></span>
-          
+
           Created by <a href="http://mattt.me">Mattt Thompson</a>, and released under a <a href="http://creativecommons.org/licenses/by-nc/3.0/" rel="license">Creative Commons BY-NC License</a>.
-          
-          <br/>
-          
-          <small>
-            Delightful illustrations by <a href="http://www.conorheelan.com">Conor Heelan</a>.
-          </small>
+
+          <a href="https://plus.google.com/106751358503565042647?rel=author" style="display: none;"/>
         </p>
       </section>
 
       <aside class="links">
-        <a href="https://twitter.com/nshipster" class="icon-twitter" title="Twitter" aria-hidden="true" ></a>
         <a href="http://nshipster.com/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
+
+      {% if page.id %}
+        {% include archive %}
+      {% endif %}
     </footer>
   </div>
-<script type="text/javascript">
-var _sf_async_config={uid:43692,domain:"nshipster.com"};
-(function(){
-  function loadChartbeat() {
-    window._sf_endpt=(new Date()).getTime();
-    var e = document.createElement('script');
-    e.setAttribute('language', 'javascript');
-    e.setAttribute('type', 'text/javascript');
-    e.setAttribute('src',
-       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
-       "js/chartbeat.js");
-    document.body.appendChild(e);
-  }
-  var oldonload = window.onload;
-  window.onload = (typeof window.onload != 'function') ?
-     loadChartbeat : function() { oldonload(); loadChartbeat(); };
-})();
-</script>
+
+  {% include gauges %}
 </body>
 </html>

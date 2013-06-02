@@ -1,122 +1,72 @@
 html body
-  padding: 3em 0
+  padding: 3em 10px
 
 div[role="container"]
   +container
 
-  header
-    +clearfix
-
-    margin-bottom: 1em
-
   & > header
-    h1
-      +column(6)
-      +append(1)
-
-    aside
-      +column(17)
-      padding-top: 2em
-
+    +clearfix
     margin-bottom: 3em
 
-  div[role="main"]
-    +clearfix
+    h1
+      +column(6)
 
-  section
-    +clearfix
-    clear: both
-
-  article
-    +column(16)
-    +append(2)
-    margin-bottom: 2em
-
-  footer
-    clear: both
-    border-top: 1px #eee solid
-    margin-top: 3em
-    padding-top: 3em
-
-    small
-      margin-left: 1.6em
-
-    section
-      +column(20)
-
-    aside
-      +column(4, true)
+    h2
+      +column(16)
       float: right
-      text-align: right
 
-      a
-        font-size: 2em
+article
+  & > p:nth-of-type(1)
+    font-size: 1.25em
+    font-style: italic
 
-@media screen and (max-width: 640px)
-  html, body
-    padding: 10px 0 !important
-
-  div[role="container"]
-    width: 100%
-
-  #logo
-    margin: 0 auto
-    width: 100%
-    text-align: center
-    margin-top: -100px
-
-    acronym
-      width: 100%
-      display: block
-      margin: 0 auto
-      text-indent: -10px
-
-    #moustache
-      margin: 0 auto
-      display: block
-      left: 50%
-      margin-left: -100px
-      margin-top: -144px !important
-
-
-  div[role="container"] > header aside
-    font-size: 0.82em
-
-
-  header, footer, footer section, article, aside
-    width: 100% !important
-
+#archive
+  +clearfix
+  padding-top: 3em
 
   article
-    blockquote
-      margin-left: 5px !important
+    +column(11)
+    +append(2)
+    clear: left
+    margin-bottom: 2em
+    padding-bottom: 1em
 
-    table
-      display: inline-block
+    &:nth-child(even)
+      +column(11, true)
+      clear: right
+      padding-right: 0
 
-    margin-bottom: 0.5em !important
+    h1
+      font-size: 2em
 
-  #latest hgroup small
+footer
+  clear: both
+  border-top: 1px $border-color solid
+  margin-top: 1em
+  padding-top: 3em
+
+  section.archive 
+    div
+      +column(8)
+
+      &:nth-of-type(2n + 3)
+        +column(8, true)
+  small
+    margin-left: 1.6em
+
+  section.colophon
+    +column(20)
 
   aside
-    clear: both
-    margin: 0px auto
+    +column(4, true)
+    float: right
+    text-align: right
 
-  article + aside p
+    a
+      font-size: 2em
+      margin-left: 0.5em
+      text-decoration: none
+
+figure
+  figcaption
     display: none
-
-  figure 
-    display: none !important
-
-  footer section
-    p, small
-      margin-left: 0 !important
-
-    small
-      display: block
-      padding-top: 1em
-
-    span
-      display: none
-
-    

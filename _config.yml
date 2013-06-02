@@ -4,3 +4,16 @@ description: "<strong>NSHipster</strong> is a journal of the overlooked bits in 
 exclude:  [README.md, Gemfile, Gemfile.lock, Procfile, sass, config.rb, config.ru]
 permalink: /:title/
 lsi: false
+markdown: redcarpet
+pygments:
+  lexer: objective-c
+
+groups:
+  - Foundation
+  - CoreFoundation
+  - CoreGraphics
+  - UIKit
+  - Objective-C
+  - Open Source
+  - Testing
+  - Miscellanea

@@ -4,38 +4,15 @@ layout: default
 
 <article>
   <header>
-    <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+    <h1 class="tk-nudista-web"><a href="{{ page.url }}">{{ page.title }}</a></h1>
+    <h2 class="tk-nudista-web"> Written by <a href="http://mattt.me">Mattt Thompson</a> on <time pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
   </header>
 
-  {{ content }}
+  <div class="content">
+    {{ content }}
+  </div>
 </article>
 
 <aside>
-  <p><a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-via="NSHipster" data-size="large">Tweet</a></p>
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-
-  <p>
-    Written by <a href="http://mattt.me">Mattt Thompson</a><br/>
-    Posted on <time pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time>
-  </p>
-
-  <hr/>
-
-  <p>{{ site.description }}</p>
-
-  <figure id="suit">
-    <figcaption>Though bearing a striking resemblence to Sam Soffes, our lawyers can assure you that resemblance to real persons, living, dead, and/or mustacioed, is purely coincidental.</figcaption>
-  </figure>
-
-
-  <section class="archive">
-    <h1>Archive</h1>
-    <ul>
-      {% for post in site.posts %}
-        {% if post.id != page.id %}
-          <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </section>
+  {% include twitter %}
 </aside>

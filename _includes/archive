@@ -1,0 +1,18 @@
+<section class="archive" role="navigation">
+  {% for group in site.groups %}
+    <div>
+      <h2>{{ group }}</h2>
+      <ul>
+        {% for post in site.posts | sort_by_title %}
+          {% if post.framework == group %}
+            <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+          {% elsif group == 'Miscellanea' %}
+            {% unless site.groups contains post.framework %}
+              <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+            {% endunless %}
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  {% endfor %}
+</section>
