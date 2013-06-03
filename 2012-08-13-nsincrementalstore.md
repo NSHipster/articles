@@ -80,7 +80,7 @@ This method requires very specific and very different return values depending on
 
 - Result Type: `NSCountResultType`
   
-> **Return**: `NSNumber` of count of objects matching request
+> **Return**: `NSArray` containing one `NSNumber` of count of objects matching request (not `NSNumber` as mentioned here before)
 
 #### Request Type: `NSSaveRequestType`
   
