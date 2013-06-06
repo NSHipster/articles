@@ -27,9 +27,9 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 ~~~{objective-c}
 NSError *error = nil;
-NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink |
-                      NSTextCheckingTypePhoneNumber
-                error:&error];
+NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
+                                                        | NSTextCheckingTypePhoneNumber
+                                                           error:&error];
 
 NSString *string = @"123 Main St. / (555) 555-5555";
 [detector enumerateMatchesInString:string
