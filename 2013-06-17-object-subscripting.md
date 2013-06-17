@@ -97,4 +97,6 @@ Because of how flexible and concise subscripting is, it is extremely well-purpos
 
 ---
 
-This is, of course, dangerous thinking. Subscripting isn't your new bicycle. It isn't a giant hammer—hell, it isn't even a giant screwdriver! But it does open up some interesting opportunities to bend syntactic conventions to useful ends.
+This is, of course, dangerous thinking. Subscripting isn't your new bicycle. It isn't a giant hammer. Hell, _it isn't even a giant screwdriver!_ If there is one thing Object Subscripting DSLs are, it's trouble. Here be dragons.
+
+That said, it does open up some interesting opportunities to bend syntactic conventions to useful ends.
