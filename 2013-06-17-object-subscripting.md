@@ -84,13 +84,13 @@ routes[@"GET /users/:id"] = ^(NSNumber *userID){
 ...or this:
 
 ~~~{objective-c}
-NSArray *results = managedObjectContext[@"Product WHERE stock > 20"];
+id piece = chessBoard[@"E1"];
 ~~~
 
 ...or this:
 
 ~~~{objective-c}
-id word = tokenizer[@"words"][3];
+NSArray *results = managedObjectContext[@"Product WHERE stock > 20"];
 ~~~
 
 Because of how flexible and concise subscripting is, it is extremely well-purposed for creating [DSL](http://en.wikipedia.org/wiki/Domain-specific_language)s. When defining custom subscripting methods on your own class, there are no restrictions on how they are implemented. You can use this syntax to provide a shorthand for defining application routes, search queries, compound property accessors, or plain-old KVO.
