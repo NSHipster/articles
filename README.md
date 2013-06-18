@@ -25,7 +25,7 @@ NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, sta
 $ cd path/to/nshipster.com
 $ gem install bundler
 $ bundle install
-$ bundle exec jekyll --auto --server
+$ bundle exec jekyll server
 ```
 
 ### Compass
