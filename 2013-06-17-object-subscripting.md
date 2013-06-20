@@ -67,7 +67,7 @@ To add custom-indexed subscripting support to your class, simply declare and imp
 Similarly, custom-keyed subscripting can be added to your class by declaring and implementing these methods:
 
 ~~~{objective-c}
-- (id)objectAtKeyedSubscript:(id <NSCopying>)key;
+- (id)objectForKeyedSubscript:(id <NSCopying>)key;
 - (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
 ~~~
 
