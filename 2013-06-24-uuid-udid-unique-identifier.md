@@ -51,7 +51,7 @@ Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found a
 `NSUUID` was added to Foundation in iOS 6 as a way to easily create UUIDs. How easy?
 
 ~~~{objective-c}
-NSString *UUID = [NSUUID UUID];
+NSString *UUID = [[NSUUID UUID] UUIDString];
 ~~~
 
 If your app targets iOS 5 or earlier, however, you have to settle for Core Foundation functions on `CFUUIDRef`:
