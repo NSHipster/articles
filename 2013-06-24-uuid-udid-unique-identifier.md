@@ -30,7 +30,7 @@ Incidentally, all of the suggested replacements for `UIDevice -uniqueIdentifier`
 
 > The value in this property remains the same while the app (or another app from the same vendor) is installed on the iOS device. The value changes when the user deletes all of that vendor’s apps from the device and subsequently reinstalls one or more of them. Therefore, if your app stores the value of this property anywhere, you should gracefully handle situations where the identifier changes.
 
-In many ways, this is what should have been used the whole time. App developers now have a way to identify devices uniquely—even across other apps by the same developer—witout being entrusted with something as sensitive as the device's UDID.
+In many ways, this is what should have been used the whole time. App developers now have a way to identify devices uniquely—even across other apps by the same developer—without being entrusted with something as sensitive as the device's UDID.
 
 For most applications, doing a find-and-replace of `uniqueIdentifier` to `identifierForVendor` is enough.
 
