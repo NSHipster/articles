@@ -81,5 +81,5 @@ This way, a UUID will be generated once when the app is launched for the first t
 
 ---
 
-Of course, UUIDs have many other uses: primary identifiers for records in distributed systems, names for temporary files, or even a bulk color generator (take chunk hexadecimal representation into chunks of 6). But on iOS, it's all about tracking, about finding what was lost in a sea of network traffic and possibilities. Knowing where you stand on uniqueness is the first step to understanding all of this.
+Of course, UUIDs have many other uses: primary identifiers for records in distributed systems, names for temporary files, or even a bulk color generator (chunk the hexadecimal representation into 5 groups of 6!). But on iOS, it's all about tracking, about finding what was lost in a sea of network traffic and possibilities. Knowing where you stand on uniqueness is the first step to understanding all of this.
 
