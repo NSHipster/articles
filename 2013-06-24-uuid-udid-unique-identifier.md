@@ -10,7 +10,7 @@ Let's say you're making privacy software that also prevents piracy. I mean, it's
 
 Until recently, it was trivial to uniquely identify devices between application launches, and even across applications: a simple call to `UIDevice -uniqueIdentifier`, and you were all set.
 
-However, in iOS 6, `-uniqueIdentifier` was deprecated, with the following notes:
+However, `UIDevice -uniqueIdentifier` was deprecated in iOS 5 with the following notes:
 
 > Use the `identifierForVendor` property of [`UIDevice`] or the `advertisingIdentifier` property of the `ASIdentifierManager` class instead, as appropriate, or use the `UUID` method of the `NSUUID` class to create a `UUID` and write it to the user defaults database.
 
@@ -71,6 +71,8 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
     if (!UUID) {
         CFUUIDRef uuid = CFUUIDCreate(NULL);
         UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+        CFRelease(uuid);
+
         [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:kApplicationUUIDKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
@@ -82,4 +84,3 @@ This way, a UUID will be generated once when the app is launched for the first t
 ---
 
 Of course, UUIDs have many other uses: primary identifiers for records in distributed systems, names for temporary files, or even a bulk color generator (chunk the hexadecimal representation into 5 groups of 6!). But on iOS, it's all about tracking, about finding what was lost in a sea of network traffic and possibilities. Knowing where you stand on uniqueness is the first step to understanding all of this.
-
