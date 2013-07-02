@@ -89,7 +89,7 @@ Apple recommends that you use `NSFastEnumeration` `for/in`-style enumeration for
 
 ## `NSEnumerator`
 
-But of course, before `NSFastEnumeration` (circa OS X 10.5 / iOS 3.0), there was the venerable `NSEnumerator`.
+But of course, before `NSFastEnumeration` (circa OS X 10.5 / iOS 2.0), there was the venerable `NSEnumerator`.
 
 For the uninitiated, `NSEnumerator` is an abstract class that implements two methods:
 
