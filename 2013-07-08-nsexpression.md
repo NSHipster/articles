@@ -134,11 +134,11 @@ First, define the corresponding method in a category:
 Then, use the function thusly (the `FUNCTION()` macro in `+expressionWithFormat:` is shorthand for the process of building out with `-expressionForFunction:`, et al.):
 
 ~~~{objective-c}
-NSExpression *expression = [NSExpression expressionWithFormat:@"FUNCTION(4.2, 'factorial')"];
+NSExpression *expression = [NSExpression expressionWithFormat:@"FUNCTION(4.2, 'nsh_factorial')"];
 id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...
 ~~~
 
-The advantage here, over calling `-factorial` directly is the ability to invoke the function in an `NSPredicate` query. For example, a `location:withinRadius:` method might be defined to easily query managed objects nearby a user's current location.
+The advantage here, over calling `-nsh_factorial` directly is the ability to invoke the function in an `NSPredicate` query. For example, a `location:withinRadius:` method might be defined to easily query managed objects nearby a user's current location.
 
 As Dave mentions in his article, the use cases are rather marginal, but it's certainly an interesting trick to have in your repertoire.
 
