@@ -39,7 +39,7 @@ id value = [expression expressionValueWithObject:nil context:nil]; // => 3.21859
 
 > `NSExpression` functions take a given number of sub-expression arguments. For instance, in the above example, to get the standard deviation of the collection, the array of numbers had to be wrapped with `+expressionForConstantValue:`. A minor inconvenience (which ultimately allows `NSExpression` to be incredibly flexible), but enough to trip up anyone trying things out for the first time.
 
-If you found the [Key-Value Coding Simple Collection Operators](http://nshipster.com/kvc-collection-operators/) (`@avg`, `@sum`, et al.) lacking, perhaps `NSExpression`'s builtin statistical, arithemtic, and bitwise functions will pique your interest.
+If you found the [Key-Value Coding Simple Collection Operators](http://nshipster.com/kvc-collection-operators/) (`@avg`, `@sum`, et al.) lacking, perhaps `NSExpression`'s built-in statistical, arithmetic, and bitwise functions will pique your interest.
 
 > **A word of caution**: [according to this table in Apple's documentation for `NSExpression`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html), there is apparently no overlap between the availability of functions between Mac OS X & iOS. It would appear that recent versions of iOS do, indeed, support functions like `stddev:`, but this is not reflected in headers or documentation. Any details [in the form of a pull request](https://github.com/NSHipster/articles/pulls) would be greatly appreciated.
 
@@ -86,7 +86,7 @@ So mentioned, because `ceiling` is easily confused with `ceil(3)`. Whereas `ceil
 
 ### Random Functions
 
-Two variations, one with and one without an argument. Taking no argument, `random` returns an equivalent of `rand(3)`, while `random:` takes a random element from the `NSExpression` of an array of numbers.
+Two variations—one with and one without an argument. Taking no argument, `random` returns an equivalent of `rand(3)`, while `random:` takes a random element from the `NSExpression` of an array of numbers.
 
 - `random`
 - `random:`
@@ -140,7 +140,7 @@ id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...
 
 The advantage here, over calling `-factorial` directly is the ability to invoke the function in an `NSPredicate` query. For example, a `location:withinRadius:` method might be defined to easily query managed objects nearby a user's current location.
 
-As Dave mentions in his article, the use cases are rather marginal, but it's certainly an interesting trick to have in your repetoire.
+As Dave mentions in his article, the use cases are rather marginal, but it's certainly an interesting trick to have in your repertoire.
 
 ---
 
