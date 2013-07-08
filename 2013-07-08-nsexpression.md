@@ -120,12 +120,12 @@ In addition to these built-in functions, it's possible to invoke custom function
 First, define the corresponding method in a category:
 
 ~~~{objective-c}
-@interface NSNumber (Factorial)
-- (NSNumber *)factorial;
+@interface NSNumber (NSHFactorial)
+- (NSNumber *)nsh_factorial;
 @end
 
-@implementation NSNumber (Factorial)
-- (NSNumber *)factorial {
+@implementation NSNumber (NSHFactorial)
+- (NSNumber *)nsh_factorial {
     return @(tgamma([self doubleValue] + 1));
 }
 @end
