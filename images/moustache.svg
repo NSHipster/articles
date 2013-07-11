@@ -1,15 +1,11 @@
-<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="100" height="100" id="svg2">
-  <defs id="defs4"/>
-  <metadata id="metadata7">
-    <rdf:RDF>
-      <cc:Work rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
-        <dc:title/>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <g transform="translate(-5.0,-948.36217)" id="layer1">
-    <path d="m 35.458333,989.17467 c -12.541504,0.5926 -24,16.68263 -35.458333,2.5834 0,18.92703 29.846204,38.29213 50,20.54163 20.15379,17.7505 50,-1.6146 50,-20.54163 -15.73231,19.35833 -31.46413,-18.16318 -50,5.6041 -5.035618,-6.4568 -9.863664,-8.4085 -14.541667,-8.1875 z" id="path2987" style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate"/>
-  </g>
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+<g id="layer1" transform="translate(-5.0,-948.36217)">
+	<path id="path2987" d="M40.883,992.568c-12.176,0.576-23.301,16.196-34.425,2.508c0,18.375,28.976,37.175,48.542,19.943
+		c19.566,17.232,48.542-1.568,48.542-19.943c-15.273,18.794-30.547-17.634-48.542,5.441
+		C50.111,994.248,45.424,992.353,40.883,992.568z"/>
+</g>
 </svg>
