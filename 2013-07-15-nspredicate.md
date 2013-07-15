@@ -69,9 +69,9 @@ NSArray *ages = @[ @24, @27, @33, @31 ];
 NSMutableArray *people = [NSMutableArray array];
 [firstNames enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     Person *person = [[Person alloc] init];
-    person.firstName = [firstNames objectAtIndex:idx];
-    person.lastName = [lastNames objectAtIndex:idx];
-    person.age = [ages objectAtIndex:idx];
+    person.firstName = firstNames[idx];
+    person.lastName = lastNames[idx];
+    person.age = ages[idx];
     [people addObject:person];
 }];
 
