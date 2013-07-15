@@ -133,8 +133,8 @@ NSLog(@"'A' Names: %@", [people filteredArrayUsingPredicate:[namesBeginningWithL
 > - `<=`, `=<`: The left-hand expression is less than or equal to the right-hand expression.
 > - `>`: The left-hand expression is greater than the right-hand expression.
 > - `<`: The left-hand expression is less than the right-hand expression.
-> `!=`, `<>`: The left-hand expression is not equal to the right-hand expression.
-> `BETWEEN`: The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, `1 BETWEEN { 0 , 33 }`, or `$INPUT BETWEEN { $LOWER, $UPPER }`.
+> - `!=`, `<>`: The left-hand expression is not equal to the right-hand expression.
+> - `BETWEEN`: The left-hand expression is between, or equal to either of, the values specified in the right-hand side. The right-hand side is a two value array (an array is required to specify order) giving upper and lower bounds. For example, `1 BETWEEN { 0 , 33 }`, or `$INPUT BETWEEN { $LOWER, $UPPER }`.
 
 ### Basic Compound Predicates
 
