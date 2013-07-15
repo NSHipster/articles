@@ -236,8 +236,8 @@ typedef NSUInteger NSPredicateOperatorType;
 
 > - `NSCaseInsensitivePredicateOption`: A case-insensitive predicate. You represent this option in a predicate format string using a [c] following a string operation (for example, "NeXT" like[c] "next").
 > - `NSDiacriticInsensitivePredicateOption`: A diacritic-insensitive predicate. You represent this option in a predicate format string using a [d] following a string operation (for example, "naïve" like[d] "naive").
-> `NSNormalizedPredicateOption`: Indicates that the strings to be compared have been preprocessed. This option supersedes NSCaseInsensitivePredicateOption and NSDiacriticInsensitivePredicateOption, and is intended as a performance optimization option. You represent this option in a predicate format string using a [n] following a string operation (for example, "WXYZlan" matches[n] ".lan").
-- `NSLocaleSensitivePredicateOption`: Indicates that strings to be compared using `<`, `<=`, `=`, `=>`, `>` should be handled in a locale-aware fashion. You represent this option in a predicate format string using a `[l]` following one of the `<`, `<=`, `=`, `=>`, `>` operators (for example, "straße" >[l] "strasse").
+> - `NSNormalizedPredicateOption`: Indicates that the strings to be compared have been preprocessed. This option supersedes NSCaseInsensitivePredicateOption and NSDiacriticInsensitivePredicateOption, and is intended as a performance optimization option. You represent this option in a predicate format string using a [n] following a string operation (for example, "WXYZlan" matches[n] ".lan").
+> - `NSLocaleSensitivePredicateOption`: Indicates that strings to be compared using `<`, `<=`, `=`, `=>`, `>` should be handled in a locale-aware fashion. You represent this option in a predicate format string using a `[l]` following one of the `<`, `<=`, `=`, `=>`, `>` operators (for example, "straße" >[l] "strasse").
 
 ## Block Predicates
 
@@ -255,6 +255,8 @@ NSLog(@"Short Names: %@", [people filteredArrayUsingPredicate:shortNamePredicate
 ...Alright, that whole dig on `predicateWithBlock:` as being the lazy way out wasn't _entirely_ charitable.
 
 Actually, since blocks can encapsulate any kind of calculation, there is a whole class of queries that can't be expressed with the `NSPredicate` format string (such as evaluating against values dynamically calculated at run-time). And while its possible to accomplish the same using an `NSExpression` with a custom selector, blocks provide a convenient interface to get the job done.
+
+One important note: **`NSPredicate`s created with `predicateWithBlock:` cannot be used for Core Data fetch requests backed by a `SQLite` store.**
 
 ---
 
