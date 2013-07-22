@@ -6,7 +6,7 @@ framework: Foundation
 rating: 9.2
 ---
 
-`NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expressions, provides an expressive, natural language interface to define logical conditions on which a collection is searched.
+`NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.
 
 It's easier to show `NSPredicate` in use, rather than talk about it in the abstract, so we're going to revisit the example data set used in the [`NSSortDescriptor` article](http://nshipster.com/nssortdescriptor/):
 
