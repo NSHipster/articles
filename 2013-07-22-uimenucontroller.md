@@ -111,7 +111,7 @@ In addition to these basic editing commands, there are commands that deal with r
 
 With iOS 3.2, developers could now add their own commands to the menu controller. As yet unmentioned, but familiar commands like "Define" or spell check suggestions take advantage of this.
 
-`UIMenuController` has an `items` property, which is an `NSArray` of `UIMenuItem` objects. Each `UIMenuItem` object has a `title` and `action`. In order to have a menu item command di splay in a menu controller, the responder must implement the corresponding selector.
+`UIMenuController` has an `items` property, which is an `NSArray` of `UIMenuItem` objects. Each `UIMenuItem` object has a `title` and `action`. In order to have a menu item command display in a menu controller, the responder must implement the corresponding selector.
 
 ---
 
