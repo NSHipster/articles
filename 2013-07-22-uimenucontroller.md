@@ -105,13 +105,13 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 > `selectAll:` This method is invoked when the user taps the Select All command of the editing menu.
 
-In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionLeftToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
+In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionRightToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
 
 ## `UIMenuItem`
 
 With iOS 3.2, developers could now add their own commands to the menu controller. As yet unmentioned, but familiar commands like "Define" or spell check suggestions take advantage of this.
 
-`UIMenuController` has an `items` property, which is an `NSArray` of `UIMenuItem` objects. Each `UIMenuItem` object has a `title` and `action`. In order to have a menu item command di splay in a menu controller, the responder must implement the corresponding selector.
+`UIMenuController` has an `items` property, which is an `NSArray` of `UIMenuItem` objects. Each `UIMenuItem` object has a `title` and `action`. In order to have a menu item command display in a menu controller, the responder must implement the corresponding selector.
 
 ---
 
