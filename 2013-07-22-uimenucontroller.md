@@ -105,7 +105,7 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 > `selectAll:` This method is invoked when the user taps the Select All command of the editing menu.
 
-In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionLeftToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
+In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionLeftToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
 
 ## `UIMenuItem`
 
