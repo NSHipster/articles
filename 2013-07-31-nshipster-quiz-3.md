@@ -8,7 +8,9 @@ rating: 10.0
 description: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
 ---
 
-NSHipster Pub Quiz came to New York City on July 30th. Like our [first](http://nshipster.com/nshipster-quiz-1/) and [second](http://nshipster.com/nshipster-quiz-2/) quizzes, questions ranged from random Apple trivia to obscure framework questions—this time, with a particular focus on hardware rumors and questions about iOS [REDACTED]. The event was hosted by [Meetup](http://meetup.com), and sponsored by [Heroku](https://heroku.com). Dozens of the best and brightest minds in Objective-C attended the event, with the team "The Forstall Five" ([@mb](https://twitter.com/mb), [@bcapps](https://twitter.com/bcapps), [@ethicalpaul](https://twitter.com/ethicalpaul), [@grantjbutler](https://twitter.com/grantjbutler), and [@conbrolution](https://twitter.com/conbrolution)) taking first place.
+NSHipster Pub Quiz came to New York City on July 30th. Like our [first](http://nshipster.com/nshipster-quiz-1/) and [second](http://nshipster.com/nshipster-quiz-2/) quizzes, questions ranged from random Apple trivia to obscure framework questions—this time, with a particular focus on hardware rumors and questions about iOS [REDACTED].
+
+The event was hosted by [Meetup](http://meetup.com), and sponsored by [Heroku](https://heroku.com). Dozens of the best and brightest minds in Objective-C attended the event, with the team "The Forstall Five" ([@mb](https://twitter.com/mb), [@bcapps](https://twitter.com/bcapps), [@ethicalpaul](https://twitter.com/ethicalpaul), [@grantjbutler](https://twitter.com/grantjbutler), and [@conbrolution](https://twitter.com/conbrolution)) taking first place.
 
 If you'd like to play along at home, or test your team's mettle at work, here are some guidelines:
 
