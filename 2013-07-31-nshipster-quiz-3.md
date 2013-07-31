@@ -153,7 +153,7 @@ With over 1 Million iOS & Mac Apps on the App Store, it's clear that the true se
 Round 4: [REDACTED]
 ===================
 
-For each question,
+For each question, a class or protocol from iOS [REDACTED] is described. For 1 point each, fill in the blank.
 
 ---
 
