@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "NSHipster Quiz #2"
+title: "NSHipster Quiz #3"
 
 ref: "http://nshipsterpubtrivia.eventbrite.com"
 framework: Trivia
