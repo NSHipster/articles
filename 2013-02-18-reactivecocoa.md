@@ -18,7 +18,7 @@ Objective-C has a remarkable history spanning four acts in as many decades:
 
 **In its 3<sup>rd</sup> act**, Objective-C rose to unprecedented significance with the release of iOS, making it the most important language of mobile computing.
 
-**Objective-C's 4<sup>th</sup> act takes us to the present day**, with an influx of new iOS developers from the Ruby, Python, and Javascript communities sparked a revolution open source participation. For the first time, Objective-C is being directly shaped and guided by the contributions of individuals outside of Apple.
+**Objective-C's 4<sup>th</sup> act takes us to the present day**, with an influx of new iOS developers from the Ruby, Python, and Javascript communities sparking a revolution in open source participation. For the first time, Objective-C is being directly shaped and guided by the contributions of individuals outside of Apple.
 
 Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies this brave new era for Objective-C: [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa).
 
