@@ -93,7 +93,7 @@ NSLog(@"30's: %@", [people filteredArrayUsingPredicate:thirtiesPredicate]);
 
 Foundation provides methods to filter `NSArray` / `NSMutableArray` & `NSSet` / `NSMutableSet` with predicates.
 
-Immutable collections, `NSArray` & `NSSet`, have the methods `filteredArrayUsingPredicate:` and `filteredSetUsingPredicate:` which return a immutable collection by evaluating a predicate on the receiver.
+Immutable collections, `NSArray` & `NSSet`, have the methods `filteredArrayUsingPredicate:` and `filteredSetUsingPredicate:` which return an immutable collection by evaluating a predicate on the receiver.
 
 Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUsingPredicate:`, which removes any objects that evaluate to `FALSE` when running the predicate on the receiver.
 
