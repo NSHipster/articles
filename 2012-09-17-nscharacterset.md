@@ -17,7 +17,7 @@ But a string implementation is only as good as the programmer who wields it. So 
 
 > If you're fuzzy on what character encodings are (or even if you have a pretty good working knowledge), you should take this opportunity to read / re-read / skim and read later Joel Spolsky's classic essay ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html). Having that fresh in your mind will give you a much better appreciation of everything we're about to cover.
 
-`NSCharacterSet` and its mutable counterpart, `NSMutableCharacterSet`, provide an object-oriented way of representing sets of Unicode characters. It's most often used with `NSString` & `NSScanner` to filter, remove, or split on different kinds of characters. To give you an idea of those kinds of characters can be, take a look at the class methods provided by `NSCharacterSet`:
+`NSCharacterSet` and its mutable counterpart, `NSMutableCharacterSet`, provide an object-oriented way of representing sets of Unicode characters. It's most often used with `NSString` & `NSScanner` to filter, remove, or split on different kinds of characters. To give you an idea of what those kinds of characters can be, take a look at the class methods provided by `NSCharacterSet`:
 
 - `alphanumericCharacterSet`
 - `capitalizedLetterCharacterSet`
