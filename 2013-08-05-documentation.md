@@ -15,7 +15,7 @@ Do you like Apple's documentation? Don't you want that [for your own libraries?]
 
 ---
 
-Every modern programming language has comments: non-executable natural language annotations denoted by a special character sequence, such as `//`, `/* */`, `#`, and `<!-- -->`. Documentation provides auxiliary explanation and context to code using specially-formatted comments, which can be extracted and parsed by a build tool.
+Every modern programming language has comments: non-executable natural language annotations denoted by a special character sequence, such as `//`, `/* */`, `#`, and `--`. Documentation provides auxiliary explanation and context to code using specially-formatted comments, which can be extracted and parsed by a build tool.
 
 In Objective-C, the documentation tool of choice is [`appledoc`](https://github.com/tomaz/appledoc). Using a [Javadoc](http://en.wikipedia.org/wiki/Javadoc)-like syntax, `appledoc` is able to generate HTML and Xcode-compatible `.docset` docs from `.h` files that [look nearly identical](http://cocoadocs.org/docsets/AFNetworking/1.3.1/Classes/AFHTTPClient.html) to [Apple's official documentation](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSArray_Class/NSArray.html).
 
