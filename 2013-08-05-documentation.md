@@ -32,7 +32,7 @@ Here are some examples from well-documented Objective-C projects:
 
 Objective-C documentation is designated by a `/** */` comment block (note the extra initial star), which precedes any `@interface` or `@protocol`, as well as any method or `@property` declarations.
 
-For classes, categories, and protocols, the documentation should describing the function of that particular component, offering suggestions and guidelines for how it should be used. Structure it like a news article: start with a top-level "tweet-sized" overview, and then explore further topics in more detail as necessary. Concerns like how a class should (or should not) be subclassed, or any caveats in behavior for standard protocols (like `NSCopying`) should always be documented.
+For classes, categories, and protocols, the documentation should be describing the function of that particular component, offering suggestions and guidelines for how it should be used. Structure it like a news article: start with a top-level "tweet-sized" overview, and then explore further topics in more detail as necessary. Concerns like how a class should (or should not) be subclassed, or any caveats in behavior for standard protocols (like `NSCopying`) should always be documented.
 
 Each method should similarly begin with a concise description of its functionality, followed by any caveats or additional details. Method documentation also contains Javadoc-style `@` labels for common fields like parameters and return value:
 
