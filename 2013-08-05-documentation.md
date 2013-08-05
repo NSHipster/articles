@@ -28,7 +28,7 @@ Here are some examples from well-documented Objective-C projects:
 - [`GRMustache.h`](https://github.com/groue/GRMustache/blob/master/src/classes/GRMustache.h)
 - [`TTTAddressFormatter.h`](https://github.com/mattt/FormatterKit/blob/master/FormatterKit/TTTAddressFormatter.h)
 
-## Guidelines for Writing Objective-C Documentations
+## Guidelines for Writing Objective-C Documentation
 
 Objective-C documentation is designated by a `/** */` comment block (note the extra initial star), which precedes any `@interface` or `@protocol`, as well as any method or `@property` declarations.
 
