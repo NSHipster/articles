@@ -9,7 +9,7 @@ rating: 6.9
 
 `NSDateComponents` serves an important role in the date and time APIs in Foundation. By itself, it's just a container for information about a date, such as its month, year, day of month, week of year, or whether that month is a leap month. Combined with `NSCalendar`, `NSDateComponents` becomes a remarkably convenient interchange format for calendar calculations.
 
-Whereas dates represent a particular moment in time, date component depend on which calendar system is being used to represent them, which may differ wildly from what we're used to with the [Gregorian Calendar](http://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](http://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](http://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
+Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them, which may differ wildly from what we're used to with the [Gregorian Calendar](http://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](http://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](http://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
 
 The most common use of `NSDateComponents` is to determine information about a given date, which may be used to group events by day or week, for instance. To do this, get the calendar for the current locale, and then use `NSCalendar -components:fromDate:`.
 
