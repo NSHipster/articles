@@ -79,5 +79,13 @@
   </div>
 
   {% include gauges %}
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/jquery.fittext.js"></script>
+  <script>
+    if ((navigator.platform.indexOf("iPhone") != -1) || (navigator.platform.indexOf("iPod") != -1)) {
+      $("article h1").fitText();
+    }
+  </script>
 </body>
 </html>
