@@ -38,7 +38,7 @@ Each method should similarly begin with a concise description of its functionali
 
 - `@param [param] [Description]`: Describes what value should be passed for this parameter
 - `@return [Description]`: Describes the return value of the method
-- `@see [selector]`: `Provide "see also" reference to related method
+- `@see [selector]`: Provide "see also" reference to related method
 - `@warning [description]`: Call out exceptional or potentially dangerous behavior
 
 Properties are often described in a single sentence, and should include what its default value is.
