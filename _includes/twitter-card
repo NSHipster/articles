@@ -1,0 +1,14 @@
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@NSHipster">
+<meta name="twitter:creator" content="@mattt">
+{% if page.id %}
+  <meta name="twitter:title" content="{{ page.title }}">
+  {% if page.description %}
+    <meta name="twitter:description" content="{{ page.description | strip_html | escape }}">
+  {% else %}
+    <meta name="twitter:description" content="{{ page.content | truncate: 250 | strip_html | escape }}">
+  {% endif %}
+{% else %}
+  <meta name="twitter:title" content="{{ site.title }}">
+  <meta name="twitter:description" content="{{ site.description | strip_html | escape}}">
+{% endif %}

@@ -3,9 +3,9 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
-  <title>{{ page.title }} : {{ site.title }}</title>
+    <title>{{ page.title }} : {{ site.title }}</title>
   {% else %}
-  <title>{{ page.title }}</title>
+    <title>{{ page.title }}</title>
   {% endif %}
   <meta name="description" content="{{ site.description | strip_html }}"/>
   <meta name="author" content="Mattt Thompson"/>
@@ -15,31 +15,15 @@
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
   <link rel="stylesheet" href="/css/screen.css"/>
 
-  <meta content="{{ site.title }}" property="og:site_name"/>
-  <meta content="{{ site.url }}/images/suit.png" property="og:image"/>
-  {% if page.id %}
-    <meta content="{{ page.title }}" property="og:title"/>
-    <meta content="{{ site.url }}{{ page.url }}" property="og:url"/>
-    {% if page.description %}
-      <meta content="{{ page.description | strip_html | escape }}" property="og:description"/>
-    {% else %}
-      <meta content="{{ page.content | truncate: 250 | strip_html | escape }}" property="og:description"/>
-    {% endif %}
-  {% else %}
-    <meta content="{{ site.title }}" property="og:title"/>
-    <meta content="{{ site.url }}" property="og:url"/>
-    <meta content="{{ site.description | strip_html | escape}}" property="og:description"/>
-  {% endif %}
-
-  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-  <script type="text/javascript" src="//use.typekit.net/agk0bgp.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  {% include twitter-card %}
+  {% include facebook-open-graph %}
+  {% include typekit %}
 </head>
 
 <body>
   <div role="container">
     <header role="banner">
-      <h1 id="logo" class="tk-nudista-web">
+      <h1 id="logo">
         <a href="/">
           <acronym title="NeXTSTEP/Sun">NS</acronym>
           <strong>Hipster</strong>
@@ -48,7 +32,7 @@
       </h1>
 
       {% unless page.id %}
-        <h2 class="tk-nudista-web">
+        <h2>
           {{ site.description }}
         </h2>
       {% endunless %}
@@ -79,8 +63,6 @@
     </footer>
   </div>
 
-  {% include gauges %}
-
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script type="text/javascript" src="/js/jquery.fittext.js"></script>
   <script>
@@ -88,5 +70,7 @@
       $("article h1").fitText();
     }
   </script>
+
+  {% include gauges %}
 </body>
 </html>
