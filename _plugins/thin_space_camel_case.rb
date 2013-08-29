@@ -2,7 +2,7 @@ module Jekyll
   module ThinSpaceCamelCase
     REGEX = /(?:([a-z])([A-Z]+))/
 
-    def camel_split(string)
+    def camel_break(string)
       string.gsub(REGEX, "\\1\u200B\\2")
     end
   end
