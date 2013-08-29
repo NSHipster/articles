@@ -1,5 +1,4 @@
 <meta content="{{ site.title }}" property="og:site_name"/>
-<meta content="{{ site.url }}/images/suit.png" property="og:image"/>
 {% if page.id %}
   <meta content="{{ page.title }}" property="og:title"/>
   <meta content="{{ site.url }}{{ page.url }}" property="og:url"/>
