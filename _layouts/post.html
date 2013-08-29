@@ -4,7 +4,7 @@ layout: default
 
 <article>
   <header>
-    <h1><a href="{{ page.url }}">{{ page.title }}</a></h1>
+    <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
     <h2> Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
   </header>
 
