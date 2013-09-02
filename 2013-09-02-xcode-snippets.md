@@ -82,6 +82,7 @@ Each snippet has the following fields:
     - Preprocessor Directive
     - String or Comment
     - Top Level
+- **Snippet** - The code you want to snip and reuse goes here. One helpful note, if you put any text within '<#" and '#>, it will be filled in as text to be substituted and can be easily navigated by tabbing through the code once it has been placed.
 
 
 > Each Xcode snippet has a file representation in `~/Library/Developer/Xcode/UserData/CodeSnippets/`
