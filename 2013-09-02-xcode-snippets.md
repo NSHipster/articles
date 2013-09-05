@@ -83,12 +83,21 @@ Each snippet has the following fields:
     - String or Comment
     - Top Level
 
-
 > Each Xcode snippet has a file representation in `~/Library/Developer/Xcode/UserData/CodeSnippets/`
+
+### Placeholder Tokens
+
+Something you may have noticed in using other Xcode snippets are placeholder tokens:
+
+![Placeholder Token](http://nshipster.s3.amazonaws.com/xcode-snippet-token.png)
+
+In Xcode, placeholder tokens are delimited by `<#` and `#>`, with the placeholder text in the middle. Go ahead—try typing that into Xcode, and watch as the text between the octothorp tags magically transforms right in front of your eyes.
+
+Include placeholder tags to add a dash of dynamism in your own snippets!
 
 ### Third-Party Xcode Snippets
 
-A list of generally useful code snippets can be found [in this GitHub project](https://github.com/mattt/Xcode-Snippets) (pull requests welcome!). If nothing else, this also serves as an example of what's possible in creating your own snippets.
+A list of generally useful code snippets can be found [in this GitHub project](https://github.com/mattt/Xcode-Snippets) (pull requests welcome!). If nothing else, this also serves as an example of what's possible.
 
 ---
 
