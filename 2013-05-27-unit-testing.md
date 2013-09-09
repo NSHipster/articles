@@ -9,7 +9,7 @@ rating: 8.9
 
 Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. [Cargo Cults like TDD](http://ntoll.org/article/tdd-cargo-cult) stake their reputation on unit testing to the point of co-opting and conflating utility with morality.
 
-It's as close to a religious debate as programmers get... nevermind the matter of tabs-versus-spaces.
+It's as close to a religious matter as programmers get, aside from the tabs-versus-spaces debate.
 
 Objective-C developers have, for the most part, remained relatively apathetic to Unit Testing (_"There's that SenTest thing, but who uses that, really?"_). Between static typing, typically manageable project sizes, and a compiler advanced enough to [rewrite code for you](http://clang.llvm.org/doxygen/Rewriter_8h_source.html), unit testing isn't as much of a necessity as it is for more dynamic languages like Ruby (at least in practice).
 
@@ -96,9 +96,9 @@ Here's a list of some of the most useful open source libraries for unit testing:
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/petejkim/expecta">Expecta</a></td>
+      <td><a href="https://github.com/specta/expecta">Expecta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=petejkim&repo=expecta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=expecta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/hamcrest/OCHamcrest">OCHamcrest</a></td>
@@ -112,9 +112,9 @@ Here's a list of some of the most useful open source libraries for unit testing:
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/petejkim/specta">Specta</a></td>
+      <td><a href="https://github.com/specta/specta">Specta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=petejkim&repo=specta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=specta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/allending/Kiwi">Kiwi</a></td>
