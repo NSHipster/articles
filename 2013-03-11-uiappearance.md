@@ -13,7 +13,7 @@ Message vs. Medium.
 Rhetoric vs. Dialectic.  
 
 Is beauty merely skin deep, or is it somehow informed by deeper truths?  
-What does it mean for something to posses good design?  
+What does it mean for something to possess good design?  
 Are aesthetic judgments relative, or absolute?
 
 These are deep questions that have been pondered by philosophers, artists, and makers alike for millenia.
@@ -31,7 +31,7 @@ It used to be that even trivial UI customization on iOS required AppStore-approv
 `UIAppearance` allows the appearance of views and controls to be consistently defined across the entire application. 
 
 In order to have this work within the existing structure of UIKit, Apple devised a rather clever solution: `UIAppearance` is a protocol that returns a proxy that will forward any configuration to instances of a particular class. Why a proxy instead of a property or method on `UIView` directly? Because there are non-`UIView` objects like `UIBarButtonItem` that render their own composite views. 
-Appearance can be customized all instances, or scoped to particular view hierarchies:
+Appearance can be customized for all instances, or scoped to particular view hierarchies:
 
 > - `+appearance`: Returns the appearance proxy for the receiver.
 > - `+appearanceWhenContainedIn:(Class <UIAppearanceContainer>)ContainerClass,...`: Returns the appearance proxy for the receiver in a given containment hierarchy. 
