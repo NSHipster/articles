@@ -131,7 +131,7 @@ Knowing how to toggle the debug area and activate the console in a single keystr
 
 ---
 
-## Find (`⌘F`) / Find & Replace (`⌘F`) <br/> Find in Project (`⇧⌘F`) / Find & Replace in Project (`⌥⇧⌘F`)
+## Find (`⌘F`) /<br/>Find & Replace (`⌥⌘F`) /<br/>Find in Project (`⇧⌘F`) /<br/>Find & Replace in Project (`⌥⇧⌘F`)
 
 ![Find](http://nshipster.s3.amazonaws.com/xcode-shortcuts-find.gif)
 
