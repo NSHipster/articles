@@ -103,7 +103,7 @@ Another piece of functionality now decoupled from `AFHTTPClient` is network reac
 
 ~~~{objective-c}
 NSURL *URL = [NSURL URLWithString:@"http://example.com"];
-AFHTTPSessionManager *manager = [[AFHTTPClient alloc] initWithBaseURL:URL];
+AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:URL];
 [manager GET:@"/resources" parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
     [resources addObjectsFromArray:responseObject[@"resources"]];
 
