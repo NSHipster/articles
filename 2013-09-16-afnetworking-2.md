@@ -13,7 +13,7 @@ description: "AFNetworking is one of the most widely used open source projects f
 By all accounts, AFNetworking is about as mainstream as it gets.
 
 _But have you heard about the sequel?_  
-[AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/tree/2.0). It's coming later this week (coinciding with the presumed release of iOS 7), and it changes everything.
+[AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/).
 
 This week on NSHipster: an exclusive look at the future of AFNetworking.
 
@@ -104,7 +104,7 @@ Another piece of functionality now decoupled from `AFHTTPClient` is network reac
 ~~~{objective-c}
 NSURL *URL = [NSURL URLWithString:@"http://example.com"];
 AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:URL];
-[manager GET:@"/resources" parameters:nil success:^(NSHTTPURLResponse *response, id responseObject) {
+[manager GET:@"/resources" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
     [resources addObjectsFromArray:responseObject[@"resources"]];
 
     [manager SUBSCRIBE:@"/resources" usingBlock:^(NSArray *operations, NSError *error) {
@@ -142,10 +142,8 @@ You can start playing around with AFNetworking 2.0 by putting the following in y
 
 ~~~{ruby}
 platform :ios, '7.0'
-pod "AFNetworking", "2.0.0-RC3"
+pod "AFNetworking", "2.0.0"
 ~~~
-
-AFNetworking 2.0.0 proper will be coming in a few days. And although there have been rather significant API differences between release candidates, you can expect the current APIs to be sticking around for good, such that the only real differences between the latest RC and the official release will be relatively minor or bugfixes.
 
 For anyone coming over to AFNetworking from the current 1.x release, you may find [the AFNetworking 2.0 Migration Guide](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide) especially useful.
 
