@@ -50,11 +50,11 @@ Learn to rely less on the Project Navigator by learning to love Open Quickly. Th
 
 ---
 
-## Quick Documentation (`⌥ʘ` on Symbol) <br/> Open Documentation (`⌥ʘʘ` on Symbol)
+## Quick Documentation (`⌥ʘ` on Symbol / Three-Finger Tap) <br/> Open Documentation (`⌥ʘʘ` on Symbol)
 
 ![Quick Documentation](http://nshipster.s3.amazonaws.com/xcode-shortcuts-quick-documentation.gif)
 
-Quick Documentation is probably the first Xcode shortcut developers should learn. Just alt-click any class, variable, or constant value, and Xcode will give you a quick rundown of what you're looking at. Alt-double-click to bring up the documentation window, opened to the relevant entry.
+Quick Documentation is probably the first Xcode shortcut developers should learn. Just alt-click (or three-finger tap) any class, variable, or constant value, and Xcode will give you a quick rundown of what you're looking at. Alt-double-click to bring up the documentation window, opened to the relevant entry.
 
 ## Jump to Definition (`⌘ʘ` on Symbol)
 
