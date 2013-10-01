@@ -127,7 +127,7 @@ Sandwiching the editors on the left and right flanks, the Navigator and Utilitie
 
 Anyone miss the option in Xcode 3 to have a detached debugger window? Yeah, me too.
 
-Knowing how to toggle the debug area and activate the console in a single keystroke ma be a shallow consolation, but it does help take the edge off of the pain or loss.
+Knowing how to toggle the debug area and activate the console in a single keystroke may be a shallow consolation, but it does help take the edge off of the pain or loss.
 
 ---
 
