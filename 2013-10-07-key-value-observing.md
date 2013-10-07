@@ -21,7 +21,7 @@ In Objective-C and Cocoa, there are a number of ways that these events are commu
 - **Delegates** are a popular pattern for signaling events over a fixed set of methods to a designated handler. For example, `UIScrollView` sends `scrollViewDidScroll:` to its delegate each time its scroll offset changes.
 - **Callbacks** of various sorts, whether block properties like `NSOperation -completionBlock`, which trigger after `isFinished == YES`, or C function pointers passed as hooks into functions like `SCNetworkReachabilitySetCallback(3)`.
 
-Of all of these methods, Key-Value Observing is arguably the least well-understood. So this week, NSHipster will endeavor to provide some much-needed clarification and notion of best practices to this situation. To the casual observer, this may seem an exercise in utility, but subscribers to this publication know better.
+Of all of these methods, Key-Value Observing is arguably the least well-understood. So this week, NSHipster will endeavor to provide some much-needed clarification and notion of best practices to this situation. To the casual observer, this may seem an exercise in futility, but subscribers to this publication know better.
 
 ---
 
