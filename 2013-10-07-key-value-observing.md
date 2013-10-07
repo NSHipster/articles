@@ -155,11 +155,11 @@ It's that simple: a static value that stores its own pointer. It means nothing o
 
 ## Unsubscribing
 
-When an observer is finished listening for changes on an object, it is expected to call `–removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc`, `-viewDidUnload`, or a similar destruction method.
+When an observer is finished listening for changes on an object, it is expected to call `–removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc` (or a similar destruction method).
 
 ### Safe Unsubscribe with `@try` / `@catch`
 
-Perhaps the most pronounced annoyance with KVO is how it gets you at the end. If you make a call to `–removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place). The kicker is that _there's not built-in way to even check if an object is registered_!
+Perhaps the most profound annoyance about KVO is that if you make a call to `–removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place), it throws an exception. The kicker is that _there's not built-in way to even check if an object is registered_!
 
 Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled `@catch`:
 
