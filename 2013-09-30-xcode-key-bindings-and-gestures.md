@@ -21,7 +21,7 @@ Xcode key bindings and gestures not only shave off seconds of precious work, but
 
 > For your reference, here is a legend of the common modifier key symbols (as well as a symbol for click [shamelessly borrowed from the International Phonetic Alphabet](http://en.wikipedia.org/wiki/Click_consonant)):
 
-<table>
+<table id="xcode-key-bindings-modifiers">
   <thead>
     <tr>
       <th>Command</th>
