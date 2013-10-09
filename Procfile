@@ -1,3 +1,3 @@
-thin: bundle exec thin start -p $PORT
-jekyll: bundle exec jekyll build
+unicorn: bundle exec unicorn -p $PORT
+jekyll: bundle exec jekyll --auto
 compass: bundle exec compass watch .
