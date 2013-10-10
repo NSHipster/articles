@@ -23,7 +23,7 @@ In Objective-C, the documentation tool of choice is [`appledoc`](https://github.
 
 Here are some examples from well-documented Objective-C projects:
 
-- [`AFHTTPClient.h`](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFHTTPClient.h)
+- [`AFHTTPSessionManager.h`](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFHTTPSessionManager.h)
 - [`MRBrew.h`](https://github.com/marcransome/MRBrew/blob/master/MRBrew/MRBrew.h)
 - [`GRMustache.h`](https://github.com/groue/GRMustache/blob/master/src/classes/GRMustache.h)
 - [`TTTAddressFormatter.h`](https://github.com/mattt/FormatterKit/blob/master/FormatterKit/TTTAddressFormatter.h)
