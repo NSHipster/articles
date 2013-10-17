@@ -27,7 +27,7 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 ~~~{objective-c}
 NSError *error = nil;
-NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeLink
+NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
                                                         | NSTextCheckingTypePhoneNumber
                                                            error:&error];
 
