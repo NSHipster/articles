@@ -62,9 +62,11 @@ The change dictionary in the notification will always contain an `NSKeyValueChan
 - `NSKeyValueObservingOptionPrior`: Whether separate notifications should be sent to the observer before and after each change, instead of a single notification after the change.
 The change dictionary in a notification sent before a change always contains an `NSKeyValueChangeNotificationIsPriorKey` entry whose value is `@YES`, but never contains an `NSKeyValueChangeNewKey` entry. When this option is specified the change dictionary in a notification sent after a change contains the same entries that it would contain if this option were not specified. You can use this option when the observer's own key-value observing-compliance requires it to invoke one of the `-willChange...` methods for one of its own properties, and the value of that property depends on the value of the observed object's property. (In that situation it's too late to easily invoke `-willChange...` properly in response to receiving an `observeValueForKeyPath:ofObject:change:context:` message after the change.)
 
-tl;dr: These options allow an object to get the values before and after the change. In practice, this is usually not necessary, since the new value is generally available from the current value of the property.
+These options allow an object to get the values before and after the change. In practice, this is usually not necessary, since the new value is generally available from the current value of the property.
 
-As for `context`, this parameter is a value that can be used later to differentiate between observations of different objects with the same key path. It's a niche use case, which will be discussed a little later.
+That said, `NSKeyValueObservingOptionInitial` can be helpful for reducing the code paths when responding to KVO events. For instance, if you have a method that dynamically enables a button based on the `text` value of a field, passing `NSKeyValueObservingOptionInitial` will have the event fire with its initial state once the observer is added.
+
+As for `context`, this parameter is a value that can be used later to differentiate between observations of different objects with the same key path. It's a bit complicated, and will be discussed later.
 
 ## Responding
 
@@ -95,7 +97,31 @@ A typical implementation of this method looks something like this:
 }
 ~~~
 
-Depending on how many kinds of objects are being observed by a single class, this method may also introduce `-isKindOfObject:`, `-respondsToSelector:`, or an equality check to `context` in order to definitively identify the kind of event being passed.
+Depending on how many kinds of objects are being observed by a single class, this method may also introduce `-isKindOfObject:` or `-respondsToSelector:` in order to definitively identify the kind of event being passed. However, the safest method is to do an equality check to `context`—especially when dealing with subclasses whose parents observe the same keypath.
+
+### Correct Context Declarations
+
+What makes a good `context` value? Here's a suggestion:
+
+~~~{objective-c}
+static void * XXContext = &XXContext;
+~~~
+
+It's that simple: a static value that stores its own pointer. It means nothing on its own, which makes it rather perfect for `<NSKeyValueObserving>`:
+
+~~~{objective-c}
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
+                       context:(void *)context
+{
+  if (context == XXContext) {
+      if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
+        
+      }
+  }
+}
+~~~
 
 ### Better Key Paths
 
@@ -125,34 +151,6 @@ Since `@selector` looks through all available selectors in the target, this won'
 }
 ~~~
 
-### Correct Context Declarations
-
-What makes a good `context` value? Here's a suggestion:
-
-~~~{objective-c}
-static void * XXContext = &XXContext;
-~~~
-
-It's that simple: a static value that stores its own pointer. It means nothing on its own, which makes it rather perfect for `<NSKeyValueObserving>`:
-
-~~~{objective-c}
-- (void)observeValueForKeyPath:(NSString *)keyPath
-                      ofObject:(id)object
-                        change:(NSDictionary *)change
-                       context:(void *)context
-{
-    if ([object isKindOfClass:[NSOperation class]]) {
-        if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
-            if (context == XXContext) {
-                // ...
-            } else {
-                // ...
-            }
-        }
-    }
-}
-~~~
-
 ## Unsubscribing
 
 When an observer is finished listening for changes on an object, it is expected to call `–removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc` (or a similar destruction method).
@@ -169,38 +167,22 @@ Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled
                         change:(NSDictionary *)change
                        context:(void *)context
 {
-    if ([object isKindOfClass:[NSOperation class]]) {
-        if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
-            if ([object isFinished]) {
-              @try {
-                  [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(isFinished))];
-              }
-              @catch (NSException * __unused exception) {}
-            }
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
+        if ([object isFinished]) {
+          @try {
+              [object removeObserver:self forKeyPath:NSStringFromSelector(@selector(isFinished))];
+          }
+          @catch (NSException * __unused exception) {}
         }
     }
 }
 ~~~
 
+Granted, _not_ handling a caught exception, as in this example, is waving the `[UIColor whiteColor]` flag of surrender. Therefore, one should only really use this technique when faced with intermittent crashes which cannot be remedied by normal book-keeping (whether due to race conditions or undocumented behavior from a superclass).
+
 ## Automatic Property Notifications
 
 KVO is made useful by its near-universal adoption. Because of this, much of the work necessary to get everything hooked up correctly is automatically taken care of by the compiler and runtime.
-
-But this wasn't always the case. Back before `@synthesize`, in the days of OS X and bindings, there was a lot of boilerplate that needed to be written for getters & setters:
-
-~~~{objective-c} 
-- (double)price {
-    return _price;
-}
-
-- (void)setPrice:(double)price {
-    [self willChangeValueForKey:@"price"];
-    _price = price;
-    [self didChangeValueForKey:@"price"];
-}
-~~~
-
-However, with today's modern conveniences of Objective-C 2.0, LLVM, & Clang, everything is taken care of for you automatically. Not only are `@property` declarations _automatically_ `@synthesized`, but even custom setter implementations don't even need `willChangeValueForKey:` / `didChangeValueForKey:`; the runtime already expects that to change the value, by convention.
 
 > Classes can opt-out of automatic KVO by overriding `+automaticallyNotifiesObserversForKey:` and returning `NO`.
 
