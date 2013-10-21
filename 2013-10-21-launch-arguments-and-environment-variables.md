@@ -43,9 +43,9 @@ Getting localization right is a challenging and time-consuming task in and of it
 
 > For more information about localization, check out our article about [`NSLocalizedString`](http://nshipster.com/nslocalizedstring/).
 
-#### NSDoubleLocalizedString
+#### NSDoubleLocalizedStrings
 
-To simulate German's UI-breaking _götterdämmere Weltanschauung_ of long-compound-words-unbroken-by-breakable-whitespace, there's `NSDoubleLocalizedString`. 
+To simulate German's UI-breaking _götterdämmere Weltanschauung_ of long-compound-words-unbroken-by-breakable-whitespace, there's `NSDoubleLocalizedStrings`. 
 
 According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/globalization/guidelines/a3.html), we can expect translations from English to many European languages to be double or even triple the physical space of the source:
 
@@ -67,9 +67,9 @@ According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/glo
 
 While you're waiting for the first batch of translations to come back, or are merely curious to see how badly your UI breaks under linguistic pressure, specify the following launch argument:
 
-    -NSDoubleLocalizedString YES
+    -NSDoubleLocalizedStrings YES
 
-![NSDoubleLocalizedString - Before & After](http://nshipster.s3.amazonaws.com/launch-arguments-nsdoublelocalizedstring.png)
+![NSDoubleLocalizedStrings - Before & After](http://nshipster.s3.amazonaws.com/launch-arguments-nsdoublelocalizedstrings.png)
 
 #### NSShowNonLocalizedStrings
 
