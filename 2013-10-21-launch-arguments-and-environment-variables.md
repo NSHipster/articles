@@ -181,7 +181,7 @@ Although unlikely, you may come across a situation where you want logging to `st
 </thead>
 <tbody>
 <tr><td><tt>NSUnbufferedIO</tt></td><td>If set to YES, Foundation will use unbuffered I/O for <tt>stdout</tt> (<tt>stderr</tt> is unbuffered by default).</td></tr>
-</tbody
+</tbody>
 </table>
 
 * * *
