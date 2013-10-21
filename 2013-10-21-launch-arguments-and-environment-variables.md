@@ -35,7 +35,7 @@ For the purposes of debugging an app target, launch arguments and environment va
 
 ## Arguments Passed on Launch
 
-Any argument passed on launch will override the current value in `NSUserDefaults` for the duration of execution. While this can be used for domain-specific testing and debugging, the two most widely-applicable use cases are for localization and Core Data.
+Any argument passed on launch will override the current value in `NSUserDefaults` for the duration of execution. While this can be used for domain-specific testing and debugging, the two most widely applicable use cases are for localization and Core Data.
 
 ### Localization
 
@@ -92,7 +92,7 @@ Normally, one would have to manually go through Settings > General > Internation
 
 ### Core Data
 
-Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzingly fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments: 
+Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzlingly fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments: 
 
 #### SQL Debug
 
