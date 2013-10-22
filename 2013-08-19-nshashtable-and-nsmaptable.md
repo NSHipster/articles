@@ -50,7 +50,7 @@ NSLog(@"Members: %@", [hashTable allObjects]);
 
 - `NSDictionary` / `NSMutableDictionary` copies keys, and holds strong references to values.
 - `NSMapTable` is mutable, without an immutable counterpart.
-- `NSMapTable` can hold keys and values with `weak` references, in such a way that entries are removed when either the key or value is dereferenced.
+- `NSMapTable` can hold keys and values with `weak` references, in such a way that entries are removed when either the key or value is deallocated.
 - `NSMapTable` can `copy` its values on input.
 - `NSMapTable` can contain arbitrary pointers, and use pointer identity for equality and hashing checks.
 
