@@ -192,7 +192,7 @@ Well, you can implement the method `keyPathsForValuesAffectingAddress` (or its l
 
 ~~~{objective-c}
 + (NSSet *)keyPathsForValuesAffectingAddress {
-    return [NSSet setWithObjects:@"streetAddress", @"locality", @"region", @"postalCode", nil];
+    return [NSSet setWithObjects:NSStringFromSelector(@selector(streetAddress)), NSStringFromSelector(@selector(locality)), NSStringFromSelector(@selector(region)), NSStringFromSelector(@selector(postalCode)), nil];
 }
 ~~~
 
