@@ -50,11 +50,11 @@ Learn to rely less on the Project Navigator by learning to love Open Quickly. Th
 
 ---
 
-## Quick Documentation (`⌥ʘ` on Symbol) <br/> Open Documentation (`⌥ʘʘ` on Symbol)
+## Quick Documentation (`⌥ʘ` on Symbol / Three-Finger Tap) <br/> Open Documentation (`⌥ʘʘ` on Symbol)
 
 ![Quick Documentation](http://nshipster.s3.amazonaws.com/xcode-shortcuts-quick-documentation.gif)
 
-Quick Documentation is probably the first Xcode shortcut developers should learn. Just alt-click any class, variable, or constant value, and Xcode will give you a quick rundown of what you're looking at. Alt-double-click to bring up the documentation window, opened to the relevant entry.
+Quick Documentation is probably the first Xcode shortcut developers should learn. Just alt-click (or three-finger tap) any class, variable, or constant value, and Xcode will give you a quick rundown of what you're looking at. Alt-double-click to bring up the documentation window, opened to the relevant entry.
 
 ## Jump to Definition (`⌘ʘ` on Symbol)
 
@@ -127,7 +127,7 @@ Sandwiching the editors on the left and right flanks, the Navigator and Utilitie
 
 Anyone miss the option in Xcode 3 to have a detached debugger window? Yeah, me too.
 
-Knowing how to toggle the debug area and activate the console in a single keystroke ma be a shallow consolation, but it does help take the edge off of the pain or loss.
+Knowing how to toggle the debug area and activate the console in a single keystroke may be a shallow consolation, but it does help take the edge off of the pain or loss.
 
 ---
 
