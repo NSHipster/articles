@@ -18,10 +18,10 @@ For everyone that couldn't make it to the event, here's an opportunity to play a
 - Play with up to 5 friends for maximum enjoyment
 - Don't be lame and look things up on the Internet or in Xcode
 
----
+* * *
 
 Round 1: General Knowledge
-==========================
+--------------------------
 
 1. Mac OS 10.9 Mavericks is named after a surf spot in Northern California. What was the surf spot named after?
 2. What is the Objective-C Type Encoding of `NSError **`?
@@ -31,7 +31,8 @@ Round 1: General Knowledge
 6. On May 19, 2001 Apple opened its first 2 retail stores. Where were they? (1 point for each exact location, or ½‎ for each state)
 7. What is the name of the private Apple TV framework responsible for appliance UI?
 8. Which Apple VP said "Can't innovate anymore,  my ass!"?
-9. Complete the following verse:
+9. List all of the rooms in Moscone West named after San Francisco neighborhoods, starting at Level 2 (1 point for each room)
+10. Complete the following verse:
 
 > We've come too far
 > To give up who we are
@@ -40,25 +41,9 @@ Round 1: General Knowledge
 >
 >She's up all night to the sun...
 
-10. List all of the rooms in Moscone West named after San Francisco neighborhoods, starting at Level 2 (1 point for each room)
-
----
-
-### Answers for Round 1
-
-1. [A white-haired German Shepherd named Maverick](http://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
-2. [`^@`](http://nshipster.com/type-encodings/)
-3. [`genstrings`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html)
-4. `NSArray -firstObject`
-5. [ICU (International Components for Unicode)](http://site.icu-project.org)
-6. [ Tysons Corner, Virginia & Glendale, California](http://en.wikipedia.org/wiki/Apple_Store#History)
-7. [BackRow](http://nshipster.com/backrow/)
-8. [Phil Schiller](http://www.theverge.com/2013/6/13/4423844/cant-innovate-anymore-my-ass-apple)
-9. ["So let's raise the bar / And our cups to the stars"](http://rock.rapgenius.com/Daft-punk-get-lucky-lyrics)
-10. Pacific Heights, Mission, Nob Hill, Russian Hill, Marina, Presidio
 
 Round 2: Before & After
-=======================
+-----------------------
 
 What are the following better known as today?
 
@@ -73,23 +58,8 @@ What are the following better known as today?
 9. 20525 Mariani Ave.
 10. Yerba Buena (has to do with California, not Apple)
 
----
-
-### Answers for Round 2
-
-1. [Cocoa](http://en.wikipedia.org/wiki/Cocoa_%28API%29)
-2. [Sherlock](http://en.wikipedia.org/wiki/Sherlock_%28Software%29)
-3. [Mac OS X 10.2](http://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
-4. [Bonjour](http://en.wikipedia.org/wiki/Bonjour_%28Software%29)
-5. [iTunes](http://en.wikipedia.org/wiki/Itunes#History)
-6. [System 6 / Mac OS 6](http://en.wikipedia.org/wiki/System_6)
-7. [Accessibility](http://www.apple.com/accessibility/)
-8. [Pixar](https://en.wikipedia.org/wiki/Pixar)
-9. [1 Infinite Loop](https://en.wikipedia.org/wiki/1_infinite_loop)
-10. [San Francisco](http://www.sfmuseum.org/hist/name.html)
-
 Round 3: Picture Round
-======================
+----------------------
 
 - 1. Which WWDC keynote was this from?
 
@@ -131,9 +101,57 @@ Round 3: Picture Round
 
 ![Question 10](http://nshipster-quiz-2.s3.amazonaws.com/question-10.jpg)
 
----
+Round 4: Name That Framework!
+-----------------------------
 
-### Answers for Round 3
+For each question, a list of three classes from the same framework have been listed without their two-letter namespace prefix. Name the framework that they all belong to!
+
+1. Call, CallCenter, Carrier
+2. Attitude, LogItem, Magnetometer Data
+3. IdentifierManager
+4. Request, ComposeViewController, ServiceTypes.h
+5. Metadata, FileWrapper, FileManager
+6. Alarm, RecurrenceEnd, Source
+7. NotificationBanner, Player, SessionError
+8. Null, Zone, Coder
+9. Attribute Description, Relationship Description, Property Mapping
+10. Map Table, Hash Table, Pointer Array
+
+* * *
+
+# Answers
+
+Round 1: General Knowledge
+--------------------------
+
+1. [A white-haired German Shepherd named Maverick](http://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
+2. [`^@`](http://nshipster.com/type-encodings/)
+3. [`genstrings`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html)
+4. `NSArray -firstObject`
+5. [ICU (International Components for Unicode)](http://site.icu-project.org)
+6. [ Tysons Corner, Virginia & Glendale, California](http://en.wikipedia.org/wiki/Apple_Store#History)
+7. [BackRow](http://nshipster.com/backrow/)
+8. [Phil Schiller](http://www.theverge.com/2013/6/13/4423844/cant-innovate-anymore-my-ass-apple)
+9. Pacific Heights, Mission, Nob Hill, Russian Hill, Marina, Presidio
+10. ["So let's raise the bar / And our cups to the stars"](http://rock.rapgenius.com/Daft-punk-get-lucky-lyrics)
+
+
+Round 2: Before & After
+-----------------------
+
+1. [Cocoa](http://en.wikipedia.org/wiki/Cocoa_%28API%29)
+2. [Sherlock](http://en.wikipedia.org/wiki/Sherlock_%28Software%29)
+3. [Mac OS X 10.2](http://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
+4. [Bonjour](http://en.wikipedia.org/wiki/Bonjour_%28Software%29)
+5. [iTunes](http://en.wikipedia.org/wiki/Itunes#History)
+6. [System 6 / Mac OS 6](http://en.wikipedia.org/wiki/System_6)
+7. [Accessibility](http://www.apple.com/accessibility/)
+8. [Pixar](https://en.wikipedia.org/wiki/Pixar)
+9. [1 Infinite Loop](https://en.wikipedia.org/wiki/1_infinite_loop)
+10. [San Francisco](http://www.sfmuseum.org/hist/name.html)
+
+Round 3: Picture Round
+----------------------
 
 1. 2011
 2. 2009
@@ -147,26 +165,7 @@ Round 3: Picture Round
 10. ["Federighi"](http://en.wikipedia.org/wiki/Craig_Federighi)
 
 Round 4: Name That Framework!
-=============================
-
-For each question, a list of three classes from the same framework have been listed without their two-letter namespace prefix. Name the framework that they all belong to!
-
----
-
-1. Call, CallCenter, Carrier
-2. Attitude, LogItem, Magnetometer Data
-3. IdentifierManager
-4. Request, ComposeViewController, ServiceTypes.h
-5. Metadata, FileWrapper, FileManager
-6. Alarm, RecurrenceEnd, Source
-7. NotificationBanner, Player, SessionError
-8. Null, Zone, Coder
-9. Attribute Description, Relationship Description, Property Mapping
-10. Map Table, Hash Table, Pointer Array
-
----
-
-### Answers for Round 4
+-----------------------------
 
 1. [Core Telephony](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html)
 2. [Core Motion](http://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
@@ -179,7 +178,7 @@ For each question, a list of three classes from the same framework have been lis
 9. [Core Data](http://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html)
 10. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html) or [Core Foundation](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CoreFoundation_Collection/_index.html) (2 points if you got both)
 
----
+* * *
 
 So how did you fare? Tweet out your score to see how you stack up to your peers!
 
