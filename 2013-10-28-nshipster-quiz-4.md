@@ -119,8 +119,8 @@ Round 2: Foundation Potpourri
 6. `CFBag`
 7. `NSValue +valueWithNonretainedObject:`
 8. `@compatibility_alias`
-9. `setObject:atIndexedSubscript:`
-10. `NSLock`, `NSConditionLock`, `NSRecursiveLock`, & `NSCondition`
+9. `NSLock`, `NSConditionLock`, `NSRecursiveLock`, & `NSCondition`
+10. `setObject:atIndexedSubscript:`
 
 Round 3: Picture Round
 ----------------------

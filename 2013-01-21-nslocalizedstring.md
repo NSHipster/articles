@@ -87,7 +87,7 @@ Here's what that looks like:
 /* No comment provided by engineer. */
 "Username"="nom d'utilisateur";
 /* {User First Name}'s Profile */
-"%@'s Profile"="%1$@ profil";
+"%@'s Profile"="profil de %1$@";
 ~~~
 
 `Localizable.strings` files are initially generated with `genstrings`.
