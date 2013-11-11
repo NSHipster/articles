@@ -1,16 +1,15 @@
 ---
 layout: post
 title: NSOperation
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 framework: Foundation
 rating: 9.0
-published: true
+description: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
 ---
 
-Everyone knows that the secret to making an app snappy and responsive is to offload computation to be done asynchronously in the background. Thus, the modern Objective-C developer has two options: [Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch) or [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). 
+Everyone knows that the secret to making an app snappy and responsive is to offload computation to be done asynchronously in the background. 
 
-Since GCD has gone pretty mainstream, let's focus on the latter, object-oriented approach.
+The modern Objective-C developer has two options in this respect: [Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch) or [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). Since GCD has gone pretty mainstream, let's focus on the latter, object-oriented approach.
 
 `NSOperation` represents a single unit of computation. It's an abstract class that gives subclasses a useful, thread-safe way to model aspects like state, priority, dependencies, and cancellation. Or, if subclassing isn't your cup of tea, there's always `NSBlockOperation`, a concrete subclass that wraps block in operations.
 
