@@ -60,7 +60,7 @@ for (NSString *identifier in @[@"en_US", @"fr_FR"]) {
 
 ### Rounding & Significant Digits
 
-In order to prevent numbers from getting annoyingly pedantic (_"thirty-two point three three, repeating, of course..."_), make sure get a handle on `NSNumberFormatter`'s rounding behavior.
+In order to prevent numbers from getting annoyingly pedantic (_"thirty-two point three three, repeating, of course..."_), make sure to get a handle on `NSNumberFormatter`'s rounding behavior.
 
 The easiest way to do this, would be to `setUsesSignificantDigits:` to `YES`, and then set minimum and maximum number of significant digits appropriately. For example, a number formatter used for approximate distances in directions, would do well with significant digits to the tenths place for miles or kilometers, but only the ones place for feet or meters.
 
