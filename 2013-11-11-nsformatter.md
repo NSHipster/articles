@@ -72,7 +72,7 @@ For anything more advanced, an `NSDecimalNumberHandler` object can be passed as 
 
 ### Date & Time Styles
 
-The most important properties for an `NSDateFormatter` object are its `dateStyle` and `timeStyle`. Like `NSNumberFormatter -numberStyle`, these styles provide common preset configurations for common formats. In this case, the various formats are distinguished by their specificity (more specific = longer).
+The most important properties for an `NSDateFormatter` object are its `dateStyle` and `timeStyle`. Like `-[NSNumberFormatter numberStyle]`, these styles provide common preset configurations for common formats. In this case, the various formats are distinguished by their specificity (more specific = longer).
 
 Both properties share a single set of `enum` values: 
 
