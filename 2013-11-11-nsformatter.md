@@ -195,7 +195,7 @@ If the same formatter is privately implemented across several classes, one could
 
 * * *
 
-If your app deals in numbers or dates, `NSFormatter` is indespensable. Actually, if your app doesn't... then what _does_ it do, exactly?
+If your app deals in numbers or dates, `NSFormatter` is indespensable. Actually, if your app doesn't… then what _does_ it do, exactly?
 
 Presenting useful information to users is as much about content as presentation. Invest in learning all of the secrets of `NSNumberFormatter` and `NSDateFormatter` to get everything exactly how you want them.
 
