@@ -18,7 +18,7 @@ All of this is to say that sending `-description` to an object just isn't going 
 
 Its origins trace back to `NSCell`, which is used to display information and accept user input in tables, form fields, and other views in AppKit. Much of the API design of NSFormatter reflects this.
 
-Foundation provides two concrete subclasses for `NSFormatter`: `NSNumberFormatter` and `NSDateFormatter`. As some of the oldest members of the Foundation framework, these classes are astonishingly well-suited to their respective domains, in that way only decade-old software can.
+Foundation provides three concrete subclasses for `NSFormatter`: `NSNumberFormatter`, `NSDateFormatter`, and `NSByteCountFormatter`. As some of the oldest members of the Foundation framework, these classes are astonishingly well-suited to their respective domains, in that way only decade-old software can.
 
 ## NSNumberFormatter
 
