@@ -22,7 +22,7 @@ Foundation provides two concrete subclasses for `NSFormatter`: `NSNumberFormatte
 
 ## NSNumberFormatter
 
-`NSNumberFormatter` handles every aspect of number formatting imaginable, from mathematical and scientific notation, to currencies and percentages. Nearly everything about the formatter can be customized, whether its the currency symbol, grouping separator, number of significant digits, rounding behavior, fractions, character for infinity, string representation for `0`, or maximum / minimum values. It can even write out numbers in several languages!
+`NSNumberFormatter` handles every aspect of number formatting imaginable, from mathematical and scientific notation, to currencies and percentages. Nearly everything about the formatter can be customized, whether it's the currency symbol, grouping separator, number of significant digits, rounding behavior, fractions, character for infinity, string representation for `0`, or maximum / minimum values. It can even write out numbers in several languages!
 
 ### Number Styles
 
