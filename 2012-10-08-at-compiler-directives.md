@@ -231,7 +231,7 @@ struct {
 
 There are some `@` compiler directives specifically purposed for providing shortcuts for common optimizations. 
 
-- `@autoreleasepool{}`: If your code contains a tight loop that creates lots of temporary objects, you can use the `@autorelease` directive to optimize for these short-lived, locally-scoped objects by being more aggressive about how they're deallocated. `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, which is significantly slower, and unavailable with ARC.
+- `@autoreleasepool{}`: If your code contains a tight loop that creates lots of temporary objects, you can use the `@autoreleasepool` directive to optimize for these short-lived, locally-scoped objects by being more aggressive about how they're deallocated. `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, which is significantly slower, and unavailable with ARC.
 - `@synchronized(){}`: This directive offers a convenient way to guarantee the safe execution of a particular block within a specified context (usually `self`). Locking in this way is expensive, however, so for classes aiming for a particular level of thread safety, a dedicated `NSLock` property or the use of low-level locking functions like `OSAtomicCompareAndSwap32(3)` are recommended.
 
 ## Compatibility
