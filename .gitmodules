@@ -1,3 +1,6 @@
 [submodule "_posts"]
 	path = _posts
 	url = https://github.com/NSHipster/articles
+[submodule "nshipster.com/_posts"]
+	path = nshipster.com/_posts
+	url = git@github.com:NSHipster/articles.git

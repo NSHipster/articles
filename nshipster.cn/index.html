@@ -1,0 +1,39 @@
+---
+layout: default
+title: NSHipster
+---
+
+<section id="latest">
+  <article>
+    <header>
+      <hgroup>
+        <h1><a href="{{ site.posts.first.url }}">{{ site.posts.first.title | camel_break }}</a></h1>
+      </hgroup>
+    </header>
+
+    {% if site.posts.first.description %}
+      <p>{{ site.posts.first.description }}</p>
+    {% else %}
+      {{ site.posts.first | only_first_p }}
+    {% endif %}
+
+    <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
+  </article>
+</section>
+
+<section id="archive">
+  {% for post in site.posts offset:1 %}
+  	<article>
+      <header>
+        <h1><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+      </header>
+      {% if post.description %}
+        <p>{{ post.description }}</p>
+      {% else %}
+        {{ post | only_first_p }}
+      {% endif %}
+
+      <a class="readmore" href="{{ post.url }}">Read more</a>
+    </article>
+  {% endfor %}
+</section>

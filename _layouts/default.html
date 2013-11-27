@@ -15,11 +15,41 @@
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"/>
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
-  <link rel="stylesheet" href="/css/screen.css"/>
+  <link rel="stylesheet" href="//cdn.nshipster.com/css/screen.css"/>
 
-  {% include twitter-card %}
-  {% include facebook-open-graph %}
-  {% include typekit %}
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@NSHipster">
+  <meta name="twitter:creator" content="@mattt">
+  {% if page.id %}
+    <meta name="twitter:title" content="{{ page.title }}">
+    {% if page.description %}
+      <meta name="twitter:description" content="{{ page.description | strip_html | escape }}">
+    {% else %}
+      <meta name="twitter:description" content="{{ page.content | truncate: 250 | strip_html | escape }}">
+    {% endif %}
+  {% else %}
+    <meta name="twitter:title" content="{{ site.title }}">
+    <meta name="twitter:description" content="{{ site.description | strip_html | escape}}">
+  {% endif %}
+
+  <meta content="{{ site.title }}" property="og:site_name"/>
+  {% if page.id %}
+    <meta content="{{ page.title }}" property="og:title"/>
+    <meta content="{{ site.url }}{{ page.url }}" property="og:url"/>
+    {% if page.description %}
+      <meta content="{{ page.description | strip_html | escape }}" property="og:description"/>
+    {% else %}
+      <meta content="{{ page.content | truncate: 250 | strip_html | escape }}" property="og:description"/>
+    {% endif %}
+  {% else %}
+    <meta content="{{ site.title }}" property="og:title"/>
+    <meta content="{{ site.url }}" property="og:url"/>
+    <meta content="{{ site.description | strip_html | escape}}" property="og:description"/>
+  {% endif %}
+
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+  <script type="text/javascript" src="//use.typekit.net/agk0bgp.js"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
@@ -29,7 +59,7 @@
         <a href="/">
           <acronym title="NeXTSTEP/Sun">NS</acronym>
           <strong>Hipster</strong>
-          <img id="moustache" src="/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" />
+          <img id="moustache" src="//cdn.nshipster.com/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" />
         </a>
       </h1>
 
@@ -56,15 +86,44 @@
       </section>
 
       <aside class="links">
-        <a href="http://nshipster.com/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
+        <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
 
       {% if page.id %}
-        {% include archive %}
+        <section class="archive" role="navigation">
+          {% for group in site.groups %}
+            <div>
+              <h2>{{ group }}</h2>
+              <ul>
+                {% for post in site.posts | sort_by_title %}
+                  {% if post.framework == group %}
+                    <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+                  {% elsif group == 'Miscellanea' %}
+                    {% unless site.groups contains post.framework %}
+                      <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+                    {% endunless %}
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          {% endfor %}
+        </section>
       {% endif %}
     </footer>
   </div>
 
-  {% include gauges %}
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function() {
+      var t   = document.createElement('script');
+      t.type  = 'text/javascript';
+      t.async = true;
+      t.id    = 'gauges-tracker';
+      t.setAttribute('data-site-id', '510be6d4108d7b438800005f');
+      t.src = '//secure.gaug.es/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
 </body>
 </html>

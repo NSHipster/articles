@@ -5,9 +5,19 @@
 
   #cover
     +box-shadow(0px 3px 10px #d6d6d6)
+    display: block
+    width: 150px !important
+    height: 200px !important
     float: left
     margin-right: 40px
     border: 1px #ccc solid
+    background-image: url('//cdn.nshipster.com/images/book-cover.png')
+    background-size: 150px 200px
+    background-repeat: no-repeat
+
+  @media (-webkit-min-device-pixel-ratio:2)
+    #cover
+      background-image: url('//cdn.nshipster.com/images/book-cover@2x.png')
 
   div
     +column(18)

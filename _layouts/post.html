@@ -13,11 +13,12 @@ layout: default
   </div>
 
   <aside>
-    {% include twitter-share %}
+    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-via="NSHipster" data-size="large">Tweet</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
   </aside>
 
   <footer id="book" class="promotion">
-    <a href="https://gum.co/nshipster"><img id="cover" src="/images/book-cover.png"/></a>
+    <a href="https://gum.co/nshipster"><div id="cover"></div></a>
     <div>
       <hgroup>
         <h1><a href="https://gum.co/nshipster">NSHipster: Obscure Topics in Cocoa &amp; Objective-C</a></h1>
