@@ -80,7 +80,7 @@ The modern, block-based API for adding notification observers is `–addObserver
 
 The `name` and `object` parameters of both methods are used to decide whether the criteria of a posted notification match the observer. If `name` is set, only notifications with that name will trigger, but if `nil` is set, then _all_ names will match. The same is true of `object`. So, if both `name` and `object` are set, only notifications with that name _and_ the specified object will trigger. However, if both `name` and `object` are `nil`, then _all_ notifications posted will trigger.
 
-> <sup>*</sup>See for yourself! An ordinary iOS app fires dozens of notifications just in the first second of being launched—many that you've probably never heard of before, nor will never have to think about again.
+> <sup>*</sup>See for yourself! An ordinary iOS app fires dozens of notifications just in the first second of being launched—many that you've probably never heard of before, nor will ever have to think about again.
 
 ~~~{objective-c}
 NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
