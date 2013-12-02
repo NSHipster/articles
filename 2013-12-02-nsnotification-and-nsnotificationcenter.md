@@ -13,47 +13,47 @@ One of the first lessons of socialization is to know one's audience. Sometimes c
 This is as true of humans as it is within a computer process. In Cocoa, there are a number of approaches to communicating between objects, with different characteristics of intimacy and coupling:
 
 <table>
-	<thead>
-		<tr>
-			<td class="empty" colspan="2" rowspan="2"></td>
-			<th colspan="2">Audience</th>
-		</tr>
-		<tr>
-			<th>Intimate (One-to-One)</th>
-			<th>Broadcast (One-to-Many)</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<th rowspan="2">Coupling</th>
-			<th>Loose</th>
-			<td>
-				<ul>
-					<li>Target-Action</li>
-					<li>Delegate</li>
-					<li>Callbacks</li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li><tt>Notifications</tt></li>
-				</ul>
-			</td>
-		</tr>
-		<tr>
-			<th>Strong</th>
-			<td>
-				<ul>
-					<li>Direct Method Invocation</li>
-				</ul>
-			</td>
-			<td>
-				<ul>
-					<li>Key-Value Observing</li>
-				</ul>
-			</td>
-		</tr>
-	</tbody>
+    <thead>
+        <tr>
+            <td class="empty" colspan="2" rowspan="2"></td>
+            <th colspan="2">Audience</th>
+        </tr>
+        <tr>
+            <th>Intimate (One-to-One)</th>
+            <th>Broadcast (One-to-Many)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th rowspan="2">Coupling</th>
+            <th>Loose</th>
+            <td>
+                <ul>
+                    <li>Target-Action</li>
+                    <li>Delegate</li>
+                    <li>Callbacks</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li><tt>Notifications</tt></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <th>Strong</th>
+            <td>
+                <ul>
+                    <li>Direct Method Invocation</li>
+                </ul>
+            </td>
+            <td>
+                <ul>
+                    <li>Key-Value Observing</li>
+                </ul>
+            </td>
+        </tr>
+    </tbody>
 </table>
 
 We've discussed the importance of how events are communicated in APIs previously in our [article on Key-Value Observing](http://nshipster.com/key-value-observing/). This week, we'll expand our look at the available options, with `NSNotificationCenter` & `NSNotification`.
@@ -78,7 +78,7 @@ The modern, block-based API for adding notification observers is `–addObserver
 
 > Contrary to a recent article claiming otherwise, `–addObserverForName:object:queue:usingBlock:` should _not_ be considered harmful. It's perfectly safe and suitable for use in applications. Just make sure to understand memory management rules when referencing `self` in blocks. Any concerns in this respect are the same as for any other block-based API.
 
-The `name` and `object` parameters of both methods are used to decide whether the criteria of a posted notification match the observer. If `name` is set, only notifications with that name will trigger, but it `nil` is set, then _all_ names will match. The same is true of `object`. So, if both `name` and `object` are set, only notifications with that name _and_ the specified object will trigger. However, if both `name` and `object` are `nil`, then _all_ notifications posted will trigger.
+The `name` and `object` parameters of both methods are used to decide whether the criteria of a posted notification match the observer. If `name` is set, only notifications with that name will trigger, but if `nil` is set, then _all_ names will match. The same is true of `object`. So, if both `name` and `object` are set, only notifications with that name _and_ the specified object will trigger. However, if both `name` and `object` are `nil`, then _all_ notifications posted will trigger.
 
 > <sup>*</sup>See for yourself! An ordinary iOS app fires dozens of notifications just in the first second of being launched—many that you've probably never heard of before, nor will never have to think about again.
 
@@ -131,36 +131,28 @@ Since notification dispatch happens on the posting thread, it may be necessary t
 
 Something that often slips up developers is how similar the method signatures for [Key-Value Observing](http://nshipster.com/key-value-observing/) are to those of `NSNotificationCenter`:
 
-<table>
-	<thead>
-		<tr>
-			<th>Key-Value Observing</th>
-			<th>NSNotificationCenter</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td>
-<pre><code>
+#### Key-Value Observing
+
+~~~{objective-c}
 - (void)addObserver:(NSObject *)observer
- 		 forKeyPath:(NSString *)keyPath
- 		    options:(NSKeyValueObservingOptions)options
- 		    context:(void *)context</code></pre></td>
-			<td>
-<pre><code>
+         forKeyPath:(NSString *)keyPath
+            options:(NSKeyValueObservingOptions)options
+            context:(void *)context
+~~~
+
+#### NSNotificationCenter
+
+~~~{objective-c}
 - (void)addObserver:(id)notificationObserver
            selector:(SEL)notificationSelector
-		       name:(NSString *)notificationName
-			 object:(id)notificationSender
+               name:(NSString *)notificationName
+             object:(id)notificationSender
 
 - (id)addObserverForName:(NSString *)name
                   object:(id)obj
-				   queue:(NSOperationQueue *)queue
-		      usingBlock:(void (^)(NSNotification *))block
-</code></pre></td>
-		</tr>
-	</tbody>
-</table>
+                   queue:(NSOperationQueue *)queue
+              usingBlock:(void (^)(NSNotification *))block
+~~~
 
 **Key-Value Observing adds observers for keypaths, while NSNotificationCenter adds observers for notifications.** Keep this distinction clear in your mind, and proceed to use both APIs confidently.
 
