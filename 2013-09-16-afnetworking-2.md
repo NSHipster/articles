@@ -20,30 +20,31 @@ _但你有没有听说过它的新版呢？_
 
 > 声明：NSHipster 由 [AFNetworking 的作者](https://twitter.com/mattt) 撰写，所以这并不是对 AFNetworking 及它的优点的客观看法。你能看到的是个人关于 AFNetworking 目前及未来版本的真实看法。
 
-## AFNetworking的大想法
+## AFNetworking 的大体思路
 
-始于2011年五月，AFNetworking作为一个[基于位置的社交网络](http://en.wikipedia.org/wiki/Gowalla)的[苹果例程](https://developer.apple.com/library/ios/samplecode/mvcnetworking/Introduction/Intro.html)的不起眼的延伸，它的成功是天时地利的产物。 当[ASIHTTPRequest](https://github.com/pokeb/asi-http-request)成为网络问题的实际解决方案时，AFNetworking的核心思想正好迎合上开发者想要寻找一个更加现代的解决方案的时机。
+始于 2011 年 5 月，AFNetworking 作为一个[已死的 LBS 项目](http://en.wikipedia.org/wiki/Gowalla)中对 [Apple 范例代码](https://developer.apple.com/library/ios/samplecode/mvcnetworking/Introduction/Intro.html)的延伸，它的成功更是由于时机。彼时 [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) 是网络方面的主流方案，AFNetworking 的核心思路使它正好成为开发者渴求的更现代的方案。
+
 ### NSURLConnection + NSOperation
 
-`NSURLConnection`是Foundation URL加载系统的基石。一个`NSURLConnection`异步地加载一个`NSURLRequest`对象，以`NSURLResponse`／`NSHTTPURLResponse`来调用它的委托的方法，并且其相关联的`NSData`被发送到并由服务器加载；委托还可以用来实现处理`NSURLAuthenticationChallenge`，重定向响应，或者用来决定相关的`NSCachedURLResponse`如何被存储在共享的`NSURLCache`上。
+`NSURLConnection` 是 Foundation URL 加载系统的基石。一个 `NSURLConnection` 异步地加载一个 `NSURLRequest` 对象，调用 delegate 的 `NSURLResponse` / `NSHTTPURLResponse` 方法，其 `NSData` 被发送到服务器或从服务器读取；delegate 还可用来处理 `NSURLAuthenticationChallenge`、重定向响应、或是决定 `NSCachedURLResponse` 如何存储在共享的 `NSURLCache` 上。
 
-[`NSOperation`](http://nshipster.com/nsoperation)是一个模拟一个计算单元的抽象的类，它拥有有用的构造，如状态，优先级，相依性和取消。
+[`NSOperation`](http://nshipster.com/nsoperation) 是抽象类，模拟单个计算单元，有状态、优先级、依赖等功能，可以取消。
 
-AFNetworking的第一个重大突破就是将这两者结合。`AFURLConnectionOperation`作为`NSOperation`的子类，也遵循`NSURLConnectionDelegate`的方法，并且追踪一个请求从开始到结束的状态，同时它也可以存储如请求，响应，响应数据等的中间状态。 
+AFNetworking 的第一个重大突破就是将两者结合。`AFURLConnectionOperation` 作为 `NSOperation` 的子类，遵循 `NSURLConnectionDelegate` 的方法，可以从头到尾监视请求的状态，并储存请求、响应、响应数据等中间状态。
 
 ### Blocks
 
-iOS 4引入的block和Grand Central Dispatch从根本上改善了应用程序的开发过程。相比于在应用中用delegate乱七八糟的实现逻辑，开发者们可以在block属性中本地化相关的功能。GCD可以轻松地来回调度工作，而不是和一对乱七八糟地线程，调用和操作队列作斗争。
+iOS 4 引入的 block 和 Grand Central Dispatch 从根本上改善了应用程序的开发过程。相比于在应用中用 delegate 乱七八糟地实现逻辑，开发者们可以用 block 将相关的功能放在一起。GCD 能够轻易来回调度工作，不用面对乱七八糟的线程、调用和操作队列。
 
-更重要的是，`NSURLConnectionDelegate`方法可以通过设置block属性为每一个请求进行自定义操作（比如，设置`setWillSendRequestForAuthenticationChallengeBlock:`来覆盖默认的连接实现方式`connection:willSendRequestForAuthenticationChallenge:`）。
+更重要的是，对于每个 request operation，可以通过 block 自定义 `NSURLConnectionDelegate` 的方法（比如，通过 `setWillSendRequestForAuthenticationChallengeBlock:` 可以覆盖默认的 `connection:willSendRequestForAuthenticationChallenge:` 方法）。
 
-现在，我们可以创建`AFURLConnectionOperation`并把它安排进`NSOperationQueue`，通过设置`NSOperation`的新的属性`completionBlock`，我们还可以指定当操作完成时如何处理响应和响应数据（或者在请求的周期中遇到的任何错误）。
+现在，我们可以创建 `AFURLConnectionOperation` 并把它安排进 `NSOperationQueue`，通过设置 `NSOperation` 的新属性 `completionBlock`，指定操作完成时如何处理 response 和 response data（或是请求过程中遇到的错误）。
 
 ### 序列化 & 验证
 
-让我们更深入一些，请求操作的责任可以延伸到验证HTTP状态码和验证服务器响应的内容类型，比如，对于有`application/json`MIME类型的响应，我们可以将NSData序列化为JSON对象。 
+更深入一些，request operation 操作也可以负责验证 HTTP 状态码和服务器响应的内容类型，比如，对于 `application/json` MIME 类型的响应，可以将 NSData 序列化为 JSON 对象。 
 
-从服务器加载JSON，XML，Property List或者图像可以被抽象的类比成一个潜在的文件的加载操作，这样开发者可以将这个过程想象成一个承诺而不是异步联网。
+从服务器加载 JSON、XML、property list 或者图像可以抽象并类比成潜在的文件加载操作，这样开发者可以将这个过程想象成一个 promise 而不是异步网络连接。
 
 ## 介绍AFNetworking 2.0
 
