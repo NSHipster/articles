@@ -107,7 +107,7 @@ Notifications are created with `+notificationWithName:object:userInfo:`.
 
 Notification names are generally defined as string constants. Like any string constant, it should be declared `extern` in a public interface, and defined privately in the corresponding implementation. It doesn't matter too much what a notification name's value is defined to be; the name of the variable itself is commonplace, but a reverse-DNS identifier is also a classy choice. So long as notification names are unique (or explicitly aliased), everything will work as expected.
 
-Keys for `userInfo` should likewise be defined as string constants. It's important to clearly document the expected kinds of values for each key, since the compiler can't to enforce constraints on dictionaries the same way it can for an object.
+Keys for `userInfo` should likewise be defined as string constants. It's important to clearly document the expected kinds of values for each key, since the compiler can't enforce constraints on dictionaries the same way it can for an object.
 
 #### Foo.h
 
