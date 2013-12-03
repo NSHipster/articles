@@ -36,7 +36,7 @@ NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
                                                     error:nil];
 
 NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension ENDSWITH '.png'"];
-for (NSString *path in [contents filteredArrayUsingPredicate:predicate]) {
+for (NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate]) {
     // Enumerate each .png file in directory
 }
 ~~~
