@@ -16,7 +16,7 @@ description: "AFNetworking是iOS和Mac OS X的开发中被最广泛使用的开�
 _但你有没有听说过它的续集呢？_  
 [AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/).
 
-这一周的NSHipster：独家来看看NSHipster的未来。
+这一周的NSHipster：独家来看看AFNetworking的未来。
 
 > 全面披露：NSHipster是由[AFNetworking的作者](https://twitter.com/mattt)所撰写的，所以这并不是对AFNetworking以及它的优点的客观看法。你所能得到的，是关于AFNetworkiing目前的和即将发布的版本的个人的，诚实的看法。
 
