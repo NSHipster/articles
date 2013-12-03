@@ -5,20 +5,20 @@ title: AFNetworking 2.0
 ref: "https://github.com/AFNetworking/AFNetworking"
 framework: "Open Source"
 rating: 9.9
-description: "AFNetworking是iOS和Mac OS X的开发中被最广泛使用的开源项目之一。它几乎已经成为绝对的主流。但你有没有听说过它的续集呢？"
+description: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
 ---
 
-[AFNetworking](http://afnetworking.com)是当前iOS和Mac OS X
-的开发中被最广泛使用的开源项目之一。它帮助了数以千计的叫好又叫座的应用，又为很多其它的很棒的开源的库和框架提供了基础。同时，拥有8700个星，2200个叉，和130名贡献者，这个项目同时也是社区里最活跃，最有影响力的项目之一。
+[AFNetworking](http://afnetworking.com) 是当前 iOS 和 Mac OS X
+开发中最广泛使用的开源项目之一。它帮助了成千上万叫好又叫座的应用，也为其它出色的开源库提供了基础。这个项目是社区里最活跃、最有影响力的项目之一，拥有 8700 个 star、2200 个 fork 和 130 名贡献者。
 
-据说，AFNetworking几乎已经成为绝对的主流。
+从各方面来看，AFNetworking 几乎已经成为主流。
 
-_但你有没有听说过它的续集呢？_  
-[AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/).
+_但你有没有听说过它的新版呢？_  
+[AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/)。
 
-这一周的NSHipster：独家来看看AFNetworking的未来。
+这一周的 NSHipster：独家揭晓 AFNetworking 的未来。
 
-> 全面披露：NSHipster是由[AFNetworking的作者](https://twitter.com/mattt)所撰写的，所以这并不是对AFNetworking以及它的优点的客观看法。你所能得到的，是关于AFNetworkiing目前的和即将发布的版本的个人的，诚实的看法。
+> 声明：NSHipster 由 [AFNetworking 的作者](https://twitter.com/mattt) 撰写，所以这并不是对 AFNetworking 及它的优点的客观看法。你能看到的是个人关于 AFNetworking 目前及未来版本的真实看法。
 
 ## AFNetworking的大想法
 
