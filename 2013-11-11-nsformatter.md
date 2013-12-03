@@ -22,7 +22,7 @@ Foundation provides two concrete subclasses for `NSFormatter`: `NSNumberFormatte
 
 ## NSNumberFormatter
 
-`NSNumberFormatter` handles every aspect of number formatting imaginable, from mathematical and scientific notation, to currencies and percentages. Nearly everything about the formatter can be customized, whether its the currency symbol, grouping separator, number of significant digits, rounding behavior, fractions, character for infinity, string representation for `0`, or maximum / minimum values. It can even write out numbers in several languages!
+`NSNumberFormatter` handles every aspect of number formatting imaginable, from mathematical and scientific notation, to currencies and percentages. Nearly everything about the formatter can be customized, whether it's the currency symbol, grouping separator, number of significant digits, rounding behavior, fractions, character for infinity, string representation for `0`, or maximum / minimum values. It can even write out numbers in several languages!
 
 ### Number Styles
 
@@ -60,7 +60,7 @@ for (NSString *identifier in @[@"en_US", @"fr_FR"]) {
 
 ### Rounding & Significant Digits
 
-In order to prevent numbers from getting annoyingly pedantic (_"thirty-two point three three, repeating, of course..."_), make sure get a handle on `NSNumberFormatter`'s rounding behavior.
+In order to prevent numbers from getting annoyingly pedantic (_"thirty-two point three three, repeating, of course..."_), make sure to get a handle on `NSNumberFormatter`'s rounding behavior.
 
 The easiest way to do this, would be to `setUsesSignificantDigits:` to `YES`, and then set minimum and maximum number of significant digits appropriately. For example, a number formatter used for approximate distances in directions, would do well with significant digits to the tenths place for miles or kilometers, but only the ones place for feet or meters.
 
@@ -72,7 +72,7 @@ For anything more advanced, an `NSDecimalNumberHandler` object can be passed as 
 
 ### Date & Time Styles
 
-The most important properties for a `NSDateFormatter` object is its `dateStyle` and `timeStyle`. Like `NSNumberFormatter -numberStyle`, these styles provide common preset configurations for common formats. In this case, the various formats are distinguished by their specificity (more specific = longer).
+The most important properties for an `NSDateFormatter` object are its `dateStyle` and `timeStyle`. Like `-[NSNumberFormatter numberStyle]`, these styles provide common preset configurations for common formats. In this case, the various formats are distinguished by their specificity (more specific = longer).
 
 Both properties share a single set of `enum` values: 
 
@@ -195,7 +195,7 @@ If the same formatter is privately implemented across several classes, one could
 
 * * *
 
-If your app deals in numbers or dates, `NSFormatter` is indespensable. Actually, if your app doesn't... then what _does_ it do, exactly?
+If your app deals in numbers or dates, `NSFormatter` is indespensable. Actually, if your app doesn't… then what _does_ it do, exactly?
 
 Presenting useful information to users is as much about content as presentation. Invest in learning all of the secrets of `NSNumberFormatter` and `NSDateFormatter` to get everything exactly how you want them.
 
