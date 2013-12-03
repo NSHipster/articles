@@ -121,7 +121,7 @@ extern NSString * const XXFooDidBarNotification;
 NSString * const XXFooDidBarNotification = @"XXFooDidBarNotification";
 ~~~
 
-Notifications are posted with `–postNotificationName:object:userInfo:` or its convenience method `–postNotificationName:object:`, which passes `nil` for `useInfo`. `–postNotification:` is also available, but it's generally preferable to have the notification object creation handled by the method itself.
+Notifications are posted with `–postNotificationName:object:userInfo:` or its convenience method `–postNotificationName:object:`, which passes `nil` for `userInfo`. `–postNotification:` is also available, but it's generally preferable to have the notification object creation handled by the method itself.
 
 Recall from the previous section how `name` and `object` act to scope notification dispatch. Developers are advised to be consistent in how objects are posted with notifications, and to have this behavior documented clearly in the public interface.
 
