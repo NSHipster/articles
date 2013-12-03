@@ -46,17 +46,19 @@ iOS 4 引入的 block 和 Grand Central Dispatch 从根本上改善了应用程�
 
 从服务器加载 JSON、XML、property list 或者图像可以抽象并类比成潜在的文件加载操作，这样开发者可以将这个过程想象成一个 promise 而不是异步网络连接。
 
-## 介绍AFNetworking 2.0
+## 介绍 AFNetworking 2.0
 
-AFNetworking的成功在于它在易于使用性和可扩展性之间取得平衡。但这并不是说它就没有提升的空间。 
+AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不是没有提升的空间。 
 
-随着它的第二次重要发布，AFNetworking旨在调和原设计的怪异之处，同时为下一代的iOS和Mac OS X应用程序增加强大的新的架构。
+在第二个大版本中，AFNetworking 旨在消除原有设计的怪异之处，同时为下一代 iOS 和 Mac OS X 应用程序增加一些强大的新架构。
 
 ### 动机
 
-- **NSURLSession兼容性** - `NSURLSession`是iOS 7新引入的用于替代`NSURLConnection`的类。`NSURLConnection`并没有被弃用，并且一段时间应该都不会，但是`NSURLSession`将会成为Foundation中的网络的未来，并且会是一个美好的未来，因为它改进了它的前身的很多缺点。（参考WWDC 2013的Session 705“What’s New in Foundation Networking”，这会是一个很好的概述）。刚开始有的人推测，`NSURLSession`的出现将会使我们不再需要AFNetworking；虽然它们有一些重叠，但AFNetworking还是可以提供更高层次的抽象应用。__AFNetworking 2.0不仅能做到这一点，还借助并扩展了`NSURLSession`来铺平道路上的坑坑洼洼，并且最大程度的扩展了它的实用性。__
-- **模块化** - 对于AFNetworking的主要批评之一就是它的笨重。虽然它的构架使得它在类的层面上有不错的模块性，但它的包装使得它不能允许个别功能被逐一选择。随着时间的推移，尤其是`AFHTTPClient`变的不堪重负（它的任务包括创建请求，序列化查询字符串参数，确定响应解析行为，生成和管理操作，监控网络可达性）。 __在AFNetworking 2.0中，你可以挑选并通过[CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs)仅仅选择你所需要的组件。__
-- **实时性** - 有了这个新版本，AFNetworking旨在将实时性功能提上日程。在接下来的18个月，实时性将从目前最棒的1%的功能之一变成用户默认的功能。 __AFNetworking 2.0采用[Rocket](http://rocket.github.io)技术，它利用如[服务器发送事件](http://dev.w3.org/html5/eventsource/)以及[JSON补丁](http://tools.ietf.org/html/rfc6902)的网络标准在现有的REST网络服务上架构语义上的实时服务。__
+- **兼容 NSURLSession** - `NSURLSession` 是 iOS 7 新引入的用于替代 `NSURLConnection` 的类。`NSURLConnection` 并没有被弃用，今后一段时间应该也不会，但是 `NSURLSession` 是 Foundation 中网络的未来，并且是一个美好的未来，因为它改进了之前的很多缺点。（参考 WWDC 2013 Session 705 “What’s New in Foundation Networking”，一个很好的概述）。起初有人推测，`NSURLSession` 的出现将使 AFNetworking 不再有用。但实际上，虽然它们有一些重叠，AFNetworking 还是可以提供更高层次的抽象。__AFNetworking 2.0 不仅做到了这一点，还借助并扩展 `NSURLSession` 来铺平道路上的坑洼，并最大程度扩展了它的实用性。__
+
+- **模块化** - 对于 AFNetworking 的主要批评之一是笨重。虽然它的构架使在类的层面上是模块化的，但它的包装并不允许选择独立的一些功能。随着时间的推移，`AFHTTPClient` 尤其变得不堪重负（其任务包括创建请求、序列化 query string 参数、确定响应解析行为、生成和管理 operation、监视网络可达性）。 __在 AFNetworking 2.0 中，你可以挑选并通过 [CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs) 选择你所需要的组件。__
+
+- **实时性** - 在新版本中，AFNetworking 尝试将实时性功能提上日程。在接下来的 18 个月，实时性将从最棒的 1% 变成用户都期待的功能。 __AFNetworking 2.0 采用 [Rocket](http://rocket.github.io) 技术，利用 [Server-Sent Event](http://dev.w3.org/html5/eventsource/) 和 [JSON Patch](http://tools.ietf.org/html/rfc6902) 等网络标准在现有的 REST 网络服务上构建语义上的实时服务。__
 
 ### 演员阵容
 
