@@ -11,13 +11,13 @@ description: "Ask anyone who's been around the NSBlock a few times: Key-Value Ob
 
 Ask anyone who's been around the NSBlock a few times: Key-Value Observing has the _worst_ API in all of Cocoa. It's awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework.
 
-When dealing with complicated, stateful systems, dutiful book-keeping is essential for maintaining sanity. Lest the left hand not know what the right hand doeth, objects need some way to publish and subscribe to state changes over time. 
+When dealing with complicated, stateful systems, dutiful book-keeping is essential for maintaining sanity. Lest the left hand not know what the right hand doeth, objects need some way to publish and subscribe to state changes over time.
 
-In Objective-C and Cocoa, there are a number of ways that these events are communicated, each with varying degrees of formality and coupling: 
+In Objective-C and Cocoa, there are a number of ways that these events are communicated, each with varying degrees of formality and coupling:
 
 - **`NSNotification` & `NSNotificationCenter`** provide a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. The only requirement is to know what to look for, specifically in the name of the notification. For example, `UIApplicationDidReceiveMemoryWarningNotification
-` signals a low memory environment in an application. 
-- **Key-Value Observing** allows for ad-hoc, evented introspection between specific object instances by listening for changes on a particular key path. For example, a `UIProgressView` might observe the `numberOfBytesRead` of a network request to derive and update its own `progress` property.  
+` signals a low memory environment in an application.
+- **Key-Value Observing** allows for ad-hoc, evented introspection between specific object instances by listening for changes on a particular key path. For example, a `UIProgressView` might observe the `numberOfBytesRead` of a network request to derive and update its own `progress` property.
 - **Delegates** are a popular pattern for signaling events over a fixed set of methods to a designated handler. For example, `UIScrollView` sends `scrollViewDidScroll:` to its delegate each time its scroll offset changes.
 - **Callbacks** of various sorts, whether block properties like `NSOperation -completionBlock`, which trigger after `isFinished == YES`, or C function pointers passed as hooks into functions like `SCNetworkReachabilitySetCallback(3)`.
 
@@ -25,9 +25,9 @@ Of all of these methods, Key-Value Observing is arguably the least well-understo
 
 ---
 
-`<NSKeyValueObserving>`, or KVO, is an informal protocol that defines a common mechanism for observing and notifying state changes between objects. As an informal protocol, you won't see classes bragging about their conformance to it (it's just implicitly assumed for all subclasses of `NSObject`). 
+`<NSKeyValueObserving>`, or KVO, is an informal protocol that defines a common mechanism for observing and notifying state changes between objects. As an informal protocol, you won't see classes bragging about their conformance to it (it's just implicitly assumed for all subclasses of `NSObject`).
 
-The main value proposition of KVO is rather compelling: any object can subscribe to be notified about state changes in any other object. Most of this is built-in, automatic, and transparent. 
+The main value proposition of KVO is rather compelling: any object can subscribe to be notified about state changes in any other object. Most of this is built-in, automatic, and transparent.
 
 > For context, similar manifestations of this observer pattern are the secret sauce of most modern Javascript frameworks, such as [Backbone.js](http://backbonejs.org) and [Ember.js](http://emberjs.com).
 
@@ -38,9 +38,9 @@ Objects can have observers added for a particular key path, which, as described 
 The method used to add an observer is `–addObserver:forKeyPath:options:context:`:
 
 ~~~{objective-c}
-- (void)addObserver:(NSObject *)observer 
-         forKeyPath:(NSString *)keyPath 
-            options:(NSKeyValueObservingOptions)options 
+- (void)addObserver:(NSObject *)observer
+         forKeyPath:(NSString *)keyPath
+            options:(NSKeyValueObservingOptions)options
             context:(void *)context
 ~~~
 
@@ -49,9 +49,9 @@ The method used to add an observer is `–addObserver:forKeyPath:options:context
 > - `options`: A combination of the `NSKeyValueObservingOptions` values that specifies what is included in observation notifications. For possible values, see "NSKeyValueObservingOptions".
 > - `context`: Arbitrary data that is passed to `observer` in `observeValueForKeyPath:ofObject:change:context:`.
 
-Yuck. What makes this API so unsightly is the fact that those last two parameters are almost always `0` and `NULL`, respectively. 
+Yuck. What makes this API so unsightly is the fact that those last two parameters are almost always `0` and `NULL`, respectively.
 
-`options` refers to a bitmask of `NSKeyValueObservingOptions`. Pay particular attention to `NSKeyValueObservingOptionNew` & `NSKeyValueObservingOptionOld` as those are the options you'll most likely use, if any. Feel free to skim over `NSKeyValueObservingOptionInitial` & `NSKeyValueObservingOptionPrior`: 
+`options` refers to a bitmask of `NSKeyValueObservingOptions`. Pay particular attention to `NSKeyValueObservingOptionNew` & `NSKeyValueObservingOptionOld` as those are the options you'll most likely use, if any. Feel free to skim over `NSKeyValueObservingOptionInitial` & `NSKeyValueObservingOptionPrior`:
 
 ### NSKeyValueObservingOptions
 
@@ -75,9 +75,9 @@ Another aspect of KVO that lends to its ugliness is the fact that there is no wa
 Instead, all changes for observers are funneled through a single method—`-observeValueForKeyPath:ofObject:change:context:`:
 
 ~~~{objective-c}
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary *)change 
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
                        context:(void *)context
 ~~~
 
@@ -86,9 +86,9 @@ Those parameters are the same as what were specified in `–addObserver:forKeyPa
 A typical implementation of this method looks something like this:
 
 ~~~{objective-c}
-- (void)observeValueForKeyPath:(NSString *)keyPath 
-                      ofObject:(id)object 
-                        change:(NSDictionary *)change 
+- (void)observeValueForKeyPath:(NSString *)keyPath
+                      ofObject:(id)object
+                        change:(NSDictionary *)change
                        context:(void *)context
 {
   if ([keyPath isEqualToString:@"state"]) {
@@ -117,7 +117,7 @@ It's that simple: a static value that stores its own pointer. It means nothing o
 {
   if (context == XXContext) {
       if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
-        
+
       }
   }
 }
@@ -143,7 +143,7 @@ Since `@selector` looks through all available selectors in the target, this won'
 {
     if ([object isKindOfClass:[NSOperation class]]) {
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(isFinished))]) {
-            
+
         }
     } else if (...) {
         // ...
@@ -157,7 +157,7 @@ When an observer is finished listening for changes on an object, it is expected 
 
 ### Safe Unsubscribe with `@try` / `@catch`
 
-Perhaps the most profound annoyance about KVO is that if you make a call to `–removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place), it throws an exception. The kicker is that _there's not built-in way to even check if an object is registered_!
+Perhaps the most pronounced annoyance with KVO is how it gets you at the end. If you make a call to `–removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place). The kicker is that _there's no built-in way to even check if an object is registered_!
 
 Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled `@catch`:
 
@@ -186,7 +186,7 @@ KVO is made useful by its near-universal adoption. Because of this, much of the 
 
 > Classes can opt-out of automatic KVO by overriding `+automaticallyNotifiesObserversForKey:` and returning `NO`.
 
-But what about compound or derived values? Let's say you have an object with a `@dynamic`, `readonly` `address` property, which reads and formats its `streetAddress`, `locality`, `region`, and `postalCode`? 
+But what about compound or derived values? Let's say you have an object with a `@dynamic`, `readonly` `address` property, which reads and formats its `streetAddress`, `locality`, `region`, and `postalCode`?
 
 Well, you can implement the method `keyPathsForValuesAffectingAddress` (or its less magical catch-all, `+keyPathsForValuesAffectingValueForKey:`):
 
