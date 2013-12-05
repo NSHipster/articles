@@ -141,25 +141,27 @@ AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:UR
 
 ### 旗开得胜
 
-将下列代码加入[`Podfile`](http://cocoapods.org)你就可以开始使用AFNetworking 2.0了：
+将下列代码加入 [`Podfile`](http://cocoapods.org) 就可以开始把玩 AFNetworking 2.0 了：
 
 ~~~{ruby}
 platform :ios, '7.0'
 pod "AFNetworking", "2.0.0"
 ~~~
 
-对于由当前1.x版本转移到新的AFNetworking版本的用户，你会发现[AFNetworking 2.0迁移指南](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide)非常有用。
+For anyone coming over to AFNetworking from the current 1.x release, you may find [the AFNetworking 2.0 Migration Guide](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide) especially useful.
 
-如果你遇到bug或者其它的奇怪的地方，请通过[在GitHub开启一个问题](https://github.com/afnetworking/afnetworking/issues?state=open)来帮助我们改进。您的帮助让我们不胜感激。
+对于由 AFNetworking 1.x 版本转移到新版本的用户，你可以找到 [AFNetworking 2.0 迁移指南](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide)。
 
-对于一般的使用问题，请随时tweet我[@AFNetworking](https://twitter.com/AFNetworking)，或者给我发邮件<m@mattt.me>.
+如果你遇到 bug 或者其它的奇怪的地方，请通过[在 GitHub 开启一个问题](https://github.com/afnetworking/afnetworking/issues?state=open)来帮助我们改进。非常感谢您的帮助。
 
-Oh yeah，还有一件事...
+对于一般的使用问题，请随时 tweet 我 [@AFNetworking](https://twitter.com/AFNetworking)，或者给我发邮件 <m@mattt.me>。
+
+哦耶，还有一件事……
 
 ---
 
 ## AFNetworking: the Definitive Guide
 
-我很高兴的宣布，AFNetworking将会正式出版书了！
+我很高兴地宣布，AFNetworking 就要正式出书了！
 
-**"AFNetworking: the Definitive Guide"**将由[O'Reilly](http://oreilly.com)出版，希望就在接下来的几个月之中。你可以[在这里注册书出版时通过邮箱通知](http://eepurl.com/Flnvn)，或者[关注@AFNetworking](https://twitter.com/AFNetworking)。
+**《AFNetworking: the Definitive Guide》**将由 [O'Reilly](http://oreilly.com) 出版，很可能就在接下来几个月中。你可以[在这里注册邮件通知](http://eepurl.com/Flnvn)，或者[关注 @AFNetworking](https://twitter.com/AFNetworking)。
