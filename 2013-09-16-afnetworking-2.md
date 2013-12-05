@@ -62,47 +62,48 @@ AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不�
 
 ### 演员阵容
 
-#### `NSURLConnection`组件 _(iOS 6 & 7)_
+#### `NSURLConnection` 组件 _(iOS 6 & 7)_
 
-- `AFURLConnectionOperation` - `NSOperation`的一个子类，负责管理`NSURLConnection`并且实现其委托方法。
-- `AFHTTPRequestOperation` - `AFURLConnectionOperation`的一个子类，专门用来生成HTTP请求，它可以区分可接受的和不可接受的状态代码和内容类型。它在2.0版本中的最大区别是，_你可以直接使用这个类，而不用将它作为子类_，原因可以在“序列化”一节中找到。
-- `AFHTTPRequestOperationManager` - 通过HTTP使用web服务来封装通讯的常见模式的一个类，并通过`AFHTTPRequestOperation`由`NSURLConnection`支持。 
+- `AFURLConnectionOperation` - `NSOperation` 的子类，负责管理 `NSURLConnection` 并且实现其 delegate 方法。
+- `AFHTTPRequestOperation` - `AFURLConnectionOperation` 的子类，用于生成 HTTP 请求，可以区别可接受的和不可接受的状态码及内容类型。2.0 版本中的最大区别是，__你可以直接使用这个类，而不用继承它__，原因可以在“序列化”一节中找到。
+- `AFHTTPRequestOperationManager` - 包装常见 HTTP web 服务操作的类，通过 `AFHTTPRequestOperation` 由 `NSURLConnection` 支持。 
 
-#### `NSURLSession`组件 _(iOS 7)_
+#### `NSURLSession` 组件 _(iOS 7)_
 
-- `AFURLSessionManager` - 创建和管理基于特定`NSURLSessionConfiguration`对象的`NSURLSession`对象的类，它还能创建和管理那个session的数据，下载和上传任务，实现那个session和其相关联的任务的委托方法。Because of the odd gaps in `NSURLSession`'s API design, __any code working with `NSURLSession` would be improved by `AFURLSessionManager`__. 
-- `AFHTTPSessionManager` - `AFURLSessionManager`的子类，通过HTTP网络服务封装通信的常见模式，通过`AFURLSessionManager`由`NSURLSession`支持。
+- `AFURLSessionManager` - 创建、管理基于 `NSURLSessionConfiguration` 对象的 `NSURLSession` 对象的类，也可以管理 session 的数据、下载/上传任务，实现 session 和其相关联的任务的 delegate 方法。因为 `NSURLSession` API 设计中奇怪的空缺，__任何和 `NSURLSession` 相关的代码都可以用 `AFURLSessionManager` 改善__。
+- `AFHTTPSessionManager` - `AFURLSessionManager` 的子类，包装常见的 HTTP web 服务操作，通过 `AFURLSessionManager` 由 `NSURLSession` 支持。
 
 ---
 
-> **总的来说**：为了支持新的`NSURLSession`API以及旧的但并不过时且还很有用的`NSURLConnection`，AFNetworking 2.0的核心组件被分成请求操作以及会话任务。`AFHTTPRequestOperationManager`和`AFHTTPSessionManager`提供类似的功能，在需要的时候（比如在iOS6和7之间转换），它们的接口可以相对容易的互换。
+> **总的来说**：为了支持新的 `NSURLSession` API 以及旧的未弃用且还有用的 `NSURLConnection`，AFNetworking 2.0 的核心组件分成了 request operation 和 session 任务。`AFHTTPRequestOperationManager` 和 `AFHTTPSessionManager` 提供类似的功能，在需要的时候（比如在 iOS 6 和 7 之间转换），它们的接口可以相对容易的互换。
 
-> 之前所有绑定在`AFHTTPClient`的功能，比如序列化，安全性，可达性，都在几个模块中被拆分为可以被`NSURLSession`以及`NSURLConnection`支持的API共享。
+> 之前所有绑定在 `AFHTTPClient `的功能，比如序列化、安全性、可达性，被拆分成几个独立的模块，可被基于 `NSURLSession` 和 `NSURLConnection` 的 API 使用。
 
 ---
 
 #### 序列化
 
-AFNetworking 2.0新构架的突破之一是使用序列化来创建请求以及解析响应。序列化的灵活设计允许更多的业务逻辑被转移到网络层，并使得先前内置的默认行为可以更容易被定制。
+AFNetworking 2.0 新构架的突破之一是使用序列化来创建请求、解析响应。可以通过序列化的灵活设计将更多业务逻辑转移到网络层，并更容易定制之前内置的默认行为。
 
-- `<AFURLRequestSerializer>` - 符合这个协议的对象是用来装饰请求的，它将请求参数转换成查询字符串或者实体内容描述，以及设置必要的报头。对于那些不喜欢`AFHTTPClient`编码查询字符串参数的方式的人来说，应该会觉得这个新方法更对你们的胃口。
-- `<AFURLResponseSerializer>` - 符合这个协议的对象负责验证响应和与响应相关的数据，并将它们序列化为有用的表达，比如JSON对象，图像，甚至[Mantle](https://github.com/blog/1299-mantle-a-model-framework-for-objective-c)支持的模型对象。相较于无休止的继承`AFHTTPClient`，`AFHTTPRequestOperation`现在有一个被设置到合适的处理器的`responseSerializer`属性。同样的，再也没有[以`NSURLProtocol`为灵感的请求操作类注册](http://cocoadocs.org/docsets/AFNetworking/1.3.1/Classes/AFHTTPClient.html#//api/name/registerHTTPOperationClass:)了，取而代之的还是那个令人欢喜的`responseSerializer`属性。谢天谢地。
+- `<AFURLRequestSerializer>` - 符合这个协议的对象用于处理请求，它将请求参数转换为 query string 或是 entity body 的形式，并设置必要的 header。那些不喜欢 `AFHTTPClient` 使用 query string 编码参数的家伙，你们一定喜欢这个。
+
+- `<AFURLResponseSerializer>` - 符合这个协议的对象用于验证、序列化响应及相关数据，转换为有用的形式，比如 JSON 对象、图像、甚至基于 [Mantle](https://github.com/blog/1299-mantle-a-model-framework-for-objective-c) 的模型对象。相比没完没了地继承 `AFHTTPClient`，现在 `AFHTTPRequestOperation` 有一个 `responseSerializer` 属性，用于设置合适的 handler。同样的，再也没有[没用的受 `NSURLProtocol` 启发的 request operation 类注册](http://cocoadocs.org/docsets/AFNetworking/1.3.1/Classes/AFHTTPClient.html#//api/name/registerHTTPOperationClass:)，取而代之的还是很棒的 `responseSerializer` 属性。谢天谢地。
 
 #### 安全性
 
-感谢[Dustin Barker](https://github.com/dstnbrkr)，[Oliver Letterer](https://github.com/OliverLetterer)，[Kevin Harwood](https://github.com/kcharwood)还有其他人所作出的贡献，AFNetworking带有内置的[SSL pinning](http://blog.lumberlabs.com/2012/04/why-app-developers-should-care-about.html)支持，这对于处理敏感信息的应用是十分重要的。
+感谢 [Dustin Barker](https://github.com/dstnbrkr)、[Oliver Letterer](https://github.com/OliverLetterer)、[Kevin Harwood](https://github.com/kcharwood) 等人做出的贡献，AFNetworking 现在带有内置的 [SSL pinning](http://blog.lumberlabs.com/2012/04/why-app-developers-should-care-about.html) 支持，这对于处理敏感信息的应用是十分重要的。
 
-- `AFSecurityPolicy` - 评估服务器对安全连接针对指定的固定证书或公共密钥的信任。tl;dr 将你的服务器证书添加到你的应用程序包，以帮助防止[中间人攻击](http://en.wikipedia.org/wiki/Man-in-the-middle_attack)。
+- `AFSecurityPolicy` - 评估服务器对安全连接针对指定的固定证书或公共密钥的信任。tl;dr 将你的服务器证书添加到 app bundle，以帮助防止 [中间人攻击](http://en.wikipedia.org/wiki/Man-in-the-middle_attack)。
 
 #### 可达性
 
-`AFHTTPClient`削弱了的另一个功能是网络可达性。现在你可以直接使用它，或者使用`AFHTTPRequestOperationManager`／`AFHTTPSessionManager`的属性。
+从 `AFHTTPClient` 解藕的另一个功能是网络可达性。现在你可以直接使用它，或者使用 `AFHTTPRequestOperationManager` / `AFHTTPSessionManager` 的属性。
 
-- `AFNetworkReachabilityManager` - 这个类监控当前网络的可达性，提供可达性变化时的回调块和通知。
+- `AFNetworkReachabilityManager` - 这个类监控当前网络的可达性，提供回调 block 和 notificaiton，在可达性变化时调用。
 
 #### 实时性
 
-- `AFEventSource` - [`EventSource`DOM API](http://en.wikipedia.org/wiki/Server-sent_events)的Objective-C实现。一个持久的HTTP连接由主机建立，并将事件传输到事件源并派发到听众。传输到事件源的消息的格式为[JSON补丁](http://tools.ietf.org/html/rfc6902)文件，并被翻译成`AFJSONPatchOperation`对象数组。这些补丁的操作可以被应用到从服务器获取的持久性数据集。
+- `AFEventSource` - [`EventSource` DOM API](http://en.wikipedia.org/wiki/Server-sent_events) 的 Objective-C 实现。建立一个到某主机的持久 HTTP 连接，可以将事件传输到事件源并派发到听众。传输到事件源的消息的格式为 [JSON Patch](http://tools.ietf.org/html/rfc6902) 文件，并被翻译成 `AFJSONPatchOperation` 对象的数组。可以将这些 patch operation 应用到之前从服务器获取的持久性数据集。
 ~~~{objective-c}
 NSURL *URL = [NSURL URLWithString:@"http://example.com"];
 AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:URL];
@@ -123,20 +124,20 @@ AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:UR
 } failure:nil];
 ~~~
 
-#### UIKit Extensions
+#### UIKit 扩展
 
-UIKit中的所有类都被AFNetworking 2.0选取并且都扩充了几个新的列表。
+之前 AFNetworking 中的所有 UIKit category 都被保留并增强，还增加了一些新的 category。
 
-- `AFNetworkActivityIndicatorManager`：在请求操作和任务开始和停止加载时，自动开启或终止状态栏上的网络活动指示标志。
-- `UIImageView+AFNetworking`：增加了`imageResponseSerializer`属性，它可以让远程加载在image view上的图像轻松的自动调整大小或者应用过滤器。比如，[`AFCoreImageSerializer`](https://github.com/AFNetworking/AFCoreImageSerializer)可以在响应的图像显示之前应用Core Image filter。
-- `UIButton+AFNetworking` *(新)*：与`UIImageView+AFNetworking`类似，从远程资源加载`image`和`backgroundImage`。
-- `UIActivityIndicatorView+AFNetworking` *(新)*：根据指定的请求操作和会话任务的状态自动开始以及停止`UIActivityIndicatorView`。
-- `UIProgressView+AFNetworking` *(新)*：自动跟踪上载或下载指定的请求操作或者会话任务的进度。
-- `UIWebView+AFNetworking` *(新)*: 为加载URL请求提供了更强大的API，并且支持进度回调和内容转换。
+- `AFNetworkActivityIndicatorManager`：在请求操作开始、停止加载时，自动开始、停止状态栏上的网络活动指示图标。
+- `UIImageView+AFNetworking`：增加了 `imageResponseSerializer` 属性，可以轻松地让远程加载到 image view 上的图像自动调整大小或应用滤镜。比如，[`AFCoreImageSerializer`](https://github.com/AFNetworking/AFCoreImageSerializer) 可以在 response 的图像显示之前应用 Core Image filter。
+- `UIButton+AFNetworking` *(新)*：与 `UIImageView+AFNetworking` 类似，从远程资源加载 `image` 和 `backgroundImage`。
+- `UIActivityIndicatorView+AFNetworking` *(新)*：根据指定的请求操作和会话任务的状态自动开始、停止 `UIActivityIndicatorView`。
+- `UIProgressView+AFNetworking` *(新)*：自动跟踪某个请求或会话任务的上传/下载进度。
+- `UIWebView+AFNetworking` *(新)*: 为加载 URL 请求提供了更强大的API，支持进度回调和内容转换。
 
 ---
 
-这就是我们的AFNetworking旋风之旅的结尾了。为了下一代应用的新的功能，以及一个全新的构架与所有的现有的功能的结合，有很多值得我们兴奋的东西。
+于是终于要结束 AFNetworking 旋风之旅了。为下一代应用设计的新功能，结合为已有功能设计的全新架构，有很多东西值得兴奋。
 
 ### 旗开得胜
 
