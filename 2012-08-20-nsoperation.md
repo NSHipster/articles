@@ -35,7 +35,7 @@ Each property must be mutually exclusive from one-another in order to encode a c
 
 - `isReady`: Returns `YES` to indicate that the operation is ready to execute, or `NO` if there are still unfinished initialization steps on which it is dependent.
 - `isExecuting`: Returns `YES` if the operation is currently working on its task, or `NO` otherwise.
-- `isFinished` Returns `YES` if the operation's task finished execution successfully, or if the operation was cancelled. An `NSOperationQueue` does not dequeue an operation until `isFinished` changes to `YES`, so it is critical to implement this correctly so as to not avoid deadlock.
+- `isFinished` Returns `YES` if the operation's task finished execution successfully, or if the operation was cancelled. An `NSOperationQueue` does not dequeue an operation until `isFinished` changes to `YES`, so it is critical to implement this correctly so as to avoid deadlock.
 
 ## Cancellation
 
