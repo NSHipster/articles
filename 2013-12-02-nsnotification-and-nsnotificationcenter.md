@@ -62,7 +62,7 @@ We've discussed the importance of how events are communicated in APIs previously
 
 `NSNotificationCenter` provides a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. Observers register with a notification center to respond to particular events with a specified action. Each time an event occurs, the notification goes through its dispatch table, and messages any registered observers for that event.
 
-> Each running Cocoa program manages its own default notification center, so its unusual for a new notification center to be instantiated separately.
+> Each running Cocoa program manages its own default notification center, so it's unusual for a new notification center to be instantiated separately.
 
 Each `NSNotification` object has a `name`, with additional context optionally provided by an associated `object` and `userInfo` dictionary.
 
