@@ -6,7 +6,7 @@ rating: 8.4
 description: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 ---
 
-Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.
+Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.
 
 One of the first lessons of socialization is to know one's audience. Sometimes communication is one-to-one, like an in-person conversation, while at other times, such as a television broadcast, it's one-to-many. Not being able to distinguish between these two circumstances leads to awkward situations.
 
