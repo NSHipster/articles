@@ -72,7 +72,7 @@ For example, `UITextField` posts an `NSNotification` with the name `UITextFieldT
 
 All sorts of notifications are constantly passing through `NSNotificationCenter`.<sup>*</sup>  But like a tree falling in the woods, a notification is moot unless there's something listening for it.
 
-The traditional way to add an observer `–addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
+The traditional way to add an observer is `–addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
 
 The modern, block-based API for adding notification observers is `–addObserverForName:object:queue:usingBlock:`. Instead of registering an existing object as an observer for a notification, this method creates its own anonymous object to be the observer, which performs a block on the specified queue (or the calling thread, if `nil`) when a matching notification is posted. Unlike its similarly named `@selector`-based counterpart, this method actually returns the constructed observer object, which is necessary for unregistering the observer, as discussed in the next section.
 
