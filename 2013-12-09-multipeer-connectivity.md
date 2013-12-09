@@ -151,7 +151,7 @@ Once peers are connected to one another, information can be sent between them. T
 
 ### Messages
 
-Messages are sent with `-sendData:to:peers:withMode:error:`:
+Messages are sent with `-sendData:toPeers:withMode:error:`:
 
 ~~~{objective-c}
 NSString *message = @"Hello, World!";
@@ -167,7 +167,7 @@ if (![self.session sendData:data
 
 * * *
 
-Messages are received through the `MCSessionDelegate` method `-sessionDidRecieveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
+Messages are received through the `MCSessionDelegate` method `-sessionDidReceiveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
 
 ~~~{objective-c}
 #pragma mark - MCSessionDelegate
