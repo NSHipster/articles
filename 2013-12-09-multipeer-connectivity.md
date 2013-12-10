@@ -3,10 +3,10 @@ layout: post
 title: "Multipeer Connectivity"
 framework: "MultipeerConnectivity"
 rating: 9.1
-description: "As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement around connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform."
+description: "As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform."
 ---
 
-As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement around connected devices.
+As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices.
 
 In this age of mobile computing, the possibilities of collaboration, whether in work or play, has never been greater. In this age of privacy concerns and mass surveillance, the need for secure, ad hoc communications has never been more prescient. In this age of connected devices, the promise of mastery over the everyday objects of our lives has never been closer at hand.
 
