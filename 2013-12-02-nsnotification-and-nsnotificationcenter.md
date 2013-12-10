@@ -12,7 +12,7 @@ One of the first lessons of socialization is to know one's audience. Sometimes c
 
 This is as true of humans as it is within a computer process. In Cocoa, there are a number of approaches to communicating between objects, with different characteristics of intimacy and coupling:
 
-<table>
+<table id="notification-center-coupling">
     <thead>
         <tr>
             <td class="empty" colspan="2" rowspan="2"></td>
