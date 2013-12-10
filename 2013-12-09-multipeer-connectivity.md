@@ -151,7 +151,7 @@ Once peers are connected to one another, information can be sent between them. T
 
 ### Messages
 
-Messages are sent with `-sendData:to:peers:withMode:error:`:
+Messages are sent with `-sendData:toPeers:withMode:error:`:
 
 ~~~{objective-c}
 NSString *message = @"Hello, World!";
