@@ -6,7 +6,7 @@ rating: 8.4
 description: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 ---
 
-Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.
+Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.
 
 One of the first lessons of socialization is to know one's audience. Sometimes communication is one-to-one, like an in-person conversation, while at other times, such as a television broadcast, it's one-to-many. Not being able to distinguish between these two circumstances leads to awkward situations.
 
@@ -62,7 +62,7 @@ We've discussed the importance of how events are communicated in APIs previously
 
 `NSNotificationCenter` provides a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. Observers register with a notification center to respond to particular events with a specified action. Each time an event occurs, the notification goes through its dispatch table, and messages any registered observers for that event.
 
-> Each running Cocoa program manages its own default notification center, so its unusual for a new notification center to be instantiated separately.
+> Each running Cocoa program manages its own default notification center, so it's unusual for a new notification center to be instantiated separately.
 
 Each `NSNotification` object has a `name`, with additional context optionally provided by an associated `object` and `userInfo` dictionary.
 
@@ -72,7 +72,7 @@ For example, `UITextField` posts an `NSNotification` with the name `UITextFieldT
 
 All sorts of notifications are constantly passing through `NSNotificationCenter`.<sup>*</sup>  But like a tree falling in the woods, a notification is moot unless there's something listening for it.
 
-The traditional way to add an observer `–addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
+The traditional way to add an observer is `–addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
 
 The modern, block-based API for adding notification observers is `–addObserverForName:object:queue:usingBlock:`. Instead of registering an existing object as an observer for a notification, this method creates its own anonymous object to be the observer, which performs a block on the specified queue (or the calling thread, if `nil`) when a matching notification is posted. Unlike its similarly named `@selector`-based counterpart, this method actually returns the constructed observer object, which is necessary for unregistering the observer, as discussed in the next section.
 
