@@ -14,7 +14,7 @@ What follows are some code samples for your copy-pasting pleasure. Use them as a
 
 ## Common Tasks
 
-> Throughout the code samples is the magical incantation `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)`. This may be tied with KVO as one of the worst APIs in Cocoa. Just know that this returns an array containing the user documents directory as the first object. Thank goodness for the inclusion of `NSArray -firstObject`.
+> Throughout the code samples is the magical incantation `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)`. This may be tied with KVO as one of the worst APIs in Cocoa. Just know that this returns an array containing the user documents directory as the first object. Thank goodness for the inclusion of `-[NSArray firstObject]`.
 
 ### Determining If A File Exists
 
