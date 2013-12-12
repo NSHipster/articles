@@ -144,7 +144,7 @@ There are a number of file attributes that are made accessible through `NSFileMa
 
 `NSFileManager` may optionally set a delegate to verify that it should perform a particular file operation. This allows the business logic of, for instance, which files to protect from deletion, to be factored out of the controller.
 
-There are four kinds of methods in the `<NSFileManagerDelegate>` protocol, each with a variation for working with paths, as well as methods for error handling.
+There are four kinds of methods in the `<NSFileManagerDelegate>` protocol, each with a variation for working with paths, as well as methods for error handling:
 
 - `-fileManager:shouldMoveItemAtURL:toURL:`
 - `-fileManager:shouldCopyItemAtURL:toURL:`
