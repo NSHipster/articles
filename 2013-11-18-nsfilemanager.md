@@ -74,7 +74,7 @@ for (NSURL *fileURL in enumerator) {
 }
 ~~~
 
-### Create a Directory
+### Creating a Directory
 
 ~~~{objective-c}
 NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -98,7 +98,7 @@ if (![fileManager removeItemAtPath:filePath error:&error]) {
 }
 ~~~
 
-### Determine the Creation Date of a File
+### Determining the Creation Date of a File
 
 ~~~{objective-c}
 NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -188,7 +188,7 @@ Documents can also be moved to iCloud. If you guessed that this would be anythin
 
 This is another occasion when you'd `alloc init` your own `NSFileManager` rather than using the shared instance. Because `URLForUbiquityContainerIdentifier:` and `setUbiquitous:itemAtURL:destinationURL:error:` are blocking calls, this entire operation needs to be dispatched to a background queue.
 
-### Move Item to Ubiquitous Storage
+### Moving an Item to Ubiquitous Storage
 
 ~~~{objective-c}
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
