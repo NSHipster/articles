@@ -8,7 +8,7 @@ description: "AppDelegate is the dumping ground for functionality in iOS."
 
 AppDelegate is the dumping ground for functionality in iOS.
 
-Application lifecycle management? URL routing? Notifications? Core Data incantations? Invasive and monolithic 3rd-party SDK initialization? Random functionality that doesn't seem to fit anywhere else? Just stash it in`AppDelegate.m`!
+Application lifecycle management? URL routing? Notifications? Core Data incantations? Invasive and monolithic 3rd-party SDK initialization? Random functionality that doesn't seem to fit anywhere else? Just stash it in `AppDelegate.m`!
 
 And of all of the crowded, over-loaded parts in AppDelegate, `-application:didFinishLaunchingWithOptions:` is the most congested of all.
 
