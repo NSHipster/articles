@@ -14,16 +14,16 @@ This term can be appropriated to describe how seasoned individuals might disting
 
 Some just stick out like sore thumbs:
 
-Perl, with all of its short variable names with special characters, reads like [Q\*bert swearing](http://imgur.com/WyG2D). 
+Perl, with all of its short variable names with special characters, reads like [Q\*bert swearing](http://imgur.com/WyG2D).
 
 Lisp, whose profusion of parentheses is best captured by [that old joke](http://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) about the Russians in the 1980's proving that they had stolen the source code of some SDI missile interceptor code by showing the last page:
 
                     )))
                   ) )
                 ))) ) ))
-               ))))) 
-              ))) 
-            )) 
+               )))))
+              )))
+            ))
           )))) ))
         )))) ))
       )))
@@ -37,7 +37,7 @@ So if we were to go code-watching for the elusive Objective-C species, what woul
 
 `@`, or "at" sign compiler directives, are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.
 
-Its uses are varied and disparate, to the point that the only accurate way to describe what `@` means by itself is "shorthand for something to do with Objective-C". They cover a broad range in usefulness and obscurity, from staples like `@interface` and `@implementation` to ones you could go your whole career without running into, like `@defs` and `@compatibility_alias`. 
+Its uses are varied and disparate, to the point that the only accurate way to describe what `@` means by itself is "shorthand for something to do with Objective-C". They cover a broad range in usefulness and obscurity, from staples like `@interface` and `@implementation` to ones you could go your whole career without running into, like `@defs` and `@compatibility_alias`.
 
 But to anyone aspiring to be an NSHipster, intimate familiarity with `@` directives is tantamount to a music lover's ability to enumerate the entire Beatles catalog in chronological order (and most importantly, having unreasonably strong opinions about each of them).
 
@@ -119,7 +119,7 @@ It's a matter of general convention that classes provide state and mutating inte
 
 Although ARC makes working with ivars much safer by taking care of memory management, the aforementioned automatic property synthesis removes the one place where ivars would otherwise be declared.
 
-Nonetheless, in cases where ivars _are_ directly manipulated, there are the following visibility directives: 
+Nonetheless, in cases where ivars _are_ directly manipulated, there are the following visibility directives:
 
 - `@public`: instance variable can be read and written to directly, using the notation `person->age = 32"`
 - `@package`: instance variable is public, except outside of the framework in which it is specified (64-bit architectures only)
@@ -129,7 +129,7 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
 ~~~{objective-c}
 @interface Person : NSObject {
   @public
-  NSString name;
+  NSString *name;
   int age;
 
   @private
@@ -141,9 +141,9 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
 
 There's a distinct point early in an Objective-C programmer's evolution, when she realizes that she can define her own protocols.
 
-The beauty of protocols is that they allow programmers to design contracts that can be adopted outside of a class hierarchy. It's the egalitarian mantra at the heart of the American Dream: that it doesn't matter who you are, or where you come from: anyone can achieve anything if they work hard enough. 
+The beauty of protocols is that they allow programmers to design contracts that can be adopted outside of a class hierarchy. It's the egalitarian mantra at the heart of the American Dream: that it doesn't matter who you are, or where you come from: anyone can achieve anything if they work hard enough.
 
-...or at least that's idea, right? 
+...or at least that's idea, right?
 
 - `@protocol`...`@end`: Defines a set of methods to be implemented by any class  conforming to the protocol, as if they were added to the interface of that class.
 
@@ -173,7 +173,7 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
 @try{
   // attempt to execute the following statements
   [self getValue:&value error:&error];
-  
+
   // if an exception is raised, or explicitly thrown...
   if (error) {
     @throw exception;
@@ -183,12 +183,12 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
 }  @finally {
   // always execute this at the end of either the @try or @catch block
   [self cleanup];
-} 
+}
 ~~~
 
 ## Literals
 
-Literals are shorthand notation for specifying fixed values. Literals are more 
+Literals are shorthand notation for specifying fixed values. Literals are more
 -or-less directly correlated with programmer happiness. By this measure, Objective-C has long been a language of programmer misery.
 
 ### Object Literals
@@ -198,7 +198,7 @@ Until recently, Objective-C only had literals for `NSString`. But with the relea
 - `@""`: Returns an `NSString` object initialized with the Unicode content inside the quotation marks.
 - `@42`, `@3.14`, `@YES`, `@'Z'`: Returns an `NSNumber` object initialized with pertinent class constructor, such that `@42` → `[NSNumber numberWithInteger:42]`, or `@YES` → `[NSNumber numberWithBool:YES]`. Supports the use of suffixes to further specify type, like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`.
 - `@[]`: Returns an `NSArray` object initialized with the comma-delimited list of objects as its contents. For example, `@[@"A", @NO, @2.718]` → `[NSArray arrayWithObjects:@"A", @NO, @2.718, nil]` (note that sentinel `nil` is not required in literal).
-- `@{}`: Returns an `NSDictionary` object initialized with the specified key-value pairs as its contents, in the format: `@{@"someKey" : @"theValue"}`. 
+- `@{}`: Returns an `NSDictionary` object initialized with the specified key-value pairs as its contents, in the format: `@{@"someKey" : @"theValue"}`.
 - `@()`: Dynamically evaluates the boxed expression and returns the appropriate object literal based on its value (i.e. `NSString` for `const char*`, `NSNumber` for `int`, etc.). This is also the designated way to use number literals with `enum` values.
 
 ### Objective-C Literals
@@ -212,7 +212,7 @@ Selectors and protocols can be passed as method parameters. `@selector()` and `@
 
 Literals can also work the other way around, transforming Objective-C objects into C values. These directives in particular allow us to peek underneath the Objective-C veil, to begin to understand what's really going on.
 
-Did you know that all Objective-C classes and objects are just glorified `struct`s? Or that the entire identity of an object hinges on a single `isa` field in that `struct`? 
+Did you know that all Objective-C classes and objects are just glorified `struct`s? Or that the entire identity of an object hinges on a single `isa` field in that `struct`?
 
 For most of us, at least most of the time, coming into this knowledge is but an academic exercise. But for anyone venturing into low-level optimizations, this is simply the jumping-off point.
 
@@ -220,8 +220,8 @@ For most of us, at least most of the time, coming into this knowledge is but an 
 - `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
 
 ~~~{objective-c}
-struct { 
-  @defs(NSObject) 
+struct {
+  @defs(NSObject)
 }
 ~~~
 
@@ -229,7 +229,7 @@ struct {
 
 ## Optimizations
 
-There are some `@` compiler directives specifically purposed for providing shortcuts for common optimizations. 
+There are some `@` compiler directives specifically purposed for providing shortcuts for common optimizations.
 
 - `@autoreleasepool{}`: If your code contains a tight loop that creates lots of temporary objects, you can use the `@autoreleasepool` directive to optimize for these short-lived, locally-scoped objects by being more aggressive about how they're deallocated. `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, which is significantly slower, and unavailable with ARC.
 - `@synchronized(){}`: This directive offers a convenient way to guarantee the safe execution of a particular block within a specified context (usually `self`). Locking in this way is expensive, however, so for classes aiming for a particular level of thread safety, a dedicated `NSLock` property or the use of low-level locking functions like `OSAtomicCompareAndSwap32(3)` are recommended.
