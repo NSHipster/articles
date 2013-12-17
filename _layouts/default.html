@@ -47,9 +47,15 @@
     <meta content="{{ site.description | strip_html | escape}}" property="og:description"/>
   {% endif %}
 
+  {% if page.id %}
+    <meta property="st:title" content="{{ page.title }}"/>
+    <meta property="st:type" content="article"/>
+  {% else %}
+    <meta property="st:type" content="home"/>
+  {% endif %}
+
   <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
-  <script type="text/javascript" src="//use.typekit.net/agk0bgp.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  <script onload="try{Typekit.load();}catch(e){}" src="//use.typekit.net/agk0bgp.js"></script>
 </head>
 
 <body>
@@ -63,11 +69,16 @@
         </a>
       </h1>
 
+      <form>
+        <input type="text" id="st-search-input" class="st-search-input" />
+      </form>
+
       {% unless page.id %}
         <h2>
           {{ site.description }}
         </h2>
       {% endunless %}
+
     </header>
 
     <div id="main" role="main">
@@ -83,9 +94,12 @@
 
           <a href="https://plus.google.com/106751358503565042647?rel=author" style="display: none;"/>
         </p>
+
+        <p>Comments? Corrections? Feel free to <a href="https://github.com/NSHipster/articles/issues" title="Pull Requests Welcome">send a Pull Request</a>.</p>
       </section>
 
       <aside class="links">
+        <a href="https://github.com/NSHipster/articles/issues" class="icon-github" title="Pull Requests Welcome" aria-hidden="true"></a>
         <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
 
@@ -111,6 +125,19 @@
       {% endif %}
     </footer>
   </div>
+
+  <script type="text/javascript">
+    var Swiftype = window.Swiftype || {};
+    (function() {
+      Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
+      var script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.async = true;
+      script.src = "//swiftype.com/embed.js";
+      var entry = document.getElementsByTagName('script')[0];
+      document.getElementsByTagName('script')[0].parentNode.insertBefore(script, entry);
+    }());
+  </script>
 
   <script type="text/javascript">
     var _gauges = _gauges || [];
