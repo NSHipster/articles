@@ -14,7 +14,7 @@ What follows are some code samples for your copy-pasting pleasure. Use them as a
 
 ## Common Tasks
 
-> Throughout the code samples is the magical incantation `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)`. This may be tied with KVO as one of the worst APIs in Cocoa. Just know that this returns an array containing the user documents directory as the first object. Thank goodness for the inclusion of `NSArray -firstObject`.
+> Throughout the code samples is the magical incantation `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)`. This may be tied with KVO as one of the worst APIs in Cocoa. Just know that this returns an array containing the user documents directory as the first object. Thank goodness for the inclusion of `-[NSArray firstObject]`.
 
 ### Determining If A File Exists
 
@@ -74,7 +74,7 @@ for (NSURL *fileURL in enumerator) {
 }
 ~~~
 
-### Create a Directory
+### Creating a Directory
 
 ~~~{objective-c}
 NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -98,7 +98,7 @@ if (![fileManager removeItemAtPath:filePath error:&error]) {
 }
 ~~~
 
-### Determine the Creation Date of a File
+### Determining the Creation Date of a File
 
 ~~~{objective-c}
 NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -144,7 +144,7 @@ There are a number of file attributes that are made accessible through `NSFileMa
 
 `NSFileManager` may optionally set a delegate to verify that it should perform a particular file operation. This allows the business logic of, for instance, which files to protect from deletion, to be factored out of the controller.
 
-There are four kinds of methods in the `<NSFileManagerDelegate>` protocol, each with a variation for working with paths, as well as methods for error handling.
+There are four kinds of methods in the `<NSFileManagerDelegate>` protocol, each with a variation for working with paths, as well as methods for error handling:
 
 - `-fileManager:shouldMoveItemAtURL:toURL:`
 - `-fileManager:shouldCopyItemAtURL:toURL:`
@@ -188,7 +188,7 @@ Documents can also be moved to iCloud. If you guessed that this would be anythin
 
 This is another occasion when you'd `alloc init` your own `NSFileManager` rather than using the shared instance. Because `URLForUbiquityContainerIdentifier:` and `setUbiquitous:itemAtURL:destinationURL:error:` are blocking calls, this entire operation needs to be dispatched to a background queue.
 
-### Move Item to Ubiquitous Storage
+### Moving an Item to Ubiquitous Storage
 
 ~~~{objective-c}
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
