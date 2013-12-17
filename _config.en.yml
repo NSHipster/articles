@@ -1,4 +1,4 @@
-layouts: ../_layouts
+plugins: ../_plugins
 
 lang: en-US
 source: ./nshipster.com

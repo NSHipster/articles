@@ -1,4 +1,3 @@
-layouts: ../_layouts
 plugins: ../_plugins
 
 lang: zh-Hans
@@ -6,14 +5,11 @@ source: ./nshipster.cn
 url: http://nshipster.cn
 
 title: NSHipster
-description: "<strong>NSHipster</strong>忽略位在Objective-C和Cocoa是日记。"
+description: "<strong>NSHipster</strong> 关注被忽略的 Objective-C 和 Cocoa 特性。每周更新。"
 permalink: /:title/
 lsi: false
 markdown: redcarpet
 pygments:
   lexer: objective-c
-
-gauges:
-  tracker: 52703ddf613f5d4de4000686
 
 groups:

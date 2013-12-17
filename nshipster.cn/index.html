@@ -1,13 +1,14 @@
 ---
 layout: default
-title: NSHipster
+title: NSHipster 中文版
 ---
 
 <section id="latest">
   <article>
     <header>
       <hgroup>
-        <h1><a href="{{ site.posts.first.url }}">{{ site.posts.first.title | camel_break }}</a></h1>
+        <small>本周发布</small>
+        <h1><a href="{{ site.baseurl }}{{ site.posts.first.url }}">{{ site.posts.first.title | camel_break }}</a></h1>
       </hgroup>
     </header>
 
@@ -17,15 +18,15 @@ title: NSHipster
       {{ site.posts.first | only_first_p }}
     {% endif %}
 
-    <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
+    <a class="readmore" href="{{ site.baseurl }}{{ site.posts.first.url }}">{{ site.read_more }}</a>
   </article>
 </section>
 
 <section id="archive">
   {% for post in site.posts offset:1 %}
-  	<article>
+    <article>
       <header>
-        <h1><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
       {% if post.description %}
         <p>{{ post.description }}</p>
@@ -33,7 +34,7 @@ title: NSHipster
         {{ post | only_first_p }}
       {% endif %}
 
-      <a class="readmore" href="{{ post.url }}">Read more</a>
+      <a class="readmore" href="{{ site.baseurl }}{{ post.url }}">{{ site.read_more }}</a>
     </article>
   {% endfor %}
 </section>
