@@ -7,7 +7,7 @@ framework: "Objective-C"
 published: true
 ---
 
-A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you. 
+A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you.
 
 `__attribute__` is a compiler directive that specifies characteristics on declarations, which allows for more error checking and advanced optimizations.
 
@@ -18,24 +18,22 @@ The syntax for this keyword is `__attribute__` followed by two sets of parenthes
 int square(int n) __attribute__((const));
 
 // Declare the availability of a particular API
-void f(void) 
+void f(void)
   __attribute__((availability(macosx,introduced=10.4,deprecated=10.6)));
 
 // Send printf-like message to stderr and exit
-extern void die(const char *format, ...) 
+extern void die(const char *format, ...)
   __attribute__((noreturn, format(printf, 1, 2)));
 ~~~
 
-If this is starting to remind you of ISO C's [`#pragma`](http://nshipster.com/pragma), you're not alone. 
+If this is starting to remind you of ISO C's [`#pragma`](http://nshipster.com/pragma), you're not alone.
 
 In fact, when `__attribute__` was first introduced to GCC, it was faced with some resistance by some who suggested that `#pragma` be used exclusively for the same purposes.
 
 There were, however, two very good reasons why `__attribute__` was added:
 
-> 1. It was impossible to generate `#pragma` commands from a macro.
+> 1. It was impossible to generate `#pragma` commands from a macro (before the C99 `_Pragma` operator).
 > 2. There is no telling what the same `#pragma` might mean in another compiler.
-
-Since then, C99 introduced the `_Pragma` operator which can be used in macros (see our [article on Pragmas](http://nshipster.com/pragma/)).
 
 Quoth the [GCC Documentation for Function Attributes](http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html):
 
@@ -52,7 +50,7 @@ GCC
 
 ### `format`
 
-> The `format` attribute specifies that a function takes `printf`, `scanf`, `strftime` or `strfmon` style arguments which should be type-checked against a format string. 
+> The `format` attribute specifies that a function takes `printf`, `scanf`, `strftime` or `strfmon` style arguments which should be type-checked against a format string.
 
 ~~~{objective-c}
 extern int
@@ -60,11 +58,11 @@ my_printf (void *my_object, const char *my_format, ...)
   __attribute__((format(printf, 2, 3)));
 ~~~
 
-Objective-C programmers can also use the `__NSString__` format to enforce the same rules as format strings in `NSString +stringWithFormat:` and `NSLog()`. 
-     
+Objective-C programmers can also use the `__NSString__` format to enforce the same rules as format strings in `NSString +stringWithFormat:` and `NSLog()`.
+
 ### `nonnull`
 
-> The `nonnull` attribute specifies that some function parameters should be non-null pointers. 
+> The `nonnull` attribute specifies that some function parameters should be non-null pointers.
 
 ~~~{objective-c}
 extern void *
@@ -98,7 +96,7 @@ For example, because the result of a function declared `const` does not depend o
 
 > This attribute, attached to a function, means that the function is meant to be possibly unused. GCC will not produce a warning for this function.
 
-The same effect can be accomplished with the `__unused` keyword. Declare this on parameters that are not used in the method implementation. Knowing that little bit of context allows the compiler to make optimizations accordingly. You're most likely to use `__unused` in delegate method implementations, since protocols frequently provide more context than is often necessary, in order to satisfy a large number of potential use cases.  
+The same effect can be accomplished with the `__unused` keyword. Declare this on parameters that are not used in the method implementation. Knowing that little bit of context allows the compiler to make optimizations accordingly. You're most likely to use `__unused` in delegate method implementations, since protocols frequently provide more context than is often necessary, in order to satisfy a large number of potential use cases.
 
 LLVM
 ----
@@ -115,7 +113,7 @@ To check the availability of a particular attribute, you can use the `__has_attr
 void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,obsoleted=10.7)));
 ~~~
 
-> The `availability` attribute states that `f` was introduced in Mac OS X 10.4, deprecated in Mac OS X 10.6, and obsoleted in Mac OS X 10.7. 
+> The `availability` attribute states that `f` was introduced in Mac OS X 10.4, deprecated in Mac OS X 10.6, and obsoleted in Mac OS X 10.7.
 
 > This information is used by Clang to determine when it is safe to use `f`: for example, if Clang is instructed to compile code for Mac OS X 10.5, a call to f() succeeds. If Clang is instructed to compile code for Mac OS X 10.6, the call succeeds but Clang emits a warning specifying that the function is deprecated. Finally, if Clang is instructed to compile code for Mac OS X 10.7, the call fails because `f()` is no longer available.
 
@@ -127,7 +125,7 @@ void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,
 - `unavailable`: This declaration is never available on this platform.
 - `message` Additional message text that Clang will provide when emitting a warning or error about use of a deprecated or obsoleted declaration. Useful to direct users to replacement APIs.
 
-> Multiple availability attributes can be placed on a declaration, which may correspond to different platforms. Only the availability attribute with the platform corresponding to the target platform will be used; any others will be ignored. If no availability attribute specifies availability for the current target platform, the availability attributes are ignored. 
+> Multiple availability attributes can be placed on a declaration, which may correspond to different platforms. Only the availability attribute with the platform corresponding to the target platform will be used; any others will be ignored. If no availability attribute specifies availability for the current target platform, the availability attributes are ignored.
 
 Supported Platforms:
 
