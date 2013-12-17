@@ -85,7 +85,7 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 `UIMenuController` is responsible for presenting edit action menu items. Each app has its own singleton instance, `sharedMenuController`. By default, a menu controller will show commands for any methods in the `UIResponderStandardEditActions` informal protocol that the responder returns `YES` for in `canPerformAction:withSender:`.
 
-### <UIResponderStandardEditActions>
+### `<UIResponderStandardEditActions>`
 
 #### Handling Copy, Cut, Delete, and Paste Commands
 
