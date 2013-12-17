@@ -15,7 +15,7 @@ When dealing with complicated, stateful systems, dutiful book-keeping is essenti
 
 In Objective-C and Cocoa, there are a number of ways that these events are communicated, each with varying degrees of formality and coupling:
 
-- **`NSNotification` & `NSNotificationCenter`** provide a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. The only requirement is to know what to look for, specifically in the name of the notification. For example, `UIApplicationDidReceiveMemoryWarningNotification
+- **`NSNotification`** & **`NSNotificationCenter`** provide a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. The only requirement is to know what to look for, specifically in the name of the notification. For example, `UIApplicationDidReceiveMemoryWarningNotification
 ` signals a low memory environment in an application.
 - **Key-Value Observing** allows for ad-hoc, evented introspection between specific object instances by listening for changes on a particular key path. For example, a `UIProgressView` might observe the `numberOfBytesRead` of a network request to derive and update its own `progress` property.
 - **Delegates** are a popular pattern for signaling events over a fixed set of methods to a designated handler. For example, `UIScrollView` sends `scrollViewDidScroll:` to its delegate each time its scroll offset changes.
