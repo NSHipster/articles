@@ -15,7 +15,7 @@
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"/>
   <link rel="alternate" hreflang="x-default" href="{{ site.url }}" />
   <link rel="alternate" type="application/rss+xml" title="RSS" href="http://nshipster.com/feed.xml"/>
-  <link rel="stylesheet" href="//cdn.nshipster.com/css/screen.css"/>
+  <link rel="stylesheet" href="/css/screen.css"/>
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@NSHipster">
@@ -94,8 +94,6 @@
 
           <a href="https://plus.google.com/106751358503565042647?rel=author" style="display: none;"/>
         </p>
-
-        <p>Comments? Corrections? Feel free to <a href="https://github.com/NSHipster/articles/issues" title="Pull Requests Welcome">send a Pull Request</a>.</p>
       </section>
 
       <aside class="links">
@@ -111,10 +109,10 @@
               <ul>
                 {% for post in site.posts | sort_by_title %}
                   {% if post.framework == group %}
-                    <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                   {% elsif group == 'Miscellanea' %}
                     {% unless site.groups contains post.framework %}
-                      <li><a href="{{ post.url }}"/>{{ post.title }}</a></li>
+                      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                     {% endunless %}
                   {% endif %}
                 {% endfor %}
