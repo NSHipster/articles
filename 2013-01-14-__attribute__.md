@@ -30,10 +30,12 @@ If this is starting to remind you of ISO C's [`#pragma`](http://nshipster.com/pr
 
 In fact, when `__attribute__` was first introduced to GCC, it was faced with some resistance by some who suggested that `#pragma` be used exclusively for the same purposes.
 
-There are, however, two very good reasons why `__attribute__` exists:
+There were, however, two very good reasons why `__attribute__` was added:
 
-> 1. It is impossible to generate `#pragma` commands from a macro.
+> 1. It was impossible to generate `#pragma` commands from a macro.
 > 2. There is no telling what the same `#pragma` might mean in another compiler.
+
+Since then, C99 introduced the `_Pragma` operator which can be used in macros (see our [article on Pragmas](http://nshipster.com/pragma/)).
 
 Quoth the [GCC Documentation for Function Attributes](http://gcc.gnu.org/onlinedocs/gcc/Function-Attributes.html):
 
