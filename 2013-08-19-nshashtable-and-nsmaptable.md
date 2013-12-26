@@ -69,7 +69,7 @@ NSLog(@"Keys: %@", [[mapTable keyEnumerator] allObjects]);
 `NSMapTable` objects are initialized with options specifying behavior for both keys and values, using the following enum values:
 
 > - `NSMapTableStrongMemory`: Specifies a strong reference from the map table to its contents.
-> - `NSMapTableWeakMemory`: Uses weak read and write barriers appropriate for ARC or GC. Using `NSPointerFunctionsWeakMemory`, object references will turn to NULL on last release. Equal to `NSMapTableZeroingWeakMemory`.
+> - `NSMapTableWeakMemory`: Uses weak read and write barriers appropriate for ARC or GC. Using `NSPointerFunctionsWeakMemory`, object references will turn to `NULL` on last release. Equal to `NSMapTableZeroingWeakMemory`.
 > - `NSHashTableZeroingWeakMemory`: This option has been superseded by the `NSMapTableWeakMemory` option.
 > - `NSMapTableCopyIn` Use the memory acquire function to allocate and copy items on input (see acquireFunction (see [`NSPointerFunction -acquireFunction`](http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html#//apple_ref/occ/instp/NSPointerFunctions/acquireFunction)). Equal to NSPointerFunctionsCopyIn.
 > - `NSMapTableObjectPointerPersonality`: Use shifted pointer hash and direct equality, object description.
