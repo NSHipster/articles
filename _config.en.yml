@@ -1,5 +1,3 @@
-plugins: ../_plugins
-
 lang: en-US
 source: ./nshipster.com
 url: http://nshipster.com
