@@ -8,7 +8,7 @@ title: NSHipster 中文版
     <header>
       <hgroup>
         <small>本周发布</small>
-        <h1><a href="{{ site.baseurl }}{{ site.posts.first.url }}">{{ site.posts.first.title | camel_break }}</a></h1>
+        <h1><a href="{{ site.url }}{{ site.posts.first.url }}">{{ site.posts.first.title | camel_break }}</a></h1>
       </hgroup>
     </header>
 
@@ -18,7 +18,7 @@ title: NSHipster 中文版
       {{ site.posts.first | only_first_p }}
     {% endif %}
 
-    <a class="readmore" href="{{ site.baseurl }}{{ site.posts.first.url }}">{{ site.read_more }}</a>
+    <a class="readmore" href="{{ site.url }}{{ site.posts.first.url }}">{{ site.read_more }}</a>
   </article>
 </section>
 
@@ -26,7 +26,7 @@ title: NSHipster 中文版
   {% for post in site.posts offset:1 %}
     <article>
       <header>
-        <h1><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+        <h1><a href="{{ site.url }}{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
       {% if post.description %}
         <p>{{ post.description }}</p>
@@ -34,7 +34,7 @@ title: NSHipster 中文版
         {{ post | only_first_p }}
       {% endif %}
 
-      <a class="readmore" href="{{ site.baseurl }}{{ post.url }}">{{ site.read_more }}</a>
+      <a class="readmore" href="{{ site.url }}{{ post.url }}">{{ site.read_more }}</a>
     </article>
   {% endfor %}
 </section>

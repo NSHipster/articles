@@ -36,6 +36,7 @@
 
   <meta content="{{ site.title }}" property="og:site_name"/>
   {% if page.id %}
+    <meta content="article" property="og:type"/>
     <meta content="{{ page.title }}" property="og:title"/>
     <meta content="{{ site.url }}{{ page.url }}" property="og:url"/>
     {% if page.description %}
@@ -43,7 +44,11 @@
     {% else %}
       <meta content="{{ page.content | truncate: 250 | strip_html | escape }}" property="og:description"/>
     {% endif %}
+
+    <meta name="weibo:article:create_at" content="{{ page.date | date:"%Y年%-m月%-d日" }}" />
+    <meta name="weibo:article:update_at" content="{{ page.date | date:"%Y年%-m月%-d日" }}" />
   {% else %}
+    <meta content="webpage" property="og:type"/>
     <meta content="{{ site.title }}" property="og:title"/>
     <meta content="{{ site.url }}" property="og:url"/>
     <meta content="{{ site.description | strip_html | escape}}" property="og:description"/>
@@ -90,6 +95,7 @@
       </section>
 
       <aside class="links">
+        <a href="https://github.com/NSHipster/articles/issues" class="icon-github" title="Pull Requests Welcome" aria-hidden="true"></a>
         <a href="{{ site.url }}/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
 
