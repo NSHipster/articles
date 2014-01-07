@@ -8,7 +8,7 @@ description: "As consumer web technologies and enterprises race towards cloud in
 
 As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices.
 
-In this age of mobile computing, the possibilities of collaboration, whether in work or play, has never been greater. In this age of privacy concerns and mass surveillance, the need for secure, ad hoc communications has never been more prescient. In this age of connected devices, the promise of mastery over the everyday objects of our lives has never been closer at hand.
+In this age of mobile computing, the possibilities of collaboration, whether in work or play, have never been greater. In this age of privacy concerns and mass surveillance, the need for secure, ad hoc communications has never been more prescient. In this age of connected devices, the promise of mastery over the everyday objects of our lives has never been closer at hand.
 
 The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform. It allows developers to completely reimagine how mobile apps are built, and to redefine what is possible. And we're not just talking about successors to the lame bump-to-send-contact-information genre, either: multi-peer connectivity has implications on everything from collaborative editing and file sharing to multiplayer gaming and sensor aggregation.
 
