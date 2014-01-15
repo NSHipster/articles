@@ -87,11 +87,12 @@ All told, here's what a typical table view data source implementation looks like
 ~~~{objective-c}
 - (void)setObjects:(NSArray *)objects {
       SEL selector = @selector(localizedTitle)
+
       NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
       
       NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
       for (idx = 0; idx < sectionTitlesCount; idx++) {
-        [mutableSections addObject:[NSArray array]];
+        [mutableSections addObject:[NSMutableArray array]];
       }
       
       for (id object in objects) {
@@ -101,7 +102,7 @@ All told, here's what a typical table view data source implementation looks like
       
       for (idx = 0; idx < sectionTitlesCount; idx++) {
         NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
-        [mutableSections replaceObjectAtIndex:idx withObject:[collation sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
+        [mutableSections replaceObjectAtIndex:idx withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
       }
       
       self.sections = mutableSections;
