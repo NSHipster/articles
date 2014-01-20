@@ -11,9 +11,9 @@ rating: 7.2
 
 However, even the best abstractions break down; their underlying assumptions overturned. In these cases, developers either venture further down the abstraction, or, if available use a more general-purpose solution.
 
-For `NSSet` and `NSDictionary`, the breaking assumption was in the memory behavior when storing objects in the collection. For `NSSet`, objects are a strongly referenced, as are `NSDictionary` values. Keys, on the other hand, are copied by `NSDictionary`. If a developer wanted to store a weak value, or use a non-`<NSCopying>`-conforming object as a key, they could be clever and use [`NSValue +valueWithNonretainedObject](http://nshipster.com/nsvalue/). Or, as of iOS 6 (and as far back as Mac OS X 10.5), they could use `NSHashTable` or `NSMapTable`, the more general-case counterparts to `NSSet` or `NSDictionary`, respectively.
+For `NSSet` and `NSDictionary`, the breaking assumption was in the memory behavior when storing objects in the collection. For `NSSet`, objects are a strongly referenced, as are `NSDictionary` values. Keys, on the other hand, are copied by `NSDictionary`. If a developer wanted to store a weak value, or use a non-`<NSCopying>`-conforming object as a key, they could be clever and use [`NSValue +valueWithNonretainedObject`](http://nshipster.com/nsvalue/). Or, as of iOS 6 (and as far back as Mac OS X 10.5), they could use `NSHashTable` or `NSMapTable`, the more general-case counterparts to `NSSet` or `NSDictionary`, respectively.
 
-So without further ado, here's everything you need to know about two of the more obscure members of Foundation's collections classes:
+So without further ado, here's everything you need to know about two of the more obscure members of Foundation's collection classes:
 
 ## `NSHashTable`
 
@@ -38,8 +38,8 @@ NSLog(@"Members: %@", [hashTable allObjects]);
 
 `NSHashTable` objects are initialized with an option for any of the following behaviors. Deprecated enum values are due to `NSHashTable` being ported from Garbage-Collected Mac OS X to ARC-ified iOS. Other values are aliased to options defined by [NSPointerFunctions](http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html), which will be covered next week on NSHipster.
 
-> - `NSHashTableStrongMemory`: Equal to `NSPointerFunctionsStrongMemory`. This is default behavior, equivalent to `NSSet` member storage.
-> - `NSHashTableWeakMemory`: Equal to `NSPointerFunctionsWeakMemory`. Uses weak read and write barriers. Using `NSPointerFunctionsWeakMemory` object references will turn to `NULL` on last release.
+> - `NSHashTableStrongMemory`: Equal to `NSPointerFunctionsStrongMemory`. This is the default behavior, equivalent to `NSSet` member storage.
+> - `NSHashTableWeakMemory`: Equal to `NSPointerFunctionsWeakMemory`. Uses weak read and write barriers. Using `NSPointerFunctionsWeakMemory`, object references will turn to `NULL` on last release.
 > - `NSHashTableZeroingWeakMemory`: This option has been deprecated. Instead use the `NSHashTableWeakMemory` option.
 > - `NSHashTableCopyIn`: Use the memory acquire function to allocate and copy items on input (see [`NSPointerFunction -acquireFunction`](http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html#//apple_ref/occ/instp/NSPointerFunctions/acquireFunction)). Equal to `NSPointerFunctionsCopyIn`.
 > - `NSHashTableObjectPointerPersonality`: Use shifted pointer for the hash value and direct comparison to determine equality; use the description method for a description. Equal to `NSPointerFunctionsObjectPointerPersonality`.
@@ -69,9 +69,9 @@ NSLog(@"Keys: %@", [[mapTable keyEnumerator] allObjects]);
 `NSMapTable` objects are initialized with options specifying behavior for both keys and values, using the following enum values:
 
 > - `NSMapTableStrongMemory`: Specifies a strong reference from the map table to its contents.
-> - `NSMapTableWeakMemory`: Uses weak read and write barriers appropriate for ARC or GC. Using NSPointerFunctionsWeakMemory object references will turn to NULL on last release. Equal to `NSMapTableZeroingWeakMemory`.
+> - `NSMapTableWeakMemory`: Uses weak read and write barriers appropriate for ARC or GC. Using `NSPointerFunctionsWeakMemory`, object references will turn to `NULL` on last release. Equal to `NSMapTableZeroingWeakMemory`.
 > - `NSHashTableZeroingWeakMemory`: This option has been superseded by the `NSMapTableWeakMemory` option.
-> - `NSMapTableCopyIn` Use the memory acquire function to allocate and copy items on input (see acquireFunction (see [`NSPointerFunction -acquireFunction`](http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html#//apple_ref/occ/instp/NSPointerFunctions/acquireFunction)). Equal to NSPointerFunctionsCopyIn.
+> - `NSMapTableCopyIn`: Use the memory acquire function to allocate and copy items on input (see acquireFunction (see [`NSPointerFunction -acquireFunction`](http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html#//apple_ref/occ/instp/NSPointerFunctions/acquireFunction)). Equal to NSPointerFunctionsCopyIn.
 > - `NSMapTableObjectPointerPersonality`: Use shifted pointer hash and direct equality, object description.
 Equal to `NSPointerFunctionsObjectPointerPersonality`.
 
