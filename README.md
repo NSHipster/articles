@@ -25,15 +25,18 @@ NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, sta
 $ cd path/to/nshipster.com
 $ gem install bundler
 $ bundle install
-$ bundle exec jekyll server
+$ git submodule init
+$ git submodule update
+$ bundle exec jekyll --server --config _config.en.yml
 ```
+
 
 ### Compass
 
 In addition to the site content, CSS is generated using [Compass](http://compass-style.org),  an open-source CSS Authoring Framework. To run Compass locally, do:
 
 ``` shell
-$ cd path/to/nshipster.com
+$ cd path/to/nshipster.com/assets
 $ gem install compass
 $ compass watch .
 ```
