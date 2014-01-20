@@ -71,7 +71,7 @@ if (!&NSURLIsExcludedFromBackupKey) {
 } else {
     // iOS >= 5.1
     NSError *error = nil;
-    [URL setResourceValue:[NSNumber numberWithBool:YES]
+    [URL setResourceValue:@YES
                    forKey:NSURLIsExcludedFromBackupKey
                     error:&error];
 }
