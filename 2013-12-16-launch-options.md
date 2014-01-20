@@ -107,7 +107,7 @@ Unlike remote notifications, `UIApplication` delegate provides a unified code pa
 
 A local notification populates the launch options on `UIApplicationLaunchOptionsLocalNotificationKey`, which contains a payload with the same structure as a remote notification:
 
-- `UIApplicationLaunchOptionsLocalNotificationKey`: Indicates that a remote notification is available for the app to process. The value of this key is an `NSDictionary` containing the payload of the remote notification.
+- `UIApplicationLaunchOptionsLocalNotificationKey`: Indicates that a local notification is available for the app to process. The value of this key is an `NSDictionary` containing the payload of the local notification.
 
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
