@@ -64,7 +64,7 @@ Additionally, operations may specify a `threadPriority` value, which is a value 
 
 Depending on the complexity of your application, it may make sense to divide up large tasks into a series of composable sub-tasks. You can do that using `NSOperation` dependencies.
 
-For example, to describe the process of downloading and resizing an image from a server, you would probably want to divide up the networking into one operation, and resizing into another (perhaps to reuse the networking operation to download other resources, or reuse the resizing operation for images already on-disk). However, an image can't be resized until its  downloaded. Therefore, we say that the the networking operation is a _dependency_ of the resizing operation, and must be finished before the resizing operation can be started. Expressed in code:
+For example, to describe the process of downloading and resizing an image from a server, you would probably want to divide up the networking into one operation, and resizing into another (perhaps to reuse the networking operation to download other resources, or reuse the resizing operation for images already on-disk). However, an image can't be resized until its  downloaded. Therefore, we say that the networking operation is a _dependency_ of the resizing operation, and must be finished before the resizing operation can be started. Expressed in code:
 
 ~~~{objective-c}
 [resizingOperation addDependency:networkingOperation];
