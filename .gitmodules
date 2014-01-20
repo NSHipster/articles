@@ -7,3 +7,6 @@
 [submodule "nshipster.cn/_posts"]
 	path = nshipster.cn/_posts
 	url = git@github.com:NSHipster/articles.git
+[submodule "nshipster.ru/_posts"]
+	path = nshipster.ru/_posts
+	url = git@github.com:NSHipster/articles.git

@@ -1,0 +1,16 @@
+lang: ru-RU
+source: ./nshipster.ru
+url: http://nshipster.ru
+
+title: NSHipster
+description: "<strong>NSHipster</strong> это журнал из недооцененных битов в Objective-C и Cocoa. Обновляется еженедельно."
+permalink: /:title/
+lsi: false
+markdown: redcarpet
+pygments:
+  lexer: objective-c
+
+gauges:
+  tracker: 52ddb711de2e264f7800002d
+
+groups:
