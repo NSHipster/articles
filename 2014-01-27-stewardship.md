@@ -93,7 +93,7 @@ Versioning is a contract that library authors make to consumers in how software 
 
 The prevailing convention is [Semantic Versioning](http://semver.org), in which a release has a major, minor, and patch version, with each level signifying particular usage implications.
 
-- A patch, or bugfix, release changes only implementation, keeping the public API and thus all documented intact. Consumers should be able to update between patch versions without any change to their own code.
+- A patch, or bugfix, release changes only implementation, keeping the public API and thus all documentation intact. Consumers should be able to update between patch versions without any change to their own code.
 - A minor, or point, release changes the public API in non-breaking ways, such as adding a new feature. Again, developers should expect to have consumer code between minor versions work pretty much as expected.
 - A major release is anything that changes the public API in a backwards-incompatible way. Updating between major versions effectively means migrating consumer code to a new library.
 
