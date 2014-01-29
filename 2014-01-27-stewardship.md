@@ -98,7 +98,7 @@ The prevailing convention is [Semantic Versioning](http://semver.org), in which 
 
 > A comprehensive set of guidelines for semantic versioning can be found at [http://semver.org](http://semver.org)
 
-By following a few basic rules for versioning, developers are able to set clear expectations for how changes affect will affect shipping code.
+By following a few basic rules for versioning, developers are able to set clear expectations for how changes will affect shipping code.
 
 Deviating from these conventions as an author is disrespectful to anyone using the software, so take this responsibility seriously.
 
