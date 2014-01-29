@@ -96,7 +96,7 @@ The prevailing convention is [Semantic Versioning](http://semver.org), in which 
 - A minor, or point, release changes the public API in non-breaking ways, such as adding a new feature. Again, developers should expect to have consumer code between minor versions work pretty much as expected.
 - A major release is anything that changes the public API in a backwards-incompatible way. Updating between major versions effectively means migrating consumer code to a new library.
 
-> A comprehensive set of guidelines for semantic versioning can be found at http://semver.org
+> A comprehensive set of guidelines for semantic versioning can be found at [http://semver.org](http://semver.org)
 
 By following a few basic rules for versioning, developers are able to set clear expectations for how changes affect will affect shipping code.
 
