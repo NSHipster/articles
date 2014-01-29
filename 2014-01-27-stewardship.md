@@ -133,7 +133,7 @@ In any case, there will come a time when the lights need to be turned off, and i
 - Keep the project around, but make a commit that removes source files from the master branch. (Git will keep everything safe in history)
 - Thank everyone involved for their help and contributions.
 
-The alternative is to become a liability, an attractive nuisance... a mockery of what once was a respectable code base.
+The alternative is to become a liability, an attractive nuisance… a mockery of what once was a respectable code base.
 
 * * *
 
