@@ -126,7 +126,7 @@ Co-maintainers don't come pre-baked; individuals must grow into that role. And t
 
 ### Sunsetting
 
-All software has a lifecycle. At some point, all things must come to an end. Libraries outgrow their usefulness, or are supplanted by another piece of software, or simply fall out of favor.
+All software has a lifecycle. At some point, all things must come to an end. Libraries outgrow their usefulness, are supplanted by another piece of software, or simply fall out of favor.
 In any case, there will come a time when the lights need to be turned off, and it is the responsibility of the maintainer to wrap things up.
 
 - Announce the ending of the project, offering suggestions for how to migrate to another solution.
