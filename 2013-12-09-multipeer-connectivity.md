@@ -90,7 +90,7 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
 }
 ~~~
 
-> For sake of simplicity, this example contrives a block-based initializer for `UIActionSheet`, which allows for the `invitationHandler` to be passed directly into the action sheet responder in order to avoid the messy business of creating and managing a custom delegate object. This method can be implemented in a category, or adapted from [any of the implementations available on CocoaPods](http://beta.cocoapods.org/?q=uiactionsheet%20blocks)
+> For sake of simplicity, this example contrives a block-based initializer for `UIActionSheet`, which allows for the `invitationHandler` to be passed directly into the action sheet responder in order to avoid the messy business of creating and managing a custom delegate object. This method can be implemented in a category, or adapted from [any of the implementations available on CocoaPods](http://cocoapods.org/?q=uiactionsheet%20blocks)
 
 ### Creating a Session
 
