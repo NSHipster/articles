@@ -104,7 +104,7 @@ Deviating from these conventions as an author is disrespectful to anyone using t
 
 ### Answering Questions
 
-One of our greatest flaws as humans is our relative inability to comprehend not knowing  or understanding something that we ourselves do. This makes is extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
+One of our greatest flaws as humans is our relative inability to comprehend not knowing  or understanding something that we ourselves do. This makes it extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
 
 There's also a slight sadistic tendency for developers to lord knowledge over anyone who doesn't know as much as they do. We had to figure it out for ourselves (uphill both ways, in the snow) so why shouldn't they have to as well?
 
