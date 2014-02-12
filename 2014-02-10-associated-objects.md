@@ -38,7 +38,6 @@ Why is this useful? It allows developers to **add custom properties to existing 
 
 ~~~{objective-c}
 @implementation NSObject (AssociatedObject)
-@dynamic associatedObject;
 
 - (void)setAssociatedObject:(id)object {
      objc_setAssociatedObject(self, @selector(associatedObject), object, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
