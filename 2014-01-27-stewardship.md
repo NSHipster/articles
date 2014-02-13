@@ -93,19 +93,19 @@ Versioning is a contract that library authors make to consumers in how software 
 
 The prevailing convention is [Semantic Versioning](http://semver.org), in which a release has a major, minor, and patch version, with each level signifying particular usage implications.
 
-- A patch, or bugfix, release changes only implementation, keeping the public API and thus all documented intact. Consumers should be able to update between patch versions without any change to their own code.
+- A patch, or bugfix, release changes only implementation, keeping the public API and thus all documentation intact. Consumers should be able to update between patch versions without any change to their own code.
 - A minor, or point, release changes the public API in non-breaking ways, such as adding a new feature. Again, developers should expect to have consumer code between minor versions work pretty much as expected.
 - A major release is anything that changes the public API in a backwards-incompatible way. Updating between major versions effectively means migrating consumer code to a new library.
 
-> A comprehensive set of guidelines for semantic versioning can be found at http://semver.org
+> A comprehensive set of guidelines for semantic versioning can be found at [http://semver.org](http://semver.org)
 
-By following a few basic rules for versioning, developers are able to set clear expectations for how changes affect will affect shipping code.
+By following a few basic rules for versioning, developers are able to set clear expectations for how changes will affect shipping code.
 
 Deviating from these conventions as an author is disrespectful to anyone using the software, so take this responsibility seriously.
 
 ### Answering Questions
 
-One of our greatest flaws as humans is our relative inability to comprehend not knowing  or understanding something that we ourselves do. This makes is extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
+One of our greatest flaws as humans is our relative inability to comprehend not knowing  or understanding something that we ourselves do. This makes it extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
 
 There's also a slight sadistic tendency for developers to lord knowledge over anyone who doesn't know as much as they do. We had to figure it out for ourselves (uphill both ways, in the snow) so why shouldn't they have to as well?
 
@@ -127,14 +127,14 @@ Co-maintainers don't come pre-baked; individuals must grow into that role. And t
 
 ### Sunsetting
 
-All software has a lifecycle. At some point, all things must come to an end. Libraries outgrow their usefulness, or supplanted by another piece of software, or simply fall out of favor.
+All software has a lifecycle. At some point, all things must come to an end. Libraries outgrow their usefulness, are supplanted by another piece of software, or simply fall out of favor.
 In any case, there will come a time when the lights need to be turned off, and it is the responsibility of the maintainer to wrap things up.
 
 - Announce the ending of the project, offering suggestions for how to migrate to another solution.
 - Keep the project around, but make a commit that removes source files from the master branch. (Git will keep everything safe in history)
 - Thank everyone involved for their help and contributions.
 
-The alternative is to become a liability, an attractive nuisance... a mockery of what once was a respectable code base.
+The alternative is to become a liability, an attractive nuisance… a mockery of what once was a respectable code base.
 
 * * *
 
