@@ -68,6 +68,7 @@ Pod::Spec.new do |s|
   s.homepage = 'http://nshipster.com'
   s.authors  = { 'Mattt Thompson' =>
                  'mattt@nshipster.com' }
+  s.social_media_url = "https://twitter.com/mattt"
   s.source   = { :git => 'https://github.com/nshipster/NSHipsterKit.git', :tag => '1.0.0' }
   s.source_files = 'NSHipsterKit'
 end
