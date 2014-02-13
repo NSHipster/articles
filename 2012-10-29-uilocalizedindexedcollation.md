@@ -86,42 +86,42 @@ All told, here's what a typical table view data source implementation looks like
 
 ~~~{objective-c}
 - (void)setObjects:(NSArray *)objects {
-      SEL selector = @selector(localizedTitle)
-      NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
-      
-      NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
-      for (idx = 0; idx < sectionTitlesCount; idx++) {
-        [mutableSections addObject:[NSArray array]];
-      }
-      
-      for (id object in objects) {
-            NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:object collationStringSelector:selector];
-        [[mutableSections objectAtIndex:sectionNumber] addObject:object];
-      }
-      
-      for (idx = 0; idx < sectionTitlesCount; idx++) {
-        NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
-        [mutableSections replaceObjectAtIndex:idx withObject:[collation sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
-      }
-      
-      self.sections = mutableSections;
+    SEL selector = @selector(localizedTitle)
+    NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 
-      [self.tableView reloadData];
+    NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
+    for (idx = 0; idx < sectionTitlesCount; idx++) {
+      [mutableSections addObject:[NSArray array]];
+    }
+
+    for (id object in objects) {
+      NSInteger sectionNumber = [[UILocalizedIndexedCollation currentCollation] sectionForObject:object collationStringSelector:selector];
+      [[mutableSections objectAtIndex:sectionNumber] addObject:object];
+    }
+
+    for (idx = 0; idx < sectionTitlesCount; idx++) {
+      NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
+      [mutableSections replaceObjectAtIndex:idx withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
+    }
+
+    self.sections = mutableSections;
+
+    [self.tableView reloadData];
 }
 
-- (NSString *)tableView:(UITableView *)tableView 
-titleForHeaderInSection:(NSInteger)section 
+- (NSString *)tableView:(UITableView *)tableView
+titleForHeaderInSection:(NSInteger)section
 {
     return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
 }
- 
+
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
     return [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
 }
- 
-- (NSInteger)tableView:(UITableView *)tableView 
-sectionForSectionIndexTitle:(NSString *)title 
-               atIndex:(NSInteger)index 
+
+- (NSInteger)tableView:(UITableView *)tableView
+sectionForSectionIndexTitle:(NSString *)title
+               atIndex:(NSInteger)index
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
