@@ -91,7 +91,7 @@ All told, here's what a typical table view data source implementation looks like
 
     NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
     for (idx = 0; idx < sectionTitlesCount; idx++) {
-      [mutableSections addObject:[NSArray array]];
+      [mutableSections addObject:[NSMutableArray array]];
     }
 
     for (id object in objects) {
