@@ -119,7 +119,7 @@ If you need to accommodate a different tile coordinate scheme with your server, 
 
 Another addition to iOS 7 was [`MKMapSnapshotter`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKMapSnapshotter_class/Reference/Reference.html), which formalizes the process of creating an image representation of a map view. Previously, this would involve playing fast and loose with the `UIGraphicsContext`, but now images can reliably be created for any particular region and perspective.
 
-> See [WWDC 2013 Session 209: "Putting Map Kit in Perspective"](https://developer.apple.com/wwdc/videos/?id=309) for additional information on how and when to use `MKMapSnapshotter`.
+> See [WWDC 2013 Session 309: "Putting Map Kit in Perspective"](https://developer.apple.com/wwdc/videos/?id=309) for additional information on how and when to use `MKMapSnapshotter`.
 
 ### Creating a Map View Snapshot
 
