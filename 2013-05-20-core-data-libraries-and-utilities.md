@@ -111,11 +111,6 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><a href="https://github.com/lhunath">Maarten Billemont</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=lhunath&repo=UbiquityStoreManager&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
-    <tr>
-      <td><a href="https://github.com/overcommitted/FireData">FireData</a></td>
-      <td><a href="https://github.com/daikini">Jonathan Younger</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=overcommitted&repo=FireData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
-    </tr>
   </tbody>
 
 
@@ -229,10 +224,6 @@ Whereas adapters synchronize information through an existing, general purpose in
 #### [UbiquityStoreManager](https://github.com/lhunath/UbiquityStoreManager)
 
 > UbiquityStoreManager is a controller that implements iCloud integration with Core Data for you.
-
-#### [FireData](https://github.com/overcommitted/FireData)
-
-> FireData seamlessly integrates Core Data with [Firebase](http://www.firebase.com).
 
 ## Utilities
 
