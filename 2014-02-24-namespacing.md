@@ -8,7 +8,7 @@ description: "Namespacing is the preeminent bugbear of Objective-C. A cosmetic q
 
 > Why the hell is everything `NS`-whatever?
 
-You'll hear that within the first minute of introducing someone to Objective-C for the first time. Guaranteed.
+You'll hear that within the first minute of introducing someone to Objective-C. Guaranteed.
 
 Like a parent faced with the task of explaining the concept of death or the non-existence of Santa, you do your best to be forthcoming with facts, so that they might arrive at a conclusion themselves.
 
@@ -22,7 +22,7 @@ Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with glob
 
 This is all to say: unlike many other languages that are popular today, Objective-C does not provide a module-like mechanism for avoiding class and method name collisions.
 
-Instead, Objective-C relies on prefixes to ensure that functionality in one part of the app don't interfere with similarly named code somewhere else.
+Instead, Objective-C relies on prefixes to ensure that functionality in one part of the app doesn't interfere with similarly named code somewhere else.
 
 We'll jump into those right after a quick digression into type systems:
 
@@ -143,13 +143,13 @@ Because of this, many established libraries still use 2-letter prefixes. Conside
         </tr>
     </thead>
     <tbody>
-        <tr><td><tt>AF</tt></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a>]() ("[Alamofire](http://en.wikipedia.org/wiki/Gowalla)")</td></tr>
+        <tr><td><tt>AF</tt></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> ("<a href="http://en.wikipedia.org/wiki/Gowalla">Alamofire</a>")</td></tr>
         <tr><td><tt>RK</tt></td><td><a href="https://github.com/RestKit/RestKit">RestKit</a></td></tr>
         <tr><td><tt>GPU</tt></td><td><a href="https://github.com/BradLarson/GPUImage">GPUImage</a></td></tr>
         <tr><td><tt>SD</tt></td><td><a href="https://github.com/rs/SDWebImage">SDWebImage</a></td></tr>
         <tr><td><tt>MB</tt></td><td><a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a></td></tr>
         <tr><td><tt>FB</tt></td><td><a href="https://github.com/facebook/facebook-ios-sdk">Facebook SDK</a></td></tr>
-        <tr><td><tt>FM</tt></td><td><a href="https://github.com/ccgus/fmdb">FMDB</a>"<a href="http://flyingmeat.com">Flying Meat</a>")</td></tr>
+        <tr><td><tt>FM</tt></td><td><a href="https://github.com/ccgus/fmdb">FMDB</a> ("<a href="http://flyingmeat.com">Flying Meat</a>")</td></tr>
         <tr><td><tt>JK</tt></td><td><a href="https://github.com/johnezang/JSONKit">JSONKit</a></td></tr>
         <tr><td><tt>FUI</tt></td><td><a href="https://github.com/Grouper/FlatUIKit">FlatUI</a></td></tr>
         <tr><td><tt>NI</tt></td><td><a href="https://github.com/jverkoey/nimbus">Nimbus</a></td></tr>

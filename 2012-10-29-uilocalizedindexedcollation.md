@@ -90,7 +90,7 @@ All told, here's what a typical table view data source implementation looks like
     NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
 
     NSMutableArray *mutableSections = [[NSMutableArray alloc] initWithCapacity:sectionTitlesCount];
-    for (idx = 0; idx < sectionTitlesCount; idx++) {
+    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++) {
       [mutableSections addObject:[NSMutableArray array]];
     }
 
@@ -99,7 +99,7 @@ All told, here's what a typical table view data source implementation looks like
       [[mutableSections objectAtIndex:sectionNumber] addObject:object];
     }
 
-    for (idx = 0; idx < sectionTitlesCount; idx++) {
+    for (NSUInteger idx = 0; idx < sectionTitlesCount; idx++) {
       NSArray *objectsForSection = [mutableSections objectAtIndex:idx];
       [mutableSections replaceObjectAtIndex:idx withObject:[[UILocalizedIndexedCollation currentCollation] sortedArrayFromArray:objectsForSection collationStringSelector:selector]];
     }
