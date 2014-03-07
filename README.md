@@ -19,7 +19,9 @@
 
 ## Running Locally
 
-NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, static site generator in Ruby. You can run the site locally with:
+NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, static site generator in Ruby.
+
+You can run the site locally with:
 
 ``` shell
 $ cd path/to/nshipster.com
@@ -30,10 +32,11 @@ $ git submodule update
 $ bundle exec jekyll serve --config _config.en.yml
 ```
 
-
 ### Compass
 
-In addition to the site content, CSS is generated using [Compass](http://compass-style.org),  an open-source CSS Authoring Framework. To run Compass locally, do:
+In addition to the site content, CSS is generated using [Compass](http://compass-style.org),  an open-source CSS Authoring Framework.
+
+To run Compass locally, do:
 
 ``` shell
 $ cd path/to/nshipster.com/assets
