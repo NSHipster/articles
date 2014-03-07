@@ -27,7 +27,7 @@ $ gem install bundler
 $ bundle install
 $ git submodule init
 $ git submodule update
-$ bundle exec jekyll --server --config _config.en.yml
+$ bundle exec jekyll serve --config _config.en.yml
 ```
 
 
