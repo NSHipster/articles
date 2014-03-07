@@ -1,7 +1,6 @@
 ---
 layout: post
-title: NSHashTable & NSMapTable
-
+title: "NSHashTable &<br/>NSMapTable"
 ref: "http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/NSMapTable_class/Reference/NSMapTable.html"
 framework: Foundation
 rating: 7.2
@@ -60,7 +59,7 @@ Instances where one might use `NSMapTable` include non-copyable keys and storing
 
 ~~~{objective-c}
 id delegate = ...;
-NSMapTable *mapTable = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory 
+NSMapTable *mapTable = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory
                                              valueOptions:NSMapTableWeakMemory];
 [mapTable setObject:delegate forKey:@"foo"];
 NSLog(@"Keys: %@", [[mapTable keyEnumerator] allObjects]);

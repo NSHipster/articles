@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Launch Arguments & Environment Variables"
+title: "Launch Arguments &<br/>Environment Variables"
 
 ref: "https://developer.apple.com/library/ios/technotes/tn2239/_index.html"
 framework: Xcode
@@ -15,7 +15,7 @@ At McDonald's, one can order a "Poor Man’s Big Mac", which transforms a double
 
 At Chipotle, there is an unwritten rule that they'll make anything within the scope of available ingredients. Since Mexican food is a testament to culinary combinatorics, an off-book order for a Quesadilla or Nachos is well within their wheelhouse.
 
-In life, it's all about knowing what to ask for. 
+In life, it's all about knowing what to ask for.
 
 Which brings us to Xcode Launch Arguments & Environment Variables. There are a number of options that can be passed into a target's scheme to enable useful debugging behavior, but like a fast food secret menu, they're obscure and widely unknown.
 
@@ -45,7 +45,7 @@ Getting localization right is a challenging and time-consuming task in and of it
 
 #### NSDoubleLocalizedStrings
 
-To simulate German's UI-breaking _götterdämmere Weltanschauung_ of long-compound-words-unbroken-by-breakable-whitespace, there's `NSDoubleLocalizedStrings`. 
+To simulate German's UI-breaking _götterdämmere Weltanschauung_ of long-compound-words-unbroken-by-breakable-whitespace, there's `NSDoubleLocalizedStrings`.
 
 According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/globalization/guidelines/a3.html), we can expect translations from English to many European languages to be double or even triple the physical space of the source:
 
@@ -84,7 +84,7 @@ If you pass the `NSShowNonLocalizedStrings` launch argument, any unlocalized str
 
 Perhaps the most useful launch argument of all, however, is `AppleLanguages`.
 
-Normally, one would have to manually go through Settings > General > International > Language and wait for the Simulator or Device to restart. But the same can be accomplished much more simply with the following launch argument:  
+Normally, one would have to manually go through Settings > General > International > Language and wait for the Simulator or Device to restart. But the same can be accomplished much more simply with the following launch argument:
 
     -AppleLanguages (es)
 
@@ -92,7 +92,7 @@ Normally, one would have to manually go through Settings > General > Internation
 
 ### Core Data
 
-Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzlingly fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments: 
+Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzlingly fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments:
 
 #### SQL Debug
 
@@ -130,7 +130,7 @@ In any other persistence layer, migrations are a blessing. Yet, for some reason,
 
 Whereas launch arguments are specific to the executable, environment variables have a wider scope, more along the lines of a global variable (but without all of the knee-jerk derision from programmers).
 
-Configure your environment with the following settings to shape the memory management policies to aide in debugging. 
+Configure your environment with the following settings to shape the memory management policies to aide in debugging.
 
 > Unless otherwise specified, environment variables are passed `YES` or `NO` to enable or disable a particular feature.
 

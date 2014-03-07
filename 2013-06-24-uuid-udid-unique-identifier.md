@@ -1,6 +1,6 @@
 ---
 layout: post
-title: NSUUID / CFUUIDRef / UIDevice -uniqueIdentifier / -identifierForVendor
+title: NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor
 ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSUUID_Class/Reference/Reference.html"
 framework: Foundation
 rating: 7.0
