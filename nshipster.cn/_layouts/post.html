@@ -5,7 +5,12 @@ layout: default
 <article>
   <header>
     <h1><a href="{{ site.baseurl }}{{ page.url }}">{{ page.title | camel_break }}</a></h1>
-    <h2><a href="http://mattt.me/">Mattt Thompson</a> 撰写，<a href="http://www.linkedin.com/pub/zihan-xu/26/492/552" rel="nofollow">Zihan Xu</a> 翻译，发布于<time pubdate="{{ page.date }}">{{ page.date | date:"%Y年%-m月%-d日" }}</time></h2>
+    <h2><a href="http://mattt.me/">Mattt Thompson</a> 撰写，
+      {% if page.translator %}
+        {{ page.translator }}翻译，
+      {% endif %}
+
+      发布于<time pubdate="{{ page.date }}">{{ page.date | date:"%Y年%-m月%-d日" }}</time></h2>
   </header>
 
   <div class="content">
