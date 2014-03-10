@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "@"
+translator: "Zihan Xu"
 ref: ""
 framework: Objective-C
 rating: 8.7
@@ -21,9 +22,9 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
                     )))
                   ) )
                 ))) ) ))
-               ))))) 
-              ))) 
-            )) 
+               )))))
+              )))
+            ))
           )))) ))
         )))) ))
       )))
@@ -32,12 +33,12 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？这就对了：
 
 - 方括号
-- 长的荒唐的方法名	
+- 长的荒唐的方法名
 - `@`指令
 
 `@`或者"at"符号编译器指令对于理解Objective-C的格式以及其前身和相关机制非常重要。它是使得Objective-C如此强大，具有表现力，并能一路编译到C的含糖胶。
 
-它的用途多种多样，用它本身来描述`@`的含义的唯一转确的说法就是“和Objective-C有关的简写符号”。它们涵盖了广泛的实用性却也由晦涩难懂的用法，从主要的用途如`@interface`和`@implementation`到你的整个职业生涯或许都不会遇到的如`@defs`和`@compatibility_alias`。 
+它的用途多种多样，用它本身来描述`@`的含义的唯一转确的说法就是“和Objective-C有关的简写符号”。它们涵盖了广泛的实用性却也由晦涩难懂的用法，从主要的用途如`@interface`和`@implementation`到你的整个职业生涯或许都不会遇到的如`@defs`和`@compatibility_alias`。
 
 但对于有抱负想成为一个NSHipster的人来说，十分熟悉`@`指令就如同一个音乐爱好者按时间顺序循环披头士的全部歌曲的能力（更重要的是，对它们中的每一首都有及其强烈的看法）。
 
@@ -75,7 +76,7 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 @end
 ~~~
 
-类别对于标准框架类的便利函数非常有用（只是不要过分使用你的效用函数）。 
+类别对于标准框架类的便利函数非常有用（只是不要过分使用你的效用函数）。
 
 > 小贴士：你可以创建一个定义类似`+appNameDarkGrayColor`类方法的`NSColor`／`UIColor`调色板类别，而不是胡乱使用随机的，任意的颜色值。之后你可以通过创建方法的别名如`+appNameTextColor`的方式增加一个语义层，新的方法返回`+appNameDarkGrayColor`。
 
@@ -107,21 +108,21 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 
 ### 正向类声明
 
-有的时候，`@interface`声明会在属性中引用外部类或者作为参数类型。而不是给每个类添加`#import`语句，在头文件使用前置声明，并且在implementation中引入它们是很好的做法。 
+有的时候，`@interface`声明会在属性中引用外部类或者作为参数类型。而不是给每个类添加`#import`语句，在头文件使用前置声明，并且在implementation中引入它们是很好的做法。
 
 - `@class`
 
-编译时间更短，循环引用的机会更少；如果你还没有习惯这样做，那你就应该这么做了。 
+编译时间更短，循环引用的机会更少；如果你还没有习惯这样做，那你就应该这么做了。
 
 ### 实例变量可视性
 
 类提供状态以及通过属性和方法提供变化的接口而不是直接展示实例变量，这是一个通用的惯例。
 
-尽管ARC通过内存管理使得使用实例变量更加安全，但上述的自动属性合成删除了实例变量被声明的地方。 
+尽管ARC通过内存管理使得使用实例变量更加安全，但上述的自动属性合成删除了实例变量被声明的地方。
 
 不管怎么说，在实例变量_被_直接操作的情况下，有以下可见性指令：
 
-- `@public`：实例变量可使用符号`person->age = 32"`被直接读取。 
+- `@public`：实例变量可使用符号`person->age = 32"`被直接读取。
 - `@package`：实例变量是公开的，除非它被指定在框架外（仅适用64位架构）
 - `@protected`：实例变量仅可由其类和其衍生类访问
 - `@private`：实例变量仅可由其类访问
@@ -165,7 +166,7 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 
 ## 处理异常
 
-Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他语言使用异常处理，Objective-C则将异常以及程序员错误降级为真正的异常的行为。 
+Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他语言使用异常处理，Objective-C则将异常以及程序员错误降级为真正的异常的行为。
 
 `@`指令用于`try/catch/finally`块的传统惯例上：
 
@@ -173,7 +174,7 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 @try{
   // 试图执行下列语句
   [self getValue:&value error:&error];
-  
+
   // 如果有异常或者被显式抛出...
   if (error) {
     @throw exception;
@@ -183,7 +184,7 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 }  @finally {
   // 总是在@try或@catch block的尾部执行这个
   [self cleanup];
-} 
+}
 ~~~
 
 ## 字面
@@ -197,7 +198,7 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 - `@""`：返回一个由引号内Unicade内容初始化的`NSString`对象。
 - `@42`，`@3.14`，`@YES`，`@'Z'`：返回一个由相关类构造初始化的`NSNumber`对象，比如`@42` → `[NSNumber numberWithInteger:42]`，或者`@YES` → `[NSNumber numberWithBool:YES]`。支持使用后缀进一步指定类型，如`@42U` → `[NSNumber numberWithUnsignedInt:42U]`。
 - `@[]`：返回一个由冒号分隔的对象列表作为内容的`NSArray`对象。比如，`@[@"A", @NO, @2.718]` → `[NSArray arrayWithObjects:@"A", @NO, @2.718, nil]` （注意在字面中定点`nil`是不需要的）。
-- `@{}`：返回一个由特定键－值对初始化作为内容的`NSDictionary`对象，格式： `@{@"someKey" : @"theValue"}`。 
+- `@{}`：返回一个由特定键－值对初始化作为内容的`NSDictionary`对象，格式： `@{@"someKey" : @"theValue"}`。
 - `@()`：动态评估封装的表达，并返回基于其值的合适的对象字面（比如，`const char*`返回`NSString`，`int`返回`NSNumber`，等等。）。这也是使用数字字面和`枚举`值的指定方式。
 
 ### Objective-C 字面
@@ -209,7 +210,7 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 
 ### C字面
 
-字面也能用将Objective-C转换成C值的方法工作。这些指令能让我们偷看到Objective-C面纱下的内容，也让我们开始了解究竟发生了什么。 
+字面也能用将Objective-C转换成C值的方法工作。这些指令能让我们偷看到Objective-C面纱下的内容，也让我们开始了解究竟发生了什么。
 
 你知不知道所有的Objective-C的类和对象都只是被美化了的`struct`？又或者一个对象的整个身份的关键在于那个`struct`的一个`isa`字段？
 
@@ -219,8 +220,8 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 - `@defs()`：返回一个Objective-C类的布局。比如，定义一个与`NSObject`有相同布局的struct，你只需要这样：
 
 ~~~{objective-c}
-struct { 
-  @defs(NSObject) 
+struct {
+  @defs(NSObject)
 }
 ~~~
 
@@ -228,10 +229,10 @@ struct {
 
 ## 优化
 
-有一些`@`编译器指令专门用来为常用的优化提供快捷。 
+有一些`@`编译器指令专门用来为常用的优化提供快捷。
 
 - `@autoreleasepool{}`：如果你的代码中包含创建大量临时对象的紧密的循环，你可以通过`@autorelease`更加积极的释放这些寿命短暂，局部范围内的对象来达到优化。`@autoreleasepool`替换并且改进了旧的又慢又不能在ARC中使用的`NSAutoreleasePool`。
-- `@synchronized(){}`：这个指令为在一特定的环境中（通常是`self`）确保安全执行某一特定块提供了一个便捷的方法。这种情况的死锁很昂贵，所以，对于针对特定级别的线程安全的类来说，建议使用专用的`NSLock`属性或者使用如`OSAtomicCompareAndSwap32(3)`的低层次的死锁函数。 
+- `@synchronized(){}`：这个指令为在一特定的环境中（通常是`self`）确保安全执行某一特定块提供了一个便捷的方法。这种情况的死锁很昂贵，所以，对于针对特定级别的线程安全的类来说，建议使用专用的`NSLock`属性或者使用如`OSAtomicCompareAndSwap32(3)`的低层次的死锁函数。
 
 ## 兼容性
 
@@ -257,7 +258,7 @@ struct {
 #endif
 ~~~
 
-只要聪明的使用这些宏的组合，开发者可以通过引入`PSTCollectionView`来开发`UICollectionView`－－而不需要担心最终项目的部署目标。作为快速替换，同样的代码在iOS6中工作起来几乎和在iOS 4.3中一样。 
+只要聪明的使用这些宏的组合，开发者可以通过引入`PSTCollectionView`来开发`UICollectionView`－－而不需要担心最终项目的部署目标。作为快速替换，同样的代码在iOS6中工作起来几乎和在iOS 4.3中一样。
 
 ---
 
@@ -322,8 +323,8 @@ struct {
 
 - `@compatibility_alias`
 
-这就是`@`不同面孔下的详尽的描述。它是一个多功能的，电力十足的字符，它体现了这门语言的潜在的设计和机制。 
+这就是`@`不同面孔下的详尽的描述。它是一个多功能的，电力十足的字符，它体现了这门语言的潜在的设计和机制。
 
-> 这应该是一个完整的清单了，但是我们总有可能忽视一些新的或者长期被遗忘的用途。如果你知道有哪些`@`指令不在清单里，一定要让[@NSHipster](https://twitter.com/nshipster)知道啊。 
+> 这应该是一个完整的清单了，但是我们总有可能忽视一些新的或者长期被遗忘的用途。如果你知道有哪些`@`指令不在清单里，一定要让[@NSHipster](https://twitter.com/nshipster)知道啊。
 
 [1]: http://en.wikipedia.org/wiki/Jizz_(birding)
