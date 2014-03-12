@@ -111,11 +111,11 @@ $ ls "/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents"
 - 用于切换到[US English Diacritical Pronunciation](http://en.wikipedia.org/wiki/Pronunciation_respelling_for_English)和[IPA](http://en.wikipedia.org/wiki/International_Phonetic_Alphabet) (International Phonetic Alphabet)的链接
 - Manifest和签名文件
 
-Normally, proprietary binary encoding would be the end of the road in terms of what one could reasonably do with data, but luckily, Core Services provides APIs to read this information.
+通常情况下拥有对二进制文件读权限才可以获得相关的数据，但幸运的是Core Services为我们提供了相关的API。
 
-#### Getting Definition of Word
+#### 获取单词的释义
 
-To get the definition of a word on Mac OS X, one can use the `DCSCopyTextDefinition` function, found in the Core Services framework:
+在Mac OS X获取一个单词的释义，需要用到Core Services framework的`DCSCopyTextDefinition`函数：
 
 ~~~{objective-c}
 #import <CoreServices/CoreServices.h>
@@ -125,15 +125,15 @@ NSString *definition = (__bridge_transfer NSString *)DCSCopyTextDefinition(NULL,
 NSLog(@"%@", definition);
 ~~~
 
-Wait, where did all of those great dictionaries go?
+先别急用，我们来看看这些牛逼的字典到底是怎么被获取数据的。
 
-Well, they all disappeared into that first `NULL` argument. One might expect to provide a `DCSCopyTextDefinition` type here, as prescribed by the function definition. However, there are no public functions to construct or copy such a type, making `NULL` the only available option. The documentation is as clear as it is stern:
+看起来这些字典好像都进到了第一个`NULL`参数里。按照这个函数的定义来收，你可能想在这里放一个`DCSCopyTextDefinition`类型的数据，但是没有public的函数让你使用这个类型，所以让它成为`NULL`是唯一的解决办法了，就如文档里面所说：
 
-> This parameter is reserved for future use, so pass `NULL`. Dictionary Services searches in all active dictionaries.
+> 此参数为预留参数，可能在以后会被用到，目前暂时传递`NULL`即可。字典服务会在所有可用状态（active）的字典中搜索相关信息。
 
-"Dictionary Services searches in **all active dictionaries**", you say? Sounds like a loophole!
+"在**所有可用状态的字典**中搜索相关信息"？听起来像一个漏洞啊！
 
-#### Setting Active Dictionaries
+#### 将字典设为可用（Active）状态
 
 Now, there's nothing programmers love to hate to love more than the practice of exploiting loopholes to side-step Apple platform restrictions. Behold: an entirely error-prone approach to getting, say, thesaurus results instead of the first definition available in the standard dictionary:
 
@@ -152,13 +152,13 @@ dictionaryPreferences[@"DCSActiveDictionaries"] = activeDictionaries;
 [userDefaults setPersistentDomain:dictionaryPreferences forName:@"com.apple.DictionaryServices"];
 ~~~
 
-"But this is Mac OS X, a platform whose manifest destiny cannot be contained by meager sandboxing attempts from Cupertino!", you cry. "Isn't there a more civilized approach? Like, say, private APIs?"
+看到这里你可能会愤怒地说："但这是Mac OS X啊，一般应用是不能通过沙箱从Cupertino获取manifest权限的，就没有更方便的方法么？比如说私有API？"
 
-Why yes, yes there are.
+答案是：当然有。
 
-### Private APIs
+### 私有API
 
-Not publicly exposed, but still available through Core Services are a number of functions that cut closer to the dictionary services functionality that we crave:
+这些API没有公开暴露出来，但是为了满足我们对字典的渴望，这些API仍然能够通过调用Core Services的一些函数来实现：
 
 ~~~{objective-c}
 extern CFArrayRef DCSCopyAvailableDictionaries();
@@ -180,9 +180,9 @@ extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
 extern DCSDictionaryRef DCSRecordGetSubDictionary(CFTypeRef record);
 ~~~
 
-Private as they are, these functions aren't about to start documenting themselves, so let's take a look at how they're used:
+这些API都是私有的，所以当然也不会有文档来解释他们的用途和使用方法，所以先来看一下到底怎么用这些API吧：
 
-#### Getting Available Dictionaries
+#### 获取可用字典
 
 ~~~{objective-c}
 NSMapTable *availableDictionariesKeyedByName =
@@ -195,9 +195,9 @@ for (id dictionary in (__bridge_transfer NSArray *)DCSCopyAvailableDictionaries(
 }
 ~~~
 
-#### Getting Definition for Word
+#### 获取单词释义
 
-With instances of the elusive `DCSDictionaryRef` type available at our disposal, we can now see what all of the fuss is about with that first argument in `DCSCopyTextDefinition`:
+在上述处理中获取了很多难以琢磨的`DCSDictionaryRef`类型的实例，现在用这些实例我们来看看能对第一个参数`DCSCopyTextDefinition`做些什么事：
 
 ~~~{objective-c}
 NSString *word = @"apple";
@@ -228,11 +228,11 @@ for (NSString *name in availableDictionariesKeyedByName) {
 }
 ~~~
 
-Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
+这种方法最有趣的地方是你要从HTML格式的内容中来获取有用的信息，这些HTML还包含了CSS文件，他们都是用来在系统的字典应用(Dictionary.app)来显示内容用的。
 
-> For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"]((https://gist.github.com/mattt/9453538)).
+> 如果你是个好奇宝宝，或者是对语言学有偏爱的怪咖，可以看看[单词"apple"的HTML信息]((https://gist.github.com/mattt/9453538))。
 
-In the process of writing this article, I _accidentally_ created [an Objective-C wrapper](https://github.com/mattt/DictionaryKit) around this forbidden fruit (so forbidden by our favorite fruit company, so don't try submitting this to the App Store).
+写这篇文章的时候，我顺便也就写了一个[Objective-C wrapper](https://github.com/mattt/DictionaryKit)，这个库通过私有API从我们喜爱的水果公司来取禁果（所以不要把这个库放到你需要提交到App Store的应用中使用）。
 
 * * *
 
