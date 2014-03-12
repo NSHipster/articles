@@ -238,11 +238,11 @@ for (NSString *name in availableDictionariesKeyedByName) {
 
 ## iOS
 
-iOS development is a decidedly more by-the-books affair, so attempting to reverse-engineer the platform would be little more than an academic exercise. Fortunately, a good chunk of functionality is available (as of iOS 5) through the obscure UIKit class `UIReferenceLibraryViewController`.
+iOS开发毫无疑问是一件照本宣科的事，所以尝试逆向工程会比技术尝试更有用一点。幸运的是并不需要这样做了，因为有一批关于UIKit的`UIReferenceLibraryViewController`在iOS5之后API已经开放。
 
-`UIReferenceLibraryViewController` is similar to an `MFMessageComposeViewController`, in that provides a minimally-configurable view controller around system functionality, intended to be presented modally.
+`UIReferenceLibraryViewController`和`MFMessageComposeViewController`很相似，提供了最小化配置的系统层view controller，可以直接被present显示。
 
-Simply initialize with the desired term:
+用需要查找term来进行初始化：
 
 ~~~{objective-c}
 UIReferenceLibraryViewController *referenceLibraryViewController =
@@ -252,16 +252,16 @@ UIReferenceLibraryViewController *referenceLibraryViewController =
                            completion:nil];
 ~~~
 
-This is the same behavior that one might encounter by tapping the "Define" `UIMenuItem` on a highlighted word in a `UITextView`.
+这种行为和用户点击`UITextView`中高亮词汇弹出的"定义"的`UIMenuItem`的效果差不多。
 
-`UIReferenceLibraryViewController` also provides the class method `dictionaryHasDefinitionForTerm:`. A developer would do well to call this before presenting a dictionary view controller that will inevitably have nothing to display.
+`UIReferenceLibraryViewController`也提供了一个类方法`dictionaryHasDefinitionForTerm:`，开发者可以在dictionary view controller出现之前调用这个方法，就可以在不必需的时候不显示那个view controller了。
 
 ~~~{objective-c}
 [UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:@"apple"];
 ~~~
 
-> In both cases, it appears that `UIReferenceLibraryViewController` will do its best to normalize the search term, so stripping whitespace or changing to lowercase should not be necessary.
+> 在这两种情况下，`UIReferenceLibraryViewController`会以非常好的形式去格式化搜索结果，所以并不需要开发者手动去掉空格或者调整大小写来优化搜索。
 
 * * *
 
-From Unix word lists to their evolved `.dictionary` bundles on OS X (and presumably iOS), words are as essential to application programming as mathematical constants and the "Sosumi" alert noise. Consider how the aforementioned APIs can be integrated into your own app, or used to create a kind of app you hadn't previously considered. There are a [wealth](http://nshipster.com/nslocalizedstring/) [of](http://nshipster.com/nslinguistictagger/) [linguistic](http://nshipster.com/search-kit/) [technologies](http://nshipster.com/uilocalizedindexedcollation/) baked into Apple's platforms, so take advantage of them.
+无论是Unix的词汇表还是基于其发展而来的OS X（或iOS）的`.dictionary` bundles，它与数学常量以及Apple的"Sosumi"提醒一样，对于编程来说都是至关重要的。你可以思考一下如何将上述API引入你的app，或者用它们来创建你以前从未尝试过的应用。这里有很多Apple系统内部关于语言学的链接供你参考：a [wealth](http://nshipster.com/nslocalizedstring/) [of](http://nshipster.com/nslinguistictagger/) [linguistic](http://nshipster.com/search-kit/) [technologies](http://nshipster.com/uilocalizedindexedcollation/)。
