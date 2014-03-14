@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSExpression
+translator: "Zihan Xu"
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html"
 framework: Foundation
 rating: 9.0
@@ -25,7 +26,7 @@ NSExpression *expression = [NSExpression expressionWithFormat:@"4 + 5 - 2**3"];
 id value = [expression expressionValueWithObject:nil context:nil]; // => 1
 ~~~
 
-这并不是[Wolfram Alpha](http://www.wolframalpha.com/input/?i=finn+the+human+like+curve)，但是如果加入评估数学表达式对于你的应用很有用的话，那么...你就可以使用NSExpression。 
+这并不是[Wolfram Alpha](http://www.wolframalpha.com/input/?i=finn+the+human+like+curve)，但是如果加入评估数学表达式对于你的应用很有用的话，那么...你就可以使用NSExpression。
 
 ## 函数
 
@@ -37,9 +38,9 @@ NSExpression *expression = [NSExpression expressionForFunction:@"stddev:" argume
 id value = [expression expressionValueWithObject:nil context:nil]; // => 3.21859...
 ~~~
 
-> `NSExpression` 函数以给定数目的子表达式作为参数。比如，在上述例子中，要得到集合的标准差，数列中的数字要被`+expressionForConstantValue:`封装。虽然只是一个小小的不便（它最终却能使得`NSExpression`变得极其灵活），却足以使第一次尝试它的人绊倒。 
+> `NSExpression` 函数以给定数目的子表达式作为参数。比如，在上述例子中，要得到集合的标准差，数列中的数字要被`+expressionForConstantValue:`封装。虽然只是一个小小的不便（它最终却能使得`NSExpression`变得极其灵活），却足以使第一次尝试它的人绊倒。
 
-如果你觉得 [键值编码简单集合运算符](http://nshipster.com/kvc-collection-operators/) （`@avg`，`@sum`等等）不够用，也许`NSExpression`的自带的统计，算术和位运算功能能激起你的兴趣。 
+如果你觉得 [键值编码简单集合运算符](http://nshipster.com/kvc-collection-operators/) （`@avg`，`@sum`等等）不够用，也许`NSExpression`的自带的统计，算术和位运算功能能激起你的兴趣。
 
 > **要注意的是**：[根据Apple的`NSExpression`文档中的表格](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html)，很明显，Mac OS X & iOS的功能可用性之间没有重叠。看起来最近的iOS版本的确支持如`stddev`之类的函数，但这些变化并没有显示在头文件或者文档里。如果你注意到任何变化，请以[pull request的形式](https://github.com/NSHipster/articles/pulls)告诉我，不胜感激。
 
@@ -144,4 +145,4 @@ id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...
 
 ---
 
-下一周，我们将在刚刚学过的`NSExpression`的基础上继续探索`NSPredicate`和其它一切容易被忽视的内容。敬请期待！ 
+下一周，我们将在刚刚学过的`NSExpression`的基础上继续探索`NSPredicate`和其它一切容易被忽视的内容。敬请期待！

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NSIndexSet
-
+translator: "Andrew Yang"
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSet_Class/Reference/Reference.html"
 framework: Foundation
 rating: 7.8

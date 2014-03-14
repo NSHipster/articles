@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AFNetworking 2.0
-
+translator: "Zihan Xu"
 ref: "https://github.com/AFNetworking/AFNetworking"
 framework: "Open Source"
 rating: 9.9
@@ -13,7 +13,7 @@ description: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开�
 
 从各方面来看，AFNetworking 几乎已经成为主流。
 
-_但你有没有听说过它的新版呢？_  
+_但你有没有听说过它的新版呢？_
 [AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/)。
 
 这一周的 NSHipster：独家揭晓 AFNetworking 的未来。
@@ -42,13 +42,13 @@ iOS 4 引入的 block 和 Grand Central Dispatch 从根本上改善了应用程�
 
 ### 序列化 & 验证
 
-更深入一些，request operation 操作也可以负责验证 HTTP 状态码和服务器响应的内容类型，比如，对于 `application/json` MIME 类型的响应，可以将 NSData 序列化为 JSON 对象。 
+更深入一些，request operation 操作也可以负责验证 HTTP 状态码和服务器响应的内容类型，比如，对于 `application/json` MIME 类型的响应，可以将 NSData 序列化为 JSON 对象。
 
 从服务器加载 JSON、XML、property list 或者图像可以抽象并类比成潜在的文件加载操作，这样开发者可以将这个过程想象成一个 promise 而不是异步网络连接。
 
 ## 介绍 AFNetworking 2.0
 
-AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不是没有提升的空间。 
+AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不是没有提升的空间。
 
 在第二个大版本中，AFNetworking 旨在消除原有设计的怪异之处，同时为下一代 iOS 和 Mac OS X 应用程序增加一些强大的新架构。
 
@@ -66,7 +66,7 @@ AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不�
 
 - `AFURLConnectionOperation` - `NSOperation` 的子类，负责管理 `NSURLConnection` 并且实现其 delegate 方法。
 - `AFHTTPRequestOperation` - `AFURLConnectionOperation` 的子类，用于生成 HTTP 请求，可以区别可接受的和不可接受的状态码及内容类型。2.0 版本中的最大区别是，__你可以直接使用这个类，而不用继承它__，原因可以在“序列化”一节中找到。
-- `AFHTTPRequestOperationManager` - 包装常见 HTTP web 服务操作的类，通过 `AFHTTPRequestOperation` 由 `NSURLConnection` 支持。 
+- `AFHTTPRequestOperationManager` - 包装常见 HTTP web 服务操作的类，通过 `AFHTTPRequestOperation` 由 `NSURLConnection` 支持。
 
 #### `NSURLSession` 组件 _(iOS 7)_
 
