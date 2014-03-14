@@ -230,6 +230,8 @@ for (NSString *name in availableDictionariesKeyedByName) {
 
 Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
 
+![Entry for "apple" in Dictionary.app](http://nshipster.s3.amazonaws.com/dictionary.png)
+
 > For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"](https://gist.github.com/mattt/9453538).
 
 In the process of writing this article, I _accidentally_ created [an Objective-C wrapper](https://github.com/mattt/DictionaryKit) around this forbidden fruit (so forbidden by our favorite fruit company, so don't try submitting this to the App Store).
@@ -252,7 +254,13 @@ UIReferenceLibraryViewController *referenceLibraryViewController =
                            completion:nil];
 ~~~
 
+![Presenting a UIReferenceLibraryViewController](http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-1.png)
+
 This is the same behavior that one might encounter by tapping the "Define" `UIMenuItem` on a highlighted word in a `UITextView`.
+
+> Tapping on "Manage" brings up a view to download additional dictionaries.
+
+![Presenting a UIReferenceLibraryViewController](http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-2.png)
 
 `UIReferenceLibraryViewController` also provides the class method `dictionaryHasDefinitionForTerm:`. A developer would do well to call this before presenting a dictionary view controller that will inevitably have nothing to display.
 
