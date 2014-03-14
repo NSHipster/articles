@@ -4,9 +4,9 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
-    <title>{{ page.title }} : {{ site.title }}</title>
+    <title>{{ page.title | strip_html }} : {{ site.title }}</title>
   {% else %}
-    <title>{{ page.title }}</title>
+    <title>{{ page.title | strip_html }}</title>
   {% endif %}
   <meta name="description" content="{{ site.description | strip_html }}"/>
   <meta name="author" content="Mattt Thompson"/>
@@ -65,7 +65,7 @@
         <a href="{{ site.url }}">
           <acronym title="NeXTSTEP/Sun">NS</acronym>
           <strong>Hipster</strong>
-          <i>中文版</i>
+          <em>中文版</em>
           <img id="moustache" src="/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" />
 
         </a>
