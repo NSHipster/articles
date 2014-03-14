@@ -230,7 +230,7 @@ for (NSString *name in availableDictionariesKeyedByName) {
 
 Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
 
-> For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"]((https://gist.github.com/mattt/9453538)).
+> For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"](https://gist.github.com/mattt/9453538).
 
 In the process of writing this article, I _accidentally_ created [an Objective-C wrapper](https://github.com/mattt/DictionaryKit) around this forbidden fruit (so forbidden by our favorite fruit company, so don't try submitting this to the App Store).
 
