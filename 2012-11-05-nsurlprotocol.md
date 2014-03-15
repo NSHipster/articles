@@ -1,13 +1,12 @@
 ---
 layout: post
 title: NSURLProtocol
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLProtocol_Class/Reference/Reference.html"
 framework: Foundation
 rating: 7.4
 published: true
-
 description: Foundation库的URL加载系统是每个iOS工程师应该熟练掌握的。而在Foundation库中所有与网络相关的类和接口中，NSURLProtocol或许是最黑科技的了。
+translator: "Croath Liu"
 ---
 
 iOS根本离不开网络——不论是从服务端读写数据、向系统分发计算任务，还是从云端加载图片、音频、视频等。
@@ -121,35 +120,35 @@ iOS根本离不开网络——不论是从服务端读写数据、向系统分�
 
 或者这么说吧： `NSURLProtocol` 就是一个苹果允许的中间人攻击。
 
-## Subclassing NSURLProtocol
+## 子类化NSURLProtocol
 
-As mentioned previously, `NSURLProtocol` is an abstract class, which means it will be subclassed rather than used directly.
+之前提到过 `NSURLProtocol` 是一个抽象类，所以不能够直接使用必须被子类化之后才能使用。
 
-### Determining if a Subclass Can Handle a Request
+### 让子类识别并控制请求
 
-The first task of an `NSURLProtocol` subclass is to define what requests to handle. For example, if you want to serve bundle resources when available, it would only want to respond to requests that matched the name of an existing resource.
+子类化 `NSURLProtocol` 的第一个任务就是告诉它要控制什么类型的网络请求。比如说如果你想要当本地有资源的时候请求直接使用本地资源文件，那么相关的请求应该对应已有资源的文件名。
 
-This logic is specified in `+canInitWithRequest:`. If `YES`, the specified request is handled. If `NO`, it's passed down the line to the next URL Protocol.
+这部分逻辑定义在 `+canInitWithRequest:` 中，如果返回 `YES`，该请求就会被其控制。返回 `NO` 则直接跳入下一Protocol。
 
-### Providing a Canonical Version of a Request
+### 提供请求规范
 
-If you wanted to modify a request in any particular way, `+canonicalRequestForRequest:` is your opportunity. It's up to each subclass to determine what "canonical" means, but the gist is that a protocol should ensure that a request has only one canonical form (although many different requests may normalize into the same canonical form).
+如果你想要用特定的某个方式来修改一个请求，应该使用 `+canonicalRequestForRequest:` 方法。每一个subclass都应该依据某一个规范，也就是说，一个protocol应该保证只有唯一的规范格式（虽然很多不同的请求可能是同一种规范格式）。
 
-### Getting and Setting Properties on Requests
+### 获取和设置请求的属性
 
-`NSURLProtocol` provides methods that allow you to add, retrieve, and remove arbitrary metadata to a request object--without the need for a private category or swizzling:
+`NSURLProtocol` 提供方法允许你来添加、获取、删除一个request对象的任意metadata，而且不需要私有扩展或者方法欺骗(swizzle)：
 
 - `+propertyForKey:inRequest:`
 - `+setProperty:forKey:inRequest:`
 - `+removePropertyForKey:inRequest:`
 
-This is especially important for subclasses created to interact with protocols that have information not already provided by `NSURLRequest`. It can also be useful as a way to pass state between other methods in your implementation.
+在操作protocol时对尚未赋予特定信息的 `NSURLRequest` 进行操作时，上述方法都是特别重要的。这些对于和其他方法之间的状态传递也非常有用。
 
-### Loading Requests
+### 加载请求
 
-The most important methods in your subclass are `-startLoading` and `-stopLoading`. What goes into either of these methods is entirely dependent on what your subclass is trying to accomplish, but there is one commonality: communicating with the protocol client.
+你的子类中最重要的方法就是 `-startLoading` 和 `-stopLoading`。不同的自定义子类在调用这两个方法是会传入不同的内容，但共同点都是要围绕protocol客户端进行操作。
 
-Each instance of a `NSURLProtocol` subclass has a `client` property, which is the object that is communicating with the URL Loading system. It's not `NSURLConnection`, but the object does conform to a protocol that should look familiar to anyone who has implemented `NSURLConnectionDelegate`
+每个 `NSURLProtocol` 的子类实例都有一个 `client` 属性，该属性对URL加载系统进行相关操作。它不是 `NSURLConnection`，但看起来和一个实现了 `NSURLConnectionDelegate` 协议的对象非常相似。
 
 #### `<NSURLProtocolClient>`
 
@@ -162,16 +161,16 @@ Each instance of a `NSURLProtocol` subclass has a `client` property, which is th
 * `-URLProtocol:wasRedirectedToRequest:redirectResponse:`
 * `-URLProtocolDidFinishLoading:`
 
-In your implementation of `-startLoading` and `-stopLoading`, you will need to send each delegate method to your `client` when appropriate. For something simple, this may mean sending several in rapid succession, but it's important nonetheless.
+在对 `-startLoading` 和 `-stopLoading` 的实现中，你需要在恰当的时候让 `client` 调用每一个delegate方法。简单来说就是连续调用那些方法，不过这是至关重要的。
 
-### Registering the Subclass with the URL Loading System
+### 向URL加载系统注册子类
 
-Finally, in order to actually use an `NSURLProtocol` subclass, it needs to be registered into the URL Loading System.
+最后，为了使用 `NSURLProtocol` 子类，需要向URL加载系统进行注册。
 
-When a request is loaded, each registered protocol is asked "hey, can you handle this request?". The first one to respond with `YES` with `+canInitWithRequest:` gets to handle the request. URL protocols are consulted in reverse order of when they were registered, so by calling `[NSURLProtocol registerClass:[MyURLProtocol class]];` in `-application:didFinishLoadingWithOptions:`, your protocol will have priority over any of the built-in protocols.
+当请求被加载时，系统会向每一个注册过的protocol询问：“Hey你能控制这个请求吗？”第一个通过 `+canInitWithRequest:` 回答为 `YES` 的protocol就会控制该请求。URL protocol会被以注册顺序的反序访问，所以当在 `-application:didFinishLoadingWithOptions:` 方法中调用 `[NSURLProtocol registerClass:[MyURLProtocol class]];` 时，你自己写的protocol比其他内建的protocol拥有更高的优先级。
 
 ---
 
-Like the URL Loading System that contains it, `NSURLProtocol` is incredibly powerful, and can be used in exceedingly clever ways. As a relatively obscure class, we've only just started to mine its potential for how we can use it to make our code cleaner, faster, and more robust.
+就像控制请求的URL加载系统一样， `NSURLProtocol` 也一样的无比强大，可以通过各种灵活的方式使用。它作为一个相对晦涩难解的类，我们挖掘出了它的潜力来让我们的代码更清爽健壮。
 
-So go forth and hack! I can't wait to see what y'all come up with!
+所以开始hack吧！我已经等不及看你们用它做出什么有趣的事情了！
