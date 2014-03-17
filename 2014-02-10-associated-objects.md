@@ -3,28 +3,29 @@ layout: post
 title: Associated Objects
 framework: "Objective-c"
 rating: 6.6
-description: "Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It's dark juju, to be handled with as much caution as any other function from objc/runtime.h"
+description: "对象关联是Objective-C 2.0在运行时的新特性，这个特性允许你将任何键值在运行时关联到对象上。对象关联是黑暗符咒一样，应该和其他来自objc/runtime.h的函数一样被小心谨慎地对待"
+translator: "Croath Liu"
 ---
 
 ~~~{objective-c}
 #import <objc/runtime.h>
 ~~~
 
-Objective-C developers are conditioned to be wary of whatever follows this ominous incantation. And for good reason: messing with the Objective-C runtime changes the very fabric of reality for all of the code that runs on it.
+Objective-C开发者应该小心谨慎地遵循这个危险咒语的各种准则。一个很好的原因的就是：混乱的运行时代码会改变运行在其架构之上的所有代码。
 
-In the right hands, the functions of `<objc/runtime.h>` have the potential to add powerful new behavior to an application or framework, in ways that would otherwise not be possible. In the wrong hands, it drains the proverbial [sanity meter](http://en.wikipedia.org/wiki/Eternal_Darkness:_Sanity's_Requiem#Sanity_effects) of the code, and everything it may interact with (with [terrifying side-effects](http://www.youtube.com/watch?v=RSXcajQnasc#t=0m30s)).
+从利的角度来讲， `<objc/runtime.h>` 中的函数具有其他方式做不到的、能为应用和框架提供强大功能的能力。而从弊的角度来讲，它可能会会毁掉代码的[sanity meter](http://en.wikipedia.org/wiki/Eternal_Darkness:_Sanity's_Requiem#Sanity_effects)，一切代码和逻辑都可能被异常糟糕的副作用影响([terrifying side-effects](http://www.youtube.com/watch?v=RSXcajQnasc#t=0m30s))。
 
-Therefore, it is with great trepidation that we consider this [Faustian bargain](http://en.wikipedia.org/wiki/Deal_with_the_Devil), and look at one of the subjects most-often requested by NSHipster readers: associated objects.
+因此，我们怀着巨大的恐惧来思考这个与“魔鬼的交易”([Faustian bargain](http://en.wikipedia.org/wiki/Deal_with_the_Devil))，一起来看看这个最多地被NSHipster读者们要求讲讲的主题之一：对象关联（associated objects）。
 
 * * *
 
-Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in Mac OS X 10.6 Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
+对象关联（或称为关联引用）本来是Objective-C 2.0运行时的一个特性，起始于Mac OS X 10.6 Snow Leopard和iOS 4。相关参考可以查看 `<objc/runtime.h>` 中定义的以下三个允许你将任何键值在运行时关联到对象上的函数：
 
 - `objc_setAssociatedObject`
 - `objc_getAssociatedObject`
 - `objc_removeAssociatedObjects`
 
-Why is this useful? It allows developers to **add custom properties to existing classes in categories**, which [is an otherwise notable shortcoming for Objective-C](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html).
+为什么我说这个很有用呢？因为这允许开发者**对已经存在的类在扩展中添加自定义的属性**，这几乎弥补了[Objective-C最大的缺点](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html)。
 
 #### NSObject+AssociatedObject.h
 
@@ -49,7 +50,7 @@ Why is this useful? It allows developers to **add custom properties to existing 
 }
 ~~~
 
-It is often recommended that they key be a `static char`—or better yet, the pointer to one. Basically, an arbitrary value that is guaranteed to be constant, unique, and scoped for use within getters and setters:
+通常推荐的做法是添加的属性最好是 `static char` 类型的，当然更推荐是指针型的。通常来说该属性应该是常量、唯一的、在适用范围内用getter和setter访问到：
 
 ~~~{objective-c}
 static char kAssociatedObjectKey;
@@ -57,14 +58,14 @@ static char kAssociatedObjectKey;
 objc_getAssociatedObject(self, &kAssociatedObjectKey);
 ~~~
 
-However, a much simpler solution exists: just use a selector.
+然而可以用更简单的方式实现：用selector。
 
 <blockquote class="twitter-tweet" lang="en"><p>Since <tt>SEL</tt>s are guaranteed to be unique and constant, you can use <tt>_cmd</tt> as the key for <tt>objc_setAssociatedObject()</tt>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-## Associative Object Behaviors
+## 关联对象的行为
 
-Values can be associated onto objects according to the behaviors defined by the enumerated type `objc_AssociationPolicy`:
+属性可以根据定义在枚举类型 `objc_AssociationPolicy` 上的行为被关联在对象上：
 
 <table>
     <thead>
@@ -80,10 +81,10 @@ Values can be associated onto objects according to the behaviors defined by the 
                 <tt>OBJC_ASSOCIATION_ASSIGN</tt>
             </td>
             <td>
-                <tt>@property (assign)</tt> or <tt>@property (unsafe_unretained)</tt>
+                <tt>@property (assign)</tt> 或 <tt>@property (unsafe_unretained)</tt>
             </td>
             <td>
-                Specifies a weak reference to the associated object.
+                指定一个关联对象的弱引用。
             </td>
         </tr>
         <tr>
@@ -94,7 +95,7 @@ Values can be associated onto objects according to the behaviors defined by the 
                 <tt>@property (nonatomic, strong)</tt>
             </td>
             <td>
-                Specifies a strong reference to the associated object, and that the association is not made atomically.
+                指定一个关联对象的强引用，不能被原子化使用。
             </td>
         </tr>
         <tr>
@@ -105,7 +106,7 @@ Values can be associated onto objects according to the behaviors defined by the 
                 <tt>@property (nonatomic, copy)</tt>
             </td>
             <td>
-                Specifies that the associated object is copied, and that the association is not made atomically.
+                指定一个关联对象的copy引用，不能被原子化使用。
             </td>
         </tr>
         <tr>
@@ -116,7 +117,7 @@ Values can be associated onto objects according to the behaviors defined by the 
                 <tt>@property (atomic, strong)</tt>
             </td>
             <td>
-                Specifies a strong reference to the associated object, and that the association is made atomically.
+                指定一个关联对象的强引用，能被原子化使用。
             </td>
         </tr>
         <tr>
@@ -127,41 +128,40 @@ Values can be associated onto objects according to the behaviors defined by the 
                 <tt>@property (atomic, copy)</tt>
             </td>
             <td>
-                Specifies that the associated object is copied, and that the association is made atomically.
+                指定一个关联对象的copy引用，能被原子化使用。
             </td>
         </tr>
     </tbody>
 </table>
 
-Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zero `weak` references, but rather follow a behavior similar to `unsafe_unretained`, which means that one should be cautious when accessing weakly associated objects within an implementation.
+以 `OBJC_ASSOCIATION_ASSIGN` 类型关联在对象上的弱引用不代表0 retian的 `weak` 弱引用，行为上更像 `unsafe_unretained` 属性，所以当在你的视线中调用weak的关联对象时要相当小心。
 
-> According to the Deallocation Timeline described in [WWDC 2011, Session 322](https://developer.apple.com/videos/wwdc/2011/#322-video) (~36:00), associated objects are erased surprisingly late in the object lifecycle, in `object_dispose()`, which is invoked by `NSObject -dealloc`.
+> 根据[WWDC 2011, Session 322](https://developer.apple.com/videos/wwdc/2011/#322-video) (第36分钟左右)发布的内存销毁时间表，被关联的对象在生命周期内要比对象本身释放的晚很多。它们会在被 `NSObject -dealloc` 调用的 `object_dispose()` 方法中释放。
 
-## Removing Values
+## 删除属性
 
-One may be tempted to call `objc_removeAssociatedObjects()` at some point in their foray into associated objects. However, [as described in the documentation](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_removeAssociatedObjects), it's unlikely that you would have an occasion to invoke it yourself:
+你可以会在刚开始接触对象关联时想要尝试去调用 `objc_removeAssociatedObjects()` 来进行删除操作，但[如文档中所述](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_removeAssociatedObjects)，你不应该自己手动调用这个函数：
 
->The main purpose of this function is to make it easy to return an object to a "pristine state”. You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.
+> 此函数的主要目的是在“初试状态”时方便地返回一个对象。你不应该用这个函数来删除对象的属性，因为可能会导致其他客户对其添加的属性也被移除了。规范的方法是：调用 `objc_setAssociatedObject` 方法并传入一个 `nil` 值来清除一个关联。
 
-## Patterns
+## 优秀样例
 
-- **Adding private variables to facilitate implementation details**. When extending the behavior of a built-in class, it may be necessary to keep track of additional state. This is the _textbook_ use case for associated objects. For example, AFNetworking uses associated objects on its `UIImageView` category to [store a request operation object](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.m#L57-L63), used to asynchronously fetch a remote image at a particular URL.
-- **Adding public properties to configure category behavior.** Sometimes, it makes more sense to make category behavior more flexible with a property, than in a method parameter. In these situations, a public-facing property is an acceptable situation to use associated objects. To go back to the previous example of AFNetworking, its category on `UIImageView`, [its `imageResponseSerializer`](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.h#L60-L65) allows image views to optionally apply a filter, or otherwise change the rendering of a remote image before it is set and cached to disk.
-- **Creating an associated observer for KVO**. When using [KVO](http://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
+- **添加私有属性用于更好地去实现细节。**当扩展一个内建类的行为时，保持附加属性的状态可能非常必要。注意以下说的是一种非常_教科书式_的关联对象的用例：AFNetworking在 `UIImageView` 的category上用了关联对象来[保持一个operation对象](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.m#L57-L63)，用于从网络上某URL异步地获取一张图片。
+- **添加public属性来增强category的功能。**有些情况下这种(通过关联对象)让category行为更灵活的做法比在用一个带变量的方法来实现更有意义。在这些情况下，可以用关联对象实现一个一个对外开放的属性。回到上个AFNetworking的例子中的 `UIImageView` category，[它的 `imageResponseSerializer`](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.h#L60-L65)方法允许图片通过一个滤镜来显示、或在缓存到硬盘之前改变图片的内容。
+- **创建一个用于KVO的关联观察者。**当在一个category的实现中使用[KVO](http://nshipster.com/key-value-observing/)时，建议用一个自定义的关联对象而不是该对象本身作观察者。ng an associated observer for KVO**. When using [KVO](http://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
 
-## Anti-Patterns
+## 反例
 
-- **Storing an associated object, when the value is not needed**. A common pattern for views is to create a convenience method that populates fields and attributes based on a model object or compound value. If that value does not need to be recalled later, it is acceptable, and indeed preferable, not to associate with that object.
-- **Storing an associated object, when the value can be inferred.** For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can retrieved by calling `cellForRowAtIndexPath:`.
-- **Using associated objects instead of X**, where X is any one the following:
-    - [Subclassing](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) for when inheritance is a more reasonable fit than composition.
-    - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.
-    - [Gesture Recognizers](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html) for any situations when target-action doesn't suffice.
-    - [Delegation](https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html) when behavior can be delegated to another object.
-    - [NSNotification & NSNotificationCenter](http://nshipster.com/nsnotification-and-nsnotificationcenter/) for communicating events across a system in a loosely-coupled way.
-
+- **当值不需要的时候建立一个关联对象。**一个常见的例子就是在view上创建一个方便的方法去保存来自model的属性、值或者其他混合的数据。如果那个数据在之后根本用不到，那么这种方法虽然是没什么问题的，但用关联到对象的做法并不可取。
+- **当一个值可以被其他值推算出时建立一个关联对象。**例如：在调用 `cellForRowAtIndexPath:` 时存储一个指向view的 `UITableViewCell` 中accessory view的引用，用于在 `tableView:accessoryButtonTappedForRowWithIndexPath:` 中使用。
+- **用关联对象替代X**，这里的X可以代表下列含义：
+    - 当继承比扩展原有的类更方便时用[子类化](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html)。
+    - 为事件的响应者添加[响应动作](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html)。
+    - 当响应动作不方便使用时使用的[手势动作捕捉](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html)。
+    - 行为可以在其他对象中被代理实现时要用[代理(delegate)](https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html)。
+    - 用[NSNotification 和 NSNotificationCenter](http://nshipster.com/nsnotification-and-nsnotificationcenter/)进行松耦合化的跨系统的事件通知。
 * * *
 
-Associated objects should be seen as a method of last resort, rather than a solution in search of a problem (and really, categories themselves really shouldn't be at the top of the toolchain to begin with).
+比起其他解决问题的方法，关联对象应该被视为最后的选择（事实上category也不应该作为首选方法）。
 
-Like any clever trick, hack, or workaround, there is a natural tendency for one to actively seek out occasions to use it—especially just after learning about it. Do your best to understand and appreciate when it's the right solution, and save yourself the embarrassment of being scornfully asked "why in the name of $DEITY" you decided to go with _that_ solution.
+和其他精巧的trick、hack、workaround一样，一般人都会在刚学习完之后乐于寻找场景去使用一下。尽你所能去理解和欣赏它在正确使用时它所发挥的作用，同时当你选择_这个_解决办法时，也要避免当被轻蔑地问起“这是个什么玩意？”时的尴尬。
