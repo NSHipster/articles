@@ -5,11 +5,10 @@ translator: "Henry Lee"
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 framework: Foundation
 rating: 9.0
-description: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
+description: "让计算异步地在后台运行，是谁都知道想让你的应用让人感觉反应迅速而且能及时响应的秘密。"
 ---
 
 让计算异步地在后台运行，是谁都知道想让你的应用让人感觉反应迅速而且能及时响应的秘密。
-让计算尽量异步地在后台加载，是一个让你应用让人感觉反应迅速、能快速响应的一个大家都知道的小秘密。
 
 现在的Objective-C开发者一般有两个选择，分别是[Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch)或者[`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html)。现在GCD已经逐渐发展成主流了，所以我们来谈谈后者，一个面向对象的解决办法。
 
@@ -32,7 +31,6 @@ description: "Everyone knows that the secret to making an app snappy and respons
 > `isReady` → `isExecuting` → `isFinished`
 
 为了替代不那么清晰的`state`属性，状态直接由上面那些Keypath的KVO通知决定，也就是说，当一个操作在准备好被执行的时候，它发送了一个KVO通知给`isReady`的Keypath，让这个keypath对应的属性`isReady`在被访问的时候返回`YES`。
-In lieu of an explicit `state` property, state is determined implicitly by KVO notifications on those keypaths. That is, when an operation is ready to be executed, it sends a KVO notification for the `isReady` keypath, whose corresponding property would then return `YES`.
 
 每一个属性对于其他的属性必须是互相独立不同的，也就是同时只可能有一个属性返回`YES`，从而才能维护一个连续的状态：
 - `isReady`: 返回 `YES` 表示操作已经准备好被执行, 如果返回`NO`则说明还有其他没有先前的相关步骤没有完成。
