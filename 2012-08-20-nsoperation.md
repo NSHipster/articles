@@ -5,14 +5,14 @@ translator: "Henry Lee"
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 framework: Foundation
 rating: 9.0
-description: "让计算异步地在后台运行，是谁都知道想让你的应用让人感觉反应迅速而且能及时响应的秘密。"
+description: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"
 ---
 
-让计算异步地在后台运行，是谁都知道想让你的应用让人感觉反应迅速而且能及时响应的秘密。
+我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。
 
 现在的Objective-C开发者一般有两个选择，分别是[Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch)或者[`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html)。现在GCD已经逐渐发展成主流了，所以我们来谈谈后者，一个面向对象的解决办法。
 
-`NSOperation`表示了一个单位的计算过程。作为一个抽象类，它给了它的子类一个十分有用而且线程安全的方式来建立状态、优先级、依赖性和取消等的模型。或者，你不是很喜欢再自己继承`NSOperation`的话，框架还提供`NSBlockOperation`，这是一个继承自`NSOperation`且封装了block的实体类。
+`NSOperation`表示了一个独立的计算单元。作为一个抽象类，它给了它的子类一个十分有用而且线程安全的方式来建立状态、优先级、依赖性和取消等的模型。或者，你不是很喜欢再自己继承`NSOperation`的话，框架还提供`NSBlockOperation`，这是一个继承自`NSOperation`且封装了block的实体类。
 
 很多执行任务类型的案例都很好的运用了`NSOperation`，包括[网络请求](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.h)，图像压缩，自然语言处理或者其他很多需要返回处理后数据的、可重复的、结构化的、相对长时间运行的任务。
 
@@ -24,30 +24,30 @@ description: "让计算异步地在后台运行，是谁都知道想让你的应
 
 现在让我们通过怎样使用和怎样通过继承实现功能来看看`NSOperation`稍微复杂的部分。
 
-## 状态(State)
+## 状态
 
 `NSOperation`包含了一个十分优雅的状态机来描述每一个操作的执行。
 
 > `isReady` → `isExecuting` → `isFinished`
 
-为了替代不那么清晰的`state`属性，状态直接由上面那些Keypath的KVO通知决定，也就是说，当一个操作在准备好被执行的时候，它发送了一个KVO通知给`isReady`的Keypath，让这个keypath对应的属性`isReady`在被访问的时候返回`YES`。
+为了替代不那么清晰的`state`属性，状态直接由上面那些keypath的KVO通知决定，也就是说，当一个操作在准备好被执行的时候，它发送了一个KVO通知给`isReady`的keypath，让这个keypath对应的属性`isReady`在被访问的时候返回`YES`。
 
 每一个属性对于其他的属性必须是互相独立不同的，也就是同时只可能有一个属性返回`YES`，从而才能维护一个连续的状态：
 - `isReady`: 返回 `YES` 表示操作已经准备好被执行, 如果返回`NO`则说明还有其他没有先前的相关步骤没有完成。
 - `isExecuting`: 返回`YES`表示操作正在执行，反之则没在执行。
 - `isFinished` : 返回`YES`表示操作执行成功或者被取消了，`NSOperationQueue`只有当它管理的所有操作的`isFinished`属性全标为`YES`以后操作才停止出列，也就是队列停止运行，所以正确实现这个方法对于避免死锁很关键。
 
-## 取消(Cancellation)
+## 取消
 
 早些取消那些没必要的操作是十分有用的。取消的原因可能包括用户的明确操作或者某个相关的操作失败。
 
-与之前的执行状态类似，当`NSOperation`的`-cancel`状态调用的时候会通过KVO通知`isCancelled`的Keypath来修改`isCancelled`属性的返回值，`NSOperation`需要尽快地清理一些内部细节，而后到达一个合适的最终状态。特别的，这个时候`isCancelled`和`isFinished`的值将是YES，而`isExecuting`的值则为NO。
+与之前的执行状态类似，当`NSOperation`的`-cancel`状态调用的时候会通过KVO通知`isCancelled`的keypath来修改`isCancelled`属性的返回值，`NSOperation`需要尽快地清理一些内部细节，而后到达一个合适的最终状态。特别的，这个时候`isCancelled`和`isFinished`的值将是YES，而`isExecuting`的值则为NO。
 
 有一件肯定需要注意的事情就是关于单词"cancel"的拼法特性，尽管各类英语的习惯不尽相同，但是对于`NSOperation`来说：
 - `cancel`: 方法调用里只需要一个L（动词）
 - `isCancelled`: 属性里需要两个L（形容词）
 
-## 优先级(Priority)
+## 优先级
 
 不可能所有的操作都是一样重要，通过以下的顺序设置`queuePriority`属性可以加快或者推迟操作的执行：
 
@@ -59,11 +59,11 @@ description: "让计算异步地在后台运行，是谁都知道想让你的应
 
 此外，有些操作还可以指定`threadPriority`的值，它的取值范围可以从`0.0`到`1.0`，`1.0`代表最高的优先级。鉴于`queuePriority`属性决定了操作执行的顺序，`threadPriority`则指定了当操作开始执行以后的CPU计算能力的分配，如果你不知道这是什么，好吧，你可能根本没必要知道这是什么。
 
-## 依赖性(Dependencies)
+## 依赖性
 
 根据你应用的复杂度不同，将大任务再分成一系列子任务一般都是很有意义的，而你能通过`NSOperation`的依赖性实现。
 
-比如说，你从服务器下载然后再压缩一张图片的操作，你可能会将这个较大的操作中的网络封装到一个子操作中，再将压缩操作放进另一个子操作（可能你还会用到这个网络子过程再去下载另一张图片，然后用压缩子过程去压缩磁盘上的图片）。但是，图片只有下载了才能被压缩，所以，我们定义网络子操作是压缩子操作的_依赖_，只有网络子操作完成了压缩子操作才能开始。用代码来说就是：
+比如说，对于服务器下载并压缩一张图片的整个过程，你可能会将这个整个过程分为两个操作（可能你还会用到这个网络子过程再去下载另一张图片，然后用压缩子过程去压缩磁盘上的图片）。显然图片需要等到下载完成之后才能被调整尺寸，所以我们定义网络子操作是压缩子操作的_依赖_，通过代码来说就是：
 
 ~~~{objective-c}
 [resizingOperation addDependency:networkingOperation];
