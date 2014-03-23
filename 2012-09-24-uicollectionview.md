@@ -9,9 +9,9 @@ description: "从现在起，UICollectionView凭一己之力改变我们将要�
 translator: "JJ Mao"
 ---
 
-`UICollectionView` 是一种新的 `UITableView` 。它是如此的重要。
+`UICollectionView` 是一种新的 `UITableView` ，并且它极其重要。
 
-这并不是说，collection views是未知或模糊的--任何一个去过有关它的 WWDC 会议的人，或是在 iOS 6 beta 版上玩过的人都知道怎么回事。
+这并不是说，collection views是未知或模糊的--任何一个去过有关它WWDC会议的或是在 iOS 6 beta 版上玩过的人都知道怎么回事。
 
 记住，作为一个NSHipster，不仅仅是知道名不见经传的石头，更多是在它们家喻户晓、售罄一空之前就知道有前途。所以呢，在其他人发现之前，这儿有个关于大热门的概要：
 
@@ -43,13 +43,13 @@ if (!cell) {
 由于collection views没有被归入任何特定结构，"header" 和 "footer"视图的约定不是很适用。所以在它这个地方，collection views拥有可以与每个cell关联的
 _supplementary views_。
 
-每个cell可以有多个与之关联的supplementary views--每个命名为"kind"。正因如此，headers和footers仅仅是supplementary views所能做的一个开始。
+每个cell可以有多个与之关联的supplementary views--每个命名为"kind"。正因如此，headers和footers仅仅是supplementary views所施展的一成功力。
 
 关键在于supplementary views，即使最复杂的layout也可以被实现而不影响cells的语义完整性。`UITableView` hacks对于[`spacer.gif`](http://en.wikipedia.org/wiki/Spacer_GIF)就像 `UICollectionView` cells对于[semantic HTML](http://en.wikipedia.org/wiki/Semantic_HTML)。
 
 ### Decoration 视图
 
-除了cell views和supplementary views，collections还有 _decoration views_。一个decoration view,顾名思义，是一种没有功能性用途的东西... 除了在网络上传播的[摒弃对anti-skeuomorphic狂热分子的仇恨](http://skeu.it)。不过说真的，如果你愿意给你的虚拟藏书应用镶嵌完美质感的木纹架子，这很可能是容易做到的，_对吗_？
+除了cell views和supplementary views，collections还有 _decoration views_。一个decoration view，顾名思义，是一种没有功能性用途的东西... 除了在网络上传播的[摒弃对anti-skeuomorphic狂热分子的仇恨](http://skeu.it)。不过说真的，如果你愿意给你的虚拟藏书应用镶嵌完美质感的木纹架子，这很可能是容易做到的，_对吗_？
 
 有一点要记住的是，decoration views完全是由layout管理的，与cell或supplementary views不一样,它不在collection view data source的管辖范围内。
 
@@ -59,7 +59,7 @@ Layouts是使 `UICollectionView` 如此神奇的核心。把它们看作是CSS�
 
 `UICollectionViewLayout` 是一个抽象的基类，用于定位cell views和它们的supplementary和decoration views。但不是将它直接归入子类，大多数应用喜欢使用或者将 `UICollectionViewFlowLayout` 归入子类。Flow layouts用一些线性概念覆盖了layouts的广义类，不管它是单行或单列或一格。
 
-在你很欢乐地理解flow layouts的限制之前，这通常不是一个安全的开始方式。
+在你足够安心地了解了flow layouts的所有限制之前，你可以稳妥地从flow layouts开始学习。
 
 每个cell view、supplemental view和decoration view 都有layout属性。想要知道layouts如何灵活，只需看看 `UICollectionViewLayoutAttributes` 对象的特性就知道了：
 
@@ -89,11 +89,11 @@ Layouts是使 `UICollectionView` 如此神奇的核心。把它们看作是CSS�
 
 自从有了iPad，iOS业界便弥漫着一种徘徊于原先iPhone的UI设计模式和对这种更新的、外形尺寸更大的需求之间的微妙而紧张的气氛。随着iPhone 5和"iPad mini"的传闻，要不是 `UICollectionView` (以及Auto-Layout)，这种紧张气氛可能导致整个iOS平台的衔接断裂。
 
-Apple有无数种不同方式去提供某些功能或是不提供，但是Apple真的有用心考虑他们如何设计一切。
+Apple有无数种不同方式提供类似的功能（或者干脆不提供），但是一旦提供，他们在设计这类功能方面的确能够各个都是全垒打。
 
-data source和layout之间逻辑分离的去除；cell、supplementary和decoration视图之间的明确分工；大部分layout属性自动支持动画...许许多多的谨慎和智慧都随这些APIs被放到了一起。
+data source和layout接口之间简洁明了的逻辑分离；cell、supplementary和decoration视图之间明确的分工；一堆可继承拓展以及可通过UIKit自动实现动画的layout属性...大量的细心与智慧才组成了这些API。
 
-因此，iOS应用的整个前景将会永远改变。随着collection views，iPad的审美转变正式拉开序幕，这将引爆关于我们期望怎样的应用外观和表现的整个重新定义。
+因此，iOS应用的整个前景将会永远改变。有了collection views，我们的审美已经随着iPad应用的视觉和交互的整个重新定义而转变。
 
 大家可能对collection views尚未熟悉，但是现在你可以说在它们还没流行起来之前就知道它们了。
 
