@@ -115,7 +115,7 @@ extern NSString * NSStringFromTransactionState(TransactionState state);
 NSString * NSStringFromTransactionState(TransactionState state) {
   switch (state) {
     case TransactionOpened:
-      return @"Opened"
+      return @"Opened";
     case TransactionPending:
       return @"Pending";
     case TransactionClosed:
