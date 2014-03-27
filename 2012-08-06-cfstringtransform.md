@@ -109,26 +109,26 @@ description: "NSString 是基础类库中的佼佼者。 它虽然很强大，�
 
 ## 正则化用户产生的内容
 
-One of the more practical applications for string transformation is to normalize unpredictable user input. Even if your application doesn't specifically deal with other languages, you should be able to intelligently process anything the user types into your app.
+字符串变换的一个更实际的应用是正则化不可预知的用户输入。即使你的应用并不单独处理其他语言，你也应当能智能地处理用户向你的应用输入的任何内容。
 
-For example, let's say you want to build a searchable index of movies on the device, which includes greetings from around the world:
+例如，你想在设备上建立一个可搜索的电影索引，它包含世界各地的人的问候：
 
-- First, apply the `kCFStringTransformToLatin` transform to transliterate all non-English text into a Latin alphabetic representation.
+- 首先，应用 `kCFStringTransformToLatin` 变换将所有非英文文本转换为拉丁字母表示。
 
 > Hello! こんにちは! สวัสดี! مرحبا! 您好! →  
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
-- Next, apply the `kCFStringTransformStripCombiningMarks` transform to remove any diacritics or accents.
+- 然后，应用 `kCFStringTransformStripCombiningMarks` 变换来去除变音符和重音。
 
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →  
 > Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
-- Finally, downcase the text with `CFStringLowercase`, and split the text into tokens with [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to use as an index for the text.
+- 最后，用 `CFStringLowercase` 转为小写，并用[`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) 分词用作文本的索引。
 
 > (hello, kon'nichiha, swasdi, mrhba, nin, hao)
 
-By applying the same set of transformations on search text entered by the user, you have a universal way to search regardless of either the language of the search string or content!
+通过对用户输入的文本使用同样的变换，你就可以实现一个通用的搜索，无论搜索文本或内容是什么语言！
 
 * * *
 
-`CFStringTransform` 会是个近乎疯狂的强大工具来按你的要求处理语言。can be an insanely powerful way to bend language to your will. And it's but one of many powerful features that await you if you're brave enough to explore outside of Objective-C's warm OO embrace.
+`CFStringTransform` 会是个用来按你的要求处理语言的十分强大的工具。并且它是，且仅仅是等着你勇敢地投入Objective-C的温暖怀抱的许多强大特性之一。
