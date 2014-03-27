@@ -14,7 +14,7 @@ description: 即使这个博客就是专门讲一些晦涩接口，但是`NSIncr
 
 这个接口在iOS 5中被发布，相对于其他大家一定会用到的条目，它并没有在更新日志里有更着重的声明。
 
-它的[编程指南](https://developer.apple.com/library/mac/#documentation/DataManagement/Conceptual/IncrementalStorePG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010706)仅仅只有82个字，是所有编程指南里字数最少的了吧。
+它的[编程指南](https://developer.apple.com/library/mac/#documentation/DataManagement/Conceptual/IncrementalStorePG/Introduction/Introduction.html#//apple_ref/doc/uid/TP40010706)仅仅只有82个字，可能是所有编程指南里字数最少的了吧。
 
 要不是因为在[WWDC 2011 Session 303](https://deimos.apple.com/WebObjects/Core.woa/BrowsePrivately/adc.apple.com.8266478284.08266478290.8365294535?i=2068798830)被随口提到了，可能它早就被完完全全遗忘了。
 
@@ -22,7 +22,7 @@ description: 即使这个博客就是专门讲一些晦涩接口，但是`NSIncr
 
 ## 终究来说，它立足于Core Data
 
-`NSIncrementalStore`依旧是一个继承于`NSPersistentStore`的抽象类，根据文档它的设计是为了“创建一个能加载和保存不断增长数据的持久化储存，让管理大的需要共享的数据集变得可能。” 其实上面那个定义听起来不怎么样，基于其实所有的我们依靠的数据库适配器，都可以从大规模可分享的数据储存中加载数据。但是我们现在要介绍的确实是一个该死的奇迹。
+`NSIncrementalStore`依旧是一个继承于`NSPersistentStore`的抽象类，根据文档它的设计是为了“创建一个能加载和保存不断增长数据的持久化储存，让管理大的需要共享的数据集变得可能”。基于其实所有的我们常用的数据库适配器，都可以从大规模可分享的数据储存中加载数据，上面这个定义其实不怎么样，但是我们现在要介绍的确实是一个该死的奇迹。
 
 如果你不是很精通Core Data，这里是一些背景知识：
 
@@ -67,11 +67,9 @@ NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 
 Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint) 
 
-从实现的角度来说，从现在开始，事情开始有意思起来了。（但是从接口设计角度来说，那就糟透了）
+从实现的角度，事情开始有意思起来了（但是从接口设计角度来说，那就糟透了）。
 
-`executeRequest:withContext:error:`方法传进三个参数，分别是`NSPersistentStoreRequest`、`NSManagedObjectContext`和一个`NSError`指针。
-
-`NSPersistentStoreRequest`'s role here is as a sort of abstract subclass. The request parameter will either be of type `NSFetchRequestType` or an `NSSaveRequestType`. If it has a _fetch_ request type, the request parameter will actually be an instance of `NSFetchRequest`, which is a subclass of `NSPersistentStoreRequest`. Likewise, if it has a _save_ request type, it will be an instance of `NSSaveChangesRequest` (this article was originally mistaken by stating that there was no such a class).
+`executeRequest:withContext:error:`方法须要传进去三个参数，分别是`NSPersistentStoreRequest`、`NSManagedObjectContext`和一个`NSError`指针。
 
 `NSPersistentStoreRequest`的角色有些类似抽象子类，因为这个请求的可能无非是`NSFetchRequestType`或者`NSSaveRequestType`。如果是前者的_获取_请求，请求参数其实是`NSFetchRequest`类的一个实例，而它是`NSPersistentStoreRequest`的子类。同样的，如果是_保存_请求，它将是`NSSaveChangesRequest`的一个实例（本文最开始以为没有这个类还被误导了）。
 
@@ -91,11 +89,11 @@ Here's where things get interesting, from an implementation standpoint. (And whe
   
 > **返回**: 空的`NSArray`
 
-所以，一个方法就能对同一个做所有读_并且_写的操作，起码所有复杂的操作都在同一地方，对吧？
+所以，在一个方法内就能对同一个对象做所有读_并且_写的操作，起码所有复杂的操作都在同一地方，对吧？
 
 ### `-newValuesForObjectWithID:withContext:error:`
 
-这个方法会在一个对象断层，或者它的值已经被managed object context刷新了。
+这个方法会在一个对象断层或者它的值已经被managed object context刷新了的时候被调用。
 
 它返回一个`NSIncrementalStoreNode`节点，它包含一个ID和一个特定的managed object现在的值。这个节点对象还应该包含所有属性，包括managed object的所有多对一关系的ID。这个节点还有一个`version`属性用来决定一个对象的当前状态，但是这可能不是对所有的储存实现都可用。
 
@@ -113,7 +111,7 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 
 ### `-obtainPermanentIDsForObjects:error:`
 
-最后，这个方法是在`executeRequest:withContext:error:`当永久ID将被分配给新插入对象的保存请求之前被调用的。就像你可能期望的那样，永久ID的数组要与传进对象的数组相对应。
+最后，这个方法`executeRequest:withContext:error:`是在当永久ID将被分配给新插入对象的保存请求之前被调用的。就像你可能期望的那样，永久ID的数组要与传进对象的数组相对应。
 
 这一般会对应着对持久层的写入，例如SQL里的一个`INSERT`操作。比如说如果对象对应的行是一个自增的`id`列，那你应该这样生成一个`objectID`：
 
@@ -133,7 +131,7 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 
 [`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) 是NSIncrementalStore的子类，运用了[AFNetworking](https://github.com/afnetworking/afnetworking)来自动通过属性和关系来请求所需要的资源。
 
-这以为这你在写应用的时候可以直接与线上网络服务通讯，而_不需要在写的时候暴露底层API的任何细节_。当产生任何获取请求或者有关系断层的时候，一个异步的网络请求将会自动从线上网络服务获取数据。
+这意味着你在写应用的时候可以直接与线上网络服务通讯，而_不需要在写的时候暴露底层API的任何细节_。当产生任何获取请求或者有关系断层的时候，一个异步的网络请求将会自动从线上网络服务获取数据。
 
 因为储存已经把所有接口的实现给抽象了出来，你可以从开始就写一个很丰富的获取请求和对象关系。不管接口多么的糟糕、多么的不完整，你可以独立地改变所有客户端业务逻辑的对应关系。
 
@@ -142,7 +140,7 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 
 尽管`NSIncrementalStore`其实在iOS 5就已经有了，但是我们在意识到它的潜力之前，还有很长一段路走。未来是异常光明的，所以你最好戴上你的飞行眼镜，拿上一杯冰拿铁然后开始写一些伟大的代码吧！
 
-> 在基于充分披露的精神，`NSIncrementalStore`是通过Drew Crawford写的[这篇帖子](http://sealedabstract.com/code/nsincrementalstore-the-future-of-web-services-in-ios-mac-os-x/)我才真正理解到的。我在iOS 5最开始出来的时候知道有它的存在，但是像所有其他人一样，我没怎么关心。
+> 基于充分披露的精神，`NSIncrementalStore`是通过Drew Crawford写的[这篇帖子](http://sealedabstract.com/code/nsincrementalstore-the-future-of-web-services-in-ios-mac-os-x/)我才真正理解到的。我在iOS 5最开始出来的时候知道有它的存在，但是像所有其他人一样，我没怎么关心。
 
 > 另外，`AFIncrementalStore`是我的一个项目，也是为数不多的能提供`NSIncrementalStore`继承写法的例子之一。我并不是特意想用NSHipster来作为一个我推广自己代码的平台，但我只是觉得它确实是一个很能体现`NSIncrementalStore`特点的例子。
 
