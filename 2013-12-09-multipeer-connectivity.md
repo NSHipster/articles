@@ -212,7 +212,7 @@ if (![self.session sendData:data
 }
 ~~~
 
-> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the [NSHipster article on [NSSecureCoding](http://nshipster.com/nssecurecoding/)].
+> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the [NSHipster article on [NSSecureCoding](http://nshipster.com/nssecurecoding/).
 
 ### Streams
 
