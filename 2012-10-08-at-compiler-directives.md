@@ -197,7 +197,7 @@ Until recently, Objective-C only had literals for `NSString`. But with the relea
 
 - `@""`: Returns an `NSString` object initialized with the Unicode content inside the quotation marks.
 - `@42`, `@3.14`, `@YES`, `@'Z'`: Returns an `NSNumber` object initialized with pertinent class constructor, such that `@42` → `[NSNumber numberWithInteger:42]`, or `@YES` → `[NSNumber numberWithBool:YES]`. Supports the use of suffixes to further specify type, like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`.
-- `@[]`: Returns an `NSArray` object initialized with the comma-delimited list of objects as its contents. It uses +arrayWithObjects:count: class constructor method which is safer than commonly used +arrayWithObjects:, because it validates that all objects are non-nil.
+- `@[]`: Returns an `NSArray` object initialized with the comma-delimited list of objects as its contents. It uses +arrayWithObjects:count: class constructor method which is safer than commonly used +arrayWithObjects:, because it validates that all objects are non-nil. For example, `@[@"A", @NO, @2.718]` → `id objects[] = {@"A", @NO, @2.718}; [NSArray arrayWithObjects:objects count:3]`.
 - `@{}`: Returns an `NSDictionary` object initialized with the specified key-value pairs as its contents, in the format: `@{@"someKey" : @"theValue"}`.
 - `@()`: Dynamically evaluates the boxed expression and returns the appropriate object literal based on its value (i.e. `NSString` for `const char*`, `NSNumber` for `int`, etc.). This is also the designated way to use number literals with `enum` values.
 
