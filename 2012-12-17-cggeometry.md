@@ -58,7 +58,7 @@ CGRect CGRectInset(
 )
 ~~~
 
-Want to make a view-within-a-view look good? Give it a nice 10pt padding with `CGRectInset`. Keep in mind that the rectangle will be resized around its center by ± `dx` on its left and right edge (for a total of `2 × dx`), and ± `dy` on its top and bottom edge (for a total of `2 × dy`). 
+想一个视图中的视图更好看吗？用`CGRectInset`给它设置一个 10pt 的边距吧。需要记住的是，矩形将围绕它的中心点进行缩放，左右分别增减`dx`（总共`2 x dx`），上下分别增减 `dy`（总共 `2 x dy`）。
 
 If you're using `CGRectInset` as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.  
 
