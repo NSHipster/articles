@@ -121,29 +121,51 @@ The [Accessibility Programming Guide](http://developer.apple.com/library/ios/#do
 [辅助功能编程指南](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html)提供了一些在文字标签和提示的指导:
 
 > ### Guidelines for Creating Labels
+> ### 创建标签指南
 > If you provide a custom control or view, or if you display a custom icon in a standard control or view, you need to provide a label that:
+> 如果你提供一些自定义的控件或者视图，或者你只是在标准控件或者试图上展示了一个自定义的图标，你需要创建一个像这样的标签：
 >
 - **Very briefly describes the element.** Ideally, the label consists of a single word, such as Add, Play, Delete, Search, Favorites, or Volume.
 - **Does not include the type of the control or view.** The type information is contained in the traits attribute of the element and should never be repeated in the label.
 - **Begins with a capitalized word.** This helps VoiceOver read the label with the appropriate inflection.
 - **Does not end with a period.** The label is not a sentence and therefore should not end with a period.
 - **Is localized.** Be sure to make your application available to as wide an audience as possible by localizing all strings, including accessibility attribute strings. In general, VoiceOver speaks in the language that the user specifies in International settings.
+
+- **非常简洁地描述该元素。** 理想情况下，这个标签只需要展示一个词，像添加、播放、删除、搜索、收藏或者音量。
+- **不应该包括这个控件或者视图的种类。** 种类的信息已经包含在元素的特质属性里了，不需要在标签里做更多重复。
+- **开头大写。** 这能帮助VoiceOver用合适的语调读出这个标签。
+- **不需要句号结尾。** 标签文字不是一个句子，所以不必用句号结尾
+- **必须是本地化后的文字** 为了让你的应用用得更广，尽可能为广泛的用户本地化所有的字符串，包括辅助功能的文字。一般情况下，VoiceOver用的语言是用户在国际化设置里设置的语言。
+
 >
 > ### Guidelines for Creating Hints
+> ### 创建提示指南
 > The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.
+> 提示属性描述了当用户对某个控件或者视图做操作后的结果。你只需要在元素标签不能充分描述这个操作的时候提供这个提示。
 >
-- **Very briefly describes the results.** Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element.
+- **Very briefly describes the results.** Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element. 
+- **结果描述要十分简洁。** 尽管只有很少一部分控件和视图需要提示，你还是得尽可能让你的提示更简洁，这样能让用户在知道怎么对这个元素做操作之前听描述的时间更短。
 - **Begins with a verb and omits the subject.** Be sure to use the third-person singular declarative form of a verb, such as “Plays,” and not the imperative, such as “Play.” You want to avoid using the imperative, because using it can make the hint sound like a command.
+- **以动词开头并省略宾语** 最好用像“Plays”的第三人称单数的动词，不要用像“Play”一样的祈使语气。你最好避免用祈使句，这会让这个声音听起来有些命令的口吻。
 - **Begins with a capitalized word and ends with a period.** Even though a hint is a phrase, not a sentence, ending the hint with a period helps VoiceOver speak it with the appropriate inflection.
+- **以大写字母单词开头并以句号结尾。** 尽管提示是一个短语而不是句子，以句号结尾能帮助VoiceOver发音的语调更合适。
 - **Does not include the name of the action or gesture.** A hint does not tell users how to perform the action, it tells users what will happen when that action occurs.
+- **不要包含动作或者手势的名字。** 提示不需要告诉用户他如何操作，它只需要告诉用户他操作的结果。
 - **Does not include the name of the control or view.** The user gets this information from the label attribute, so you should not repeat it in the hint.
+- **不要包含控件或者视图的名字** 用户已经在标签属性里知道这些信息了，不必在这里重复这些信息。
 - **Is localized**. As with accessibility labels, hints should be available in the user’s preferred language.
+- **必须已经本地化了**. 就想之前的辅助功能标签一样，提示语言也必须是用户设置的语言。
 
 ## Traits
+## 辅助功能特征
 
 If you are using custom controls, or have taken liberties with non-standard use of a standard control, you should make sure to specify the correct accessibility traits.
 
+如果你正在使用的自定义的控件或者随意地没有使用标准用法，你应该确保你指定了正确的辅助功能特征。
+
 Accessibility traits describe a set of traits that characterize how a control behaves or should be treated. Examples include distinctions like:
+
+辅助功能特征描述了一系列控件行为与处理模式的特征。例如以下特征：
 
 - Button
 - Link
@@ -159,30 +181,68 @@ Accessibility traits describe a set of traits that characterize how a control be
 - Not Enabled
 - None
 
+- 按钮
+- 链接
+- 搜索框
+- 键盘按钮
+- 静态文字
+- 图片
+- 声音播放
+- 已选中
+- 标题元素
+- 经常更新
+- 能换页
+- 没有开启
+- 无
+
+
 The `accessibilityTraits` property takes a bitmask of `UIAccessibilityTraits` values, which can be combined in ways specified in the documentation.
+
+`accessibilityTraits`属性用了`UIAccessibilityTraits`为值的位掩码，这样这个属性可以由文档里指定的好几个属性结合而成。
 
 For example, if a custom button control displays an image and plays a sound when tapped, you should define the traits for "Button", "Image", and "Plays Sound". Or, if you were to use a `UISlider` for purely decorative purposes, you should set the "Not Enabled" trait.
 
+例如，如果自定义的按钮上展示了一张图片，在点击的时候播放声音，你需要定义它的特征为“按钮”、“图片”和“播放声音”。或者如果你只是用`UISlider`来装饰页面，你需要将它的特征定义为“没有开启”。
+
 ## Frame & Activation Point
+## 控件框架与控件激活位置
 
 As a general rule, the cleverness of a custom UI element is directly proportional to how gnarly its implementation is. Overlapping & invisible views, table view hacks, first responder shenanigans: sometimes it's better not to ask how something works.
 
+一般来说，一个自定义的UI元素的精妙程度是基本上和你实现时得粗糙度是正相关的，覆盖和隐藏的视图、列表视图的小技巧，第一响应者的轨迹：有些时候还是不要问这个功能到底是怎么实现的吧。
+
 However, when it comes to accessibility, it's important to set the record straight. 
+
+不过，当你处理辅助功能的话，你将过程弄得更直接一些还是很重要的。
 
 `accessibilityFrame` and `accessibilityActivationPoint` are used to define the accessible portions and locations of UI elements, without changing their outward appearance.
 
+`accessibilityFrame`和`accessibilityActivationPoint`是用来定义辅助功能的区域和UI元素的位置，而不用改变他外在的视图的位置。
+
 As you try out your app in VoiceOver mode, try interacting with all of the elements on each screen. If the selection target is not what you expected, you can use `accessibilityFrame` and `accessibilityActivationPoint` to adjust accordingly.
 
+在你在VoiceOver模式下调试你的应用的时候，尝试一下与各个屏幕下的所有元素交互。如果选择对象不是你期望的时候，你可以就此改变`accessibilityFrame`和`accessibilityActivationPoint`让你的选择更方便。
+
 ## Value
+## 辅助功能控件的值
 
 Accessibility value corresponds to the content of a user interface element. For a label, the value is its text. For a `UISlider`, it's the current numeric value represented by the control.
+控件空能的值指的是一个UI元素的内容。标签的值是文字，`UISlider`的值是控件当时表示的数字。
 
 Want to know a quick way to improve the accessibility of your table views? Try setting the `accessibilityValue` property for cells to be a localized summary of the cell's content. For example, if you had a table view that showed status updates, you might set the `accessibilityLabel` to "Update from #{User Name}", and the `accessibilityValue` to the content of that status update. 
+
+想知道快速在列表视图里提高你的应用可用性么？尝试一下给列表单元格设置`accessibilityValue`的值，让它变成单元格内容本地化后的更改。例如说，如果你有一个展示状态更新的列表视图，你可能可以设置`accessibilityLabel`为“#{用户名}的更新”，而设置`accessibilityValue`为更新内容。
 
 ---
 
 Apple has done a great service to humanity in making accessibility a first-class citizen in its hardware and software. You're missing out on some of the best engineering, design, and technical writing that Apple has ever done if you ignore `UIAccessibility`.
 
+让辅助功能成为了苹果软件和硬件上的一等公民这件事，是苹果为人类服务做的一大贡献。你如果忽视了`UIAccessibility`，那你会错过为数不多苹果在工程、设计和技术文档方面做得最好的工作。
+
 Do yourself a favor and read the _excellent_ [Accessibility Programming Guide for iOS](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html). It only takes an hour or two to get the hang of everything. 
 
+帮自己一个忙，读一下这篇_一级棒_的[iOS辅助功能变成指南](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html)吧，可能只需要一两个小时你就能掌握全部的东西了吧。
+
 Who knows? You may end up changing someone's life because of it.
+
+谁知道呢，你可能最后因为这个该表了一个人的生活。
