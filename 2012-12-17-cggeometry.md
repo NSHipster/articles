@@ -182,8 +182,8 @@ enum CGRectEdge {
 
 ---
 
-So what if you didn't pay attention in Geometry class--this is the real world, and in the real world, you have `CGGeometry.h`
+综上所述，如果你不重视 Geometry 类的话将会怎样——这就是真实的世界，在这个真实世界里，你有 `CGGeometry.h`。
 
-Know it well, and you'll be on your way to discovering great new user interfaces in your apps. Do good enough of a job with that, and you may run into the greatest arithmetic problem of all: adding up all of the money you'll make with your awesome new app. Mathematical!
+很好地了解它之后，你将启程在你的应用中发掘出超棒的新界面。Know it well, and you'll be on your way to discovering great new user interfaces in your apps. Do good enough of a job with that, and you may run into the greatest arithmetic problem of all: adding up all of the money you'll make with your awesome new app. Mathematical!
 
 [1]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066
