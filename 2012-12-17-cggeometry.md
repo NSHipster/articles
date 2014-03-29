@@ -60,7 +60,7 @@ CGRect CGRectInset(
 
 想一个视图中的视图更好看吗？用`CGRectInset`给它设置一个 10pt 的边距吧。需要记住的是，矩形将围绕它的中心点进行缩放，左右分别增减`dx`（总共`2 x dx`），上下分别增减 `dy`（总共 `2 x dy`）。
 
-If you're using `CGRectInset` as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.  
+如果你用 `CGRectInset` 作为缩放矩形的快捷方法，一般通用的做法是嵌套调用`CGRectOffset`，把`CGRectInset`的返回值作为`CGRectOffset`的参数。 as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.  
 
 ### `CGRectIntegral`
 
