@@ -11,15 +11,15 @@ description: "除非你是个数学极客或者一个古希腊人，否则几何
 
 除非你是一个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。
 
-So for those of you who spent more time learning TI-BASIC than Euclidean geometry, here's the cheat-sheet for how geometry works in [Quartz 2D][1], the drawing system used in iOS and Mac OS X:
+这里有一个描述[Quartz 2D][1]中的几何，还有 iOS 和 Mac OS X 中的绘制系统如何工作的备忘录，专为那些在学习 TI-BASIC 上花的时间多于欧氏几何的人准备的：
 
-- A `CGPoint` is a struct that represents a point in a two-dimensional coordinate system. For iOS, the origin is at the top-left, so points move right and down as their `x` and `y` values, respectively, increase. OS X, by contrast, is oriented with `(0, 0)` in the bottom left, with `y` moving up as it increases.
+- `CGPoint` 是个表示二维坐标系中的点的结构体。在 iOS中，坐标原点在左上方，所以向右和向下分别表示 `x` 和 `y` 的正方向。相反，在 OS X 中 `(0, 0)` 在左下方， `y` 的正方向朝上。
 
-- A `CGSize` is a struct that represents the dimensions of `width` and `height`.
+- `CGSize` 是个表示`长` 和`宽` 的结构体。
 
-- A `CGRect` is a struct with both a `CGPoint` (`origin`) and a `CGSize` (`size`), representing a rectangle drawn from its `origin` point with the `width` and `height` of its `size`.
+- `CGRect` 是个包含一个 `CGPoint` （`原点`）和一个 `CGSize` （`大小`）的结构体，表示一个在 `原点` 处画 `大小` 中表示的 `长` 和 `宽` 的矩形。
 
-Because `CGRect` is used to represent the `frame` of every view drawn on screen, a programmer's success in graphical programming is contingent on their ability to effectively manipulate rectangle geometry.
+正因为 `CGRect` 用于表示屏幕上绘制的所有视图的 `frame`，一个程序员操作矩形几何体的能力决定着他在图形编程上的成功。
 
 Fortunately for us, Quartz comes with a slew of useful functions to reduce the amount of floating point math we have to do ourselves. As central as view programming is to Cocoa, and as useful as these functions are, however, they remain relatively unknown to most iOS developers.
 
