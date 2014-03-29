@@ -21,20 +21,20 @@ description: "除非你是个数学极客或者一个古希腊人，否则几何
 
 正因为 `CGRect` 用于表示屏幕上绘制的所有视图的 `frame`，一个程序员操作矩形几何体的能力决定着他在图形编程上的成功。
 
-Fortunately for us, Quartz comes with a slew of useful functions to reduce the amount of floating point math we have to do ourselves. As central as view programming is to Cocoa, and as useful as these functions are, however, they remain relatively unknown to most iOS developers.
+幸运地是，Quartz 带来了一批好用的函数，减少了本应该我们自己做的浮点数学运算。即使 Cocoa 中视图编程非常重要，即使这些函数都非常有用，但它们对于大部分 iOS 开发者说来仍是相对陌生的。
 
-This will not stand! Let's shine some light on the most useful functions and save y'all some typing!
+这个情况不会持续太久！让我们来让这些有用的函数绽放光芒，并减少你敲键的次数！
 
 ---
 
-Transformations
+变换
 ---------------
 
-First on our list are the geometric transformations. These functions return a `CGRect`, which is the result of performing a particular set of operations on the passed rectangle.
+我们的列表中的第一个是几何变换。这些函数返回在传入的矩形中做某些特定操作后的 `CGRect` 
 
 ### `CGRectOffset`
 
-> `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
+> `CGRectOffset`: 返回一个原点在源矩形基础上进行了偏移的矩形。
 
 ~~~{objective-c}
 CGRect CGRectOffset(
@@ -44,11 +44,11 @@ CGRect CGRectOffset(
 )
 ~~~
 
-Consider using this anytime you're changing the origin of a rectangle. Not only can it save a line of code when changing both the horizontal and vertical position, but more importantly, it represents the translation more semantically than manipulating the origin values individually. 
+注意，用这个你只改变了矩形的原点。它不仅能让你在同时改变水平和垂直位置的时候减少一行代码，更重要的是，它所表示的平移比直接分开操作原点的值更具有几何意义。
 
 ### `CGRectInset`
 
-> `CGRectInset`: Returns a rectangle that is smaller or larger than the source rectangle, with the same center point.
+> `CGRectInset`: 返回一个与源矩形共中心点的，或大些或小些的新矩形。
 
 ~~~{objective-c}
 CGRect CGRectInset(
