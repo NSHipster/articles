@@ -137,18 +137,18 @@ CGFloat CGRectGetWidth (
 
 `CGRectZero` 可能是所有这些特殊矩形中最有用的了。当初始化一个视图时，它们的边框通常设置为`CGRectZero`，把布局放到 `-layoutSubviews`中。
 
-`CGRectNull` is distinct from `CGRectZero`, despite any implied correspondence to `NULL` == `0`. This value is conceptually similar to `NSNotFound`, in that it represents the absence of an expected value. Be aware of what functions can return `CGRectNull`, and be prepared to handle it accordingly, by testing with `CGRectIsNull`.
+`CGRectNull` 跟 `CGRectZero` 是两回事，尽管它隐隐约约让你感觉到`NULL` == `0`。这个值在概念上与`NSNotFound`相近，所以它表示预期值的缺失。请注意函数可能返回 `CGRectNull`，同时也应让它能正确处理传入的`CGRectIsNull`。
 
-`CGRectInfinite` is the most exotic of all, and has some of the most interesting properties. It intersects with all points and rectangles, contains all rectangles, and its union with any rectangle is itself. Use `CGRectIsInfinite` to check to see if a rectangle is infinite.
+`CGRectInfinite` 是以上所有当中最有异国风情的，并且有一些最有趣的属性。它与所有的点或矩形相交，包含所有矩形，且它与任何矩形的并集等于它自身。用 `CGRectIsInfinite` 来检查一矩形是否为无限大。
 
 最后……
 --------------
 
-Behold, the most obscure, misunderstood, and useful of the `CGGeometry` functions: `CGRectDivide`.
+看吧，最复杂、最容易误解、也最有用的`CGGeometry` 函数：`CGRectDivide`。
 
 ## `CGRectDivide`
 
-> `CGRectDivide`: Divides a source rectangle into two component rectangles.
+> `CGRectDivide`: 将源矩形分为两个子矩形。
 
 ~~~{objective-c}
 void CGRectDivide(
@@ -160,14 +160,14 @@ void CGRectDivide(
 )
 ~~~
 
-`CGRectDivide` divides a rectangle into two components in the following way:
+`CGRectDivide` 用以下方式将矩形分割为两部分：
 
-- Take a rectangle and choose an `edge` (left, right, top, or bottom). 
-- Measure out an `amount` from that edge.
-- Everything from the `edge` to the measured `amount` is stored in the rectangle referenced in the `slice` argument.
-- The rest of the original rectangle is stored in the `remainder` out argument.
+- 传入一个矩形并选择一条`edge`（上，下，左，右）；
+- 平行那个边在矩形里量出`amount`的长度；
+- 从`edge` 到量出的`amount`区域都保存到`slice` 参数中；
+- 剩余的部分保存到`remainder` 参数中。
 
-That `edge` argument takes a value from the `CGRectEdge` enum:
+其中 `edge` 参数是一个`CGRectEdge` 枚举类型：
 
 ~~~{objective-c}
 enum CGRectEdge {
