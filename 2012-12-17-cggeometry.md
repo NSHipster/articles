@@ -102,11 +102,11 @@ CGFloat CGRectGet[Min|Mid|Max][X|Y] (
 )
 ~~~
 
-These functions will replace code like `frame.origin.x + frame.size.width` with cleaner, more semantically expressive equivalents (especially with the mid and max functions).
+用这些函数代替诸如`frame.origin.x + frame.size.width`之类的代码将更加清晰、语义上更为生动的（特别是用取中间和取最大函数）。
 
 ### `CGRectGet[Width|Height]`
 
-> `CGRectGetHeight`: Returns the height of a rectangle.
+> `CGRectGetHeight`: 返回矩形的高度。
 
 ~~~{objective-c}
 CGFloat CGRectGetHeight (
@@ -114,7 +114,7 @@ CGFloat CGRectGetHeight (
 )
 ~~~
 
-> `CGRectGetWidth`: Returns the width of a rectangle.
+> `CGRectGetWidth`: 返回矩形的宽度。
 
 ~~~{objective-c}
 CGFloat CGRectGetWidth (
@@ -122,26 +122,26 @@ CGFloat CGRectGetWidth (
 )
 ~~~
 
-Much like the previous functions, `CGRectGetWidth` & `CGRectGetHeight` are often preferable to returning the corresponding member of a `CGRect`'s `size`. While it's not extremely competitive in terms of character savings, remember that semantic clarity trumps brevity every time. 
+跟之前的函数一样，用`CGRectGetWidth` 和 `CGRectGetHeight`返回`CGRect`的`size`成员更可取。这绝不只是节省了几个字符，语义上的清晰胜过简洁。
 
-Identities
+常量
 ----------
 
-There are three special rectangle values, each of which have unique properties that are important to know about:
+这里列出了三个我们必须了解的特殊矩形值，它们都有一些独一无二的属性：
 
-### `CGRectZero`, `CGRectNull`, & `CGRectInfinite`
+### `CGRectZero`， `CGRectNull`，和 `CGRectInfinite`
 
-> - `const CGRect CGRectZero`: A rectangle constant with location (0,0), and width and height of 0. The zero rectangle is equivalent to CGRectMake(0.0f, 0.0f, 0.0f, 0.0f).
-> - `const CGRect CGRectNull`: The null rectangle. This is the rectangle returned when, for example, you intersect two disjoint rectangles. **Note that the null rectangle is not the same as the zero rectangle**.
-> - `const CGRect CGRectInfinite`: A rectangle that has infinite extent.
+> - `const CGRect CGRectZero`: 一个原点在(0, 0)，且长宽均为 0 的常数矩形。这个零矩形与 CGRectMake(0.0f, 0.0f, 0.0f, 0.0f) 是等价的。
+> - `const CGRect CGRectNull`: 空矩形。这个会在，比如说，求两个不相交的矩形的相交部分时返回。**注意，空矩形不是零矩形**。
+> - `const CGRect CGRectInfinite`: 无穷大矩形。
 
-`CGRectZero` is perhaps the most useful of all of the special rectangle values. When initializing subviews, their frames are often initialized to `CGRectZero`, deferring their layout to `-layoutSubviews`.
+`CGRectZero` 可能是所有这些特殊矩形中最有用的了。当初始化一个视图时，它们的边框通常设置为`CGRectZero`，把布局放到 `-layoutSubviews`中。
 
 `CGRectNull` is distinct from `CGRectZero`, despite any implied correspondence to `NULL` == `0`. This value is conceptually similar to `NSNotFound`, in that it represents the absence of an expected value. Be aware of what functions can return `CGRectNull`, and be prepared to handle it accordingly, by testing with `CGRectIsNull`.
 
 `CGRectInfinite` is the most exotic of all, and has some of the most interesting properties. It intersects with all points and rectangles, contains all rectangles, and its union with any rectangle is itself. Use `CGRectIsInfinite` to check to see if a rectangle is infinite.
 
-And Finally...
+最后……
 --------------
 
 Behold, the most obscure, misunderstood, and useful of the `CGGeometry` functions: `CGRectDivide`.
