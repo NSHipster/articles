@@ -60,11 +60,11 @@ CGRect CGRectInset(
 
 想一个视图中的视图更好看吗？用`CGRectInset`给它设置一个 10pt 的边距吧。需要记住的是，矩形将围绕它的中心点进行缩放，左右分别增减`dx`（总共`2 x dx`），上下分别增减 `dy`（总共 `2 x dy`）。
 
-如果你用 `CGRectInset` 作为缩放矩形的快捷方法，一般通用的做法是嵌套调用`CGRectOffset`，把`CGRectInset`的返回值作为`CGRectOffset`的参数。 as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.  
+如果你用 `CGRectInset` 作为缩放矩形的快捷方法，一般通用的做法是嵌套调用`CGRectOffset`，把`CGRectInset`的返回值作为`CGRectOffset`的参数。
 
 ### `CGRectIntegral`
 
-> `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
+> `CGRectIntegral`: 返回包围源矩形的最小整数矩形。
 
 ~~~{objective-c}
 CGRect CGRectIntegral (
@@ -72,18 +72,18 @@ CGRect CGRectIntegral (
 )
 ~~~
 
-It's important that `CGRect` values all are rounded to the nearest whole point. Fractional values cause the frame to be drawn on a _pixel boundary_. Because pixels are atomic units (cannot be subdivided†) a fractional value will cause the drawing to be averaged over the neighboring pixels, which looks blurry.
+将`CGRect` 取整到最近的完整点是非常重要的。小数值会让边框画在_像素边界_处。因为像素已经是最小单元（不能再细分），小数值会使绘制时取周围几个像素的平均值，这样看起来就模糊了。
 
-`CGRectIntegral` will `floor` each origin value, and `ceil` each size value, which will ensure that your drawing code will crisply align on pixel boundaries.
+`CGRectIntegral` 将表示原点的值向下取整，表示大小的值向上取整，这样就保证了你的绘制代码平整地对齐到像素边界。
 
-As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
+作为一个经验性的原则，如果你在执行任何一个可能产生小数值的操作（例如除法，`CGGetMid[X|Y]`，或是 `CGRectDivide`），在把一矩形作为视图的边框之前应该用`CGRectIntegral`正则化它。
 
-> † Technically, since the coordinate system operates in terms of points, Retina screens, which have 4 pixels for every point, can draw `± 0.5f` point values on odd pixels without blurriness. 
+> 从技术上讲，坐标系讲的是点，而视网膜屏一个点中有四个像素，所以它在奇数像素`± 0.5f`处绘制也不会产生模糊。
 
-Value Helper Functions
+取值辅助函数
 ----------------------
 
-These functions provide a shorthand way to calculate interesting dimensional values about a particular `CGRect`.
+这些函数提供了取特定`CGRect`的有意思的尺寸值的便捷方法。
 
 ### `CGRectGet[Min|Mid|Max][X|Y]`
 
@@ -94,7 +94,7 @@ These functions provide a shorthand way to calculate interesting dimensional val
 - `CGRectGetMaxX`
 - `CGRectGetMaxY`
 
-These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form: 
+这六个函数返回矩形`x`或`y`的最小、中间或最大值，原型如下：
 
 ~~~{objective-c}
 CGFloat CGRectGet[Min|Mid|Max][X|Y] (
