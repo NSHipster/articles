@@ -178,7 +178,7 @@ enum CGRectEdge {
 }
 ~~~
 
-`CGRectDivide` is perfect for dividing up available space among several views (call it on subsequent `remainder` amounts to accommodate more than two views). Give it a try next time you're manually laying-out a `UITableViewCell`.
+`CGRectDivide` 用于在几个视图之间分割可用空间真是太完美了（把它在随后的`remainder`容纳多于两个的视图）。下次当你需要手机布局一个`UITableViewCell`时试试吧。`CGRectDivide`  is perfect for dividing up available space among several views (call it on subsequent `remainder` amounts to accommodate more than two views). Give it a try next time you're manually laying-out a `UITableViewCell`.
 
 ---
 
