@@ -18,9 +18,7 @@ And while automatic text translation has reached an acceptable level for everyda
 
 * * *
 
-Introduced in iOS 7, `AVSpeechSynthesizer` makes
-
-`AVSpeechSynthesizer` produces synthesized speech from a given `AVSpeechUtterance`. Each utterance can adjust its rate of speech and pitch, and be configured to use any one of the available `AVSpeechSynthesisVoice`s:
+Introduced in iOS 7, `AVSpeechSynthesizer` produces synthesized speech from a given `AVSpeechUtterance`. Each utterance can adjust its rate of speech and pitch, and be configured to use any one of the available `AVSpeechSynthesisVoice`s:
 
 ~~~{objective-c}
 NSString *string = @"Hello, World!";
