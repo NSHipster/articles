@@ -1,17 +1,17 @@
 ---
 layout: post
 title: NSCharacterSet
-translater: Ricky Tan
+translator: Ricky Tan
 ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/nscharacterset_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.5
 published: true
-description: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
+description: "基础类库（Foundation）拥有最好的、功能也最全的string类的实现。但是仅当程序员熟练掌握它时，一个string的实现才是真的好。所以本周，我们将浏览一些基础类库的string生态系统中经常用到且用错的重要组成部分：NSCharacterSet。"
 ---
 
 正如[之前](http://nshipster.com/cfstringtransform/)提前过的，基础类库（Foundation）拥有最好的、功能也最全的string类的实现。
 
-但是一个string的实现好不好还取决于使用它的程序员用的好不好。所以本周，我们将浏览一些经常用到，并且用错的基础类库中string生态系统的重要组成部分：`NSCharacterSet`。
+但是仅当程序员熟练掌握它时，一个string的实现才是真的好。所以本周，我们将浏览一些基础类库的string生态系统中经常用到且用错的重要组成部分：`NSCharacterSet`。
 
 ---
 
