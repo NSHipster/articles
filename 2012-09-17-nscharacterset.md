@@ -15,9 +15,9 @@ description: "基础类库（Foundation）拥有最好的、功能也最全的st
 
 ---
 
-> If you're fuzzy on what character encodings are (or even if you have a pretty good working knowledge), you should take this opportunity to read / re-read / skim and read later Joel Spolsky's classic essay ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html). Having that fresh in your mind will give you a much better appreciation of everything we're about to cover.
+> 如果你对什么是字符编码搞不临清的话（甚至即使你有很好的专业知识），那么你应该抓住这次机会阅读、重读、略读、之后再读Joel Spolsky的这篇经典的文章["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html)。在头脑中保持新鲜感将对你理解我们将要探讨的话题非常有帮助。
 
-`NSCharacterSet` and its mutable counterpart, `NSMutableCharacterSet`, provide an object-oriented way of representing sets of Unicode characters. It's most often used with `NSString` & `NSScanner` to filter, remove, or split on different kinds of characters. To give you an idea of what those kinds of characters can be, take a look at the class methods provided by `NSCharacterSet`:
+`NSCharacterSet` ，以及它的可变版本`NSMutableCharacterSet`，用面向对象的方式来表示一组Unicode字符。它经常与`NSString`及`NSScanner`组合起来使用，在不同的字符上做过滤、删除或者分割操作。为了给你提供这些字符是哪些字符的直观印象，请看看`NSCharacterSet` 提供的类方法：
 
 - `alphanumericCharacterSet`
 - `capitalizedLetterCharacterSet`
