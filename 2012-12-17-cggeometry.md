@@ -6,7 +6,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/graphicsimaging/ref
 framework: CoreGraphics
 rating: 8.0
 published: true
-description: "除非你是个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。为了保持尽可能少地做数学问题的传统，这里列出了一些不太复杂的 CoreGraphics 函数使你的工作更简单。"
+description: "除非你是个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。为了保持尽可能少地做数学问题的传统，这里列出了一些不算复杂的 CoreGraphics 函数使你的工作更简单。"
 ---
 
 除非你是一个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你可能就是班里的那种学生，那种会老老实实把所有公式都输进TI-8X图形计算器里去看结果。
