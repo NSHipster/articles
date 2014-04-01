@@ -1,23 +1,23 @@
 ---
 layout: post
 title: NSCharacterSet
-translater: Ricky Tan
+translator: Ricky Tan
 ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/nscharacterset_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.5
 published: true
-description: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
+description: "基础类库（Foundation）拥有最好的、功能也最全的string类的实现。但是仅当程序员熟练掌握它时，一个string的实现才是真的好。所以本周，我们将浏览一些基础类库的string生态系统中经常用到且用错的重要组成部分：NSCharacterSet。"
 ---
 
 正如[之前](http://nshipster.com/cfstringtransform/)提前过的，基础类库（Foundation）拥有最好的、功能也最全的string类的实现。
 
-但是一个string的实现好不好还取决于使用它的程序员用的好不好。所以本周，我们将浏览一些经常用到，并且用错的基础类库中string生态系统的重要组成部分：`NSCharacterSet`。
+但是仅当程序员熟练掌握它时，一个string的实现才是真的好。所以本周，我们将浏览一些基础类库的string生态系统中经常用到且用错的重要组成部分：`NSCharacterSet`。
 
 ---
 
-> If you're fuzzy on what character encodings are (or even if you have a pretty good working knowledge), you should take this opportunity to read / re-read / skim and read later Joel Spolsky's classic essay ["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html). Having that fresh in your mind will give you a much better appreciation of everything we're about to cover.
+> 如果你对什么是字符编码搞不临清的话（甚至即使你有很好的专业知识），那么你应该抓住这次机会阅读、重读、略读、之后再读Joel Spolsky的这篇经典的文章["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html)。在头脑中保持新鲜感将对你理解我们将要探讨的话题非常有帮助。
 
-`NSCharacterSet` and its mutable counterpart, `NSMutableCharacterSet`, provide an object-oriented way of representing sets of Unicode characters. It's most often used with `NSString` & `NSScanner` to filter, remove, or split on different kinds of characters. To give you an idea of what those kinds of characters can be, take a look at the class methods provided by `NSCharacterSet`:
+`NSCharacterSet` ，以及它的可变版本`NSMutableCharacterSet`，用面向对象的方式来表示一组Unicode字符。它经常与`NSString`及`NSScanner`组合起来使用，在不同的字符上做过滤、删除或者分割操作。为了给你提供这些字符是哪些字符的直观印象，请看看`NSCharacterSet` 提供的类方法：
 
 - `alphanumericCharacterSet`
 - `capitalizedLetterCharacterSet`
