@@ -15,7 +15,7 @@ description: "基础类库（Foundation）拥有最好的、功能也最全的st
 
 ---
 
-> 如果你对什么是字符编码搞不临清的话（甚至即使你有很好的专业知识），那么你应该抓住这次机会阅读、重读、略读、之后再读Joel Spolsky的这篇经典的文章["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html)。在头脑中保持新鲜感将对你理解我们将要探讨的话题非常有帮助。
+> 如果你对什么是字符编码搞不清楚的话（即使你有很好的专业知识），那么你应该抓住这次机会反复阅读Joel Spolsky的这篇经典的文章["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"](http://www.joelonsoftware.com/articles/Unicode.html)。在头脑中保持新鲜感将对你理解我们将要探讨的话题非常有帮助。
 
 `NSCharacterSet` ，以及它的可变版本`NSMutableCharacterSet`，用面向对象的方式来表示一组Unicode字符。它经常与`NSString`及`NSScanner`组合起来使用，在不同的字符上做过滤、删除或者分割操作。为了给你提供这些字符是哪些字符的直观印象，请看看`NSCharacterSet` 提供的类方法：
 
