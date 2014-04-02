@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NSHipster Quiz #1"
-
+translator: Ricky Tan
 ref: "http://www.uikonf.com/2013/03/25/nshipster-quiz-night.html"
 framework: Trivia
 rating: 10.0
