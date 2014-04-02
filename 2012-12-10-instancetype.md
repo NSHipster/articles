@@ -6,15 +6,15 @@ ref: "http://clang.llvm.org/docs/LanguageExtensions.html#objc_instancetype"
 framework: Foundation
 rating: 7.3
 published: true
-description: "Objective-C是一门发展迅速的语言，从某种程度上来说，在已有的编程语言中看不到Objective-C的身影。从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。"
+description: "Objective-C 是一门正迅速发展的语言，这种发展速度在别的现有语言中是不曾有过的。从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。"
 translator: "JJ Mao"
 ---
 
 想知道Objective-C接下去会发生什么吗？[请多关注Objective-C最新动向](http://clang.llvm.org/docs/LanguageExtensions.html)。
 
-Objective-C是一门发展迅速的语言，从某种程度上来说，在已有的编程语言中看不到Objective-C的身影。ARC，object literals，subscripting，blocks：在短短的三年时间里，Objective-C编程的许多方式发生了改变（变得更好）。
+Objective-C 是一门正迅速发展的语言，这种发展速度在别的现有语言中是不曾有过的。ARC，object literals，subscripting，blocks：在短短的三年时间里，Objective-C编程的许多方式发生了改变（变得更好）。
 
-这一切的创新都是Apple垂直统一管理理念的成果。正如Apple在设计[自主研发芯片]中的投资一样，利用杠杠作用与手机硬件展开激烈的竞争。在[LLVM](http://llvm.org) 上的投资也是一样，使软件保持同步竞争。
+这一切的创新都是Apple垂直整合的成果。正如Apple在设计[自主研发芯片](http://en.wikipedia.org/wiki/Apple_A4)中的投资一样，利用杠杠作用与手机硬件展开激烈的竞争。在[LLVM](http://llvm.org) 上的投资也是一样，使软件跟上业界最新步伐。
 
 Clang从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。 
 
@@ -22,7 +22,7 @@ Clang从普通到范例转变的发展，真要说清它们之间的差异还得
 
 ---
 
-Objective-C中的规范不只是个最佳实践的问题，它们是编译器的隐式指令。
+Objective-C的一些使用惯例不仅仅是好的编程习惯，更是给编译器的隐藏指令。
 
 例如， `alloc` 和 `init` 的返回类型都是 `id` ，然而在Xcode中，编译器会检查所有正确类型。它是怎么做到的呢？
 
@@ -44,7 +44,7 @@ Objective-C中的规范不只是个最佳实践的问题，它们是编译器的
 
 另一种显示声明返回类型（在之前例子中的 `(NSArray *)`）的方式有了稍微的改进，但是它不利于子类的发挥。
 
-编译器从这里介入以解决对于Objective-C类型系统的timeless edge 情况：
+所以编译器从这里介入以解决Objective-C类型系统的这个永恒边界情况：
 
 `instancetype` 关键字，它可以表示一个方法的相关返回类型。例如：
 
@@ -64,7 +64,7 @@ Objective-C中的规范不只是个最佳实践的问题，它们是编译器的
 
 语言特性十分有趣，因为它在高级软件设计方面的的影响往往是模糊的。
 
-然而 `instancetype` 看似普通，虽然适于添加到编译器中，但也可将其用于更加智能的终端。
+然而 `instancetype` 看似普通，尽管它能为编译器锦上添花，但它可用于更棒的结果。
 
 [Jonathan Sterling](https://twitter.com/jonsterling) 写了[这篇十分有趣的文章](http://www.jonmsterling.com/posts/2012-02-05-typed-collections-with-self-types-in-objective-c.html), 文章中详细描述了 `instancetype` 在没有[泛型](http://en.wikipedia.org/wiki/Generic_programming)的情况下是如何用于静态类型collections编码的:
 
