@@ -35,15 +35,15 @@ description: "基础类库（Foundation）拥有最好的、功能也最全的st
 - `whitespaceAndNewlineCharacterSet`
 - `whitespaceCharacterSet`
 
-Contrary to what its name might suggest, `NSCharacterSet` has _nothing_ to do with `NSSet`. 
+与它的名字所表述的相反，`NSCharacterSet` 跟 `NSSet` 一点关系都_没有_。
 
-However, `NSCharacterSet` _does_ have quite a bit in common with `NSIndexSet`, conceptually if not also in its underlying implementation. `NSIndexSet`, covered [previously](http://nshipster.com/nsindexset/), represents a sorted collection of unique unsigned integers. Unicode characters are likewise unique unsigned integers that roughly correspond to some orthographic representation. Thus, a character set like `NSCharacterSet +lowercaseCharacterSet` is analogous to the `NSIndexSet` of the integers 97 to 122.
+但是， `NSCharacterSet` 跟 `NSIndexSet` 还_有点_相似的，至少在概念上而不是底层实现上。`NSIndexSet`，[之前](http://nshipster.com/nsindexset/)提到过，表示一个有序的不重复的无符号整数的集合。Unicode字符跟无符号整数类似，大致对应一些拼写表示。所以，一个 `NSCharacterSet +lowercaseCharacterSet` 字符集与一个包含97到122范围的 `NSIndexSet` 是等价的。
 
-Now that we're comfortable with the basic concepts of `NSCharacterSet`, let's see some of those patterns and anti-patterns:
+现在我们对理解 `NSCharacterSet` 的基本概念已经有了少许自信，让我们来看一些它的模式与反模式吧：
 
-## Stripping Whitespace
+## 去掉空格
 
-`NSString -stringByTrimmingCharactersInSet:` is a method you should know by heart. It's most often passed `NSCharacterSet +whitespaceCharacterSet` or `+whitespaceAndNewlineCharacterSet` in order to remove the leading and trailing whitespace of string input.
+`NSString -stringByTrimmingCharactersInSet:` 是个你需要牢牢记住的方法。它经常会传入 `NSCharacterSet +whitespaceCharacterSet` 或 `+whitespaceAndNewlineCharacterSet` 来删除输入字符串的头尾的空白符号。
 
 It's important to note that this method _only_ strips the _first_ and _last_ contiguous sequences of characters in the specified set. That is to say, if you want to remove excess whitespace between words, you need to go a step further.
 
