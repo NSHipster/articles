@@ -93,4 +93,4 @@ returningTransformedValueWithBlock:^id(id value) {
 
 `NSValueTransformer` 并没有 AppKit 框架的印记，它保留了 Foundation 框架与计算基本概念的纯洁联系：接受输入，返回输出。
 
-尽管它还不是很成熟，但一点新鲜的改造可以让 `NSValueTransformer` 回到 NS-嬉皮士界的最高宗旨：那些我们尚不知道有用的解决方案其实一直在那等待着我们发现。
+尽管它还不是很成熟，但一点新鲜的改造可以让 `NSValueTransformer` 回到 NS-嬉皮士界（NSHipsterdom）的最高宗旨：那些我们尚不知道有用的解决方案其实一直在那等待着我们发现。
