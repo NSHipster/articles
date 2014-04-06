@@ -231,7 +231,7 @@ for (NSString *name in availableDictionariesKeyedByName) {
 
 这种方法最有趣的地方是你要从HTML格式的内容中来获取有用的信息，这些HTML还包含了CSS文件，他们都是用来在系统的字典应用(Dictionary.app)来显示内容用的。
 
-> 如果你是个好奇宝宝，或者是对语言学有偏爱的怪咖，可以看看[单词"apple"的HTML信息]((https://gist.github.com/mattt/9453538))。
+> 如果你是个好奇宝宝，或者是对语言学有偏爱的怪咖，可以看看[单词"apple"的HTML信息](https://gist.github.com/mattt/9453538)。
 
 写这篇文章的时候，我顺便也就写了一个[Objective-C wrapper](https://github.com/mattt/DictionaryKit)，这个库通过私有API从我们喜爱的水果公司来取禁果（所以不要把这个库放到你需要提交到App Store的应用中使用）。
 

@@ -6,7 +6,7 @@ ref: ""
 framework: Objective-C
 rating: 8.7
 published: true
-description: "所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？方括号，长的荒唐的方法名，和<tt>@</tt>指令。\"at\"符号编译器指令对于理解Objective-C的格式以及其前身和相关机制非常重要。它是使得Objective-C如此强大，具有表现力，并能一路编译到C的含糖胶。"
+description: "所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？方括号，长的荒唐的方法名，和<tt>@</tt>指令。\"at\"符号编译器指令对于理解Objective-C的格式以及其起源和底层机制非常重要。它是使得Objective-C如此强大，具有表现力，并仍能一路编译成底层 C 语言的关键。"
 ---
 
 观鸟人将那些某一特定事物的说不清楚的特性称为["Jizz"][1]（我发誓这不是我编造出来的）。
@@ -30,13 +30,13 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
       )))
     )
 
-所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？这就对了：
+所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？对了，以下就是：
 
 - 方括号
 - 长的荒唐的方法名
 - `@`指令
 
-`@`或者"at"符号编译器指令对于理解Objective-C的格式以及其前身和相关机制非常重要。它是使得Objective-C如此强大，具有表现力，并能一路编译到C的含糖胶。
+`@`或者"at"符号编译器指令对于理解Objective-C的格式以及其起源和底层机制非常重要。它是使得Objective-C如此强大，具有表现力，并仍能一路编译成底层 C 语言的关键。
 
 它的用途多种多样，用它本身来描述`@`的含义的唯一转确的说法就是“和Objective-C有关的简写符号”。它们涵盖了广泛的实用性却也由晦涩难懂的用法，从主要的用途如`@interface`和`@implementation`到你的整个职业生涯或许都不会遇到的如`@defs`和`@compatibility_alias`。
 
@@ -76,7 +76,7 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 @end
 ~~~
 
-类别对于标准框架类的便利函数非常有用（只是不要过分使用你的效用函数）。
+类别对于在标准框架类上添加便利函数非常有用（只是不要过分使用你的工具函数）。
 
 > 小贴士：你可以创建一个定义类似`+appNameDarkGrayColor`类方法的`NSColor`／`UIColor`调色板类别，而不是胡乱使用随机的，任意的颜色值。之后你可以通过创建方法的别名如`+appNameTextColor`的方式增加一个语义层，新的方法返回`+appNameDarkGrayColor`。
 
@@ -114,7 +114,7 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 
 编译时间更短，循环引用的机会更少；如果你还没有习惯这样做，那你就应该这么做了。
 
-### 实例变量可视性
+### 实例变量可见性
 
 类提供状态以及通过属性和方法提供变化的接口而不是直接展示实例变量，这是一个通用的惯例。
 
@@ -142,11 +142,11 @@ Lisp,它使用括号之多由那个[古老的笑话](http://discuss.fogcreek.com
 
 当一个Objective-C程序员意识到她可以定义自己的协议时，这就是她的编程进化的转折点。
 
-协议的美好之处在于，它们可以允许程序员设计可在类的层次结构之外采用的合同。这是美国梦的中心，平等的口号：无论你是谁，你从哪里来：任何人都可以获得成功只要他们足够努力。
+协议的美好之处在于，它们可以允许程序员设计可在类的层次结构之外采用的合同。这是美国梦的中心，平等的口号：无论你是谁，你从哪里来：只要足够努力任何人都可以获得成功。
 
-…至少它是一个好的想法，不是吗？
+…至少这很理想化，不是吗？
 
-- `@protocol`...`@end`：定义了一组可以被符合该协议的类所实现的方法，就好像它们被加入到那个类的接口中一样。
+- `@protocol`...`@end`：定义了一组将在服从该协议的类中实现的方法，就好像它们被加入到那个类的接口中一样。
 
 没有连接协议的负担，结构的稳定性和表现力简直棒极了。
 
@@ -187,30 +187,30 @@ Objective-C主要通过`NSError`来沟通意想不到的异常状态。而其他
 }
 ~~~
 
-## 字面
+## 常量
 
-字面特定固定值的速记符号。字面或多或少都和程序员的开心程度相关。用这个来衡量，Objective-C长久以来都是程序员的痛苦。
+常量是一些特定固定值的简短表示。常量或多或少直接影响着程序员的心情。用这个来衡量，Objective-C长久以来都是程序员的痛苦。
 
-### 对象字面
+### 对象常量
 
-直到最近，Objective-C只有`NSString`的字面。但随着[Apple的LLVM 4.0编译器](http://clang.llvm.org/docs/ObjectiveCLiterals.html)的发布，让我们欣喜的是`NSNumber`，`NSArray`和`NSDictionary`被添加了。
+不久前，Objective-C只有`NSString`常量。但随着[Apple的LLVM 4.0编译器](http://clang.llvm.org/docs/ObjectiveCLiterals.html)的发布，让我们欣喜的是`NSNumber`，`NSArray`和`NSDictionary`常量被添加了。
 
-- `@""`：返回一个由引号内Unicade内容初始化的`NSString`对象。
+- `@""`：返回一个由引号内Unicode内容初始化的`NSString`对象。
 - `@42`，`@3.14`，`@YES`，`@'Z'`：返回一个由相关类构造初始化的`NSNumber`对象，比如`@42` → `[NSNumber numberWithInteger:42]`，或者`@YES` → `[NSNumber numberWithBool:YES]`。支持使用后缀进一步指定类型，如`@42U` → `[NSNumber numberWithUnsignedInt:42U]`。
-- `@[]`：返回一个由冒号分隔的对象列表作为内容的`NSArray`对象。比如，`@[@"A", @NO, @2.718]` → `[NSArray arrayWithObjects:@"A", @NO, @2.718, nil]` （注意在字面中定点`nil`是不需要的）。
+- `@[]`：返回一个由冒号分隔的对象列表作为内容的`NSArray`对象。比如，`@[@"A", @NO, @2.718]` → `[NSArray arrayWithObjects:@"A", @NO, @2.718, nil]` （注意在数组常量中结束标记`nil`是不需要的）。
 - `@{}`：返回一个由特定键－值对初始化作为内容的`NSDictionary`对象，格式： `@{@"someKey" : @"theValue"}`。
-- `@()`：动态评估封装的表达，并返回基于其值的合适的对象字面（比如，`const char*`返回`NSString`，`int`返回`NSNumber`，等等。）。这也是使用数字字面和`枚举`值的指定方式。
+- `@()`：动态评估封装的表达，并返回基于其值的合适的对象常量（比如，`const char*`返回`NSString`，`int`返回`NSNumber`，等等。）。这也是使用数字常量和`枚举`值的指定方式。
 
-### Objective-C 字面
+### Objective-C 常量
 
-选择器和协议可以作为方法参数。`@selector()`和`@protocol()`作为伪字面指令返回一个指向特定选择器（`SEL`）或协议（`Protocol *`）的指针。
+选择器和协议可以作为方法参数。`@selector()`和`@protocol()`作为伪常量指令返回一个指向特定选择器（`SEL`）或协议（`Protocol *`）的指针。
 
 - `@selector()`：返回一个指向有特定名称的选择器的`SEL`指针。用于类似`-performSelector:withObject:`的方法。
 - `@protocol()`：返回一个指向有特定名称的协议的`Protocol *`指针。用于类似`-conformsToProtocol:`的方法。
 
-### C字面
+### C 常量
 
-字面也能用将Objective-C转换成C值的方法工作。这些指令能让我们偷看到Objective-C面纱下的内容，也让我们开始了解究竟发生了什么。
+常量也能以别的方式工作，如将 Objective-C 对象转换成 C 值。这些指令能让我们揭开 Objective-C 的神秘面纱，让我们开始了解究竟发生了什么。
 
 你知不知道所有的Objective-C的类和对象都只是被美化了的`struct`？又或者一个对象的整个身份的关键在于那个`struct`的一个`isa`字段？
 
@@ -232,7 +232,7 @@ struct {
 有一些`@`编译器指令专门用来为常用的优化提供快捷。
 
 - `@autoreleasepool{}`：如果你的代码中包含创建大量临时对象的紧密的循环，你可以通过`@autorelease`更加积极的释放这些寿命短暂，局部范围内的对象来达到优化。`@autoreleasepool`替换并且改进了旧的又慢又不能在ARC中使用的`NSAutoreleasePool`。
-- `@synchronized(){}`：这个指令为在一特定的环境中（通常是`self`）确保安全执行某一特定块提供了一个便捷的方法。这种情况的死锁很昂贵，所以，对于针对特定级别的线程安全的类来说，建议使用专用的`NSLock`属性或者使用如`OSAtomicCompareAndSwap32(3)`的低层次的死锁函数。
+- `@synchronized(){}`：这个指令为在一特定的环境中（通常是`self`）确保安全执行某一特定块提供了一个便捷的方法。这种情况的死锁很昂贵，所以，对于针对特定级别的线程安全的类来说，建议使用专用的`NSLock`属性或者使用如`OSAtomicCompareAndSwap32(3)`的底层的死锁函数。
 
 ## 兼容性
 
@@ -240,11 +240,11 @@ struct {
 
 - `@compatibility_alias`：允许现有类有不同的名称作为别名。
 
-比如[PSTCollectionView](https://github.com/steipete/PSTCollectionView)使用`@compatibility_alias`来显著的提高向后兼容的体验，[UICollectionView](http://nshipster.com/uicollectionview/)的快速替换：
+比如[PSTCollectionView](https://github.com/steipete/PSTCollectionView)使用了`@compatibility_alias`来显著提高对[UICollectionView](http://nshipster.com/uicollectionview/)向后兼容的直接替换的使用体验：
 
 ~~~{objective-c}
 // 允许代码使用UICollectionView如同它可以在iOS SDK 5使用一样。
-// http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
+// http://developer.apple.com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.3/gcc/compatibility_005falias.html
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
 @compatibility_alias UICollectionViewController PSTCollectionViewController;
 @compatibility_alias UICollectionView PSTCollectionView;
@@ -264,7 +264,7 @@ struct {
 
 回顾：
 
-**Interfaces & Implementation**
+**接口与实现**
 
 - `@interface`...`@end`
 - `@implementation`...`@end`
@@ -296,7 +296,7 @@ struct {
 - `@finally`
 - `@throw`
 
-**Object字面**
+**对象常量**
 
 - `@""`
 - `@42`, `@3.14`, `@YES`, `@'Z'`
@@ -304,12 +304,12 @@ struct {
 - `@{}`
 - `@()`
 
-**Objective-C字面**
+**Objective-C 常量**
 
 - `@selector()`
 - `@protocol()`
 
-**C字面**
+**C 常量**
 
 - `@encode()`
 - `@defs()`
