@@ -43,7 +43,7 @@ Mac OS 9 users will no doubt have fond memories of the old system voices: Bubble
 
 In the name of quality over quantity, each language is provided a voice for each major locale region. So instead of asking for "Fred" and "Markus", `AVSpeechSynthesisVoice` asks for `en-US` and `de-DE`.
 
-As of iOS 7.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages and locales are support:
+As of iOS 7.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages and locales are supported:
 
 - Arabic (`ar-SA`)
 - Chinese (`zh-CN`, `zh-HK`, `zh-TW`)
