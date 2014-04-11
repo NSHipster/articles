@@ -64,7 +64,7 @@ Although Apple Legal gets twitchy at even the slightest intimation of third-part
 
 A recent addition to configuration profiles is the ability to embed font payloads, allowing for new typefaces to be installed across the system (for example, to be used in Pages or Keynote).
 
-Just as EOF / WOFF / SVG fonts allow typefaces to be distributed over the web, type foundries could similarly offer TTF / OTF files to iOS devices using an app with a configuration profile. Since configuration profiles can be installed from a web page, an app could embed and run a HTTP process to locally serve a webpage with a profile and payload.
+Just as EOF / WOFF / SVG fonts allow typefaces to be distributed over the web, type foundries could similarly offer TTF / OTF files to iOS devices using an app with a configuration profile. Since configuration profiles can be installed from a web page, an app could embed and run an HTTP process to locally serve a webpage with a profile and payload.
 
 ### Enhancing Security
 
