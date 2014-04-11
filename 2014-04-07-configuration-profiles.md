@@ -82,4 +82,4 @@ A clever combination of IAP and auto-expiring configuration profiles could be us
 
 To its credit, tight restrictions have helped ensure a consistent and secure user experience on iOS from its inception, and Apple should be lauded for engineering the platform in such a way that an entire ecosystem of 3rd party software is able to operate without compromising that experience.
 
-Of course, as developers, we're always going to want a more functionality open to them.  iOS Configuration Profiles are a lesser-known feature that open a wide range of possibilities, that we have only begun to understand.
+Of course, as developers, we're always going to want more functionality open to us.  iOS Configuration Profiles are a lesser-known feature that open a wide range of possibilities, that we have only begun to understand.
