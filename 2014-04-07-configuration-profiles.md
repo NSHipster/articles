@@ -58,7 +58,7 @@ If you're ever used a development distribution service like [HockeyApp](http://h
 
 Using a configuration profile, these services can automatically get information like device UDID, model name, and even add a new web clip on the home screen to download available apps.
 
-Although Apple Legal gets twitch at even the slightest intimation of third-party app stores, perhaps there are ways for configuration profiles to enable new forms of collaboration. It's unclear what the effect of [Apple's acquisition of Burstly](http://www.theverge.com/apps/2014/2/21/5434060/apple-buys-maker-of-the-ios-testing-platform-testflight) (TestFlight's parent company) will be in the long term, but for now, this could be a great opportunity for some further exploration of this space.
+Although Apple Legal gets twitchy at even the slightest intimation of third-party app stores, perhaps there are ways for configuration profiles to enable new forms of collaboration. It's unclear what the effect of [Apple's acquisition of Burstly](http://www.theverge.com/apps/2014/2/21/5434060/apple-buys-maker-of-the-ios-testing-platform-testflight) (TestFlight's parent company) will be in the long term, but for now, this could be a great opportunity for some further exploration of this space.
 
 ### Installing Custom Fonts
 
