@@ -8,7 +8,7 @@ description: "One of the major criticisms of iOS as a platform is how locked dow
 
 One of the major criticisms of iOS as a platform is how locked down it is.
 
-Each app is an island, only able to communicate with other parts of the system under strict terms, and with only then with nontrivial effort. There's no way, for example, for an app to open its own settings in Settings.app. There's no way for apps to change their icon at runtime, or to customize the behavior of system-wide functionality, like Notification Center or Siri. Apps can't embed or share views with one another, or communicate locally.
+Each app is an island, only able to communicate with other parts of the system under strict terms, and only then with nontrivial effort. There's no way, for example, for an app to open its own settings in Settings.app. There's no way for apps to change their icon at runtime, or to customize the behavior of system-wide functionality, like Notification Center or Siri. Apps can't embed or share views with one another, or communicate locally.
 
 So it may come as a surprise how many of these limitations to iOS can be worked around with a bit of XML.
 
