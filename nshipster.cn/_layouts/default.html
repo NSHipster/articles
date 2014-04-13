@@ -5,13 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
     <title>{{ page.title | strip_html }} : {{ site.title }}</title>
+    {% if page.description %}
+      <meta name="description" content="{{ page.description | strip_html }}"/>
+    {% else %}
+      <meta name="description" content="{{ page | only_first_p | strip_html }}"/>
+    {% endif %}
   {% else %}
     <title>{{ page.title | strip_html }}</title>
+    <meta name="description" content="{{ site.description | strip_html }}"/>
   {% endif %}
-  <meta name="description" content="{{ site.description | strip_html }}"/>
   <meta name="author" content="Mattt Thompson"/>
   <meta name="revisit-after" content="3 days"/>
   <meta name="viewport" content="width=device-width"/>
+  <meta name="google-site-verification" content="0Yws_zn0X2NwVsvD--A_UNDw0_SyDbkVwFMFGwkLfSE"/>
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/"/>
   <link rel="alternate" hreflang="en-us" href="http://nshipster.com"/>
   <link rel="alternate" hreflang="zh-Hans" href="http://nshipster.cn"/>
@@ -120,18 +126,14 @@
     </footer>
   </div>
 
-  <script type="text/javascript">
-    var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
-      t.async = true;
-      t.id    = 'gauges-tracker';
-      t.setAttribute('data-site-id', '52703ddf613f5d4de4000686');
-      t.src = '//secure.gaug.es/track.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(t, s);
-    })();
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-49868484-2', 'nshipster.cn');
+    ga('send', 'pageview');
   </script>
 </body>
 </html>
