@@ -4,11 +4,18 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
-    <title>{{ page.title }} : {{ site.title }}</title>
+    <title>{{ page.title | replace:'<br/>',' ' | strip_html }} - {{ site.title }}</title>
+    {% if page.description %}
+      <meta name="description" content="{{ page.description | strip_html }}"/>
+    {% else %}
+      <meta name="description" content="{{ page | only_first_p | strip_html }}"/>
+    {% endif %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
   {% else %}
-    <title>{{ page.title }}</title>
+    <title>{{ page.title | strip_html }}</title>
+    <meta name="description" content="{{ site.description | strip_html }}"/>
+    <link rel="canonical" href="{{ site.url }}"/>
   {% endif %}
-  <meta name="description" content="{{ site.description | strip_html }}"/>
   <meta name="author" content="Mattt Thompson"/>
   <meta name="revisit-after" content="3 days"/>
   <meta name="viewport" content="width=device-width"/>
