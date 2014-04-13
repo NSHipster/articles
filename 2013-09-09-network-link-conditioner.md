@@ -19,7 +19,7 @@ This week on NSHipster, we'll be talking about the [Network Link Conditioner](ht
 
 ## Installation
 
-Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" package. This can be downloaded from the [Apple Developer Downloads](https://developer.apple.com/downloads/index.action?q=Network%20Link%20Conditioner) page. 
+Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" package. This can be downloaded from the [Apple Developer Downloads](https://developer.apple.com/downloads/index.action?q=Network%20Link%20Conditioner) page.
 
 ![Download](http://nshipster.s3.amazonaws.com/network-link-conditioner-download.png)
 
@@ -45,7 +45,7 @@ When enabled, the Network Link Conditioner can change the network environment of
 - Very Bad Network
 - 100% Loss
 
-Each preset can set a limit for uplink or downlink [bandwidth](http://en.wikipedia.org/wiki/Bandwidth_%28computing%29), [latency](http%3A//en.wikipedia.org/wiki/Latency_%28engineering%29%23Communication_latency), and rate of [packet loss](http://en.wikipedia.org/wiki/Packet_loss) (when any value is set to 0, that value is unchanged from your computer's network environment).
+Each preset can set a limit for uplink or downlink [bandwidth](http://en.wikipedia.org/wiki/Bandwidth_%28computing%29), [latency](http://en.wikipedia.org/wiki/Latency_%28engineering%29%23Communication_latency), and rate of [packet loss](http://en.wikipedia.org/wiki/Packet_loss) (when any value is set to 0, that value is unchanged from your computer's network environment).
 
 ![Preset](http://nshipster.s3.amazonaws.com/network-link-conditioner-preset.png)
 

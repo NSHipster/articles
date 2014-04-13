@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Type Encodings
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html"
 framework: "Objective-C"
 rating: 7.8
@@ -9,13 +8,13 @@ published: true
 description: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
 ---
 
-From [number stations](http://en.wikipedia.org/wiki/Numbers_station) and [numerology](http://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities. 
+From [number stations](http://en.wikipedia.org/wiki/Numbers_station) and [numerology](http://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities.
 
 It is in this spirit that we take a look at [Objective-C Type Encodings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) in this week's edition of NSHipster.
 
 ---
 
-[Last week](http://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive. 
+[Last week](http://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive.
 
 `@encode`, one of the [`@` Compiler Directives](http://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the ANSI C `typeof` operator. Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
 
@@ -212,13 +211,13 @@ These are the type qualifiers for methods declared in a protocol:
 
 For anyone familiar with [NSDistantObject](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html), you'll doubtless recognize these as a vestige of [Distributed Objects](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i).
 
-Although DO has fallen out of fashion in the age of iOS, it was an interprocess messaging protocol used between Cocoa applications--even running on different machines on the network. Under these constraints, there were benefits to be had from the additional context. 
+Although DO has fallen out of fashion in the age of iOS, it was an interprocess messaging protocol used between Cocoa applications--even running on different machines on the network. Under these constraints, there were benefits to be had from the additional context.
 
 For example, parameters in distributed object messages were passed as proxies by default. In situations where proxying would be unnecessarily inefficient, the `bycopy` qualifier could be added to make sure a full copy of the object was sent. Also by default, parameters were `inout`, signifying that objects needed to be sent back and forth when sending the message. By specifying a parameter as `in` or `out` instead, the application could avoid the round-trip overhead.
 
 ---
 
-So what do we gain from our newfound understanding of Objective-C Type Encodings?  
+So what do we gain from our newfound understanding of Objective-C Type Encodings?
 Honestly, not that much (unless you're doing any crazy metaprogramming).
 
 But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.

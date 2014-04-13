@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSIncrementalStore
-
 ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/NSIncrementalStore_Class/Reference/NSIncrementalStore.html"
 framework: Foundation
 rating: 9.5
@@ -9,7 +8,7 @@ published: true
 description: Even for a blog dedicated to obscure APIs, <tt>NSIncrementalStore</tt> sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
 ---
 
-Even for a blog dedicated to obscure APIs, `NSIncrementalStore` brings a new meaning to the word "obscure". 
+Even for a blog dedicated to obscure APIs, `NSIncrementalStore` brings a new meaning to the word "obscure".
 
 It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog.
 
@@ -23,7 +22,7 @@ And yet, `NSIncrementalStore` is arguably the most important thing to come out o
 
 `NSIncrementalStore` is an abstract subclass of `NSPersistentStore` designed to "create persistent stores which load and save data incrementally, allowing for the management of large and/or shared datasets". And while that may not sound like much, consider that nearly all of the database adapters we rely on load incrementally from large, shared data stores. What we have here is a goddamned miracle.
 
-For those of you not as well-versed in Core Data, here's some background: 
+For those of you not as well-versed in Core Data, here's some background:
 
 [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) is Apple's framework for object relational mapping. It's used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that's because it solves complex problems, covering a decades-worth of one-offs and edge cases.
 
@@ -64,7 +63,7 @@ NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 
 ### `-executeRequest:withContext:error:`
 
-Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint) 
+Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint)
 
 `executeRequest:withContext:error:` passes an `NSPersistentStoreRequest`, an `NSManagedObjectContext` and an `NSError` pointer.
 
@@ -79,18 +78,18 @@ This method requires very specific and very different return values depending on
 > **Return**: `NSArray` of objects matching request
 
 - Result Type: `NSCountResultType`
-  
+
 > **Return**: <del><tt>NSNumber</tt></del><ins><tt>NSArray</tt> containing one <tt>NSNumber</tt> of count of objects matching request</ins>
 
 #### Request Type: `NSSaveRequestType`
-  
+
 > **Return**: Empty `NSArray`
 
 So, one method to do all read _and_ write operations with a persistence backend. At least all of the heavy lifting goes to the same place, right?
 
 ### `-newValuesForObjectWithID:withContext:error:`
 
-This method is called when an object faults, or has its values refreshed by the managed object context. 
+This method is called when an object faults, or has its values refreshed by the managed object context.
 
 It returns an `NSIncrementalStoreNode`, which is a container for the ID and current values for a particular managed object. The node should include all of the attributes, as well as the managed object IDs of any to-one relationships. There is also a `version` property of the node that can be used to determine the current state of an object, but this may not be applicable to all storage implementations.
 
@@ -98,7 +97,7 @@ If an object with the specified `objectID` cannot be found, this method should r
 
 ### `-newValueForRelationship:forObjectWithID: withContext:error:`
 
-This one is called when a relationship needs to be refreshed, either from a fault or by the managed object context. 
+This one is called when a relationship needs to be refreshed, either from a fault or by the managed object context.
 
 Unlike the previous method, the return value will be just the current value for a single relationship. The expected return type depends on the nature of the relationship:
 

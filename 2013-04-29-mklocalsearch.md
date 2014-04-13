@@ -1,11 +1,10 @@
 ---
 layout: post
 title: MKLocalSearch
-
 ref: "http://developer.apple.com/library/ios/#documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html"
 framework: MapKit
 rating: 7.1
-description: In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1.
+description: "In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1."
 ---
 
 Look, we get it: people are upset about Apple Maps.

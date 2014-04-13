@@ -1,10 +1,10 @@
 ---
 layout: post
 title: NSSecureCoding
-
 ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSSecureCoding_Protocol_Ref/content/NSSecureCoding.html"
 framework: Foundation
 rating: 6.0
+description: "A short post for this week: everything you need to know about NSSecureCoding."
 ---
 
 A short post for this week: everything you need to know about `NSSecureCoding`.

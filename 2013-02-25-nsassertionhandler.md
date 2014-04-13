@@ -1,17 +1,17 @@
 ---
 layout: post
 title: NSAssertionHandler
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSAssertionHandler_Class/Reference/Reference.html"
 framework: Foundation
 rating: 5.6
+description: "Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."
 ---
 
 "When at first you don't succeed, use an object-oriented injection point to override default exception handling." This is the sort of advice you would have learned at mother's knee if you were raised by `NSAssertionHandler`.
 
-Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the "story" we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything. 
+Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the "story" we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything.
 
-Assertions are a concept borrowed from classical logic. In logic, assertions are statements about propositions within a proof. In programming, assertions denote assumptions the programmer has made about the application at the place where they are declared. 
+Assertions are a concept borrowed from classical logic. In logic, assertions are statements about propositions within a proof. In programming, assertions denote assumptions the programmer has made about the application at the place where they are declared.
 
 When used in the capacity of preconditions and postconditions, which describe expectations about the state of the code at the beginning and end of execution of a method or function, assertions form a [contract](http://en.wikipedia.org/wiki/Design_by_contract). Assertions can also be used to enforce conditions at run-time, in order to prevent execution when certain preconditions fail.
 
@@ -26,15 +26,15 @@ Objective-C combines C-style assertion macros with an object-oriented approach t
 Foundation [defines](https://gist.github.com/mattt/5031388#file-nsassertionhandler-m-L50-L56) two pairs of assertion macros:
 
 - `NSAssert` / `NSCAssert`
-- `NSParameterAssert` / `NSCParameterAssert` 
+- `NSParameterAssert` / `NSCParameterAssert`
 
-Foundation makes two distinctions in their assertion handler APIs that are both semantic and functional. 
+Foundation makes two distinctions in their assertion handler APIs that are both semantic and functional.
 
 The first distinction is between a general assertion (`NSAssert`) and a parameter assertion (`NSParameterAssert`). As a rule of thumb, methods / functions should use `NSParameterAssert` / `NSCParameterAssert` statements at the top of methods to enforce any preconditions about the input values; in all other cases, use `NSAssert` / `NSCAssert`.
 
-The second is the difference between C and Objective-C assertions: `NSAssert` should only be used in an Objective-C context (i.e. method implementations), whereas `NSCAssert` should only be used in a C context (i.e. functions). 
+The second is the difference between C and Objective-C assertions: `NSAssert` should only be used in an Objective-C context (i.e. method implementations), whereas `NSCAssert` should only be used in a C context (i.e. functions).
 
-- When a condition in `NSAssert` or `NSParameterAssert` fails, `-handleFailureInMethod:object:file:lineNumber:description:` is called in the assertion handler. 
+- When a condition in `NSAssert` or `NSParameterAssert` fails, `-handleFailureInMethod:object:file:lineNumber:description:` is called in the assertion handler.
 - When a condition in `NSCAssert` or `NSCParameterAssert` fails, `-handleFailureInFunction:file:lineNumber:description:` is called in the assertion handler.
 
 Additionally, there are variations of `NSAssert` / `NSCAssert`, from `NSAssert1` ... `NSAssert5`, which take their respective number of arguments to use in a `printf`-style format string.
@@ -63,18 +63,18 @@ And while Foundation assertion macros are extremely useful in their own right—
 ~~~{objective-c}
 @implementation LoggingAssertionHandler
 
-- (void)handleFailureInMethod:(SEL)selector 
-                       object:(id)object 
-                         file:(NSString *)fileName 
-                   lineNumber:(NSInteger)line 
+- (void)handleFailureInMethod:(SEL)selector
+                       object:(id)object
+                         file:(NSString *)fileName
+                   lineNumber:(NSInteger)line
                   description:(NSString *)format, ...
 {
   NSLog(@"NSAssert Failure: Method %@ for object %@ in %@#%i", NSStringFromSelector(selector), object, fileName, line);
 }
 
-- (void)handleFailureInFunction:(NSString *)functionName 
-                           file:(NSString *)fileName 
-                     lineNumber:(NSInteger)line 
+- (void)handleFailureInFunction:(NSString *)functionName
+                           file:(NSString *)fileName
+                     lineNumber:(NSInteger)line
                     description:(NSString *)format, ...
 {
   NSLog(@"NSCAssert Failure: Function (%@) in %@#%i", functionName, fileName, line);
@@ -91,11 +91,11 @@ didFinishLaunchingWithOptions:`.
 ### AppDelegate.m
 
 ~~~{objective-c}
-- (BOOL)application:(UIApplication *)application 
+- (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
   NSAssertionHandler *assertionHandler = [[LoggingAssertionHandler alloc] init];
-  [[[NSThread currentThread] threadDictionary] setValue:assertionHandler 
+  [[[NSThread currentThread] threadDictionary] setValue:assertionHandler
                                                  forKey:NSAssertionHandlerKey];
   // ...
 

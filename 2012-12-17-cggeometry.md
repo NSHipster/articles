@@ -1,12 +1,11 @@
 ---
 layout: post
 title: CGGeometry
-
 ref: "https://developer.apple.com/library/mac/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html"
 framework: CoreGraphics
 rating: 8.0
 published: true
-description: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulæ into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier."
+description: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulae into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier."
 ---
 
 Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulæ into your TI-8X calculator.
@@ -44,7 +43,7 @@ CGRect CGRectOffset(
 )
 ~~~
 
-Consider using this anytime you're changing the origin of a rectangle. Not only can it save a line of code when changing both the horizontal and vertical position, but more importantly, it represents the translation more semantically than manipulating the origin values individually. 
+Consider using this anytime you're changing the origin of a rectangle. Not only can it save a line of code when changing both the horizontal and vertical position, but more importantly, it represents the translation more semantically than manipulating the origin values individually.
 
 ### `CGRectInset`
 
@@ -58,9 +57,9 @@ CGRect CGRectInset(
 )
 ~~~
 
-Want to make a view-within-a-view look good? Give it a nice 10pt padding with `CGRectInset`. Keep in mind that the rectangle will be resized around its center by ± `dx` on its left and right edge (for a total of `2 × dx`), and ± `dy` on its top and bottom edge (for a total of `2 × dy`). 
+Want to make a view-within-a-view look good? Give it a nice 10pt padding with `CGRectInset`. Keep in mind that the rectangle will be resized around its center by ± `dx` on its left and right edge (for a total of `2 × dx`), and ± `dy` on its top and bottom edge (for a total of `2 × dy`).
 
-If you're using `CGRectInset` as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.  
+If you're using `CGRectInset` as a convenience function for resizing a rectangle, it is common to chain this with `CGRectOffset` by passing the result of `CGRectInset` as the `rect` argument in `CGRectOffset`.
 
 ### `CGRectIntegral`
 
@@ -78,7 +77,7 @@ It's important that `CGRect` values all are rounded to the nearest whole point. 
 
 As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
 
-> † Technically, since the coordinate system operates in terms of points, Retina screens, which have 4 pixels for every point, can draw `± 0.5f` point values on odd pixels without blurriness. 
+> † Technically, since the coordinate system operates in terms of points, Retina screens, which have 4 pixels for every point, can draw `± 0.5f` point values on odd pixels without blurriness.
 
 Value Helper Functions
 ----------------------
@@ -94,7 +93,7 @@ These functions provide a shorthand way to calculate interesting dimensional val
 - `CGRectGetMaxX`
 - `CGRectGetMaxY`
 
-These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form: 
+These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form:
 
 ~~~{objective-c}
 CGFloat CGRectGet[Min|Mid|Max][X|Y] (
@@ -122,7 +121,7 @@ CGFloat CGRectGetWidth (
 )
 ~~~
 
-Much like the previous functions, `CGRectGetWidth` & `CGRectGetHeight` are often preferable to returning the corresponding member of a `CGRect`'s `size`. While it's not extremely competitive in terms of character savings, remember that semantic clarity trumps brevity every time. 
+Much like the previous functions, `CGRectGetWidth` & `CGRectGetHeight` are often preferable to returning the corresponding member of a `CGRect`'s `size`. While it's not extremely competitive in terms of character savings, remember that semantic clarity trumps brevity every time.
 
 Identities
 ----------
@@ -162,7 +161,7 @@ void CGRectDivide(
 
 `CGRectDivide` divides a rectangle into two components in the following way:
 
-- Take a rectangle and choose an `edge` (left, right, top, or bottom). 
+- Take a rectangle and choose an `edge` (left, right, top, or bottom).
 - Measure out an `amount` from that edge.
 - Everything from the `edge` to the measured `amount` is stored in the rectangle referenced in the `slice` argument.
 - The rest of the original rectangle is stored in the `remainder` out argument.

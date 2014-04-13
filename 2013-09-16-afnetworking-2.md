@@ -1,7 +1,6 @@
 ---
 layout: post
 title: AFNetworking 2.0
-
 ref: "https://github.com/AFNetworking/AFNetworking"
 framework: "Open Source"
 rating: 9.9
@@ -12,7 +11,7 @@ description: "AFNetworking is one of the most widely used open source projects f
 
 By all accounts, AFNetworking is about as mainstream as it gets.
 
-_But have you heard about the sequel?_  
+_But have you heard about the sequel?_
 [AFNetworking 2.0](https://github.com/AFNetworking/AFNetworking/).
 
 This week on NSHipster: an exclusive look at the future of AFNetworking.
@@ -63,11 +62,11 @@ With its second major release, AFNetworking aims to reconcile many of the quirks
 
 - `AFURLConnectionOperation` - A subclass of `NSOperation` that manages an `NSURLConnection` and implements its delegate methods.
 - `AFHTTPRequestOperation` - A subclass of `AFURLConnectionOperation` specifically for making HTTP requests, which creates a distinction between acceptable and unacceptable status codes and content types. The main difference in 2.0 is that _you'll actually use this class directly, rather than subclass it_, for reasons explained in the "Serialization" section.
-- `AFHTTPRequestOperationManager` - A class that encapsulates the common patterns of communicating with a web service over HTTP, backed by `NSURLConnection` by way of `AFHTTPRequestOperation`. 
+- `AFHTTPRequestOperationManager` - A class that encapsulates the common patterns of communicating with a web service over HTTP, backed by `NSURLConnection` by way of `AFHTTPRequestOperation`.
 
 #### `NSURLSession` Components _(iOS 7)_
 
-- `AFURLSessionManager` - A class that creates and manages an `NSURLSession` object based on a specified `NSURLSessionConfiguration` object, as well as data, download, and upload tasks for that session, implementing the delegate methods for both the session and its associated tasks. Because of the odd gaps in `NSURLSession`'s API design, __any code working with `NSURLSession` would be improved by `AFURLSessionManager`__. 
+- `AFURLSessionManager` - A class that creates and manages an `NSURLSession` object based on a specified `NSURLSessionConfiguration` object, as well as data, download, and upload tasks for that session, implementing the delegate methods for both the session and its associated tasks. Because of the odd gaps in `NSURLSession`'s API design, __any code working with `NSURLSession` would be improved by `AFURLSessionManager`__.
 - `AFHTTPSessionManager` - A subclass of `AFURLSessionManager` that encapsulates the common patterns of communicating with an web service over HTTP, backed by `NSURLSession` by way of `AFURLSessionManager`.
 
 ---
@@ -157,6 +156,6 @@ Oh yeah, one more thing...
 
 ## AFNetworking: the Definitive Guide
 
-I'm thrilled to announce that AFNetworking is getting an official book! 
+I'm thrilled to announce that AFNetworking is getting an official book!
 
 **"AFNetworking: the Definitive Guide"** will be published by [O'Reilly](http://oreilly.com), hopefully within the next couple of months. You can [sign up here to be notified by email when its available](http://eepurl.com/Flnvn), or [follow @AFNetworking](https://twitter.com/AFNetworking).

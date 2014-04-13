@@ -1,11 +1,9 @@
 ---
 layout: post
 title: Xcode Key Bindings & Gestures
-
 ref: "https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/Introduction/Introduction.html"
 framework: Xcode
 rating: 8.0
-published: true
 description: "Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process."
 ---
 
@@ -13,7 +11,7 @@ The extent to which programming-as-craft is compared to manual disciplines like 
 
 Here at NSHipster, the advice is simple and only slightly allegorical: "Xcode is your mustache, so keep it trimmed, waxed to a sharp point, and free of bugs."
 
-Anyway, a few weeks ago, we looked at how [Xcode Snippets](http://nshipster.com/xcode-snippets/) can make you more productive by reducing the amount of boilerplate code you have to type out. This week, we're going to pick up on that thread and cover the essential key bindings and gestures. 
+Anyway, a few weeks ago, we looked at how [Xcode Snippets](http://nshipster.com/xcode-snippets/) can make you more productive by reducing the amount of boilerplate code you have to type out. This week, we're going to pick up on that thread and cover the essential key bindings and gestures.
 
 Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process. Learn the following tricks of the trade and join the elite set of Xcode power users.
 

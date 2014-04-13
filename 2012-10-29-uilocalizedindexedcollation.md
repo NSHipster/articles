@@ -1,12 +1,11 @@
 ---
 layout: post
 title: UILocalizedIndexedCollation
-
 ref: "http://developer.apple.com/library/ios/#documentation/iPhone/Reference/UILocalizedIndexedCollation_Class/UILocalizedIndexedCollation.html"
 framework: UIKit
 rating: 7.1
 published: true
-description: UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want… you may want to rethink your UI approach.
+description: "UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."
 ---
 
 UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a [cat playing Fruit Ninja](http://www.youtube.com/watch?v=CdEBgZ5Y46U) in order to get at what they want... you may want to rethink your UI approach.

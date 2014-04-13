@@ -1,12 +1,11 @@
 ---
 layout: post
 title: "NSOrderedSet"
-
 ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSOrderedSet_Class/Reference/Reference.html"
 framework: Foundation
 rating: 6.2
 published: true
-description: "Why isn't `NSOrderedSet` a subclass of `NSSet`? The answer may surprise you."
+description: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
 ---
 
 Here's a question: why isn't `NSOrderedSet` a subclass of `NSSet`?
@@ -91,7 +90,7 @@ This was fantastic news for anyone using Core Data at the time, as it solved one
 
 In this way, `NSOrderedSet` is an _answer to our [prayers](http://bugreport.apple.com/)_.
 
-Unfortunately, its very existence in Foundation has created something between an attractive nuisance and a red herring for API designers. 
+Unfortunately, its very existence in Foundation has created something between an attractive nuisance and a red herring for API designers.
 
 Although it is perfectly suited to that one particular use case in Core Data, `NSOrderedSet` is probably not a great choice for the majority of APIs that could potentially use it. In cases where a simple collection of objects is passed as a parameter, a simple `NSArray` does the trick--even if there is an implicit understanding that you shouldn't have duplicate entries. This is even more the case when order matters for a collection parameter--just use `NSArray` (there should be code to deal with duplicates in the implementation anyway). If uniqueness does matter, or the semantics of sets makes sense for a particular method, `NSSet` has and remains a great choice.
 

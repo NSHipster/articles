@@ -1,7 +1,6 @@
 ---
 layout: post
 title: instancetype
-
 ref: "http://clang.llvm.org/docs/LanguageExtensions.html#objc_instancetype"
 framework: Foundation
 rating: 7.3
@@ -83,7 +82,7 @@ Whether or not this becomes an accepted convention in Objective-C, it's fascinat
 
 ---
 
-`instancetype` is just one of the many language extensions to Objective-C, with more being added with each new release. 
+`instancetype` is just one of the many language extensions to Objective-C, with more being added with each new release.
 
 Know it, love it.
 

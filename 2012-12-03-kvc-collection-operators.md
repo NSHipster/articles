@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "KVC Collection Operators"
-
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/CollectionOperators.html"
 framework: Foundation
 rating: 7.9
@@ -9,7 +8,7 @@ published: true
 description: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."
 ---
 
-Rubyists laugh at Objective-C's bloated syntax. 
+Rubyists laugh at Objective-C's bloated syntax.
 
 Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and their fancy [`Symbol#to_proc`](http://pragdave.pragprog.com/pragdave/2005/11/symbolto_proc.html).
 
@@ -25,7 +24,7 @@ for (Employee *employee in employees) {
 double averageSalary = totalSalary / [employees count];
 ~~~
 
-Meh. 
+Meh.
 
 Fortunately, [Key-Value Coding](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html) gives us a much more concise--almost Ruby-like--way to do this:
 
@@ -134,7 +133,7 @@ This would be useful if we were to, for example, compare the inventory of severa
 _Example_:
 
 ~~~{objective-c}
-[@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"  
+[@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"
 ~~~
 
 ---
@@ -145,7 +144,7 @@ Curiously, [Apple's documentation on KVC collection operators](http://developer.
 
 > **Note**: It is not currently possible to define your own collection operators.
 
-This makes sense to spell out, since that's what most people are thinking about once they see collection operators for the first time. 
+This makes sense to spell out, since that's what most people are thinking about once they see collection operators for the first time.
 
 However, as it turns out, it _is_ actually possible, with a little help from our friend, `objc/runtime`.
 
@@ -171,6 +170,6 @@ Is this insanely cool? You bet! This clever example has shown a possible directi
 
 ---
 
-KVC Collection Operators are a must-know for anyone who wants to save a few extra lines of code and look cool in the process. 
+KVC Collection Operators are a must-know for anyone who wants to save a few extra lines of code and look cool in the process.
 
 While scripting languages like Ruby boast considerably more flexibility in its one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;

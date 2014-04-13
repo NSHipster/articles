@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NS_ENUM & NS_OPTIONS"
-
 ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacOSX10_8/Foundation.html"
 framework: Foundation
 rating: 7.0
@@ -15,9 +14,9 @@ So, there are a few ways you could parse that, but for the purposes of this arti
 
 Yes--that non-objective part of our favorite Smalltalk-inspired hybrid language, C can be a great asset. It's fast, it's battle-tested, it's the very foundation of modern computing. But more than that, C is the escape hatch for when the Object-Oriented paradigm cracks under its own cognitive weight.
 
-Static functions are nicer than shoe-horned class methods.  
-Enums are nicer than string constants.   
-Bitmasks are nicer than arrays of string constants.   
+Static functions are nicer than shoe-horned class methods.
+Enums are nicer than string constants.
+Bitmasks are nicer than arrays of string constants.
 Preprocessor directives are nicer than runtime hacks.
 
 A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage.
@@ -38,7 +37,7 @@ Introduced in Foundation with iOS 6 / Mac OS X 10.8, the `NS_ENUM` and `NS_OPTIO
 
 `enum`, or enumerated value types, are the C way to define constants for fixed values, like days of the week, or available styles of table view cells. In an `enum` declaration, constants without explicit values will automatically be assigned values sequentially, starting from `0`.
 
-There are several legal ways that `enum`s can be defined. What's confusing is that there are subtle functional differences between each approach, and without knowing any better, someone is just as likely to use them interchangeably. 
+There are several legal ways that `enum`s can be defined. What's confusing is that there are subtle functional differences between each approach, and without knowing any better, someone is just as likely to use them interchangeably.
 
 For instance:
 
@@ -51,7 +50,7 @@ enum {
 };
 ~~~
 
-...declares integer values, but no type. 
+...declares integer values, but no type.
 
 Whereas:
 
@@ -102,7 +101,7 @@ This approach combines the best of all of the aforementioned approaches, and eve
 
 ## `NS_OPTIONS`
 
-`enum` can also be used to define a [bitmask][1]. Using a convenient property of binary math, a single integer value can encode a combination of values all at once using the bitwise `OR` (`|`), and decoded with bitwise `AND` (`&`). Each subsequent value, rather than automatically being incremented by 1 from 0, are manually given a value with a bit offset: `1 << 0`, `1 << 1`, `1 << 2`, and so on. If you imagine the binary representation of a number, like `10110` for 22, each bit can be though to represent a single boolean. In UIKit, for example, `UIViewAutoresizing` is a bitmask that can represent any combination of flexible top, bottom, left, and right margins, or width and height. 
+`enum` can also be used to define a [bitmask][1]. Using a convenient property of binary math, a single integer value can encode a combination of values all at once using the bitwise `OR` (`|`), and decoded with bitwise `AND` (`&`). Each subsequent value, rather than automatically being incremented by 1 from 0, are manually given a value with a bit offset: `1 << 0`, `1 << 1`, `1 << 2`, and so on. If you imagine the binary representation of a number, like `10110` for 22, each bit can be though to represent a single boolean. In UIKit, for example, `UIViewAutoresizing` is a bitmask that can represent any combination of flexible top, bottom, left, and right margins, or width and height.
 
 Rather than `NS_ENUM`, bitmasks should now use the `NS_OPTIONS` macro.
 

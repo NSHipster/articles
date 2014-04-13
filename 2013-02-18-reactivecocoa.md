@@ -1,7 +1,6 @@
 ---
 layout: post
 title: ReactiveCocoa
-
 ref: "https://github.com/ReactiveCocoa/ReactiveCocoa"
 framework: "Open Source"
 rating: 9.5

@@ -1,10 +1,10 @@
 ---
 layout: post
 title: NSURLCache
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.7
+description: "NSURLCache provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's URL Loading System, any request loaded through NSURLConnection will be handled by NSURLCache."
 ---
 
 `NSURLCache` provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i), any request loaded through `NSURLConnection` will be handled by `NSURLCache`.
@@ -16,11 +16,11 @@ When a request has finished loading its response from the server, a cached respo
 In order to take advantage of `NSURLCache`, a shared URL cache must be initialized and set. This should be done in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
 
 ~~~{objective-c}
-- (BOOL)application:(UIApplication *)application 
-    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions 
+- (BOOL)application:(UIApplication *)application
+    didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024 
-                                                       diskCapacity:20 * 1024 * 1024 
+  NSURLCache *URLCache = [[NSURLCache alloc] initWithMemoryCapacity:4 * 1024 * 1024
+                                                       diskCapacity:20 * 1024 * 1024
                                                            diskPath:nil];
   [NSURLCache setSharedURLCache:URLCache];
 }
@@ -39,7 +39,7 @@ Caching policies are specified in both the request (by the client) and in the re
 - `NSURLRequestReturnCacheDataDontLoad`: Existing cache data should be used, regardless of its age or expiration date. If there is no existing data in the cache corresponding to the request, no attempt is made to load the data from the originating source, and the load is considered to have failed, (i.e. "offline" mode).
 - `NSURLRequestReloadRevalidatingCacheData`: Existing cache data may be used provided the origin source confirms its validity, otherwise the URL is loaded from the origin source.
 
-It may not surprise you that these values are poorly understood and often confused with one another. 
+It may not surprise you that these values are poorly understood and often confused with one another.
 
 Adding to the confusion is the fact that `NSURLRequestReloadIgnoringLocalAndRemoteCacheData` and `NSURLRequestReloadRevalidatingCacheData` [_aren't even implemented_](https://gist.github.com/mattt/4753073#file-nsurlrequest-h-L95-L108)! ([Link to Radar](http://openradar.appspot.com/radar?id=1755401)).
 
@@ -114,7 +114,7 @@ Once the server response has been received, the `NSURLConnection` delegate has a
 In `-connection:willCacheResponse:`, the `cachedResponse` object has been automatically created from the result of the URL connection. Because there is no mutable counterpart to `NSCachedURLResponse`, in order to change anything about `cachedResponse`, a new object must be constructed, passing any modified values into `–initWithResponse:data:userInfo:storagePolicy:`, for instance:
 
 ~~~{objective-c}
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection 
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     NSMutableDictionary *mutableUserInfo = [[cachedResponse userInfo] mutableCopy];
@@ -133,7 +133,7 @@ In `-connection:willCacheResponse:`, the `cachedResponse` object has been automa
 If `-connection:willCacheResponse:` returns `nil`, the response will not be cached.
 
 ~~~{objective-c}
-- (NSCachedURLResponse *)connection:(NSURLConnection *)connection 
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     return nil;
@@ -146,7 +146,7 @@ When left unimplemented, `NSURLConnection` will simply use the cached response t
 
 Just like its unrelated-but-similarly-named cohort, [`NSCache`](http://nshipster.com/nscache/), `NSURLCache` is not without some peculiarities.
 
-As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (though iOS 6 added support for this). Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache). 
+As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (though iOS 6 added support for this). Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache).
 
 [Another article by Daniel Pasco at Black Pixel](http://blackpixel.com/blog/2012/05/caching-and-nsurlconnection.html) describes some unexpected default behavior when communicating with servers that don't set cache headers.
 

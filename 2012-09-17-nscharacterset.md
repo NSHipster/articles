@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSCharacterSet
-
 ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/nscharacterset_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.5
@@ -35,7 +34,7 @@ But a string implementation is only as good as the programmer who wields it. So 
 - `whitespaceAndNewlineCharacterSet`
 - `whitespaceCharacterSet`
 
-Contrary to what its name might suggest, `NSCharacterSet` has _nothing_ to do with `NSSet`. 
+Contrary to what its name might suggest, `NSCharacterSet` has _nothing_ to do with `NSSet`.
 
 However, `NSCharacterSet` _does_ have quite a bit in common with `NSIndexSet`, conceptually if not also in its underlying implementation. `NSIndexSet`, covered [previously](http://nshipster.com/nsindexset/), represents a sorted collection of unique unsigned integers. Unicode characters are likewise unique unsigned integers that roughly correspond to some orthographic representation. Thus, a character set like `NSCharacterSet +lowercaseCharacterSet` is analogous to the `NSIndexSet` of the integers 97 to 122.
 
@@ -72,7 +71,7 @@ Now, it's not uncommon for the top-voted / accepted answer to not be the correct
 Without further ado, here are the 9 _incorrect_ answers:
 
 - "Use `stringByTrimmingCharactersInSet`" - _Only strips the leading and trailing whitespace, as you know._
-- "Replace ' ' with ''" - _This removes **all** of the spaces. Swing and a miss._ 
+- "Replace ' ' with ''" - _This removes **all** of the spaces. Swing and a miss._
 - "Use a regular expression" - _Kinda works, except it doesn't handle leading and trailing whitespace. A regular expression is overkill anyway._
 - "Use Regexp Lite" - _No seriously, regular expressions are completely unnecessary. And it's definitely not worth the external dependency._
 - "Use OgreKit" - _Ditto any other third-party regexp library._
@@ -85,7 +84,7 @@ I don't mean to rag on any of the answerers personally--this is all to point out
 
 ## String Tokenization
 
-**Do not use `NSCharacterSet` to tokenize strings.**  
+**Do not use `NSCharacterSet` to tokenize strings.**
 **Use `CFStringTokenizer` instead.**
 
 You can be forgiven for using `componentsSeparatedByCharactersInSet:` to clean up user input, but do this for anything more complex, and you'll be in a world of pain.
@@ -129,7 +128,7 @@ NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCha
 }];
 ~~~
 
-We first construct an `NSMutableCharacterSet` from the union of whitespace and punctuation characters. Telling `NSScanner` to skip these characters greatly reduces the logic necessary to parse values from the string. 
+We first construct an `NSMutableCharacterSet` from the union of whitespace and punctuation characters. Telling `NSScanner` to skip these characters greatly reduces the logic necessary to parse values from the string.
 
 `scanCharactersFromSet:` with the letters character set captures the start and (optional) end day of the week for each entry. `scanInteger` similarly captures the next contiguous integer value.
 

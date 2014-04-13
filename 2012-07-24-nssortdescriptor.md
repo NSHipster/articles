@@ -1,13 +1,13 @@
 ---
 layout: post
 title: NSSortDescriptor
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSortDescriptor_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.4
+description: "Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?"
 ---
 
-Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself? 
+Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?
 
 When making apps, sorting is just something you can assume to be fast, and utility is a function of convenience and clarity of intention. And when it comes to that, you'd be hard-pressed to find a better implementation than Foundation's `NSSortDescriptor`.
 
@@ -18,13 +18,13 @@ When making apps, sorting is just something you can assume to be fast, and utili
 > - `key`: for a given collection, the key for the corresponding value to be sorted on for each object in the collection.
 > - `ascending`: a boolean specifying whether the collection should be sorted in ascending (`YES`) or descending (`NO`) order.
 
-There is an optional third parameter that relates to how the sorted values are compared to one another. By default, this is a simple equality check, but this behavior can be changed by passing either a `selector` (`SEL`) or `comparator` (`NSComparator`). 
+There is an optional third parameter that relates to how the sorted values are compared to one another. By default, this is a simple equality check, but this behavior can be changed by passing either a `selector` (`SEL`) or `comparator` (`NSComparator`).
 
 > Any time you're sorting user-facing strings, be sure to pass the selector `localizedStandardCompare:`, which will sort according to the language rules of the current locale (locales may differ on ordering of case, diacritics, and so forth).
 
 Collection classes like `NSArray` and `NSSet` have methods to return sorted arrays of the objects that take an array of `sortDescriptors`. Sort descriptors are applied in order, so that if two elements happen to be tied for a particular sorting criteria, the tie is broken by any subsequent descriptors.
 
-To put that into more practical terms, consider a `Person` class with properties for `firstName` & `lastName` of type `NSString *`, and `age`, which is an `NSUInteger`. 
+To put that into more practical terms, consider a `Person` class with properties for `firstName` & `lastName` of type `NSString *`, and `age`, which is an `NSUInteger`.
 
 ~~~{objective-c}
 @interface Person : NSObject
@@ -95,13 +95,13 @@ NSMutableArray *people = [NSMutableArray array];
     [people addObject:person];
 }];
 
-NSSortDescriptor *firstNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"firstName" 
-  ascending:YES 
+NSSortDescriptor *firstNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"firstName"
+  ascending:YES
   selector:@selector(localizedStandardCompare:)];
-NSSortDescriptor *lastNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastName" 
-  ascending:YES 
+NSSortDescriptor *lastNameSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"lastName"
+  ascending:YES
   selector:@selector(localizedStandardCompare:)];
-NSSortDescriptor *ageSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age" 
+NSSortDescriptor *ageSortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"age"
   ascending:NO];
 
 NSLog(@"By age: %@", [people sortedArrayUsingDescriptors:@[ageSortDescriptor]]);

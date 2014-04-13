@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSLinguisticTagger
-
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSLinguisticTagger_Class/Reference/Reference.html"
 framework: Foundation
 rating: 9.7
@@ -11,7 +10,7 @@ description: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic f
 
 `NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](http://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](http://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](http://en.wikipedia.org/wiki/Writing_system) used in the string.
 
-For most of us, this is far more power than we know what to do with. But perhaps this is just for lack sufficient opportunity to try. After all, almost every application deals with natural language in one way or another--perhaps `NSLinguisticTagger` could add a new level of polish, or enable brand new features entirely. 
+For most of us, this is far more power than we know what to do with. But perhaps this is just for lack sufficient opportunity to try. After all, almost every application deals with natural language in one way or another--perhaps `NSLinguisticTagger` could add a new level of polish, or enable brand new features entirely.
 
 ---
 
@@ -36,14 +35,14 @@ tagger.string = question;
 
 This code would print the following:
 
-> What: _Pronoun_  
-> is: _Verb_  
-> the: _Determiner_  
-> weather: _Noun_  
-> in: _Preposition_  
+> What: _Pronoun_
+> is: _Verb_
+> the: _Determiner_
+> weather: _Noun_
+> in: _Preposition_
 > San Francisco: _PlaceName_
 
-If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`. 
+If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`.
 
 Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can conclude that a reasonable course of action would be to make an API request to determine the current weather conditions in San Francisco.
 

@@ -1,10 +1,10 @@
 ---
 layout: post
 title: Unit Testing
-
 ref: "https://developer.apple.com/library/mac/#documentation/DeveloperTools/Conceptual/UnitTesting/00-About_Unit_Testing/about.html"
 framework: Testing
 rating: 8.9
+description: "Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality."
 ---
 
 Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. [Cargo Cults like TDD](http://ntoll.org/article/tdd-cargo-cult) stake their reputation on unit testing to the point of co-opting and conflating utility with morality.

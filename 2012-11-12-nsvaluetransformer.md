@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSValueTransformer
-
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSValueTransformer_Class/Reference/Reference.html"
 framework: Foundation
 rating: 6.6
@@ -9,7 +8,7 @@ published: true
 description: "Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."
 ---
 
-Of all the Foundation classes, `NSValueTransformer` is perhaps the one that fared the worst in the shift from OS X to iOS. 
+Of all the Foundation classes, `NSValueTransformer` is perhaps the one that fared the worst in the shift from OS X to iOS.
 
 Why? Well, there are two reasons:
 
@@ -32,11 +31,11 @@ A typical implementation would look something like this:
 #pragma mark -
 
 @implementation ClassNameTransformer
-+ (Class)transformedValueClass { 
-  return [NSString class]; 
++ (Class)transformedValueClass {
+  return [NSString class];
 }
 
-+ (BOOL)allowsReverseTransformation { 
++ (BOOL)allowsReverseTransformation {
     return NO;
 }
 
@@ -69,8 +68,8 @@ Nothing [a little metaprogramming](https://github.com/mattt/TransformerKit/blob/
 ~~~{objective-c}
 NSString * const TKCapitalizedStringTransformerName = @"TKCapitalizedStringTransformerName";
 
-[NSValueTransformer registerValueTransformerWithName:TKCapitalizedStringTransformerName 
-           transformedValueClass:[NSString class] 
+[NSValueTransformer registerValueTransformerWithName:TKCapitalizedStringTransformerName
+           transformedValueClass:[NSString class]
 returningTransformedValueWithBlock:^id(id value) {
   return [value capitalizedString];
 }];
@@ -85,7 +84,7 @@ Now with its sexy new getup, we start to form a better understanding of where th
 - `NSValueTransformers` are the ideal way to represent an ordered chain of fixed transformations. For instance, an app interfacing with a legacy system might transform user input through a succession of string transformations (trim whitespace, remove diacritics, and then capitalize letters) before sending it off to the mainframe.
 - Unlike blocks, `NSValueTransformer` encapsulates reversible transformations. Let's say you were wanted to map keys from a REST API representation into a Model object; you could create a reversible transformation that converted `snake_case` to `llamaCase` when initializing, and `llamaCase` to `snake_case` when serializing back to the server.
 - Another advantage over blocks is that `NSValueTransformer` subclasses can expose new properties that could be used to configure behavior in a particular way. Access to `ivars` also make it easier to cleanly memoize results, or do any necessary book-keeping along the way.
-- Lest we forget, `NSValueTransformer` can be used with Core Data, as a way to encode and decode compound data types from blob fields. It seems to have fallen out of fashion over the years, but serializing simple collections in this way, for example, is an excellent strategy for information that isn't well-modeled as its own entity. Just don't serialize images to a database this way--that's generally a Bad Idea™. 
+- Lest we forget, `NSValueTransformer` can be used with Core Data, as a way to encode and decode compound data types from blob fields. It seems to have fallen out of fashion over the years, but serializing simple collections in this way, for example, is an excellent strategy for information that isn't well-modeled as its own entity. Just don't serialize images to a database this way--that's generally a Bad Idea™.
 
 And the list goes on.
 

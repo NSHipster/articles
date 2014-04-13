@@ -1,22 +1,21 @@
 ---
 layout: post
 title: UIAccessibility
-
 ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAccessibility_Protocol/Introduction/Introduction.html"
 framework: UIKit
 rating: 10.0
 published: true
-description: Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff.
+description: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
 ---
 
-> We all want to help one another, human beings are like that.  
+> We all want to help one another, human beings are like that.
 > - [Charlie Chaplin](http://en.wikiquote.org/wiki/Charlie_Chaplin)
 
 You know what I wish everyone would copy from Apple? Their assistive technologies.
 
 iPhones and iPads--magical as they are--become downright _life-changing_ for individuals with disabilities and their families because of Apple's commitment to accessibility. Look no further than the [WWDC 2012 Introduction Video](http://www.youtube.com/watch?v=MbP_pxR5cMk), which opens with Per Busch, a blind man who walks the woods of Kassel, Germany with the aid of [Ariadne GPS](http://www.ariadnegps.eu). It's a lovely reminder of the kind of impact our work can have on others.
 
-Accessibility, like [internationalization](http://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started: 
+Accessibility, like [internationalization](http://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started:
 
 ---
 
@@ -24,7 +23,7 @@ Accessibility, like [internationalization](http://nshipster.com/nslocale/), is o
 
 All of the standard views and controls in UIKit implement `UIAccessibility`, so applications are accessible by default. As a result, the task of improving the accessibility of your application is one of minor adjustments rather than wholesale re-implementation.
 
-Here's a list of all of the properties in `UIAccessibility`: 
+Here's a list of all of the properties in `UIAccessibility`:
 
 - `accessibilityLabel`
 - `accessibilityHint`
@@ -40,7 +39,7 @@ Here's a list of all of the properties in `UIAccessibility`:
 
 Before we go any further, take a couple minutes to play with VoiceOver, and understand how accessibility information is conveyed to the user. Open the Settings app, tap General, scroll to the bottom and tap Accessibility. In Accessibility, you'll see settings for assistive technologies grouped by category: Vision, Hearing, Learning, and Physical & Motor.
 
-Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will pop up telling you that enabling VoiceOver changes the way you control your device. Dismiss the alert, and now VoiceOver is now enabled on your device. 
+Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will pop up telling you that enabling VoiceOver changes the way you control your device. Dismiss the alert, and now VoiceOver is now enabled on your device.
 
 Don't Panic--unlike setting your device to another language, there's no real risk of not being able to figure out how to turn VoiceOver off.
 
@@ -64,7 +63,7 @@ So now that you have an idea of what you're working with, let's talk about imple
 
 If there was just one thing you could do to improve the accessibility of your app, paying attention to accessibility labels and hints of UI elements would be it.
 
-Accessibility labels and hints tell VoiceOver what to say when selecting user interface elements. This information should be helpful, but concise. 
+Accessibility labels and hints tell VoiceOver what to say when selecting user interface elements. This information should be helpful, but concise.
 
 - **`accessibilityLabel`** identifies a user interface element. Every accessible view and control _must_ supply a label.
 - **`accessibilityHint`** describes the results of interacting with a user interface element. A hint should be supplied _only_ if the result of an interaction is not obvious from the element's label.
@@ -118,7 +117,7 @@ For example, if a custom button control displays an image and plays a sound when
 
 As a general rule, the cleverness of a custom UI element is directly proportional to how gnarly its implementation is. Overlapping & invisible views, table view hacks, first responder shenanigans: sometimes it's better not to ask how something works.
 
-However, when it comes to accessibility, it's important to set the record straight. 
+However, when it comes to accessibility, it's important to set the record straight.
 
 `accessibilityFrame` and `accessibilityActivationPoint` are used to define the accessible portions and locations of UI elements, without changing their outward appearance.
 
@@ -128,12 +127,12 @@ As you try out your app in VoiceOver mode, try interacting with all of the eleme
 
 Accessibility value corresponds to the content of a user interface element. For a label, the value is its text. For a `UISlider`, it's the current numeric value represented by the control.
 
-Want to know a quick way to improve the accessibility of your table views? Try setting the `accessibilityValue` property for cells to be a localized summary of the cell's content. For example, if you had a table view that showed status updates, you might set the `accessibilityLabel` to "Update from #{User Name}", and the `accessibilityValue` to the content of that status update. 
+Want to know a quick way to improve the accessibility of your table views? Try setting the `accessibilityValue` property for cells to be a localized summary of the cell's content. For example, if you had a table view that showed status updates, you might set the `accessibilityLabel` to "Update from #{User Name}", and the `accessibilityValue` to the content of that status update.
 
 ---
 
 Apple has done a great service to humanity in making accessibility a first-class citizen in its hardware and software. You're missing out on some of the best engineering, design, and technical writing that Apple has ever done if you ignore `UIAccessibility`.
 
-Do yourself a favor and read the _excellent_ [Accessibility Programming Guide for iOS](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html). It only takes an hour or two to get the hang of everything. 
+Do yourself a favor and read the _excellent_ [Accessibility Programming Guide for iOS](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html). It only takes an hour or two to get the hang of everything.
 
 Who knows? You may end up changing someone's life because of it.
