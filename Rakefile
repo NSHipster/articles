@@ -41,6 +41,10 @@ namespace :publish do
       done
 
       s3cmd put --recursive --progress -M --acl-public --add-header 'Content-Encoding:gzip' assets/css s3://nshipster.#{tld}/
+
+      s3cmd put --progress -M --acl-public assets/favicon.ico s3://nshipster.#{tld}/
+
+      s3cmd sync --progress -M --acl-public assets/ s3://nshipster.#{tld}/ --exclude '*.*' --include '*.png' --verbose
     }
   end
 

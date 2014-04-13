@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
-    <title>{{ page.title | strip_html }} : {{ site.title }}</title>
+    <title>{{ page.title | replace:'<br/>',' ' | strip_html }}</title>
     {% if page.description %}
       <meta name="description" content="{{ page.description | strip_html }}"/>
     {% else %}
@@ -22,7 +22,12 @@
   <link rel="alternate" hreflang="zh-Hans" href="http://nshipster.cn"/>
   <link rel="alternate" hreflang="x-default" href="http://nshipster.com"/>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ site.url }}/feed.xml"/>
-  <link rel="stylesheet" href="/css/screen.css"/>
+  <link rel="stylesheet" type="text/css" href="/css/screen.css"/>
+  <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+  <link rel="icon" href="/favicon.ico" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@NSHipster">
