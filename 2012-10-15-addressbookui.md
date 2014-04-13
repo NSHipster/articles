@@ -8,36 +8,23 @@ rating: 6.2
 published: true
 translator: Henry Lee
 description: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
-description: "地址簿UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与消息UI框架想死，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
+description: "地址簿UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与消息UI框架相似，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
 
 ---
 
-[Address Book UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html) is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the [Message UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html) framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.
+[地址簿UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html)是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与[消息UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html)框架相似，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。
 
-[地址簿UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html)是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与[消息UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html)框架类似，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。
-
-To use the framework, add both `AddressBook.framework` and `AddressBookUI.framework` to your project, under the "Link Binary With Libraries" build phase.
-
-要用到这个框架，你需要添加`AddressBook.framework`和`AddressBookUI.framework`到你工程中build phase的"Link Binary With Libraries"之下。
-
-At first glance, it would seem that there's nothing really remarkable about the Address Book UI framework.
+要用到这个框架，你需要添加`AddressBook.framework`和`AddressBookUI.framework`两个框架到你工程中build phase的"Link Binary With Libraries"之下。
 
 初看你可能觉得地址簿UI没有什么特别的地方。
 
-> Actually, in iOS 6, there are some _fascinating_ inter-process shenanigans going on behind the scenes with 	 like `MFMailComposeViewController` and `ABNewPersonViewController`. Ole Begemann has an [excellent write-up on Remote View Controllers in iOS 6](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/) that's definitely worth a read.
-
 > 其实，在iOS 6里，`MFMailComposeViewController`和`ABNewPersonViewController`有一些_非常棒_的内部处理小伎俩在起着作用，Ole Begemann就有一篇[很棒的、非常值得读的关于远程视图控制器的文章](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/)。
 
+抛开剩下的视图控制器和协议，还有一个地址簿UI的功能十分惊人地有用。
 
-However, tucked away from the rest of the controllers and protocols, there's a single Address Book UI function that's astoundingly useful:
+`ABCreateStringWithAddressDictionary()`函数返回一个已经本地化、结构化的地址字符串组。
 
-抛开剩下的视图控制器和协议，仍有一个地址簿UI的功能还惊人地有用。
-
-`ABCreateStringWithAddressDictionary()` - Returns a localized, formatted address string from components.
-
-
-
-The first argument for the function is a dictionary containing the address components, keyed by string constants:
+关于这个函数第一个要讨论的问题是包含这些组成结构的字典，这个字典是由以下的常量作为键值的。
 
 - `kABPersonAddressStreetKey`
 - `kABPersonAddressCityKey`
@@ -46,31 +33,33 @@ The first argument for the function is a dictionary containing the address compo
 - `kABPersonAddressCountryKey`
 - `kABPersonAddressCountryCodeKey`
 
-`kABPersonAddressCountryCodeKey` is an especially important attribute, as it determines which locale used to format the address string. If you are unsure of the country code, or one isn't provided with your particular data set, `NSLocale` may be able to help you out: 
+`kABPersonAddressCountryCodeKey` 是一个尤其重要的属性，它决定了用来格式化地址字符串的语言。如果你对国家代码不是很确定或者没有确定的国家代码数据集，你可以通过`NSLocale`像这样来确定：
 
 ~~~{objective-c}
 [mutableAddressComponents setValue:[[[NSLocale alloc] initWithIdentifier:@"en_US"] objectForKey:NSLocaleCountryCode] forKey:(__bridge NSString *)kABPersonAddressCountryCodeKey];
 ~~~
 
-The second argument is a boolean flag, `addCountryName`. When `YES`, the name of the country corresponding to the specified country code will be automatically appended to the address. This should only used when the country code is known.
+在其他任何框架里你都找不到实用性这么好的功能，这不需要用到[`NSLocale`](http://nshipster.com/nslocale/)，甚至也不需要Map Kit和Core Location来定位。苹果尽了如此多的努力来提高很多本地化的细节，而你会很惊奇这么一个重要的功能被放在了一个模糊不清、感觉上不怎么相关的一个框架里。
 
-Nowhere else in all of the other frameworks is this functionality provided. It's not part of [`NSLocale`](http://nshipster.com/nslocale/), or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it's surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.
+> 不过，电话簿UI在Mac OS X里不提供，似乎这个平台也没有其他相同功能的内容。
 
-> Unfortunately, Address Book UI is not available in Mac OS X, and it would appear that there's no equivalent function provided on this platform.
 
-For you see, address formats vary greatly across different regions. For example, addresses in the United States take the form:
+你看，地址格式会因为地区的不同相差很大，例如，美国的地址是下面这个格式的：
+
 
     Street Address
     City State ZIP
     Country
 
-Whereas addresses in Japan follow a different convention:
+而日本的地址的表示则有不同的习惯：
 
     Postal Code
     Prefecture Municipality
     Street Address
     Country
 
-This is at least as jarring a difference in localization as [swapping periods for commas the radix point](http://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system), so make sure to use this function anytime you're displaying an address from its components.
 
-> One great way to take advantage of localized address book formatting would be to check out [FormatterKit](https://github.com/mattt/FormatterKit), which added `TTTAddressFormatter` in its 1.1 release.
+这个和不同地区有不同的[全角半角逗号](http://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system)一样烦人，所以，你还是在展示结构化的地址的时候尽量多地用这些函数把。
+
+> 还有一个很棒的利用已经本地化的地址簿的方式就是[FormatterKit](https://github.com/mattt/FormatterKit)，他在它的1.1版中添加了`TTTAddressFormatter`。
+
