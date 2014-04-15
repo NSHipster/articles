@@ -7,20 +7,19 @@ framework: AddressBookUI
 rating: 6.2
 published: true
 translator: Henry Lee
-description: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
-description: "地址簿UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与消息UI框架相似，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
+description: "Address Book UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与Message UI框架相似，Address Book UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
 
 ---
 
-[地址簿UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html)是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与[消息UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html)框架相似，地址簿UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。
+[Address Book UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html)是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与[Message UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html)框架相似，Address Book UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。
 
 要用到这个框架，你需要添加`AddressBook.framework`和`AddressBookUI.framework`两个框架到你工程中build phase的"Link Binary With Libraries"之下。
 
-初看你可能觉得地址簿UI没有什么特别的地方。
+乍一看你可能觉得Address Book UI没有什么特别的地方。
 
 > 其实，在iOS 6里，`MFMailComposeViewController`和`ABNewPersonViewController`有一些_非常棒_的内部处理小伎俩在起着作用，Ole Begemann就有一篇[很棒的、非常值得读的关于远程视图控制器的文章](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/)。
 
-抛开剩下的视图控制器和协议，还有一个地址簿UI的功能十分惊人地有用。
+抛开剩下的View Controller和协议，Address Book UI还有一个功能十分惊人地有用。
 
 `ABCreateStringWithAddressDictionary()`函数返回一个已经本地化、结构化的地址字符串组。
 
