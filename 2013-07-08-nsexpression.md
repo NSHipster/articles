@@ -85,7 +85,7 @@ id value = [expression expressionValueWithObject:nil context:nil]; // => 3.21859
 
 - `floor:`
 
-### 随即函数
+### 随机函数
 
 两个变量--一个带参数，一个不带参数。不带参数时，`random`返回`rand(3)`的等值，而`random:`则从`NSExpression`的数字数组中取任意元素。
 
