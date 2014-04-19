@@ -37,7 +37,7 @@ description: "基础类库（Foundation）拥有最好的、功能也最全的st
 
 与它的名字所表述的相反，`NSCharacterSet` 跟 `NSSet` 一点关系都_没有_。
 
-但是， `NSCharacterSet` 跟 `NSIndexSet` 还_有点_相似的，至少在概念上而不是底层实现上。`NSIndexSet`，[之前](http://nshipster.com/nsindexset/)提到过，表示一个有序的不重复的无符号整数的集合。Unicode字符跟无符号整数类似，大致对应一些拼写表示。所以，一个 `NSCharacterSet +lowercaseCharacterSet` 字符集与一个包含97到122范围的 `NSIndexSet` 是等价的。
+虽然底层实现不太一样，但是 `NSCharacterSet` 在概念上跟 `NSIndexSet` 还_有点_相似的。`NSIndexSet`，[之前](http://nshipster.cn/nsindexset/)提到过，表示一个有序的不重复的无符号整数的集合。Unicode字符跟无符号整数类似，大致对应一些拼写表示。所以，一个 `NSCharacterSet +lowercaseCharacterSet` 字符集与一个包含97到122范围的 `NSIndexSet` 是等价的。
 
 现在我们对理解 `NSCharacterSet` 的基本概念已经有了少许自信，让我们来看一些它的模式与反模式吧：
 
