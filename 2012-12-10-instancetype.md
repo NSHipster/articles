@@ -78,7 +78,7 @@ NSURL *jonsSite = [sites at:@"jon"]; // => http://www.jonmsterling.com/
 
 Statically-typed collections would make APIs more expressive--no longer would a developer be unsure about what kinds of objects are allowed in a collection parameter.
 
-Whether or not this becomes an accepted convention in Objective-C, it's fascinating to how a low-level feature like `instancetype` can be used to change shape of the language (in this case, making it look more like [C#][1].
+Whether or not this becomes an accepted convention in Objective-C, it's fascinating to how a low-level feature like `instancetype` can be used to change shape of the language (in this case, making it look more like [C#][1]).
 
 ---
 
