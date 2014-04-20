@@ -52,7 +52,7 @@ Rather than waiting with crossed fingers and clenched teeth each June, as Apple 
 
 ![BBUFullIssueNavigator](http://nshipster.s3.amazonaws.com/bbufullissuenavigator.png)
 
-An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by suprise ellipses when compiler warnings were just starting to get interesting, with  [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
+An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by surprise ellipses when compiler warnings were just starting to get interesting, with  [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
 
 ### Dismiss Debugging Console When Typing
 
