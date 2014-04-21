@@ -7,17 +7,21 @@ rating: 9.7
 description: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 ---
 
-Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that from hardware to software, Apple prefers a walled garden in an ivory tower to the anarchy of the bazaar.
+Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
 
-No better example of this can be found with Xcode. The very software that software developers use to build software for the walled ecosystems of iOS & Mac OS X software, _is itself a closed ecosystem_.
+No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & Mac OS X software, _is itself a closed ecosystem_.
 
-Significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](http://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
+Indeed, significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](http://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
 
 Xcode has had a plugin architecture going back to when Interface Builder was its own separate app. However, this system was relatively obscure, undocumented, and not widely used by third parties. Despite this, developers like [Delisa Mason](https://twitter.com/kattrali) and [Marin Usalj](https://twitter.com/_supermarin) have done incredible work creating a stable and vibrant ecosystem of third-party Xcode extensions.
 
 **Simply install [Alcatraz](http://alcatraz.io), and pull down all of the plugins (and color schemes and templates) that you desire.**
 
 This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!
+
+> And since these question come up every time there's an article with pictures:
+> 1. The color scheme is [Tomorrow Night](https://github.com/ChrisKempson/Tomorrow-Theme)
+> 2. The app used to make animated GIFs is [LICEcap](http://www.cockos.com/licecap/)
 
 * * *
 
@@ -106,7 +110,7 @@ Fancy yourself a code designer, automated formatters be damned? [XAlign](https:/
 
 ## Extending Xcode
 
-In a similar vein to what [Brett Victor writes about Learnable Programming](http://worrydream.com/LearnableProgramming/), these plugins push the boundaries of what we should expect from our editors, adding context and understanding to code without obscuring the meaning.
+In a similar vein to what [Bret Victor writes about Learnable Programming](http://worrydream.com/LearnableProgramming/), these plugins push the boundaries of what we should expect from our editors, adding context and understanding to code without obscuring the meaning.
 
 ### Inspect `NSColor` / `UIColor` Instances
 
@@ -145,6 +149,6 @@ It's no secret that NSHipster has [a soft spot for localization](http://nshipste
 
 Xcode's plugin architecture is based on a number of private frameworks specific to Xcode, including DVTKit & IDEKit. A [complete list](https://github.com/luisobo/Xcode5-RuntimeHeaders) can be derived by running [`class-dump`](http://stevenygard.com/projects/class-dump/) on the Xcode app bundle.
 
-> Using private frameworks would, of course, is verboten on the AppStore, but since plugins aren't distributed through these channels, developers are welcome to use whatever they want, however they want to.
+> Using private frameworks would be, of course, verboten on the AppStore, but since plugins aren't distributed through these channels, developers are welcome to use whatever they want, however they want to.
 
 To get started on your own plugin, download the [Xcode5 Plugin Template](https://github.com/kattrali/Xcode5-Plugin-Template), using the other available plugins and class-dump'd headers as a guide for what can be done, and how to do it.
