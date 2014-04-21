@@ -10,7 +10,4 @@ markdown: redcarpet
 pygments:
   lexer: objective-c
 
-gauges:
-  tracker: 52ddb711de2e264f7800002d
-
 groups:

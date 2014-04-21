@@ -10,9 +10,6 @@ markdown: redcarpet
 pygments:
   lexer: objective-c
 
-gauges:
-  tracker: 510be6d4108d7b438800005f
-
 groups:
   - Foundation
   - CoreFoundation
@@ -20,5 +17,7 @@ groups:
   - UIKit
   - Objective-C
   - Open Source
-  - Testing
+  - MapKit
+  - Xcode
+  - Trivia
   - Miscellanea
