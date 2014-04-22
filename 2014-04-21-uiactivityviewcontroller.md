@@ -399,7 +399,7 @@ NSURL *URL = [NSURL URLWithString:@"http://nshipster.com"];
 [[UIApplication sharedApplication] openURL:URL];
 ~~~
 
-System-supported URL schemes include: `mailto://`, `tel://`, `sms://`, and `maps://`.
+System-supported URL schemes include: `mailto:`, `tel:`, `sms:`, and `maps:`.
 
 ### Add to Safari Reading List
 
