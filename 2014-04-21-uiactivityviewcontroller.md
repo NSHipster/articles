@@ -383,7 +383,7 @@ To use our brand new mustache activity, we simply pass it in the `UIActivityView
 HIPMustachifyActivity *mustacheActivity = [[HIPMustachifyActivity alloc] init];
 UIActivityViewController *activityViewController =
   [[UIActivityViewController alloc] initWithActivityItems:@[imageURL]
-                                    applicationActivities:@[mustacheActivity];
+                                    applicationActivities:@[mustacheActivity]];
 ~~~
 
 ## Invoking Actions Manually
