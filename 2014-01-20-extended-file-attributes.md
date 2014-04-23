@@ -77,7 +77,7 @@ if (!&NSURLIsExcludedFromBackupKey) {
 
 Lest extended attributes veer dangerously close to "being a hammer that makes everything look like a nail", let it be made clear: **extended attributes should not be used for critical data**. Not all volume formats support extended attributes, so copying between, say, HFS+ and FAT32 may result in a loss of information. Also consider that nothing is stopping from any application from deleting or overwriting extended attributes at any time.
 
-For things like author, file history, window or cursor position, and networking metadata, extended attributes are a great choice. If you've been struggling to synchronize file state, it may be exactly the solution you've been looking for. Just be mindful about EAs limitations and understand why they would or would not be appropriate for a particular use case.
+For things like author, file history, window or cursor position, and networking metadata, extended attributes are a great choice. If you've been struggling to synchronize file state, it may be exactly the solution you've been looking for. Just be mindful about EAs' limitations and understand why they would or would not be appropriate for a particular use case.
 
 * * *
 
