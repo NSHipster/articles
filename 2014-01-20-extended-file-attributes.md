@@ -43,7 +43,7 @@ ssize_t listxattr(const char *path, char *namebuf, size_t size, int options);
 int removexattr(const char *path, const char *name, int options);
 ~~~
 
-To show these in action, consider the use of extended attributes to associate an [HTTP Etag](http://en.wikipedia.org/wiki/HTTP_ETag) for a file:
+To show these in action, consider the use of extended attributes to associate an [HTTP Etag](http://en.wikipedia.org/wiki/HTTP_ETag) with a file:
 
 ~~~{objective-c}
 NSHTTPURLResponse *response = ...;
