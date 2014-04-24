@@ -473,7 +473,7 @@ While all of this is impressive and useful, there is a particular lacking in the
 
 On Android, apps can register for different intents, to indicate that they can be used for Maps, or as a Browser, and be selected as the default app for related activities, like getting directions, or bookmarking a URL.
 
-While iOS lacks the extensible infrastructure to support this, a 3rd-party library called [IntentKit](https://github.com/intentkit/IntentKit), by [@lazerwalker](https://github.com/lazerwalker) (of [f*ingblocksyntax.com](http://goshdarnblocksyntax.com) fame).
+While iOS lacks the extensible infrastructure to support this, a 3rd-party library called [IntentKit](https://github.com/intentkit/IntentKit), by [@lazerwalker](https://github.com/lazerwalker) (of [f*ingblocksyntax.com](http://goshdarnblocksyntax.com) fame), is an interesting example of how we might narrow the gap ourselves.
 
 ![IntentKit](https://raw.github.com/intentkit/IntentKit/master/example.gif)
 
