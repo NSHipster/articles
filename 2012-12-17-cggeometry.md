@@ -75,7 +75,7 @@ It's important that `CGRect` values all are rounded to the nearest whole point. 
 
 `CGRectIntegral` will `floor` each origin value, and `ceil` each size value, which will ensure that your drawing code will crisply align on pixel boundaries.
 
-As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
+As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGRectGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
 
 > † Technically, since the coordinate system operates in terms of points, Retina screens, which have 4 pixels for every point, can draw `± 0.5f` point values on odd pixels without blurriness.
 
