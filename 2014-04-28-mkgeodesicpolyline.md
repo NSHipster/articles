@@ -173,7 +173,7 @@ static CLLocationDirection XXDirectionBetweenPoints(MKMapPoint sourcePoint, MKMa
     double x = destinationPoint.x - sourcePoint.x;
     double y = destinationPoint.y - sourcePoint.y;
 
-    return fmod(XXRadiansToDegrees(atan2(y, x)), 360.0f) + 90.0f;
+    return fmod(XXRadiansToDegrees(atan2(y, x)), 360.0) + 90.0;
 }
 ~~~
 
@@ -181,11 +181,11 @@ That convenience function `XXRadiansToDegrees` (and its partner, `XXDegreesToRad
 
 ~~~{objective-c}
 static inline double XXRadiansToDegrees(double radians) {
-    return radians * 180.0f / M_PI;
+    return radians * 180.0 / M_PI;
 }
 
 static inline double XXDegreesToRadians(double degrees) {
-    return degrees * M_PI / 180.0f;
+    return degrees * M_PI / 180.0;
 }
 ~~~
 
