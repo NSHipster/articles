@@ -190,7 +190,7 @@ static inline double XXDegreesToRadians(double degrees) {
 ~~~
 
 That direction is stored in a new property, `@property CLLocationDirection planeDirection;
-`, calculated from `self.planeDirection = CLDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+`, calculated from `self.planeDirection = XXDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
 ~~~{objective-c}
 annotationView.transform =
