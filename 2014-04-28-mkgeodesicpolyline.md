@@ -110,7 +110,7 @@ That call to `updatePlanePosition` in the last line ticks the animation and upda
 - (void)updatePlanePosition {
     static NSUInteger const step = 5;
 
-    if (self.planeAnnotationPosition + step > self.flightpathPolyline.pointCount) {
+    if (self.planeAnnotationPosition + step >= self.flightpathPolyline.pointCount) {
         return;
     }
 
