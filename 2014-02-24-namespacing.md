@@ -16,8 +16,6 @@ translator: "Sheldon Huang"
 
 你越解释，你会发现对方越失望*，接下来，他们不在只是随便问问了，他们开始问一些你更难解释的问题--在Objective-C中[@](http://nshipster.com/at-compiler-directives/)是什么？
 
-* * *
-
 命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。
 
 他们总是说：Objective-C不像其他流行语言一样提供模块化机制来避免类名和方法名的冲突。
