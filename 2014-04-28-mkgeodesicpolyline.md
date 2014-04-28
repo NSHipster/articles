@@ -19,7 +19,7 @@ What changed? The discovery of `MKGeodesicPolyline`, which is the subject of thi
 
 On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points on appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
 
-A `MKGeodesicPolyline` is created with an array of of 2 `MKMapPoint`s or `CLLocationCoordinate2D`s:
+A `MKGeodesicPolyline` is created with an array of 2 `MKMapPoint`s or `CLLocationCoordinate2D`s:
 
 ### Creating an `MKGeodesicPolyline`
 
@@ -110,7 +110,7 @@ That call to `updatePlanePosition` in the last line ticks the animation and upda
 - (void)updatePlanePosition {
     static NSUInteger const step = 5;
 
-    if (self.planeAnnotationPosition + step > self.flightpathPolyline.pointCount) {
+    if (self.planeAnnotationPosition + step >= self.flightpathPolyline.pointCount) {
         return;
     }
 
@@ -190,7 +190,7 @@ static inline double XXDegreesToRadians(double degrees) {
 ~~~
 
 That direction is stored in a new property, `@property CLLocationDirection planeDirection;
-`, calculated from `self.planeDirection = CLDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+`, calculated from `self.planeDirection = XXDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
 ~~~{objective-c}
 annotationView.transform =
