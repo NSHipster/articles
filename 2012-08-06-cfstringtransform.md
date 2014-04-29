@@ -18,7 +18,7 @@ description: "NSString 是基础类库中的佼佼者。 它虽然很强大，�
 
 它虽然很强大，但是不提提它的可无缝转换（[toll-free bridged](http://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html)）的表兄弟 CFMutableString，或者更特别地，CFStringTransform，是不负责任的。
 
-正如它的`CF`前缀所表述的一样，`CFStringTransform` 是 Core Foundation 中的一部分。这个函数传入以下参数，并返回一个 `Boolean` 来表示转换是否成功：
+正如它的 `CF` 前缀所表述的一样，`CFStringTransform` 是 Core Foundation 中的一部分。这个函数传入以下参数，并返回一个 `Boolean` 来表示转换是否成功：
 
 - `string`: 需要转换的字符串。由于这个参数是 `CFMutableStringRef` 类型，一个 `NSMutableString` 类型也可以通过自由桥接的方式传入。
 - `range`: 转换操作作用的范围。这个参数是 `CFRange`，而不是 `NSRange`。
