@@ -87,9 +87,9 @@ RAC(self.createButton.enabled) = formValid;
 
 ## 概述
 
-RReactiveCocoa由良达主要部分组成：[signals](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#signals) (`RACSignal`) 和 [sequences](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#sequences) (`RACSequence`)。
+ReactiveCocoa由两大主要部分组成：[signals](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#signals) (`RACSignal`) 和 [sequences](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#sequences) (`RACSequence`)。
 
-Signal和sequence都是[streams](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#streams)，他们共享很多相同的方法。ReactiveCocoa在功能上做了语义丰富、一致性强的一致性设计：signal是_push_驱动的stream，sequence是_pull_驱动的stream。
+signal 和 sequence 都是[streams](https://github.com/ReactiveCocoa/ReactiveCocoa/blob/master/Documentation/FrameworkOverview.md#streams)，他们共享很多相同的方法。ReactiveCocoa在功能上做了语义丰富、一致性强的一致性设计：signal是_push_驱动的stream，sequence是_pull_驱动的stream。
 
 ### `RACSignal`
 
@@ -109,7 +109,7 @@ Signal和sequence都是[streams](https://github.com/ReactiveCocoa/ReactiveCocoa/
 
 > - **简化集合转换**：你会痛苦地发现 `Foundation` 库中没有类似 `map` 和 `filter`、`fold/reduce` 等高级函数。
 
-> Sequence是一种集合，很像 `NSArray`。但和数组不同的是，一个sequence里的值默认是_懒_加载的（只有需要的时候才加载），这样的话如果sequence只有一部分被用到，那么这种机制就会提高性能。像Cocoa的集合类型一样，sequence不接受 `nil` 值。
+> Sequence是一种集合，很像 `NSArray`。但和数组不同的是，一个sequence里的值默认是_延迟_加载的（只有需要的时候才加载），这样的话如果sequence只有一部分被用到，那么这种机制就会提高性能。像Cocoa的集合类型一样，sequence不接受 `nil` 值。
 >
 > `RACSequence` 允许任意Cocoa集合在统一且显式地进行操作。
 
