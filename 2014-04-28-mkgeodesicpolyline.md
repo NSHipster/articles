@@ -147,7 +147,7 @@ Finally, we implement `mapView:viewForAnnotation:` to have the annotation render
 
 ![MKAnnotationView without Rotation](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate.gif)
 
-Hmm.... close but no [SkyMall Personalized Cigar Case Flask](http://www.skymall.com/personalized-cigar-case-flask/GC900.html).
+Hmm… close but no [SkyMall Personalized Cigar Case Flask](http://www.skymall.com/personalized-cigar-case-flask/GC900.html).
 
 Let's update the rotation of the plane as it moves across its flightpath.
 
