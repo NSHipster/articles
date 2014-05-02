@@ -45,7 +45,7 @@ Although the overlay looks like a smooth curve, it is actually comprised of thou
 NSLog(@"%d", geodesicPolyline.pointsCount) // 3984
 ~~~
 
-Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
+Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
 
 ### Rendering `MKGeodesicPolyline` on an `MKMapView`
 
