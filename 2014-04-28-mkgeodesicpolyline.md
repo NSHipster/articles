@@ -17,7 +17,7 @@ What changed? The discovery of `MKGeodesicPolyline`, which is the subject of thi
 
 [`MKGeodesicPolyline`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html) was introduced to the Map Kit framework in iOS 7. As its name implies, it creates a [geodesic](http://en.wikipedia.org/wiki/Geodesic)—essentially a straight line over a curved surface.
 
-On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points on appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
+On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
 
 A `MKGeodesicPolyline` is created with an array of 2 `MKMapPoint`s or `CLLocationCoordinate2D`s:
 
