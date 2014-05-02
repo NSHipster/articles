@@ -77,7 +77,7 @@ Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline
 
 [As the crow flies](http://en.wikipedia.org/wiki/As_the_crow_flies), it's 3,983 km.<br/>
 As the wolf runs, it's 4,559 km—nearly 15% longer.<br/>
-...and that's just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.
+…and that's just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.
 
 ### Animating an `MKAnnotationView` on a `MKGeodesicPolyline`
 
