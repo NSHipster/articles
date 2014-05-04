@@ -42,27 +42,27 @@ static char * XXObject;  // Redefinition of "XXObject" as different kind of symb
 That said, the Objective-C runtime creates a layer of abstraction on top of the C type system, allowing the following code to compile without even a snicker:
 
 ~~~{objective-c}
-@protocol Foo
+@protocol Malkovich
 @end
 
-@interface Foo : NSObject <Foo> {
-    id Foo;
+@interface Malkovich : NSObject <Malkovich> {
+    id Malkovich;
 }
 
-@property id Foo;
-+ (id)Foo;
-- (id)Foo;
+@property id Malkovich;
++ (id)Malkovich;
+- (id)Malkovich;
 @end
 
-@interface Foo (Foo)
+@interface Malkovich (Malkovich)
 @end
 
-@implementation Foo
-@synthesize Foo;
+@implementation Malkovich
+@synthesize Malkovich;
 
-+ (id)Foo {
-    id Foo = @"Foo";
-    return Foo;
++ (id)Malkovich {
+    id Malkovich = @"Malkovich";
+    return Malkovich;
 }
 @end
 ~~~
