@@ -83,14 +83,14 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 
 然而，为了从这种方式中受益，所有现有的API都不得不重新调整来接收一个 `id<NSOrderedCollectioin>` 参数而不是 `NSArray`。但是这个过度将会是痛苦的，并且可能会打开一整条边界。。。这将意味着它可能永远不会被完全的采纳。。。这将意味着在定义你自己的API时，没有动力去采用这种方法。。。这样写也太烦了，因为现在有两种相互不兼容的方式来做事情而不是一个。。这。。。
 
-。。。等等，为什吗我们起初要使用 `NSOrderedSet` 哪？
+。。。等等，为什么我们起初要使用 `NSOrderedSet` 哪？
 
 ---
 在iOS 5 和Mac OS X 10.7 中介绍了 `NSOrderedSet`。然后，唯一的API变化就是在[Core Data](http://developer.apple.com/library/mac/#releasenotes/DataManagement/RN-CoreData/_index.html)部分增加了对`NSOrderedSet`的支持。
 
 这是对使用Core Data的人来说极好的消息，因为它解决了一个长期存在的烦恼（没有办法对一个关系集合做任意的排序）。从前，你不得不添加一个`位置`属性，当每次集合被修改时都要重新计算这个属性。没有一个内置的方法去验证你的位置集合是一个唯一的或者没有间隙的序列。
 
-用这种方式，`NSOrderedSet`_回应了我们的[祈求](http://bugreport.apple.com/)_。
+`NSOrderedSet`用这种方式_对我们的[请求](http://bugreport.apple.com/)做出了回应_。
 
 不幸的是，对于API的设计者来说，在Foundation中它的存在创建了一个在诱人的麻烦和误导之间的东西。
 
