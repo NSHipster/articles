@@ -89,30 +89,29 @@ HTTP 请求和回应用 [headers](http://www.w3.org/Protocols/rfc2616/rfc2616-se
 
 ### Request Cache Headers
 
-By default, `NSURLRequest` will use the current time to determine whether a cached response should be returned. For more precise cache control, the following headers can be specified:
+在默认情况下，`NSURLRequest` 会用当前时间决定是否返回缓存的数据。为了更精确地控制，允许使用以下请求头：
 
-* `If-Modified-Since` - This request header corresponds to the `Last-Modified` response header. Set the value of this to the `Last-Modified` value received from the last request to the same endpoint.
-* `If-None-Match` - This request header corresponds to the `Etag` response header. Use the `Etag` value received previously for the last request to that endpoint.
+* `If-Modified-Since` - 这个请求头与 `Last-Modified` 回应头相对应。把这个值设为同一终端最后一次请求时返回的 `Last-Modified` 字段的值。
+* `If-None-Match` - 这个请求头与与 `Etag` 回应头相对应。使用同一终端最后一次请求的 `Etag` 值。
 
 ### Response Cache Headers
 
-An `NSHTTPURLResponse` contains a set of HTTP headers, which can include the following directives for how that response should be cached:
+`NSHTTPURLResponse` 包含多个 HTTP 头，当然也包括以下指令来说明回应应当如何缓存：
 
-* `Cache-Control` - This header must be present in the response from the server to enable HTTP caching by a client. The value of this header may include information like its `max-age` (how long to cache a response), and whether the response may be cached with `public` or `private` access, or `no-cache` (not at all). See the [`Cache-Control` section of RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for full details.
+* `Cache-Control` - 这个头必须由服务器端指定以开启客户端的 HTTP 缓存功能。这个头的值可能包含 `max-age`（缓存多久），是公共 `public` 还是私有 `private`，或者不缓存 `no-cache` 等信息。详情请参阅 [`Cache-Control` section of RFC 2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)。
 
-In addition to `Cache-Control`, a server may send additional headers that can be used to conditionally request information as needed (as mentioned in the previous section):
+除了 `Cache-Control` 以外，服务器也可能发送一些附加的头用于根据需要有条件地请求（如上一节所提到的）：
 
-* `Last-Modified` - The value of this header corresponds to the date and time when the requested resource was last changed. For example, if a client requests a timeline of recent photos, `/photos/timeline`, the `Last-Modified`
-value could be set to when the most recent photo was taken.
-* `Etag` - An abbreviation for "entity tag", this is an identifier that represents the contents requested resource. In practice, an `Etag` header value could be something like the [`MD5`](http://en.wikipedia.org/wiki/MD5) digest of the resource properties. This is particularly useful for dynamically generated resources that may not have an obvious `Last-Modified` value.
+* `Last-Modified` - 这个头的值表明所请求的资源上次修改的时间。例如，一个客户端请求最近照片的时间线，`/photos/timeline`，｀Last-Modified` 的值可以是最近一张照片的拍摄时间。
+* `Etag` - 这是 “entity tag” 的缩写，它是一个表示所请求资源的内容的标识符。在实践中，`Etag` 的值可以是类似于资源的 [`MD5`](http://en.wikipedia.org/wiki/MD5) 之类的东西。这对于那些动态生成的、可能没有明显的 `Last-Modified` 值的资源非常有用。
 
 ## `NSURLConnectionDelegate`
 
-Once the server response has been received, the `NSURLConnection` delegate has an opportunity to specify the cached response in `-connection:willCacheResponse:`.
+一旦收到了服务器的回应，`NSURLConnection` 的代理就有机会在 `-connection:willCacheResponse:` 中指定缓存数据。
 
-`NSCachedURLResponse` is a class that contains both an `NSURLResponse` with the cached `NSData` associated with the response.
+`NSCachedURLResponse` 是个包含 `NSURLResponse` 以及它对应的缓存中的 `NSData` 的类。
 
-In `-connection:willCacheResponse:`, the `cachedResponse` object has been automatically created from the result of the URL connection. Because there is no mutable counterpart to `NSCachedURLResponse`, in order to change anything about `cachedResponse`, a new object must be constructed, passing any modified values into `–initWithResponse:data:userInfo:storagePolicy:`, for instance:
+在 `-connection:willCacheResponse:` 中，`cachedResponse` 对象会根据 URL 连接返回的结果自动创建。因为 `NSCachedURLResponse` 没有可变部分，为了改变 `cachedResponse` 中的值必须构造一个新的对象，把改变过的值传入 `–initWithResponse:data:userInfo:storagePolicy:`，例如：
 
 ~~~{objective-c}
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
@@ -131,7 +130,7 @@ In `-connection:willCacheResponse:`, the `cachedResponse` object has been automa
 }
 ~~~
 
-If `-connection:willCacheResponse:` returns `nil`, the response will not be cached.
+如果 `-connection:willCacheResponse:` 返回 `nil`，回应将不会缓存。
 
 ~~~{objective-c}
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
@@ -141,20 +140,20 @@ If `-connection:willCacheResponse:` returns `nil`, the response will not be cach
 }
 ~~~
 
-When left unimplemented, `NSURLConnection` will simply use the cached response that would otherwise be passed into `-connection:willCacheResponse:`, so unless you need to change or prevent caching, this method does not need to be implemented in the delegate.
+如果不实现此方法，`NSURLConnection` 就简单地使用本来要传入 `-connection:willCacheResponse:` 的那个缓存对象，所以除非你需要改变一些值或者阻止缓存，否则这个代理方法不必实现。
 
-## Caveats
+## 注意事项
 
-Just like its unrelated-but-similarly-named cohort, [`NSCache`](http://nshipster.com/nscache/), `NSURLCache` is not without some peculiarities.
+正如它那个毫无关系但是名字相近的小伙伴 [`NSCache`](http://nshipster.cn/nscache/) 一样，`NSURLCache` 也是有一些特别的。
 
-As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (though iOS 6 added support for this). Peter Steinberger [wrote an excellent article on this subject](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/), after digging into the internals while implementing [his own NSURLCache subclass](https://github.com/steipete/SDURLCache).
+在 iOS 5，磁盘缓存开始支持，但仅支持 HTTP，非 HTTPS（iOS 6 中增加了此支持）。Peter Steinberger [关于这个主题写了一篇优秀的文章](http://petersteinberger.com/blog/2012/nsurlcache-uses-a-disk-cache-as-of-ios5/)，在深入研究内部细节后实现[他自己的 NSURLCache 子类](https://github.com/steipete/SDURLCache)。
 
-[Another article by Daniel Pasco at Black Pixel](http://blackpixel.com/blog/2012/05/caching-and-nsurlconnection.html) describes some unexpected default behavior when communicating with servers that don't set cache headers.
+[Daniel Pasco 在 Black Pixel 上的另一篇文章](http://blackpixel.com/blog/2012/05/caching-and-nsurlconnection.html) 描述了一些与服务器通信时不设置缓存头的意外的默认行为。
 
 ---
 
-`NSURLCache` reminds us of how important it is to be familiar with the systems we interact with. Chief among them when developing for iOS or Mac OS X is, of course, the [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i).
+`NSURLCache` 提醒着我们熟悉我们正在操作的系统是多么地重要。开发 iOS 或 Mac OS X 程序时，这些系统中的重中之重，非 [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i)莫属。
 
-Untold numbers of developers have hacked together an awkward, fragile system for network caching functionality, all because they weren't aware that `NSURLCache` could be setup in two lines and do it 100× better. Even more developers have never known the benefits of network caching, and never attempted a solution, causing their apps to make untold numbers of unnecessary requests to the server.
+无数开发者尝试自己做一个简陋而脆弱的系统来实现网络缓存的功能，殊不知 `NSURLCache` 只要两行代码就能搞定且好上100倍。甚至更多开发者根本不知道网络缓存的好处，也从未尝试过，导致他们的应用向服务器作了无数不必要的网络请求。
 
-So be the change you want to see in the world, and be sure to always start you app on the right foot, by setting a shared `NSURLCache` in `-application:didFinishLaunchingWithOptions:`.
+所以如果你想看到世界的变化，你想确保你有程序总以正确的方式开启，在 `-application:didFinishLaunchingWithOptions:` 设置一个共享的 `NSURLCache` 吧。
