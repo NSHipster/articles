@@ -1,19 +1,20 @@
 ---
 layout: post
 title: NSURLCache
+translator: Ricky Tan
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class/Reference/Reference.html"
 framework: Foundation
 rating: 8.7
-description: "NSURLCache provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's URL Loading System, any request loaded through NSURLConnection will be handled by NSURLCache."
+description: "NSURLCache 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。作为基础类库 URL 加载系统的一部分，任何通过 NSURLConnection 加载的请求都将被 NSURLCache 处理。"
 ---
 
-`NSURLCache` provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i), any request loaded through `NSURLConnection` will be handled by `NSURLCache`.
+`NSURLCache` 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。 作为基础类库 [URL 加载系统](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i) 的一部分，任何通过 `NSURLConnection` 加载的请求都将被 `NSURLCache` 处理。
 
-Network caching reduces the number of requests that need to be made to the server, and improve the experience of using an application offline or under slow network conditions.
+网络缓存减少了需要向服务器发送请求的次数，同时也提升了离线或在低速网络中使用应用的体验。
 
-When a request has finished loading its response from the server, a cached response will be saved locally. The next time the same request is made, the locally-cached response will be returned immediately, without connecting to the server. `NSURLCache` returns the cached response _automatically_ and _transparently_.
+当一个请求完成下载来自服务器的回应，一个缓存的回应将在本地保存。下一次同一个请求再发起时，本地保存的回应就会马上返回，不需要连接服务器。`NSURLCache` 会 _自动_ 且 _透明_ 地返回回应。
 
-In order to take advantage of `NSURLCache`, a shared URL cache must be initialized and set. This should be done in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
+为了好好利用 `NSURLCache`，你需要初始化并设置一个共享的 URL 缓存。在 iOS 中这项工作需要在 `-application:didFinishLaunchingWithOptions:` 完成，而 Mac OS X 中是在 `–applicationDidFinishLaunching:`：
 
 ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
@@ -26,65 +27,65 @@ In order to take advantage of `NSURLCache`, a shared URL cache must be initializ
 }
 ~~~
 
-Caching policies are specified in both the request (by the client) and in the response (by the server). Understanding these policies and how they relate to one another is essential to finding the optimal behavior for your application.
+缓存策略由请求（客户端）和回应（服务端）分别指定。理解这些策略以及它们如何相互影响，是为您的应用程序找到最佳行为的关键。
 
 ## `NSURLRequestCachePolicy`
 
-`NSURLRequest` has a `cachePolicy` property, which specifies the caching behavior of the request according to the following constants:
+`NSURLRequest` 有个 `cachePolicy` 属性，它根据以下常量指定了请求的缓存行为：
 
-- `NSURLRequestUseProtocolCachePolicy`: Caching logic defined in the protocol implementation is used for a particular URL load request. This is the default policy.
-- `NSURLRequestReloadIgnoringLocalCacheData`: Data should be loaded from the originating source. No existing cache data should be used.
-- `NSURLRequestReloadIgnoringLocalAndRemoteCacheData`: Not only should the local cache data be ignored, but proxies and other intermediates should be instructed to disregard their caches so far as the protocol allows.
-- `NSURLRequestReturnCacheDataElseLoad`: Existing cached data should be used, regardless of its age or expiration date. If there is no existing data in the cache corresponding to the request, the data is loaded from the originating source.
-- `NSURLRequestReturnCacheDataDontLoad`: Existing cache data should be used, regardless of its age or expiration date. If there is no existing data in the cache corresponding to the request, no attempt is made to load the data from the originating source, and the load is considered to have failed, (i.e. "offline" mode).
-- `NSURLRequestReloadRevalidatingCacheData`: Existing cache data may be used provided the origin source confirms its validity, otherwise the URL is loaded from the origin source.
+- `NSURLRequestUseProtocolCachePolicy`： 对特定的 URL 请求使用网络协议中实现的缓存逻辑。这是默认的策略。
+- `NSURLRequestReloadIgnoringLocalCacheData`：数据需要从原始地址加载。不使用现有缓存。
+- `NSURLRequestReloadIgnoringLocalAndRemoteCacheData`：不仅忽略本地缓存，同时也忽略代理服务器或其他中间介质目前已有的、协议允许的缓存。
+- `NSURLRequestReturnCacheDataElseLoad`：无论缓存是否过期，先使用本地缓存数据。如果缓存中没有请求所对应的数据，那么从原始地址加载数据。
+- `NSURLRequestReturnCacheDataDontLoad`：无论缓存是否过期，先使用本地缓存数据。如果缓存中没有请求所对应的数据，那么放弃从原始地址加载数据，请求视为失败（即：“离线”模式）。
+- `NSURLRequestReloadRevalidatingCacheData`：从原始地址确认缓存数据的合法性后，缓存数据就可以使用，否则从原始地址加载。
 
-It may not surprise you that these values are poorly understood and often confused with one another.
+你并不会惊奇于这些值不被透彻理解且经常搞混淆。
 
-Adding to the confusion is the fact that `NSURLRequestReloadIgnoringLocalAndRemoteCacheData` and `NSURLRequestReloadRevalidatingCacheData` [_aren't even implemented_](https://gist.github.com/mattt/4753073#file-nsurlrequest-h-L95-L108)! ([Link to Radar](http://openradar.appspot.com/radar?id=1755401)).
+`NSURLRequestReloadIgnoringLocalAndRemoteCacheData` 和 `NSURLRequestReloadRevalidatingCacheData` [_根本没有实现_](https://gist.github.com/mattt/4753073#file-nsurlrequest-h-L95-L108)（[Link to Radar](http://openradar.appspot.com/radar?id=1755401)）更加加深了混乱程度！
 
-So here's what you _actually_ need to know about `NSURLRequestCachePolicy`:
+关于`NSURLRequestCachePolicy`，以下才是你 _实际_ 需要了解的东西：
 
 <table>
   <thead>
     <tr>
-      <th>Constant</th>
-      <th>Meaning</th>
+      <th>常量</th>
+      <th>意义</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><tt>UseProtocolCachePolicy</tt></td>
-      <td>Default behavior</td>
+      <td>默认行为</td>
     </tr>
     <tr>
       <td><tt>ReloadIgnoringLocalCacheData</tt></td>
-      <td>Don't use the cache</td>
+      <td>不使用缓存</td>
     </tr>
     <tr>
       <td><del><tt>ReloadIgnoringLocalAndRemoteCacheData</tt></del></td>
-      <td><del>Seriously, don't use the cache</del></td>
+      <td><del>我是认真地，不使用任何缓存</del></td>
     </tr>
     <tr>
       <td><tt>ReturnCacheDataElseLoad</tt></td>
-      <td>Use the cache (no matter how out of date), or if no cached response exists, load from the network</td>
+      <td>使用缓存（不管它是否过期），如果缓存中没有，那从网络加载吧</td>
     </tr>
     <tr>
       <td><tt>ReturnCacheDataDontLoad</tt></td>
-      <td>Offline mode: use the cache (no matter how out of date), but <em>don't</em> load from the network</td>
+      <td>离线模式：使用缓存（不管它是否过期），但是<em>不</em>从网络加载</td>
     </tr>
     <tr>
       <td><del><tt>ReloadRevalidatingCacheData</tt></del></td>
-      <td><del>Validate cache against server before using</del></td>
+      <td><del>在使用前去服务器验证</del></td>
     </tr>
   </tbody>
 </table>
 
-## HTTP Cache Semantics
+## HTTP 缓存语义
 
-Because `NSURLConnection` is designed to support multiple protocols—including both `FTP` and `HTTP`/`HTTPS`—the URL Loading System APIs specify caching in a protocol-agnostic fashion. For the purposes of this article, caching will be explained in terms of HTTP semantics.
+因为 `NSURLConnection` 被设计成支持多种协议——包括 `FTP`、`HTTP`、`HTTPS`——所以 URL 加载系统用一种协议无关的方式指定缓存。为了本文的目的，缓存用术语 HTTP 语义来解释。
 
-HTTP requests and responses use [headers](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) to communicate metadata such as character encoding, MIME type, and caching directives.
+HTTP 请求和回应用 [headers](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) 来交换元数据，如字符编码、MIME 类型和缓存指令等。
 
 ### Request Cache Headers
 
