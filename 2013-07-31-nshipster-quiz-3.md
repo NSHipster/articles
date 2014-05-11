@@ -32,7 +32,7 @@ In honor of hosting this pub quiz in New York City, a couple questions about cit
 3. According to a leaked photo from Chinese site WeiPhone, what is the name of the rumored low-cost, plastic iPhone?
 4. JOBS, starring Ashton Kutcher hits theaters August 16... but which acclaimed screenwriter is behind the other Steve Jobs biopic, currently in production?
 5. Which country has planned 11 "Steve Jobs schools", featuring an iPad-based curriculum, to open in August?
-6. Which computing pioneer, famous for his 1968 "Mother of All Demos", passed away on July 2, 2013?
+6. Which computing pioneer, famous for his 1968"Mother of All Demos", passed away on July 2, 2013?
 7. Which New York-based directions and mapping startup was purchased by Apple in July 2013?
 8. Of the world's major subway systems, London's is the oldest, while Moscow has the greatest ridership. By what measure is the New York subway system #1?
 9. Who is the author of "The Death and Life of Great American Cities", which famously argues against the urban renewal plans for Greenwich Village in the 1950's & 60's?

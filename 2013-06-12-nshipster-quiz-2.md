@@ -30,7 +30,7 @@ Round 1: General Knowledge
 5. What is the name of the open source project whose C/C++ libraries power `NSRegularExpression`, `CFStringTransform`, and other Unicode features in Cocoa?
 6. On May 19, 2001 Apple opened its first 2 retail stores. Where were they? (1 point for each exact location, or ½‎ for each state)
 7. What is the name of the private Apple TV framework responsible for appliance UI?
-8. Which Apple VP said "Can't innovate anymore,  my ass!"?
+8. Which Apple VP said "Can't innovate anymore, my ass!"?
 9. List all of the rooms in Moscone West named after San Francisco neighborhoods, starting at Level 2 (1 point for each room)
 10. Complete the following verse:
 
