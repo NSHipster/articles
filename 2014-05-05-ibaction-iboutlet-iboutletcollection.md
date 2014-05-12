@@ -39,7 +39,7 @@ Back when they were separate applications, it was a challenge to keep the object
 
 As early as 2004 (and perhaps earlier), `IBAction` was no longer necessary for a method to be noticed by Interface Builder. Any method with the signature `-(void){name}:(id)sender` would be visible in the outlets pane.
 
-Nevertheless, many developers find it useful to still use the `IBAction` return type in method declarations to denote that a particular method is connected to an outlet. Even for projects _not_ using Storyboards / XIBs may choose to employ `IBAction` to call out [target / action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) methods.
+Nevertheless, many developers find it useful to still use the `IBAction` return type in method declarations to denote that a particular method is connected to an outlet. Even projects _not_ using Storyboards / XIBs may choose to employ `IBAction` to call out [target / action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) methods.
 
 ### Naming IBAction Methods
 
