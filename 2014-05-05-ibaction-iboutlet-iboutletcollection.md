@@ -28,7 +28,7 @@ Back when they were separate applications, it was a challenge to keep the object
 #define IBOutlet
 ~~~
 
-> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're  actually defined by [__attribute__](http://nshipster.com/__attribute__/)-backed attributes:
+> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're actually defined by [__attribute__](http://nshipster.com/__attribute__/)-backed attributes:
 
 ~~~{objective-c}
 #define IBOutlet __attribute__((iboutlet))
