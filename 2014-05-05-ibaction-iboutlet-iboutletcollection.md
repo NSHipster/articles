@@ -48,7 +48,7 @@ Thanks to strong, and often compiler-enforced conventions, naming is especially 
 - **Return type of `IBAction`.**
 - **Method name of an active verb, describing the specific action performed.** Method names like `didTapButton:` or `didPerformAction:` sound more like things a `delegate` might be sent.
 - **Required `sender` parameter of type `id`.** All target / action methods will pass the `sender` of the action (usually the responder) to methods that take a parameter. If omitted in the method signature, things will still work.
-- **Optional event parameter of type `UIEvent *`, named `withEvent:`** _(iOS only)_. In UIKit, a second `UIEvent *` parameter, corresponding to the touch, motion, or remote control event triggering the responder, will be passed to target / action methods accepting this second parameter. The convention is to use `withEvent:` in the method signature, to match the  `UIResponder` APIs.
+- **Optional event parameter of type `UIEvent *`, named `withEvent:`** _(iOS only)_. In UIKit, a second `UIEvent *` parameter, corresponding to the touch, motion, or remote control event triggering the responder, will be passed to target / action methods accepting this second parameter. The convention is to use `withEvent:` in the method signature, to match the `UIResponder` APIs.
 
 For example:
 
