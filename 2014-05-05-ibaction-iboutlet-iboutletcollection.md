@@ -115,7 +115,7 @@ The reason why most `IBOutlet` views can get away with `weak` ownership is that 
 #define IBOutletCollection(ClassName)
 ~~~
 
-...which is defined in a much more satisfying way, again, [in the Clang source code](http://opensource.apple.com/source/clang/clang-318.0.45/src/tools/clang/test/SemaObjC/iboutletcollection-attr.m):
+…which is defined in a much more satisfying way, again, [in the Clang source code](http://opensource.apple.com/source/clang/clang-318.0.45/src/tools/clang/test/SemaObjC/iboutletcollection-attr.m):
 
 ~~~{objective-c}
 #define IBOutletCollection(ClassName) __attribute__((iboutletcollection(ClassName)))
