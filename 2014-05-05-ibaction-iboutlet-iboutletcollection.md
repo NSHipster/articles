@@ -94,7 +94,7 @@ Since properties are the conventional way to expose and access members of a clas
 
 One unfortunate consequence (if you want to call it that) of ARC is the ambiguity of when a `IBOutlet` `@property` should be declared as `weak` or `strong`. The ambiguity arises from the fact that most outlets have no discernible behavioral differences between `weak` or `strong`—it just works.
 
-...except when it doesn't... and things crash, or the compiler warns about `weak` or `strong` use.
+…except when it doesn't… and things crash, or the compiler warns about `weak` or `strong` use.
 
 So what should one do? **Always declare `IBOutlet` properties as `weak`, except when they need to be `strong`**, as explained by Apple in their [Resource Programming Guide section on Nib Files](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/CocoaNibs/CocoaNibs.html):
 
