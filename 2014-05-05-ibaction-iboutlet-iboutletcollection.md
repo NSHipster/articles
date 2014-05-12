@@ -144,7 +144,7 @@ for (UILabel *label in labels) {
 
 Since declaring a collection of outlets is now as easy as comma-delimiting them within `@[]`, it may make just as much sense to do that as create a distinct collection.
 
-Where `IBOutletCollection` really shines is how it allows for multiple to define a unique collection of outlets under a shared identifier. Another advantage over a code-defined `NSArray` literal is that a collection can contain outlets that themselves are not connected to `File's Owner`.
+Where `IBOutletCollection` really shines is how it allows you to define a unique collection of outlets under a shared identifier. Another advantage over a code-defined `NSArray` literal is that a collection can contain outlets that themselves are not connected to `File's Owner`.
 
 The next time you're managing a significant or variable number of outlets in an iOS view, take a look at `IBOutletCollection`.
 
