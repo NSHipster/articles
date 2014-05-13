@@ -4,7 +4,7 @@ title: NSDateComponents
 
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDateComponents_Class/Reference/Reference.html"
 framework: Foundation
-translator: "candyan"
+translator: "Candyan"
 rating: 6.9
 ---
 
@@ -45,7 +45,7 @@ NSDate *date = [NSDate date];
 
 ## 计算相对日期
 
-`NSDateComponents`对象可以用来计算相对日期。使用 `NSCalendar -dateByAddingComponents:toDate:options:`方法来确定昨天，下周或者5小时30分钟之后的日期。 
+`NSDateComponents`对象可以用来计算相对日期。使用 `NSCalendar -dateByAddingComponents:toDate:options:`方法来确定昨天，下周或者5小时30分钟之后的日期。
 
 ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
