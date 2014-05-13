@@ -10,7 +10,7 @@ namespace :publish do
           end
 
     system %{
-      jekyll build --config _config.#{locale}.yml
+      bundle exec jekyll build --config _config.#{locale}.yml
       find _site/ -iname "*.html" -exec tidy -config tidy.conf {} +
       find _site/ -iname '*.html' -exec gzip -n --best {} +
       find _site/ -iname '*.xml' -exec gzip -n --best {} +
@@ -34,7 +34,7 @@ namespace :publish do
           end
 
     system %{
-      compass compile assets --force
+      bundle exec compass compile assets --force
       find assets/css -iname '*.css' -exec gzip -n --best {} +
       for f in `find assets/css -iname '*.gz'`; do
         mv $f ${f%.gz}
