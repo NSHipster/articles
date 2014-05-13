@@ -9,7 +9,7 @@ description: "In programming, what often begins as a necessary instruction event
 
 In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. In the case of Objective-C, [`#pragma` directives](http://nshipster.com/pragma/), [method type encodings](http://nshipster.com/type-encodings/), and all but the most essential [storage classes](http://nshipster.com/c-storage-classes/) have been rendered essentially meaningless, as the compiler becomes increasingly sophisticated. Discarded and disregarded during the compilation phase, they nonetheless remain useful to the development process as a whole, insofar as what they can tell other developers about the code itself.
 
-For developers just starting with Cocoa & Cocoa Touch, the `IBAction`, `IBOutlet`, and `IBOutletCollection` macros are particularly bewildering examples of this phenomenon. With their raison d'être‎ has been obscured by decades of change, confusion by anyone without sufficient context is completely understandable.
+For developers just starting with Cocoa & Cocoa Touch, the `IBAction`, `IBOutlet`, and `IBOutletCollection` macros are particularly bewildering examples of this phenomenon. With their raison d'être obscured by decades of change, confusion by anyone without sufficient context is completely understandable.
 
 As we'll learn in this week's article, though having outgrown their technical necessity, they remain a vibrant tradition in the culture of Objective-C development.
 
@@ -28,7 +28,7 @@ Back when they were separate applications, it was a challenge to keep the object
 #define IBOutlet
 ~~~
 
-> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're  actually defined by [__attribute__](http://nshipster.com/__attribute__/)-backed attributes:
+> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're actually defined by [__attribute__](http://nshipster.com/__attribute__/)-backed attributes:
 
 ~~~{objective-c}
 #define IBOutlet __attribute__((iboutlet))
@@ -37,9 +37,9 @@ Back when they were separate applications, it was a challenge to keep the object
 
 ## IBAction
 
-As early as 2004 (and perhaps earlier), `IBAction` was no longer necessary for a method to be noticed by Interface Builder. Any method with a signature `-(void){name}:(id)sender` would be visible in the outlets pane.
+As early as 2004 (and perhaps earlier), `IBAction` was no longer necessary for a method to be noticed by Interface Builder. Any method with the signature `-(void){name}:(id)sender` would be visible in the outlets pane.
 
-Nevertheless, many developers find it useful to still use the `IBAction` return type in method declarations to denote that a particular method is connected to an outlet. Even for projects _not_ using Storyboards / XIBs may choose to employ `IBAction` to call out [target / action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) methods.
+Nevertheless, many developers find it useful to still use the `IBAction` return type in method declarations to denote that a particular method is connected to by an action. Even projects _not_ using Storyboards / XIBs may choose to employ `IBAction` to call out [target / action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) methods.
 
 ### Naming IBAction Methods
 
@@ -48,7 +48,7 @@ Thanks to strong, and often compiler-enforced conventions, naming is especially 
 - **Return type of `IBAction`.**
 - **Method name of an active verb, describing the specific action performed.** Method names like `didTapButton:` or `didPerformAction:` sound more like things a `delegate` might be sent.
 - **Required `sender` parameter of type `id`.** All target / action methods will pass the `sender` of the action (usually the responder) to methods that take a parameter. If omitted in the method signature, things will still work.
-- **Optional event parameter of type `UIEvent *`, named `withEvent:`** _(iOS only)_. In UIKit, a second `UIEvent *` parameter, corresponding to the touch, motion, or remote control event triggering the responder, will be passed to target / action methods accepting this second parameter. The convention is to use `withEvent:` in the method signature, to match the  `UIResponder` APIs.
+- **Optional event parameter of type `UIEvent *`, named `withEvent:`** _(iOS only)_. In UIKit, a second `UIEvent *` parameter, corresponding to the touch, motion, or remote control event triggering the responder, will be passed to target / action methods accepting this second parameter. The convention is to use `withEvent:` in the method signature, to match the `UIResponder` APIs.
 
 For example:
 
@@ -94,7 +94,7 @@ Since properties are the conventional way to expose and access members of a clas
 
 One unfortunate consequence (if you want to call it that) of ARC is the ambiguity of when a `IBOutlet` `@property` should be declared as `weak` or `strong`. The ambiguity arises from the fact that most outlets have no discernible behavioral differences between `weak` or `strong`—it just works.
 
-...except when it doesn't... and things crash, or the compiler warns about `weak` or `strong` use.
+…except when it doesn't… and things crash, or the compiler warns about `weak` or `strong` use.
 
 So what should one do? **Always declare `IBOutlet` properties as `weak`, except when they need to be `strong`**, as explained by Apple in their [Resource Programming Guide section on Nib Files](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/LoadingResources/CocoaNibs/CocoaNibs.html):
 
@@ -115,7 +115,7 @@ The reason why most `IBOutlet` views can get away with `weak` ownership is that 
 #define IBOutletCollection(ClassName)
 ~~~
 
-...which is defined in a much more satisfying way, again, [in the Clang source code](http://opensource.apple.com/source/clang/clang-318.0.45/src/tools/clang/test/SemaObjC/iboutletcollection-attr.m):
+…which is defined in a much more satisfying way, again, [in the Clang source code](http://opensource.apple.com/source/clang/clang-318.0.45/src/tools/clang/test/SemaObjC/iboutletcollection-attr.m):
 
 ~~~{objective-c}
 #define IBOutletCollection(ClassName) __attribute__((iboutletcollection(ClassName)))
@@ -144,7 +144,7 @@ for (UILabel *label in labels) {
 
 Since declaring a collection of outlets is now as easy as comma-delimiting them within `@[]`, it may make just as much sense to do that as create a distinct collection.
 
-Where `IBOutletCollection` really shines is how it allows for multiple to define a unique collection of outlets under a shared identifier. Another advantage over a code-defined `NSArray` literal is that a collection can contain outlets that themselves are not connected to `File's Owner`.
+Where `IBOutletCollection` really shines is how it allows you to define a unique collection of outlets under a shared identifier. Another advantage over a code-defined `NSArray` literal is that a collection can contain outlets that themselves are not connected to `File's Owner`.
 
 The next time you're managing a significant or variable number of outlets in an iOS view, take a look at `IBOutletCollection`.
 
