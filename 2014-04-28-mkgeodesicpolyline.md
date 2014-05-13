@@ -17,9 +17,9 @@ What changed? The discovery of `MKGeodesicPolyline`, which is the subject of thi
 
 [`MKGeodesicPolyline`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html) was introduced to the Map Kit framework in iOS 7. As its name implies, it creates a [geodesic](http://en.wikipedia.org/wiki/Geodesic)—essentially a straight line over a curved surface.
 
-On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points on appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
+On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
 
-A `MKGeodesicPolyline` is created with an array of 2 `MKMapPoint`s or `CLLocationCoordinate2D`s:
+An `MKGeodesicPolyline` is created with an array of two `MKMapPoint`s or `CLLocationCoordinate2D`s:
 
 ### Creating an `MKGeodesicPolyline`
 
@@ -45,7 +45,7 @@ Although the overlay looks like a smooth curve, it is actually comprised of thou
 NSLog(@"%d", geodesicPolyline.pointsCount) // 3984
 ~~~
 
-Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
+Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
 
 ### Rendering `MKGeodesicPolyline` on an `MKMapView`
 
@@ -77,7 +77,7 @@ Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline
 
 [As the crow flies](http://en.wikipedia.org/wiki/As_the_crow_flies), it's 3,983 km.<br/>
 As the wolf runs, it's 4,559 km—nearly 15% longer.<br/>
-...and that's just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.
+…and that's just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.
 
 ### Animating an `MKAnnotationView` on a `MKGeodesicPolyline`
 
@@ -147,7 +147,7 @@ Finally, we implement `mapView:viewForAnnotation:` to have the annotation render
 
 ![MKAnnotationView without Rotation](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate.gif)
 
-Hmm.... close but no [SkyMall Personalized Cigar Case Flask](http://www.skymall.com/personalized-cigar-case-flask/GC900.html).
+Hmm… close but no [SkyMall Personalized Cigar Case Flask](http://www.skymall.com/personalized-cigar-case-flask/GC900.html).
 
 Let's update the rotation of the plane as it moves across its flightpath.
 
@@ -189,8 +189,7 @@ static inline double XXDegreesToRadians(double degrees) {
 }
 ~~~
 
-That direction is stored in a new property, `@property CLLocationDirection planeDirection;
-`, calculated from `self.planeDirection = XXDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+That direction is stored in a new property, `@property CLLocationDirection planeDirection;`, calculated from `self.planeDirection = XXDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
 ~~~{objective-c}
 annotationView.transform =
