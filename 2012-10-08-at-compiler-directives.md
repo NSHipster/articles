@@ -18,16 +18,18 @@ Perl, with all of its short variable names with special characters, reads like [
 
 Lisp, whose profusion of parentheses is best captured by [that old joke](http://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) about the Russians in the 1980's proving that they had stolen the source code of some SDI missile interceptor code by showing the last page:
 
-                    )))
-                  ) )
-                ))) ) ))
-               )))))
-              )))
-            ))
-          )))) ))
-        )))) ))
-      )))
-    )
+~~~ lisp
+                )))
+              ) )
+            ))) ) ))
+           )))))
+          )))
+        ))
+      )))) ))
+    )))) ))
+  )))
+)
+~~~
 
 So if we were to go code-watching for the elusive Objective-C species, what would we look for? That's right:
 

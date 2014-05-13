@@ -20,7 +20,7 @@ The first thing you should know about `NSExpression` is that it lives to reduce 
 
 Which leads us to `NSExpression`'s first trick: **doing math**.
 
-~~~{objective-c}
+~~~ objective-c
 NSExpression *expression = [NSExpression expressionWithFormat:@"4 + 5 - 2**3"];
 id value = [expression expressionValueWithObject:nil context:nil]; // => 1
 ~~~
@@ -31,7 +31,7 @@ It's no [Wolfram Alpha](http://www.wolframalpha.com/input/?i=finn+the+human+like
 
 But we've only just scratched the surface with `NSExpression`. Not impressed by a computer doing primary-school maths? How about high school statistics, then?
 
-~~~{objective-c}
+~~~ objective-c
 NSArray *numbers = @[@1, @2, @3, @4, @4, @5, @9, @11];
 NSExpression *expression = [NSExpression expressionForFunction:@"stddev:" arguments:@[[NSExpression expressionForConstantValue:numbers]]];
 id value = [expression expressionValueWithObject:nil context:nil]; // => 3.21859...
@@ -119,7 +119,7 @@ In addition to these built-in functions, it's possible to invoke custom function
 
 First, define the corresponding method in a category:
 
-~~~{objective-c}
+~~~ objective-c
 @interface NSNumber (Factorial)
 - (NSNumber *)factorial;
 @end
@@ -133,7 +133,7 @@ First, define the corresponding method in a category:
 
 Then, use the function thusly (the `FUNCTION()` macro in `+expressionWithFormat:` is shorthand for the process of building out with `-expressionForFunction:`, et al.):
 
-~~~{objective-c}
+~~~ objective-c
 NSExpression *expression = [NSExpression expressionWithFormat:@"FUNCTION(4.2, 'factorial')"];
 id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...
 ~~~

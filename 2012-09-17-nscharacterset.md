@@ -101,9 +101,11 @@ This is all to say: use `CFStringTokenizer` (or `enumerateSubstringsInRange:opti
 
 For example, let's say you have a string that parses opening hours in the following form:
 
-    Mon-Thurs:  8:00 - 18:00
-    Fri:        7:00 - 17:00
-    Sat-Sun:    10:00 - 15:00
+~~~
+Mon-Thurs:  8:00 - 18:00
+Fri:        7:00 - 17:00
+Sat-Sun:    10:00 - 15:00
+~~~
 
 You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
