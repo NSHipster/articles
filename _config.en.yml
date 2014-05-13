@@ -14,7 +14,6 @@ redcarpet:
 
 highlighter: pygments
 
-
 groups:
   - Foundation
   - CoreFoundation
