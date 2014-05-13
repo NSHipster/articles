@@ -129,10 +129,10 @@
               <ul>
                 {% for post in site.posts | sort_by_title %}
                   {% if post.framework == group %}
-                    <li><a href="{{ site.url }}{{ post.url }}"/>{{ post.title }}</a></li>
+                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                   {% elsif group == 'Miscellanea' %}
                     {% unless site.groups contains post.framework %}
-                      <li><a href="{{ site.url }}{{ post.url }}"/>{{ post.title }}</a></li>
+                      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                     {% endunless %}
                   {% endif %}
                 {% endfor %}

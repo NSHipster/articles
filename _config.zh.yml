@@ -7,8 +7,19 @@ description: "<strong>NSHipster</strong> 关注被忽略的 Objective-C 和 Coco
 permalink: /:title/
 timezone: Asia/Shanghai
 lsi: false
+
 markdown: redcarpet
-pygments:
-  lexer: objective-c
+redcarpet:
+  extensions: ["no_intra_emphasis", "fenced_code_blocks", "disable_indented_code_blocks", "autolink", "strikethrough", "highlight", "superscript", "tables", "footnotes", "with_toc_data"]
+
+highlighter: pygments
 
 groups:
+  - Foundation
+  - CoreFoundation
+  - CoreGraphics
+  - UIKit
+  - Objective-C
+  - Open Source
+  - Trivia
+  - Miscellanea
