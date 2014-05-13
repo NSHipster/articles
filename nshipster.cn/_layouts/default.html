@@ -98,7 +98,19 @@
         <p>
           <span aria-hidden="true" class="icon-creative-commons"></span>
 
-          本站文章由 <a href="http://mattt.me">Mattt Thompson</a> 撰写、<a href="http://www.croath.com">Croath Liu</a>、 <a href="http://www.linkedin.com/pub/zihan-xu/26/492/552" rel="nofollow">Zihan Xu</a> 翻译，基于<a href="http://creativecommons.org/licenses/by-nc/3.0/" rel="license">创作共用 BY-NC 协议</a>发布。
+          <span class="author">本站文章由 <a href="http://mattt.me">Mattt Thompson</a> 撰写、</span>
+
+          {% assign translators = site.posts | sort: 'translator' | map: 'translator' | uniq %}
+          <span class="translators">
+          {% for translator in translators %}
+            <nobr class="translator">{{ translator }}</nobr>
+            {% if forloop.rindex0 > 0 %}
+            、
+            {% endif %}
+          {% endfor %}
+          翻译。
+          </span>
+          <span class="license"基于<a href="http://creativecommons.org/licenses/by-nc/3.0/" rel="license">创作共用 BY-NC 协议</a>发布。</span>
 
           <a href="https://plus.google.com/106751358503565042647?rel=author" style="display: none;"/>
         </p>
