@@ -11,7 +11,7 @@ NSHipsters love irony, right? How about this for irony:
 
 There's this framework called [Search Kit](https://developer.apple.com/library/mac/#documentation/UserExperience/Reference/SearchKit/Reference/reference.html), which despite being insanely powerful and useful for finding information, is something that almost no one has ever heard of.
 
-It's true! I'd reckon there's a better chance that you have implemented your own search functionality from scratch than have ever even heard of Search Kit. (Heck, most people haven't even heard of [Core Services](https://developer.apple.com/library/mac/#documentation/Carbon/Reference/CoreServicesReferenceCollection/_index.html), its parent framework)
+It's true! I'd reckon there's a better chance that more of you have implemented your own search functionality from scratch than have ever even heard of Search Kit. (Heck, most people haven't even heard of [Core Services](https://developer.apple.com/library/mac/#documentation/Carbon/Reference/CoreServicesReferenceCollection/_index.html), its parent framework)
 
 If only everyone knew that they could harness the same killer search functionality that Apple uses for their own applications...
 

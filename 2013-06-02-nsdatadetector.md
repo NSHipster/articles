@@ -35,7 +35,8 @@ NSString *string = @"123 Main St. / (555) 555-5555";
 [detector enumerateMatchesInString:string
                            options:kNilOptions
                              range:NSMakeRange(0, [string length])
-                        usingBlock:^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
+                        usingBlock:
+^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
   NSLog(@"Match: %@", result);
 }];
 ~~~
