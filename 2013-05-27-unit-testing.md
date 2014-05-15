@@ -117,9 +117,9 @@ Here's a list of some of the most useful open source libraries for unit testing:
       <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=specta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/allending/Kiwi">Kiwi</a></td>
+      <td><a href="https://github.com/kiwi-bdd/Kiwi">Kiwi</a></td>
       <td><a href="https://github.com/allending">Allen Ding</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=allending&repo=Kiwi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=kiwi-bdd&repo=Kiwi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/pivotal/cedar">Cedar</a></td>
