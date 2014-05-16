@@ -133,9 +133,9 @@ Here's a list of some of the most useful open source libraries for unit testing:
   </thead>
   <tbody>
     <tr>
-      <td><a href="https://github.com/gabriel/gh-unit/">GHUnit</a></td>
+      <td><a href="https://github.com/gh-unit/gh-unit/">GHUnit</a></td>
       <td><a href="https://github.com/gabriel">Gabriel Handford</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=gabriel&repo=gh-unit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=gh-unit&repo=gh-unit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 </table>
