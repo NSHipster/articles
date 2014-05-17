@@ -1,9 +1,9 @@
 ---
-layout: post 
+layout: post
 title: "namespacing"
 framework: "Objective-C"
 rating: 5.0
-description: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。" 
+description: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。"
 translator: "Sheldon Huang"
 ---
 >为什么Objecive-C中的很多类名都是`NS`开头的呢？
@@ -190,8 +190,6 @@ category的主要功能是通过语法糖将一些有用的功能包裹进原来
 当我在编译器的环境参数中将`OBJC_PRINT_REPLACED_METHODS`这个参数设置为YES，那我们就能在编译的时候检测方法名是否有冲突。实际上，方法名的冲突是很少发生的，而且在发生的时候，他们通常会得到一个`needlessly duplicated across dependencies`的提示。即使发生最坏的情况，程序在运行是出现异常，那么很可能是两个方法名一样，那么他们_做_的事情也是一样的，所以结果也不会有什么变化。就像Swiss Army Knife写了一个category，他定义了`NSArray`中的` -firstObject`这个方法，那么只要苹果官方没有在`NSArray`中加这个方法的话，那么这个类别方法一直有效的。
 
 在苹果官方的编程指南中有很多严肃又松散的解释。这里没有固定的文档，他们可能一直变化。看到这里，如果你还是悬而未决，那么你只需要把的category方法名加上前缀，如果你还是选择不去做任何改变，那么你就等着自食其果吧。
-
-> 继续添加“category 方法”到你的Tweetbot条款。有效期:一个星期
 
 ###Swizzling
 
