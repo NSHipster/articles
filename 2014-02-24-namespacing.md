@@ -193,8 +193,6 @@ Collisions can be detected at compile time by setting the `OBJC_PRINT_REPLACED_M
 
 Just as with constitutional scholarship, there will be strict and loose interpretations of Apple's programming guidelines. Those that see it as a living document would point out that... actually, you know what? If you've read this far and are still undecided, just prefix your damn category methods. If you choose not to, just be mindful that it could bite you in the ass.
 
-> Go ahead and add "category method" to your Tweetbot mute terms. Expiration: 1 Week.
-
 #### Swizzling
 
 The one case where method prefixing (or suffixing) is absolutely necessary is when doing method replacement, as discussed in last week's article on [swizzling](http://nshipster.com/method-swizzling/).
