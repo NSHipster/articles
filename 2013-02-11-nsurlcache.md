@@ -13,7 +13,11 @@ Network caching reduces the number of requests that need to be made to the serve
 
 When a request has finished loading its response from the server, a cached response will be saved locally. The next time the same request is made, the locally-cached response will be returned immediately, without connecting to the server. `NSURLCache` returns the cached response _automatically_ and _transparently_.
 
-In order to take advantage of `NSURLCache`, a shared URL cache must be initialized and set. This should be done in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
+As of iOS 5, a shared `NSURLCache` is set for the application by default. [Quoth the docs](https://developer.apple.com/library/ios/documentation/cocoa/Reference/Foundation/Classes/NSURLCache_Class/Reference/Reference.html#//apple_ref/occ/clm/NSURLCache/setSharedURLCache:):
+
+> Applications that do not have special caching requirements or constraints should find the default shared cache instance acceptable. An application with more specific needs can create a custom NSURLCache object and set it as the shared cache instance using setSharedURLCache:. The application should do so before any calls to this method.
+
+Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
 
 ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
