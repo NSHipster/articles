@@ -32,7 +32,7 @@ Alright, fair enough. Let's see what's going on with `NSFileManager -URLForDirec
 
 > You can also use this method to create a new temporary directory for storing things like autosave files; to do so, specify `NSItemReplacementDirectory` for the directory parameter, `NSUserDomainMask` for the `domain` parameter, and a valid parent directory for the `url` parameter. After locating (or creating) the desired directory, this method returns the URL for that directory.
 
-Huh? Even after reading through that a few times, it's still unclear how to use this, or what the expected behavior. A quick search through the mailing lists [reaffirms](http://lists.apple.com/archives/cocoa-dev/2012/Apr/msg00117.html) this [confusion]((http://lists.apple.com/archives/cocoa-dev/2012/Feb/msg00186.html)).
+Huh? Even after reading through that a few times, it's still unclear how to use this, or what the expected behavior. A quick search through the mailing lists [reaffirms](http://lists.apple.com/archives/cocoa-dev/2012/Apr/msg00117.html) this [confusion](http://lists.apple.com/archives/cocoa-dev/2012/Feb/msg00186.html).
 
 _Actually_, this method appears to be intended for moving _existing_ temporary files to a permanent location on disk with `-replaceItemAtURL:withItemAtURL:backupItemName:options:resultingItemURL:error:`. Not exactly what we're looking for.
 

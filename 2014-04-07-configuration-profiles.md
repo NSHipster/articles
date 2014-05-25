@@ -54,7 +54,7 @@ Here are a few ideas to chew on:
 
 ### Distributing Development Builds
 
-If you're ever used a development distribution service like [HockeyApp](http://hockeyapp.net) or [TestFlight](testflightapp.com), you've installed a configuration profile—perhaps without knowing it!
+If you're ever used a development distribution service like [HockeyApp](http://hockeyapp.net) or [TestFlight](http://testflightapp.com), you've installed a configuration profile—perhaps without knowing it!
 
 Using a configuration profile, these services can automatically get information like device UDID, model name, and even add a new web clip on the home screen to download available apps.
 

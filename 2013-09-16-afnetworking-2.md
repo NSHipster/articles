@@ -148,14 +148,4 @@ For anyone coming over to AFNetworking from the current 1.x release, you may fin
 
 If you run into any bugs or general weirdness, please help by [opening an issue on GitHub](https://github.com/afnetworking/afnetworking/issues?state=open). Your help will be greatly appreciated.
 
-For general usage questions, feel free tweet at [@AFNetworking](https://twitter.com/AFNetworking), or email <m@mattt.me>.
-
-Oh yeah, one more thing...
-
----
-
-## AFNetworking: the Definitive Guide
-
-I'm thrilled to announce that AFNetworking is getting an official book!
-
-**"AFNetworking: the Definitive Guide"** will be published by [O'Reilly](http://oreilly.com), hopefully within the next couple of months. You can [sign up here to be notified by email when its available](http://eepurl.com/Flnvn), or [follow @AFNetworking](https://twitter.com/AFNetworking).
+For general usage questions, feel free tweet at [@AFNetworking](https://twitter.com/AFNetworking).
