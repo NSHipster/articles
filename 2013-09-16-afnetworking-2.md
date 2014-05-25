@@ -154,14 +154,4 @@ For anyone coming over to AFNetworking from the current 1.x release, you may fin
 
 如果你遇到 bug 或者其它的奇怪的地方，请通过[在 GitHub 开启一个问题](https://github.com/afnetworking/afnetworking/issues?state=open)来帮助我们改进。非常感谢您的帮助。
 
-对于一般的使用问题，请随时 tweet 我 [@AFNetworking](https://twitter.com/AFNetworking)，或者给我发邮件 <m@mattt.me>。
-
-哦耶，还有一件事……
-
----
-
-## AFNetworking: the Definitive Guide
-
-我很高兴地宣布，AFNetworking 就要正式出书了！
-
-**《AFNetworking: the Definitive Guide》**将由 [O'Reilly](http://oreilly.com) 出版，很可能就在接下来几个月中。你可以[在这里注册邮件通知](http://eepurl.com/Flnvn)，或者[关注 @AFNetworking](https://twitter.com/AFNetworking)。
+对于一般的使用问题，请随时 tweet 我 [@AFNetworking](https://twitter.com/AFNetworking)，或者给我发邮件。

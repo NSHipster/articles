@@ -10,7 +10,7 @@ description: "The fourth and final quiz of the year. Do you have what it takes t
 
 The fourth and final NSHipster pub quiz of the year was held in the beautiful city of Amsterdam on October 22nd, with help from the good folks at [Appsterdam](http://appsterdam.rs), [The Big Nerd Ranch](http://www.bignerdranch.com/), and [Heroku](http://www.heroku.com).
 
-The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Dúran](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](@Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](http://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
+The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Dúran](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](https://twitter.com/Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](http://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
 
 As always, you can play along at home or at work with your colleagues. Here are the rules:
 
@@ -35,7 +35,7 @@ Current events, miscellaneous tidbits, and random trivia. Following a time-honor
 6. Which website's failure has given cause for President Obama to do a post-mortem for the failed Rails app?
 7. Doomed former smartphone juggernaut BlackBerry recently released an iOS app. What is it called?
 8. Apple prompted some raised eyebrows with the final developer release of  Mac OS X Mavericks. What was the controversy?
-9. During development, the  Gold iPhone 5s was jokingly named after which American "celebrity"? 
+9. During development, the  Gold iPhone 5s was jokingly named after which American "celebrity"?
 10. At an average per capita rate of 8.4kg per year, the Netherlands is the world's #5 consumer of what?
 
 Round 2: Foundation Potpourri
@@ -43,7 +43,7 @@ Round 2: Foundation Potpourri
 
 With the fluff out of the way, it's now time to dive into some hardcore Cocoa fundamentals. How well do _you_ know the standard library?
 
-1. `NSPredicate` objects can be decomposed into left and right hand side components of which class? 
+1. `NSPredicate` objects can be decomposed into left and right hand side components of which class?
 2. Which of the following is _not_ something `NSDataDetector` can detect? Addresses, Phone Numbers, Product Listings, or Flight Information.
 3. Which Foundation collection class allows values to be weakly referenced?
 4. What method would you implement in an `NSFormatter` subclass in order to override what's displayed while editing?
@@ -79,18 +79,18 @@ Round 4: NSAnagram
 
 And finally, an admittedly _sadistic_ round that combines wordplay with Cocoa arcana. Each question is an anagram, whose letters can be rearranged to form the name of a class or type in a well-known system framework (hint: Foundation, Core Foundation, UIKit, and AddressBook are represented here). Good luck!
 
-1. Nose Call 
+1. Nose Call
 2. Uncle Consort Inn
-3. Oi! Inaccurate Wit Vividity 
-4. A Band's Cement Jog 
+3. Oi! Inaccurate Wit Vividity
+4. A Band's Cement Jog
 5. Tartan's Screech
 6. Kebab's Sad Odor
-7. Macs Fret 
+7. Macs Fret
 8. Manservant of Rulers
-9. Measurably Rant 
+9. Measurably Rant
 10. Ill-Oiled Canonicalized Tuxedo
 
-* * * 
+* * *
 
 # Answers
 
