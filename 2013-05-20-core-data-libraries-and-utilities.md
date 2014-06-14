@@ -3,7 +3,7 @@ layout: post
 title: "Core Data Libraries & Utilities"
 framework: "Open Source"
 rating: 8.9
-description: "上周，我们感觉Core Data有些难，所以为了NSHipster的这个问题，我们将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看从Core Data体验中你将如何充分利用它。"
+description: "上周，我们感觉Core Data有些难，所以为了NSHipster的这个问题，我们将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看你如何充分利用这次Core Data体验。"
 translator: "JJ Mao"
 ---
 
@@ -17,11 +17,11 @@ translator: "JJ Mao"
 
 虽然很多库试着替换Core Data，但是有更多库在尝试改善它。这些库涵盖了从必要的语法糖到广泛的全栈框架。
 
-本周的NSHipster：将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看从Core Data体验中你将如何充分利用它。
+本周的NSHipster：将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看你如何充分利用这次Core Data体验。
 
 ---
 
-> 为方便起见，提供下表。该表包含了使用Core Data的最重要的开源库和实用工具。该清单并不全面，如果你觉得有什么需要补充或是不合适，请在推特上联系[@NSHipster](https://twitter.com/NSHipster)—或是[提交一个pull请求](https://github.com/NSHipster/articles)，那就更好了。
+> 为方便起见，提供下表。该表包含了使用Core Data的最重要的开源库和实用工具。该清单并不全面，如果你觉得有什么需要补充或是不合适，请在推特上联系[@NSHipster](https://twitter.com/NSHipster)—或是[提交一个pull request](https://github.com/NSHipster/articles)，那就更好了。
 
 <table>
   <thead>
@@ -142,7 +142,7 @@ Wrapper库为Core Data繁琐复杂的接口提供一些必要的语法糖和便�
 
 ### 来自[Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html)的启发
 
-程序员们应该不足为奇，学习了一种做事方式后将这些想法和习惯用于其他技术。一大波熟悉范式[Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html)的Ruby开发者涌入iOS行列。
+学习了一种做事方式后将这些想法和习惯用于其他技术这件事对于程序员们来说应该是不足为奇的。一大波熟悉范式[Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html)的Ruby开发者涌入iOS行列。
 
 与主流看法相反，Core Data _不是_ 一个[Object-Relational Mappers](http://en.wikipedia.org/wiki/Object-relational_mapping)，而是一个对象图和持久性框架，它的能力远超于单独的[Active Record 模式](http://en.wikipedia.org/wiki/Active_record_pattern)。使用Core Data作为ORM（对象关系映射）必然限制Core Data功能并混淆其概念的纯粹。但对于许多渴望熟悉ORM的开发者，这个交易的代价是双倍的！
 
@@ -237,4 +237,4 @@ ReactiveCocoa [为Objective-C带来了函数式反应型范例](http://nshipster
 
 记住：这儿没有包治百病的良药，也没有放之四海皆准的解答。就像Core Data可能只是在特定情况下建议使用，前面提到的Core Data库也是如此。
 
-即时只为了帮助每个库确定相对优势和对比权衡，把生态系统分成大类也是有益的。只有你自己知道（当然，有时候需要通过试错）哪种方法是最适合自己的。
+即使只为了帮助每个库确定相对优势和对比权衡，把生态系统分成大类也是有益的。只有你自己知道（当然，有时候需要通过试错）哪种方法是最适合自己的。
