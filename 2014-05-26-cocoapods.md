@@ -18,7 +18,7 @@ description: "只要设计和施工得当，基础设施可以帮助社会成倍
 
 本周的NSHipster，我们将通过讨论CocoaPods的过去，现在以及将来，一起庆祝0.33版本（[具有里程碑意义](http://blog.cocoapods.org/CocoaPods-0.33/)）的发布。
 
-> 接下来的对CocoaPods起源的历史回顾比较冗长，如果你只在乎技术细节，[点此直接跳过](#使用CocoaPods)。
+> 接下来的对CocoaPods起源的历史回顾比较冗长，如果你只在乎技术细节，[点此直接跳过](#%E4%BD%BF%E7%94%A8cocoapods)。
 
 ---
 
