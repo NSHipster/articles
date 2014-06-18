@@ -90,7 +90,7 @@ $ sudo gem install cocoapods
 $ pod init
 ~~~
 
-#### 以下是一个Podfile的示例：
+#### Podfile
 
 ~~~{ruby}
 platform :ios, '7.0'
