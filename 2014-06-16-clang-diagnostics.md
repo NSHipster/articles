@@ -632,8 +632,8 @@ So this week, as a public service, we've compiled a (mostly) comprehensive list 
 | `-Wweak-vtables, DefaultIgnore`	 | "%0 has no out-of-line virtual method definitions its vtable will be emitted in every translation unit"	 |
 
 * * *
-There is a simple way to find the Warning Flag from xcode itself. 
-* If you got a warning, Right click on the warning in the issue navigator and select "Reveal in Log"
+There is a simple way to find the Warning Flag from xcode itself. If you got a warning
+* Right click on the warning in the issue navigator and select "Reveal in Log"
 * There will be a section some thing like 'warning: <warning message> [-<warning flag>]'
 
 For more info please see [this SO Post](stackoverflow.com/questions/20078941/how-to-use-pragma-clang-diagnostics)
