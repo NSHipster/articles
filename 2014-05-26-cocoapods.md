@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CocoaPods
-translator: "Xingruo Liu"
+translator: "David Liu"
 ref: "http://cocoapods.org"
 framework: "Open Source"
 rating: 9.9
