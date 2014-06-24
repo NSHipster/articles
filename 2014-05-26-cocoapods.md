@@ -106,7 +106,7 @@ end
 pod 'X', '~> 1.1'
 ~~~
 
-CocoaPods遵循[语意化版本规范](http://semver.org)。
+CocoaPods遵循[语意化版本规范](http://semver.org/lang/zh-CN/)。
 
 对于那些不在CocoaPods公共Git仓库中的库，你可以用任何一个Git, Mercurial或者SVN仓库取代，并且还可以指定具体的commit, branch或者tag。
 
