@@ -104,8 +104,10 @@
           <span class="translators">
           {% for translator in translators %}
             <nobr class="translator">{{ translator }}</nobr>
-            {% if forloop.rindex0 > 0 %}
+            {% if forloop.rindex0 > 1 %}
             、
+            {% elsif forloop.rindex0 == 1 %}
+            和
             {% endif %}
           {% endfor %}
           翻译。
