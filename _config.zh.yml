@@ -3,7 +3,7 @@ source: ./nshipster.cn
 url: http://nshipster.cn
 
 title: NSHipster
-description: "<strong>NSHipster</strong> 关注被忽略的 Objective-C 和 Cocoa 特性。每周更新。"
+description: "<strong>NSHipster</strong> 关注被忽略的 Objective-C、Swift 和 Cocoa 特性。每周更新。"
 permalink: /:title/
 timezone: Asia/Shanghai
 lsi: false
