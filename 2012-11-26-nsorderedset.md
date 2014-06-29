@@ -7,7 +7,7 @@ framework: Foundation
 rating: 6.2
 published: true
 description: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"
-translator: "candyan"
+translator: "Candyan"
 ---
 
 有个问题：为什吗`NSOrderedSet`不是继承自`NSSet`的捏？
