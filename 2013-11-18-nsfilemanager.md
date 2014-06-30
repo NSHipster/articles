@@ -51,7 +51,12 @@ NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:bundleURL
                                                          options:NSDirectoryEnumerationSkipsHiddenFiles
                                                     errorHandler:^BOOL(NSURL *url, NSError *error)
 {
-    NSLog(@"[Error] %@ (%@)", error, url);
+    if (error) {
+        NSLog(@"[Error] %@ (%@)", error, url);
+        return NO;
+    }
+
+    return YES;
 }];
 
 NSMutableArray *mutableFileURLs = [NSMutableArray array];
