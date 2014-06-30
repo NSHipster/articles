@@ -35,7 +35,7 @@ switch (style) {
 }
 ~~~
 
-With `-Weverything` turned on, Clang will complain that the "default label in switch which covers all enumeration values". However, if we _know_ that, zooming out into a larger context, `style` is (for better or worse) derived from an external representation (e.g. JSON resource) that allows for unconstrained `NSInteger` values, the `default` case is a necessary safeguard. The only way to insist on this inevitability is to use `#pragma` to ignore a warning flag temporarily:
+When certain flags are enabled, Clang will complain that the "default label in switch which covers all enumeration values". However, if we _know_ that, zooming out into a larger context, `style` is (for better or worse) derived from an external representation (e.g. JSON resource) that allows for unconstrained `NSInteger` values, the `default` case is a necessary safeguard. The only way to insist on this inevitability is to use `#pragma` to ignore a warning flag temporarily:
 
 > `push` & `pop` are used to save and restore the compiler state, similar to Core Graphics or OpenGL contexts.
 
@@ -56,9 +56,7 @@ switch (style) {
 
 > Again, and this cannot be stressed enough, Clang is right at least 99% of the time. Actually fixing an analyzer warning is _strongly_ preferred to ignoring it. Use `#pragma clang diagnostic ignored` as a method of last resort.
 
-The problem is that given a warning string, it is _very_ difficult to determine what its corresponding warning flag is. Unless a random Stack Overflow question pops up for the given error string, you're pretty much out of luck.
-
-So this week, as a public service, we've compiled a (mostly) comprehensive list of Clang warning strings and their associated flags:
+This week, as a public service, we've compiled a (mostly) comprehensive list of Clang warning strings and their associated flags:
 
 > Like our article on [NSError](http://nshipster.com/nserror/), this is more of an article for future reference than a formal explanation. Keep this page bookmarked for the next time that you happen to run into this situation.
 
