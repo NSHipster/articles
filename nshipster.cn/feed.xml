@@ -9,7 +9,7 @@ layout: rss
     <description>{{ site.description | strip_html }}</description>
     <link>{{ site.url }}</link>
     <pubDate>{{ site.posts.first.date | date_to_rfc822 }}</pubDate>
-    {% for post in site.posts %}
+    {% for post in site.posts limit: 25 %}
       <item>
         <title>{{ post.title | replace:'<br/>',' ' | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
