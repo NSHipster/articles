@@ -68,8 +68,8 @@ This week, as a public service, we've compiled a (mostly) comprehensive list of 
 
 | Warning Flag | Message |
 |--------------|---------|
-| `-W#pragma-messages" | "%0"	 |
-| `-W#warnings" | "%0"	 |
+| `-W#pragma-messages` | "%0"	 |
+| `-W#warnings` | "%0"	 |
 | `-Wambiguous-macro`	 | "ambiguous expansion of macro %0"	 |
 | `-Wauto-import`	 | "treating #%select{include|import|include_next|__include_macros}0 as an import of module '%1'"	 |
 | `-Wbackslash-newline-escape`	 | "backslash and newline separated by space"	 |
