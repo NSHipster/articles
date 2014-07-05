@@ -1,5 +1,5 @@
 module Jekyll
-  module ThinSpaceCamelCase
+  module ThinSpaceCamelCaseFilter
     REGEX = /(?:([a-z])([A-Z]+))/
 
     def camel_break(string)
@@ -8,4 +8,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_filter(Jekyll::ThinSpaceCamelCase)
+Liquid::Template.register_filter(Jekyll::ThinSpaceCamelCaseFilter)

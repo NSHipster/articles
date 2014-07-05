@@ -1,5 +1,5 @@
 module Jekyll
-  module Uniq
+  module UniqFilter
     REGEX = /(?:([a-z])([A-Z]+))/
 
     def uniq(array)
@@ -8,4 +8,4 @@ module Jekyll
   end
 end
 
-Liquid::Template.register_filter(Jekyll::Uniq)
+Liquid::Template.register_filter(Jekyll::UniqFilter)
