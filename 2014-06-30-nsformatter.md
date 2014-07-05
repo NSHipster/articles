@@ -4,7 +4,8 @@ title: NSFormatter
 framework: "Foundation"
 rating: 8.0
 description: "Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."
-updated: "2013-06-23"
+created: "2013-11-11"
+updated: "2014-06-30"
 ---
 
 Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.
@@ -74,7 +75,7 @@ for (NSString *identifier in @[@"en_US", @"fr_FR", @"ja_JP"]) {
 }
 ~~~ -->
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSNumberFormatter()
 formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
 
@@ -170,7 +171,7 @@ NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
 // 12:11:19pm
 ~~~ -->
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSDateFormatter()
 formatter.dateStyle = .NoStyle
 formatter.timeStyle = .MediumStyle
@@ -190,7 +191,7 @@ NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
 // Monday, November 11, 2013 12:11:19pm PST
 ``` -->
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSDateFormatter()
 formatter.dateStyle = .LongStyle
 formatter.timeStyle = .LongStyle
@@ -211,7 +212,7 @@ For apps that work with files, data in memory, or information downloaded from a 
 
 `NSByteCounterFormatter` takes a raw number of bytes and formats it into more meaningful units. For example, rather than bombarding a user with a ridiculous quantity, like "8475891734 bytes", a formatter can make a more useful approximation of "8.48 GB":
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSByteCountFormatter()
 let byteCount = 8475891734
 let string = formatter.stringFromByteCount(CLongLong(byteCount))
@@ -220,7 +221,7 @@ let string = formatter.stringFromByteCount(CLongLong(byteCount))
 
 By default, specifying a `0` byte count will yield a localized string like "Zero KB". For a more consistent format, set `allowsNonnumericFormatting` to `false`:
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSByteCountFormatter()
 let byteCount = 0
 
@@ -260,7 +261,7 @@ In most cases, it is better to use `File` or `Memory`, however decimal or binary
 
 As the name implies, `NSDateComponentsFormatter` works with `NSDateComponents`, which was covered in [a previous NSHipster article](http://nshipster.com/nsdatecomponents/). An `NSDateComponents` object is a container for representing a combination of discrete calendar quantities, such as "1 day and 2 hours". `NSDateComponentsFormatter` provides localized representations of `NSDateComponents` objects in several different formats:
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSDateComponentsFormatter()
 formatter.unitsStyle = .Full
 
@@ -286,7 +287,7 @@ let string = formatter.stringFromDateComponents(components)
 
 Like `NSDateComponentsFormatter`, `NSDateIntervalFormatter` deals with ranges of time, but specifically for time intervals between a start and end date:
 
-~~~{javascript}
+~~~{swift}
 let formatter = NSDateIntervalFormatter()
 formatter.timeStyle = .ShortStyle
 
@@ -321,7 +322,7 @@ Although the fundamental unit of physical existence, mass is pretty much relegat
 
 > Yes, mass and weight are different, but this is programming, not science class, so stop being pedantic.
 
-~~~{javascript}
+~~~{swift}
 let massFormatter = NSMassFormatter()
 let kilograms = 60.0
 println(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
@@ -331,7 +332,7 @@ println(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
 
 `NSLengthFormatter` can be thought of as a more useful version of `MKDistanceFormatter`, with more unit options and formatting options.
 
-~~~{javascript}
+~~~{swift}
 let lengthFormatter = NSLengthFormatter()
 let meters = 5_000.0
 println(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
@@ -341,7 +342,7 @@ println(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
 
 Rounding out the new `NSFormatter` subclasses added for HealthKit is `NSEnergyFormatter`, which formats energy in Joules, the raw unit of work for exercises, and Calories, which is used when working with nutrition information.
 
-~~~{javascript}
+~~~{swift}
 let energyFormatter = NSEnergyFormatter()
 energyFormatter.forFoodEnergyUse = true
 
@@ -420,7 +421,7 @@ A `context` property is available for `NSDateFormatter`, `NSNumberFormatter`, `N
 | `Standalone`            | "About 2 hours" |
 | `ListItem`              | "About 2 hours" |
 | `BeginningOfSentence`   | "About 2 hours" |
-| `MiddleOfSentence`      | "About 2 hours" |
+| `MiddleOfSentence`      | "about 2 hours" |
 | `Dynamic`               | _(Depends)_     |
 
 In cases where localizations may change the position of formatted information within a string, the `Dynamic` value will automatically change depending on where it appears in the text.
@@ -437,7 +438,7 @@ Created by [Peter Hosey](https://twitter.com/boredzo), [ISO8601DateFormatter](ht
 
 Although Apple provides [official recommendations on parsing internet dates](https://developer.apple.com/library/ios/qa/qa1480/_index.html), the reality of formatting quirks across makes the suggested `NSDateFormatter`-with-`en_US_POSIX`-locale approach untenable for real-world usage. `ISO8601DateFormatter` offers a simple, robust interface for dealing with timestamps:
 
-~~~{javascript}
+~~~{swift}
 let formatter = ISO8601DateFormatter()
 let timestamp = "2014-06-30T08:21:56+08:00"
 let date = formatter.dateFromString(timestamp)
@@ -451,7 +452,7 @@ let date = formatter.dateFromString(timestamp)
 
 #### TTTAddressFormatter
 
-~~~{javascript}
+~~~{swift}
 let formatter = TTTAddressFormatter()
 let formatter.locale = NSLocale(localeIdentifier: "en_GB")
 
@@ -467,7 +468,7 @@ let string = formatter.stringFromAddressWithStreet(street: street, locality: loc
 
 #### TTTArrayFormatter
 
-~~~{javascript}
+~~~{swift}
 let formatter = TTTArrayFormatter()
 formatter.usesAbbreviatedConjunction = true // Use '&' instead of 'and'
 formatter.usesSerialDelimiter = true // Omit Oxford Comma
@@ -479,7 +480,7 @@ let string = formatter.stringFromArray(array)
 
 #### TTTColorFormatter
 
-~~~{javascript}
+~~~{swift}
 let formatter = TTTColorFormatter()
 let color = UIColor.orangeColor()
 let hex = formatter.hexadecimalStringFromColor(color);
@@ -488,7 +489,7 @@ let hex = formatter.hexadecimalStringFromColor(color);
 
 #### TTTLocationFormatter
 
-~~~{javascript}
+~~~{swift}
 let formatter = TTTLocationFormatter()
 formatter.numberFormatter.maximumSignificantDigits = 4
 formatter.bearingStyle = TTTBearingAbbreviationWordStyle
@@ -502,7 +503,7 @@ let string = formatter.stringFromDistanceAndBearingFromLocation(pittsburgh, toLo
 
 #### TTTOrdinalNumberFormatter
 
-~~~{javascript}
+~~~{swift}
 let formatter = TTTOrdinalNumberFormatter()
 formatter.locale = NSLocale(localeIdentifier: "fr_FR")
 formatter.grammaticalGender = TTTOrdinalNumberFormatterMaleGender
@@ -512,7 +513,7 @@ let string = NSString(format: "You came in %@ place", [formatter.stringFromNumbe
 
 #### TTTURLRequestFormatter
 
-~~~{javascript}
+~~~{swift}
 let request = NSMutableURLRequest(URL: NSURL(string: "http://nshipster.com"))
 request.HTTPMethod = "GET"
 request.addValue("text/html", forHTTPHeaderField: "Accept")
