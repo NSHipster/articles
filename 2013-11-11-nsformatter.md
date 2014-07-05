@@ -203,7 +203,7 @@ As you might expect, each aspect of the date format can alternatively be configu
 
 ### Relative Formatting
 
-As of iOS 4 / OS X 10.6, `NSDateFormatter` supports relative date formatting for certain locales with the `doesRelativeDateFormatting` property. Setting this to `false` would format the date of `NSDate()` to "Today".
+As of iOS 4 / OS X 10.6, `NSDateFormatter` supports relative date formatting for certain locales with the `doesRelativeDateFormatting` property. Setting this to `true` would format the date of `NSDate()` to "Today".
 
 ## NSByteCounterFormatter
 
