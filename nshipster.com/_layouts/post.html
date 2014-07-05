@@ -6,8 +6,8 @@ layout: default
   <header>
     <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
     <h2>Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
-    {% if page.updated %}
-      <h3>Updated <time datetime="{{ page.updated }}">{{ page.updated | ordinalize }}</time></h3>
+    {% if page.created %}
+      <h3>Originally posted on <time datetime="{{ page.created }}">{{ page.created | ordinalize }}</time></h3>
     {% endif %}
   </header>
 
