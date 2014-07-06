@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<article>
-  <header>
+<article role="article">
+  <header role="heading">
     <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
     <h2>Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
     {% if page.created %}
@@ -17,8 +17,26 @@ layout: default
 
   <aside>
     <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-via="NSHipster" data-size="large">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+    <script>
+      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+    </script>
   </aside>
+
+  <nav role="navigation">
+    <ul>
+      {% if page.previous %}
+        <li class="previous">
+          <a href="{{ page.previous.url }}" rel="prev">{{ page.previous.title }}</a>
+        </li>
+      {% endif %}
+
+      {% if page.next %}
+        <li class="next">
+          <a href="{{ page.next.url }}" rel="next">{{ page.next.title }}</a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
 
   <footer class="book promotion">
     <a href="https://gum.co/the-nshipster-fake-book"><div id="the-nshipster-fake-book-cover" class="cover"></div></a>

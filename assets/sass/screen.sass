@@ -1,20 +1,40 @@
-@import "compass"
-@import "blueprint"
+@import './bourbon/bourbon'
+@import './neat/neat'
+@import './base/base'
 
-@import "./functions"
-@import "./colors"
-@import "./fonts"
-@import "./typography"
-@import "./layout"
-@import "./animations"
-@import "./pygments"
-@import "./mobile"
-@import "./promotion"
-@import "./swiftype"
+$visual-grid: true
 
-@import "./components/logo"
+$grid-columns: 10
+$max-width: 100%
 
-+blueprint-typography
+$tablet: new-breakpoint(max-width 768px 8)
+$mobile: new-breakpoint(max-width 480px 4)
 
-html body
-  background: $background-color
+html, body
+  margin: 0
+
+[role="container"]
+  +outer-container
+
+  section
+    +row
+    padding: 2em 0
+
+    h1
+      margin-bottom: 1em
+
+
+
+// @import "./functions"
+// @import "./colors"
+// @import "./fonts"
+// @import "./typography"
+// @import "./layout"
+// @import "./animations"
+// @import "./pygments"
+// @import "./mobile"
+// @import "./promotion"
+// @import "./swiftype"
+//
+// @import "./components/logo"
+

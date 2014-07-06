@@ -118,17 +118,14 @@
       {% if page.id %}
         <section class="archive" role="navigation">
           {% for group in site.groups %}
+            {% assign name = group | downcase %}
+            {% assign category = site.categories[name] %}
+
             <div>
               <h2>{{ group }}</h2>
               <ul>
-                {% for post in site.posts | sort_by_title %}
-                  {% if post.framework == group %}
-                    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                  {% elsif group == 'Miscellanea' %}
-                    {% unless site.groups contains post.framework %}
-                      <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                    {% endunless %}
-                  {% endif %}
+                {% for post in category %}
+                  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                 {% endfor %}
               </ul>
             </div>
