@@ -2,7 +2,7 @@ module Jekyll
   module OrdinalFilter
     def ordinalize(date)
       date = datetime(date)
-      "#{date.strftime('%b')} #{ordinal(date.strftime('%e').to_i)}, #{date.strftime('%Y')}"
+      "#{date.strftime('%B')} #{ordinal(date.strftime('%e').to_i)}, #{date.strftime('%Y')}"
     end
 
     def ordinal(number)

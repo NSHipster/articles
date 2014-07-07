@@ -4,16 +4,10 @@
 
 @import "./colors"
 @import "./functions"
-// @import "./fonts"
-// @import "./typography"
-// @import "./layout"
+@import "./fonts"
 @import "./animations"
 @import "./pygments"
-// @import "./mobile"
-// @import "./promotion"
 @import "./swiftype"
-//
-@import "./components/logo"
 
 
 $visual-grid: true
@@ -24,19 +18,23 @@ $max-width: 100%
 $tablet: new-breakpoint(max-width 768px 8)
 $mobile: new-breakpoint(max-width 480px 4)
 
+html
+
+
 html, body
+  // font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif !important
+  //font-family: "Gill Sans"
   margin: 0
+  border-top: 3px $primary-color solid
+  background: $background-color
 
 [role="container"]
   +outer-container
 
-  margin: 1em auto
-  max-width: 1280px
 
-  [role="main"]
-    max-width: 960px
-    margin: 0 auto
-    padding: 2em
+  max-width: 960px
+  margin: 0 auto
+  padding: 2em
 
   section
     +row
@@ -55,7 +53,9 @@ html, body
     max-height: 7.5em
 
     svg
-      margin: 0 2em 0 1em
+      width: 70%
+      +media($tablet)
+        width: 100%
 
     .mustache
       transform-origin: center center !important
@@ -79,22 +79,44 @@ html, body
         text-align: center
 
   form
-    +span-columns(2 of 12)
+    +span-columns(3 of 12)
     +omega
 
+    input
+      height: 2.5em
+      width: 100%
+      margin-top: 1em
+
+  #logo, nav
+    +media($tablet)
+      +fill-parent
+
+  form
+    +media($tablet)
+      display: none
+
+  +media($tablet)
+    margin-bottom: 2em
 
 // Layout
 
 #latest
   article
-    p
-      font-size: 125%
+    font-size: 125%
 
 #recent
   article
     +span-columns(4 of 12)
     +omega(4n)
     clear: right
+
+    +media($tablet)
+      +span-columns(6 of 12)
+      +omega(2n)
+
+    +media($mobile)
+      +fill-parent
+      margin-bottom: 1em
 
 
 // Typography
@@ -103,8 +125,21 @@ section
   h1
     margin-bottom: 1em
 
-article
+[role="article"]
+  font-size: 125%
   margin-bottom: 1em
+
+  +media($tablet)
+    font-size: 100%
+
+  table
+    overflow: scroll
+
+  div.highlight
+    border-radius: 0.25em
+    overflow: scroll
+    padding: 0 1em
+    margin-bottom: 1em
 
   header
     text-align: center
@@ -112,16 +147,16 @@ article
 
     h1
       font-size: 3em
+      line-height: 1em
+      margin-bottom: 0.5em
     h2
       font-size: 1.25em
 
   .content
-    font-size: 125%
     margin-bottom: 2em
 
     h1, h2, h3, h4, h5
       margin: 2em 0 1em 0
-
 
   hr
     width: 40%
@@ -133,7 +168,6 @@ article
     width: auto
 
   footer
-
     .contributor
       +span-columns(6 of 12)
       +omega(2n)
@@ -155,6 +189,8 @@ article
 
         .avatar
           padding: 0
+
+        .details
 
       .avatar
         +span-columns(2 of 6)
@@ -193,6 +229,7 @@ article
 [role="contentinfo"]
   text-align: center
   margin-top: 2em
+  padding: 1em
 
 .avatar
   +prevent-selection
@@ -203,8 +240,53 @@ article
   user-select: none
 
 
-a
-  color: $link-color
+html, body
+  ::selection, ::-moz-selection
+    background: transparentize($secondary-color, 0.5)
+    color: white
+
+a, a:visited
+  color: $link-color !important
+
+  &:hover
+    text-decoration: none
 
 
+
+.archive
+  div
+    +span-columns(4 of 12)
+    clear: right
+    +omega(3)
+
+#sharing
+  li
+    font-size: 3em
+    display: block
+    margin: 0.5em
+    float: left
+
+
+[role="article"] .content, .archive, [role="contentinfo"]
+  ul > li
+    list-style: disc inside !important
+    display: table-row
+
+
+    &:before
+      content: "●"
+      display: table-cell
+      padding-right: 0.5em
+
+  ol > li
+    list-style: disc inside !important
+    display: table-row
+
+    &:before
+      content: counter(foo) "."
+      display: table-cell
+      padding-right: 0.5em
+
+  ul
+    margin: 1em
 

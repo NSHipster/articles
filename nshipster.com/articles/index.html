@@ -1,0 +1,19 @@
+---
+layout: default
+paginate: 25
+---
+
+<section>
+<h1>Archive</h1>
+
+{% for post in site.posts %}
+  <article>
+    <h1><a href="{{ post.url }}" title="{{ post.title | html_escape }}">{{ post.title }}</a></h1>
+    {% if post.description %}
+      <p>{{ post.description }}</p>
+    {% else %}
+      {{ post | only_first_p }}
+    {% endif %}
+  </article>
+{% endfor %}
+</section>

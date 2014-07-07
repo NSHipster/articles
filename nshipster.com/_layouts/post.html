@@ -18,16 +18,16 @@ layout: default
     <section id="sharing">
       <ul>
         <li class="twitter">
-          <a href="http://twitter.com/share?url={{ page.url }}&amp;text={{ page.title | cgi_escape }}+via+@NSHipster">Twitter</a>
+          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&text={{ page.title | cgi_escape }}&via=NSHipster&related=mattt,nshipster"><i class="icon-twitter"></i></a>
         </li>
         <li class="facebook">
-          <a href="http://www.facebook.com/sharer.php?u={{ page.url }}">Facebook</a>
+          <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-facebook"></i></a>
         </li>
         <li class="google-plus">
-          <a href="https://plus.google.com/share?url={{ page.url }}">g+</a>
+          <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
         </li>
         <li class="email">
-          <a href="mailto:?Subject={{ page.title | cgi_escape }}&Body=%20{{ page.url }}">Mail</a>
+          <a href="mailto:?Subject={{ page.title | cgi_escape }}&Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
         </li>
     </section>
 
