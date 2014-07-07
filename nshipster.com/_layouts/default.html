@@ -76,22 +76,28 @@
     <header role="banner">
       <h1 id="logo">
         <a href="/">
-          <acronym title="NeXTSTEP/Sun">NS</acronym>
+          {% include logo.svg %}
+          <!-- <acronym title="NeXTSTEP/Sun">NS</acronym>
           <strong>Hipster</strong>
-          <img id="moustache" src="//cdn.nshipster.com/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" />
+          <img id="moustache" src="//cdn.nshipster.com/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" /> -->
         </a>
       </h1>
+
+      <nav>
+        <ul>
+          <li>
+            <a href="/articles">Articles</a>
+          <li>
+            <a href="/books">Books</a>
+          </li>
+        </ul>
+      </nav>
 
       <form>
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
 
-      {% unless page.id %}
-        <h2>
-          {{ site.description }}
-        </h2>
-      {% endunless %}
-
+      <!-- {{ contentblock header }} -->
     </header>
 
     <div id="main" role="main">
@@ -103,9 +109,9 @@
         <p>
           <span aria-hidden="true" class="icon-creative-commons"></span>
 
-          Created by <a href="http://mattt.me">Mattt Thompson</a>, and released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
+          NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
 
-          <a href="https://plus.google.com/106751358503565042647?rel=author" style="display: none;"></a>
+
         </p>
         <p>Articles also available in <a href="http://nshipster.cn" hreflang="zh-Hans">中文</a>.</p>
       </section>
@@ -115,7 +121,7 @@
         <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
 
-      {% if page.id %}
+      {% if false %}
         <section class="archive" role="navigation">
           {% for group in site.groups %}
             {% assign name = group | downcase %}
@@ -135,6 +141,7 @@
     </footer>
   </div>
 
+  <!--
   <script>
     var Swiftype = window.Swiftype || {};
     (function() {
@@ -156,6 +163,14 @@
 
     ga('create', 'UA-49868484-1', 'nshipster.com');
     ga('send', 'pageview');
+  </script>
+  -->
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
+  <script>
+  $(".title").fitText();
   </script>
 </body>
 </html>

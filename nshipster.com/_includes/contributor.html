@@ -1,0 +1,26 @@
+<!-- {% if include.role == 'author' %}
+{% assign contributor = site.data.authors[page.author] %}
+{% elsif include.role == 'translator' %}
+{% endif %} -->
+
+{% assign contributor = site.data.authors.mattt %}
+
+<div class="contributor" rel="{{ include.role }}" itemscope itemtype="http://data-vocabulary.org/Person">
+  {% case include.role %}
+  {% when 'author' %}
+    <small>Written by</small>
+  {% when 'translator' %}
+    <small>Translated by</small>
+  {% endcase %}
+
+  <img class="avatar" itemprop="photo" src="//0.gravatar.com/avatar/f32c3cab150e7018cbe4d00401f597e2?size=300" draggable="false"/>
+  <div class="details">
+    <span itemprop="name">{{ contributor.name }}</span>
+
+    {{ contributor.bio | markdownify }}
+
+    {% if contributor.google %}
+      <a href="https://plus.google.com/{{ contributor.google }}?rel=author" style="display: none;"></a>
+    {% endif %}
+  </div>
+</div>

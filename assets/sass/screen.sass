@@ -2,9 +2,23 @@
 @import './neat/neat'
 @import './base/base'
 
+@import "./colors"
+@import "./functions"
+// @import "./fonts"
+// @import "./typography"
+// @import "./layout"
+@import "./animations"
+@import "./pygments"
+// @import "./mobile"
+// @import "./promotion"
+@import "./swiftype"
+//
+@import "./components/logo"
+
+
 $visual-grid: true
 
-$grid-columns: 10
+$grid-columns: 12
 $max-width: 100%
 
 $tablet: new-breakpoint(max-width 768px 8)
@@ -16,25 +30,181 @@ html, body
 [role="container"]
   +outer-container
 
+  margin: 1em auto
+  max-width: 1280px
+
+  [role="main"]
+    max-width: 960px
+    margin: 0 auto
+    padding: 2em
+
   section
     +row
-    padding: 2em 0
+    +outer-container
+    margin-bottom: 2em
+    padding-bottom: 1em
+
+
+[role='banner']
+  +row
+
+  #logo
+    +span-columns(3 of 12)
+    +prevent-selection
+    font-size: 1em
+    max-height: 7.5em
+
+    svg
+      margin: 0 2em 0 1em
+
+    .mustache
+      transform-origin: center center !important
+      -webkit-transform: skewX(0)
+      z-index: 1000
+      position: absolute
+
+    &:hover .mustache
+      +animation(twirl 1s ease-in-out)
+
+  nav
+    +span-columns(6 of 12)
+
+    li
+      display: block
+      +span-columns(1 of 3)
+
+      a
+        font-size: 1.5em
+        display: block
+        text-align: center
+
+  form
+    +span-columns(2 of 12)
+    +omega
+
+
+// Layout
+
+#latest
+  article
+    p
+      font-size: 125%
+
+#recent
+  article
+    +span-columns(4 of 12)
+    +omega(4n)
+    clear: right
+
+
+// Typography
+
+section
+  h1
+    margin-bottom: 1em
+
+article
+  margin-bottom: 1em
+
+  header
+    text-align: center
+    margin-bottom: 3em
 
     h1
+      font-size: 3em
+    h2
+      font-size: 1.25em
+
+  .content
+    font-size: 125%
+    margin-bottom: 2em
+
+    h1, h2, h3, h4, h5
+      margin: 2em 0 1em 0
+
+
+  hr
+    width: 40%
+    margin: 2em auto
+
+  img
+    margin: 1em auto
+    display: block
+    width: auto
+
+  footer
+
+    .contributor
+      +span-columns(6 of 12)
+      +omega(2n)
+      border-top: 1px #ccc solid
+      padding: 1em 0
+
+      &:only-child
+        +fill-parent
+
+        .avatar
+          padding: 0 1em
+
+      +media($mobile)
+        +fill-parent
+        margin-bottom: 1em
+
+        &:not(:first-child)
+          border-top: none
+
+        .avatar
+          padding: 0
+
+      .avatar
+        +span-columns(2 of 6)
+
+      .details
+        +span-columns(4 of 6)
+        +omega
+        margin-top: 1em
+
+        span
+          font-weight: 700
+
+        p
+          font-size: 0.75em
+          margin-top: 1em
+
+    small
+      display: block
+      font-size: 1em
+      font-weight: 700
+      color: #777
+      text-transform: lowercase
+      font-variant: small-caps
       margin-bottom: 1em
 
+    [role="navigation"]
+      +row
+
+      #continue
+        +span-columns(9 of 12)
+
+      #related
+        +span-columns(3 of 12)
+        +omega
+
+[role="contentinfo"]
+  text-align: center
+  margin-top: 2em
+
+.avatar
+  +prevent-selection
+  max-width: 200px
+  max-height: 200px
+  border-radius: 50%
+  pointer-events: none
+  user-select: none
 
 
-// @import "./functions"
-// @import "./colors"
-// @import "./fonts"
-// @import "./typography"
-// @import "./layout"
-// @import "./animations"
-// @import "./pygments"
-// @import "./mobile"
-// @import "./promotion"
-// @import "./swiftype"
-//
-// @import "./components/logo"
+a
+  color: $link-color
+
+
 

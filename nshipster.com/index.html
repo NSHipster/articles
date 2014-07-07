@@ -3,6 +3,10 @@ layout: default
 title: NSHipster
 ---
 
+{% contentfor header %}
+<h2>{{ site.description }}</h2>
+{% endcontentfor %}
+
 <section id="latest">
   <article>
     <header>
@@ -22,11 +26,36 @@ title: NSHipster
   </article>
 </section>
 
-<section id="archive">
-  {% for post in site.posts offset:1 %}
+<section id="recent">
+  <h1>Recent Articles</h1>
+
+  {% for post in site.posts offset:1 | limit: 6 %}
   	<article>
       <header>
-        <h1><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+        <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+      </header>
+      {% if post.description %}
+        <p>{{ post.description }}</p>
+      {% else %}
+        {{ post | only_first_p }}
+      {% endif %}
+
+      <a class="readmore" href="{{ post.url }}">Read more</a>
+    </article>
+  {% endfor %}
+
+  <a href="">Browse All Past Articles</a>
+</section>
+
+<section id="popular">
+  <h1>Popular Articles</h1>
+
+  <img src="//cdn.nshipster.com/images/the-nshipster-fake-book-cover@2x.png"/>
+
+  {% for post in site.tags.popular | shuffle | limit: 2 %}
+  	<article>
+      <header>
+        <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
       {% if post.description %}
         <p>{{ post.description }}</p>

@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+{% for book in site.data.books %}
+  {% assign identifier = book[0] %}
+  {% assign content = book[1] %}
+
+  <article class="book" id="{{ identifier }}">
+    <header>
+      <hgroup>
+        <h1 class="title">{{ content.title }}</h1>
+        {% if content.subtitle %}
+          <h2 class="subtitle">{{ content.subtitle }}</h2>
+        {% endif %}
+      </hgroup>
+      <p class="description">{{ content.description }}</p>
+    </header>
+  </article>
+{% endfor %}

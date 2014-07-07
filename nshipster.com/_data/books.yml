@@ -1,0 +1,28 @@
+nshipster:
+  title: "NSHipster: Obscure Topics in Cocoa & Objective-C"
+  description: "To be an NSHipster is to care deeply about the craft of writing code. In cultivating a deep understanding and appreciation of Objective-C, its frameworks and ecosystem, one is able to create apps that delight and inspire users. Combining articles from NSHipster.com with new essays, this book is the essential guide for modern iOS and Mac OS X developers."
+  image: "https://nshipster..."
+  formats:
+    ebook:
+      isbn: 978-0-9912182-2-6
+  availability: in_stock
+
+cfhipsterref:
+  title: "CFHipsterRef: Low-Level Programming on iOS & Mac OS X"
+  description: "Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, CFHipsterRef: Low-Level Programming on iOS & Mac OS X covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime."
+  image: "..."
+  formats:
+    pdf:
+      price: 29.99
+      isbn: ...
+  availability: pre_order
+
+nshipster-fake-book-objective-c:
+  title: "The NSHipster Fake Book (Objective-C)"
+  description: ""
+  image: "..."
+  formats:
+    pdf:
+      price: 19.99
+      isbn: ...
+  availability: pre_order

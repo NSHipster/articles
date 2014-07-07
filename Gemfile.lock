@@ -38,6 +38,8 @@ GEM
       toml (~> 0.1.0)
     jekyll-coffeescript (1.0.0)
       coffee-script (~> 2.2)
+    jekyll-contentblocks (0.0.2)
+      jekyll
     jekyll-gist (1.1.0)
     jekyll-paginate (1.0.0)
     jekyll-sass-converter (1.0.0)
@@ -83,6 +85,7 @@ DEPENDENCIES
   bitters
   bourbon
   jekyll
+  jekyll-contentblocks
   neat
   nokogiri
   pygments.rb

@@ -4,41 +4,75 @@ layout: default
 
 <article role="article">
   <header role="heading">
-    <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
-    <h2>Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
-    {% if page.created %}
-      <h3>Originally posted on <time datetime="{{ page.created }}">{{ page.created | ordinalize }}</time></h3>
-    {% endif %}
+    <h1 class="title"><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
+    <h2><time datetime="{{ page.date }}" pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
   </header>
 
   <div class="content" data-swiftype-index="true">
     {{ content }}
   </div>
 
-  <aside>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-via="NSHipster" data-size="large">Tweet</a>
-    <script>
-      !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-    </script>
-  </aside>
 
-  <nav role="navigation">
-    <ul>
-      {% if page.previous %}
-        <li class="previous">
-          <a href="{{ page.previous.url }}" rel="prev">{{ page.previous.title }}</a>
+  <footer>
+
+    <section id="sharing">
+      <ul>
+        <li class="twitter">
+          <a href="http://twitter.com/share?url={{ page.url }}&amp;text={{ page.title | cgi_escape }}+via+@NSHipster">Twitter</a>
         </li>
-      {% endif %}
-
-      {% if page.next %}
-        <li class="next">
-          <a href="{{ page.next.url }}" rel="next">{{ page.next.title }}</a>
+        <li class="facebook">
+          <a href="http://www.facebook.com/sharer.php?u={{ page.url }}">Facebook</a>
         </li>
-      {% endif %}
-    </ul>
-  </nav>
+        <li class="google-plus">
+          <a href="https://plus.google.com/share?url={{ page.url }}">g+</a>
+        </li>
+        <li class="email">
+          <a href="mailto:?Subject={{ page.title | cgi_escape }}&Body=%20{{ page.url }}">Mail</a>
+        </li>
+    </section>
 
-  <footer class="book promotion">
+    <section id="attribution">
+      {% include contributor.html role="author" %}
+      {% if page.translator %}
+        {% include contributor.html role="translator" %}
+      {% endif %}
+    </section>
+
+    <nav role="navigation">
+      <div id="continue">
+        <small>Continue Reading</small>
+
+        {% if page.next %}
+          <article>
+            <h1 class="title">
+              <a href="{{ page.next.url }}" title="{{ post.title }}" rel="next">{{ page.next.title }}</a>
+            </h1>
+            {% if page.next.description %}
+              <p>{{ page.next.description }}</p>
+            {% else %}
+              {{ page.next | only_first_p }}
+            {% endif %}
+          </article>
+        {% endif %}
+      </div>
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+
+          {% for post in site.related_posts | shuffle | limit: 4 %}
+            <li>
+              <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+
+  </footer>
+
+  <!-- <footer class="book promotion">
     <a href="https://gum.co/the-nshipster-fake-book"><div id="the-nshipster-fake-book-cover" class="cover"></div></a>
     <div>
       <hgroup>
@@ -60,5 +94,5 @@ layout: default
       <p>Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, <em>CFHipsterRef: Low-Level Programming on iOS &amp; Mac OS X</em> covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime.</p>
       <button onclick="javascript:window.location.href='https://gum.co/cfhipsterref'">Get It Now</button>
     </div>
-  </footer>
+  </footer> -->
 </article>
