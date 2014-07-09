@@ -2,7 +2,7 @@
 layout: post
 title: "NSHashTable &<br/>NSMapTable"
 ref: "http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/NSMapTable_class/Reference/NSMapTable.html"
-category: Foundation
+category: Cocoa
 rating: 7.2
 ---
 

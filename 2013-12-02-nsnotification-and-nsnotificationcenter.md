@@ -1,11 +1,8 @@
 ---
 layout: post
 title: "NSNotification &<br/>NSNotificationCenter"
-category: "Foundation"
-<<<<<<< HEAD
-=======
+category: Cocoa
 tags: popular
->>>>>>> Stashing
 rating: 8.4
 description: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NSFileManager
-category: "Foundation"
+category: Cocoa
 rating: 7.9
 description: "File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don't often interact with the file system much beyond simple file operations, one can get away with only knowing the basics."
 ---

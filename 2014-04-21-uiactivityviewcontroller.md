@@ -2,7 +2,7 @@
 layout: post
 title: UIActivityViewController
 ref: "https://developer.apple.com/library/ios/documentation/uikit/reference/UIActivityViewController_Class/Reference/Reference.html"
-category: UIKit
+category: Cocoa
 rating: 7.2
 description: "The relationship between code and data has long been a curious one."
 ---
