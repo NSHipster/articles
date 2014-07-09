@@ -6,6 +6,7 @@ rating: 8.0
 description: "Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."
 created: "2013-11-11"
 updated: "2014-06-30"
+author: mattt
 ---
 
 Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.
@@ -65,16 +66,6 @@ To illustrate the differences between each style, here is how the number `12345.
 
 By default, `NSNumberFormatter` will format according to the current locale settings, which determines things like currency symbol ($, £, €, etc.) and whether to use "," or "." as the decimal separator.
 
-<!-- ~~~{objective-c}
-NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-
-for (NSString *identifier in @[@"en_US", @"fr_FR", @"ja_JP"]) {
-    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:identifier];
-    NSLog(@"%@: %@", identifier, [numberFormatter stringFromNumber:@(1234.5678)]);
-}
-~~~ -->
-
 ~~~{swift}
 let formatter = NSNumberFormatter()
 formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
@@ -82,6 +73,16 @@ formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
 for identifier in ["en_US", "fr_FR", "ja_JP"] {
     formatter.locale = NSLocale(localeIdentifier: identifier)
     println("\(identifier) \(formatter.stringFromNumber(1234.5678))")
+}
+~~~
+
+~~~{objective-c}
+NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+
+for (NSString *identifier in @[@"en_US", @"fr_FR", @"ja_JP"]) {
+    numberFormatter.locale = [NSLocale localeWithLocaleIdentifier:identifier];
+    NSLog(@"%@: %@", identifier, [numberFormatter stringFromNumber:@(1234.5678)]);
 }
 ~~~
 
@@ -162,15 +163,6 @@ Both properties share a single set of `enum` values:
 
 `dateStyle` and `timeStyle` are set independently. For example, to display just the time, an `NSDateFormatter` would be configured with a `dateStyle` of `NoStyle`:
 
-<!-- ~~~{objective-c}
-NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-[formatter setDateStyle:NSDateFormatterNoStyle];
-[formatter setTimeStyle:NSDateFormatterMediumStyle];
-
-NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
-// 12:11:19pm
-~~~ -->
-
 ~~~{swift}
 let formatter = NSDateFormatter()
 formatter.dateStyle = .NoStyle
@@ -180,16 +172,16 @@ let string = formatter.stringFromDate(NSDate())
 // 10:42:21am
 ~~~
 
-Whereas setting both to `LongStyle` yields the following:
-
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-[formatter setDateStyle:NSDateFormatterLongStyle];
-[formatter setTimeStyle:NSDateFormatterLongStyle];
+[formatter setDateStyle:NSDateFormatterNoStyle];
+[formatter setTimeStyle:NSDateFormatterMediumStyle];
 
 NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
-// Monday, November 11, 2013 12:11:19pm PST
-``` -->
+// 12:11:19pm
+~~~
+
+Whereas setting both to `LongStyle` yields the following:
 
 ~~~{swift}
 let formatter = NSDateFormatter()
@@ -198,6 +190,15 @@ formatter.timeStyle = .LongStyle
 
 let string = formatter.stringFromDate(NSDate())
 // Monday June 30, 2014 10:42:21am PST
+~~~
+
+~~~{objective-c}
+NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+[formatter setDateStyle:NSDateFormatterLongStyle];
+[formatter setTimeStyle:NSDateFormatterLongStyle];
+
+NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
+// Monday, November 11, 2013 12:11:19pm PST
 ~~~
 
 As you might expect, each aspect of the date format can alternatively be configured individually, a la carte. For any aspiring time wizards `NSDateFormatter` has a bevy of different knobs and switches to play with.
