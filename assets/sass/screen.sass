@@ -9,7 +9,6 @@
 @import "./pygments"
 @import "./swiftype"
 
-
 $visual-grid: true
 
 $grid-columns: 12
@@ -17,7 +16,6 @@ $max-width: 100%
 
 $tablet: new-breakpoint(max-width 768px 8)
 $mobile: new-breakpoint(max-width 480px 4)
-
 
 html, body
   // font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif !important
@@ -28,7 +26,6 @@ html, body
 
 [role="container"]
   +outer-container
-
 
   max-width: 960px
   margin: 0 auto
@@ -105,12 +102,14 @@ html, body
 #recent
   article
     +span-columns(4 of 12)
-    +omega(4n)
-    clear: right
+
+    &:nth-of-type(3n)
+      +omega
 
     +media($tablet)
       +span-columns(6 of 12)
-      +omega(2n)
+      &:nth-of-type(2n)
+        +omega
 
     +media($mobile)
       +fill-parent

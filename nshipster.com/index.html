@@ -1,6 +1,7 @@
 ---
 layout: default
 title: NSHipster
+foo: [5, 1,2,3]
 ---
 
 {% contentfor header %}
@@ -30,7 +31,7 @@ title: NSHipster
   <h1>Recent Articles</h1>
 
   {% for post in site.posts offset:1 | limit: 6 %}
-  	<article>
+    <article>
       <header>
         <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
@@ -41,8 +42,6 @@ title: NSHipster
       {% endif %}
     </article>
   {% endfor %}
-
-  <a href="">Browse All Past Articles</a>
 </section>
 
 <section id="publications">
@@ -67,8 +66,6 @@ title: NSHipster
       {% else %}
         {{ post | only_first_p }}
       {% endif %}
-
-      <a class="readmore" href="{{ post.url }}">Read more</a>
     </article>
   {% endfor %}
 </section>
@@ -79,7 +76,8 @@ title: NSHipster
     <div>
       <h2>{{ group }}</h2>
       <ul>
-        {% for post in site.posts | sort_by_title %}
+        {% assign sorted = site.posts | sort: 'title' %}
+        {% for post in sorted %}
           {% if post.category == group %}
             <li><a href="{{ post.url }}">{{ post.title }}</a></li>
           {% elsif group == 'Miscellanea' %}

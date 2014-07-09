@@ -1,7 +1,7 @@
 ruby '2.0.0'
 source "https://rubygems.org"
 
-gem 'jekyll'
+gem 'jekyll', git: 'git@github.com:jekyll/jekyll.git'
 gem 'jekyll-contentblocks'
 
 gem 'nokogiri'

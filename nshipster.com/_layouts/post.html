@@ -41,18 +41,21 @@ layout: default
       <div id="continue">
         <small>Continue Reading</small>
 
-        {% if page.next %}
+        {% assign next = page.next %}
+        {% if next == nil %}
+        {% assign next = site.posts.last %}
+        {% endif %}
+
           <article>
             <h1 class="title">
-              <a href="{{ page.next.url }}" title="{{ post.title }}" rel="next">{{ page.next.title }}</a>
+              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title }}</a>
             </h1>
             {% if page.next.description %}
-              <p>{{ page.next.description }}</p>
+              <p>{{ next.description }}</p>
             {% else %}
-              {{ page.next | only_first_p }}
+              {{ next | only_first_p }}
             {% endif %}
           </article>
-        {% endif %}
       </div>
 
       <div id="related">
@@ -65,10 +68,13 @@ layout: default
             {% assign related = site.categories[category] %}
           {% endif %}
 
-          {% for post in related | shuffle | limit: 4 %}
+          {% assign related = related | shuffle %}
+          {% for post in related limit: 4 %}
+          {% if page.url != post.url %}
             <li>
               <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </li>
+            {% endif %}
           {% endfor %}
         </ul>
       </div>
