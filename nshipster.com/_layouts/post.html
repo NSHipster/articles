@@ -14,7 +14,6 @@ layout: default
 
 
   <footer>
-
     <section id="sharing">
       <ul>
         <li class="twitter">
@@ -60,8 +59,13 @@ layout: default
         <small>Related Articles</small>
 
         <ul>
+          {% assign related = site.related_articles %}
+          {% if page.category %}
+            {% assign category = page.category | downcase %}
+            {% assign related = site.categories[category] %}
+          {% endif %}
 
-          {% for post in site.related_posts | shuffle | limit: 4 %}
+          {% for post in related | shuffle | limit: 4 %}
             <li>
               <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
             </li>

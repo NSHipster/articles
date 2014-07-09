@@ -18,8 +18,6 @@ $max-width: 100%
 $tablet: new-breakpoint(max-width 768px 8)
 $mobile: new-breakpoint(max-width 480px 4)
 
-html
-
 
 html, body
   // font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif !important
@@ -190,8 +188,6 @@ section
         .avatar
           padding: 0
 
-        .details
-
       .avatar
         +span-columns(2 of 6)
 
@@ -260,8 +256,14 @@ a, a:visited
     +omega(3)
 
 #sharing
+  ul
+    +clearfix
+    display: block
+    float: right
+
+
   li
-    font-size: 3em
+    font-size: 1em
     display: block
     margin: 0.5em
     float: left
