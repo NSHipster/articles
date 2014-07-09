@@ -12,7 +12,6 @@ layout: default
     {{ content }}
   </div>
 
-
   <footer>
     <section id="sharing">
       <ul>
@@ -50,11 +49,8 @@ layout: default
             <h1 class="title">
               <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title }}</a>
             </h1>
-            {% if page.next.description %}
-              <p>{{ next.description }}</p>
-            {% else %}
-              {{ next | only_first_p }}
-            {% endif %}
+
+            {{ next.excerpt | markdownify }}
           </article>
       </div>
 

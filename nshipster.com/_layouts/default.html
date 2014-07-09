@@ -5,11 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
   {% if page.id %}
     <title>{{ page.title | replace:'<br/>',' ' | strip_html }} - {{ site.title }}</title>
-    {% if page.description %}
-      <meta name="description" content="{{ page.description | strip_html }}"/>
-    {% else %}
-      <meta name="description" content="{{ page | only_first_p | strip_html }}"/>
-    {% endif %}
+    <meta name="description" content="{{ page.excerpt | strip_html }}"/>
     <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
   {% else %}
     <title>{{ page.title | strip_html }}</title>
@@ -36,11 +32,7 @@
   <meta name="twitter:creator" content="@mattt">
   {% if page.id %}
     <meta name="twitter:title" content="{{ page.title }}">
-    {% if page.description %}
-      <meta name="twitter:description" content="{{ page.description | strip_html | escape }}">
-    {% else %}
-      <meta name="twitter:description" content="{{ page.content | truncate: 250 | strip_html | escape }}">
-    {% endif %}
+    <meta name="twitter:description" content="{{ page.excerpt | strip_html | escape }}">
   {% else %}
     <meta name="twitter:title" content="{{ site.title }}">
     <meta name="twitter:description" content="{{ site.description | strip_html | escape}}">
@@ -50,11 +42,7 @@
   {% if page.id %}
     <meta content="{{ page.title }}" property="og:title"/>
     <meta content="{{ site.url }}{{ page.url }}" property="og:url"/>
-    {% if page.description %}
-      <meta content="{{ page.description | strip_html | escape }}" property="og:description"/>
-    {% else %}
-      <meta content="{{ page.content | truncate: 250 | strip_html | escape }}" property="og:description"/>
-    {% endif %}
+    <meta content="{{ page.excerpt | strip_html | escape }}" property="og:description"/>
   {% else %}
     <meta content="{{ site.title }}" property="og:title"/>
     <meta content="{{ site.url }}" property="og:url"/>
@@ -170,7 +158,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
   <script>
-  $(".title").fitText(1.5);
+  $('[role="article"] header .title').fitText(1.5);
   </script>
 </body>
 </html>

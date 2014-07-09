@@ -40,6 +40,7 @@ html, body
 
 [role='banner']
   +row
+  margin-bottom: 2em
 
   #logo
     +span-columns(3 of 12)
@@ -101,19 +102,41 @@ html, body
 
 #recent
   article
+    +clearfix
     +span-columns(4 of 12)
+    min-height: 15em
 
     &:nth-of-type(3n)
       +omega
 
     +media($tablet)
       +span-columns(6 of 12)
+      min-height: 12em
+
       &:nth-of-type(2n)
         +omega
 
     +media($mobile)
       +fill-parent
+      min-height: 7em
       margin-bottom: 1em
+
+    p
+      +multiline-truncate
+
+#popular
+  article
+    +span-columns(6 of 12)
+
+    &:nth-of-type(2n)
+      +omega
+
+    +media($mobile)
+      +fill-parent
+      margin-bottom: 1em
+
+    p
+      +multiline-truncate
 
 
 // Typography
@@ -163,6 +186,9 @@ section
     margin: 1em auto
     display: block
     width: auto
+
+  figure
+    text-align: center
 
   footer
     .contributor
@@ -246,8 +272,6 @@ a, a:visited
   &:hover
     text-decoration: none
 
-
-
 .archive
   div
     +span-columns(4 of 12)
@@ -279,12 +303,16 @@ a, a:visited
       display: table-cell
       padding-right: 0.5em
 
+  ol
+    counter-reset: list
+
   ol > li
     list-style: disc inside !important
     display: table-row
 
     &:before
-      content: counter(foo) "."
+      counter-increment: list
+      content: counter(list) "."
       display: table-cell
       padding-right: 0.5em
 
