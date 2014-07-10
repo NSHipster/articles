@@ -63,11 +63,10 @@ This may be due to how cumbersome it is to implement. Let's look at a simple imp
 #pragma mark - UIGestureRecognizer
 
 - (void)handleLongPressGesture:(UIGestureRecognizer *)recognizer  {
+	[recognizer.view becomeFirstResponder];
 	UIMenuController *menuController = [UIMenuController sharedMenuController];
     [menuController setTargetRect:recognizer.view.frame inView:recognizer.view.superview];
     [menuController setMenuVisible:YES animated:YES];
-
-    [recognizer.view becomeFirstResponder];
 }
 ~~~
 
