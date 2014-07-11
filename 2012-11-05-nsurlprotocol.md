@@ -13,7 +13,7 @@ iOS根本离不开网络——不论是从服务端读写数据、向系统分�
 
 正因如此，Foundation库的[URL加载系统](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i)是每个iOS工程师应该熟练掌握的。
 
-当应用程序面临处理问题的抉择时，通常会选择最高级别的框架来解决这个问题。所以如果给定的任务是通过`http://`, `https://` 或 `ftp://`进行通讯，那么与 `NSURLConnection` 相关的方法就是最好的选择了。苹果关于网络的类涵盖甚广，包括从URL加载、还存管理到认证与存储cookie等多个领域，完全可以满足现代Objective-C应用开发的需要：
+当应用程序面临处理问题的抉择时，通常会选择最高级别的框架来解决这个问题。所以如果给定的任务是通过`http://`, `https://` 或 `ftp://`进行通讯，那么与 `NSURLConnection` 相关的方法就是最好的选择了。苹果关于网络的类涵盖甚广，包括从URL加载、缓存管理到认证与存储cookie等多个领域，完全可以满足现代Objective-C应用开发的需要：
 
 <figure id="url-loading-system">
   <figcaption>URL加载系统</figcaption>
@@ -112,7 +112,7 @@ iOS根本离不开网络——不论是从服务端读写数据、向系统分�
 - 对发出请求的header进行格式化
 - 对发出的媒体请求进行签名
 - 创建本地代理服务，用于数据变化时对URL请求的更改
-- 故意制造畸形或非法返回数据来测试程序的鲁棒性
+- 故意制造畸形或非法返回数据来测试程序的健壮性
 - 过滤请求和返回中的敏感信息
 - 在既有协议基础上完成对 `NSURLConnection` 的实现且与原逻辑不产生矛盾
 
