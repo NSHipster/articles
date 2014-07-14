@@ -6,9 +6,11 @@ nshipster:
     ebook:
       isbn: 978-0-9912182-2-6
   availability: in_stock
+  url: https://gum.co/nshipster
 
 cfhipsterref:
   title: "CFHipsterRef: Low-Level Programming on iOS & Mac OS X"
+  summary: "Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, _CFHipsterRef: Low-Level Programming on iOS & Mac OS X_ covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime."
   description: "Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, CFHipsterRef: Low-Level Programming on iOS & Mac OS X covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime."
   image: "..."
   formats:
@@ -16,9 +18,11 @@ cfhipsterref:
       price: 29.99
       isbn: ...
   availability: pre_order
+  url: https://gum.co/cfhipsterref
 
 nshipster-fake-book-objective-c:
   title: "The NSHipster Fake Book (Objective-C)"
+  summary: "Over 200 code samples, ranging from the beginner and basic to the expert and obscure, across a variety of genres and use cases. Without any needless explanation."
   description: ""
   image: "..."
   formats:
@@ -26,3 +30,4 @@ nshipster-fake-book-objective-c:
       price: 19.99
       isbn: ...
   availability: pre_order
+  url: https://gum.co/the-nshipster-fake-book

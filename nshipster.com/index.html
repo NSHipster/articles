@@ -65,20 +65,18 @@ foo: [5, 1,2,3]
   <h1>Archive</h1>
   {% for group in site.groups %}
 
-    <div>
-      <h2>{{ group }}</h2>
-      <ul>
-        {% assign sorted = site.posts | sort: 'title' %}
-        {% for post in sorted %}
-          {% if post.category == group %}
-            <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-          {% elsif group == 'Miscellanea' %}
-            {% unless site.groups contains post.category %}
-              <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-            {% endunless %}
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+    <dl>
+      <dt>{{ group }}</dt>
+      {% assign sorted = site.posts | sort: 'title' %}
+      {% for post in sorted %}
+        {% if post.category == group %}
+          <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+        {% elsif group == 'Miscellanea' %}
+          {% unless site.groups contains post.category %}
+            <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </dl>
   {% endfor %}
 </section>

@@ -95,11 +95,8 @@
     <footer role="contentinfo">
       <section class="credits colophon">
         <p>
-          <span aria-hidden="true" class="icon-creative-commons"></span>
-
+          <i aria-hidden="true" class="icon-cc"></i>
           NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
-
-
         </p>
         <p>Articles also available in <a href="http://nshipster.cn" hreflang="zh-Hans">中文</a>.</p>
       </section>
@@ -108,24 +105,6 @@
         <a href="https://github.com/NSHipster/articles/issues" class="icon-github" title="Pull Requests Welcome" aria-hidden="true"></a>
         <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
-
-      {% if false %}
-        <section class="archive" role="navigation">
-          {% for group in site.groups %}
-            {% assign name = group | downcase %}
-            {% assign category = site.categories[name] %}
-
-            <div>
-              <h2>{{ group }}</h2>
-              <ul>
-                {% for post in category %}
-                  <li><a href="{{ post.url }}">{{ post.title }}</a></li>
-                {% endfor %}
-              </ul>
-            </div>
-          {% endfor %}
-        </section>
-      {% endif %}
     </footer>
   </div>
 
@@ -154,11 +133,11 @@
   </script>
   -->
 
-
+<!--
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/FitText.js/1.1/jquery.fittext.min.js"></script>
   <script>
   $('[role="article"] header .title').fitText(1.5);
-  </script>
+  </script>-->
 </body>
 </html>

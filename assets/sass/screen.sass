@@ -190,6 +190,9 @@ section
   figure
     text-align: center
 
+  blockquote
+    border-left: 3px $primary-color solid
+
   footer
     .contributor
       +span-columns(6 of 12)
@@ -273,10 +276,10 @@ a, a:visited
     text-decoration: none
 
 .archive
-  div
+  dl
     +span-columns(4 of 12)
-    clear: right
     +omega(3)
+    clear: right
 
 #sharing
   ul
@@ -316,6 +319,16 @@ a, a:visited
       display: table-cell
       padding-right: 0.5em
 
-  ul
-    margin: 1em
+  dl
+    dt
+      font-size: 1.5em
+      margin-bottom: 1em
 
+    dd
+      list-style: disc inside !important
+      display: table-row
+
+      &:before
+        content: "●"
+        display: table-cell
+        padding-right: 0.5em

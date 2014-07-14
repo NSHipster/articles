@@ -1593,7 +1593,10 @@ section h1 {
   /* line 190, ../sass/screen.sass */
   [role="article"] figure {
     text-align: center; }
-  /* line 194, ../sass/screen.sass */
+  /* line 193, ../sass/screen.sass */
+  [role="article"] blockquote {
+    border-left: 3px #ff8000 solid; }
+  /* line 197, ../sass/screen.sass */
   [role="article"] footer .contributor {
     float: left;
     display: block;
@@ -1610,24 +1613,24 @@ section h1 {
     /* line 57, ../sass/neat/grid/_omega.scss */
     [role="article"] footer .contributor:nth-child(2n+1) {
       clear: left; }
-    /* line 200, ../sass/screen.sass */
+    /* line 203, ../sass/screen.sass */
     [role="article"] footer .contributor:only-child {
       width: 100%; }
-      /* line 203, ../sass/screen.sass */
+      /* line 206, ../sass/screen.sass */
       [role="article"] footer .contributor:only-child .avatar {
         padding: 0 1em; }
     @media screen and (max-width: 480px) {
-      /* line 194, ../sass/screen.sass */
+      /* line 197, ../sass/screen.sass */
       [role="article"] footer .contributor {
         width: 100%;
         margin-bottom: 1em; }
-        /* line 210, ../sass/screen.sass */
+        /* line 213, ../sass/screen.sass */
         [role="article"] footer .contributor:not(:first-child) {
           border-top: none; }
-        /* line 213, ../sass/screen.sass */
+        /* line 216, ../sass/screen.sass */
         [role="article"] footer .contributor .avatar {
           padding: 0; } }
-    /* line 216, ../sass/screen.sass */
+    /* line 219, ../sass/screen.sass */
     [role="article"] footer .contributor .avatar {
       float: left;
       display: block;
@@ -1636,7 +1639,7 @@ section h1 {
       /* line 38, ../sass/neat/grid/_span-columns.scss */
       [role="article"] footer .contributor .avatar:last-child {
         margin-right: 0; }
-    /* line 219, ../sass/screen.sass */
+    /* line 222, ../sass/screen.sass */
     [role="article"] footer .contributor .details {
       float: left;
       display: block;
@@ -1647,14 +1650,14 @@ section h1 {
       /* line 38, ../sass/neat/grid/_span-columns.scss */
       [role="article"] footer .contributor .details:last-child {
         margin-right: 0; }
-      /* line 224, ../sass/screen.sass */
+      /* line 227, ../sass/screen.sass */
       [role="article"] footer .contributor .details span {
         font-weight: 700; }
-      /* line 227, ../sass/screen.sass */
+      /* line 230, ../sass/screen.sass */
       [role="article"] footer .contributor .details p {
         font-size: 0.75em;
         margin-top: 1em; }
-  /* line 231, ../sass/screen.sass */
+  /* line 234, ../sass/screen.sass */
   [role="article"] footer small {
     display: block;
     font-size: 1em;
@@ -1663,7 +1666,7 @@ section h1 {
     text-transform: lowercase;
     font-variant: small-caps;
     margin-bottom: 1em; }
-  /* line 240, ../sass/screen.sass */
+  /* line 243, ../sass/screen.sass */
   [role="article"] footer [role="navigation"] {
     display: block; }
     /* line 15, ../sass/bourbon/addons/_clearfix.scss */
@@ -1671,7 +1674,7 @@ section h1 {
       content: "";
       display: table;
       clear: both; }
-    /* line 243, ../sass/screen.sass */
+    /* line 246, ../sass/screen.sass */
     [role="article"] footer [role="navigation"] #continue {
       float: left;
       display: block;
@@ -1680,7 +1683,7 @@ section h1 {
       /* line 38, ../sass/neat/grid/_span-columns.scss */
       [role="article"] footer [role="navigation"] #continue:last-child {
         margin-right: 0; }
-    /* line 246, ../sass/screen.sass */
+    /* line 249, ../sass/screen.sass */
     [role="article"] footer [role="navigation"] #related {
       float: left;
       display: block;
@@ -1691,13 +1694,13 @@ section h1 {
       [role="article"] footer [role="navigation"] #related:last-child {
         margin-right: 0; }
 
-/* line 250, ../sass/screen.sass */
+/* line 253, ../sass/screen.sass */
 [role="contentinfo"] {
   text-align: center;
   margin-top: 2em;
   padding: 1em; }
 
-/* line 255, ../sass/screen.sass */
+/* line 258, ../sass/screen.sass */
 .avatar {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -1711,36 +1714,36 @@ section h1 {
   pointer-events: none;
   user-select: none; }
 
-/* line 265, ../sass/screen.sass */
+/* line 268, ../sass/screen.sass */
 html ::selection, html ::-moz-selection, body ::selection, body ::-moz-selection {
   background: rgba(76, 49, 80, 0.5);
   color: white; }
 
-/* line 269, ../sass/screen.sass */
+/* line 272, ../sass/screen.sass */
 a, a:visited {
   color: #ff8000 !important; }
-  /* line 272, ../sass/screen.sass */
+  /* line 275, ../sass/screen.sass */
   a:hover, a:visited:hover {
     text-decoration: none; }
 
-/* line 276, ../sass/screen.sass */
-.archive div {
+/* line 279, ../sass/screen.sass */
+.archive dl {
   float: left;
   display: block;
   margin-right: 2.35765%;
   width: 31.76157%;
   clear: right; }
   /* line 38, ../sass/neat/grid/_span-columns.scss */
-  .archive div:last-child {
+  .archive dl:last-child {
     margin-right: 0; }
   /* line 52, ../sass/neat/grid/_omega.scss */
-  .archive div:nth-child(3) {
+  .archive dl:nth-child(3) {
     margin-right: 0; }
   /* line 57, ../sass/neat/grid/_omega.scss */
-  .archive div:nth-child(3+1) {
+  .archive dl:nth-child(3+1) {
     clear: left; }
 
-/* line 282, ../sass/screen.sass */
+/* line 285, ../sass/screen.sass */
 #sharing ul {
   display: block;
   float: right; }
@@ -1749,35 +1752,45 @@ a, a:visited {
     content: "";
     display: table;
     clear: both; }
-/* line 288, ../sass/screen.sass */
+/* line 291, ../sass/screen.sass */
 #sharing li {
   font-size: 1em;
   display: block;
   margin: 0.5em;
   float: left; }
 
-/* line 296, ../sass/screen.sass */
+/* line 299, ../sass/screen.sass */
 [role="article"] .content ul > li, .archive ul > li, [role="contentinfo"] ul > li {
   list-style: disc inside !important;
   display: table-row; }
-  /* line 301, ../sass/screen.sass */
+  /* line 304, ../sass/screen.sass */
   [role="article"] .content ul > li:before, .archive ul > li:before, [role="contentinfo"] ul > li:before {
     content: "●";
     display: table-cell;
     padding-right: 0.5em; }
-/* line 306, ../sass/screen.sass */
+/* line 309, ../sass/screen.sass */
 [role="article"] .content ol, .archive ol, [role="contentinfo"] ol {
   counter-reset: list; }
-/* line 309, ../sass/screen.sass */
+/* line 312, ../sass/screen.sass */
 [role="article"] .content ol > li, .archive ol > li, [role="contentinfo"] ol > li {
   list-style: disc inside !important;
   display: table-row; }
-  /* line 313, ../sass/screen.sass */
+  /* line 316, ../sass/screen.sass */
   [role="article"] .content ol > li:before, .archive ol > li:before, [role="contentinfo"] ol > li:before {
     counter-increment: list;
     content: counter(list) ".";
     display: table-cell;
     padding-right: 0.5em; }
-/* line 319, ../sass/screen.sass */
-[role="article"] .content ul, .archive ul, [role="contentinfo"] ul {
-  margin: 1em; }
+/* line 323, ../sass/screen.sass */
+[role="article"] .content dl dt, .archive dl dt, [role="contentinfo"] dl dt {
+  font-size: 1.5em;
+  margin-bottom: 1em; }
+/* line 327, ../sass/screen.sass */
+[role="article"] .content dl dd, .archive dl dd, [role="contentinfo"] dl dd {
+  list-style: disc inside !important;
+  display: table-row; }
+  /* line 331, ../sass/screen.sass */
+  [role="article"] .content dl dd:before, .archive dl dd:before, [role="contentinfo"] dl dd:before {
+    content: "●";
+    display: table-cell;
+    padding-right: 0.5em; }
