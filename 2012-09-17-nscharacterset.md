@@ -5,7 +5,7 @@ ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foun
 category: Cocoa
 rating: 8.5
 published: true
-description: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
+excerpt: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
 ---
 
 As mentioned [previously](http://nshipster.com/cfstringtransform/), Foundation boasts one of the best, most complete implementations of strings around.

@@ -3,7 +3,7 @@ layout: post
 title: Namespacing
 category: "Objective-C"
 rating: 5.0
-description: "Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language's lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics."
+excerpt: "Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language's lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics."
 ---
 
 > Why the hell is everything `NS`-whatever?

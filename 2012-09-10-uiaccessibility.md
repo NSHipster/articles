@@ -5,7 +5,7 @@ ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAc
 category: Cocoa
 rating: 10.0
 published: true
-description: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
+excerpt: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
 ---
 
 > We all want to help one another, human beings are like that.

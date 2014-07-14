@@ -5,7 +5,7 @@ ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAp
 category: Cocoa
 rating: 8.0
 published: true
-description: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
+excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
 ---
 
 Style vs. Substance.

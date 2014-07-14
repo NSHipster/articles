@@ -8,7 +8,7 @@ category: "Xcode"
 tags: popular
 >>>>>>> Stashing
 rating: 9.7
-description: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
+excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 ---
 
 Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.

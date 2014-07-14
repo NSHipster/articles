@@ -5,7 +5,7 @@ ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacO
 category: Cocoa
 rating: 7.0
 tags: popular
-description: "A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."
+excerpt: "A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."
 ---
 
 When everything is an object, nothing is.

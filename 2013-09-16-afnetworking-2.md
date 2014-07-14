@@ -4,7 +4,7 @@ title: AFNetworking 2.0
 ref: "https://github.com/AFNetworking/AFNetworking"
 category: "Open Source"
 rating: 9.9
-description: "AFNetworking is one of the most widely used open source projects for iOS and Mac OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
+excerpt: "AFNetworking is one of the most widely used open source projects for iOS and Mac OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 ---
 
 [AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and Mac OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With over 8,700 stars, 2,200 forks, and 130 contributors, the project is also among the most active and influential in the community.

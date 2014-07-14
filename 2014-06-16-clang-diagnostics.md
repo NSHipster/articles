@@ -4,7 +4,7 @@ title: "Clang Diagnostics"
 ref: "http://clang.llvm.org/diagnostics.html"
 category: Objective-C
 rating: 9.3
-description: "Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang."
+excerpt: "Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang."
 ---
 
 Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent.

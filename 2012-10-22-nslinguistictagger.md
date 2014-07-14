@@ -5,7 +5,7 @@ ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSLi
 category: Cocoa
 rating: 9.7
 published: true
-description: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."
+excerpt: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."
 ---
 
 `NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](http://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](http://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](http://en.wikipedia.org/wiki/Writing_system) used in the string.

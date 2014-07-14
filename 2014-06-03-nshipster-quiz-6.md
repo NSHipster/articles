@@ -4,7 +4,7 @@ title: "NSHipster Quiz #6"
 ref: ""
 category: Trivia
 rating: 10.0
-description: "Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?"
+excerpt: "Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?"
 ---
 
 On June 3rd, we organized the second annual WWDC edition of the NSHipster Pub Quiz. Keeping in its tradition, questions ranged from random Apple trivia to obscure technical questions. For the second year in a row, the event was graciously hosted by [New Relic](http://newrelic.com), whose beautiful downtown San Francisco offices gave the event a feeling of distinction and class. We're also very thankful to [Spotify](https://www.spotify.com/) & [thoughtbot](http://thoughtbot.com) sponsor libations for the evening. Cheers!

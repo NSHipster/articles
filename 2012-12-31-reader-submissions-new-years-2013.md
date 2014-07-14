@@ -3,7 +3,7 @@ layout: post
 title: "Reader Submissions -<br/>New Year's 2013"
 category: "Reader Submissions"
 category: ""
-description: "In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."
+excerpt: "In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."
 ---
 
 In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of _your_ favorite tips and tricks of the trade--to give y'all a chance to show off some of your NSHipster cred.

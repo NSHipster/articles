@@ -3,7 +3,7 @@ layout: post
 title: NSFileManager
 category: Cocoa
 rating: 7.9
-description: "File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don't often interact with the file system much beyond simple file operations, one can get away with only knowing the basics."
+excerpt: "File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don't often interact with the file system much beyond simple file operations, one can get away with only knowing the basics."
 ---
 
 `NSFileManager` is Foundation's high-level API for working with file systems. It abstracts Unix and Finder internals, providing a convenient way to create, read, move, copy, and delete files & directories on local or networked drives, as well as iCloud ubiquitous containers.

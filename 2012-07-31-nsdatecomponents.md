@@ -4,7 +4,7 @@ title: NSDateComponents
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDateComponents_Class/Reference/Reference.html"
 category: Cocoa
 rating: 6.9
-description: "NSDateComponents serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."
+excerpt: "NSDateComponents serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."
 ---
 
 `NSDateComponents` serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with `NSCalendar`, `NSDateComponents` becomes a remarkably convenient interchange format for calendar calculations.

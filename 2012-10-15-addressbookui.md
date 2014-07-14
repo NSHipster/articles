@@ -5,7 +5,7 @@ ref: "http://developer.apple.com/library/ios/#documentation/AddressBookUI/Refere
 category: AddressBookUI
 rating: 6.2
 published: true
-description: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
+excerpt: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
 ---
 
 [Address Book UI](http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html) is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the [Message UI](http://developer.apple.com/library/ios/#documentation/MessageUI/Reference/MessageUI_Framework_Reference/_index.html) framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.

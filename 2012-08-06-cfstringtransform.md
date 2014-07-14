@@ -4,7 +4,7 @@ title: CFStringTransform
 ref: "https://developer.apple.com/library/mac/documentation/CoreFOundation/Reference/CFMutableStringRef/Reference/reference.html#//apple_ref/doc/uid/20001504-CH201-BCIGCACA"
 category: Cocoa
 rating: 9.1
-description: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
+excerpt: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
 ---
 
 There are two indicators that tell you everything you need to know about how nice a language is to use:

@@ -3,7 +3,7 @@ layout: post
 title: "AVSpeechSynthesizer"
 category: "AVFoundation"
 rating: 9.6
-description: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
+excerpt: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
 ---
 
 Though we're a long way off from [_Hal_](https://www.youtube.com/watch?v=ARJ8cAGm6JE) or [_Her_](https://www.youtube.com/watch?v=WzV6mXIOVl4), we should never forget about the billions of other people out there for us to talk to.

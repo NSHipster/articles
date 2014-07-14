@@ -5,7 +5,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Fou
 category: Cocoa
 rating: 6.6
 published: true
-description: "Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."
+excerpt: "Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."
 ---
 
 Of all the Foundation classes, `NSValueTransformer` is perhaps the one that fared the worst in the shift from OS X to iOS.

@@ -4,7 +4,7 @@ title: "C Storage Classes"
 category: Objective-C
 rating: 7.0
 published: true
-description: "In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"
+excerpt: "In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"
 ---
 
 It's time, once again, to take a few steps back from the world of Objective-C, and look at some underlying C language features. Hold onto your fedoras, ladies & gents, as we dive into C storage classes in this week's edition of NSHipster.

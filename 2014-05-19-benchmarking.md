@@ -4,7 +4,7 @@ title: "Benchmarking"
 ref: ""
 category: Objective-C
 rating: 9.0
-description: "Abstractions are necessary for doing meaningful work, but they come at a cost. By benchmarking, a programmer can uncover the hidden performance characteristics of their code, and use this information to optimize accordingly."
+excerpt: "Abstractions are necessary for doing meaningful work, but they come at a cost. By benchmarking, a programmer can uncover the hidden performance characteristics of their code, and use this information to optimize accordingly."
 ---
 
 Abstractions are necessary for doing meaningful work, but they come at a cost. To work at a high level is to turn a blind eye to nonessential details in order to reason with larger logical chunks. Determining what information is important within a particular context, however, is challenging, and is at the heart of performance engineering.

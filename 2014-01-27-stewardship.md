@@ -3,7 +3,7 @@ layout: post
 title: Stewardship
 category: ""
 rating: 10.0
-description: "Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project."
+excerpt: "Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project."
 ---
 
 Open Source communities function within what economists describe as a [Gift Economy](http://en.wikipedia.org/wiki/Gift_economy). Rather than paying one another for goods or services through barter or currency, everyone shares freely with one another, and gains [social currency](http://en.wikipedia.org/wiki/Whuffie) based on their generosity. It's similar to how friends tend to take turns inviting one another over for dinner or a party.

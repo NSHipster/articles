@@ -4,7 +4,7 @@ title: NSOperation
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 category: Cocoa
 rating: 9.0
-description: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
+excerpt: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
 ---
 
 Everyone knows that the secret to making an app snappy and responsive is to offload computation to be done asynchronously in the background.

@@ -4,7 +4,7 @@ title: NSAssertionHandler
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSAssertionHandler_Class/Reference/Reference.html"
 category: Cocoa
 rating: 5.6
-description: "Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."
+excerpt: "Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."
 ---
 
 "When at first you don't succeed, use an object-oriented injection point to override default exception handling." This is the sort of advice you would have learned at mother's knee if you were raised by `NSAssertionHandler`.

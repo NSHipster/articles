@@ -6,7 +6,7 @@ ref: "https://developer.apple.com/library/ios/recipes/xcode_help-source_editor/C
 category: Xcode
 rating: 8.4
 published: true
-description: "iOS development all but requires the use of Xcode. And if we're resigned to use an IDE in our development workflow, we might as well make the most of it, right? So this week on NSHipster, we're going to talk about one of the more powerful yet underused features of Xcode: Code Snippets"
+excerpt: "iOS development all but requires the use of Xcode. And if we're resigned to use an IDE in our development workflow, we might as well make the most of it, right? So this week on NSHipster, we're going to talk about one of the more powerful yet underused features of Xcode: Code Snippets"
 ---
 
 iOS development all but requires the use of Xcode. To its credit, Xcode has improved pretty consistently over the last couple of years. Sure, [it still has its... quirks](http://www.textfromxcode.com), but hey—things could be [much, much worse](http://www.eclipse.org).

@@ -5,7 +5,7 @@ ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Ob
 category: "Objective-C"
 rating: 7.8
 published: true
-description: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
+excerpt: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
 ---
 
 From [number stations](http://en.wikipedia.org/wiki/Numbers_station) and [numerology](http://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities.

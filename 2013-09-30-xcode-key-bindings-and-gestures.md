@@ -4,7 +4,7 @@ title: Xcode Key Bindings & Gestures
 ref: "https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/Introduction/Introduction.html"
 category: Xcode
 rating: 8.0
-description: "Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process."
+excerpt: "Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process."
 ---
 
 The extent to which programming-as-craft is compared to manual disciplines like woodworking is tiresome. It's absolutely the case that one should know and maintain their tools as well as a carpenter or metalsmith, but... I mean, c'mon. One would think that an industry demanding the skills of ninjas and rockstars would mix it up a little: "keep your shurikens polished, sharp, and hidden" or "tune your guitar and condition your hair twice daily".

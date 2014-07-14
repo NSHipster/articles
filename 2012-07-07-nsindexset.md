@@ -4,7 +4,7 @@ title: NSIndexSet
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSet_Class/Reference/Reference.html"
 category: Cocoa
 rating: 7.8
-description: "NSIndexSet (and its mutable counterpart, NSMutableIndexSet) is a sorted collection of unique unsigned integers. Think of it like an NSRange that supports non-contiguous series. It has wicked fast operations for finding indexes in ranges or set intersections, and comes with all of the convenience methods you'd expect in a Foundation collection class."
+excerpt: "NSIndexSet (and its mutable counterpart, NSMutableIndexSet) is a sorted collection of unique unsigned integers. Think of it like an NSRange that supports non-contiguous series. It has wicked fast operations for finding indexes in ranges or set intersections, and comes with all of the convenience methods you'd expect in a Foundation collection class."
 ---
 
 `NSIndexSet` (and its mutable counterpart, `NSMutableIndexSet`) is a sorted collection of unique unsigned integers. Think of it like an `NSRange` that supports non-contiguous series. It has wicked fast operations for finding indexes in ranges or set intersections, and comes with all of the convenience methods you'd expect in a Foundation collection class.
