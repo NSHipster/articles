@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Associated Objects
-framework: "Objective-C"
+category: "Objective-C"
 rating: 6.6
 description: "Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It's dark juju, to be handled with as much caution as any other function from objc/runtime.h"
 ---

@@ -3,7 +3,7 @@ layout: post
 title: Xcode Snippets
 
 ref: "https://developer.apple.com/library/ios/recipes/xcode_help-source_editor/CreatingaCustomCodeSnippet/CreatingaCustomCodeSnippet.html"
-framework: Xcode
+category: Xcode
 rating: 8.4
 published: true
 description: "iOS development all but requires the use of Xcode. And if we're resigned to use an IDE in our development workflow, we might as well make the most of it, right? So this week on NSHipster, we're going to talk about one of the more powerful yet underused features of Xcode: Code Snippets"
@@ -21,7 +21,7 @@ From `@interface` declarations to `if (!self) return nil;` incantations, there i
 
 ## Using Xcode Snippets
 
-To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half the Utilities panel, there will be a horizontal divider with 4 icons. 
+To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half the Utilities panel, there will be a horizontal divider with 4 icons.
 
 ![Utilities Divider](http://nshipster.s3.amazonaws.com/xcode-snippet-utilities-divider.png)
 
@@ -72,7 +72,7 @@ Each snippet has the following fields:
 - **Platform** - Limits the snippet visibility for text completion to the specified platform. OS X, iOS, or both ("All")
 - **Language** - Limits the snippet visibility for text completion to the specified language. Most commonly C, Objective-C, C++, or Objective-C++.
 - **Completion Shortcut** - The text completion shortcut. For commonly-used snippets, this should be relatively short. Xcode does not warn about conflicting / overlapping shortcuts, so make sure yours doesn't overlap with an existing one.
-- **Completion Scopes** - Limits the snippet visibility for text completion to the specified scopes. For example, an `if` / `else` statement should only be auto-completed from within a method or function implementation. Any combination of the following: 
+- **Completion Scopes** - Limits the snippet visibility for text completion to the specified scopes. For example, an `if` / `else` statement should only be auto-completed from within a method or function implementation. Any combination of the following:
     - All
     - Class Implementation
     - Class Interface Methods

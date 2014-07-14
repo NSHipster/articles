@@ -2,7 +2,7 @@
 layout: post
 title: NSExpression
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html"
-framework: Foundation
+category: Foundation
 rating: 9.0
 ---
 

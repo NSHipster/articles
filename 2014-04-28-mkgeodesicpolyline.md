@@ -2,7 +2,7 @@
 layout: post
 title: "MKGeodesicPolyline"
 ref: "https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html"
-framework: MapKit
+category: MapKit
 rating: 8.6
 description: "We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."
 ---

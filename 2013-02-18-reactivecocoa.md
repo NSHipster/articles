@@ -2,7 +2,7 @@
 layout: post
 title: ReactiveCocoa
 ref: "https://github.com/ReactiveCocoa/ReactiveCocoa"
-framework: "Open Source"
+category: "Open Source"
 rating: 9.5
 description: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Type Encodings
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html"
-framework: "Objective-C"
+category: "Objective-C"
 rating: 7.8
 published: true
 description: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."

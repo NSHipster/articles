@@ -2,7 +2,7 @@
 layout: post
 title: "Extended File Attributes"
 ref: ""
-framework: Objective-C
+category: Objective-C
 description: "Amidst revelations of widespread spying by the NSA, the concept of metadata has taken an unexpected role in the national conversation about government surveillance. What is it? And how much does it reveal about us and our daily habits? These are questions that the American people are asking, and they deserve an answer."
 ---
 

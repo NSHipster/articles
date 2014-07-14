@@ -2,7 +2,7 @@
 layout: post
 title: UICollectionView
 ref: "https://developer.apple.com/library/ios/#documentation/UIKit/Reference/UICollectionView_class/Reference/Reference.html#//apple_ref/doc/uid/TP40012177"
-framework: UIKit
+category: UIKit
 rating: 9.6
 published: true
 description: "UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out."
@@ -10,7 +10,7 @@ description: "UICollectionView single-handedly changes the way we will design an
 
 `UICollectionView` is the new `UITableView`. It's that important.
 
-This is not to say that collection views are in any way unknown or obscure--anyone who went to any of the WWDC sessions about it, or got to play with in the iOS 6 beta already know what's up. 
+This is not to say that collection views are in any way unknown or obscure--anyone who went to any of the WWDC sessions about it, or got to play with in the iOS 6 beta already know what's up.
 
 Remember, being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out. So before everybody else finds out for themselves, here's the skinny on the next big thing:
 
@@ -24,7 +24,7 @@ Unlike `UITableView`, however, `UICollectionView` is not constrained to a vertic
 
 ### Cell Views
 
-In another departure from the old-school table view way of doing things, the process of recycling views has been significantly improved. 
+In another departure from the old-school table view way of doing things, the process of recycling views has been significantly improved.
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
@@ -41,7 +41,7 @@ if (!cell) {
 
 Because collection views aren't relegated to any particular structure, the convention of "header" and "footer" views isn't really applicable. So in its place, collection views have _supplementary views_, which can be associated with each cell.
 
-Each cell can have multiple supplementary views associated with it--one for each named "kind". As such, headers and footers are just the beginning of what can be done with supplementary views. 
+Each cell can have multiple supplementary views associated with it--one for each named "kind". As such, headers and footers are just the beginning of what can be done with supplementary views.
 
 The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. `UITableView` hacks are to [`spacer.gif`](http://en.wikipedia.org/wiki/Spacer_GIF) as `UICollectionView` cells are to [semantic HTML](http://en.wikipedia.org/wiki/Semantic_HTML).
 
@@ -55,14 +55,14 @@ One thing to remember about decoration views is that they are entirely managed b
 
 Layouts are at the heart of what makes `UICollectionView` so magical. Think of them as the CSS to your semantic HTML of collection cells from before.
 
-`UICollectionViewLayout` is an abstract base class for positioning cell views and their supplementary and decoration views. But rather than subclass this directly, most applications will opt to use or subclass `UICollectionViewFlowLayout`. Flow layouts cover the broad class of layouts with some notion of linearity, whether that's a single row or column or a grid. 
+`UICollectionViewLayout` is an abstract base class for positioning cell views and their supplementary and decoration views. But rather than subclass this directly, most applications will opt to use or subclass `UICollectionViewFlowLayout`. Flow layouts cover the broad class of layouts with some notion of linearity, whether that's a single row or column or a grid.
 
-Until you're comfortable enough to understand the limitations of flow layouts, it's generally a safe bet to just start with that. 
+Until you're comfortable enough to understand the limitations of flow layouts, it's generally a safe bet to just start with that.
 
 Each cell view, supplemental view, and decoration view have layout attributes. To get an idea of how flexible layouts are, look no further than the properties of an `UICollectionViewLayoutAttributes` object:
 
 - `frame`
-- `center`  
+- `center`
 - `size`
 - `transform3D`
 - `alpha`
@@ -89,7 +89,7 @@ Since the introduction of the iPad, there has been a subtle, yet lingering tensi
 
 There are a million ways Apple could (or could not) have provided this kind of functionality, but they really knocked it out of the park with how they designed everything.
 
-The clean, logical separation between data source and layout; the clear division between cell, supplementary, and decoration views; the extensive set of layout attributes that are automatically animated... a lot of care and wisdom has been put together with these APIs. 
+The clean, logical separation between data source and layout; the clear division between cell, supplementary, and decoration views; the extensive set of layout attributes that are automatically animated... a lot of care and wisdom has been put together with these APIs.
 
 As a result, the entire landscape of iOS apps will be forever changed. With collection views, the aesthetic shift that was kicked off with the iPad will explode into an entire re-definition of how we expect apps to look and behave.
 

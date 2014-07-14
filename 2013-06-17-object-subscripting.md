@@ -2,7 +2,7 @@
 layout: post
 title: Object Subscripting
 ref: "http://clang.llvm.org/docs/ObjectiveCLiterals.html"
-framework: Objective-C
+category: Objective-C
 rating: 8.7
 ---
 

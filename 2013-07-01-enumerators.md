@@ -2,7 +2,7 @@
 layout: post
 title: "NSFastEnumeration /<br/>NSEnumerator /<br/>-enumerateObjectsUsingBlock:"
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSFastEnumeration_protocol/Reference/NSFastEnumeration.html"
-framework: Foundation
+category: Foundation
 rating: 7.8
 ---
 

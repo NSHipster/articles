@@ -2,7 +2,7 @@
 layout: post
 title: AFNetworking 2.0
 ref: "https://github.com/AFNetworking/AFNetworking"
-framework: "Open Source"
+category: "Open Source"
 rating: 9.9
 description: "AFNetworking is one of the most widely used open source projects for iOS and Mac OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 ---

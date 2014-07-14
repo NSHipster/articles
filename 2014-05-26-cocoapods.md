@@ -2,7 +2,7 @@
 layout: post
 title: CocoaPods
 ref: "http://cocoapods.org"
-framework: "Open Source"
+category: "Open Source"
 rating: 9.9
 description: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
 ---

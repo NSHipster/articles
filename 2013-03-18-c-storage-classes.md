@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "C Storage Classes"
-framework: Objective-C
+category: Objective-C
 rating: 7.0
 published: true
 description: "In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"
@@ -32,7 +32,7 @@ Automatic variables have memory automatically allocated when a program enters a 
 
 Most Objective-C programmers probably aren't familiar with `register` either, as it's just not widely used in the `NS` world.
 
-`register` behaves just like `auto`, except that instead of being allocated onto the stack, they are stored in a [register](http://en.wikipedia.org/wiki/Processor_register). 
+`register` behaves just like `auto`, except that instead of being allocated onto the stack, they are stored in a [register](http://en.wikipedia.org/wiki/Processor_register).
 
 Registers offer faster access than RAM, but because of the complexities of memory management, putting variables in registers does not guarantee a faster program—in fact, it may very well end up slowing down execution by taking up space on the register unnecessarily. As it were, using `register` is actually just a _suggestion_ to the compiler to store the variable in the register; implementations may choose whether or not to honor this.
 

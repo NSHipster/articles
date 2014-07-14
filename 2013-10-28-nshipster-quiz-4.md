@@ -2,7 +2,7 @@
 layout: post
 title: "NSHipster Quiz #4"
 ref: "http://www.meetup.com/Appsterdam/events/143596702/"
-framework: Trivia
+category: Trivia
 rating: 10.0
 description: "The fourth and final quiz of the year. Do you have what it takes to be the `NSArray -firstObject` among your peers?"
 ---

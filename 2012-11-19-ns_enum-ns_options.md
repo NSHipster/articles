@@ -2,7 +2,7 @@
 layout: post
 title: "NS_ENUM & NS_OPTIONS"
 ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacOSX10_8/Foundation.html"
-framework: Foundation
+category: Foundation
 rating: 7.0
 published: true
 description: "A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."

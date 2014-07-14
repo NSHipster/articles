@@ -2,7 +2,7 @@
 layout: post
 title: "Key-Value Observing"
 ref: "https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html"
-framework: Foundation
+category: Foundation
 rating: 5.4
 description: "Ask anyone who's been around the NSBlock a few times: Key-Value Observing has the _worst_ API in all of Cocoa. It's awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework."
 ---

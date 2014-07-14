@@ -2,7 +2,7 @@
 layout: post
 title: "Xcode Plugins"
 ref: "http://alcatraz.io"
-framework: "Xcode"
+category: "Xcode"
 rating: 9.7
 description: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: CFStringTransform
 ref: "https://developer.apple.com/library/mac/documentation/CoreFOundation/Reference/CFMutableStringRef/Reference/reference.html#//apple_ref/doc/uid/20001504-CH201-BCIGCACA"
-framework: CoreFoundation
+category: CoreFoundation
 rating: 9.1
 description: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
 ---
@@ -113,12 +113,12 @@ For example, let's say you want to build a searchable index of movies on the dev
 
 - First, apply the `kCFStringTransformToLatin` transform to transliterate all non-English text into a Latin alphabetic representation.
 
-> Hello! こんにちは! สวัสดี! مرحبا! 您好! →  
+> Hello! こんにちは! สวัสดี! مرحبا! 您好! →
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
 - Next, apply the `kCFStringTransformStripCombiningMarks` transform to remove any diacritics or accents.
 
-> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →  
+> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →
 > Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
 - Finally, downcase the text with `CFStringLowercase`, and split the text into tokens with [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to use as an index for the text.

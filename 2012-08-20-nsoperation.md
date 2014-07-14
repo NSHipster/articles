@@ -2,12 +2,12 @@
 layout: post
 title: NSOperation
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 9.0
 description: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
 ---
 
-Everyone knows that the secret to making an app snappy and responsive is to offload computation to be done asynchronously in the background. 
+Everyone knows that the secret to making an app snappy and responsive is to offload computation to be done asynchronously in the background.
 
 The modern Objective-C developer has two options in this respect: [Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch) or [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). Since GCD has gone pretty mainstream, let's focus on the latter, object-oriented approach.
 
@@ -41,7 +41,7 @@ Each property must be mutually exclusive from one-another in order to encode a c
 
 It may be useful to cancel operations early to prevent needless work from being performed. Reasons for cancellation may include explicit user action, or a failure in a dependent operation.
 
-Similar to execution state, `NSOperation` communicates changes in cancellation state through KVO on the `isCancelled` keypath. When an operation responds to the `-cancel` command, it should clean up any internal details and arrive in an appropriate final state as quickly as possible. Specifically, the values for both `isCancelled` and `isFinished` need to become `YES`, and the value of `isExecuting` to `NO`. 
+Similar to execution state, `NSOperation` communicates changes in cancellation state through KVO on the `isCancelled` keypath. When an operation responds to the `-cancel` command, it should clean up any internal details and arrive in an appropriate final state as quickly as possible. Specifically, the values for both `isCancelled` and `isFinished` need to become `YES`, and the value of `isExecuting` to `NO`.
 
 One thing to definitely watch out for are the spelling peculiarities around the word "cancel". Although spelling varies across dialects, when it comes to `NSOperation`:
 

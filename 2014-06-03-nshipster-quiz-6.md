@@ -2,7 +2,7 @@
 layout: post
 title: "NSHipster Quiz #6"
 ref: ""
-framework: Trivia
+category: Trivia
 rating: 10.0
 description: "Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?"
 ---
