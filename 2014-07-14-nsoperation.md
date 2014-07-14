@@ -154,7 +154,7 @@ operationQueue.addOperations([networkingOperation, resizingOperation], waitUntil
 
 An operation will not be started until all of its dependencies return `true` for `finished`.
 
-It's important to add all of the operations involved in a dependency graph to the same operation queue, lest there be a gap somewhere along the way. Also, make sure not to accidentally create a dependency cycle, such that A depends on B, and B depends on A, for example. This will create deadlock and sadness.
+Make sure not to accidentally create a dependency cycle, such that A depends on B, and B depends on A, for example. This will create deadlock and sadness.
 
 ## `completionBlock`
 
