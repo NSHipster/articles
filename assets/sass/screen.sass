@@ -120,9 +120,12 @@ html, body
     float: right
 
     input
-      height: 2.5em
-      width: 100%
-      margin-top: 1em
+      height: 2.5em !important
+
+    #st-search-input
+      float: right
+      clear: right
+
 
   #logo, nav
     +media($tablet)
@@ -499,6 +502,10 @@ h1 a:hover
   +span-columns(4 of 12)
   &:nth-of-type(3n)
     +omega
+
+  +media($mobile)
+    +fill-parent
+    margin-bottom: 1em
 
   a
     display: block
