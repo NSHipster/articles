@@ -125,7 +125,7 @@
                   {% if post.category == group %}
                     <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                   {% elsif group == 'Miscellanea' %}
-                    {% unless site.groups contains post.framework %}
+                    {% unless site.groups contains post.category %}
                       <li><a href="{{ post.url }}">{{ post.title }}</a></li>
                     {% endunless %}
                   {% endif %}
