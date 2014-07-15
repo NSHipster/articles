@@ -19,7 +19,7 @@ $mobile: new-breakpoint(max-width 480px 4)
 
 html, body
   // font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif !important
-  //font-family: "Gill Sans"
+  font-family: 'Georgia Pro', Georgia, georgia, serif
   margin: 0
   border-top: 3px $primary-color solid
   background: $background-color
@@ -178,20 +178,34 @@ section
     h1, h2, h3, h4, h5
       margin: 2em 0 1em 0
 
-  hr
-    width: 40%
-    margin: 2em auto
+    hr
+      width: 40%
+      margin: 2em auto
 
-  img
-    margin: 1em auto
-    display: block
-    width: auto
+    img
+      margin: 1em auto
+      display: block
+      width: auto
 
-  figure
-    text-align: center
+    ul, ol
+      margin: 1.5em 0
+      padding: 0 3em
 
-  blockquote
-    border-left: 3px $primary-color solid
+      li
+        list-style: disc
+        margin-bottom: 1em
+
+    figure
+      text-align: center
+
+    blockquote
+      border-left: 3px $primary-color solid
+
+    table
+      th
+        text-align: center
+      td
+        padding: 1em
 
   footer
     .contributor
@@ -295,11 +309,10 @@ a, a:visited
     float: left
 
 
-[role="article"] .content, .archive, [role="contentinfo"]
+.archive, [role="contentinfo"]
   ul > li
     list-style: disc inside !important
     display: table-row
-
 
     &:before
       content: "●"
@@ -320,6 +333,8 @@ a, a:visited
       padding-right: 0.5em
 
   dl
+    padding: 0 0.5em
+
     dt
       font-size: 1.5em
       margin-bottom: 1em
