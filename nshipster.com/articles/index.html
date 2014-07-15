@@ -1,10 +1,7 @@
 ---
 layout: default
-paginate: 25
+title: Articles
 ---
-
-<section>
-<h1>Archive</h1>
 
 {% for post in site.posts %}
   <article>
@@ -13,4 +10,3 @@ paginate: 25
     {{ post.excerpt | markdownify }}
   </article>
 {% endfor %}
-</section>

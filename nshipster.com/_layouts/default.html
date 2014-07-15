@@ -13,7 +13,7 @@
     <link rel="canonical" href="{{ site.url }}"/>
   {% endif %}
   <meta name="author" content="Mattt Thompson"/>
-  <meta name="revisit-after" content="3 days"/>
+  <meta name="revisit-after" content="7 days"/>
   <meta name="viewport" content="width=device-width"/>
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
   <link rel="alternate" hreflang="en-us" href="http://nshipster.com"/>
@@ -64,28 +64,35 @@
     <header role="banner">
       <h1 id="logo">
         <a href="/">
-          {% include logo.svg %}
-          <!-- <acronym title="NeXTSTEP/Sun">NS</acronym>
-          <strong>Hipster</strong>
-          <img id="moustache" src="//cdn.nshipster.com/images/moustache.svg" width="200" height="150" data-author="http://thenounproject.com/bnhw" /> -->
+          {% include ns.svg %}
+          {% include mustache.svg %}
         </a>
       </h1>
 
+      {% if false %}
       <nav>
         <ul>
-          <li>
-            <a href="/articles">Articles</a>
-          <li>
-            <a href="/books">Books</a>
-          </li>
+          {% assign sections = "articles|books|training" | split: '|' %}
+          {% for link in sections %}
+            {% assign href = link | prepend: '/' %}
+            <li>
+              {% assign url = page.url | remove: '/index.html' %}
+              {% if url == href %}
+                <a href="{{ href }}" class="current">{{ link | capitalize }}</a>
+              {% else %}
+                <a href="{{ href }}">{{ link | capitalize }}</a>
+              {% endif %}
+            </li>
+          {% endfor %}
         </ul>
       </nav>
+      {% endif %}
 
       <form>
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
 
-      <!-- {{ contentblock header }} -->
+      {{ contentblock header }}
     </header>
 
     <div id="main" role="main">
@@ -102,7 +109,6 @@
       </section>
 
       <aside class="links">
-        <a href="https://github.com/NSHipster/articles/issues" class="icon-github" title="Pull Requests Welcome" aria-hidden="true"></a>
         <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
       </aside>
     </footer>

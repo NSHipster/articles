@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Books
 ---
 
 {% for book in site.data.books %}
@@ -14,7 +15,8 @@ layout: default
           <h2 class="subtitle">{{ content.subtitle }}</h2>
         {% endif %}
       </hgroup>
-      <p class="description">{{ content.description }}</p>
+
+      {{ content.description | markdownify }}
     </header>
   </article>
 {% endfor %}

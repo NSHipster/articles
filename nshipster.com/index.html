@@ -1,7 +1,6 @@
 ---
 layout: default
 title: NSHipster
-foo: [5, 1,2,3]
 ---
 
 {% contentfor header %}
@@ -19,7 +18,7 @@ foo: [5, 1,2,3]
 
     {{ site.posts.first.excerpt | markdownify }}
 
-    <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
+    <a class="readmore" href="{{ site.posts.first.url }}">Continue Reading</a>
   </article>
 </section>
 
@@ -27,7 +26,7 @@ foo: [5, 1,2,3]
   <h1>Recent Articles</h1>
 
   {% for post in site.posts offset:1 | limit: 6 %}
-    <article>
+    <article class="excerpt">
       <header>
         <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
@@ -39,11 +38,15 @@ foo: [5, 1,2,3]
 
 <section id="publications">
   <h1>Publications</h1>
-  <div>
-  <img src="//cdn.nshipster.com/images/the-nshipster-fake-book-cover@2x.png" width="200"/>
-  <img src="//cdn.nshipster.com/images/book-cover@2x.png" width="200"/>
-  <img src="//cdn.nshipster.com/images/cfhipsterref-cover@2x.png" width="200"/>
-  </div>
+  {% for book in site.data.books %}
+    {% assign identifier = book[0] %}
+    {% assign content = book[1] %}
+    <article id="{{ identifier }}" class="book">
+      <a href="{{ content.url }}" title="{{ content.title }}">
+        <img src="{{ content.image }}" class="cover" alt="{{ content.title }}"/>
+      </a>
+    </article>
+  {% endfor %}
 </section>
 
 <section id="popular">
@@ -51,7 +54,7 @@ foo: [5, 1,2,3]
 
   {% assign popular = site.tags.popular | shuffle %}
   {% for post in popular | limit: 4 %}
-    <article>
+    <article class="excerpt">
       <header>
         <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
       </header>
@@ -62,9 +65,7 @@ foo: [5, 1,2,3]
 </section>
 
 <section class="archive" role="navigation">
-  <h1>Archive</h1>
   {% for group in site.groups %}
-
     <dl>
       <dt>{{ group }}</dt>
       {% assign sorted = site.posts | sort: 'title' %}

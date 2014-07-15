@@ -2,24 +2,39 @@
 @import './neat/neat'
 @import './base/base'
 
-@import "./colors"
-@import "./functions"
-@import "./fonts"
-@import "./animations"
-@import "./pygments"
-@import "./swiftype"
+$primary-color: #ff8000
+$secondary-color: #4c3150
+$tertiary-color: #dfaf25
+
+$text-color: #222220
+$background-color: #F8F7F5
+$link-color: $primary-color
+$border-color: #e9e9e9
 
 $visual-grid: true
 
 $grid-columns: 12
 $max-width: 100%
 
+$desktop: new-breakpoint(min-width 769px 12)
 $tablet: new-breakpoint(max-width 768px 8)
 $mobile: new-breakpoint(max-width 480px 4)
 
+$sans-serif-font-family: "Helvetica Neue", "Helvetica", sans-serif
+$serif-font-family: "Georgia Pro", Georgia, serif
+
+
+
+@import "./functions"
+@import "./fonts"
+@import "./animations"
+@import "./pygments"
+@import "./swiftype"
+@import "./exceptions"
+
+
 html, body
-  // font-family: "Avenir Next", "Avenir", "Helvetica Neue", "Helvetica", sans-serif !important
-  font-family: 'Georgia Pro', Georgia, georgia, serif
+  font-family: $serif-font-family
   margin: 0
   border-top: 3px $primary-color solid
   background: $background-color
@@ -46,24 +61,38 @@ html, body
     +span-columns(3 of 12)
     +prevent-selection
     font-size: 1em
-    max-height: 7.5em
+    position: relative
+    height: 6em
+
+    +media($tablet)
+      margin-bottom: 2em
+      height: 5em
+
+    a
+      display: block
 
     svg
       width: 70%
       +media($tablet)
-        width: 100%
+        width: 100% !important
 
-    .mustache
-      transform-origin: center center !important
-      -webkit-transform: skewX(0)
-      z-index: 1000
-      position: absolute
+      &#ns
+        position: absolute
+        width: 70%
+        top: 0
+        left: 0
 
-    &:hover .mustache
-      +animation(twirl 1s ease-in-out)
+      &#mustache
+        position: absolute
+        width: 70%
+        z-index: 100
+        top: 0
+
+        &:hover
+          +animation(twirl 1s ease-in-out)
 
   nav
-    +span-columns(6 of 12)
+    +span-columns(5 of 12)
 
     li
       display: block
@@ -74,9 +103,21 @@ html, body
         display: block
         text-align: center
 
+        padding-top: 14px
+
+        &.current
+          padding-top: 10px
+          border-top: 4px $primary-color solid
+
+        &:hover
+          padding-top: 10px
+          border-top: 4px lighten($primary-color, 25%) solid
+
   form
     +span-columns(3 of 12)
+    +shift(1)
     +omega
+    float: right
 
     input
       height: 2.5em
@@ -106,8 +147,9 @@ html, body
     +span-columns(4 of 12)
     min-height: 15em
 
-    &:nth-of-type(3n)
-      +omega
+    +media($desktop)
+      &:nth-of-type(3n)
+        +omega
 
     +media($tablet)
       +span-columns(6 of 12)
@@ -154,6 +196,11 @@ section
 
   table
     overflow: scroll
+    margin: 2em 0
+
+    caption
+      margin: 2em 0 1em 0
+      font-size: 1.5em
 
   div.highlight
     border-radius: 0.25em
@@ -171,6 +218,14 @@ section
       margin-bottom: 0.5em
     h2
       font-size: 1.25em
+      font-family: $serif-font-family
+      font-style: italic
+      font-weight: 300
+      color: lighten($text-color, 50%)
+
+      time
+        color: lighten($text-color, 25%)
+        white-space: nowrap
 
   .content
     margin-bottom: 2em
@@ -182,7 +237,7 @@ section
       width: 40%
       margin: 2em auto
 
-    img
+    img, object, embed, figure, svg
       margin: 1em auto
       display: block
       width: auto
@@ -198,14 +253,34 @@ section
     figure
       text-align: center
 
+    del
+      color: transparentize($text-color, 0.5)
+
+    ins
+      background-color: transparentize($primary-color, 0.8)
+      text-decoration: none
+
     blockquote
+      margin: 2em
+      margin-right: 4em
       border-left: 3px $primary-color solid
+
+      cite
+        margin-top: 1em
+        display: block
+
+      +media($tablet)
+        margin: 1em 0
 
     table
       th
         text-align: center
       td
         padding: 1em
+
+  sup
+    font-size: 50%
+    margin-right: -0.5em
 
   footer
     .contributor
@@ -251,6 +326,7 @@ section
       font-weight: 700
       color: #777
       text-transform: lowercase
+      font-family: $sans-serif-font-family
       font-variant: small-caps
       margin-bottom: 1em
 
@@ -260,9 +336,29 @@ section
       #continue
         +span-columns(9 of 12)
 
+        h1
+          margin-bottom: 0.5em
+
+        p
+          font-size: 0.75em
+
       #related
         +span-columns(3 of 12)
         +omega
+
+        +media($mobile)
+          margin-top: 1em
+
+        li
+          font-size: 0.75em
+
+          +media($mobile)
+            font-size: 1em
+
+
+      #continue, #related
+        +media($mobile)
+          +fill-parent
 
 [role="contentinfo"]
   text-align: center
@@ -292,8 +388,10 @@ a, a:visited
 .archive
   dl
     +span-columns(4 of 12)
-    +omega(3)
-    clear: right
+    +omega
+
+    +media($mobile)
+      +fill-parent
 
 #sharing
   ul
@@ -301,15 +399,36 @@ a, a:visited
     display: block
     float: right
 
+    +media($mobile)
+      +fill-parent
 
   li
-    font-size: 1em
+    font-size: 1.5em
     display: block
     margin: 0.5em
     float: left
 
+    +media($mobile)
+      display: none !important // !
+      margin: 0
+      +span-columns(3 of 12)
+      +omega(4)
 
-.archive, [role="contentinfo"]
+      a, i
+        display: block
+        margin: 0 auto
+        font-size: 1.25em
+
+    a:hover
+      text-decoration: none
+      color: $secondary-color !important
+
+
+section > h1
+
+
+
+.archive, [role="contentinfo"], #related
   ul > li
     list-style: disc inside !important
     display: table-row
@@ -347,3 +466,53 @@ a, a:visited
         content: "●"
         display: table-cell
         padding-right: 0.5em
+
+section > h1
+  font-family: $serif-font-family
+  font-weight: 300
+  font-style: italic
+  text-align: center
+  margin-bottom: 3em
+  font-size: 1.5em
+
+
+article.excerpt
+  h1
+    font-size: 1.5em
+
+a.readmore
+  font-style: italic
+
+  &:after
+    content: " ⟩"
+
+.content, [role="contentinfo"], footer ul
+  a:hover
+    text-decoration: underline
+
+h1 a:hover
+  background: $primary-color
+  color: #FFFFFF !important
+
+
+.book
+  +span-columns(4 of 12)
+  &:nth-of-type(3n)
+    +omega
+
+  a
+    display: block
+
+
+
+  img
+    display: block
+    margin: 0 auto
+    width: 200px
+    padding: 4px
+
+    &:hover
+      padding: 0
+      border: 4px $primary-color solid
+
+

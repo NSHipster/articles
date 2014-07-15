@@ -4,7 +4,7 @@ layout: default
 
 {% assign author = site.data.authors.mattt %}
 
-<article role="article">
+<article role="article" id="{{ page.id | remove: '/' }}">
   <header role="heading">
     <h1 class="title"><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
     <h2>
@@ -19,16 +19,16 @@ layout: default
     <section id="sharing">
       <ul>
         <li class="twitter">
-          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&text={{ page.title | cgi_escape }}&via=NSHipster&related=mattt,nshipster"><i class="icon-twitter"></i></a>
+          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&text={{ page.title | strip_html | cgi_escape | append: ':' }}&via=NSHipster&related=mattt,nshipster"><i class="icon-twitter"></i></a>
         </li>
         <li class="facebook">
-          <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-facebook"></i></a>
+          <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | strip_html | cgi_escape }}"><i class="icon-facebook"></i></a>
         </li>
         <li class="google-plus">
           <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
         </li>
         <li class="email">
-          <a href="mailto:?Subject={{ page.title | cgi_escape }}&Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
+          <a href="mailto:?Subject={{ page.title | strip_html | cgi_escape }}&Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
         </li>
     </section>
 
@@ -42,7 +42,6 @@ layout: default
     <nav role="navigation">
       <div id="continue">
         <small>Next Article</small>
-
         {% assign next = page.next %}
         {% if next == nil %}
         {% assign next = site.posts.last %}
@@ -50,7 +49,7 @@ layout: default
 
           <article>
             <h1 class="title">
-              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title }}</a>
+              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title  | camel_break }}</a>
             </h1>
 
             {{ next.excerpt | markdownify }}
@@ -70,8 +69,6 @@ layout: default
         <small>Related Articles</small>
 
         <ul>
-
-
           {% assign related = related | shuffle %}
           {% for post in related limit: 4 %}
           {% if page.url != post.url %}
@@ -85,7 +82,5 @@ layout: default
 
       {% endif %}
     </nav>
-
-    <p>{{ site.description }}</p>
   </footer>
 </article>
