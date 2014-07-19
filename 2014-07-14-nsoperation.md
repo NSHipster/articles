@@ -94,7 +94,7 @@ Service levels establish the system-wide priority of an operation in terms of ho
 
 > QoS appears to use the [XNU kernel task policy feature introduced in Mac OS X 10.9](http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/osfmk/mach/task_policy.h) under the hood.
 
-The following enumerated values are used to denote the nature and urgency of an operation. Applications are encouraged to use the select the most appropriate value for operations in order to ensure a great user experience:
+The following enumerated values are used to denote the nature and urgency of an operation. Applications are encouraged to select the most appropriate value for operations in order to ensure a great user experience:
 
 ### NSQualityOfService
 
