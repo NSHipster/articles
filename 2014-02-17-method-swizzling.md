@@ -123,7 +123,7 @@ It may appear that the following code will result in an infinite loop:
 }
 ~~~
 
-Surprisingly, it won't. In the process of swizzling, `xxx_viewWillAppear:` has been reassigned to the original implementation of `UIViewController -viewWillAppear:`. It's good programmer instinct for calling a method on `self` in its own implementation to raise a red flag, but in this case, it makes sense if we remember what's _really_ going on. However, if we were to call `viewWillAppear:` in this method, it _would_ cause an infinite loop, since the implementation of this method will be swizzled to the `viewwillAppear:` selector at runtime.
+Surprisingly, it won't. In the process of swizzling, `xxx_viewWillAppear:` has been reassigned to the original implementation of `UIViewController -viewWillAppear:`. It's good programmer instinct for calling a method on `self` in its own implementation to raise a red flag, but in this case, it makes sense if we remember what's _really_ going on. However, if we were to call `viewWillAppear:` in this method, it _would_ cause an infinite loop, since the implementation of this method will be swizzled to the `viewWillAppear:` selector at runtime.
 
 > Remember to prefix your swizzled method name, the same way you might any other contentious category method.
 
