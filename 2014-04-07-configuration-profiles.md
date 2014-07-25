@@ -2,7 +2,6 @@
 layout: post
 title: "Configuration Profiles"
 category: ""
-rating: 8.0
 excerpt: "One of the major criticisms of iOS as a platform is how locked down it is. iOS Configuration Profiles offer an interesting mechanism to work around these restrictions."
 ---
 

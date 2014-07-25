@@ -3,7 +3,6 @@ layout: post
 title: NSDataDetector
 ref: "https://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSDataDetector_Class/Reference/Reference.html"
 category: Cocoa
-rating: 9.4
 excerpt: "Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."
 ---
 

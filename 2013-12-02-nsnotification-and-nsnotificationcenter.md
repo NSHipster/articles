@@ -3,7 +3,6 @@ layout: post
 title: "NSNotification &<br/>NSNotificationCenter"
 category: Cocoa
 tags: popular
-rating: 8.4
 excerpt: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 ---
 

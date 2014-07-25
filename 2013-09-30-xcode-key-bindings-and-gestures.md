@@ -3,7 +3,6 @@ layout: post
 title: Xcode Key Bindings & Gestures
 ref: "https://developer.apple.com/library/mac/documentation/IDEs/Conceptual/xcode_help-command_shortcuts/Introduction/Introduction.html"
 category: Xcode
-rating: 8.0
 tag: popular
 excerpt: "Xcode key bindings and gestures not only shave off seconds of precious work, but make you look more confident, competent, and cromulent in the process."
 ---

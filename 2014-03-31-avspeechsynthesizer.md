@@ -2,7 +2,6 @@
 layout: post
 title: "AVSpeechSynthesizer"
 category: Cocoa
-rating: 9.6
 excerpt: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
 ---
 

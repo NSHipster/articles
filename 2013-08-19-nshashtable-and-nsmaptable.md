@@ -3,7 +3,6 @@ layout: post
 title: "NSHashTable &<br/>NSMapTable"
 ref: "http://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/NSMapTable_class/Reference/NSMapTable.html"
 category: Cocoa
-rating: 7.2
 ---
 
 `NSSet` and `NSDictionary`, along with `NSArray` are the workhorse collection classes of Foundation. Unlike [ other standard libraries](http://en.wikipedia.org/wiki/Java_collections_framework), implementation details are [hidden](http://ridiculousfish.com/blog/posts/array.html) from developers, allowing them to write simple code and trust that it will be (reasonably) performant.

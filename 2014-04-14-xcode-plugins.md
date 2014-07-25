@@ -3,11 +3,7 @@ layout: post
 title: "Xcode Plugins"
 ref: "http://alcatraz.io"
 category: "Xcode"
-<<<<<<< HEAD
-=======
 tags: popular
->>>>>>> Stashing
-rating: 9.7
 excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 ---
 

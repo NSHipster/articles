@@ -3,7 +3,6 @@ layout: post
 title: "@"
 ref: ""
 category: Objective-C
-rating: 8.7
 published: true
 excerpt: "If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and <tt>@</tt>'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
 ---

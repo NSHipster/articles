@@ -2,7 +2,6 @@
 layout: post
 title: "Core Data Libraries & Utilities"
 category: "Open Source"
-rating: 8.9
 excerpt: "We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."
 ---
 

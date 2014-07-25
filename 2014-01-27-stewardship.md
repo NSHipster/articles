@@ -2,7 +2,6 @@
 layout: post
 title: Stewardship
 category: ""
-rating: 10.0
 excerpt: "Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project."
 ---
 

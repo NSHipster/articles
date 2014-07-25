@@ -3,7 +3,6 @@ layout: post
 title: "Benchmarking"
 ref: ""
 category: Objective-C
-rating: 9.0
 excerpt: "Abstractions are necessary for doing meaningful work, but they come at a cost. By benchmarking, a programmer can uncover the hidden performance characteristics of their code, and use this information to optimize accordingly."
 ---
 

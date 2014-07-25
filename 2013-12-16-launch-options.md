@@ -2,7 +2,6 @@
 layout: post
 title: "UIApplicationDelegate<br/>launchOptions"
 category: Cocoa
-rating: 8.5
 excerpt: "AppDelegate is the dumping ground for functionality in iOS."
 ---
 

@@ -3,7 +3,6 @@ layout: post
 title: NSSortDescriptor
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSortDescriptor_Class/Reference/Reference.html"
 category: Cocoa
-rating: 8.4
 excerpt: "Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?"
 ---
 

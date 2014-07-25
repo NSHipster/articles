@@ -3,7 +3,6 @@ layout: post
 title: NSOperation
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 category: Cocoa
-rating: 9.0
 excerpt: "Everyone knows that the secret to making an app snappy and responsive is to offload computation asynchronously to the background."
 ---
 
