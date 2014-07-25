@@ -35,8 +35,8 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=magicalpanda&repo=MagicalRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/mneorr/Objective-Record">Objective-Record</a></td>
-      <td><a href="https://github.com/mneorr">Marin Usalj</a></td>
+      <td><a href="https://github.com/supermarin/Objective-Record">Objective-Record</a></td>
+      <td><a href="https://github.com/supermarin">Marin Usalj</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=mneorr&repo=Objective-Record&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
@@ -88,9 +88,9 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/github/Mantle">Mantle</a></td>
-      <td><a href="https://github.com/GitHub">GitHub</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=github&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><a href="https://github.com/Mantle/Mantle">Mantle</a></td>
+      <td><a href="https://github.com/Mantle">Mantle</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=Mantle&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 

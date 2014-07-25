@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NSCalendarUnitYear
-category: ""
+category: Swift
 rating: 2.0
 excerpt: "NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."
 author: mattt

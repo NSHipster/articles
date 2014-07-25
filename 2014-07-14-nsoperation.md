@@ -2,9 +2,9 @@
 layout: post
 title: NSOperation
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
-category: Foundation
+category: Cocoa
 rating: 9.0
-description: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."
+excerpt: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."
 ---
 
 In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence.

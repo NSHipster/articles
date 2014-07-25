@@ -149,7 +149,7 @@ static inline NSTextCheckingType NSTextCheckingTypesFromUIDataDetectorTypes(UIDa
 }
 ~~~
 
-If you're looking for an easy way to use `NSDataDetector` in your iOS app, you may want to check out [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel/), a drop-in replacement for `UILabel` that supports attributed strings, and (as of 1.7.0) automatic data detection of `NSTextCheckingTypes`.
+> If you're looking for an easy way to use `NSDataDetector` in your iOS app, you may want to check out [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel/), a drop-in replacement for `UILabel` that supports attributed strings, and (as of 1.7.0) automatic data detection of `NSTextCheckingTypes`.
 
 ---
 

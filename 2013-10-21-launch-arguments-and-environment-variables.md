@@ -65,7 +65,9 @@ According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/glo
 
 While you're waiting for the first batch of translations to come back, or are merely curious to see how badly your UI breaks under linguistic pressure, specify the following launch argument:
 
-    -NSDoubleLocalizedStrings YES
+~~~
+-NSDoubleLocalizedStrings YES
+~~~
 
 ![NSDoubleLocalizedStrings - Before & After](http://nshipster.s3.amazonaws.com/launch-arguments-nsdoublelocalizedstrings.png)
 
@@ -75,8 +77,9 @@ Project managers screaming at you to get localization finished? Now you can conf
 
 If you pass the `NSShowNonLocalizedStrings` launch argument, any unlocalized string will SCREAM AT YOU IN CAPITAL LETTERS. HOW DELIGHTFUL!
 
-    -NSShowNonLocalizedStrings YES
-
+~~~
+-NSShowNonLocalizedStrings YES
+~~~
 
 #### AppleLanguages
 
@@ -84,7 +87,9 @@ Perhaps the most useful launch argument of all, however, is `AppleLanguages`.
 
 Normally, one would have to manually go through Settings > General > International > Language and wait for the Simulator or Device to restart. But the same can be accomplished much more simply with the following launch argument:
 
-    -AppleLanguages (es)
+~~~
+-AppleLanguages (es)
+~~~
 
 > The value for `AppleLanguages` can either be the name of the language ("Spanish"), or its language code (`es`), but since localization files are keyed by their ISO 639 code, using the code is preferable to the actual name of the language.
 
@@ -98,15 +103,19 @@ Most Core Data stacks use SQLite as a persistent store, so if your app is anythi
 
 Set the following launch argument:
 
-    -com.apple.CoreData.SQLDebug 3
+~~~
+-com.apple.CoreData.SQLDebug 3
+~~~
 
 ...and let the spice flow.
 
-    CoreData: sql: pragma cache_size=1000
-    CoreData: sql: SELECT Z_VERSION, Z_UUID, Z_PLIST FROM Z_METADATA
-    CoreData: sql: SELECT 0, t0.Z_PK, t0.Z_OPT, t0.ZAUTHOR, t0.ZTITLE, t0.ZCOPYRIGHT FROM ZBOOK t0 ORDER BY t0.ZAUTHOR, t0.ZTITLE
-    CoreData: annotation: sql connection fetch time: 0.0001s
-    CoreData: annotation: total fetch execution time: 0.0010s for 20 rows.
+~~~
+CoreData: sql: pragma cache_size=1000
+CoreData: sql: SELECT Z_VERSION, Z_UUID, Z_PLIST FROM Z_METADATA
+CoreData: sql: SELECT 0, t0.Z_PK, t0.Z_OPT, t0.ZAUTHOR, t0.ZTITLE, t0.ZCOPYRIGHT FROM ZBOOK t0 ORDER BY t0.ZAUTHOR, t0.ZTITLE
+CoreData: annotation: sql connection fetch time: 0.0001s
+CoreData: annotation: total fetch execution time: 0.0010s for 20 rows.
+~~~
 
 `com.apple.CoreData.SQLDebug` takes a value between `1` and `3`; the higher the value, the more verbose the output. Adjust according to taste.
 
@@ -114,13 +123,17 @@ Set the following launch argument:
 
 Want your debug statements to be _even spicier_? Toss `com.apple.CoreData.SyntaxColoredLogging` into the mix and brace yourself for an explosion of color:
 
-    -com.apple.CoreData.SyntaxColoredLogging YES
+~~~
+-com.apple.CoreData.SyntaxColoredLogging YES
+~~~
 
 #### Migration Debug
 
 In any other persistence layer, migrations are a blessing. Yet, for some reason, Core Data manages to make them into something out of a nightmare. When things go wrong and you have no one to blame except your own ignorant self, unworthy of such an intuitive and well-designed <del>ORM</del> <ins>graph persistence framework</ins>, then here's an argument you'll want to pass at launch:
 
-    -com.apple.CoreData.MigrationDebug
+~~~
+-com.apple.CoreData.MigrationDebug
+~~~
 
 * * *
 

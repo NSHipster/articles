@@ -16,7 +16,7 @@ excerpt: "Method swizzling is the process of changing the implementation of an e
 > Would you do it?<br/>
 > And so we cannot know ourselves or what we'd really do...<br/>
 > With all your power ... What would you do?<br/>
-> <cite>—<strong>The Flaming Lips</strong>, <em><a href="http://en.wikipedia.org/wiki/The_Yeah_Yeah_Yeah_Song_(With_All_Your_Power)">"The Yeah Yeah Yeah Song (With All Your Power)"</a></em></cite>
+> <cite><strong>The Flaming Lips</strong>, <em><a href="http://en.wikipedia.org/wiki/The_Yeah_Yeah_Yeah_Song_(With_All_Your_Power)">"The Yeah Yeah Yeah Song (With All Your Power)"</a></em></cite>
 
 In last week's article about [associated objects](http://nshipster.com/associated-objects/), we began to explore the dark arts of the Objective-C runtime. This week, we venture further, to discuss what is perhaps the most contentious of runtime hackery techniques: method swizzling.
 
