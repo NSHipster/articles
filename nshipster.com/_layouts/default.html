@@ -92,7 +92,9 @@
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
 
-      {{ contentblock header }}
+      {% unless page.id %}
+        <h2 class="tagline">{{ site.description }}</h2>
+      {% endunless %}
     </header>
 
     <div id="main" role="main">
@@ -105,7 +107,8 @@
           <i aria-hidden="true" class="icon-cc"></i>
           NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
         </p>
-        <p>Articles also available in <a href="http://nshipster.cn" hreflang="zh-Hans">中文</a>.</p>
+        <p>ISSN 2373-9800</p>
+        <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文</a>。</p>
       </section>
 
       <aside class="links">
@@ -113,7 +116,6 @@
       </aside>
     </footer>
   </div>
-
 
   <script>
     var Swiftype = window.Swiftype || {};
@@ -137,6 +139,5 @@
     ga('create', 'UA-49868484-1', 'nshipster.com');
     ga('send', 'pageview');
   </script>
-
 </body>
 </html>
