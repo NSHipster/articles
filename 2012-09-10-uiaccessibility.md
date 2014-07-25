@@ -3,7 +3,6 @@ layout: post
 title: UIAccessibility
 ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAccessibility_Protocol/Introduction/Introduction.html"
 category: Cocoa
-published: true
 excerpt: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
 ---
 
