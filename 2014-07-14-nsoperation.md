@@ -93,11 +93,7 @@ Service levels establish the system-wide priority of an operation in terms of ho
 
 > QoS appears to use the [XNU kernel task policy feature introduced in Mac OS X 10.9](http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/osfmk/mach/task_policy.h) under the hood.
 
-<<<<<<< HEAD
 The following enumerated values are used to denote the nature and urgency of an operation. Applications are encouraged to select the most appropriate value for operations in order to ensure a great user experience:
-=======
-The following enumerated values are used to denote the nature and urgency of an operation. Applications are encouraged to use the select the most appropriate value for operations in order to ensure a great user experience:
->>>>>>> Stashing
 
 ### NSQualityOfService
 
@@ -118,30 +114,17 @@ enum NSQualityOfService : Int {
 - `.Default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
 
 ~~~{swift}
-<<<<<<< HEAD
 let backgroundOperation: NSOperation = NSOperation()
 backgroundOperation.queuePriority = .Low
 backgroundOperation.qualityOfService = .Background
 
 let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(backgroundOperation)
-=======
-let operation: NSOperation = NSOperation()
-operation.queuePriority = .High
-operation.qualityOfService = .UserInitiated
-
-let operationQueue = NSOperationQueue.mainQueue()
-operationQueue.addOperation(operation)
->>>>>>> Stashing
 ~~~
 
 ## Asynchronous Operations
 
-<<<<<<< HEAD
 Another change in iOS 8 / Mac OS X 10.10 is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
-=======
-Another change in iOS 8 / Mac OS X 10.10 is the deprecation of the `concurrent` property in favor of the new `synchronous` property.
->>>>>>> Stashing
 
 Originally, the `concurrent` property was used to distinguish between operations that performed all of its work in a single `main` function, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `synchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
 
@@ -170,11 +153,7 @@ operationQueue.addOperations([networkingOperation, resizingOperation], waitUntil
 
 An operation will not be started until all of its dependencies return `true` for `finished`.
 
-<<<<<<< HEAD
 Make sure not to accidentally create a dependency cycle, such that A depends on B, and B depends on A, for example. This will create deadlock and sadness.
-=======
-It's important to add all of the operations involved in a dependency graph to the same operation queue, lest there be a gap somewhere along the way. Also, make sure not to accidentally create a dependency cycle, such that A depends on B, and B depends on A, for example. This will create deadlock and sadness.
->>>>>>> Stashing
 
 ## `completionBlock`
 
@@ -203,11 +182,7 @@ For example, you could set a completion block on a network operation block to do
 
 * * *
 
-<<<<<<< HEAD
-`NSOperation` remains an essential tool in an iOS or OS X developer's bag of tricks. Whereas GCD is ideal for in-line asynchronous processing, `NSOperation` provides a more comprehensive, object-oriented model of computation, whiccategory: for encapsulating all of the data around structured, repeatable tasks in an application.
-=======
 `NSOperation` remains an essential tool in an iOS or OS X developer's bag of tricks. Whereas GCD is ideal for in-line asynchronous processing, `NSOperation` provides a more comprehensive, object-oriented model of computation for encapsulating all of the data around structured, repeatable tasks in an application.
->>>>>>> Stashing
 
 Developers should use the highest level of abstraction possible for any given problem, and for scheduling consistent, repeated work, that abstraction is `NSOperation`. Other times, it makes more sense to sprinkle in some GCD (including within an `NSOperation` subclass implementation).
 
