@@ -1,7 +1,6 @@
 ---
 layout: post
 title: UIAppearance
-ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAppearance_Protocol/Reference/Reference.html"
 category: Cocoa
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
 ---

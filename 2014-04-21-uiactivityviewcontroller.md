@@ -1,7 +1,6 @@
 ---
 layout: post
 title: UIActivityViewController
-ref: "https://developer.apple.com/library/ios/documentation/uikit/reference/UIActivityViewController_Class/Reference/Reference.html"
 category: Cocoa
 excerpt: "The relationship between code and data has long been a curious one."
 ---

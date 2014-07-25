@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"
-ref: "https://developer.apple.com/library/ios/documentation/MapKit/Reference/MapKit_Framework_Reference/_index.html#//apple_ref/doc/uid/TP40008210"
 category: Cocoa
 excerpt: "Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
 ---

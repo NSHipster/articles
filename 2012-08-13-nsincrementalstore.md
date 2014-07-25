@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSIncrementalStore
-ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/NSIncrementalStore_Class/Reference/NSIncrementalStore.html"
 category: Cocoa
 excerpt: Even for a blog dedicated to obscure APIs, <tt>NSIncrementalStore</tt> sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
 ---

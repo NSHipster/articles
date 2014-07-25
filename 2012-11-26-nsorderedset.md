@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSOrderedSet"
-ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSOrderedSet_Class/Reference/Reference.html"
 category: Cocoa
 excerpt: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
 ---

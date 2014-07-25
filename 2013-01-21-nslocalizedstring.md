@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSLocalizedString
-ref: "https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/miscellaneous/foundation_functions/reference/reference.html"
 category: Cocoa
 excerpt: "Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience."
 ---

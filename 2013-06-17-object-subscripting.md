@@ -1,7 +1,6 @@
 ---
 layout: post
 title: Object Subscripting
-ref: "http://clang.llvm.org/docs/ObjectiveCLiterals.html"
 category: Objective-C
 ---
 

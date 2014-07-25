@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSFastEnumeration /<br/>NSEnumerator"
-ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSFastEnumeration_protocol/Reference/NSFastEnumeration.html"
 category: Cocoa
 ---
 

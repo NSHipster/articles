@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "IBAction / IBOutlet / IBOutletCollection"
-ref: "https://developer.apple.com/library/ios/documentation/general/conceptual/CocoaEncyclopedia/Outlets/Outlets.html"
 category: Cocoa
 excerpt: "In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. For developers just starting with Cocoa & Cocoa Touch, the IBAction, IBOutlet, and IBOutletCollection macros are particularly bewildering examples of this phenomenon"
 ---

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSHipster Quiz #1"
-ref: "http://www.uikonf.com/2013/03/25/nshipster-quiz-night.html"
 category: Trivia
 excerpt: "Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?"
 ---

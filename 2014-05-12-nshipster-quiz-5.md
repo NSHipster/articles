@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSHipster Quiz #5"
-ref: "http://nsnorth.ca/"
 category: Trivia
 excerpt: "This fifth incarnation of the NSHipster Quiz took on a distinct North-of-the-Border flavor, as part of the NSNorth conference in Ottawa, Ontario. Think you're up to the challenge, eh?"
 ---

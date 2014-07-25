@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Launch Arguments &<br/>Environment Variables"
-ref: "https://developer.apple.com/library/ios/technotes/tn2239/_index.html"
 category: Xcode
 excerpt: "There are a number of options that can be passed into a target's scheme to enable useful debugging behavior, but like a fast food secret menu, they're obscure and widely unknown."
 ---

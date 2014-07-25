@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSSecureCoding
-ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSSecureCoding_Protocol_Ref/content/NSSecureCoding.html"
 category: Cocoa
 excerpt: "A short post for this week: everything you need to know about NSSecureCoding."
 ---

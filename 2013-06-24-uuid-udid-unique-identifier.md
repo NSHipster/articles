@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor
-ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSUUID_Class/Reference/Reference.html"
 category: Cocoa
 ---
 
