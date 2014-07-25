@@ -194,6 +194,12 @@ section
   font-size: 125%
   margin-bottom: 1em
 
+  +media($mobile)
+    font-size: 75%
+
+    .content
+      overflow: hidden
+
   +media($tablet)
     font-size: 100%
 
@@ -236,6 +242,12 @@ section
     h1, h2, h3, h4, h5
       margin: 2em 0 1em 0
 
+    h3
+      font-size: 1.25em
+
+    h4
+      font-size: 1em
+
     hr
       width: 40%
       margin: 2em auto
@@ -248,6 +260,9 @@ section
     ul, ol
       margin: 1.5em 0
       padding: 0 3em
+
+      +media($mobile)
+        padding: 0
 
       li
         list-style: disc
@@ -315,6 +330,9 @@ section
         +span-columns(4 of 6)
         +omega
         margin-top: 1em
+
+        +media($mobile)
+          margin-top: 0
 
         span
           font-weight: 700
@@ -426,11 +444,6 @@ a, a:visited
       text-decoration: none
       color: $secondary-color !important
 
-
-section > h1
-
-
-
 .archive, [role="contentinfo"], #related
   ul > li
     list-style: disc inside !important
@@ -486,17 +499,8 @@ article.excerpt
 a.readmore
   font-style: italic
 
-  &:after
-    content: " ⟩"
-
-.content, [role="contentinfo"], footer ul
-  a:hover
-    text-decoration: underline
-
-h1 a:hover
-  background: $primary-color
-  color: #FFFFFF !important
-
+a:hover
+  text-decoration: underline
 
 .book
   +span-columns(4 of 12)
@@ -523,3 +527,11 @@ h1 a:hover
       border: 4px $primary-color solid
 
 
+.tagline
+  clear: both
+  font-weight: 300
+  margin: 1em 0
+  padding-top: 1em
+
+  +media($mobile)
+    font-size: 110%
