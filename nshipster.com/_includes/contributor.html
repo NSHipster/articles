@@ -3,9 +3,9 @@
 {% elsif include.role == 'translator' %}
 {% endif %} -->
 
-{% assign contributor = site.data.authors.mattt %}
+{% assign contributor = site.data.authors["Mattt Thompson"] %}
 
-<div class="contributor" itemprop="contributor" itemscope itemtype="http://data-vocabulary.org/Person">
+<div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
   {% case include.role %}
   {% when 'author' %}
     <small>Written by</small>
@@ -13,10 +13,9 @@
     <small>Translated by</small>
   {% endcase %}
 
-  <img class="avatar" itemprop="photo" src="//0.gravatar.com/avatar/f32c3cab150e7018cbe4d00401f597e2?size=300" draggable="false"/>
+  <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/f32c3cab150e7018cbe4d00401f597e2?size=300" draggable="false"/>
   <div class="details">
     <span itemprop="name">{{ contributor.name }}</span>
-    <span itemprop="role" style="display:none;">{{ include.role }}</span>
 
     {{ contributor.bio | markdownify }}
 
@@ -25,6 +24,5 @@
     {% endif %}
 
     <a href="https://plus.google.com/{{ site.google }}" rel="publisher"></a>
-
   </div>
 </div>
