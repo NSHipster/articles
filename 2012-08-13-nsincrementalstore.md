@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSIncrementalStore
-
 category: Foundation
 published: true
 translator: "Henry Lee"

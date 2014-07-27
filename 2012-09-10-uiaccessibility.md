@@ -1,7 +1,6 @@
 ---
 layout: post
 title: UIAccessibility
-
 category: UIKit
 published: true
 translator: "Henry Lee"

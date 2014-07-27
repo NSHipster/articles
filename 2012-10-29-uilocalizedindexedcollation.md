@@ -1,7 +1,6 @@
 ---
 layout: post
 title: UILocalizedIndexedCollation
-
 category: UIKit
 published: true
 translator: "Tony Li"

@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSHipster Quiz #4"
-
 category: Trivia
 description: "The fourth and final quiz of the year. Do you have what it takes to be the `NSArray -firstObject` among your peers?"
 ---

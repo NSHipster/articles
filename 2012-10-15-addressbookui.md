@@ -1,7 +1,6 @@
 ---
 layout: post
 title: AddressBookUI
-
 category: AddressBookUI
 published: true
 translator: Henry Lee

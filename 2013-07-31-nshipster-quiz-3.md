@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "NSHipster Quiz #3"
-
 category: Trivia
 description: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
 ---
