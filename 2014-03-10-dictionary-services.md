@@ -4,7 +4,7 @@ title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/
 category: ""
 description: "虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。"
 author: Mattt Thompson
-translator: "Croath Liu"
+translator: Croath Liu
 ---
 
 本周的主题是字典。我们讨论的不是日常开发中经常遇到的`NSDictionary` 或 `CFDictionaryRef`，而是已经离你远去了的、学生时代常用的字典。

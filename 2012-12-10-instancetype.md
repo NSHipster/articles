@@ -4,7 +4,7 @@ title: instancetype
 category: Foundation
 description: "Objective-C 是一门正迅速发展的语言，这种发展速度在别的现有语言中是不曾有过的。从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。"
 author: Mattt Thompson
-translator: "JJ Mao"
+translator: JJ Mao
 ---
 
 想知道Objective-C接下去会发生什么吗？[请多关注Objective-C最新动向](http://clang.llvm.org/docs/LanguageExtensions.html)。

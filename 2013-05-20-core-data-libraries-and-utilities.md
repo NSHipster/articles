@@ -4,7 +4,7 @@ title: "Core Data Libraries & Utilities"
 category: "Open Source"
 description: "上周，我们感觉Core Data有些难，所以为了NSHipster的这个问题，我们将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看你如何充分利用这次Core Data体验。"
 author: Mattt Thompson
-translator: "JJ Mao"
+translator: JJ Mao
 ---
 
 因此我们姑且认为你已经确定自己的特定需求并且对比过所有的备选方案，选择在你的下一个应用中使用[Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html)。

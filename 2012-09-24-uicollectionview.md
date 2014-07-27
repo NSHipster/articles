@@ -4,7 +4,7 @@ title: UICollectionView
 category: UIKit
 description: "从现在起，UICollectionView凭一己之力改变我们将要设计和开发iOS应用的方式。这并不是说，collection views是未知或模糊的。作为一个NSHipster，不仅仅是知道名不见经传的石头，更多是在它们家喻户晓、售罄一空之前就知道有前途。"
 author: Mattt Thompson
-translator: "JJ Mao"
+translator: JJ Mao
 ---
 
 `UICollectionView` 是一种新的 `UITableView` ，并且它极其重要。

@@ -2,7 +2,7 @@
 layout: post
 title: NSSortDescriptor
 author: Mattt Thompson
-translator: "Zihan Xu"
+translator: Zihan Xu
 category: Foundation
 ---
 

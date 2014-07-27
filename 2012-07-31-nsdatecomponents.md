@@ -3,7 +3,7 @@ layout: post
 title: NSDateComponents
 category: Foundation
 author: Mattt Thompson
-translator: "Candyan"
+translator: Candyan
 ---
 
 `NSDateComponents` 类在Foundation的日期和时间API中扮演着重要的角色。其本身并没有什么令人印象深刻的特征，仅仅是一个日期信息的容器（信息包括：月，年，月中的某天，年中的某周，或者是否是闰月)。然而，值得一提的是，在其结合 `NSCalendar`和`NSDateComponents` 类之后，日历格式的转换变得十分方便。

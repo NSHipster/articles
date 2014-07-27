@@ -3,7 +3,7 @@ layout: post
 title: UIAccessibility
 category: UIKit
 author: Mattt Thompson
-translator: "Henry Lee"
+translator: Henry Lee
 description: 辅助功能，如同国际化一样，是一个很难让开发者提起兴致来的话题，但是你也知道，让你对这些东西感兴趣起来就是NSHipster的任务。
 
 ---

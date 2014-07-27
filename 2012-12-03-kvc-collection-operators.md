@@ -4,7 +4,7 @@ title: "KVC Collection Operators"
 category: Foundation
 description: "Ruby爱好者总爱嘲笑Objective-C臃肿的语法。尽管新的Object Literals语法让我们瘦了几斤，但那些红头发的恶霸们还总是用他们的单行map和花哨的#to_proc符号嘲讽我们。幸运的是，我们有键-值编码这个王牌。"
 author: Mattt Thompson
-translator: "Candyan"
+translator: Candyan
 ---
 
 Ruby爱好者总爱嘲笑Objective-C臃肿的语法。

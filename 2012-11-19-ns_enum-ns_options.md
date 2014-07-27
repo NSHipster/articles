@@ -4,7 +4,7 @@ title: "NS_ENUM & NS_OPTIONS"
 category: Foundation
 description: "一个专业的Objective-C工程师应该在面向对象和面向过程范式间优雅地切换，同时能够掌握二者的优势。"
 author: Mattt Thompson
-translator: "Croath Liu"
+translator: Croath Liu
 ---
 
 一切皆为对象。

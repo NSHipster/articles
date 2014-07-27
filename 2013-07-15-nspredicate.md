@@ -3,7 +3,7 @@ layout: post
 title: NSPredicate
 category: Foundation
 author: Mattt Thompson
-translator: "Zihan Xu"
+translator: Zihan Xu
 ---
 
 `NSPredicate`是一个Foundation类，它指定数据被获取或者过滤的方式。它的查询语言就像SQL的`WHERE`和正则表达式的交叉一样，提供了具有表现力的，自然语言界面来定义一个集合被搜寻的逻辑条件。
