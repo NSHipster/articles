@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NSDateComponents
-category: Foundation
+category: Cocoa
 author: Mattt Thompson
 translator: Candyan
 ---

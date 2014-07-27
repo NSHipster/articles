@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NSPredicate
-category: Foundation
+category: Cocoa
 author: Mattt Thompson
 translator: Zihan Xu
 ---

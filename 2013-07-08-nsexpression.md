@@ -3,7 +3,7 @@ layout: post
 title: NSExpression
 author: Mattt Thompson
 translator: Zihan Xu
-category: Foundation
+category: Cocoa
 ---
 
 每当涉及查询或者整理信息时，Cocoa总是其他标准库羡慕的对象。通过使用`NSPredicate`，[`NSSortDescriptor`](http://nshipster.com/nssortdescriptor/)，以及偶尔使用`NSFetchRequest`，即使是最复杂的数据任务也可以被简化成为几行_极其容易读懂_的代码。

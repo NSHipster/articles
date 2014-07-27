@@ -3,7 +3,7 @@ layout: post
 title: NSSortDescriptor
 author: Mattt Thompson
 translator: Zihan Xu
-category: Foundation
+category: Cocoa
 ---
 
 排序：它是CS（计算机科学）入门课程考试和初级编程面试白板考题的主流考题。不管怎么样，你上一次真正需要知道如何实现快速排序是什么时侯？
