@@ -3,7 +3,6 @@ layout: post
 title: NSValueTransformer
 
 category: Foundation
-rating: 6.6
 published: true
 description: "在 Foundation 框架的所有类中，NSValueTransformer 也许是从 OS X 平台迁移到 iOS 平台表现最差的那个。但是，经过一些雕琢和使用场景的改变，也许它能在你的应用中发挥重大作用。"
 ---

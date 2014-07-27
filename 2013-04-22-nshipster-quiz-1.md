@@ -3,7 +3,6 @@ layout: post
 title: "NSHipster Quiz #1"
 translator: Ricky Tan
 category: Trivia
-rating: 10.0
 description: "Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?"
 ---
 

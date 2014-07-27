@@ -3,7 +3,6 @@ layout: post
 title: UILocalizedIndexedCollation
 
 category: UIKit
-rating: 7.1
 published: true
 translator: "Tony Li"
 description: 当 UITableView 有一百来行时，它就变得有些笨重了。如果用户为了找到他们想要的东西，像玩水果忍者的猫那样疯狂地滑动屏幕时，你可能会想要重新考虑一下用户界面的展现方式。

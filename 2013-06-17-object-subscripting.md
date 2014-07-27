@@ -3,7 +3,6 @@ layout: post
 title: 对象下标索引
 translator: "Zihan Xu"
 category: Objective-C
-rating: 8.7
 ---
 
 Xcode 4.4悄然为Objective-C引入了语法革命。然而，像所有的革命一样，我们要费些努力才能找出它的起因和煽动者：Xcode 4.4附带有苹果LLVM编译器4.0，其中纳入了在Clang的前端版本3.1生效的改变。

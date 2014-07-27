@@ -3,7 +3,6 @@ layout: post
 title: "NSHipster Quiz #2"
 
 category: Trivia
-rating: 10.0
 description: "Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"
 ---
 

@@ -2,7 +2,6 @@
 layout: post
 title: NSPredicate
 category: Foundation
-rating: 9.2
 translator: "Zihan Xu"
 ---
 

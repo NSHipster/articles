@@ -3,7 +3,6 @@ layout: post
 title: "NSHipster Quiz #3"
 
 category: Trivia
-rating: 10.0
 description: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
 ---
 
