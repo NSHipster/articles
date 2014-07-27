@@ -2,7 +2,6 @@
 layout: post
 title: NSIncrementalStore
 category: Foundation
-published: true
 translator: "Henry Lee"
 description: 即使这个博客就是专门讲一些晦涩接口，但是`NSIncrementalStore`又刷新了我们对与“晦涩”这个词的理解。这个接口在iOS 5中被发布，相对于其他大家一定会用到的条目，它并没有在更新日志里有更着重的声明。但是讽刺的是，它有可能是iOS 5的API里最重要的一个，它将从现在开始改变我们创建应用的方式。
 ---
