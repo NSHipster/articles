@@ -1,7 +1,7 @@
 ---
 layout: post
 title: CocoaPods
-category: "Open Source"
+category: Open Source
 excerpt: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
 ---
 

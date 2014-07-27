@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Xcode Plugins"
-category: "Xcode"
+category: Xcode
 tags: popular
 excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 ---

@@ -1,8 +1,7 @@
 ---
 layout: post
 title: "Reader Submissions -<br/>New Year's 2013"
-category: "Reader Submissions"
-category: ""
+category: Reader Submissions
 excerpt: "In celebration of the forthcoming `year++`, I thought it'd be fun to compile a list of some of your favorite tips and tricks of the trade. Readers were asked to submit their favorite piece of Objective-C trivia, framework arcana, hidden Xcode feature, or anything else they thought is cool."
 ---
 

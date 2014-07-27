@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Type Encodings
-category: "Objective-C"
+category: Objective-C
 excerpt: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
 ---
 
