@@ -2,7 +2,7 @@
 layout: post
 title: NSURLProtocol
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLProtocol_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 7.4
 published: true
 description: Foundation库的URL加载系统是每个iOS工程师应该熟练掌握的。而在Foundation库中所有与网络相关的类和接口中，NSURLProtocol或许是最黑科技的了。

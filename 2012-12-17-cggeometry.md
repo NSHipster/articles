@@ -3,7 +3,7 @@ layout: post
 title: CGGeometry
 translator: Ricky Tan
 ref: "https://developer.apple.com/library/mac/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html"
-framework: CoreGraphics
+category: CoreGraphics
 rating: 8.0
 published: true
 description: "除非你是个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。为了保持尽可能少地做数学问题的传统，这里列出了一些不算复杂的 CoreGraphics 函数使你的工作更简单。"
@@ -30,7 +30,7 @@ description: "除非你是个数学极客或者一个古希腊人，否则几何
 变换
 ---------------
 
-我们的列表中的第一个是几何变换。这些函数返回在传入的矩形中做某些特定操作后的 `CGRect` 
+我们的列表中的第一个是几何变换。这些函数返回在传入的矩形中做某些特定操作后的 `CGRect`
 
 ### `CGRectOffset`
 

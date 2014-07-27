@@ -3,7 +3,7 @@ layout: post
 title: NSIncrementalStore
 
 ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/NSIncrementalStore_Class/Reference/NSIncrementalStore.html"
-framework: Foundation
+category: Foundation
 rating: 9.5
 published: true
 translator: "Henry Lee"
@@ -66,7 +66,7 @@ NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 
 ### `-executeRequest:withContext:error:`
 
-Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint) 
+Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint)
 
 从实现的角度，事情开始有意思起来了（但是从接口设计角度来说，那就糟透了）。
 
@@ -83,11 +83,11 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 > **返回**: 封装在`NSArray`内的符合请求的结果
 
 - 返回类型: `NSCountResultType`
-  
+
 > **返回**: 返回一个用<del><tt>NSNumber</tt></del><ins><tt>NSArray</tt>封装的<tt>NSNumber</tt>来表示符合请求的数量</ins>
 
 #### 请求类型: `NSSaveRequestType`
-  
+
 > **返回**: 空的`NSArray`
 
 所以，在一个方法内就能对同一个对象做所有读_并且_写的操作，起码所有复杂的操作都在同一地方，对吧？

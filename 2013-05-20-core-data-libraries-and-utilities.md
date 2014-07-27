@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Core Data Libraries & Utilities"
-framework: "Open Source"
+category: "Open Source"
 rating: 8.9
 description: "上周，我们感觉Core Data有些难，所以为了NSHipster的这个问题，我们将奉上关于使用Core Data的最好开源库的引导。仔细阅读，看看你如何充分利用这次Core Data体验。"
 translator: "JJ Mao"
@@ -148,7 +148,7 @@ Wrapper库为Core Data繁琐复杂的接口提供一些必要的语法糖和便�
 
 #### [Magical Record](https://github.com/magicalpanda/MagicalRecord)
 
-> MagicalRecord的灵感来自于Ruby on Rails的Active Record轻松抓取。该代码是为了清理Core Data的相关代码，允许简单明了的一行抓取，当需要请求优化时还允许修改`NSFetchRequest`。 
+> MagicalRecord的灵感来自于Ruby on Rails的Active Record轻松抓取。该代码是为了清理Core Data的相关代码，允许简单明了的一行抓取，当需要请求优化时还允许修改`NSFetchRequest`。
 
 #### [Objective-Record](https://github.com/mneorr/Objective-Record)
 

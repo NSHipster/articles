@@ -3,7 +3,7 @@ layout: post
 title: AFNetworking 2.0
 translator: "Zihan Xu"
 ref: "https://github.com/AFNetworking/AFNetworking"
-framework: "Open Source"
+category: "Open Source"
 rating: 9.9
 description: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
 ---

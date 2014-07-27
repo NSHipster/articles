@@ -3,7 +3,7 @@ layout: post
 title: NSLinguisticTagger
 
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSLinguisticTagger_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 9.7
 published: true
 description: "NSLinguisticTagger在语言学功能上来讲是一把名副其实的瑞士军刀，它可以讲自然语言的字符串标记为单词、确定词性和词根、划分出人名地名和组织名称、告诉你字符串使用的语言和语系。"
@@ -37,11 +37,11 @@ tagger.string = question;
 
 输出如下：
 
-> What: _Pronoun（代词）_  
-> is: _Verb（动词）_  
-> the: _Determiner（限定词）_  
-> weather: _Noun（名词）_  
-> in: _Preposition（介词）_  
+> What: _Pronoun（代词）_
+> is: _Verb（动词）_
+> the: _Determiner（限定词）_
+> weather: _Noun（名词）_
+> in: _Preposition（介词）_
 > San Francisco: _PlaceName（地名）_
 
 如果我们过滤名词、动词、地名，就会得到结果：`[is, weather, San Francisco]`。

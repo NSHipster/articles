@@ -3,7 +3,7 @@ layout: post
 title: NSSortDescriptor
 translator: "Zihan Xu"
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSortDescriptor_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 8.4
 ---
 

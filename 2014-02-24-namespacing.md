@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "namespacing"
-framework: "Objective-C"
+category: "Objective-C"
 rating: 5.0
 description: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。"
 translator: "Sheldon Huang"

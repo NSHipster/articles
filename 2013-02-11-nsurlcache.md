@@ -3,7 +3,7 @@ layout: post
 title: NSURLCache
 translator: Ricky Tan
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 8.7
 description: "NSURLCache 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。作为基础类库 URL 加载系统的一部分，任何通过 NSURLConnection 加载的请求都将被 NSURLCache 处理。"
 ---

@@ -3,7 +3,7 @@ layout: post
 title: NSValueTransformer
 
 ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSValueTransformer_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 6.6
 published: true
 description: "在 Foundation 框架的所有类中，NSValueTransformer 也许是从 OS X 平台迁移到 iOS 平台表现最差的那个。但是，经过一些雕琢和使用场景的改变，也许它能在你的应用中发挥重大作用。"
@@ -32,11 +32,11 @@ description: "在 Foundation 框架的所有类中，NSValueTransformer 也许�
 #pragma mark -
 
 @implementation ClassNameTransformer
-+ (Class)transformedValueClass { 
-  return [NSString class]; 
++ (Class)transformedValueClass {
+  return [NSString class];
 }
 
-+ (BOOL)allowsReverseTransformation { 
++ (BOOL)allowsReverseTransformation {
     return NO;
 }
 
@@ -69,8 +69,8 @@ NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForNa
 ~~~{objective-c}
 NSString * const TKCapitalizedStringTransformerName = @"TKCapitalizedStringTransformerName";
 
-[NSValueTransformer registerValueTransformerWithName:TKCapitalizedStringTransformerName 
-           transformedValueClass:[NSString class] 
+[NSValueTransformer registerValueTransformerWithName:TKCapitalizedStringTransformerName
+           transformedValueClass:[NSString class]
 returningTransformedValueWithBlock:^id(id value) {
   return [value capitalizedString];
 }];

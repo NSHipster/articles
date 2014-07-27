@@ -3,7 +3,7 @@ layout: post
 title: "NS_ENUM & NS_OPTIONS"
 
 ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacOSX10_8/Foundation.html"
-framework: Foundation
+category: Foundation
 rating: 7.0
 published: true
 description: "一个专业的Objective-C工程师应该在面向对象和面向过程范式间优雅地切换，同时能够掌握二者的优势。"

@@ -2,7 +2,7 @@
 layout: post
 title: "Benchmarking"
 ref: ""
-framework: Objective-C
+category: Objective-C
 rating: 9.0
 translator: "Croath Liu"
 description: "对于完成有意义的工作来说抽象很重要，但却会带来副作用。利用benchmarking，工程师可以揭开他们代码中运行效率的面纱，然后利用获得的信息来优化。"

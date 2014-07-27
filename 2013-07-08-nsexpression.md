@@ -3,7 +3,7 @@ layout: post
 title: NSExpression
 translator: "Zihan Xu"
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html"
-framework: Foundation
+category: Foundation
 rating: 9.0
 ---
 

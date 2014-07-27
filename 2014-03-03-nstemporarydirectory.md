@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"
-framework: "Foundation"
+category: Cocoa
 rating: 7.7
 description: "外存被用于写入可持续化保存的数据，但当数据生命周期很短时，用Objective-C操作临时文件的资料却很少（可能有，不过这些资料本身也是“临时”的）。"
 translator: "Croath Liu"

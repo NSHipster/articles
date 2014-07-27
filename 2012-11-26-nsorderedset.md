@@ -3,7 +3,7 @@ layout: post
 title: "NSOrderedSet"
 
 ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSOrderedSet_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 6.2
 published: true
 description: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"

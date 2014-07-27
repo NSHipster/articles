@@ -3,7 +3,7 @@ layout: post
 title: NSCharacterSet
 translator: Ricky Tan
 ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/nscharacterset_Class/Reference/Reference.html"
-framework: Foundation
+category: Foundation
 rating: 8.5
 published: true
 description: "基础类库（Foundation）拥有最好的、功能也最全的string类的实现。但是仅当程序员熟练掌握它时，一个string的实现才是真的好。所以本周，我们将浏览一些基础类库的string生态系统中经常用到且用错的重要组成部分：NSCharacterSet。"
@@ -72,7 +72,7 @@ string = [components componentsJoinedByString:@" "];
 言归正传，这里有 9 个错误答案：
 
 - "Use `stringByTrimmingCharactersInSet`" - _正如你所知道的，它只去掉首尾的空格。_
-- "Replace ' ' with ''" - _这个去除了**所有**的空格，劳而无功。_ 
+- "Replace ' ' with ''" - _这个去除了**所有**的空格，劳而无功。_
 - "Use a regular expression" - _有点用，但它没有处理首尾的空格。用正则表达式有点大材小用了。_
 - "Use Regexp Lite" - _说真的，正则表达式真心没必要。同时为了这点功能增加第三方库很不值。_
 - "Use OgreKit" - _同上，添加了第三方库。_
@@ -85,7 +85,7 @@ string = [components componentsJoinedByString:@" "];
 
 ## 字符串分词
 
-**不要用 `NSCharacterSet` 来分词。**  
+**不要用 `NSCharacterSet` 来分词。**
 **用 `CFStringTokenizer` 来替代它。**
 
 你用 `componentsSeparatedByCharactersInSet:` 来清理用户输入是可以谅解的，但是用它来做更复杂的事情，你将陷入痛苦的深渊。

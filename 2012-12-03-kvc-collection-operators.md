@@ -3,7 +3,7 @@ layout: post
 title: "KVC Collection Operators"
 
 ref: "http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/CollectionOperators.html"
-framework: Foundation
+category: Foundation
 rating: 7.9
 published: true
 description: "Ruby爱好者总爱嘲笑Objective-C臃肿的语法。尽管新的Object Literals语法让我们瘦了几斤，但那些红头发的恶霸们还总是用他们的单行map和花哨的#to_proc符号嘲讽我们。幸运的是，我们有键-值编码这个王牌。"
