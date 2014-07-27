@@ -1,17 +1,19 @@
 nshipster:
   title: "NSHipster: Obscure Topics in Cocoa & Objective-C"
-  excerpt: "To be an NSHipster is to care deeply about the craft of writing code. In cultivating a deep understanding and appreciation of Objective-C, its frameworks and ecosystem, one is able to create apps that delight and inspire users. Combining articles from NSHipster.com with new essays, this book is the essential guide for modern iOS and Mac OS X developers."
+  author: Mattt Thompson
+  summary: "To be an NSHipster is to care deeply about the craft of writing code. In cultivating a deep understanding and appreciation of Objective-C, its frameworks and ecosystem, one is able to create apps that delight and inspire users. Combining articles from NSHipster.com with new essays, this book is the essential guide for modern iOS and Mac OS X developers."
   image: "//cdn.nshipster.com/images/book-cover@2x.png"
   formats:
     ebook:
       isbn: 978-0-9912182-2-6
   availability: in_stock
   url: https://gum.co/nshipster
+  price: 19.99
 
 cfhipsterref:
   title: "CFHipsterRef: Low-Level Programming on iOS & Mac OS X"
+  author: Mattt Thompson
   summary: "Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, _CFHipsterRef: Low-Level Programming on iOS & Mac OS X_ covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime."
-  excerpt: "Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, CFHipsterRef: Low-Level Programming on iOS & Mac OS X covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime."
   image: "//cdn.nshipster.com/images/cfhipsterref-cover@2x.png"
   formats:
     pdf:
@@ -19,19 +21,12 @@ cfhipsterref:
       isbn: ...
   availability: pre_order
   url: https://gum.co/cfhipsterref
+  price: 29.99
 
 nshipster-fake-book-objective-c:
   title: "The NSHipster Fake Book (Objective-C)"
+  author: Mattt Thompson
   summary: "Over 200 code samples, ranging from the beginner and basic to the expert and obscure, across a variety of genres and use cases. Without any needless explanation."
-  excerpt: "Fake books are an indispensable tool for jazz musicians. They contain the melody, rhythm, and chord changes for hundreds of standards, allowing a player to jump into any session cold, and 'fake it' through any tunes outside their repertoire. It's not sheet music, but rather the essence of tunes.
-
-> Cm11 B9 B♭m9 A♭13 G13  and trade fours with the tenor.
-
-Programmers aren't all that different. Once you get the fundamentals down, it's really just about memorizing the APIs. Sure, you could read the docs, but nothing compares to the excitement of tinkering with code.
-
-That's the idea behind The NSHipster Fake Book: expanding your repertoire through concise code samples, with minimal explanation. It's about letting concepts click as you discover new licks you'd never though to try. Just pick it up and start playing.
-
-In this book, you'll find over 200 code samples, ranging from the beginner and basic to the expert and obscure, across a variety of genres and use cases."
   image: "//cdn.nshipster.com/images/the-nshipster-fake-book-cover@2x.png"
   formats:
     pdf:
@@ -39,3 +34,4 @@ In this book, you'll find over 200 code samples, ranging from the beginner and b
       isbn: ...
   availability: in_stock
   url: https://gum.co/the-nshipster-fake-book
+  price: 19.99
