@@ -15,7 +15,7 @@ layout: default
     {{ content }}
   </div>
 
-  <footer>
+  <footer role="complementary">
     <section id="sharing">
       <ul>
         <li class="twitter">
@@ -39,7 +39,7 @@ layout: default
       {% endif %}
     </section>
 
-    <nav role="navigation">
+    <section>
       <div id="continue">
         <small>Next Article</small>
         {% assign next = page.next %}
@@ -63,7 +63,7 @@ layout: default
         {% assign related = site.categories[category] %}
       {% endif %}
 
-      {% if related.length != 1 %}
+      {% if related.length > 1 %}
 
       <div id="related">
         <small>Related Articles</small>
@@ -81,6 +81,6 @@ layout: default
       </div>
 
       {% endif %}
-    </nav>
+    </section>
   </footer>
 </article>

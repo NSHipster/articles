@@ -55,8 +55,6 @@
   {% else %}
     <meta property="st:type" content="home"/>
   {% endif %}
-
-  <!--<script onload="try{Typekit.load();}catch(e){}" src="//use.typekit.net/agk0bgp.js"></script>-->
 </head>
 
 <body>
@@ -88,7 +86,7 @@
       </nav>
       {% endif %}
 
-      <form>
+      <form role="search">
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
 
@@ -97,7 +95,7 @@
       {% endunless %}
     </header>
 
-    <div id="main" role="main">
+    <div role="main">
       {{ content }}
     </div>
 
