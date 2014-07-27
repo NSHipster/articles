@@ -57,7 +57,7 @@
   {% endif %}
 </head>
 
-<body>
+<body itemscope itemtype="http://schema.org/WebPage">
   <div role="container">
     <header role="banner">
       <h1 id="logo">
@@ -95,7 +95,7 @@
       {% endunless %}
     </header>
 
-    <div role="main">
+    <div role="main" itemprop="mainContentOfPage">
       {{ content }}
     </div>
 
@@ -105,7 +105,7 @@
           <i aria-hidden="true" class="icon-cc"></i>
           NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
         </p>
-        <p>ISSN 2373-9800</p>
+        <p><acronym title="International Standard Serial Number">ISSN</acronym> 2373-9800</p>
         <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文</a>。</p>
       </section>
 

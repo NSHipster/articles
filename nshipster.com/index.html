@@ -41,10 +41,20 @@ title: NSHipster
   {% for book in site.data.books %}
     {% assign identifier = book[0] %}
     {% assign content = book[1] %}
-    <article id="{{ identifier }}" class="book">
-      <a href="{{ content.url }}" title="{{ content.title }}">
-        <img src="{{ content.image }}" class="cover" alt="{{ content.title }}"/>
-      </a>
+    <article id="{{ identifier }}" class="book" itemscope itemtype="http://schema.org/Product">
+      <div itemscope itemtype="http://schema.org/Book">
+        <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+        <a href="{{ content.url }}" title="{{ content.title }}">
+          <img src="{{ content.image }}" class="cover" alt="{{ content.title }}" itemprop="image"/>
+        </a>
+        <span itemprop="name" style="display:none;">{{ content.title }}</span>
+        <span itemprop="author" style="display:none;">{{ content.author }}</span>
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+          <link itemprop="availability" href="http://schema.org/InStock"/>
+          <meta itemprop="priceCurrency" content="USD"/>
+          <span itemprop="price">{{ content.price }}</span>
+        </div>
+      </div>
     </article>
   {% endfor %}
 </section>
