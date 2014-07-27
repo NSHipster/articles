@@ -16,6 +16,8 @@ redcarpet:
 
 highlighter: pygments
 
+exclude: ["articles", "books", "training"]
+
 groups:
   - Cocoa
   - Objective-C
