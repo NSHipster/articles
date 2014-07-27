@@ -2,7 +2,6 @@
 layout: post
 title: instancetype
 
-ref: "http://clang.llvm.org/docs/LanguageExtensions.html#objc_instancetype"
 category: Foundation
 rating: 7.3
 published: true

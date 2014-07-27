@@ -2,7 +2,6 @@
 layout: post
 title: UILocalizedIndexedCollation
 
-ref: "http://developer.apple.com/library/ios/#documentation/iPhone/Reference/UILocalizedIndexedCollation_Class/UILocalizedIndexedCollation.html"
 category: UIKit
 rating: 7.1
 published: true

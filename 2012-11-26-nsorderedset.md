@@ -2,7 +2,6 @@
 layout: post
 title: "NSOrderedSet"
 
-ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSOrderedSet_Class/Reference/Reference.html"
 category: Foundation
 rating: 6.2
 published: true

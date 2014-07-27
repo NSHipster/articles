@@ -1,7 +1,6 @@
 ---
 layout: post
 title: "Benchmarking"
-ref: ""
 category: Objective-C
 rating: 9.0
 translator: "Croath Liu"

@@ -2,7 +2,6 @@
 layout: post
 title: UIAccessibility
 
-ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAccessibility_Protocol/Introduction/Introduction.html"
 category: UIKit
 rating: 10.0
 published: true

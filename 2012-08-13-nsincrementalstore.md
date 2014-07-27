@@ -2,7 +2,6 @@
 layout: post
 title: NSIncrementalStore
 
-ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/NSIncrementalStore_Class/Reference/NSIncrementalStore.html"
 category: Foundation
 rating: 9.5
 published: true

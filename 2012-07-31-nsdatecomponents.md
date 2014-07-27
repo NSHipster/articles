@@ -2,7 +2,6 @@
 layout: post
 title: NSDateComponents
 
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDateComponents_Class/Reference/Reference.html"
 category: Foundation
 translator: "Candyan"
 rating: 6.9

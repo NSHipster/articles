@@ -2,7 +2,6 @@
 layout: post
 title: AddressBookUI
 
-ref: "http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html"
 category: AddressBookUI
 rating: 6.2
 published: true

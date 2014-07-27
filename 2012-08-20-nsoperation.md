@@ -2,7 +2,6 @@
 layout: post
 title: NSOperation
 translator: "Henry Lee"
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
 category: Foundation
 rating: 9.0
 description: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"

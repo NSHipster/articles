@@ -2,7 +2,6 @@
 layout: post
 title: 对象下标索引
 translator: "Zihan Xu"
-ref: "http://clang.llvm.org/docs/ObjectiveCLiterals.html"
 category: Objective-C
 rating: 8.7
 ---

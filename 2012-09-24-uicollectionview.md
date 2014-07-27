@@ -1,7 +1,6 @@
 ---
 layout: post
 title: UICollectionView
-ref: "https://developer.apple.com/library/ios/#documentation/UIKit/Reference/UICollectionView_class/Reference/Reference.html#//apple_ref/doc/uid/TP40012177"
 category: UIKit
 rating: 9.6
 published: true

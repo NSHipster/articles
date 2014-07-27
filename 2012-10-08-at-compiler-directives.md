@@ -2,7 +2,6 @@
 layout: post
 title: "@"
 translator: "Zihan Xu"
-ref: ""
 category: Objective-C
 rating: 8.7
 published: true

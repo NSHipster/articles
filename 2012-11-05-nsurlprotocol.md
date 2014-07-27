@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSURLProtocol
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLProtocol_Class/Reference/Reference.html"
 category: Foundation
 rating: 7.4
 published: true

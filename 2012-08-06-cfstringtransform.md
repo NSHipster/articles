@@ -2,7 +2,6 @@
 layout: post
 title: CFStringTransform
 translator: Ricky Tan
-ref: "https://developer.apple.com/library/mac/documentation/CoreFOundation/Reference/CFMutableStringRef/Reference/reference.html#//apple_ref/doc/uid/20001504-CH201-BCIGCACA"
 category: CoreFoundation
 rating: 9.1
 description: "NSString 是基础类库中的佼佼者。 它虽然很强大，但是不提提它的可自由桥接的表兄弟 CFMutableString，或者更特别地，CFStringTransform，是不负责任的。"

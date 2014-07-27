@@ -2,7 +2,6 @@
 layout: post
 title: NSCharacterSet
 translator: Ricky Tan
-ref: "http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/nscharacterset_Class/Reference/Reference.html"
 category: Foundation
 rating: 8.5
 published: true

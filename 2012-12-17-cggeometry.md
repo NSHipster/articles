@@ -2,7 +2,6 @@
 layout: post
 title: CGGeometry
 translator: Ricky Tan
-ref: "https://developer.apple.com/library/mac/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html"
 category: CoreGraphics
 rating: 8.0
 published: true

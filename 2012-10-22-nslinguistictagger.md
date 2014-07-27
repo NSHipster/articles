@@ -2,7 +2,6 @@
 layout: post
 title: NSLinguisticTagger
 
-ref: "http://developer.apple.com/library/ios/#documentation/cocoa/reference/NSLinguisticTagger_Class/Reference/Reference.html"
 category: Foundation
 rating: 9.7
 published: true

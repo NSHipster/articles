@@ -2,7 +2,6 @@
 layout: post
 title: "KVC Collection Operators"
 
-ref: "http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/CollectionOperators.html"
 category: Foundation
 rating: 7.9
 published: true

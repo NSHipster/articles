@@ -1,7 +1,6 @@
 ---
 layout: post
 title: NSPredicate
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSPredicate_Class/Reference/NSPredicate.html"
 category: Foundation
 rating: 9.2
 translator: "Zihan Xu"

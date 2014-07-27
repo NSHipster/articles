@@ -2,7 +2,6 @@
 layout: post
 title: "NS_ENUM & NS_OPTIONS"
 
-ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacOSX10_8/Foundation.html"
 category: Foundation
 rating: 7.0
 published: true

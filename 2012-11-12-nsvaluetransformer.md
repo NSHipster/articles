@@ -2,7 +2,6 @@
 layout: post
 title: NSValueTransformer
 
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSValueTransformer_Class/Reference/Reference.html"
 category: Foundation
 rating: 6.6
 published: true
