@@ -3,6 +3,7 @@ layout: post
 title: NSURLProtocol
 category: Foundation
 description: Foundation库的URL加载系统是每个iOS工程师应该熟练掌握的。而在Foundation库中所有与网络相关的类和接口中，NSURLProtocol或许是最黑科技的了。
+author: Mattt Thompson
 translator: "Croath Liu"
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 对象下标索引
+author: Mattt Thompson
 translator: "Zihan Xu"
 category: Objective-C
 ---

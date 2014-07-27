@@ -3,6 +3,7 @@ layout: post
 title: "namespacing"
 category: "Objective-C"
 description: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。"
+author: Mattt Thompson
 translator: "Sheldon Huang"
 ---
 >为什么Objecive-C中的很多类名都是`NS`开头的呢？

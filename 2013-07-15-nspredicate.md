@@ -2,6 +2,7 @@
 layout: post
 title: NSPredicate
 category: Foundation
+author: Mattt Thompson
 translator: "Zihan Xu"
 ---
 

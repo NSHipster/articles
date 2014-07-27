@@ -3,6 +3,7 @@ layout: post
 title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"
 category: ""
 description: "虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。"
+author: Mattt Thompson
 translator: "Croath Liu"
 ---
 

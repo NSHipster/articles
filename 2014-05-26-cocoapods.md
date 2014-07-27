@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CocoaPods
+author: Mattt Thompson
 translator: "David Liu"
 category: "Open Source"
 description: "只要设计和施工得当，基础设施可以帮助社会成倍的发展。 就Objective-C而言, CocoaPods提供了一个急需的疏导和管理开源软件的工具。"

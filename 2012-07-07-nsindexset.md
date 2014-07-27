@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSIndexSet
+author: Mattt Thompson
 translator: "Andrew Yang"
 category: Foundation
 ---

@@ -2,6 +2,7 @@
 layout: post
 title: AddressBookUI
 category: AddressBookUI
+author: Mattt Thompson
 translator: Henry Lee
 description: "Address Book UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与Message UI框架相似，Address Book UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
 

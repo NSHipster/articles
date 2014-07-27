@@ -2,6 +2,7 @@
 layout: post
 title: NSDateComponents
 category: Foundation
+author: Mattt Thompson
 translator: "Candyan"
 ---
 
