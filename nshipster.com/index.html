@@ -3,6 +3,10 @@ layout: default
 title: NSHipster
 ---
 
+{% contentfor header %}
+<h2>{{ site.description }}</h2>
+{% endcontentfor %}
+
 <section id="latest">
   <article>
     <header>
@@ -12,29 +16,78 @@ title: NSHipster
       </hgroup>
     </header>
 
-    {% if site.posts.first.description %}
-      <p>{{ site.posts.first.description }}</p>
-    {% else %}
-      {{ site.posts.first | only_first_p }}
-    {% endif %}
+    {{ site.posts.first.excerpt | markdownify }}
 
-    <a class="readmore" href="{{ site.posts.first.url }}">Read more</a>
+    <a class="readmore" href="{{ site.posts.first.url }}">Continue Reading</a>
   </article>
 </section>
 
-<section id="archive">
-  {% for post in site.posts offset:1 %}
-  	<article>
-      <header>
-        <h1><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
-      </header>
-      {% if post.description %}
-        <p>{{ post.description }}</p>
-      {% else %}
-        {{ post | only_first_p }}
-      {% endif %}
+<section id="recent">
+  <h1>Recent Articles</h1>
 
-      <a class="readmore" href="{{ post.url }}">Read more</a>
+  {% for post in site.posts offset:1 | limit: 6 %}
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+      </header>
+
+      {{ post.excerpt | markdownify }}
     </article>
+  {% endfor %}
+</section>
+
+<section id="publications">
+  <h1>Publications</h1>
+  {% for book in site.data.books %}
+    {% assign identifier = book[0] %}
+    {% assign content = book[1] %}
+    <article id="{{ identifier }}" class="book" itemscope itemtype="http://schema.org/Product">
+      <div itemscope itemtype="http://schema.org/Book">
+        <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+        <a href="{{ content.url }}" title="{{ content.title }}">
+          <img src="{{ content.image }}" class="cover" alt="{{ content.title }}" itemprop="image"/>
+        </a>
+        <span itemprop="name" style="display:none;">{{ content.title }}</span>
+        <span itemprop="author" style="display:none;">{{ content.author }}</span>
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+          <link itemprop="availability" href="http://schema.org/InStock"/>
+          <meta itemprop="priceCurrency" content="USD"/>
+          <span itemprop="price">{{ content.price }}</span>
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</section>
+
+<section id="popular">
+  <h1>Popular Articles</h1>
+
+  {% assign popular = site.tags.popular | shuffle %}
+  {% for post in popular | limit: 4 %}
+    <article class="excerpt">
+      <header>
+        <h1 class="title"><a href="{{ post.url }}">{{ post.title | camel_break }}</a></h1>
+      </header>
+
+      {{ post.excerpt | markdownify }}
+    </article>
+  {% endfor %}
+</section>
+
+<section class="archive" role="navigation">
+  {% for group in site.groups %}
+    <dl>
+      <dt>{{ group }}</dt>
+      {% assign sorted = site.posts | sort: 'title' %}
+      {% for post in sorted %}
+        {% if post.category == group %}
+          <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+        {% elsif group == 'Miscellanea' %}
+          {% unless site.groups contains post.category %}
+            <dd><a href="{{ post.url }}">{{ post.title }}</a></dd>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </dl>
   {% endfor %}
 </section>

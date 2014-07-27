@@ -4,8 +4,8 @@ layout: default
 
 <article>
   <header>
-    <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
-    <h2> Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
+    <h1 class="title"><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
+    <h2> Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time pubdate="{{ page.date | date_to_xmlschema }}">{{ page.date | ordinalize }}</time></h2>
   </header>
 
   <div class="content" data-swiftype-index="true">

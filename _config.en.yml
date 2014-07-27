@@ -6,7 +6,9 @@ title: NSHipster
 description: "<strong>NSHipster</strong> is a journal of the overlooked bits in Objective-C, Swift, and Cocoa. Updated weekly."
 permalink: /:title/
 timezone: America/Los_Angeles
-lsi: false
+
+google: 105091289906267717942
+issn: 2373-9800
 
 markdown: redcarpet
 redcarpet:
@@ -14,14 +16,13 @@ redcarpet:
 
 highlighter: pygments
 
+exclude: ["articles", "books", "training"]
+
 groups:
-  - Foundation
-  - CoreFoundation
-  - CoreGraphics
-  - UIKit
+  - Cocoa
   - Objective-C
+  - Swift
   - Open Source
-  - MapKit
   - Xcode
   - Trivia
   - Miscellanea

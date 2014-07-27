@@ -1,20 +1,537 @@
-@import "compass"
-@import "blueprint"
+@import './bourbon/bourbon'
+@import './neat/neat'
+@import './base/base'
+
+$primary-color: #ff8000
+$secondary-color: #4c3150
+$tertiary-color: #dfaf25
+
+$text-color: #222220
+$background-color: #F8F7F5
+$link-color: $primary-color
+$border-color: #e9e9e9
+
+$visual-grid: true
+
+$grid-columns: 12
+$max-width: 100%
+
+$desktop: new-breakpoint(min-width 769px 12)
+$tablet: new-breakpoint(max-width 768px 8)
+$mobile: new-breakpoint(max-width 480px 4)
+
+$sans-serif-font-family: "Helvetica Neue", "Helvetica", sans-serif
+$serif-font-family: "Georgia Pro", Georgia, serif
+
+
 
 @import "./functions"
-@import "./colors"
 @import "./fonts"
-@import "./typography"
-@import "./layout"
 @import "./animations"
 @import "./pygments"
-@import "./mobile"
-@import "./promotion"
 @import "./swiftype"
+@import "./exceptions"
 
-@import "./components/logo"
 
-+blueprint-typography
-
-html body
+html, body
+  font-family: $serif-font-family
+  margin: 0
+  border-top: 3px $primary-color solid
   background: $background-color
+
+[role="container"]
+  +outer-container
+
+  max-width: 960px
+  margin: 0 auto
+  padding: 2em
+
+  section
+    +row
+    +outer-container
+    margin-bottom: 2em
+    padding-bottom: 1em
+
+
+[role='banner']
+  +row
+  margin-bottom: 2em
+
+  #logo
+    +span-columns(3 of 12)
+    +prevent-selection
+    font-size: 1em
+    position: relative
+    height: 6em
+
+    +media($tablet)
+      margin-bottom: 2em
+      height: 5em
+
+    a
+      display: block
+
+    svg
+      width: 70%
+      +media($tablet)
+        width: 100% !important
+
+      &#ns
+        position: absolute
+        width: 70%
+        top: 0
+        left: 0
+
+      &#mustache
+        position: absolute
+        width: 70%
+        z-index: 100
+        top: 0
+
+        &:hover
+          +animation(twirl 1s ease-in-out)
+
+  nav
+    +span-columns(5 of 12)
+
+    li
+      display: block
+      +span-columns(1 of 3)
+
+      a
+        font-size: 1.5em
+        display: block
+        text-align: center
+
+        padding-top: 14px
+
+        &.current
+          padding-top: 10px
+          border-top: 4px $primary-color solid
+
+        &:hover
+          padding-top: 10px
+          border-top: 4px lighten($primary-color, 25%) solid
+
+  form
+    +span-columns(3 of 12)
+    +shift(1)
+    +omega
+    float: right
+
+    input
+      height: 2.5em !important
+
+    #st-search-input
+      float: right
+      clear: right
+
+
+  #logo, nav
+    +media($tablet)
+      +fill-parent
+
+  form
+    +media($tablet)
+      display: none
+
+  +media($tablet)
+    margin-bottom: 2em
+
+// Layout
+
+#latest
+  article
+    font-size: 125%
+
+#recent
+  article
+    +clearfix
+    +span-columns(4 of 12)
+    min-height: 15em
+
+    +media($desktop)
+      &:nth-of-type(3n)
+        +omega
+
+    +media($tablet)
+      +span-columns(6 of 12)
+      min-height: 12em
+
+      &:nth-of-type(2n)
+        +omega
+
+    +media($mobile)
+      +fill-parent
+      min-height: 7em
+      margin-bottom: 1em
+
+    p
+      +multiline-truncate
+
+#popular
+  article
+    +span-columns(6 of 12)
+
+    &:nth-of-type(2n)
+      +omega
+
+    +media($mobile)
+      +fill-parent
+      margin-bottom: 1em
+
+    p
+      +multiline-truncate
+
+
+// Typography
+
+section
+  h1
+    margin-bottom: 1em
+
+[role="article"]
+  font-size: 125%
+  margin-bottom: 1em
+
+  +media($mobile)
+    font-size: 75%
+
+    .content
+      overflow: hidden
+
+  +media($tablet)
+    font-size: 100%
+
+  table
+    overflow: scroll
+    margin: 2em 0
+
+    caption
+      margin: 2em 0 1em 0
+      font-size: 1.5em
+
+  div.highlight
+    border-radius: 0.25em
+    overflow: scroll
+    padding: 0 1em
+    margin-bottom: 1em
+
+  header
+    text-align: center
+    margin-bottom: 3em
+
+    h1
+      font-size: 3em
+      line-height: 1em
+      margin-bottom: 0.5em
+    h2
+      font-size: 1.25em
+      font-family: $serif-font-family
+      font-style: italic
+      font-weight: 300
+      color: lighten($text-color, 50%)
+
+      time
+        color: lighten($text-color, 25%)
+        white-space: nowrap
+
+  .content
+    margin-bottom: 2em
+
+    h1, h2, h3, h4, h5
+      margin: 2em 0 1em 0
+
+    h3
+      font-size: 1.25em
+
+    h4
+      font-size: 1em
+
+    hr
+      width: 40%
+      margin: 2em auto
+
+    img, object, embed, figure, svg
+      margin: 1em auto
+      display: block
+      width: auto
+
+    ul, ol
+      margin: 1.5em 0
+      padding: 0 3em
+
+      +media($mobile)
+        padding: 0
+
+      li
+        list-style: disc
+        margin-bottom: 1em
+
+    figure
+      text-align: center
+
+    del
+      color: transparentize($text-color, 0.5)
+
+    ins
+      background-color: transparentize($primary-color, 0.8)
+      text-decoration: none
+
+    blockquote
+      margin: 2em
+      margin-right: 4em
+      border-left: 3px $primary-color solid
+
+      cite
+        margin-top: 1em
+        display: block
+
+      +media($tablet)
+        margin: 1em 0
+
+    table
+      th
+        text-align: center
+      td
+        padding: 1em
+
+  sup
+    font-size: 50%
+    margin-right: -0.5em
+
+  footer
+    .contributor
+      +span-columns(6 of 12)
+      +omega(2n)
+      border-top: 1px #ccc solid
+      padding: 1em 0
+
+      &:only-child
+        +fill-parent
+
+        .avatar
+          padding: 0 1em
+
+      +media($mobile)
+        +fill-parent
+        margin-bottom: 1em
+
+        &:not(:first-child)
+          border-top: none
+
+        .avatar
+          padding: 0
+
+      .avatar
+        +span-columns(2 of 6)
+
+      .details
+        +span-columns(4 of 6)
+        +omega
+        margin-top: 1em
+
+        +media($mobile)
+          margin-top: 0
+
+        span
+          font-weight: 700
+
+        p
+          font-size: 0.75em
+          margin-top: 1em
+
+    small
+      display: block
+      font-size: 1em
+      font-weight: 700
+      color: #777
+      text-transform: lowercase
+      font-family: $sans-serif-font-family
+      font-variant: small-caps
+      margin-bottom: 1em
+
+[role="complementary"]
+  +row
+
+  #continue
+    +span-columns(9 of 12)
+
+    h1
+      margin-bottom: 0.5em
+
+    p
+      font-size: 0.75em
+
+  #related
+    +span-columns(3 of 12)
+    +omega
+
+    +media($mobile)
+      margin-top: 1em
+
+    li
+      font-size: 0.75em
+
+      +media($mobile)
+        font-size: 1em
+
+
+  #continue, #related
+    +media($mobile)
+      +fill-parent
+
+[role="contentinfo"]
+  text-align: center
+  margin-top: 2em
+  padding: 1em
+
+.avatar
+  +prevent-selection
+  max-width: 200px
+  max-height: 200px
+  border-radius: 50%
+  pointer-events: none
+  user-select: none
+
+
+html, body
+  ::selection, ::-moz-selection
+    background: transparentize($secondary-color, 0.5)
+    color: white
+
+a, a:visited
+  color: $link-color !important
+
+  &:hover
+    text-decoration: none
+
+.archive
+  dl
+    +span-columns(4 of 12)
+    +omega
+
+    +media($mobile)
+      +fill-parent
+
+#sharing
+  ul
+    +clearfix
+    display: block
+    float: right
+
+    +media($mobile)
+      +fill-parent
+
+  li
+    font-size: 1.5em
+    display: block
+    margin: 0.5em
+    float: left
+
+    +media($mobile)
+      display: none !important // !
+      margin: 0
+      +span-columns(3 of 12)
+      +omega(4)
+
+      a, i
+        display: block
+        margin: 0 auto
+        font-size: 1.25em
+
+    a:hover
+      text-decoration: none
+      color: $secondary-color !important
+
+.archive, [role="contentinfo"], #related
+  ul > li
+    list-style: disc inside !important
+    display: table-row
+
+    &:before
+      content: "●"
+      display: table-cell
+      padding-right: 0.5em
+
+  ol
+    counter-reset: list
+
+  ol > li
+    list-style: disc inside !important
+    display: table-row
+
+    &:before
+      counter-increment: list
+      content: counter(list) "."
+      display: table-cell
+      padding-right: 0.5em
+
+  dl
+    padding: 0 0.5em
+
+    dt
+      font-size: 1.5em
+      margin-bottom: 1em
+
+    dd
+      list-style: disc inside !important
+      display: table-row
+
+      &:before
+        content: "●"
+        display: table-cell
+        padding-right: 0.5em
+
+section > h1
+  font-family: $serif-font-family
+  font-weight: 300
+  font-style: italic
+  text-align: center
+  margin-bottom: 3em
+  font-size: 1.5em
+
+
+article.excerpt
+  h1
+    font-size: 1.5em
+
+a.readmore
+  font-style: italic
+
+a:hover
+  text-decoration: underline
+
+.book
+  +span-columns(4 of 12)
+  &:nth-of-type(3n)
+    +omega
+
+  +media($mobile)
+    +fill-parent
+    margin-bottom: 1em
+
+  a
+    display: block
+
+
+
+  img
+    display: block
+    margin: 0 auto
+    width: 200px
+    padding: 4px
+
+    &:hover
+      padding: 0
+      border: 4px $primary-color solid
+
+
+.tagline
+  clear: both
+  font-weight: 300
+  margin: 1em 0
+  padding-top: 1em
+
+  +media($mobile)
+    font-size: 110%

@@ -2,45 +2,82 @@
 layout: default
 ---
 
-<article>
-  <header>
-    <h1><a href="{{ page.url }}">{{ page.title | camel_break }}</a></h1>
-    <h2>Written by <a href="http://mattt.me/">Mattt Thompson</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}">{{ page.date | ordinalize }}</time></h2>
-    {% if page.created %}
-      <h3>Originally posted on <time datetime="{{ page.created }}">{{ page.created | ordinalize }}</time></h3>
-    {% endif %}
+{% assign author = site.data.authors["Mattt Thompson"] %}
+
+<article role="article" id="{{ page.id | remove: '/' }}" itemscope itemtype="http://schema.org/Article">
+  <header role="heading">
+    <h1 class="title" itemprop="name">
+      <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
+    </h1>
+    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
   </header>
 
-  <div class="content" data-swiftype-index="true">
+  <div class="content" itemprop="articleBody" data-swiftype-index="true">
     {{ content }}
   </div>
 
-  <aside>
-    <a href="https://twitter.com/share" class="twitter-share-button" data-url="{{ site.url}}{{ page.url }}" data-via="NSHipster" data-size="large">Tweet</a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-  </aside>
+  <footer role="complementary">
+    <section id="sharing">
+      <ul>
+        <li class="twitter">
+          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&text={{ page.title | strip_html | cgi_escape | append: ':' }}&via=NSHipster&related=mattt,nshipster"><i class="icon-twitter"></i></a>
+        </li>
+        <li class="facebook">
+          <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | strip_html | cgi_escape }}"><i class="icon-facebook"></i></a>
+        </li>
+        <li class="google-plus">
+          <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
+        </li>
+        <li class="email">
+          <a href="mailto:?Subject={{ page.title | append: ' via NSHipster' | strip_html }}&Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
+        </li>
+    </section>
 
-  <footer class="book promotion">
-    <a href="https://gum.co/the-nshipster-fake-book"><div id="the-nshipster-fake-book-cover" class="cover"></div></a>
-    <div>
-      <hgroup>
-        <h1><a href="https://gum.co/the-nshipster-fake-book">The NSHipster Fake Book: 200+ Objective-C Licks for iOS &amp; Mac OS X Developers</a></h1>
-        <h2>Available Now</h2>
-      </hgroup>
-      <p>Over 200 code samples, ranging from the beginner and basic to the expert and obscure, across a variety of genres and use cases. Without any needless explanation.</p>
-      <button onclick="javascript:window.location.href='https://gum.co/the-nshipster-fake-book'">Get It Now</button>
-    </div>
-  </footer>
+    <section id="attribution">
+      {% include contributor.html role="author" %}
+      {% if page.translator %}
+        {% include contributor.html role="translator" %}
+      {% endif %}
+    </section>
 
-  <footer class="book promotion">
-    <a href="https://gum.co/cfhipsterref"><div id="cfhipsterref-cover" class="cover"></div></a>
-    <div>
-      <hgroup>
-        <h1><a href="https://gum.co/cfhipsterref">CFHipsterRef: Low-Level Programming on<br/>iOS &amp; Mac OS X</a></h1>
-        <h2>Available in Beta</h2>
-      </hgroup>
-      <p>Perfect for intermediate and expert developers wanting to take a deeper dive into advanced topics, <em>CFHipsterRef: Low-Level Programming on iOS &amp; Mac OS X</em> covers the core technologies powering Cocoa, Objective-C, and the operating system itself, including Core Bluetooth, Accelerate, and the Objective-C runtime.</p>
-      <button onclick="javascript:window.location.href='https://gum.co/cfhipsterref'">Get It Now</button>
-    </div>
+    <section>
+      <div id="continue">
+        <small>Next Article</small>
+        {% assign next = page.next %}
+        {% if next == nil %}
+        {% assign next = site.posts.last %}
+        {% endif %}
+
+          <article>
+            <h1 class="title">
+              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title  | camel_break }}</a>
+            </h1>
+
+            {{ next.excerpt | markdownify }}
+          </article>
+      </div>
+
+
+      {% assign related = site.related_articles %}
+      {% if page.category %}
+        {% assign category = page.category | downcase %}
+        {% assign related = site.categories[category] %}
+      {% endif %}
+
+      <div id="related">
+        <small>Related Articles</small>
+
+        <ul>
+          {% assign related = related | shuffle %}
+          {% for post in related limit: 4 %}
+          {% if page.url != post.url %}
+            <li>
+              <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a>
+            </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+    </section>
   </footer>
 </article>

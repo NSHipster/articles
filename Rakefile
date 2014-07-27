@@ -8,10 +8,10 @@ namespace :publish do
             else
               raise "Unknown TLD"
           end
+#       find _site/ -iname "*.html" -exec tidy -config tidy.conf {} +
 
     system %{
       bundle exec jekyll build --config _config.#{locale}.yml
-      find _site/ -iname "*.html" -exec tidy -config tidy.conf {} +
       find _site/ -iname '*.html' -exec gzip -n --best {} +
       find _site/ -iname '*.xml' -exec gzip -n --best {} +
 
@@ -34,13 +34,15 @@ namespace :publish do
           end
 
     system %{
-      bundle exec compass compile assets --force
+      bundle exec sass --force -t compressed --update assets/sass:assets/css
       find assets/css -iname '*.css' -exec gzip -n --best {} +
       for f in `find assets/css -iname '*.gz'`; do
         mv $f ${f%.gz}
       done
 
       s3cmd put --recursive --progress -M --acl-public --add-header 'Content-Encoding:gzip' assets/css s3://nshipster.#{tld}/
+
+      s3cmd put --recursive --progress -M --acl-public assets/fonts s3://nshipster.#{tld}/
 
       s3cmd put --progress -M --acl-public assets/favicon.ico s3://nshipster.#{tld}/
 
