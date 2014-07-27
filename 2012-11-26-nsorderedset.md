@@ -2,7 +2,7 @@
 layout: post
 title: "NSOrderedSet"
 category: Cocoa
-description: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"
+excerpt: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"
 author: Mattt Thompson
 translator: Candyan
 ---

@@ -4,7 +4,7 @@ title: NSOperation
 author: Mattt Thompson
 translator: Henry Lee
 category: Cocoa
-description: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"
+excerpt: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"
 ---
 
 我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。

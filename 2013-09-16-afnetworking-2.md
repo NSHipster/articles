@@ -4,7 +4,7 @@ title: AFNetworking 2.0
 author: Mattt Thompson
 translator: Zihan Xu
 category: Open Source
-description: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
+excerpt: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
 ---
 
 [AFNetworking](http://afnetworking.com) 是当前 iOS 和 Mac OS X

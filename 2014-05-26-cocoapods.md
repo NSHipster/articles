@@ -4,7 +4,7 @@ title: CocoaPods
 author: Mattt Thompson
 translator: David Liu
 category: Open Source
-description: "只要设计和施工得当，基础设施可以帮助社会成倍的发展。 就Objective-C而言, CocoaPods提供了一个急需的疏导和管理开源软件的工具。"
+excerpt: "只要设计和施工得当，基础设施可以帮助社会成倍的发展。 就Objective-C而言, CocoaPods提供了一个急需的疏导和管理开源软件的工具。"
 ---
 
 文明是建立在道路，桥梁，运河，下水道，管线，电线和光纤这些基础设施之上的。只要设计和施工得当，它们可以帮助社会成倍的发展。

@@ -2,7 +2,7 @@
 layout: post
 title: NSLinguisticTagger
 category: Cocoa
-description: "NSLinguisticTagger在语言学功能上来讲是一把名副其实的瑞士军刀，它可以讲自然语言的字符串标记为单词、确定词性和词根、划分出人名地名和组织名称、告诉你字符串使用的语言和语系。"
+excerpt: "NSLinguisticTagger在语言学功能上来讲是一把名副其实的瑞士军刀，它可以讲自然语言的字符串标记为单词、确定词性和词根、划分出人名地名和组织名称、告诉你字符串使用的语言和语系。"
 author: Mattt Thompson
 translator: Croath Liu
 ---

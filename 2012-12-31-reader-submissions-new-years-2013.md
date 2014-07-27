@@ -2,7 +2,7 @@
 layout: post
 title: "Reader Submissions -<br/>New Year's 2013"
 category: ""
-description: "为了庆祝即将到来的 `year++`，我觉得编译一个你们最喜爱的tips和tricks的列表一定很好玩。读者可以提交他们最喜爱的和Objective-C之间的琐事、各种框架的奥秘、Xcode的隐藏功能之类的你认为很酷的东西。"
+excerpt: "为了庆祝即将到来的 `year++`，我觉得编译一个你们最喜爱的tips和tricks的列表一定很好玩。读者可以提交他们最喜爱的和Objective-C之间的琐事、各种框架的奥秘、Xcode的隐藏功能之类的你认为很酷的东西。"
 author: Mattt Thompson
 translator: Croath Liu
 ---
