@@ -15,11 +15,7 @@ redcarpet:
 highlighter: pygments
 
 groups:
-  - Foundation
-  - CoreFoundation
-  - CoreGraphics
-  - UIKit
+  - Cocoa
   - Objective-C
   - Open Source
-  - Trivia
   - Miscellanea
