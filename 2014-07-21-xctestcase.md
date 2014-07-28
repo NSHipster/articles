@@ -39,7 +39,7 @@ class Tests: XCTestCase {
 }
 ~~~
 
-These methods are useful for creating an objects common to all of the tests for a test case:
+These methods are useful for creating objects common to all of the tests for a test case:
 
 ~~~{swift}
 var calendar: NSCalendar?
