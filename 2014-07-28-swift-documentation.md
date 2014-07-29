@@ -5,7 +5,7 @@ category: Swift
 excerpt: "Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 6 & Swift."
 ---
 
-Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Even though the compiler lacks a discerning palette when it comes to naming, whitespace, or documentation, it makes all of the difference for human collaborators.
+Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Even though the compiler lacks a discerning palate when it comes to naming, whitespace, or documentation, it makes all of the difference for human collaborators.
 
 Readers of NSHipster will no doubt remember the [article about documentation published last year](http://nshipster.com/documentation/), but a lot has changed with Xcode 6 (fortunately, for the better, in most cases). So this week, we'll be documenting the here and now of documentation for aspiring Swift developers.
 
@@ -56,6 +56,8 @@ It gets weirder.
 Jump into a bridged Swift header for an Objective-C API, like say, HomeKit's `HMCharacteristic`, and option-clicking _does_ work. (Also, the documentation there uses `/*!` to open documentation, rather than the conventional `/**`).
 
 Little is known about this new documentation format... but in these Wild West times of strict typing and loose morals, that's not enough to keep us from using it ourselves:
+
+> **Update**: Sources from inside Cupertino have confirmed that SourceKit (the private framework powering Xcode that y'all probably know best for crashing in Playgrounds) includes a primitive parser for [reStructuredText](http://docutils.sourceforge.net/docs/user/rst/quickref.html). How reST is, well, re-structured and adapted to satisfy Apple's use case is something that remains to be seen.
 
 ~~~{swift}
 import Foundation
@@ -234,16 +236,6 @@ bike.travel(distance: 200) // Trip to the store
 println(bike)
 // "A road bike for streets or trails, with a 8-speed freewheel gear, and classic, drop handlebars, on a 53" frame, with a total of 1700.0 meters traveled over 2 trips."
 ~~~
-
-## Jazz Conspiracy
-
-One interesting clue into what these new documentation tools are called can be found by opening the Web Inspector on one of the new documentation pages:
-
-![Apple Documentation Jazz Web Inspector](http://nshipster.s3.amazonaws.com/swift-documentation-web-inspector.png)
-
-Notice that the `<body>` tag has the class "jazz". While there's no mention of "Jazz" in any of the release notes or documentation available online, one doesn't just mark up a document with a fancy word like that for no reason, right?
-
-Alright, enough speculation. Let's round this up.
 
 * * *
 
