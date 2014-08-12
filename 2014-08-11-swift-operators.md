@@ -282,7 +282,7 @@ It makes sense that `+` would work on numbers—that's just math. But think abou
 
 > PHP uses `.` for string concatenation (which is objectively a terrible idea). Objective-C allows consecutive string literals to be appended with whitespace.
 
-In the run-up to it's initial stable release, Swift still has some work to do in resolving ambiguities in operator semantics. Recent changes, such as the addition of the `nil` coalescing operator (`??`), and the decision for optionals not to conform to `BooleanType` (confusing in the case of `Bool?`) are encouraging, and demonstrate the need for us to collectively ask ourselves _"does this really make sense?"_, and file radars appropriately.
+In the run-up to its initial stable release, Swift still has some work to do in resolving ambiguities in operator semantics. Recent changes, such as the addition of the `nil` coalescing operator (`??`), and the decision for optionals not to conform to `BooleanType` (confusing in the case of `Bool?`) are encouraging, and demonstrate the need for us to collectively ask ourselves _"does this really make sense?"_, and file radars appropriately.
 
 > I'm specifically concerned about the semantics of array operators, as demonstrated in the previous example. My 2 cents: arrays should forego the `+` and `-` operators in lieu of `<<`:
 
@@ -302,7 +302,7 @@ func <<<T> (inout left: [T], right: T) -> [T] {
 
 An even more controversial and exciting feature is the ability to define custom operators.
 
-Consider the arithmetic operator found in many programming languages, but missing in swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](http://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
+Consider the arithmetic operator found in many programming languages, but missing in Swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](http://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
 
 To add this operator in Swift, first declare the operator:
 
