@@ -9,7 +9,7 @@
 - Correcting technical mistakes in content
 - Translating existing articles into different languages
 - Requesting new articles (please search for any existing requests before opening a new one)
-- Running locally to experiment with [Jekyll](https://github.com/mojombo/jekyll), et al.
+- Running locally to experiment with [Jekyll](https://github.com/jekyll/jekyll), et al.
 
 **What This Repository Is _Not_ For**
 
@@ -19,7 +19,7 @@
 
 ## Running Locally
 
-NSHipster runs on [Jekyll](https://github.com/mojombo/jekyll), a blog-aware, static site generator in Ruby.
+NSHipster runs on [Jekyll](https://github.com/jekyll/jekyll), a blog-aware, static site generator in Ruby.
 
 You can run the site locally with:
 
@@ -34,21 +34,14 @@ $ bundle exec jekyll serve --config _config.en.yml
 
 ### Compass
 
-In addition to the site content, CSS is generated using [Compass](http://compass-style.org),  an open-source CSS Authoring Framework.
+In addition to the site content, CSS is generated using [Sass](http://sass-lang.com).
 
-To run Compass locally, do:
+To run Sass locally, do:
 
 ``` shell
 $ cd path/to/nshipster.com/assets
-$ gem install compass
-$ compass watch .
+$ sass watch .
 ```
-
-## Credits
-
-Site content, design, and concept were created by [Mattt Thompson](http://mattt.me/) ([@mattt](https://twitter.com/mattt))
-
-Illustrations were created by [Conor Heelan](http://www.conorheelan.com)
 
 ## Contact
 
@@ -56,4 +49,6 @@ Follow NSHipster on Twitter ([@NSHipster](https://twitter.com/NSHipster))
 
 ## License
 
-NSHipster is released under a [Creative Commons BY-NC License](http://creativecommons.org/licenses/by-nc/3.0/). See `LICENSE.md` for more information.
+All code is published under the [MIT License](http://opensource.org/licenses/MIT).
+
+All content on NSHipster.com is released under the [Creative Commons BY-NC License](http://creativecommons.org/licenses/by-nc/4.0/).
