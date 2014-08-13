@@ -1,0 +1,18 @@
+---
+layout: humans.txt
+---
+
+/* TEAM */
+
+Founder: Mattt Thompson
+Site: http://mattt.me
+Contact: mattt [at] nshipster.com
+Twitter: @mattt
+Location: Portland, OR, United States
+
+/* SITE */
+
+Last update: {{ site.time | date: "%Y/%-m/%-d" }}
+Language: English
+Standards: HTML5, CSS3, ARIA
+IDE: TextMate
