@@ -29,7 +29,7 @@ layout: default
           <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
         </li>
         <li class="email">
-          <a href="mailto:?Subject={{ page.title | append: ' via NSHipster' | strip_html }}%26Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
+          <a href="mailto:?Subject={{ page.title | strip_html | cgi_escape | append: '%20via%20NSHipster' }}%26Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
         </li>
     </section>
 
