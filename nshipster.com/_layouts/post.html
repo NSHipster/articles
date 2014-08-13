@@ -9,7 +9,7 @@ layout: default
     <h1 class="title" itemprop="name">
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
-    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" pubdate itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
+    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
   </header>
 
   <div class="content" itemprop="articleBody" data-swiftype-index="true">
@@ -31,6 +31,7 @@ layout: default
         <li class="email">
           <a href="mailto:?Subject={{ page.title | strip_html | cgi_escape | append: '%20via%20NSHipster' }}%26Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
         </li>
+      </ul>
     </section>
 
     <section id="attribution">
