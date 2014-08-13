@@ -9,7 +9,7 @@ layout: default
     <h1 class="title" itemprop="name">
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
-    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date }}" pubdate="{{ page.date }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
+    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" pubdate="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
   </header>
 
   <div class="content" itemprop="articleBody" data-swiftype-index="true">
