@@ -20,7 +20,7 @@ layout: default
     <section id="sharing">
       <ul>
         <li class="twitter">
-          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}&text={{ page.title | strip_html | cgi_escape | append: ':' }}&via=NSHipster&related=mattt,nshipster"><i class="icon-twitter"></i></a>
+          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}%26text={{ page.title | strip_html | cgi_escape | append: ':' }}%26via=NSHipster%26related=mattt,nshipster"><i class="icon-twitter"></i></a>
         </li>
         <li class="facebook">
           <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | strip_html | cgi_escape }}"><i class="icon-facebook"></i></a>
@@ -29,7 +29,7 @@ layout: default
           <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
         </li>
         <li class="email">
-          <a href="mailto:?Subject={{ page.title | append: ' via NSHipster' | strip_html }}&Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
+          <a href="mailto:?Subject={{ page.title | append: ' via NSHipster' | strip_html }}%26Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
         </li>
     </section>
 
