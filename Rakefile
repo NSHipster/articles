@@ -22,6 +22,8 @@ namespace :publish do
       mv _site/products.xml _site/products.gz
 
       s3cmd sync --progress -M --acl-public --add-header 'Content-Encoding:gzip' _site/ s3://nshipster.#{tld}/ --exclude '*.*' --include '*.html' --include '*.xml' --include 'products.gz' --verbose
+
+      s3cmd put --acl-public _site/*.txt s3://nshipster.#{tld}/ --verbose
     }
   end
 

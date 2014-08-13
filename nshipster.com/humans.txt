@@ -14,5 +14,6 @@ Location: Portland, OR, United States
 
 Last update: {{ site.time | date: "%Y/%-m/%-d" }}
 Language: English
-Standards: HTML5, CSS3, ARIA
+Standards: HTML5, CSS3, WAI-ARIA
+Software: Jekyll, S3CMD, Rake
 IDE: TextMate
