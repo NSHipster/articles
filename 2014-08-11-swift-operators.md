@@ -90,7 +90,7 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
     </tbody>
 
     <tr>
-        <th colspan="2">Additive <tt>{ associativity left precedence 160 }</tt></th>
+        <th colspan="2">Additive <tt>{ associativity left precedence 140 }</tt></th>
     </tr>
     <tbody>
         <tr><td><tt>+</tt></td><td>Add</td></tr>
@@ -106,7 +106,7 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
     </tr>
     <tbody>
         <tr><td><tt>..&lt;</tt></td><td>Half-open range</td></tr>
-        <tr><td><tt>..</tt></td><td>Closed range</td></tr>
+        <tr><td><tt>...</tt></td><td>Closed range</td></tr>
     </tbody>
 
     <tr>
@@ -198,9 +198,11 @@ In addition to the aforementioned standard operators, there are some _de facto_ 
 
 ## Overloading
 
-A controversial feature of Swift is the ability to overload operators, such that existing operators, like `+` are made to work with additional types.
+Swift has the ability to overload operators such that existing operators, like `+`, can be made to work with additional types.
 
-To overload an operator, simply define a new function for the operator symbol, taking the appropriate number of arguments. For example, to overload `*` to repeat a string a specified number of times:
+To overload an operator, simply define a new function for the operator symbol, taking the appropriate number of arguments.
+
+For example, to overload `*` to repeat a string a specified number of times:
 
 ```swift
 func * (left: String, right: Int) -> String {
@@ -221,7 +223,9 @@ func * (left: String, right: Int) -> String {
 "a" * 6 // "aaaaaa"
 ```
 
-This is, however, a controversial language feature. Any C++ developer would be all too eager to regale you with horror stories of the non-deterministic havoc this can wreak.
+This is, however, a controversial language feature.
+
+Any C++ developer would be all too eager to regale you with horror stories of the non-deterministic havoc this can wreak.
 
 Consider the following statement:
 
@@ -271,7 +275,7 @@ The result would then be an array of pairwise sums, expressed as `Int`.
 
 Herein lies the original sin of operator overloading: **ambiguous semantics**.
 
-Having been limited to basic arithmetic operators for across many years and programming languages, overloading of operators have become commonplace:
+Having been limited to basic arithmetic operators across many years and programming languages, overloading of operators has become commonplace:
 
 - Computing Sum of Integers: `1 + 2 // 3`
 - Computing Sum of Floats: `1.0 + 2.0 // 3.0`

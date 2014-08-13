@@ -159,7 +159,7 @@ public enum Method: String {
 }
 ```
 
-These values are passed as the first method in `request`:
+These values are passed as the first argument in `request`:
 
 ```swift
 Alamofire.request(.POST, "http://httpbin.org/get")
