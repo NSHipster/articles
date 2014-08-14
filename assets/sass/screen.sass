@@ -65,26 +65,26 @@ html, body
     height: 6em
 
     +media($tablet)
-      margin-bottom: 2em
-      height: 5em
+      margin: 0 auto 2em auto
+
+      svg
+        width: 100% !important
 
     a
+      +clearfix
       display: block
 
     svg
       width: 70%
-      +media($tablet)
-        width: 100% !important
+      max-height: 100px
 
       &#ns
         position: absolute
-        width: 70%
         top: 0
         left: 0
 
       &#mustache
         position: absolute
-        width: 70%
         z-index: 100
         top: 0
 
