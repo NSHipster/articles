@@ -26,8 +26,12 @@
   gravatar: ""
 "Ricky Tan":
   name: "Ricky Tan"
-  bio: ""
-  gravatar: ""
+  email: ricky.tan.xin@gmail.com
+  url: http://rickytan.cn
+  bio: "Ricky Tan 是iZJU iOS 版 3.1.3 以前版本及后台的开发者，另有浙大网址导航 iStudy Chrome 插件等。[更多请稳步](https://github.com/rickytan?tab=repositories)。"
+  gravatar: 71f0bbfbb3b0bc7e6e9aa2187814196a
+  github: rickytan
+  google: +rickytanx
 "Sheldon Huang":
   name: "Sheldon Huang"
   bio: ""
