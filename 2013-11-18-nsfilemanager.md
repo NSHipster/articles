@@ -4,8 +4,7 @@ title: NSFileManager
 translator: "Lin Xiangyu"
 category: Cocoa
 rating: 7.9
-description: "文件系统是一个复杂的主题，它有数十年的历史，一些遗留下的复杂性和一些特别的地方，已经不是一篇文章就可以描述的了。现在大多数的应用除了简单的文件操作之外不会经常与文件系统交互，所以有时候简单了解它的基础就行了。
-"
+description: "文件系统是一个复杂的主题，它有数十年的历史，一些遗留下的复杂性和一些特别的地方，已经不是一篇文章就可以描述的了。现在大多数的应用除了简单的文件操作之外不会经常与文件系统交互，所以有时候简单了解它的基础就行了。"
 ---
 
 
@@ -17,7 +16,7 @@ description: "文件系统是一个复杂的主题，它有数十年的历史，
 
 ## 常用操作
 
- 自始至终示例代码始终会有： `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)` ， 它或许绑定了KVO，也是Cocoa最糟糕的API之一。你只需要知道它返回了一个包含用户文档目录作为第一个元素的数组就行了。真要感谢 `NSArray -firstObject`。
+ 纵观苹果提供的样例代码，尽是这样的黑魔法： `NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)` ， 它或许绑定了KVO，也是Cocoa最糟糕的API之一。你只需要知道它返回了一个包含用户文档目录作为第一个元素的数组就行了。真要感谢 `NSArray -firstObject`。
 
 ## 确定文件是否存在
 
@@ -222,7 +221,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
     NSURL *fileURL = [NSURL fileURLWithPath:[documentsPath stringByAppendingPathComponent:@"Document.pages"]];
 
-    //当 entitlements 第一个为`nil`的时候列出的第一个元素，需要换成真实的 identifier
+    //这里的 identifier 应该设置为 entitlements 的第一个元素；当你使用这段代码的时候需要把 identifier 设置为你自己的真实 identifier
     NSString *identifier = nil;
 
     NSURL *ubiquitousContainerURL = [fileManager URLForUbiquityContainerIdentifier:identifier];
@@ -246,4 +245,4 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
 * * *
 
 
-关于文件系统需要知道很多东西，但是对于苹果开发者，这更多的只是学术练习。 NSFileManager可以让你不用学习它们大多数的内容就能完成工作。
+关于文件系统需要知道很多东西，但大多数是理论测验层面的。别误会，这些理论测验并没有错！但理论并不能教你代码该怎么写。NSFileManager可以让你不用学习它们大多数的内容就能完成工作。
