@@ -93,9 +93,9 @@
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
 
-      {% unless page.id %}
+      {% if page.path == "/" %}
         <h2 class="tagline">{{ site.description }}</h2>
-      {% endunless %}
+      {% endif %}
     </header>
 
     <div id="main" role="main" itemprop="mainContentOfPage">
@@ -106,16 +106,14 @@
       <section class="credits colophon">
         <p>
           <i aria-hidden="true" class="icon-cc"></i>
+          <i aria-hidden="true" class="icon-cc-by"></i>
+          <i aria-hidden="true" class="icon-cc-nc"></i>
           NSHipster.com is released under a <a href="http://creativecommons.org/licenses/by-nc/4.0/" rel="license">Creative Commons BY-NC License</a>.
         </p>
         <p><abbr title="International Standard Serial Number">ISSN</abbr> 2373-9800</p>
         <p lang="zh-Hans"><a href="http://nshipster.cn" hreflang="zh-Hans" title="Articles also available in Chinese">文章也可在中文版阅读</a>。</p>
         <a href="https://plus.google.com/{{ site.google }}" rel="publisher"></a>
       </section>
-
-      <aside class="links">
-        <a href="/feed.xml" class="icon-feed" title="RSS" aria-hidden="true"></a>
-      </aside>
     </footer>
   </div>
 
