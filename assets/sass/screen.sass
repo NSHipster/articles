@@ -184,6 +184,39 @@ html, body
       +multiline-truncate
 
 
+#follow
+  border-top: 1px #ccc solid
+  padding: 1em 0
+
+  ul
+    +span-columns(4 of 12)
+
+    li
+      +span-columns(1 of 4)
+
+      font-size: 2em
+
+      &:nth-of-type(4n)
+        +omega
+
+      a:hover
+        text-decoration: none
+
+  form
+    +span-columns(7 of 12)
+    +shift(1)
+    +omega
+
+    input[type="email"]
+      +span-columns(5 of 8)
+    input[type="submit"]
+      +span-columns(3 of 8)
+      border-radius: 10px
+      background: $primary-color
+      font-size: 0.75em
+      padding: 15px 0
+
+
 // Typography
 
 section
