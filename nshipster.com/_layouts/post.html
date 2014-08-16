@@ -17,21 +17,30 @@ layout: default
   </div>
 
   <footer role="complementary">
-    <section id="sharing">
+    <section id="follow">
+      <small>Follow NSHipster</small>
+
       <ul>
         <li class="twitter">
-          <a href="https://twitter.com/intent/tweet?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}%26text={{ page.title | strip_html | cgi_escape | append: ':' }}%26via=NSHipster%26related=mattt,nshipster"><i class="icon-twitter"></i></a>
+          <a href="https://twitter.com/intent/user?screen_name=NSHipster" title="Follow NSHipster on Twitter"><i class="icon-twitter" aria-hidden="true"></i></a>
         </li>
         <li class="facebook">
-          <a href="http://www.facebook.com/sharer.php?u={{ site.url | cgi_escape }}{{ page.url | strip_html | cgi_escape }}"><i class="icon-facebook"></i></a>
+          <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
         </li>
         <li class="google-plus">
-          <a href="https://plus.google.com/share?url={{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-googleplus"></i></a>
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
         </li>
-        <li class="email">
-          <a href="mailto:?Subject={{ page.title | strip_html | cgi_escape | append: '%20via%20NSHipster' }}%26Body=%20{{ site.url | cgi_escape }}{{ page.url | cgi_escape }}"><i class="icon-mail"></i></a>
+        <li class="rss">
+          <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
         </li>
       </ul>
+
+      <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
+        <input type="hidden" name="embed" value="1"/>
+        <input type="submit" value="Join the Newsletter"/>
+      </form>
     </section>
 
     <section id="attribution">
