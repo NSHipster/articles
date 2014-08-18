@@ -191,6 +191,9 @@ html, body
   ul
     +span-columns(4 of 12)
 
+    +media($mobile)
+      +fill-parent
+
     li
       +span-columns(1 of 4)
 
@@ -206,6 +209,11 @@ html, body
     +span-columns(7 of 12)
     +shift(1)
     +omega
+
+    +media($mobile)
+      +fill-parent
+      +shift(0)
+      margin-top: 2em
 
     input[type="email"]
       +span-columns(5 of 8)
