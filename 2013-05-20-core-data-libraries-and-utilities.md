@@ -153,7 +153,7 @@ Contrary to popular belief, Core Data is _not_ an [Object-Relational Mappers](ht
 > This is a lightweight ActiveRecord way of managing Core Data objects.
 > The syntax is borrowed from Ruby on Rails.
 > And yeah, no AppDelegate code.
-> It's fully tested with [Kiwi](https://github.com/allending/Kiwi).
+> It's fully tested with [Kiwi](https://github.com/kiwi-bdd/Kiwi).
 
 ### Inspired by [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query)
 
