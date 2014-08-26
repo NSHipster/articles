@@ -34,9 +34,9 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=magicalpanda&repo=MagicalRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/supermarin/Objective-Record">Objective-Record</a></td>
+      <td><a href="https://github.com/supermarin/ObjectiveRecord">Objective-Record</a></td>
       <td><a href="https://github.com/supermarin">Marin Usalj</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=mneorr&repo=Objective-Record&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=supermarin&repo=ObjectiveRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/soffes/SSDataKit">SSDataKit</a></td>
@@ -148,7 +148,7 @@ Contrary to popular belief, Core Data is _not_ an [Object-Relational Mappers](ht
 
 > MagicalRecord was inspired by the ease of Ruby on Rails' Active Record fetching. The goals of this code are to clean up Core Data related code, allow for clear, simple, one-line fetches, and still allow the modification of the `NSFetchRequest` when request optimizations are needed.
 
-#### [Objective-Record](https://github.com/mneorr/Objective-Record)
+#### [ObjectiveRecord](https://github.com/supermarin/ObjectiveRecord)
 
 > This is a lightweight ActiveRecord way of managing Core Data objects.
 > The syntax is borrowed from Ruby on Rails.
