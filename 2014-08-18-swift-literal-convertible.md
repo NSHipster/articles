@@ -236,7 +236,7 @@ set.contains(1) // true
 set.count // 3
 ```
 
-> This example does, however, highlight a legitimate concern for literal convertibles: **type inference ambiguity**. Because of the significant API overlap between collection classes like `Array` and `Set, one could ostensibly write code that would behave differently depending on how the type was resolved (e.g. set addition is idempotent, whereas arrays accumulate, so the count after adding two equivalent elements would differ)
+> This example does, however, highlight a legitimate concern for literal convertibles: **type inference ambiguity**. Because of the significant API overlap between collection classes like `Array` and `Set`, one could ostensibly write code that would behave differently depending on how the type was resolved (e.g. set addition is idempotent, whereas arrays accumulate, so the count after adding two equivalent elements would differ)
 
 ## StringLiteralConvertible and URLs
 
