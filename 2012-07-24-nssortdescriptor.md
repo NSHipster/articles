@@ -24,7 +24,7 @@ Collection classes like `NSArray` and `NSSet` have methods to return sorted arra
 
 To put that into more practical terms, consider a `Person` class with properties for `firstName` & `lastName` of type `NSString *`, and `age`, which is an `NSUInteger`.
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -38,48 +38,38 @@ To put that into more practical terms, consider a `Person` class with properties
 }
 
 @end
+~~~ -->
+
+~~~{swift}
+class Person: NSObject {
+    let firstName: String
+    let lastName: String
+    let age: Int
+
+    init(firstName: String, lastName: String, age: Int) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.age = age
+    }
+
+    override var description: String {
+        return "\(firstName) \(lastName)"
+    }
+}
 ~~~
 
 Given the following dataset:
 
-<table>
-  <thead>
-    <tr>
-      <th><tt>index</tt></th>
-      <th>0</th>
-      <th>1</th>
-      <th>2</th>
-      <th>3</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><tt>firstName</tt></td>
-      <td>Alice</td>
-      <td>Bob</td>
-      <td>Charlie</td>
-      <td>Quentin</td>
-    </tr>
-    <tr>
-      <td><tt>lastName</tt></td>
-      <td>Smith</td>
-      <td>Jones</td>
-      <td>Smith</td>
-      <td>Alberts</td>
-    </tr>
-    <tr>
-      <td><tt>age</tt></td>
-      <td>24</td>
-      <td>27</td>
-      <td>33</td>
-      <td>31</td>
-    </tr>
-  </tbody>
-</table>
+| `firstName` | `lastName` | `age` |
+|-------------|------------|-------|
+| Alice       | Smith      | 24    |
+| Bob         | Jones      | 27    |
+| Charlie     | Smith      | 33    |
+| Quentin     | Alberts    | 31    |
 
 Here are some of the different ways they can be sorted by combinations of `NSSortDescriptor`:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSArray *firstNames = @[ @"Alice", @"Bob", @"Charlie", @"Quentin" ];
 NSArray *lastNames = @[ @"Smith", @"Jones", @"Smith", @"Alberts" ];
 NSArray *ages = @[ @24, @27, @33, @31 ];
@@ -111,6 +101,27 @@ NSLog(@"By first name: %@", [people sortedArrayUsingDescriptors:@[firstNameSortD
 
 
 NSLog(@"By last name, first name: %@", [people sortedArrayUsingDescriptors:@[lastNameSortDescriptor, firstNameSortDescriptor]]);
+// "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
+~~~ -->
+
+~~~{swift}
+let alice = Person(firstName: "Alice", lastName: "Smith", age: 24)
+let bob = Person(firstName: "Bob", lastName: "Jones", age: 27)
+let charlie = Person(firstName: "Charlie", lastName: "Smith", age: 33)
+let quentin = Person(firstName: "Quentin", lastName: "Alberts", age: 31)
+let people = [alice, bob, charlie, quentin]
+
+let firstNameSortDescriptor = NSSortDescriptor(key: "firstName", ascending: true, selector: "localizedStandardCompare:")
+let lastNameSortDescriptor = NSSortDescriptor(key: "lastName", ascending: true, selector: "localizedStandardCompare:")
+let ageSortDescriptor = NSSortDescriptor(key: "age", ascending: false)
+
+let sortedByAge = (people as NSArray).sortedArrayUsingDescriptors([ageSortDescriptor])
+// "Charlie Smith", "Quentin Alberts", "Bob Jones", "Alice Smith"
+
+let sortedByFirstName = (people as NSArray).sortedArrayUsingDescriptors([firstNameSortDescriptor])
+// "Alice Smith", "Bob Jones", "Charlie Smith", "Quentin Alberts"
+
+let sortedByLastNameFirstName = (people as NSArray).sortedArrayUsingDescriptors([lastNameSortDescriptor, firstNameSortDescriptor])
 // "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
 ~~~
 
