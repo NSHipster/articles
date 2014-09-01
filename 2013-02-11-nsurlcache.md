@@ -17,7 +17,7 @@ As of iOS 5, a shared `NSURLCache` is set for the application by default. [Quoth
 
 Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -25,6 +25,15 @@ Those having such special caching requirements can set a shared URL cache in `-a
                                                        diskCapacity:20 * 1024 * 1024
                                                            diskPath:nil];
   [NSURLCache setSharedURLCache:URLCache];
+}
+~~~ -->
+
+~~~{swift}
+func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+    let URLCache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+    NSURLCache.setSharedURLCache(URLCache)
+
+    return true
 }
 ~~~
 
@@ -115,7 +124,7 @@ Once the server response has been received, the `NSURLConnection` delegate has a
 
 In `-connection:willCacheResponse:`, the `cachedResponse` object has been automatically created from the result of the URL connection. Because there is no mutable counterpart to `NSCachedURLResponse`, in order to change anything about `cachedResponse`, a new object must be constructed, passing any modified values into `–initWithResponse:data:userInfo:storagePolicy:`, for instance:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
@@ -130,15 +139,35 @@ In `-connection:willCacheResponse:`, the `cachedResponse` object has been automa
                                                 userInfo:mutableUserInfo
                                            storagePolicy:storagePolicy];
 }
+~~~ -->
+
+~~~{swift}
+// MARK: NSURLConnectionDataDelegate
+
+func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: NSCachedURLResponse!) -> NSCachedURLResponse! {
+    var mutableUserInfo = NSMutableDictionary(dictionary: cachedResponse.userInfo)
+    var mutableData = NSMutableData(data: cachedResponse.data)
+    var storagePolicy: NSURLCacheStoragePolicy = .AllowedInMemoryOnly
+
+    // ...
+
+    return NSCachedURLResponse(response: cachedResponse.response, data: mutableData, userInfo: mutableUserInfo, storagePolicy: storagePolicy)
+}
 ~~~
 
 If `-connection:willCacheResponse:` returns `nil`, the response will not be cached.
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection
                   willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
     return nil;
+}
+~~~ -->
+
+~~~{swift}
+func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: NSCachedURLResponse!) -> NSCachedURLResponse! {
+    return nil
 }
 ~~~
 
