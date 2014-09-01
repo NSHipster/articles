@@ -25,14 +25,23 @@ In another departure from the old-school table view way of doing things, the pro
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
 if (!cell) {
   cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
 }
+~~~ -->
+~~~{swift}
+let identifier = "Cell"
+var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(identifier) as? UITableViewCell
+if cell == nil {
+    cell = UITableViewCell(...)
+}
 ~~~
 
-`UICollectionView` thankfully does away with this. `-dequeueReusableCellWithReuseIdentifier:forIndexPath:` is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a `UICollectionReusableView` subclass for a particular reuse identifier, and everything will work automatically. Thankfully, this behavior has been backported to `UITableView` as well with iOS 6.
+`UICollectionView` thankfully does away with this. `-dequeueReusableCellWithReuseIdentifier:forIndexPath:` is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a `UICollectionReusableView` subclass for a particular reuse identifier, and everything will work automatically.
+
+> Thankfully, this behavior has been backported to `UITableView` as well with iOS 6.
 
 ### Supplementary Views
 
@@ -91,7 +100,3 @@ The clean, logical separation between data source and layout; the clear division
 As a result, the entire landscape of iOS apps will be forever changed. With collection views, the aesthetic shift that was kicked off with the iPad will explode into an entire re-definition of how we expect apps to look and behave.
 
 Everyone may not be hip to collection views quite yet, but now you'll be able to say that you knew about them before they were cool.
-
-> Lest you think you have to hold off for iOS 6 adoption to catch up in order to use collection views in your app, here's some great news:
-
-> [Peter Steinberger](https://github.com/steipete) has released [PSTCollectionView](https://github.com/steipete/PSTCollectionView), a _100% API-compatible replacement for `UICollectionView` that supports iOS 4.3+_. Check it out!
