@@ -47,7 +47,7 @@ It's important to note that this method _only_ strips the _first_ and _last_ con
 
 So let's say you do want to get rid of excessive inter-word spacing for that string you just stripped of whitespace. Here's a really easy way to do that:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSString *string = @"Lorem    ipsum dolar   sit  amet.";
 string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -55,6 +55,14 @@ NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterS
 components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
 
 string = [components componentsJoinedByString:@" "];
+~~~ -->
+
+~~~{swift}
+var string = "  Lorem    ipsum dolar   sit  amet. "
+
+let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).filter({!isEmpty($0)})
+
+string = join(" ", components)
 ~~~
 
 First, trim the string of leading and trailing whitespace. Next, use `NSString -componentsSeparatedByCharactersInSet:` to split on the remaining whitespace to create an `NSArray`. Next, filter out the blank string components with an `NSPredicate`. Finally, use `NSArray -componentsJoinedByString:` to re-join the components with a single space. Note that this only works for languages like English that delimit words with whitespace.
@@ -106,7 +114,7 @@ Sat-Sun:    10:00 - 15:00
 
 You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCharacterSet];
 [skippedCharacters formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -125,6 +133,31 @@ NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCha
   [scanner scanInteger:&endHour];
   [scanner scanInteger:&endMinute];
 }];
+~~~ -->
+
+~~~{swift}
+let skippedCharacters = NSMutableCharacterSet()
+skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
+
+string.enumerateLines { (line, _) in
+    let scanner = NSScanner(string: line)
+    scanner.charactersToBeSkipped = skippedCharacters
+
+    var startDay, endDay: NSString?
+    var startHour: Int = 0
+    var startMinute: Int = 0
+    var endHour: Int = 0
+    var endMinute: Int = 0
+
+    scanner.scanCharactersFromSet(NSCharacterSet.letterCharacterSet(), intoString: &startDay)
+    scanner.scanCharactersFromSet(NSCharacterSet.letterCharacterSet(), intoString: &endDay)
+
+    scanner.scanInteger(&startHour)
+    scanner.scanInteger(&startMinute)
+    scanner.scanInteger(&endHour)
+    scanner.scanInteger(&endMinute)
+}
 ~~~
 
 We first construct an `NSMutableCharacterSet` from the union of whitespace and punctuation characters. Telling `NSScanner` to skip these characters greatly reduces the logic necessary to parse values from the string.
