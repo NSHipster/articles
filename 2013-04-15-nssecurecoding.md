@@ -11,11 +11,7 @@ A short post for this week: everything you need to know about `NSSecureCoding`.
 
 `NSSecureCoding` is a protocol introduced in the iOS 6 / Mac OS X 10.8 SDKs. Aside from a few mentions at WWDC, `NSSecureCoding` remains relatively obscure—most developers have perhaps heard of it, but perhaps never went so far as to look up what it does.
 
-`NSSecureCoding` extends the `NSCoding` protocol by adding the class method:
-
-~~~{objective-c}
-+ (BOOL)supportsSecureCoding;
-~~~
+`NSSecureCoding` extends the `NSCoding` protocol by adding the class method `supportsSecureCoding`:
 
 By conforming to `NSSecureCoding` and returning `YES` for `+supportsSecureCoding`, a class declares that it handles encoding and decoding of instances of itself in a way that guards against substitution attacks.
 
@@ -31,24 +27,34 @@ Anyway, `NSSecureCoding` patches this vulnerability by establishing a contract f
 
 Whereas a standard, secure implementation of `-initWithCoder:` might have a check like:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 id obj = [decoder decodeObjectForKey:@"myKey"];
 if (![obj isKindOfClass:[MyClass class]]) {
   // fail
+}
+~~~ -->
+
+~~~{swift}
+if let object = decoder.decodeObjectForKey("key") as? SomeClass {
+    // ...
 }
 ~~~
 
 ...an `NSSecureCoding`-conforming class would use:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 id obj = [decoder decodeObjectOfClass:[MyClass class]
                                forKey:@"myKey"];
+~~~ -->
+
+~~~{swift}
+let object = decoder.decodeObjectOfClass(SomeClass.self, forKey: "key") as SomeClass
 ~~~
 
 Sometimes, a little API change makes all of the difference.
 
 ---
 
-So now you know what's up with `NSSecureCoding`. Keep an eye out for that going forward: [XPC is only going to become more important](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/). Perhaps not today, perhaps not tomorrow, but someday—you will probably need to implement `NSSecureCoding`. And when that day comes... you'll be ready.
+So now you know what's up with `NSSecureCoding`. Perhaps not today, perhaps not tomorrow, but someday—you will probably need to implement `NSSecureCoding`. And when that day comes... you'll be ready.
 
 Stay safe, everyone.
