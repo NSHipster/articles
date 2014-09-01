@@ -37,7 +37,7 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
 
 `+initialize` is automatically called the first time a class is loaded, so this is a good place to register with `NSPersistentStoreCoordinator`:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 + (void)initialize {
   [NSPersistentStoreCoordinator registerStoreClass:self forStoreType:[self type]];
 }
@@ -45,17 +45,40 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
 + (NSString *)type {
   return NSStringFromClass(self);
 }
+~~~ -->
+
+~~~{swift}
+class CustomIncrementalStore: NSIncrementalStore {
+    override class func initialize() {
+        NSPersistentStoreCoordinator.registerStoreClass(self, forStoreType:self.type)
+    }
+
+    class var type: String {
+        return NSStringFromClass(self)
+    }
+}
 ~~~
 
 ### `-loadMetadata:`
 
 `loadMetadata:` is where the incremental store has a chance to configure itself. There is, however, a bit of Kabuki theater boilerplate that's necessary to get everything set up. Specifically, you need to set a UUID for the store, as well as the store type. Here's what that looks like:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 [mutableMetadata setValue:[[NSProcessInfo processInfo] globallyUniqueString] forKey:NSStoreUUIDKey];
 [mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
 [self setMetadata:mutableMetadata];
+~~~ -->
+
+~~~{swift}
+override func loadMetadata(error: NSErrorPointer) -> Bool {
+    self.metadata = [
+        NSStoreUUIDKey: NSProcessInfo().globallyUniqueString,
+        NSStoreTypeKey: self.dynamicType.type
+    ]
+
+    return true
+}
 ~~~
 
 ### `-executeRequest:withContext:error:`
@@ -108,8 +131,12 @@ Finally, this method is called before `executeRequest:withContext:error:` with a
 
 This usually corresponds with a write to the persistence layer, such as an `INSERT` statement in SQL. If, for example, the row corresponding to the object had an auto-incrementing `id` column, you could generate an objectID with:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 [self newObjectIDForEntity:entity referenceObject:[NSNumber numberWithUnsignedInteger:rowID]];
+~~~ -->
+
+~~~{swift}
+self.newObjectIDForEntity(entity, referenceObject: rowID)
 ~~~
 
 ## Roll Your Own Core Data Backend
@@ -120,7 +147,7 @@ What makes `NSIncrementalStore` so exciting is that you _can_ build a store on y
 
 So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
 
-## AFIncrementalStore: The Holy Grail of Client-Server Applications?
+## AFIncrementalStore
 
 [`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) is an NSIncrementalStore subclass that uses [AFNetworking](https://github.com/afnetworking/afnetworking) to automatically request resources as properties and relationships are needed.
 
@@ -128,11 +155,6 @@ What this means is that you can now write apps that communicate with a webservic
 
 Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.
 
-Perhaps the best part is that all of this is possible in **just under 300 LOC**. No need to subclass `NSManagedObject` or add obtrusive categories on `NSManagedObjectContext`--it just works.
+* * *
 
 Even though `NSIncrementalStore` has been around since iOS 5, we're still a long way from even beginning to realize its full potential. The future is insanely bright, so you best don your aviators, grab an iced latte and start coding something amazing.
-
-> In the spirit of full disclosure, `NSIncrementalStore` was brought to my attention by [this blog post by Drew Crawford](http://sealedabstract.com/code/nsincrementalstore-the-future-of-web-services-in-ios-mac-os-x/). I caught wind of it around the time iOS 5 originally came out, but like everyone else, I paid it no mind.
-
-> Also, `AFIncrementalStore` is a project of mine, which is offered as one of only a few examples of an `NSIncrementalStore` subclass available. I don't mean to use NSHipster as a platform to promote my own code, but I thought this to be a particularly salient example.
-
