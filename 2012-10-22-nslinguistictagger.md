@@ -19,7 +19,7 @@ Consider a typical question we might ask Siri:
 
 Computers are a long ways off from "understanding" this question literally, but with a few simple tricks, we can do a reasonable job understanding the _intention_ of the question:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSString *question = @"What is the weather in San Francisco?";
 NSLinguisticTaggerOptions options = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerJoinNames;
 NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes: [NSLinguisticTagger availableTagSchemesForLanguage:@"en"] options:options];
@@ -28,6 +28,18 @@ tagger.string = question;
     NSString *token = [question substringWithRange:tokenRange];
     NSLog(@"%@: %@", token, tag);
 }];
+~~~ -->
+
+~~~{swift}
+let question = "What is the weather in San Francisco?"
+let options: NSLinguisticTaggerOptions = .OmitWhitespace | .OmitPunctuation | .JoinNames
+let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
+let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.toRaw()))
+tagger.string = question
+tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, sentenceRange, _) in
+    let token = (question as NSString).substringWithRange(tokenRange)
+    println("\(token): \(tag)")
+}
 ~~~
 
 This code would print the following:
