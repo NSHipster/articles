@@ -39,36 +39,13 @@ To give you a better idea of how section index titles vary between locales:
 
 > In order to see these for yourself, you'll need to explicitly add the desired locales to your Project Localizations list.
 
-<table>
-  <thead>
-    <tr>
-      <th>Locale</th>
-      <th>Section Index Titles</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>en_US</td>
-      <td><tt>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #</tt></td>
-    </tr>
-    <tr>
-      <td>ja_JP</td>
-      <td><tt>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #</tt></td>
-    </tr>
-    <tr>
-      <td>sv_SE</td>
-      <td><tt>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #</tt></td>
-    </tr>
-    <tr>
-      <td>ko_KO</td>
-      <td><tt>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #</tt></td>
-    </tr>
-    <tr>
-      <td>ar_SA</td>
-      <td><tt>A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, #</tt></td>
-    </tr>
-  </tbody>
-</table>
+| Locale     | Section Index Titles |
+|------------|----------------------|
+| en_US      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #` |
+| ja_JP      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #` |
+| sv_SE      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #` |
+| ko_KO      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #` |
+| AR_sa      | A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, # |
 
 Aren't you glad you don't have to do this yourself?
 
@@ -80,7 +57,7 @@ Finally, the table view should implement `-tableView:sectionForSectionIndexTitle
 
 All told, here's what a typical table view data source implementation looks like:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 - (void)setObjects:(NSArray *)objects {
     SEL selector = @selector(localizedTitle);
     NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
@@ -121,11 +98,48 @@ sectionForSectionIndexTitle:(NSString *)title
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
+~~~ -->
+
+~~~{swift}
+class ObjectTableViewController: UITableViewController {
+    let collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
+    var sections: [[Object]] = []
+    var objects: [Object] {
+        didSet {
+            let selector: Selector = "localizedTitle"
+
+
+            sections = [[Object]](count: collation.sectionTitles.count, repeatedValue: [])
+
+            let sortedObjects = collation.sortedArrayFromArray(objects, collationStringSelector: selector) as [Object]
+            for object in sortedObjects {
+                let sectionNumber = collation.sectionForObject(object, collationStringSelector: selector)
+                sections[sectionNumber].append(object)
+            }
+
+            self.tableView.reloadData()
+        }
+    }
+
+    // MARK: UITableViewDelegate
+
+    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
+        return collation.sectionTitles![section] as String
+    }
+
+    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+        return collation.sectionIndexTitles
+    }
+
+    override func tableView(tableView: UITableView!, sectionForSectionIndexTitle title: String!, atIndex index: Int) -> Int {
+        return collation.sectionForSectionIndexTitleAtIndex(index)
+    }
+}
 ~~~
 
 ## UITableViewIndexSearch
 
-There is one special section index title worth mentioning, and that's `UITableViewIndexSearch`. It's a common pattern to have both a search bar and section indexes. In equal parts convenience and visual consistency, a search icon is often included as the first section index title, which can be touched to bring up the `UISearchBar` in the header of the table view.
+There is one special section index title worth mentioning, and that's `UITableViewIndexSearch`. It's a common pattern to have botorth a search bar and section indexes. In equal parts convenience and visual consistency, a search icon is often included as the first section index title, which can be touched to bring up the `UISearchBar` in the header of the table view.
 
 To include the search icon in your table view, you would simply prepend the `NSString` constant `UITableViewIndexSearch` to the return value of `-sectionIndexTitlesForTableView:`, and adjust `-tableView:sectionForSectionIndexTitle:atIndex:` to account for the single element shift.
 
