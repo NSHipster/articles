@@ -21,7 +21,7 @@ But you know what? `NSValueTransformer` is ripe for a comeback. With a little bi
 
 A typical implementation would look something like this:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 @interface ClassNameTransformer: NSValueTransformer {}
 @end
 
@@ -40,11 +40,28 @@ A typical implementation would look something like this:
     return (value == nil) ? nil : NSStringFromClass([value class]);
 }
 @end
+~~~ -->
+
+~~~{swift}
+class ClassNameTransformer: NSValueTransformer {
+
+    override class func transformedValueClass() -> AnyClass! {
+        return NSString.self
+    }
+
+    override class func allowsReverseTransformation() -> Bool {
+        return false
+    }
+
+    override func transformedValue(value: AnyObject!) -> AnyObject! {
+        return (value == nil) ? nil : NSStringFromClass(value as AnyClass)
+    }
+}
 ~~~
 
 `NSValueTransformer` is rarely initialized directly. Instead, it follows a pattern familiar to fans of `NSPersistentStore` or `NSURLProtocol`, where a class is registered, and instances are created from a manager--except in this case, you register the _instance_ to act as a singleton (with a particular name):
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSString * const ClassNameTransformerName = @"ClassNameTransformer";
 
 // Set the value transformer
@@ -52,6 +69,16 @@ NSString * const ClassNameTransformerName = @"ClassNameTransformer";
 
 // Get the value transformer
 NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForName:ClassNameTransformerName];
+~~~ -->
+
+~~~{swift}
+let ClassNameTransformerName = "ClassNameTransformer"
+
+// Set the value transformer
+NSValueTransformer.setValueTransformer(ClassNameTransformer(), forName: ClassNameTransformerName)
+
+// Get the value transformer
+let valueTransformer = NSValueTransformer(forName: ClassNameTransformerName)
 ~~~
 
 Typically, the singleton instance would be registered in the `+initialize` method of the value transformer subclass, so it could be used without further setup.
