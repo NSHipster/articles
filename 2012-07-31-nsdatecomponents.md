@@ -13,15 +13,20 @@ Whereas dates represent a particular moment in time, date components depend on w
 
 `NSDateComponents` can be initialized and manipulated manually, but most often, they're extracted from a specified date, using `NSCalendar -components:fromDate:`:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit) fromDate:date];
+~~~ -->
+~~~{swift}
+let calendar = NSCalendar.currentCalendar()
+let date = NSDate()
+let components = calendar.components(.MonthCalendarUnit | .DayCalendarUnit, fromDate: date)
 ~~~
 
 The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
 
-- `NSEraCalendarUnit`
+<!-- - `NSEraCalendarUnit`
 - `NSYearCalendarUnit`
 - `NSMonthCalendarUnit`
 - `NSDayCalendarUnit`
@@ -36,7 +41,21 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 - `NSWeekOfYearCalendarUnit`
 - `NSYearForWeekOfYearCalendarUnit`
 - `NSCalendarCalendarUnit`
-- `NSTimeZoneCalendarUnit`
+- `NSTimeZoneCalendarUnit` -->
+- `.CalendarUnitEra`
+- `.CalendarUnitYear`
+- `.CalendarUnitMonth`
+- `.CalendarUnitDay`
+- `.CalendarUnitHour`
+- `.CalendarUnitMinute`
+- `.CalendarUnitSecond`
+- `.CalendarUnitWeekday`
+- `.CalendarUnitQuarter`
+- `.CalendarUnitWeekOfMonth`
+- `.CalendarUnitWeekOfYear`
+- `.CalendarUnitYearForWeekOfYear`
+- `.CalendarUnitCalendar`
+- `.CalendarUnitTimeZone`
 
 > Since it would be expensive to compute all of the possible values, specify only the components that will be used in subsequent calculations (joining with `|`, the bitwise `OR` operator).
 
@@ -44,22 +63,33 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 
 `NSDateComponents` objects can be used to do relative date calculations. To determining the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 
 NSDateComponents *components = [[NSDateComponents alloc] init];
-[components setWeek:1];
+[components setWeekOfYear:1];
 [components setHour:12];
 
 NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:components toDate:date options:0]);
+~~~ -->
+
+~~~{swift}
+let calendar = NSCalendar.currentCalendar()
+let date = NSDate()
+
+let components = NSDateComponents()
+components.weekOfYear = 1
+components.hour = 12
+
+println("1 week and 12 hours from now: \(calendar.dateByAddingComponents(components, toDate: date, options: nil))")
 ~~~
 
 ## Creating Dates from Components
 
 Perhaps the most powerful feature of `NSDateComponents`, however, is the ability to go the opposite direction—creating an `NSDate` object from components. `NSCalendar -dateFromComponents:` is the method used for this purpose:
 
-~~~{objective-c}
+<!-- ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 
 NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -70,7 +100,21 @@ NSDateComponents *components = [[NSDateComponents alloc] init];
 [components setMinute:20];
 [components setSecond:0];
 
-NSLog(@"Awesome time: %@", [calendar dateFromComponents:components]);
+NSDate *date = [calendar dateFromComponents:components];
+~~~ -->
+
+~~~{swift}
+let calendar = NSCalendar(identifier: NSGregorianCalendar)
+
+let components = NSDateComponents()
+components.year = 1987
+components.month = 3
+components.day = 17
+components.hour = 14
+components.minute = 20
+components.second = 0
+
+let date = calendar.dateFromComponents(components)
 ~~~
 
 What's particularly interesting about this approach is that a date can be determined by information other than the normal month/day/year approach. So long as a date can be uniquely determined from the provided information, you'll get a result. For example, specifying the year 2013, and the 316th day of the year would return an `NSDate` for 11/12/2013 at midnight (because no time was specified, all time components default to 0).
