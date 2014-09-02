@@ -70,25 +70,6 @@
         <span hidden style="display:none;">NSHipster</span>
       </h1>
 
-      {% if false %}
-      <nav>
-        <ul>
-          {% assign sections = "articles|books|training" | split: '|' %}
-          {% for link in sections %}
-            {% assign href = link | prepend: '/' %}
-            <li>
-              {% assign url = page.url | remove: '/index.html' %}
-              {% if url == href %}
-                <a href="{{ href }}" class="current">{{ link | capitalize }}</a>
-              {% else %}
-                <a href="{{ href }}">{{ link | capitalize }}</a>
-              {% endif %}
-            </li>
-          {% endfor %}
-        </ul>
-      </nav>
-      {% endif %}
-
       <form role="search">
         <input type="text" id="st-search-input" class="st-search-input" />
       </form>
