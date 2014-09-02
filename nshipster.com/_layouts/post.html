@@ -60,13 +60,12 @@ layout: default
 
           <article>
             <h1 class="title">
-              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title  | camel_break }}</a>
+              <a href="{{ next.url }}" title="{{ next.title }}" rel="next">{{ next.title | camel_break }}</a>
             </h1>
 
             {{ next.excerpt | markdownify }}
           </article>
       </div>
-
 
       {% assign related = site.related_articles %}
       {% if page.category %}
