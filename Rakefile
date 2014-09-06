@@ -48,6 +48,8 @@ namespace :publish do
 
       s3cmd put --recursive --progress -M --acl-public assets/fonts s3://nshipster.#{tld}/
 
+      s3cmd put --recursive --progress --acl-public assets/js s3://nshipster.#{tld}/
+
       s3cmd put --progress -M --acl-public assets/favicon.ico s3://nshipster.#{tld}/
 
       s3cmd sync --progress -M --acl-public assets/ s3://nshipster.#{tld}/ --exclude '*.*' --include '*.png' --verbose
