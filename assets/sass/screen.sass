@@ -579,3 +579,20 @@ a:hover
 
   +media($mobile)
     font-size: 110%
+
+.highlight-group
+  padding-top: 1em
+
+.language-toggle
+  +row
+
+  a
+    cursor: pointer
+    display: block
+    float: right
+    padding-left: 0.5em
+    color: lighten($text-color, 50%) !important
+    text-decoration: none
+
+    &.active
+      color: $text-color !important
