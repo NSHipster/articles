@@ -57,21 +57,11 @@ Where this really becomes interesting is when you extend your own classes with s
 
 ### Custom Indexed Subscripting
 
-To add custom-indexed subscripting support to your class, simply declare and implement the following methods:
-
-~~~{objective-c}
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
-- (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
-~~~
+To add custom-indexed subscript reading support to your class, simply declare and implement `objectAtIndexedSubscript:`, where the parameter is of any integral type (such as `char`, `int`, or `NSUInteger`) and the return type is an Objective-C object pointer type. For indexed subscript writing, implement `setObject:atIndexedSubscript:`, where the first parameter is of Objective-C object pointer type, the second of integral type, and the return type is `void`.
 
 ### Custom Keyed Subscripting
 
-Similarly, custom-keyed subscripting can be added to your class by declaring and implementing these methods:
-
-~~~{objective-c}
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
-- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
-~~~
+Similarly, custom-keyed subscripting can be added to your class by declaring and implementing `objectForKeyedSubscript:` and `setObject:forKeyedSubscript:`, where the subscript parameters are of Objective-C object pointer type.
 
 ## Custom Subscripting as DSL
 
