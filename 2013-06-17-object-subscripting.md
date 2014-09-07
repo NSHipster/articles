@@ -8,7 +8,11 @@ Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all rev
 
 > For the uninitiated, [Clang](http://clang.llvm.org/index.html) is the open source C language family front end to the [LLVM](http://www.llvm.org) compiler. Clang is responsible for all of the killer language features in Objective-C going back a few years, such as "Build & Analyze", ARC, blocks, and a nearly 3× performance boost when compiling over GCC.
 
-Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: __`NSNumber` Literals__, __Collection Literals__, and __Object Subscripting__.
+Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: [`NSNumber` Literals][num], [Collection Literals][col], and [Object Subscripting][sub].
+
+[num]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#nsnumber-literals
+[col]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#container-literals
+[sub]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#object-subscripting
 
 In a single Xcode release, Objective-C went from this:
 
