@@ -17,7 +17,7 @@ If only everyone knew that they could harness the same killer search functionali
 
 Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical (`AND`, `OR`) and wildcard (`*`) operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe.
 
-All of the whiz-bang search-as-you-type features in Mac OS X—from Mail.app and Xcode to System Preferences and Spotlight—use Search Kit under the hood.
+All of the whiz-bang search-as-you-type features in OS X—from Mail.app and Xcode to System Preferences and Spotlight—use Search Kit under the hood.
 
 But to understand how Search Kit does its magic, it's important to explain some of the basics of Information Retrieval and Natural Language Processing.
 

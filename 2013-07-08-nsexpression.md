@@ -39,7 +39,7 @@ id value = [expression expressionValueWithObject:nil context:nil]; // => 3.21859
 
 If you found the [Key-Value Coding Simple Collection Operators](http://nshipster.com/kvc-collection-operators/) (`@avg`, `@sum`, et al.) lacking, perhaps `NSExpression`'s built-in statistical, arithmetic, and bitwise functions will pique your interest.
 
-> **A word of caution**: [according to this table in Apple's documentation for `NSExpression`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html), there is apparently no overlap between the availability of functions between Mac OS X & iOS. It would appear that recent versions of iOS do, indeed, support functions like `stddev:`, but this is not reflected in headers or documentation. Any details [in the form of a pull request](https://github.com/NSHipster/articles/pulls) would be greatly appreciated.
+> **A word of caution**: [according to this table in Apple's documentation for `NSExpression`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSExpression_Class/Reference/NSExpression.html), there is apparently no overlap between the availability of functions between OS X & iOS. It would appear that recent versions of iOS do, indeed, support functions like `stddev:`, but this is not reflected in headers or documentation. Any details [in the form of a pull request](https://github.com/NSHipster/articles/pulls) would be greatly appreciated.
 
 ### Statistics
 

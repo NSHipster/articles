@@ -195,7 +195,7 @@ Although unlikely, you may come across a situation where you want logging to `st
 
 * * *
 
-Just as secret menus are bound by the implications of Gödel's Incompleteness Theorem, it is impossible to document all of the secret incantations to get special treatment in Xcode. However, perhaps you can find a few more (and learn a _ton_ about runtime internals) by perusing Apple's [Technical Note TN2239: iOS Debugging Magic][TN2239] and [Technical Note TN2124: Mac OS X Debugging Magic][TN2124].
+Just as secret menus are bound by the implications of Gödel's Incompleteness Theorem, it is impossible to document all of the secret incantations to get special treatment in Xcode. However, perhaps you can find a few more (and learn a _ton_ about runtime internals) by perusing Apple's [Technical Note TN2239: iOS Debugging Magic][TN2239] and [Technical Note TN2124: OS X Debugging Magic][TN2124].
 
 Hopefully, though, the secret knowledge you've been exposed to in this article will sustain you in your app endeavors. Use them wisely, and pass them onto your coworkers like an urban legend or juicy rumor.
 

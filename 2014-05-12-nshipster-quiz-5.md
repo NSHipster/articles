@@ -26,7 +26,7 @@ Round 1: General Knowledge
 
 Current events, miscellaneous tidbits, and random trivia. Following a time-honored traditions for NSHipster quizzes, the first round is always a mis-mash of people, places, and pop culture.
 
-1. In 2011, Apple deprecated Mac OS X's Common Data Security Architecture, leaving them unaffected by what recent vulnerability.
+1. In 2011, Apple deprecated OS X's Common Data Security Architecture, leaving them unaffected by what recent vulnerability.
 2. According to rumors, Apple will be partnering with which company to add song recognition functionality to Siri in iOS 8?
 3. The White House expressed disappointment over a "selfie" of Boston Red Sox player David Ortiz and President Obama, due to allegations that it was a promotional stunt for which company?
 4. In Sony's forthcoming Steve Jobs biopic, which actor was recently rumored to being approached by director Danny Boyle to play the lead role? For a bonus point: which actor was previously confirmed for this role, before director David Fincher backed out of the project?

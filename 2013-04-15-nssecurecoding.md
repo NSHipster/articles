@@ -9,7 +9,7 @@ A short post for this week: everything you need to know about `NSSecureCoding`.
 
 ---
 
-`NSSecureCoding` is a protocol introduced in the iOS 6 / Mac OS X 10.8 SDKs. Aside from a few mentions at WWDC, `NSSecureCoding` remains relatively obscure—most developers have perhaps heard of it, but perhaps never went so far as to look up what it does.
+`NSSecureCoding` is a protocol introduced in the iOS 6 / OS X Mountain Lion SDKs. Aside from a few mentions at WWDC, `NSSecureCoding` remains relatively obscure—most developers have perhaps heard of it, but perhaps never went so far as to look up what it does.
 
 `NSSecureCoding` extends the `NSCoding` protocol by adding the class method `supportsSecureCoding`:
 

@@ -172,7 +172,7 @@ Consider the category:
 @end
 ~~~
 
-If `-pigLatinString` were implemented by another category (or added to the `NSString` class in a future version of iOS or Mac OS X), any calls to that method would result in undefined behavior, since no guarantee is made as to the order in which methods are defined by the runtime.
+If `-pigLatinString` were implemented by another category (or added to the `NSString` class in a future version of iOS or OS X), any calls to that method would result in undefined behavior, since no guarantee is made as to the order in which methods are defined by the runtime.
 
 This can be guarded against by prefixing the method name, just like the class name (prefixing the category name isn't a bad idea, either):
 

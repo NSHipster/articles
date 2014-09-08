@@ -142,7 +142,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 [Bindings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html) are magic—voodoo, really.
 
-Although essential to managing the complexity of a Mac OS X application, Bindings' cultural relevance has waned for years, as the focus has shifted to iOS and UIKit, which notably lacks support. Bindings replace a lot of boilerplate glue code and allow programming to be done in Interface Builder, but they're severely limited and _impossible_ to debug. RAC offers a clear, understandable, and extensible code-based API that works in iOS and is apt to replace all but the most trivial uses of bindings in your OS X application.
+Although essential to managing the complexity of a OS X application, Bindings' cultural relevance has waned for years, as the focus has shifted to iOS and UIKit, which notably lacks support. Bindings replace a lot of boilerplate glue code and allow programming to be done in Interface Builder, but they're severely limited and _impossible_ to debug. RAC offers a clear, understandable, and extensible code-based API that works in iOS and is apt to replace all but the most trivial uses of bindings in your OS X application.
 
 ---
 

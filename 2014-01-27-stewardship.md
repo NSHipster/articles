@@ -53,7 +53,7 @@ At the very least, an example can be used to bootstrap the process of fixing bug
 
 One of the great developments in the Objective-C open source community—and in many ways, what has allowed it to flourish as it has recently—is [CocoaPods](http://cocoapods.org).
 
-CocoaPods is the de facto dependency manager for integrating third party code in iOS and Mac OS X projects. At this point, it's pretty much expected that any library worth using is distributed with a `.podspec`:
+CocoaPods is the de facto dependency manager for integrating third party code in iOS and OS X projects. At this point, it's pretty much expected that any library worth using is distributed with a `.podspec`:
 
 #### NSHipsterKit.podspec
 

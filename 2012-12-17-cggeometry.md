@@ -7,7 +7,7 @@ excerpt: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably
 
 Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulæ into your TI-8X calculator.
 
-So for those of you who spent more time learning TI-BASIC than Euclidean geometry, here's the cheat-sheet for how geometry works in [Quartz 2D][1], the drawing system used in iOS and Mac OS X:
+So for those of you who spent more time learning TI-BASIC than Euclidean geometry, here's the cheat-sheet for how geometry works in [Quartz 2D][1], the drawing system used in iOS and OS X:
 
 - A `CGPoint` is a struct that represents a point in a two-dimensional coordinate system. For iOS, the origin is at the top-left, so points move right and down as their `x` and `y` values, respectively, increase. OS X, by contrast, is oriented with `(0, 0)` in the bottom left, with `y` moving up as it increases.
 

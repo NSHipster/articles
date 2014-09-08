@@ -17,7 +17,7 @@ Therefore, it is with great trepidation that we consider this [Faustian bargain]
 
 * * *
 
-Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in Mac OS X 10.6 Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
+Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in OS X Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
 
 - `objc_setAssociatedObject`
 - `objc_getAssociatedObject`

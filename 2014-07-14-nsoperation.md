@@ -84,13 +84,13 @@ enum NSOperationQueuePriority : Int {
 
 ## Quality of Service
 
-Quality of Service is a new concept in iOS 8 & Mac OS X 10.10 that creates consistent, high-level semantics for scheduling system resources. APIs were introduced for both [XPC](https://developer.apple.com/library/mac/documentation/macosx/conceptual/bpsystemstartup/chapters/CreatingXPCServices.html) and `NSOperation` that use this abstraction.
+Quality of Service is a new concept in iOS 8 & OS X Yosemite that creates consistent, high-level semantics for scheduling system resources. APIs were introduced for both [XPC](https://developer.apple.com/library/mac/documentation/macosx/conceptual/bpsystemstartup/chapters/CreatingXPCServices.html) and `NSOperation` that use this abstraction.
 
 For `NSOperation`, the `threadPriority` property has been deprecated in favor of this new `qualityOfService` property. (And good riddance—`threadPriority` was too unwieldy to be anything but a liability to most developers.)
 
 Service levels establish the system-wide priority of an operation in terms of how much CPU, network, and disk resources are allocated. A higher quality of service means that more resources will be provided to perform an operation's work more quickly.
 
-> QoS appears to use the [XNU kernel task policy feature introduced in Mac OS X 10.9](http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/osfmk/mach/task_policy.h) under the hood.
+> QoS appears to use the [XNU kernel task policy feature introduced in OS X Mavericks](http://www.opensource.apple.com/source/xnu/xnu-1456.1.26/osfmk/mach/task_policy.h) under the hood.
 
 The following enumerated values are used to denote the nature and urgency of an operation. Applications are encouraged to select the most appropriate value for operations in order to ensure a great user experience:
 
@@ -123,7 +123,7 @@ operationQueue.addOperation(backgroundOperation)
 
 ## Asynchronous Operations
 
-Another change in iOS 8 / Mac OS X 10.10 is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
+Another change in iOS 8 / OS X Yosemite is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
 
 Originally, the `concurrent` property was used to distinguish between operations that performed all of its work in a single `main` function, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `synchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
 
@@ -197,4 +197,4 @@ For one-off computation, or simply speeding up an existing method, it will often
 
 ---
 
-Just remember: **NSOperation and Grand Central Dispatch are not mutually exclusive**. Creative and effective use of both are key to developing robust and performant iOS or Mac OS X applications.
+Just remember: **NSOperation and Grand Central Dispatch are not mutually exclusive**. Creative and effective use of both are key to developing robust and performant iOS or OS X applications.

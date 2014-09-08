@@ -15,7 +15,7 @@ Temporary files are used to write a buffer to disk, to either be atomically move
 
 The first step to creating temporary files or directories is to find a reasonable, out-of-the-way place to write to—somewhere that won't be backed up by Time Machine or synced to iCloud or the like.
 
-On Unix systems, the `/tmp` directory was the de facto scratch space, but with the sandboxed containers of iOS and Mac OS X apps today, a hard-coded path just won't cut it.
+On Unix systems, the `/tmp` directory was the de facto scratch space, but with the sandboxed containers of iOS and OS X apps today, a hard-coded path just won't cut it.
 
 `NSTemporaryDirectory` is a Foundation function that returns the directory designated for writing short-lived files on the targeted platform.
 

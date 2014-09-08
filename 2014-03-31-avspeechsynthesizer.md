@@ -38,7 +38,7 @@ When speaking, a synthesizer can either be paused immediately or on the next wor
 
 Mac OS 9 users will no doubt have fond memories of the old system voices: Bubbles, Cellos, Pipe Organ, and Bad News.
 
-> These can still be installed on Mac OS X. Just look under the "English (United States) - Novelty" voices in the "Dictation & Speech" preference pane.
+> These can still be installed on OS X. Just look under the "English (United States) - Novelty" voices in the "Dictation & Speech" preference pane.
 
 In the name of quality over quantity, each language is provided a voice for each major locale region. So instead of asking for "Fred" and "Markus", `AVSpeechSynthesisVoice` asks for `en-US` and `de-DE`.
 

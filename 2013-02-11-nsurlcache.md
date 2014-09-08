@@ -15,7 +15,7 @@ As of iOS 5, a shared `NSURLCache` is set for the application by default. [Quoth
 
 > Applications that do not have special caching requirements or constraints should find the default shared cache instance acceptable. An application with more specific needs can create a custom NSURLCache object and set it as the shared cache instance using setSharedURLCache:. The application should do so before any calls to this method.
 
-Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on Mac OS X:
+Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on OS X:
 
 ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
@@ -183,7 +183,7 @@ As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (
 
 ---
 
-`NSURLCache` reminds us of how important it is to be familiar with the systems we interact with. Chief among them when developing for iOS or Mac OS X is, of course, the [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i).
+`NSURLCache` reminds us of how important it is to be familiar with the systems we interact with. Chief among them when developing for iOS or OS X is, of course, the [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i).
 
 Untold numbers of developers have hacked together an awkward, fragile system for network caching functionality, all because they weren't aware that `NSURLCache` could be setup in two lines and do it 100× better. Even more developers have never known the benefits of network caching, and never attempted a solution, causing their apps to make untold numbers of unnecessary requests to the server.
 

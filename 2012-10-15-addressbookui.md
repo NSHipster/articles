@@ -56,7 +56,7 @@ United States
 
 Nowhere else in all of the other frameworks is this functionality provided. It's not part of [`NSLocale`](http://nshipster.com/nslocale/), or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it's surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.
 
-> Unfortunately, Address Book UI is not available in Mac OS X, and it would appear that there's no equivalent function provided on this platform.
+> Unfortunately, Address Book UI is not available in OS X, and it would appear that there's no equivalent function provided on this platform.
 
 For you see, address formats vary greatly across different regions. For example, addresses in the United States take the form:
 

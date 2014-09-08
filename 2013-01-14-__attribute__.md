@@ -111,9 +111,9 @@ To check the availability of a particular attribute, you can use the `__has_attr
 void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,obsoleted=10.7)));
 ~~~
 
-> The `availability` attribute states that `f` was introduced in Mac OS X 10.4, deprecated in Mac OS X 10.6, and obsoleted in Mac OS X 10.7.
+> The `availability` attribute states that `f` was introduced in OS X Tiger, deprecated in OS X Snow Leopard, and obsoleted in OS X Lion.
 
-> This information is used by Clang to determine when it is safe to use `f`: for example, if Clang is instructed to compile code for Mac OS X 10.5, a call to f() succeeds. If Clang is instructed to compile code for Mac OS X 10.6, the call succeeds but Clang emits a warning specifying that the function is deprecated. Finally, if Clang is instructed to compile code for Mac OS X 10.7, the call fails because `f()` is no longer available.
+> This information is used by Clang to determine when it is safe to use `f`: for example, if Clang is instructed to compile code for OS X Leopard, a call to f() succeeds. If Clang is instructed to compile code for OS X Snow Leopard, the call succeeds but Clang emits a warning specifying that the function is deprecated. Finally, if Clang is instructed to compile code for OS X Lion, the call fails because `f()` is no longer available.
 
 > The `availability` attribute is a comma-separated list starting with the platform name and then including clauses specifying important milestones in the declaration's lifetime (in any order) along with additional information.
 
@@ -128,7 +128,7 @@ void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,
 Supported Platforms:
 
 - `ios`: Apple’s iOS operating system. The minimum deployment target is specified by the `-mios-version-min=*version*` or `-miphoneos-version-min=*version*` command-line arguments.
-- `macosx`: Apple’s Mac OS X operating system. The minimum deployment target is specified by the `-mmacosx-version-min=*version*` command-line argument.
+- `macosx`: Apple’s OS X operating system. The minimum deployment target is specified by the `-mmacosx-version-min=*version*` command-line argument.
 
 ### `overloadable`
 

@@ -23,7 +23,7 @@ And on that note, this week's topic has to do with two simple-but-handy macros: 
 
 ---
 
-Introduced in Foundation with iOS 6 / Mac OS X 10.8, the `NS_ENUM` and `NS_OPTIONS` macros are the new, preferred way to declare `enum` types.
+Introduced in Foundation with iOS 6 / OS X Mountain Lion, the `NS_ENUM` and `NS_OPTIONS` macros are the new, preferred way to declare `enum` types.
 
 > If you'd like to use either macro when targeting a previous version of iOS or OS X, you can simply inline like so:
 

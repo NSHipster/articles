@@ -9,13 +9,13 @@ This week's article is about dictionaries. Not the `NSDictionary` / `CFDictionar
 
 > But seriously, why are dictionaries called that, anyway? Why can't we just settle on `Hash`, like those nice Ruby folks? What's that? Semantic overlap with hashing functions and cryptographic digests? Well, dictionary isn't _that_ bad. Anything other than "associative arrays", I reckon.
 
-Though widely usurped of their "go-to reference" status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis. So, for your reference, here's a look at the ways and means by which computers give meaning to the world through words, in Unix, Mac OS X, and iOS.
+Though widely usurped of their "go-to reference" status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis. So, for your reference, here's a look at the ways and means by which computers give meaning to the world through words, in Unix, OS X, and iOS.
 
 * * *
 
 ## Unix
 
-Nearly all Unix distributions include a small collection newline-delimited list of words. On Mac OS X, these can be found at `/usr/share/dict`:
+Nearly all Unix distributions include a small collection newline-delimited list of words. On OS X, these can be found at `/usr/share/dict`:
 
 ~~~
 $ ls /usr/share/dict
@@ -52,13 +52,13 @@ $ head /usr/share/dict/words
 
 These giant, system-provided text files make it easy to `grep` crossword puzzle clues, generate mnemonic pass phrases, and seed databases, but from a user perspective, `/usr/share/dict`'s monolingualism and lack of associated meaning make it less than useful for everyday use.
 
-Mac OS X builds upon this with its own system dictionaries. Never one to disappoint, the operating system's penchant for extending Unix functionality through strategically placed bundles and plist files is in full force with how dictionaries are distributed.
+OS X builds upon this with its own system dictionaries. Never one to disappoint, the operating system's penchant for extending Unix functionality through strategically placed bundles and plist files is in full force with how dictionaries are distributed.
 
 * * *
 
 ## OS X
 
-The Mac OS X analog to `/usr/share/dict` can be found in `/Library/Dictionaries`.
+The OS X analog to `/usr/share/dict` can be found in `/Library/Dictionaries`.
 A quick peek into the shared system dictionaries demonstrates one immediate improvement over Unix, by acknowledging the existence of languages other than English:
 
 ~~~
@@ -82,7 +82,7 @@ $ ls /Library/Dictionaries/
     The Standard Dictionary of Contemporary Chinese.dictionary/
 ~~~
 
-Mac OS X ships with dictionaries in Chinese, English, French, Dutch, Italian, Japanese, Korean, as well as an English thesaurus and a special dictionary for Apple-specific terminology.
+OS X ships with dictionaries in Chinese, English, French, Dutch, Italian, Japanese, Korean, as well as an English thesaurus and a special dictionary for Apple-specific terminology.
 
 Diving deeper into the rabbit hole, we peruse the `.dictionary` bundles to see them for what they really are:
 
@@ -114,7 +114,7 @@ Normally, proprietary binary encoding would be the end of the road in terms of w
 
 #### Getting Definition of Word
 
-To get the definition of a word on Mac OS X, one can use the `DCSCopyTextDefinition` function, found in the Core Services framework:
+To get the definition of a word on OS X, one can use the `DCSCopyTextDefinition` function, found in the Core Services framework:
 
 ~~~{objective-c}
 #import <CoreServices/CoreServices.h>
@@ -151,7 +151,7 @@ dictionaryPreferences[@"DCSActiveDictionaries"] = activeDictionaries;
 [userDefaults setPersistentDomain:dictionaryPreferences forName:@"com.apple.DictionaryServices"];
 ~~~
 
-"But this is Mac OS X, a platform whose manifest destiny cannot be contained by meager sandboxing attempts from Cupertino!", you cry. "Isn't there a more civilized approach? Like, say, private APIs?"
+"But this is OS X, a platform whose manifest destiny cannot be contained by meager sandboxing attempts from Cupertino!", you cry. "Isn't there a more civilized approach? Like, say, private APIs?"
 
 Why yes, yes there are.
 

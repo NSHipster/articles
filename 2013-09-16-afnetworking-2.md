@@ -2,10 +2,10 @@
 layout: post
 title: AFNetworking 2.0
 category: Open Source
-excerpt: "AFNetworking is one of the most widely used open source projects for iOS and Mac OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
+excerpt: "AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 ---
 
-[AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and Mac OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With over 8,700 stars, 2,200 forks, and 130 contributors, the project is also among the most active and influential in the community.
+[AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With over 8,700 stars, 2,200 forks, and 130 contributors, the project is also among the most active and influential in the community.
 
 By all accounts, AFNetworking is about as mainstream as it gets.
 
@@ -46,7 +46,7 @@ Loading JSON, XML, property lists, or images from the server was abstracted to m
 
 In many ways, AFNetworking succeeded in striking a balance between ease-of-use and extensibility. That's not to say that there wasn't room for improvement.
 
-With its second major release, AFNetworking aims to reconcile many of the quirks of the original design, while adding powerful new constructs to power the next generation of iOS and Mac OS X apps.
+With its second major release, AFNetworking aims to reconcile many of the quirks of the original design, while adding powerful new constructs to power the next generation of iOS and OS X apps.
 
 ### Motivations
 

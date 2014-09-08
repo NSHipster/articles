@@ -65,7 +65,7 @@ CocoaPods is easy to get started with both as a consumer and a library author. I
 
 ### Installing CocoaPods
 
-CocoaPods is installed through RubyGems, the Ruby package manager, which comes with a standard Mac OS X install.
+CocoaPods is installed through RubyGems, the Ruby package manager, which comes with a standard OS X install.
 
 To install, open Terminal.app and enter the following command:
 
@@ -221,7 +221,7 @@ $ pod trunk push NAME.podspec
 
 CocoaPods exemplifies the compounding effect of infrastructure on a community. In a few short years, the Objective-C community has turned into something that we can feel proud to be part of.
 
-CocoaPods is just one example of the great work being done on Objective-C infrastructure. Other community tools, like [Travis CI](http://blog.travis-ci.com/introducing-mac-ios-rubymotion-testing/), [CocoaDocs](http://cocoadocs.org), and [Nomad](http://nomad-cli.com) have dramatically improved the everyday experience iOS and Mac OS X development for the community.
+CocoaPods is just one example of the great work being done on Objective-C infrastructure. Other community tools, like [Travis CI](http://blog.travis-ci.com/introducing-mac-ios-rubymotion-testing/), [CocoaDocs](http://cocoadocs.org), and [Nomad](http://nomad-cli.com) have dramatically improved the everyday experience iOS and OS X development for the community.
 
 It can be tempting to be snarky, contrarian, or grumpy about the direction of a community. No matter what, though, let us all try our best to enter into dialogue in good faith, offering constructive criticism where we can. We should help each other to be good [stewards](http://nshipster.com/stewardship/) of what we share, and strive towards [empathy](http://nshipster.com/empathy/) in all our interactions.
 

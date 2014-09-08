@@ -107,7 +107,7 @@ However, to reap any benefit from this arrangement, all of the existing APIs wou
 
 ---
 
-`NSOrderedSet` was introduced in iOS 5 & Mac OS X 10.7. The only APIs changed to add support for `NSOrderedSet`, though, were part of [Core Data](http://developer.apple.com/library/mac/#releasenotes/DataManagement/RN-CoreData/_index.html).
+`NSOrderedSet` was introduced in iOS 5 & OS X Lion. The only APIs changed to add support for `NSOrderedSet`, though, were part of [Core Data](http://developer.apple.com/library/mac/#releasenotes/DataManagement/RN-CoreData/_index.html).
 
 This was fantastic news for anyone using Core Data at the time, as it solved one of the long-standing annoyances of not having a way to arbitrarily order relationship collections. Previously, you'd have to add a `position` attribute, which would be re-calculated every time a collection was modified. There wasn't a built-in way to validate that your collection positions were unique or that the sequence didn't have any gaps.
 

@@ -28,7 +28,7 @@ Current events, miscellaneous tidbits, and random trivia. Following a time-honor
 2. What game, crestfallen by the runaway success of its clone, 2048, was at least slightly vindicated last night with an ADA win?
 3. Which alternative search engine was added to the latest release of Safari?
 4. Weeks after its announcement, Apple finally confirmed its $3B acquisition of Beats Electronics. What is the name of Dre’s Co-founder?
-5. Yosemite is, of course, the code name of Mac OS X 10.10, but this code name was used before. What was the product? _(Hint: It was released in 1999 and had a top clock speed of 450MHz)_
+5. Yosemite is, of course, the code name of OS X Yosemite, but this code name was used before. What was the product? _(Hint: It was released in 1999 and had a top clock speed of 450MHz)_
 6. What is the name of the valley in Yosemite that was flooded after construction of the O'Shaughnessy Dam in 1927, which provides drinking water to San Francisco?
 7. Much of the reason why Yosemite exists today is thanks to the Sierra Club and a Scottish-born naturalist. What is this gentleman's name?
 8. 20 years ago, Apple launched a new experimental language. It had a syntax like this: `let x :: <integer> = 2;`. What was this language’s name?
@@ -115,7 +115,7 @@ Round 3: Music Round
 3. [**iPod Shuffle**: Caesars — "Jerk It Out"](https://www.youtube.com/watch?v=nuLx1Uk1ceg)
 4. [**iTunes**: Green Day — "I Fought The Law"](https://www.youtube.com/watch?v=rcToyN2_cSs)
 5. [**iPod 4G (U2 Special Edition)**: U2 — "Vertigo"](https://www.youtube.com/watch?v=t1ENjxFMXkw)
-6. [**Mac OS X (First-Run Experience)**: Honeycut — "Exodus Honey"](https://www.youtube.com/watch?v=hmb1t8RMsu4)
+6. [**OS X (First-Run Experience)**: Honeycut — "Exodus Honey"](https://www.youtube.com/watch?v=hmb1t8RMsu4)
 7. [**iPod 1G**: The Propellerheads — "Take California"](https://www.youtube.com/watch?v=eb1bPg4NlwY)
 8. [**iPhone 5s**: Pixies — "Gigantic"](https://www.youtube.com/watch?v=ODmfmUWqlSA)
 9. [**iBook**: Miles Davis — "Flamenco Sketches" (with voiceover by Jeff Goldblum)](https://www.youtube.com/watch?v=T3Gvy-8gtOU)

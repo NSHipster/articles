@@ -189,7 +189,7 @@ Fortunately, there are a wealth of open-source libraries that can help alleviate
 
 #### [RestKit](https://github.com/RestKit/RestKit)
 
-> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and Mac OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
+> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
 
 #### [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore)
 
@@ -197,7 +197,7 @@ Fortunately, there are a wealth of open-source libraries that can help alleviate
 
 #### [MMRecord](https://github.com/mutualmobile/MMRecord)
 
-> MMRecord is a block-based seamless web service integration library for iOS and Mac OS X. It leverages the Core Data model configuration to automatically create and populate a complete object graph from an API response. It works with any networking library, is simple to setup, and includes many popular features that make working with web services even easier.
+> MMRecord is a block-based seamless web service integration library for iOS and OS X. It leverages the Core Data model configuration to automatically create and populate a complete object graph from an API response. It works with any networking library, is simple to setup, and includes many popular features that make working with web services even easier.
 
 #### [SLRESTfulCoreData](https://github.com/OliverLetterer/SLRESTfulCoreData)
 
@@ -217,7 +217,7 @@ Whereas adapters synchronize information through an existing, general purpose in
 
 ### [TICoreDataSync](https://github.com/nothirst/TICoreDataSync)
 
-> Automatic synchronization for Core Data Apps, between any combination of Mac OS X and iOS: Mac to iPhone to iPad to iPod touch and back again
+> Automatic synchronization for Core Data Apps, between any combination of OS X and iOS: Mac to iPhone to iPad to iPod touch and back again
 
 #### [UbiquityStoreManager](https://github.com/lhunath/UbiquityStoreManager)
 

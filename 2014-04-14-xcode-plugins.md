@@ -8,7 +8,7 @@ excerpt: "This week on NSHipster: a roundup of some of the most useful and excit
 
 Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
 
-No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & Mac OS X software, _is itself a closed ecosystem_.
+No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & OS X software, _is itself a closed ecosystem_.
 
 Indeed, significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](http://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
 
@@ -119,7 +119,7 @@ Telling what a color is from its RGB values alone is a hard-won skill, so faced 
 
 Quoth the README:
 
-> When you put the caret on one of your colors, it automatically shows the actual color as an overlay, and you can even adjust it on-the-fly with the standard Mac OS X color picker.
+> When you put the caret on one of your colors, it automatically shows the actual color as an overlay, and you can even adjust it on-the-fly with the standard OS X color picker.
 
 ### Autocomplete Images from Project Bundle
 

@@ -22,21 +22,21 @@ Its origins trace back to `NSCell`, which is used to display information and acc
 
 Foundation provides a number of concrete subclasses for `NSFormatter` (in addition to a single `NSFormatter` subclass provided in the MapKit framework):
 
-| Class                        | Availability             |
-|------------------------------|--------------------------|
-| `NSNumberFormatter`          | iOS 2.0 / Mac OS X 10.0  |
-| `NSDateFormatter`            | iOS 2.0 / Mac OS X 10.0  |
-| `NSByteCountFormatter`       | iOS 6.0 / Mac OS X 10.8  |
-| `NSDateComponentsFormatter`  | iOS 8.0 / Mac OS X 10.10 |
-| `NSDateIntervalFormatter`    | iOS 8.0 / Mac OS X 10.10 |
-| `NSEnergyFormatter`          | iOS 8.0 / Mac OS X 10.10 |
-| `NSMassFormatter`            | iOS 8.0 / Mac OS X 10.10 |
-| `NSLengthFormatter`          | iOS 8.0 / Mac OS X 10.10 |
-| `MKDistanceFormatter`        | iOS 7.0 / Mac OS X 10.9  |
+| Class                        | Availability                   |
+|------------------------------|--------------------------------|
+| `NSNumberFormatter`          | iOS 2.0 / OS X Cheetah         |
+| `NSDateFormatter`            | iOS 2.0 / OS X Cheetah         |
+| `NSByteCountFormatter`       | iOS 6.0 / OS X Mountain Lion   |
+| `NSDateComponentsFormatter`  | iOS 8.0 / OS X Yosemite        |
+| `NSDateIntervalFormatter`    | iOS 8.0 / OS X Yosemite        |
+| `NSEnergyFormatter`          | iOS 8.0 / OS X Yosemite        |
+| `NSMassFormatter`            | iOS 8.0 / OS X Yosemite        |
+| `NSLengthFormatter`          | iOS 8.0 / OS X Yosemite        |
+| `MKDistanceFormatter`        | iOS 7.0 / OS X Mavericks       |
 
 As some of the oldest members of the Foundation framework, `NSNumberFormatter` and `NSDateFormatter` are astonishingly well-suited to their respective domains, in that way only decade-old software can. This tradition of excellence is carried by the most recent incarnations as well.
 
-> iOS 8 & Mac OS X 10.10 more than _doubled_ the number of system-provided formatter classes, which is pretty remarkable.
+> iOS 8 & OS X Yosemite more than _doubled_ the number of system-provided formatter classes, which is pretty remarkable.
 
 ## NSNumberFormatter
 
@@ -204,7 +204,7 @@ As you might expect, each aspect of the date format can alternatively be configu
 
 ### Relative Formatting
 
-As of iOS 4 / OS X 10.6, `NSDateFormatter` supports relative date formatting for certain locales with the `doesRelativeDateFormatting` property. Setting this to `true` would format the date of `NSDate()` to "Today".
+As of iOS 4 / OS X Snow Leopard, `NSDateFormatter` supports relative date formatting for certain locales with the `doesRelativeDateFormatting` property. Setting this to `true` would format the date of `NSDate()` to "Today".
 
 ## NSByteCounterFormatter
 
@@ -245,8 +245,8 @@ Rather than get caught up in all of this, simply use the most appropriate count 
 
 #### NSByteCountFormatterCountStyle
 
-| `File`    | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X 10.8, this uses the binary style, but that may change over time. |
-| `Memory`  | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X 10.8, this uses the binary style, but that may change over time. |
+| `File`    | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
+| `Memory`  | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
 
 In most cases, it is better to use `File` or `Memory`, however decimal or binary byte counts can be explicitly specified with either of the following values:
 
@@ -314,7 +314,7 @@ let string = formatter.stringFromDate(fromDate, toDate: toDate)
 
 ## Mass, Length, & Energy Formatters
 
-Prior to iOS 8 / Mac OS X 10.10, working with physical quantities was left as an exercise to the developer. However, with the introduction of HealthKit, this functionality is now provided in the standard library.
+Prior to iOS 8 / OS X Yosemite, working with physical quantities was left as an exercise to the developer. However, with the introduction of HealthKit, this functionality is now provided in the standard library.
 
 ### NSMassFormatter
 
@@ -394,7 +394,7 @@ If the formatter is used across several methods in the same class, that static i
 
 If the same formatter is privately implemented across several classes, one could either expose it publicly in one of the classes, or implement the static singleton method in a category on `NSNumberFormatter`.
 
-> Prior to iOS 5 and Mac OS X 10.7, `NSDateFormatter` & `NSNumberFormatter` were not thread safe. Under these circumstances, the safest way to reuse formatter instances was with a thread dictionary:
+> Prior to iOS 5 and OS X Lion, `NSDateFormatter` & `NSNumberFormatter` were not thread safe. Under these circumstances, the safest way to reuse formatter instances was with a thread dictionary:
 
 ~~~{objective-c}
 NSMutableDictionary *threadDictionary = [[NSThread currentThread] threadDictionary];
@@ -412,7 +412,7 @@ return dateFormatter;
 
 ## Formatter Context
 
-Another addition to formatters in iOS 8 & Mac OS X 10.10 is the idea of formatter _contexts_. This allows the formatted output to be correctly integrated into the localized string. The most salient application of this is the letter casing of formatted output at different parts of a sentence in western locales, such as English. For example, when appearing at the beginning of a sentence or by itself, the first letter of formatted output would be capitalized, whereas it would be lowercase in the middle of a sentence.
+Another addition to formatters in iOS 8 & OS X Yosemite is the idea of formatter _contexts_. This allows the formatted output to be correctly integrated into the localized string. The most salient application of this is the letter casing of formatted output at different parts of a sentence in western locales, such as English. For example, when appearing at the beginning of a sentence or by itself, the first letter of formatted output would be capitalized, whereas it would be lowercase in the middle of a sentence.
 
 A `context` property is available for `NSDateFormatter`, `NSNumberFormatter`, `NSDateComponentsFormatter`, and `NSByteCountFormatter`, with the following values:
 

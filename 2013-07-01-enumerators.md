@@ -87,7 +87,7 @@ Apple recommends that you use `NSFastEnumeration` `for/in`-style enumeration for
 
 ## `NSEnumerator`
 
-But of course, before `NSFastEnumeration` (circa OS X 10.5 / iOS 2.0), there was the venerable `NSEnumerator`.
+But of course, before `NSFastEnumeration` (circa OS X Leopard / iOS 2.0), there was the venerable `NSEnumerator`.
 
 For the uninitiated, `NSEnumerator` is an abstract class that implements two methods:
 
@@ -126,7 +126,7 @@ Some quick points of interest about `NSEnumeration`:
 
 ## Enumerate With Blocks
 
-Finally, with the introduction of blocks in OS X 10.6 / iOS 4, came a new block-based way to enumerate collections:
+Finally, with the introduction of blocks in OS X Snow Leopard / iOS 4, came a new block-based way to enumerate collections:
 
 ~~~{objective-c}
 [array enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
