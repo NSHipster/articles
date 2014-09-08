@@ -13,11 +13,11 @@ Whereas dates represent a particular moment in time, date components depend on w
 
 `NSDateComponents` can be initialized and manipulated manually, but most often, they're extracted from a specified date, using `NSCalendar -components:fromDate:`:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit) fromDate:date];
-~~~ -->
+~~~
 ~~~{swift}
 let calendar = NSCalendar.currentCalendar()
 let date = NSDate()
@@ -63,7 +63,7 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 
 `NSDateComponents` objects can be used to do relative date calculations. To determining the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 
@@ -72,7 +72,7 @@ NSDateComponents *components = [[NSDateComponents alloc] init];
 [components setHour:12];
 
 NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:components toDate:date options:0]);
-~~~ -->
+~~~
 
 ~~~{swift}
 let calendar = NSCalendar.currentCalendar()
@@ -89,7 +89,7 @@ println("1 week and 12 hours from now: \(calendar.dateByAddingComponents(compone
 
 Perhaps the most powerful feature of `NSDateComponents`, however, is the ability to go the opposite direction—creating an `NSDate` object from components. `NSCalendar -dateFromComponents:` is the method used for this purpose:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 
 NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -101,7 +101,7 @@ NSDateComponents *components = [[NSDateComponents alloc] init];
 [components setSecond:0];
 
 NSDate *date = [calendar dateFromComponents:components];
-~~~ -->
+~~~
 
 ~~~{swift}
 let calendar = NSCalendar(identifier: NSGregorianCalendar)

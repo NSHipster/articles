@@ -26,9 +26,9 @@ The first argument for the function is a dictionary containing the address compo
 
 > `kABPersonAddressCountryCodeKey` is an especially important attribute, as it determines which locale used to format the address string. If you are unsure of the country code, or one isn't provided with your particular data set, `NSLocale` may be able to help you out:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 [mutableAddressComponents setValue:[[[NSLocale alloc] initWithIdentifier:@"en_US"] objectForKey:NSLocaleCountryCode] forKey:(__bridge NSString *)kABPersonAddressCountryCodeKey];
-~~~ -->
+~~~
 
 ~~~{swift}
 let countryCode: String = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCountryCode) as String

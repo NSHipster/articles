@@ -17,7 +17,7 @@ It's easier to show `NSPredicate` in use, rather than talk about it in the abstr
 | Charlie     | Smith      | 33    |
 | Quentin     | Alberts    | 31    |
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -59,7 +59,7 @@ NSLog(@"Smiths: %@", [people filteredArrayUsingPredicate:smithPredicate]);
 
 // ["Charlie Smith", "Quentin Alberts"]
 NSLog(@"30's: %@", [people filteredArrayUsingPredicate:thirtiesPredicate]);
-~~~ -->
+~~~
 
 ~~~{swift}
 class Person: NSObject {
@@ -119,12 +119,12 @@ Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUs
 > - `%@` is a var arg substitution for an object value—often a string, number, or date.
 > - `%K` is a var arg substitution for a key path.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSPredicate *ageIs33Predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"age", @33];
 
 // ["Charlie Smith"]
 NSLog(@"Age 33: %@", [people filteredArrayUsingPredicate:ageIs33Predicate]);
-~~~ -->
+~~~
 
 ~~~{swift}
 let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
@@ -135,12 +135,12 @@ let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
 
 > - `$VARIABLE_NAME` is a value that can be substituted with `NSPredicate -predicateWithSubstitutionVariables:`.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSPredicate *namesBeginningWithLetterPredicate = [NSPredicate predicateWithFormat:@"(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)"];
 
 // ["Alice Smith", "Quentin Alberts"]
 NSLog(@"'A' Names: %@", [people filteredArrayUsingPredicate:[namesBeginningWithLetterPredicate predicateWithSubstitutionVariables:@{@"letter": @"A"}]]);
-~~~ -->
+~~~
 
 ~~~{swift}
 let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
@@ -202,11 +202,11 @@ We saw that `AND` & `OR` can be used in predicate format strings to create compo
 
 For example, the following predicates are equivalent:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 [NSCompoundPredicate andPredicateWithSubpredicates:@[[NSPredicate predicateWithFormat:@"age > 25"], [NSPredicate predicateWithFormat:@"firstName = %@", @"Quentin"]]];
 
 [NSPredicate predicateWithFormat:@"(age > 25) AND (firstName = %@)", @"Quentin"];
-~~~ -->
+~~~
 
 ~~~{swift}
 NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(format: "age > 25"), NSPredicate(format: "firstName = %@", "Quentin")])
@@ -259,7 +259,7 @@ enum {
    NSBetweenPredicateOperatorType
 };
 typedef NSUInteger NSPredicateOperatorType;
-~~~ -->
+~~~
 
 ~~~{swift}
 enum NSPredicateOperatorType : UInt {
@@ -291,14 +291,14 @@ enum NSPredicateOperatorType : UInt {
 
 Finally, if you just can't be bothered to learn the `NSPredicate` format syntax, you can go through the motions with `NSPredicate +predicateWithBlock:`.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSPredicate *shortNamePredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             return [[evaluatedObject firstName] length] <= 5;
         }];
 
 // ["Alice Smith", "Bob Jones"]
 NSLog(@"Short Names: %@", [people filteredArrayUsingPredicate:shortNamePredicate]);
-~~~ -->
+~~~
 
 ~~~{swift}
 let shortNamePredicate = NSPredicate { (evaluatedObject, _) in

@@ -17,7 +17,7 @@ In all of the hubbub of torch burning and pitchfork raising, you may have comple
 
 But before you go and rush into using `MKLocalSearch`, you'll have to know a few things about its friends. You see, `MKLocalSearch` has its functionality divided across `MKLocalSearchRequest` and `MKLocalSearchResponse`:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
 request.naturalLanguageQuery = @"Restaurants";
 request.region = mapView.region;
@@ -25,7 +25,7 @@ MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
 [search startWithCompletionHandler:^(MKLocalSearchResponse *response, NSError *error) {
     NSLog(@"Map Items: %@", response.mapItems);
 }];
-~~~ -->
+~~~
 
 ~~~{swift}
 let request = MKLocalSearchRequest()

@@ -48,9 +48,9 @@ Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found a
 
 `NSUUID` was added to Foundation in iOS 6 as a way to easily create UUIDs. How easy?
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSString *UUID = [[NSUUID UUID] UUIDString];
-~~~ -->
+~~~
 
 ~~~{swift}
 let UUID = NSUUID.UUID().UUIDString
@@ -58,10 +58,10 @@ let UUID = NSUUID.UUID().UUIDString
 
 If your app targets iOS 5 or earlier, however, you have to settle for Core Foundation functions on `CFUUIDRef`:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 CFUUIDRef uuid = CFUUIDCreate(NULL);
 NSString *UUID = CFUUIDCreateString(NULL, uuid);
-~~~ -->
+~~~
 
 ~~~{swift}
 let UUID = CFUUIDCreateString(nil, CFUUIDCreate(nil))
@@ -69,7 +69,7 @@ let UUID = CFUUIDCreateString(nil, CFUUIDCreate(nil))
 
 For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -83,7 +83,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
-~~~ -->
+~~~
 
 ~~~{swift}
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {

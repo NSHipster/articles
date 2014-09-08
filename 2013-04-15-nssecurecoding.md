@@ -27,12 +27,12 @@ Anyway, `NSSecureCoding` patches this vulnerability by establishing a contract f
 
 Whereas a standard, secure implementation of `-initWithCoder:` might have a check like:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 id obj = [decoder decodeObjectForKey:@"myKey"];
 if (![obj isKindOfClass:[MyClass class]]) {
   // fail
 }
-~~~ -->
+~~~
 
 ~~~{swift}
 if let object = decoder.decodeObjectForKey("key") as? SomeClass {
@@ -42,10 +42,10 @@ if let object = decoder.decodeObjectForKey("key") as? SomeClass {
 
 ...an `NSSecureCoding`-conforming class would use:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 id obj = [decoder decodeObjectOfClass:[MyClass class]
                                forKey:@"myKey"];
-~~~ -->
+~~~
 
 ~~~{swift}
 let object = decoder.decodeObjectOfClass(SomeClass.self, forKey: "key") as SomeClass

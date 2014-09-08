@@ -24,7 +24,7 @@ Collection classes like `NSArray` and `NSSet` have methods to return sorted arra
 
 To put that into more practical terms, consider a `Person` class with properties for `firstName` & `lastName` of type `NSString *`, and `age`, which is an `NSUInteger`.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -38,7 +38,7 @@ To put that into more practical terms, consider a `Person` class with properties
 }
 
 @end
-~~~ -->
+~~~
 
 ~~~{swift}
 class Person: NSObject {
@@ -69,7 +69,7 @@ Given the following dataset:
 
 Here are some of the different ways they can be sorted by combinations of `NSSortDescriptor`:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSArray *firstNames = @[ @"Alice", @"Bob", @"Charlie", @"Quentin" ];
 NSArray *lastNames = @[ @"Smith", @"Jones", @"Smith", @"Alberts" ];
 NSArray *ages = @[ @24, @27, @33, @31 ];
@@ -102,7 +102,7 @@ NSLog(@"By first name: %@", [people sortedArrayUsingDescriptors:@[firstNameSortD
 
 NSLog(@"By last name, first name: %@", [people sortedArrayUsingDescriptors:@[lastNameSortDescriptor, firstNameSortDescriptor]]);
 // "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
-~~~ -->
+~~~
 
 ~~~{swift}
 let alice = Person(firstName: "Alice", lastName: "Smith", age: 24)

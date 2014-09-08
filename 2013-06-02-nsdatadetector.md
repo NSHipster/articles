@@ -23,7 +23,7 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 `NSDataDetector` objects are initialized with a bitmask of types of information to check, and then passed strings to match on. Like `NSRegularExpression`, each match found in a string is represented by a `NSTextCheckingResult`, which has details like character range and match type. However, `NSDataDetector`-specific types may also contain metadata such as address or date components.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSError *error = nil;
 NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
                                                         | NSTextCheckingTypePhoneNumber
@@ -37,7 +37,7 @@ NSString *string = @"123 Main St. / (555) 555-5555";
 ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
   NSLog(@"Match: %@", result);
 }];
-~~~ -->
+~~~
 
 ~~~{swift}
 let string = "123 Main St. / (555) 555-5555"

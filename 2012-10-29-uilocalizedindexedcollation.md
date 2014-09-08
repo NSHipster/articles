@@ -57,7 +57,7 @@ Finally, the table view should implement `-tableView:sectionForSectionIndexTitle
 
 All told, here's what a typical table view data source implementation looks like:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 - (void)setObjects:(NSArray *)objects {
     SEL selector = @selector(localizedTitle);
     NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
@@ -98,7 +98,7 @@ sectionForSectionIndexTitle:(NSString *)title
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
-~~~ -->
+~~~
 
 ~~~{swift}
 class ObjectTableViewController: UITableViewController {

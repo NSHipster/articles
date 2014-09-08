@@ -60,7 +60,7 @@ One thing to watch out for are the spelling peculiarities of the word "cancel". 
 
 All operations may not be equally important. Setting the `queuePriority` property will promote or defer an operation in an `NSOperationQueue` according to the following rankings:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 typedef enum : NSInteger {
    NSOperationQueuePriorityVeryLow = -8,
    NSOperationQueuePriorityLow = -4,
@@ -68,7 +68,7 @@ typedef enum : NSInteger {
    NSOperationQueuePriorityHigh = 4,
    NSOperationQueuePriorityVeryHigh = 8
 } NSOperationQueuePriority;
-~~~ -->
+~~~
 
 ### NSOperationQueuePriority
 
@@ -135,11 +135,11 @@ For example, to describe the process of downloading and resizing an image from a
 
 Expressed in code:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 [resizingOperation addDependency:networkingOperation];
 [operationQueue addOperation:networkingOperation];
 [operationQueue addOperation:resizingOperation];
-~~~ -->
+~~~
 
 ~~~{swift}
 let networkingOperation : NSOperation = ...
@@ -158,14 +158,14 @@ Make sure not to accidentally create a dependency cycle, such that A depends on 
 
 When an `NSOperation` finishes, it will execute its `completionBlock` exactly once. This provides a really nice way to customize the behavior of an operation when used in a model or view controller.
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSOperation *operation = ...;
 operation.completionBlock = {
     NSLog("Completed");
 };
 
 [[NSOperationQueue mainQueue] addOperation:operation];
-~~~ -->
+~~~
 
 ~~~{swift}
 let operation : NSOperation = NSOperation()

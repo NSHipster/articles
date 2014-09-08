@@ -47,7 +47,7 @@ It's important to note that this method _only_ strips the _first_ and _last_ con
 
 So let's say you do want to get rid of excessive inter-word spacing for that string you just stripped of whitespace. Here's a really easy way to do that:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSString *string = @"Lorem    ipsum dolar   sit  amet.";
 string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -55,7 +55,7 @@ NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterS
 components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
 
 string = [components componentsJoinedByString:@" "];
-~~~ -->
+~~~
 
 ~~~{swift}
 var string = "  Lorem    ipsum dolar   sit  amet. "
@@ -114,7 +114,7 @@ Sat-Sun:    10:00 - 15:00
 
 You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
-<!-- ~~~{objective-c}
+~~~{objective-c}
 NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCharacterSet];
 [skippedCharacters formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -133,7 +133,7 @@ NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCha
   [scanner scanInteger:&endHour];
   [scanner scanInteger:&endMinute];
 }];
-~~~ -->
+~~~
 
 ~~~{swift}
 let skippedCharacters = NSMutableCharacterSet()
