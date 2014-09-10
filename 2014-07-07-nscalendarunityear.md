@@ -35,29 +35,29 @@ cakePath.addLineToPoint(CGPointMake(6.5, 95))
 ...
 ~~~
 
-Wait, hold up. What is this, Objective-C? Manipulating `UIBezierPath`s isn't exactly ground-breaking stuff, but with a few dozen more lines to go, this is miserable.
+Wait, hold up. What is this, Objective-C? Manipulating `UIBezierPath`s isn't exactly ground-breaking stuff, but with a few dozen more lines to go, we can make this a bit easier for ourselves.
 
 How about we put some syntactic icing on this cake with some [custom operators](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-XID_28)?
 
 ~~~{swift}
-operator infix ---> { associativity left }
-func ---> (left: UIBezierPath, right: (Float, Float)) -> UIBezierPath {
+infix operator ---> { associativity left }
+func ---> (left: UIBezierPath, right: (CGFloat, CGFloat)) -> UIBezierPath {
     let (x, y) = right
     left.moveToPoint(CGPointMake(x, y))
 
     return left
 }
 
-operator infix +- { associativity left }
-func +- (left: UIBezierPath, right: (Float, Float)) -> UIBezierPath {
+infix operator +- { associativity left }
+func +- (left: UIBezierPath, right: (CGFloat, CGFloat)) -> UIBezierPath {
     let (x, y) = right
     left.addLineToPoint(CGPointMake(x, y))
 
     return left
 }
 
-operator infix +~ { associativity left }
-func +~ (left: UIBezierPath, right: ((Float, Float), (Float, Float), (Float, Float))) -> UIBezierPath {
+infix operator +~ { associativity left }
+func +~ (left: UIBezierPath, right: ((CGFloat, CGFloat), (CGFloat, CGFloat), (CGFloat, CGFloat))) -> UIBezierPath {
     let ((x1, y1), (x2, y2), (x3, y3)) = right
     left.addCurveToPoint(CGPointMake(x1, y1), controlPoint1: CGPointMake(x2, y2), controlPoint2: CGPointMake(x3, y3))
 
