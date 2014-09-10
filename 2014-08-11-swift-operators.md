@@ -43,8 +43,8 @@ Operator precedence rules, similar to the ones [you learned in primary school](h
 ```
 1 + 2 * 3 % 4
 1 + ((2 * 3) % 4)
-2 + (6 % 4)
-2 + 2
+1 + (6 % 4)
+1 + 2
 ```
 
 However, consider the statement `5 - 2 + 3`. Addition and subtraction have the same operator precedence, but evaluating the subtraction first `(5 - 2) + 3` yields 6, whereas evaluating subtraction after addition, `5 - (2 + 3)`, yields `0`. In code, arithmetic operators are left-associative, meaning that the left hand side will evaluate first (`(5 - 2) + 3`).
@@ -407,8 +407,8 @@ prefix func ± (value: Double) -> (Double, Double) {
 ```
 
 ```swift
-2 ± 3 // (-1, 5)
-±4 // (-4, 4)
+2 ± 3 // (5, -1)
+±4 // (4, -4)
 ```
 
 > For more examples of functions using mathematical notation in Swift, check out [Euler](https://github.com/mattt/Euler).
