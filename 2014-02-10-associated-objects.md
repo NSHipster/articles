@@ -20,7 +20,7 @@ Objective-C开发者应该小心谨慎地遵循这个危险咒语的各种准则
 
 * * *
 
-对象关联（或称为关联引用）本来是Objective-C 2.0运行时的一个特性，起始于Mac OS X 10.6 Snow Leopard和iOS 4。相关参考可以查看 `<objc/runtime.h>` 中定义的以下三个允许你将任何键值在运行时关联到对象上的函数：
+对象关联（或称为关联引用）本来是Objective-C 2.0运行时的一个特性，起始于OS X Snow Leopard和iOS 4。相关参考可以查看 `<objc/runtime.h>` 中定义的以下三个允许你将任何键值在运行时关联到对象上的函数：
 
 - `objc_setAssociatedObject`
 - `objc_getAssociatedObject`

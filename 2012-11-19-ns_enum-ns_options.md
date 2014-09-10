@@ -24,7 +24,7 @@ translator: Croath Liu
 
 ---
 
-`NS_ENUM` 和 `NS_OPTIONS` 都不算太古老的宏，在iOS 6 / Mac OS X 10.8才开始有，他们都是代替 `enum` 的更好的办法。
+`NS_ENUM` 和 `NS_OPTIONS` 都不算太古老的宏，在iOS 6 / OS X Mountain Lion才开始有，他们都是代替 `enum` 的更好的办法。
 
 > 如果你想在更早的iOS或OS X系统中使用这两个宏，简单定义一下就好了：
 

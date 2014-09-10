@@ -134,7 +134,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 [Bindings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html)也是黑魔法。
 
-虽然对Mac OS X控制的要点就是Bindings，但是它的意义在近年来越来越没那么重要了，因为焦点已经移动到了iOS和UIKit这些Bindings不支持的东西身上。Bindings替代了大量的模版胶水代码，允许在Interface Builder中完成编码，但严格上说还是比较有局限性的，并且_无法_debug。RAC提供了一种简洁易懂、扩展性强的以代码为基础的API来运行在iOS上，目标就是取代所有在OS X能用Bindings实现的神奇功能。
+虽然对OS X控制的要点就是Bindings，但是它的意义在近年来越来越没那么重要了，因为焦点已经移动到了iOS和UIKit这些Bindings不支持的东西身上。Bindings替代了大量的模版胶水代码，允许在Interface Builder中完成编码，但严格上说还是比较有局限性的，并且_无法_debug。RAC提供了一种简洁易懂、扩展性强的以代码为基础的API来运行在iOS上，目标就是取代所有在OS X能用Bindings实现的神奇功能。
 
 ---
 

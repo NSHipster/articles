@@ -191,7 +191,7 @@ ReactiveCocoa [为Objective-C带来了函数式反应型范例](http://nshipster
 
 #### [RestKit](https://github.com/RestKit/RestKit)
 
-> RestKit是一个现代化的Objective-C框架用于在iOS和Mac OS X上实现RESTful网络服务客户端。它提供一种强大的[对象映射](https://github.com/RestKit/RestKit/wiki/Object-mapping)引擎与[Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html)无缝集成，并为建立在[AFNetworking](https://github.com/AFNetworking/AFNetworking)之上的映射HTTP请求和响应提供了一组简单的网络层原语。它有一套精心设计的接口，使得访问和建模RESTful资源几乎有种不可思议的感觉。
+> RestKit是一个现代化的Objective-C框架用于在iOS和OS X上实现RESTful网络服务客户端。它提供一种强大的[对象映射](https://github.com/RestKit/RestKit/wiki/Object-mapping)引擎与[Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html)无缝集成，并为建立在[AFNetworking](https://github.com/AFNetworking/AFNetworking)之上的映射HTTP请求和响应提供了一组简单的网络层原语。它有一套精心设计的接口，使得访问和建模RESTful资源几乎有种不可思议的感觉。
 
 #### [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore)
 
@@ -199,7 +199,7 @@ ReactiveCocoa [为Objective-C带来了函数式反应型范例](http://nshipster
 
 #### [MMRecord](https://github.com/mutualmobile/MMRecord)
 
-> MMRecord是用于iOS和Mac OS X的基于block的无缝网络服务集成库。它利用Core Data模型配置从接口响应自动创建和填充一个完整的对象图。MMRecord适用于任何网络库，设置简单，包含了许多流行特性使得网络服务的使用更加容易。
+> MMRecord是用于iOS和OS X的基于block的无缝网络服务集成库。它利用Core Data模型配置从接口响应自动创建和填充一个完整的对象图。MMRecord适用于任何网络库，设置简单，包含了许多流行特性使得网络服务的使用更加容易。
 
 #### [SLRESTfulCoreData](https://github.com/OliverLetterer/SLRESTfulCoreData)
 
@@ -219,7 +219,7 @@ ReactiveCocoa [为Objective-C带来了函数式反应型范例](http://nshipster
 
 ### [TICoreDataSync](https://github.com/nothirst/TICoreDataSync)
 
-> 自动同步Core Data应用，在Mac OS X和iOS之间任意组合：从Mac到iPhone或iPad或iPod touch，以及从iPhone或iPad或iPod touch到Mac。
+> 自动同步Core Data应用，在OS X和iOS之间任意组合：从Mac到iPhone或iPad或iPod touch，以及从iPhone或iPad或iPod touch到Mac。
 
 #### [UbiquityStoreManager](https://github.com/lhunath/UbiquityStoreManager)
 
