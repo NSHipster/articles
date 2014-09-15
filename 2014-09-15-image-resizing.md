@@ -151,31 +151,33 @@ Here are the results of a set of [performance benchmarks](http://nshipster.com/b
 
 ### JPEG
 
-Using a large, high-resolution (12000 ⨉ 12000 px 20 MB JPEG) source image from [NASA Visible Earth](http://visibleearth.nasa.gov/view.php?id=78314):
+Scaling a large, high-resolution (12000 ⨉ 12000 px 20 MB JPEG) source image from [NASA Visible Earth](http://visibleearth.nasa.gov/view.php?id=78314) to 1/10<sup>th</sup> the size:
 
-| Operation                                             | Time      | σ    |
-|-------------------------------------------------------|-----------|------|
-| `UIKit`              | 0.002     | 22%  |
-| `Core Graphics` <sup>1</sup>                   | 0.006     | 9%   |
-| `Image I/O`                 | 0.001     | 121% |
-| `Core Image` <sup>2</sup> <sup>3</sup>    | 0.011     | 7%   |
+| Operation                          | Time _(sec)_ | σ    |
+|------------------------------------|--------------|------|
+| `UIKit`                            | 0.002        | 22%  |
+| `Core Graphics` <sup>1</sup>       | 0.006        | 9%   |
+| `Image I/O`   <sup>2</sup>         | 0.001        | 121% |
+| `Core Image` <sup>3, 4</sup>       | 0.011        | 7%   |
 
 ### PNG
 
-Using a reasonably large (1024 ⨉ 1024 px 1MB PNG) rendering of the [Postgres.app](http://postgresapp.com) Icon:
+Scaling a reasonably large (1024 ⨉ 1024 px 1MB PNG) rendering of the [Postgres.app](http://postgresapp.com) Icon to 1/10<sup>th</sup> the size:
 
-| Operation                                  | Time      | σ    |
-|--------------------------------------------|-----------|------|
-| `UIKit`   | 0.001     | 25%  |
-| `Core Graphics` <sup>4</sup>        | 0.005     | 12%  |
-| `Image I/O`      | 0.001     | 82%  |
-| `Core Image` <sup>5</sup>     | 0.234     | 43%  |
+| Operation                          | Time _(sec)_ | σ    |
+|------------------------------------|--------------|------|
+| `UIKit`                            | 0.001        | 25%  |
+| `Core Graphics` <sup>5</sup>       | 0.005        | 12%  |
+| `Image I/O` <sup>6</sup>           | 0.001        | 82%  |
+| `Core Image` <sup>7</sup>          | 0.234        | 43%  |
 
-<sup>1, 4</sup> Results were consistent across different values of `CGInterpolationQuality`, with negligible differences in performance benchmarks.
+<sup>1, 5</sup> Results were consistent across different values of `CGInterpolationQuality`, with negligible differences in performance benchmarks.
 
-<sup>2</sup> Creating a `CIContext` is an extremely expensive operation, and accounts for most of the time spent in the benchmark. Using a cached instance reduced average runtime down to metrics comparable with `UIGraphicsBeginImageContextWithOptions`.
+<sup>2</sup> The high standard deviation reflects the cost of creating the cached thumbnail, which was comparable to the performance of the equivalent Core Graphics function.
 
-<sup>3, 5</sup> Setting `kCIContextUseSoftwareRenderer` to `true` on the options passed on `CIContext` creation yielded results an order of magnitude slower than base results.
+<sup>3</sup> Creating a `CIContext` is an extremely expensive operation, and accounts for most of the time spent in the benchmark. Using a cached instance reduced average runtime down to metrics comparable with `UIGraphicsBeginImageContextWithOptions`.
+
+<sup>4, 7</sup> Setting `kCIContextUseSoftwareRenderer` to `true` on the options passed on `CIContext` creation yielded results an order of magnitude slower than base results.
 
 ## Conclusions
 
