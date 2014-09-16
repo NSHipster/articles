@@ -354,7 +354,7 @@ protocol RegularExpressionMatchable {
 
 extension String: RegularExpressionMatchable {
     func match(pattern: String, options: NSRegularExpressionOptions = nil) -> Bool {
-        let regex = NSRegularExpression(pattern: pattern, options: nil, error: nil)
+        let regex = NSRegularExpression(pattern: pattern, options: options, error: nil)
         return regex.numberOfMatchesInString(self, options: nil, range: NSMakeRange(0, self.utf16Count)) != 0
     }
 }
