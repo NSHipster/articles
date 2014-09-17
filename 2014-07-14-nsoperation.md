@@ -177,7 +177,7 @@ let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(operation)
 ~~~
 
-For example, you could set a completion block on a network operation block to do something with the response data from the server once its finished loading.
+For example, you could set a completion block on a network operation to do something with the response data from the server once its finished loading.
 
 * * *
 
