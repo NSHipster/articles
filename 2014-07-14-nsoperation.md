@@ -125,7 +125,7 @@ operationQueue.addOperation(backgroundOperation)
 
 Another change in iOS 8 / OS X Yosemite is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
 
-Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `synchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
+Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
 
 ## Dependencies
 
