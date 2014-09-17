@@ -453,7 +453,12 @@ a, a:visited
 .archive
   dl
     +span-columns(4 of 12)
-    +omega
+    &:nth-of-type(3), &:nth-of-type(4), &:nth-of-type(6)
+      +omega
+
+    +media($tablet)
+      +span-columns(6 of 12)
+      +omega
 
     +media($mobile)
       +fill-parent
