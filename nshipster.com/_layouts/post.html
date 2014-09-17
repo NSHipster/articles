@@ -55,7 +55,7 @@ layout: default
         <small>Next Article</small>
         {% assign next = page.next %}
         {% if next == nil %}
-        {% assign next = site.posts.last %}
+        {% assign next = site.posts | shuffle | first %}
         {% endif %}
 
           <article>
