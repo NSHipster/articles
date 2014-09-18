@@ -101,7 +101,7 @@ let scaledImage = UIImage(CGImage: CGBitmapContextCreateImage(context))
 
 ### `CGImageSourceCreateThumbnailAtIndex`
 
-Image I/O is a powerful, yet lesser-known framework for working with images. Independent of Core Graphics, it can read and write between between many different formats, access photo metadata, and perform common image processing operations. The framework offers the fastest image encoders and decoders on the platform, with advanced caching mechanisms and even the ability to load images incrementally.
+Image I/O is a powerful, yet lesser-known framework for working with images. Independent of Core Graphics, it can read and write between many different formats, access photo metadata, and perform common image processing operations. The framework offers the fastest image encoders and decoders on the platform, with advanced caching mechanisms and even the ability to load images incrementally.
 
 `CGImageSourceCreateThumbnailAtIndex` offers a concise API with different options than found in equivalent Core Graphics calls:
 
