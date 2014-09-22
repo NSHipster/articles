@@ -139,7 +139,7 @@ class ObjectTableViewController: UITableViewController {
 
 ## UITableViewIndexSearch
 
-There is one special section index title worth mentioning, and that's `UITableViewIndexSearch`. It's a common pattern to have botorth a search bar and section indexes. In equal parts convenience and visual consistency, a search icon is often included as the first section index title, which can be touched to bring up the `UISearchBar` in the header of the table view.
+There is one special section index title worth mentioning, and that's `UITableViewIndexSearch`. It's a common pattern to have both a search bar and section indexes. In equal parts convenience and visual consistency, a search icon is often included as the first section index title, which can be touched to bring up the `UISearchBar` in the header of the table view.
 
 To include the search icon in your table view, you would simply prepend the `NSString` constant `UITableViewIndexSearch` to the return value of `-sectionIndexTitlesForTableView:`, and adjust `-tableView:sectionForSectionIndexTitle:atIndex:` to account for the single element shift.
 
