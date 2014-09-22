@@ -40,7 +40,7 @@
   {% endif %}
 
   <meta property="og:site_name" content="{{ site.title }}"/>
-  <meta property="og:image" content=""/>
+  <meta property="og:image" content="{{ site.url }}//touch-icon-ipad-retina.png"/>
   {% if page.id %}
     <meta property="og:type" content="article"/>
     <meta property="og:title" content="{{ page.title }}"/>
@@ -55,7 +55,6 @@
     <meta property="og:url" content="{{ site.url }}"/>
     <meta property="og:description" content="{{ site.description | strip_html | escape}}" />
   {% endif %}
-  <meta property="fb:admins" content="{{ site.facebook }}">
 
   {% if page.id %}
     <meta property="st:title" content="{{ page.title }}"/>
