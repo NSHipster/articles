@@ -66,7 +66,7 @@ class ObjCObject: NSObject {}
 ObjCObject() == ObjCObject() // false
 ~~~
 
-For Swift reference types, equality can be evaluated as an identity check using the `objectIdentifier` property of its reflection:
+For Swift reference types, equality can be evaluated as an identity check on an `ObjectIdentifier` constructed with an instance of that type:
 
 ~~~{swift}
 class Object: Equatable {}
@@ -74,7 +74,7 @@ class Object: Equatable {}
 // MARK: Equatable
 
 func ==(lhs: Object, rhs: Object) -> Bool {
-    return reflect(lhs).objectIdentifier == reflect(rhs).objectIdentifier
+    return ObjectIdentifier(lhs) == ObjectIdentifier(rhs)
 }
 
 Object() == Object() // false
