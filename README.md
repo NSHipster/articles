@@ -1,6 +1,6 @@
 # NSHipster
 
-[NSHipster](http://nshipster.com) is a journal of the overlooked bits in Objective-C and Cocoa. Updated weekly.
+[NSHipster](http://nshipster.com) is a journal of the overlooked bits in Swift, Objective-C and Cocoa. Updated weekly.
 
 **What This Repository Is For**
 
