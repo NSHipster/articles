@@ -51,4 +51,7 @@ Follow NSHipster on Twitter ([@NSHipster](https://twitter.com/NSHipster))
 
 All code is published under the [MIT License](http://opensource.org/licenses/MIT).
 
-All content on NSHipster.com is released under the [Creative Commons BY-NC License](http://creativecommons.org/licenses/by-nc/4.0/).
+All content is released under the [Creative Commons BY-NC License](http://creativecommons.org/licenses/by-nc/4.0/).
+
+NSHipster® and the NSHipster Logo are registered trademarks of NSHipster, LLC.
+
