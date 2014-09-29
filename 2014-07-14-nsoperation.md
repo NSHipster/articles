@@ -125,13 +125,13 @@ operationQueue.addOperation(backgroundOperation)
 
 Another change in iOS 8 / OS X Yosemite is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
 
-Originally, the `concurrent` property was used to distinguish between operations that performed all of its work in a single `main` function, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `synchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
+Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
 
 ## Dependencies
 
 Depending on the complexity of an application, it may make sense to divide up large tasks into a series of composable sub-tasks. This can be done with `NSOperation` dependencies.
 
-For example, to describe the process of downloading and resizing an image from a server, one might divide up networking into one operation, and resizing into another (perhaps to reuse the networking operation to download other resources, or also use the resizing operation for images already cached in memory). However, since an image can't be resized until it's downloaded, that the networking operation is a _dependency_ of the resizing operation, and must be finished before the resizing operation can be started.
+For example, to describe the process of downloading and resizing an image from a server, one might divide up networking into one operation, and resizing into another (perhaps to reuse the networking operation to download other resources, or also use the resizing operation for images already cached in memory). However, since an image can't be resized until it's downloaded, then the networking operation is a _dependency_ of the resizing operation, and must be finished before the resizing operation can be started.
 
 Expressed in code:
 
@@ -177,7 +177,7 @@ let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(operation)
 ~~~
 
-For example, you could set a completion block on a network operation block to do something with the response data from the server once its finished loading.
+For example, you could set a completion block on a network operation to do something with the response data from the server once it's finished loading.
 
 * * *
 
