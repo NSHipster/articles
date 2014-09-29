@@ -160,7 +160,7 @@ When an `NSOperation` finishes, it will execute its `completionBlock` exactly on
 
 ~~~{objective-c}
 NSOperation *operation = ...;
-operation.completionBlock = {
+operation.completionBlock = ^{
     NSLog("Completed");
 };
 
