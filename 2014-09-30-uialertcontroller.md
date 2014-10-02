@@ -71,11 +71,6 @@ let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
 }
 alertController.addAction(cancelAction)
 
-let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (action) in
-    println(action)
-}
-alertController.addAction(destroyAction)
-
 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
     // ...
 }
@@ -122,6 +117,11 @@ let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
     // ...
 }
 alertController.addAction(OKAction)
+
+let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (action) in
+    println(action)
+}
+alertController.addAction(destroyAction)
 
 self.presentViewController(alertController, animated: true) {
     // ...
