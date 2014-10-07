@@ -136,7 +136,7 @@ self.presentViewController(alertController, animated: true) {
 
 ![Alert with Destructive Button](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-cancel-destroy.png)
 
-The type of an action is specified `UIAlertActionStyle` has three values:
+The type of an action is specified by `UIAlertActionStyle`, which has three values:
 
 > - `.Default`: Apply the default style to the action’s button.
 > - `.Cancel`: Apply a style that indicates the action cancels the operation and leaves things unchanged.
