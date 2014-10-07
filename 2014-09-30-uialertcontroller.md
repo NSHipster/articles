@@ -241,7 +241,7 @@ alertController.addTextFieldWithConfigurationHandler { (textField) in
 }
 ```
 
-> Though, it must be said, _caveat implementor_. Just because you _can_ implement a signup form in an alert doesn't mean you _should_. Suck it up and use a view controller, like you're supposed to.
+Though, it must be said, _caveat implementor_. Just because you _can_ implement a signup form in an alert doesn't mean you _should_. Suck it up and use a view controller, like you're supposed to.
 
 ## Caveats
 
