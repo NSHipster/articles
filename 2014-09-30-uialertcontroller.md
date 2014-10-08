@@ -35,7 +35,7 @@ Unlike the classes it replaces, `UIAlertController` is a subclass of `UIViewCont
 
 `UIAlertController` is initialized with a `title`, `message`, and whether it prefers to be displayed as an alert or action sheet. Alert views are presented modally in the center of their presenting view controllers, whereas action sheets are anchored to the bottom. Alerts can have both buttons and text fields, while action sheets only support buttons.
 
-Rather than specifying all of an alert's buttons in an initializer, instances of a new class, `UIAlertAction`, are added after the fact. Refactoring the API in this way allows for greater control over the number, type, and order of buttons. It also does away with the delegate pattern favored by `UIAlertView` & `UIActionSheet` in favor or much more convenient completion handlers.
+Rather than specifying all of an alert's buttons in an initializer, instances of a new class, `UIAlertAction`, are added after the fact. Refactoring the API in this way allows for greater control over the number, type, and order of buttons. It also does away with the delegate pattern favored by `UIAlertView` & `UIActionSheet` in favor of much more convenient completion handlers.
 
 ## Comparing the Old and New Ways to Alerts
 
@@ -136,7 +136,7 @@ self.presentViewController(alertController, animated: true) {
 
 ![Alert with Destructive Button](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-cancel-destroy.png)
 
-The type of an action is specified `UIAlertActionStyle` has three values:
+The type of an action is specified by `UIAlertActionStyle`, which has three values:
 
 > - `.Default`: Apply the default style to the action’s button.
 > - `.Cancel`: Apply a style that indicates the action cancels the operation and leaves things unchanged.
@@ -241,7 +241,7 @@ alertController.addTextFieldWithConfigurationHandler { (textField) in
 }
 ```
 
-> Though, it must be said, _caveat implementor_. Just because you _can_ implement a signup form in an alert doesn't mean you _should_. Suck it up and use a view controller, like you're supposed to.
+Though, it must be said, _caveat implementor_. Just because you _can_ implement a signup form in an alert doesn't mean you _should_. Suck it up and use a view controller, like you're supposed to.
 
 ## Caveats
 
