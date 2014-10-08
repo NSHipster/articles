@@ -48,7 +48,7 @@ It's often useful to scale the original size in such a way that fits within a re
 
 ~~~{swift}
 import AVFoundation
-let size = AVMakeRectWithAspectRatioInsideRect(image.size, imageView.bounds)
+let rect = AVMakeRectWithAspectRatioInsideRect(image.size, imageView.bounds)
 ~~~
 
 ## Resizing Images
