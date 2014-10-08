@@ -19,7 +19,7 @@ Wondering why Xcode didn't alert you to this change? Just read down to the next 
 
 Although these classes are technically deprecated, this is not communicated in the `@availability` attribute. This should be of little surprise, though; `UIAlertView` has always played it fast and loose.
 
-From its very inception, `UIAlertView` has been laden with vulgar concessions, sacrificing formality and correctness for the whims of an eager developer audience. Its `delegate` protocol conformance was commented out of its initializer (`delegate:(id /* <UIAlertViewDelegate */)delegate`). And what protocol methods that could be implemented invoked the cringeworthy notion of having "clicked" rather than "tapped" a `buttonAtIndex:`. This, and trailing variable-length arguments for `otherButtonTitles`, awkward management of button indexes, a `-show` method with no regard for the view hierarchy... the list goes on.
+From its very inception, `UIAlertView` has been laden with vulgar concessions, sacrificing formality and correctness for the whims of an eager developer audience. Its `delegate` protocol conformance was commented out of its initializer (`delegate:(id /* <UIAlertViewDelegate> */)delegate`). And what protocol methods that did exist triggered when a `buttonAtIndex:` "clicked" rather than "tapped". This, and trailing variable-length arguments for `otherButtonTitles`, awkward management of button indexes, a `-show` method with no regard for the view hierarchy... the list goes on.
 
 `UIActionSheet` was nearly as bad, though developers can't be bothered to remember what the heck that control is called half the time, much less complain about its awkward parts.
 
