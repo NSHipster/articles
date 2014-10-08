@@ -150,6 +150,8 @@ do {
 
 By applying the same set of transformations on search text entered by the user, you have a universal way to search regardless of either the language of the search string or content!
 
+> For anyone wanting to be especially clever, all of the necessary transformations can actually be done in a single pass, by specifying the ICU transform `"Any-Latin; Latin-ASCII; Any-Lower"`.
+
 * * *
 
 `CFStringTransform` can be an insanely powerful way to bend language to your will. And it's but one of many powerful features that await you if you're brave enough to explore outside of Objective-C's warm OO embrace.
