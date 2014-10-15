@@ -1,0 +1,38 @@
+---
+---
+
+<!doctype html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>{{ site.title }}</title>
+  <meta name="robots" content="none"/>
+  <link rel="apple-touch-icon" href="/touch-icon-iphone.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png"/>
+  <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png"/>
+  <link rel="icon" sizes="16x16 24x24 32x32 48x48 64x64" type="image/vnd.microsoft.icon" href="/favicon.ico"/>
+
+  <style type="text/css" media="screen">
+    html{padding:4em 0 2em;background:#F8F7F5;border-top:5px #ff8000 solid}
+    svg{width:100%;max-height:80%}
+    #ns{position:absolute}
+    #mustache{position:absolute;z-index:1000}
+  </style>
+</head>
+<body class="topsites-preview">
+  <h1 id="logo">
+    <a href="/">
+      {% include ns.svg %}
+      {% include mustache.svg %}
+    </a>
+  </h1>
+
+  <script>
+    // if (window.navigator && window.navigator.loadPurpose !== "preview") {
+    //   window.location.href = "http://nshipster.com";
+    // }
+  </script>
+</body>
+</html>

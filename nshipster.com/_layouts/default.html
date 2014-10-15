@@ -106,6 +106,12 @@
   </div>
 
   <script>
+    if (window.navigator && window.navigator.loadPurpose === "preview") {
+      window.location.href = "http://nshipster.com/topsites_preview.html";
+    }
+  </script>
+
+  <script>
     var Swiftype = window.Swiftype || {};
     (function() {
       Swiftype.key = 'Q5jNBiR8qVs5xE5dNect';
