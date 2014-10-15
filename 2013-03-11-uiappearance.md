@@ -2,6 +2,7 @@
 layout: post
 title: UIAppearance
 category: Cocoa
+tags: nshipster
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
 ---
 

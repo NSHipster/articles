@@ -2,6 +2,7 @@
 layout: post
 title: "NSOrderedSet"
 category: Cocoa
+tags: nshipster
 excerpt: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
 ---
 

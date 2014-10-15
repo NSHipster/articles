@@ -2,6 +2,7 @@
 layout: post
 title: NSSortDescriptor
 category: Cocoa
+tags: nshipster
 excerpt: "Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?"
 ---
 

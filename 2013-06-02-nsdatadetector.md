@@ -2,6 +2,7 @@
 layout: post
 title: NSDataDetector
 category: Cocoa
+tags: nshipster
 excerpt: "Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."
 ---
 

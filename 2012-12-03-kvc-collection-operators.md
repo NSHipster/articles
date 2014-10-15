@@ -2,6 +2,7 @@
 layout: post
 title: "KVC Collection Operators"
 category: Cocoa
+tags: nshipster
 excerpt: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."
 ---
 

@@ -2,6 +2,7 @@
 layout: post
 title: NSIndexSet
 category: Cocoa
+tags: nshipster
 excerpt: "NSIndexSet (and its mutable counterpart, NSMutableIndexSet) is a sorted collection of unique unsigned integers. Think of it like an NSRange that supports non-contiguous series. It has wicked fast operations for finding indexes in ranges or set intersections, and comes with all of the convenience methods you'd expect in a Foundation collection class."
 ---
 
