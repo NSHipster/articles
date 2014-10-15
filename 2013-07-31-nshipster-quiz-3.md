@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "NSHipster Quiz #3"
-
+author: Mattt Thompson
 category: Trivia
 excerpt: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
 ---

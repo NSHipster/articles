@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CFStringTransform
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."

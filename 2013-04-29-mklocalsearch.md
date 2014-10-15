@@ -1,6 +1,7 @@
 ---
 layout: post
 title: MKLocalSearch
+author: Mattt Thompson
 category: Cocoa
 excerpt: "In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1."
 ---

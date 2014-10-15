@@ -1,6 +1,7 @@
 ---
 layout: post
 title: AFNetworking 2.0
+author: Mattt Thompson
 category: Open Source
 excerpt: "AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 ---

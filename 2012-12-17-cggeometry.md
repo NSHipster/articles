@@ -1,6 +1,7 @@
 ---
 layout: post
 title: CGGeometry
+author: Mattt Thompson
 category: Cocoa
 excerpt: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulae into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier."
 ---

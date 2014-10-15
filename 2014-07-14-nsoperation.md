@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSOperation
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."

@@ -1,7 +1,9 @@
 ---
 layout: post
-title: NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor
+title: "NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor"
+author: Mattt Thompson
 category: Cocoa
+excerpt: "Until recently, it was trivial to uniquely identify devices between application launches, and even across applications: a simple call to UIDevice -uniqueIdentifier, and you were all set."
 ---
 
 Let's say you're making privacy software that also prevents piracy. I mean, it's an obvious idea—[someone's going to do it](http://www.fakeblock.com). You're just trying to be _that_ person.

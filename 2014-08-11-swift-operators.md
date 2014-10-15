@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Swift Operators
+author: Mattt Thompson
 category: Swift
 excerpt: "Operators in Swift are among the most interesting and indeed controversial features of this new language."
 ---

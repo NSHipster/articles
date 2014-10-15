@@ -1,6 +1,7 @@
 ---
 layout: post
-title: XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()
+title: "XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()"
+author: Mattt Thompson
 category: Xcode
 excerpt: "This week, we'll take a look at `XCTest`, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: `XCTestExpectation` and performance tests."
 ---

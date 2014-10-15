@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "NSHipster Quiz #1"
+author: Mattt Thompson
 category: Trivia
 excerpt: "Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?"
 ---

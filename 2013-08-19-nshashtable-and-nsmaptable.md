@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "NSHashTable &<br/>NSMapTable"
+title: "NSHashTable & NSMapTable"
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "NSSet and NSDictionary, along with NSArray are the workhorse collection classes of Foundation. Unlike other standard libraries, implementation details are hidden from developers, allowing them to write simple code and trust that it will be (reasonably) performant."

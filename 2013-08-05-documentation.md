@@ -1,7 +1,9 @@
 ---
 layout: post
 title: Documentation
+author: Mattt Thompson
 category: Objective-C
+excerpt: "There's an adage among Cocoa developers that Objective-C's verbosity lends its code to being effectively self-documenting. Between longMethodNamesWithNamedParameters: and the explicit typing of those parameters, Objective-C methods don't leave much to the imagination."
 ---
 
 There's an adage among Cocoa developers that Objective-C's verbosity lends its code to being effectively self-documenting. Between `longMethodNamesWithNamedParameters:` and the explicit typing of those parameters, Objective-C methods don't leave much to the imagination.

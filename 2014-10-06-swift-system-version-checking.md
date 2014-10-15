@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Swift System Version Checking
+author: Mattt Thompson
 category: Swift
 excerpt: "C uses preprocessor directives capable of unspeakable evil. Swift has a safe subset of preprocessor directives. So how do we check system version for API compatibility?"
 ---

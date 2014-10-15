@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSLinguisticTagger
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Swift Documentation
+author: Mattt Thompson
 category: Swift
 excerpt: "Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 6 & Swift."
 ---

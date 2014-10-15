@@ -1,6 +1,7 @@
 ---
 layout: post
 title: RawOptionSetType
+author: Mattt Thompson
 category: Swift
 excerpt: "Swift enumerations are a marked improvement over the `NS_ENUM` macro in Objective-C. Unfortunately, `NS_OPTIONS` does not compare as favorably."
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: UIActivityViewController
+author: Mattt Thompson
 category: Cocoa
 excerpt: "The relationship between code and data has long been a curious one."
 ---

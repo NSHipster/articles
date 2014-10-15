@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Multipeer Connectivity"
+title: Multipeer Connectivity
+author: Mattt Thompson
 category: Cocoa
 tags: popular
 excerpt: "As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform."

@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "AVSpeechSynthesizer"
+title: AVSpeechSynthesizer
+author: Mattt Thompson
 category: Cocoa
 excerpt: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
 ---

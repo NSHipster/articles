@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSCharacterSet
+author: Mattt Thompson
 category: Cocoa
 excerpt: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
 ---

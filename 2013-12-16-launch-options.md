@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "UIApplicationDelegate<br/>launchOptions"
+title: UIApplicationDelegate launchOptions
+author: Mattt Thompson
 category: Cocoa
 excerpt: "AppDelegate is the dumping ground for functionality in iOS."
 ---

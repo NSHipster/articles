@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSFormatter
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster, popular
 excerpt: "Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."

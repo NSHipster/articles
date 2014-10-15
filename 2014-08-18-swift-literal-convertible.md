@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Swift Literal Convertibles
+author: Mattt Thompson
 category: Swift
 excerpt: "Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week's issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles."
 ---

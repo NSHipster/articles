@@ -1,6 +1,7 @@
 ---
 layout: post
 title: UIMenuController
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population."

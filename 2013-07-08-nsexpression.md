@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSExpression
+author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."

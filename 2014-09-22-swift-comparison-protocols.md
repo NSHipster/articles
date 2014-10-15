@@ -1,7 +1,8 @@
 ---
 layout: post
 title: Swift Comparison Protocols
-category: "Swift"
+author: Mattt Thompson
+category: Swift
 excerpt: "Objective-C required us to wax philosophic about the nature of equality and identity. To the relief of any developer less inclined towards handwavy treatises, this is not as much the case for Swift."
 ---
 

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: ReactiveCocoa
+author: Mattt Thompson
 category: Open Source
 excerpt: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
 ---

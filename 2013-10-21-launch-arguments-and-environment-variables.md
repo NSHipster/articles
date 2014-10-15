@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Launch Arguments &<br/>Environment Variables"
+author: Mattt Thompson
 category: Xcode
 excerpt: "There are a number of options that can be passed into a target's scheme to enable useful debugging behavior, but like a fast food secret menu, they're obscure and widely unknown."
 ---
