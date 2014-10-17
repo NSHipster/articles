@@ -206,7 +206,7 @@ struct Set<T: Hashable> {
 
 Of course, a standard collection class is only as useful as it is convenient to use. `NSSet` wasn't so lucky to receive the first-class treatment when array and dictionary literal syntax was introduced with the [Apple LLVM Compiler 4.0](http://clang.llvm.org/docs/ObjectiveCLiterals.html), but we can right the wrongs of the past with the `ArrayLiteralConvertible` protocol:
 
-```
+```swift
 protocol ArrayLiteralConvertible {
     typealias Element
     class func convertFromArrayLiteral(elements: Element...) -> Self
