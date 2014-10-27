@@ -1,19 +1,11 @@
-<!-- {% if include.role == 'author' %}
-{% assign contributor = site.data.authors[page.author] %}
-{% elsif include.role == 'translator' %}
-{% endif %} -->
+{% if page.author %}
 
-{% assign contributor = site.data.authors["Mattt Thompson"] %}
+{% assign contributor = site.data.authors[page.author] %}
 
 <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
-  {% case include.role %}
-  {% when 'author' %}
-    <small>Written by</small>
-  {% when 'translator' %}
-    <small>Translated by</small>
-  {% endcase %}
+  <small>Written by</small>
 
-  <img class="avatar" alt="{{ contributor.name }}" itemprop="image" src="//0.gravatar.com/avatar/f32c3cab150e7018cbe4d00401f597e2?size=300" draggable="false"/>
+  <img class="avatar" alt="{{ contributor.name }}" itemprop="image" src="//0.gravatar.com/avatar/{{ contributor.gravatar }}?size=300" draggable="false"/>
   <div class="details">
     <span itemprop="name">{{ contributor.name }}</span>
 
@@ -24,3 +16,5 @@
     {% endif %}
   </div>
 </div>
+
+{% endif %}

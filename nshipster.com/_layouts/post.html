@@ -13,6 +13,10 @@ layout: default
   </header>
 
   <div class="content" itemprop="articleBody" data-swiftype-index="true">
+    {% if page.tags contains "cfhipsterref" %}
+      <ins style="display:block;margin-bottom: 2em;padding:1em">This is an excerpt from <em>CFHipsterRef: Low-Level Programming on iOS &amp; OS X</em>, which just came out of beta and is <a href="https://gumroad.com/l/cfhipsterref" target="_blank" title="Buy CFHipsterRef on Gumroad">available for purchase</a>. (Print version should arrive on Amazon in the next week.) I really hope you like it.</ins>
+    {% endif %}
+
     {{ content }}
   </div>
 
@@ -44,11 +48,30 @@ layout: default
     </section>
 
     <section id="attribution">
-      {% include contributor.html role="author" %}
-      {% if page.translator %}
-        {% include contributor.html role="translator" %}
-      {% endif %}
+      {% include contributor.html %}
     </section>
+
+    {% if page.tags contains "nshipster" %}
+      <section id="promotion">
+        <small>Recommended Reading</small>
+        {% include book.html book="nshipster" %}
+        <h3>NSHipster</h3>
+        <h4>Obscure Topics in Cocoa &amp; Objective-C</h4>
+        {{ site.data.books.nshipster.summary | markdownify }}
+        <a class="buy" href="{{ site.data.books.nshipster.url }}" target="_blank">Buy Now on Gumroad</a>
+      </section>
+    {% endif %}
+
+    {% if page.tags contains "cfhipsterref" %}
+      <section id="promotion">
+        <small>Recommended Reading</small>
+        {% include book.html book="cfhipsterref" %}
+        <h3>CFHipsterRef</h3>
+        <h4>Low-Level Programming on iOS &amp; OS X</h4>
+        {{ site.data.books.cfhipsterref.summary | markdownify }}
+        <a class="buy" href="{{ site.data.books.cfhipsterref.url }}" target="_blank">Buy Now on Gumroad</a>
+      </section>
+    {% endif %}
 
     <section>
       <div id="continue">

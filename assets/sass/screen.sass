@@ -23,15 +23,12 @@ $mobile: new-breakpoint(max-width 480px 4)
 $sans-serif-font-family: "Helvetica Neue", "Helvetica", sans-serif
 $serif-font-family: "Georgia Pro", Georgia, serif
 
-
-
 @import "./functions"
 @import "./fonts"
 @import "./animations"
 @import "./pygments"
 @import "./swiftype"
 @import "./exceptions"
-
 
 html, body
   font-family: $serif-font-family
@@ -51,7 +48,6 @@ html, body
     +outer-container
     margin-bottom: 2em
     padding-bottom: 1em
-
 
 [role='banner']
   +row
@@ -601,3 +597,36 @@ a:hover
 
     &.active
       color: $text-color !important
+
+#promotion
+  .book img
+    margin: 0
+
+    +media($mobile)
+      margin: 0 auto
+
+  h3
+    font-family: $serif-font-family
+
+  h4
+    font-family: $serif-font-family
+    font-style: italic
+    font-weight: 300
+    margin-bottom: 1em
+
+  p
+    font-size: 0.75em
+
+  a.buy
+    background: $primary-color
+    border-radius: 10px
+    color: #fff !important
+    font-family: $sans-serif-font-family
+    font-weight: 700
+    margin-top: 1em
+    padding: 15px
+    text-align: center
+    display: inline-block
+
+    &:hover
+      text-decoration: none !important
