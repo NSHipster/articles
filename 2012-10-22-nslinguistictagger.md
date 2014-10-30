@@ -34,7 +34,7 @@ tagger.string = question;
 let question = "What is the weather in San Francisco?"
 let options: NSLinguisticTaggerOptions = .OmitWhitespace | .OmitPunctuation | .JoinNames
 let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
-let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.toRaw()))
+let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
 tagger.string = question
 tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, sentenceRange, _) in
     let token = (question as NSString).substringWithRange(tokenRange)
