@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "namespacing"
-framework: "Objective-C"
-rating: 5.0
-description: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。"
-translator: "Sheldon Huang"
+category: Objective-C
+excerpt: "命名一直是Objective-C的硬伤，和那些优雅的语言相比，Objective-C缺乏标识符容器这点引来了很多不切实际的批评家。"
+author: Mattt Thompson
+translator: Sheldon Huang
 ---
 >为什么Objecive-C中的很多类名都是`NS`开头的呢？
 
@@ -171,7 +171,7 @@ static char * XXObject;//将“XXObject”重新定义为不同的符号
 @end
 ~~~
 
-如果 `-pigLatinString`方法被另一个category实现了（或者以后版本的iOS或者Mac OS X 在NSString类中也添加了同样名字的方法），那么调用这个方法就会得到未定义的行为错误，因为我们不能保证在runtime中哪个方法会先被定义。
+如果 `-pigLatinString`方法被另一个category实现了（或者以后版本的iOS或者OS X 在NSString类中也添加了同样名字的方法），那么调用这个方法就会得到未定义的行为错误，因为我们不能保证在runtime中哪个方法会先被定义。
 
 我们可以通过在方法名前加前缀来避免这个问题，就像加这个类名一样（在类别名前加前缀也是个好办法）：
 

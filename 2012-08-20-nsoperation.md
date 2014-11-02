@@ -1,11 +1,11 @@
 ---
 layout: post
 title: NSOperation
-translator: "Henry Lee"
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html"
-framework: Foundation
-rating: 9.0
-description: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"
+author: Mattt Thompson
+translator: Henry Lee
+category: Cocoa
+tag: popular
+excerpt: "我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。"
 ---
 
 我们都知道，让程序瞬间加载并且快速响应的秘诀在于后台异步执行任务。

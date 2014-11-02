@@ -1,12 +1,10 @@
 ---
 layout: post
 title: UICollectionView
-ref: "https://developer.apple.com/library/ios/#documentation/UIKit/Reference/UICollectionView_class/Reference/Reference.html#//apple_ref/doc/uid/TP40012177"
-framework: UIKit
-rating: 9.6
-published: true
-description: "从现在起，UICollectionView凭一己之力改变我们将要设计和开发iOS应用的方式。这并不是说，collection views是未知或模糊的。作为一个NSHipster，不仅仅是知道名不见经传的石头，更多是在它们家喻户晓、售罄一空之前就知道有前途。"
-translator: "JJ Mao"
+category: Cocoa
+excerpt: "从现在起，UICollectionView凭一己之力改变我们将要设计和开发iOS应用的方式。这并不是说，collection views是未知或模糊的。作为一个NSHipster，不仅仅是知道名不见经传的石头，更多是在它们家喻户晓、售罄一空之前就知道有前途。"
+author: Mattt Thompson
+translator: JJ Mao
 ---
 
 `UICollectionView` 是一种新的 `UITableView` ，并且它极其重要。
@@ -64,7 +62,7 @@ Layouts是使 `UICollectionView` 如此神奇的核心。把它们看作是CSS�
 每个cell view、supplemental view和decoration view 都有layout属性。想要知道layouts如何灵活，只需看看 `UICollectionViewLayoutAttributes` 对象的特性就知道了：
 
 - `frame`
-- `center`  
+- `center`
 - `size`
 - `transform3D`
 - `alpha`

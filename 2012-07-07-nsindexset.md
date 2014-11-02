@@ -1,10 +1,9 @@
 ---
 layout: post
 title: NSIndexSet
-translator: "Andrew Yang"
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSet_Class/Reference/Reference.html"
-framework: Foundation
-rating: 7.8
+author: Mattt Thompson
+translator: Andrew Yang
+category: Cocoa
 ---
 
 `NSIndexSet` (以及它的可修改子类, `NSMutableIndexSet`) 是一个排好序的，无重复元素的整数集合。它看上去有点像 支持离散整数的 `NSRange` .它能用于快速查找特定范围的值的索引，也能用于快速计算交集, 同时，Foundation collection class 提供了很多好用的方法，方便你使用 `NSIndexSet`.

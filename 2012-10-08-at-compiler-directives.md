@@ -1,12 +1,10 @@
 ---
 layout: post
 title: "@"
-translator: "Zihan Xu"
-ref: ""
-framework: Objective-C
-rating: 8.7
-published: true
-description: "所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？方括号，长的荒唐的方法名，和<tt>@</tt>指令。\"at\"符号编译器指令对于理解Objective-C的格式以及其起源和底层机制非常重要。它是使得Objective-C如此强大，具有表现力，并仍能一路编译成底层 C 语言的关键。"
+author: Mattt Thompson
+translator: Zihan Xu
+category: Objective-C
+excerpt: "所以如果我们要对这难以捉摸的Objective-C品种观“码”，我们要看些什么？方括号，长的荒唐的方法名，和<tt>@</tt>指令。\"at\"符号编译器指令对于理解Objective-C的格式以及其起源和底层机制非常重要。它是使得Objective-C如此强大，具有表现力，并仍能一路编译成底层 C 语言的关键。"
 ---
 
 观鸟人将那些某一特定事物的说不清楚的特性称为["Jizz"][1]（我发誓这不是我编造出来的）。

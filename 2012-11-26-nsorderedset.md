@@ -1,13 +1,10 @@
 ---
 layout: post
 title: "NSOrderedSet"
-
-ref: "http://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSOrderedSet_Class/Reference/Reference.html"
-framework: Foundation
-rating: 6.2
-published: true
-description: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"
-translator: "candyan"
+category: Cocoa
+excerpt: "为什吗`NSOrderedSet`不是继承自`NSSet`的捏？答案可能会让你大吃一惊。"
+author: Mattt Thompson
+translator: Candyan
 ---
 
 有个问题：为什吗`NSOrderedSet`不是继承自`NSSet`的捏？
@@ -86,7 +83,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 。。。等等，为什么我们起初要使用 `NSOrderedSet` 哪？
 
 ---
-在iOS 5 和Mac OS X 10.7 中介绍了 `NSOrderedSet`。然后，唯一的API变化就是在[Core Data](http://developer.apple.com/library/mac/#releasenotes/DataManagement/RN-CoreData/_index.html)部分增加了对`NSOrderedSet`的支持。
+在iOS 5 和OS X Lion 中介绍了 `NSOrderedSet`。然后，唯一的API变化就是在[Core Data](http://developer.apple.com/library/mac/#releasenotes/DataManagement/RN-CoreData/_index.html)部分增加了对`NSOrderedSet`的支持。
 
 这是对使用Core Data的人来说极好的消息，因为它解决了一个长期存在的烦恼（没有办法对一个关系集合做任意的排序）。从前，你不得不添加一个`位置`属性，当每次集合被修改时都要重新计算这个属性。没有一个内置的方法去验证你的位置集合是一个唯一的或者没有间隙的序列。
 

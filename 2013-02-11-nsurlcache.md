@@ -1,11 +1,11 @@
 ---
 layout: post
 title: NSURLCache
+author: Mattt Thompson
 translator: Ricky Tan
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSURLCache_Class/Reference/Reference.html"
-framework: Foundation
-rating: 8.7
-description: "NSURLCache 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。作为基础类库 URL 加载系统的一部分，任何通过 NSURLConnection 加载的请求都将被 NSURLCache 处理。"
+category: Cocoa
+tag: popular
+excerpt: "NSURLCache 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。作为基础类库 URL 加载系统的一部分，任何通过 NSURLConnection 加载的请求都将被 NSURLCache 处理。"
 ---
 
 `NSURLCache` 为您的应用的 URL 请求提供了内存中以及磁盘上的综合缓存机制。 作为基础类库 [URL 加载系统](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i) 的一部分，任何通过 `NSURLConnection` 加载的请求都将被 `NSURLCache` 处理。
@@ -14,7 +14,7 @@ description: "NSURLCache 为您的应用的 URL 请求提供了内存中以及�
 
 当一个请求完成下载来自服务器的回应，一个缓存的回应将在本地保存。下一次同一个请求再发起时，本地保存的回应就会马上返回，不需要连接服务器。`NSURLCache` 会 _自动_ 且 _透明_ 地返回回应。
 
-为了好好利用 `NSURLCache`，你需要初始化并设置一个共享的 URL 缓存。在 iOS 中这项工作需要在 `-application:didFinishLaunchingWithOptions:` 完成，而 Mac OS X 中是在 `–applicationDidFinishLaunching:`：
+为了好好利用 `NSURLCache`，你需要初始化并设置一个共享的 URL 缓存。在 iOS 中这项工作需要在 `-application:didFinishLaunchingWithOptions:` 完成，而 OS X 中是在 `–applicationDidFinishLaunching:`：
 
 ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
@@ -152,7 +152,7 @@ HTTP 请求和回应用 [headers](http://www.w3.org/Protocols/rfc2616/rfc2616-se
 
 ---
 
-`NSURLCache` 提醒着我们熟悉我们正在操作的系统是多么地重要。开发 iOS 或 Mac OS X 程序时，这些系统中的重中之重，非 [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i)莫属。
+`NSURLCache` 提醒着我们熟悉我们正在操作的系统是多么地重要。开发 iOS 或 OS X 程序时，这些系统中的重中之重，非 [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i)莫属。
 
 无数开发者尝试自己做一个简陋而脆弱的系统来实现网络缓存的功能，殊不知 `NSURLCache` 只要两行代码就能搞定且好上100倍。甚至更多开发者根本不知道网络缓存的好处，也从未尝试过，导致他们的应用向服务器作了无数不必要的网络请求。
 

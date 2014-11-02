@@ -1,11 +1,10 @@
 ---
 layout: post
 title: CFStringTransform
+author: Mattt Thompson
 translator: Ricky Tan
-ref: "https://developer.apple.com/library/mac/documentation/CoreFOundation/Reference/CFMutableStringRef/Reference/reference.html#//apple_ref/doc/uid/20001504-CH201-BCIGCACA"
-framework: CoreFoundation
-rating: 9.1
-description: "NSString 是基础类库中的佼佼者。 它虽然很强大，但是不提提它的可自由桥接的表兄弟 CFMutableString，或者更特别地，CFStringTransform，是不负责任的。"
+category: Cocoa
+excerpt: "NSString 是基础类库中的佼佼者。 它虽然很强大，但是不提提它的可自由桥接的表兄弟 CFMutableString，或者更特别地，CFStringTransform，是不负责任的。"
 ---
 
 关于一种语言好不好用，你只需要衡量以下两种指标：
@@ -115,12 +114,12 @@ description: "NSString 是基础类库中的佼佼者。 它虽然很强大，�
 
 - 首先，应用 `kCFStringTransformToLatin` 变换将所有非英文文本转换为拉丁字母表示。
 
-> Hello! こんにちは! สวัสดี! مرحبا! 您好! →  
+> Hello! こんにちは! สวัสดี! مرحبا! 您好! →
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
 - 然后，应用 `kCFStringTransformStripCombiningMarks` 变换来去除变音符和重音。
 
-> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →  
+> Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →
 > Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
 - 最后，用 `CFStringLowercase` 转为小写，并用[`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) 分词用作文本的索引。

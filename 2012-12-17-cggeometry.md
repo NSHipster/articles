@@ -1,17 +1,15 @@
 ---
 layout: post
 title: CGGeometry
+author: Mattt Thompson
 translator: Ricky Tan
-ref: "https://developer.apple.com/library/mac/#documentation/graphicsimaging/reference/CGGeometry/Reference/reference.html"
-framework: CoreGraphics
-rating: 8.0
-published: true
-description: "除非你是个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。为了保持尽可能少地做数学问题的传统，这里列出了一些不算复杂的 CoreGraphics 函数使你的工作更简单。"
+category: Cocoa
+excerpt: "除非你是个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你仍有机会成为那个在课堂上尽职尽责地将所有必要的公式的程序写到你的TI-8X计算器里的那个人。为了保持尽可能少地做数学问题的传统，这里列出了一些不算复杂的 CoreGraphics 函数使你的工作更简单。"
 ---
 
 除非你是一个数学极客或者一个古希腊人，否则几何学应该不是你高中时最喜欢的课程。不过你可能就是班里的那种学生，那种会老老实实把所有公式都输进TI-8X图形计算器里去看结果。
 
-对于那些在学习TI-BASIC花的时间多于欧式几何的人，这里有一份iOS和Mac OS X上绘图系统[Quartz 2D][1]的备忘录：
+对于那些在学习TI-BASIC花的时间多于欧式几何的人，这里有一份iOS和OS X上绘图系统[Quartz 2D][1]的备忘录：
 
 - `CGPoint` 是个表示二维坐标系中的点的结构体。在 iOS中，坐标原点在左上方，所以向右和向下分别是 `x` 和 `y` 的正方向。相反，在 OS X 中 `(0, 0)` 在左下方， `y` 的正方向朝上。
 
@@ -30,7 +28,7 @@ description: "除非你是个数学极客或者一个古希腊人，否则几何
 变换
 ---------------
 
-我们的列表中的第一个是几何变换。这些函数返回在传入的矩形中做某些特定操作后的 `CGRect` 
+我们的列表中的第一个是几何变换。这些函数返回在传入的矩形中做某些特定操作后的 `CGRect`
 
 ### `CGRectOffset`
 

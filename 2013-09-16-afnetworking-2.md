@@ -1,14 +1,13 @@
 ---
 layout: post
 title: AFNetworking 2.0
-translator: "Zihan Xu"
-ref: "https://github.com/AFNetworking/AFNetworking"
-framework: "Open Source"
-rating: 9.9
-description: "AFNetworking 是 iOS 和 Mac OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
+author: Mattt Thompson
+translator: Zihan Xu
+category: Open Source
+excerpt: "AFNetworking 是 iOS 和 OS X 开发中最广泛使用的开源项目之一。它十分流行，但你有没有听说过它的新版呢？"
 ---
 
-[AFNetworking](http://afnetworking.com) 是当前 iOS 和 Mac OS X
+[AFNetworking](http://afnetworking.com) 是当前 iOS 和 OS X
 开发中最广泛使用的开源项目之一。它帮助了成千上万叫好又叫座的应用，也为其它出色的开源库提供了基础。这个项目是社区里最活跃、最有影响力的项目之一，拥有 8700 个 star、2200 个 fork 和 130 名贡献者。
 
 从各方面来看，AFNetworking 几乎已经成为主流。
@@ -50,7 +49,7 @@ iOS 4 引入的 block 和 Grand Central Dispatch 从根本上改善了应用程�
 
 AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不是没有提升的空间。
 
-在第二个大版本中，AFNetworking 旨在消除原有设计的怪异之处，同时为下一代 iOS 和 Mac OS X 应用程序增加一些强大的新架构。
+在第二个大版本中，AFNetworking 旨在消除原有设计的怪异之处，同时为下一代 iOS 和 OS X 应用程序增加一些强大的新架构。
 
 ### 动机
 

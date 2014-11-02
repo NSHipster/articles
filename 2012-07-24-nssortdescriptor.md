@@ -1,10 +1,9 @@
 ---
 layout: post
 title: NSSortDescriptor
-translator: "Zihan Xu"
-ref: "https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSSortDescriptor_Class/Reference/Reference.html"
-framework: Foundation
-rating: 8.4
+author: Mattt Thompson
+translator: Zihan Xu
+category: Cocoa
 ---
 
 排序：它是CS（计算机科学）入门课程考试和初级编程面试白板考题的主流考题。不管怎么样，你上一次真正需要知道如何实现快速排序是什么时侯？

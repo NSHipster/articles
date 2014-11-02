@@ -1,13 +1,10 @@
 ---
 layout: post
 title: NSIncrementalStore
-
-ref: "https://developer.apple.com/library/mac/#documentation/CoreData/Reference/NSIncrementalStore_Class/Reference/NSIncrementalStore.html"
-framework: Foundation
-rating: 9.5
-published: true
-translator: "Henry Lee"
-description: 即使这个博客就是专门讲一些晦涩接口，但是`NSIncrementalStore`又刷新了我们对与“晦涩”这个词的理解。这个接口在iOS 5中被发布，相对于其他大家一定会用到的条目，它并没有在更新日志里有更着重的声明。但是讽刺的是，它有可能是iOS 5的API里最重要的一个，它将从现在开始改变我们创建应用的方式。
+category: Cocoa
+author: Mattt Thompson
+translator: Henry Lee
+excerpt: 即使这个博客就是专门讲一些晦涩接口，但是`NSIncrementalStore`又刷新了我们对与“晦涩”这个词的理解。这个接口在iOS 5中被发布，相对于其他大家一定会用到的条目，它并没有在更新日志里有更着重的声明。但是讽刺的是，它有可能是iOS 5的API里最重要的一个，它将从现在开始改变我们创建应用的方式。
 ---
 
 
@@ -66,7 +63,7 @@ NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 
 ### `-executeRequest:withContext:error:`
 
-Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint) 
+Here's where things get interesting, from an implementation standpoint. (And where it all goes to hell, from an API design standpoint)
 
 从实现的角度，事情开始有意思起来了（但是从接口设计角度来说，那就糟透了）。
 
@@ -83,11 +80,11 @@ Here's where things get interesting, from an implementation standpoint. (And whe
 > **返回**: 封装在`NSArray`内的符合请求的结果
 
 - 返回类型: `NSCountResultType`
-  
+
 > **返回**: 返回一个用<del><tt>NSNumber</tt></del><ins><tt>NSArray</tt>封装的<tt>NSNumber</tt>来表示符合请求的数量</ins>
 
 #### 请求类型: `NSSaveRequestType`
-  
+
 > **返回**: 空的`NSArray`
 
 所以，在一个方法内就能对同一个对象做所有读_并且_写的操作，起码所有复杂的操作都在同一地方，对吧？

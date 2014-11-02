@@ -1,11 +1,11 @@
 ---
 layout: post
 title: "Benchmarking"
-ref: ""
-framework: Objective-C
-rating: 9.0
-translator: "Croath Liu"
-description: "对于完成有意义的工作来说抽象很重要，但却会带来副作用。利用benchmarking，工程师可以揭开他们代码中运行效率的面纱，然后利用获得的信息来优化。"
+category: Objective-C
+tag: popular
+author: Mattt Thompson
+translator: Croath Liu
+excerpt: "对于完成有意义的工作来说抽象很重要，但却会带来副作用。利用benchmarking，工程师可以揭开他们代码中运行效率的面纱，然后利用获得的信息来优化。"
 ---
 
 对于完成有意义的工作来说抽象很重要，但却会带来副作用。为了工作起来更顺手我们需要洞察一些细枝末节来确定一些批量处理的具体逻辑。找到一个特定上下文的有用信息是非常重要的，是具有挑战性的，是高效编程的核心。

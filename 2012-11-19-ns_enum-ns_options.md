@@ -1,13 +1,10 @@
 ---
 layout: post
 title: "NS_ENUM & NS_OPTIONS"
-
-ref: "https://developer.apple.com/library/mac/#releasenotes/General/APIDiffsMacOSX10_8/Foundation.html"
-framework: Foundation
-rating: 7.0
-published: true
-description: "一个专业的Objective-C工程师应该在面向对象和面向过程范式间优雅地切换，同时能够掌握二者的优势。"
-translator: "Croath Liu"
+category: Cocoa
+excerpt: "一个专业的Objective-C工程师应该在面向对象和面向过程范式间优雅地切换，同时能够掌握二者的优势。"
+author: Mattt Thompson
+translator: Croath Liu
 ---
 
 一切皆为对象。
@@ -27,7 +24,7 @@ translator: "Croath Liu"
 
 ---
 
-`NS_ENUM` 和 `NS_OPTIONS` 都不算太古老的宏，在iOS 6 / Mac OS X 10.8才开始有，他们都是代替 `enum` 的更好的办法。
+`NS_ENUM` 和 `NS_OPTIONS` 都不算太古老的宏，在iOS 6 / OS X Mountain Lion才开始有，他们都是代替 `enum` 的更好的办法。
 
 > 如果你想在更早的iOS或OS X系统中使用这两个宏，简单定义一下就好了：
 

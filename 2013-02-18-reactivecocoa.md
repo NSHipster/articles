@@ -1,11 +1,10 @@
 ---
 layout: post
 title: ReactiveCocoa
-ref: "https://github.com/ReactiveCocoa/ReactiveCocoa"
-framework: "Open Source"
-rating: 9.5
-description: "打破了苹果API排他性的盾牌，本期NSHipster将介绍一个为Objective-C勇敢构建新纪元的开源项目：ReactiveCocoa"
-translator: "Croath Liu"
+category: Open Source
+excerpt: "打破了苹果API排他性的盾牌，本期NSHipster将介绍一个为Objective-C勇敢构建新纪元的开源项目：ReactiveCocoa"
+author: Mattt Thompson
+translator: Croath Liu
 ---
 
 编程语言是有生命的。语言在自由无方向迅速发展的生命周期中不断被推动、被挑战、被变得不规范化、或被蒙上了神秘面纱。科技在不停的改变中、在开发团队和开源社区不断来了又走中得以不断发展；隐晦的神秘力量凭借新兴项目的巨人肩膀被磨练得力量日益突出，很快就会在长期的蛰伏后觉醒，大力开辟出一片新天地。
@@ -135,7 +134,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 [Bindings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaBindings/CocoaBindings.html)也是黑魔法。
 
-虽然对Mac OS X控制的要点就是Bindings，但是它的意义在近年来越来越没那么重要了，因为焦点已经移动到了iOS和UIKit这些Bindings不支持的东西身上。Bindings替代了大量的模版胶水代码，允许在Interface Builder中完成编码，但严格上说还是比较有局限性的，并且_无法_debug。RAC提供了一种简洁易懂、扩展性强的以代码为基础的API来运行在iOS上，目标就是取代所有在OS X能用Bindings实现的神奇功能。
+虽然对OS X控制的要点就是Bindings，但是它的意义在近年来越来越没那么重要了，因为焦点已经移动到了iOS和UIKit这些Bindings不支持的东西身上。Bindings替代了大量的模版胶水代码，允许在Interface Builder中完成编码，但严格上说还是比较有局限性的，并且_无法_debug。RAC提供了一种简洁易懂、扩展性强的以代码为基础的API来运行在iOS上，目标就是取代所有在OS X能用Bindings实现的神奇功能。
 
 ---
 
@@ -143,7 +142,7 @@ Objective-C在C的核心上吸收了Smalltalk的思想建立而成，但哲学�
 
 `@protocol` 是对C++多重继承的拒绝，顺应抽象数据的类型范式是对Java `Interface`的吸收。Objective-C 2.0引入了`@property / @synthesize`则灵感来自C#的 `get; set;` 方法对getter和setter的速记（就语法上来说，这也是NeXTSETP强硬路线坚持者经常辩论的一点）。Block给这门语言带来了函数式编程的好处，可以使用Grand Central Dispatch——来自Fortran / C / C++ standard [OpenMP](http://en.wikipedia.org/wiki/OpenMP)思想而成的基于队列的并发API。下标和对象字面量都是像Ruby、Javascript这样的脚本语言的标准特性，如今也由一个Clang插件被带入了Objective-C的世界里。
 
-ReactiveCocoa则给Objective-C带来了函数响应式编程的健康药剂。它本身也是首C#的[Rx library](http://msdn.microsoft.com/en-us/data/gg577609.aspx)、[Clojure](http://en.wikipedia.org/wiki/Clojure)和[Elm][2]的影响才发展而成。
+ReactiveCocoa则给Objective-C带来了函数响应式编程的健康药剂。它本身也是受C#的[Rx library](http://msdn.microsoft.com/en-us/data/gg577609.aspx)、[Clojure](http://en.wikipedia.org/wiki/Clojure)和[Elm][2]的影响发展而成。
 
 好的点子会传染。ReactiveCocoa就是一种警示，提醒人们好的点子也可以从看似不太可能的地方传播过来，这样的新鲜思想对解决类似的问题也会有完全不同的方法呢。
 

@@ -1,13 +1,10 @@
 ---
 layout: post
 title: UIAccessibility
-
-ref: "http://developer.apple.com/library/ios/#documentation/uikit/reference/UIAccessibility_Protocol/Introduction/Introduction.html"
-framework: UIKit
-rating: 10.0
-published: true
-translator: "Henry Lee"
-description: 辅助功能，如同国际化一样，是一个很难让开发者提起兴致来的话题，但是你也知道，让你对这些东西感兴趣起来就是NSHipster的任务。
+category: Cocoa
+author: Mattt Thompson
+translator: Henry Lee
+excerpt: 辅助功能，如同国际化一样，是一个很难让开发者提起兴致来的话题，但是你也知道，让你对这些东西感兴趣起来就是NSHipster的任务。
 
 ---
 

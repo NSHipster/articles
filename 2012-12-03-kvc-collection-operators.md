@@ -1,13 +1,10 @@
 ---
 layout: post
 title: "KVC Collection Operators"
-
-ref: "http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/CollectionOperators.html"
-framework: Foundation
-rating: 7.9
-published: true
-description: "Ruby爱好者总爱嘲笑Objective-C臃肿的语法。尽管新的Object Literals语法让我们瘦了几斤，但那些红头发的恶霸们还总是用他们的单行map和花哨的#to_proc符号嘲讽我们。幸运的是，我们有键-值编码这个王牌。"
-translator: "candyan"
+category: Cocoa
+excerpt: "Ruby爱好者总爱嘲笑Objective-C臃肿的语法。尽管新的Object Literals语法让我们瘦了几斤，但那些红头发的恶霸们还总是用他们的单行map和花哨的#to_proc符号嘲讽我们。幸运的是，我们有键-值编码这个王牌。"
+author: Mattt Thompson
+translator: Candyan
 ---
 
 Ruby爱好者总爱嘲笑Objective-C臃肿的语法。
@@ -26,7 +23,7 @@ for (Employee *employee in employees) {
 double averageSalary = totalSalary / [employees count];
 ~~~
 
-╮(╯_╰)╭ 
+╮(╯_╰)╭
 
 幸运的是，[键-值编码](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html)给我们了一种更加简洁的，几乎像Ruby一样的方式来做这件事：
 
@@ -52,7 +49,7 @@ double averageSalary = totalSalary / [employees count];
 @end
 ~~~
 
-> 键-值 编码会在必要的时候把基本数据类型的数据自动装箱和拆箱到`NSNumber`或者`NSValue`中来确保一切工作正常。 
+> 键-值 编码会在必要的时候把基本数据类型的数据自动装箱和拆箱到`NSNumber`或者`NSValue`中来确保一切工作正常。
 
 <table>
   <thead>
@@ -134,7 +131,7 @@ _例如_：
 _例如_：
 
 ~~~{objective-c}
-[@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"  
+[@[appleStoreInventory, verizonStoreInventory] valueForKeyPath:@"@distinctUnionOfArrays.name"]; // "iPhone 5", "iPad Mini", "MacBook Pro"
 ~~~
 
 ---

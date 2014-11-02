@@ -1,10 +1,11 @@
 ---
 layout: post
 title: Associated Objects
-framework: "Objective-C"
-rating: 6.6
-description: "对象关联是Objective-C 2.0在运行时的新特性，这个特性允许你将任何键值在运行时关联到对象上。对象关联是黑暗符咒一样，应该和其他来自objc/runtime.h的函数一样被小心谨慎地对待"
-translator: "Croath Liu"
+category: Objective-C
+tag: popular
+excerpt: "对象关联是Objective-C 2.0在运行时的新特性，这个特性允许你将任何键值在运行时关联到对象上。对象关联是黑暗符咒一样，应该和其他来自objc/runtime.h的函数一样被小心谨慎地对待"
+author: Mattt Thompson
+translator: Croath Liu
 ---
 
 ~~~{objective-c}
@@ -19,7 +20,7 @@ Objective-C开发者应该小心谨慎地遵循这个危险咒语的各种准则
 
 * * *
 
-对象关联（或称为关联引用）本来是Objective-C 2.0运行时的一个特性，起始于Mac OS X 10.6 Snow Leopard和iOS 4。相关参考可以查看 `<objc/runtime.h>` 中定义的以下三个允许你将任何键值在运行时关联到对象上的函数：
+对象关联（或称为关联引用）本来是Objective-C 2.0运行时的一个特性，起始于OS X Snow Leopard和iOS 4。相关参考可以查看 `<objc/runtime.h>` 中定义的以下三个允许你将任何键值在运行时关联到对象上的函数：
 
 - `objc_setAssociatedObject`
 - `objc_getAssociatedObject`

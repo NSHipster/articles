@@ -1,13 +1,10 @@
 ---
 layout: post
 title: instancetype
-
-ref: "http://clang.llvm.org/docs/LanguageExtensions.html#objc_instancetype"
-framework: Foundation
-rating: 7.3
-published: true
-description: "Objective-C 是一门正迅速发展的语言，这种发展速度在别的现有语言中是不曾有过的。从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。"
-translator: "JJ Mao"
+category: Cocoa
+excerpt: "Objective-C 是一门正迅速发展的语言，这种发展速度在别的现有语言中是不曾有过的。从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。"
+author: Mattt Thompson
+translator: JJ Mao
 ---
 
 想知道Objective-C接下去会发生什么吗？[请多关注Objective-C最新动向](http://clang.llvm.org/docs/LanguageExtensions.html)。
@@ -16,7 +13,7 @@ Objective-C 是一门正迅速发展的语言，这种发展速度在别的现�
 
 这一切的创新都是Apple垂直整合的成果。正如Apple在设计[自主研发芯片](http://en.wikipedia.org/wiki/Apple_A4)中的投资一样，利用杠杠作用与手机硬件展开激烈的竞争。在[LLVM](http://llvm.org) 上的投资也是一样，使软件跟上业界最新步伐。
 
-Clang从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。 
+Clang从普通到范例转变的发展，真要说清它们之间的差异还得慢慢来。因为我们正在讨论的是底层语言的特性，对于API设计的更深层含义还比较难理解。
 
 其中一个例子就是 `instancetype` ，这也是本周文章的主题。
 

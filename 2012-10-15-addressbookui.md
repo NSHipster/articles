@@ -1,13 +1,10 @@
 ---
 layout: post
 title: AddressBookUI
-
-ref: "http://developer.apple.com/library/ios/#documentation/AddressBookUI/Reference/AddressBookUI_Framework/_index.html"
-framework: AddressBookUI
-rating: 6.2
-published: true
+category: Cocoa
+author: Mattt Thompson
 translator: Henry Lee
-description: "Address Book UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与Message UI框架相似，Address Book UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
+excerpt: "Address Book UI是用来在用户地址簿展示、选择、编辑和创建联系人的iOS框架。与Message UI框架相似，Address Book UI包含了一些可以用dismissViewControllerAnimated:completion:方法来展示的试图控制器，它通过一些统一的接口提供常用的系统功能。"
 
 ---
 
@@ -40,7 +37,7 @@ description: "Address Book UI是用来在用户地址簿展示、选择、编辑
 
 在其他任何框架里你都找不到实用性这么好的功能，这不需要用到[`NSLocale`](http://nshipster.com/nslocale/)，甚至也不需要Map Kit和Core Location来定位。苹果尽了如此多的努力来提高很多本地化的细节，而你会很惊奇这么一个重要的功能被放在了一个模糊不清、感觉上不怎么相关的一个框架里。
 
-> 不过，电话簿UI在Mac OS X里不提供，似乎这个平台也没有其他相同功能的内容。
+> 不过，电话簿UI在OS X里不提供，似乎这个平台也没有其他相同功能的内容。
 
 
 你看，地址格式会因为地区的不同相差很大，例如，美国的地址是下面这个格式的：

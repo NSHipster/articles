@@ -1,23 +1,23 @@
 ---
 layout: post
-title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"
-framework: ""
-rating: 6.5
-description: "虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。"
-translator: "Croath Liu"
+title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef"
+category: Cocoa
+excerpt: "虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。"
+author: Mattt Thompson
+translator: Croath Liu
 ---
 
 本周的主题是字典。我们讨论的不是日常开发中经常遇到的`NSDictionary` 或 `CFDictionaryRef`，而是已经离你远去了的、学生时代常用的字典。
 
 > 不过如果认真讨论一下，为什么字典会被称作“字典”呢？为什么我们不能像Ruby语言等直接叫它哈希（`Hash`）？字典到底是什么？不断通过Hash函数加密内容来解释语义？哈哈，字典其实没那么糟糕吧。我认为用“组合起来的数组”来描述他再适合不过了。
 
-虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。所以为了方便下面的讨论，我们先回顾一下字典在Unix、Mac OS X和iOS系统上的展现形式和被赋予的意义。
+虽然字典的地位很大程度上已经被基于网络的“一键释义”功能所替代，但是字典和词汇表在拼写检查、语法检查、自动纠错、自动摘要、语义分析等领域，仍然在幕后扮演着重要角色。所以为了方便下面的讨论，我们先回顾一下字典在Unix、OS X和iOS系统上的展现形式和被赋予的意义。
 
 * * *
 
 ## Unix
 
-几乎所有Unix的发行版都包含一些用换行分割的词表文件。在Mac OS X上，你可以在`/usr/share/dict`找到他们：
+几乎所有Unix的发行版都包含一些用换行分割的词表文件。在OS X上，你可以在`/usr/share/dict`找到他们：
 
 ~~~
 $ ls /usr/share/dict
@@ -54,13 +54,13 @@ $ head /usr/share/dict/words
 
 这些系统提供的巨大词表文件让`grep`纵横交错的文字难题、生成易于记忆的密码、种子数据库都变得简单。但从用户的视角来看，`/usr/share/dict`只是一个缺乏整体意义的单词表，所以对日常的使用没什么太大意义。
 
-Mac OS X在这个基础上构建了系统词典。OS X在对扩展壮大Unix的功能性方面从未让人失望，于是它不遗余力地发布了很多基于bundles和plist文件的字典。
+OS X在这个基础上构建了系统词典。OS X在对扩展壮大Unix的功能性方面从未让人失望，于是它不遗余力地发布了很多基于bundles和plist文件的字典。
 
 * * *
 
 ## OS X
 
-Mac OS X模仿`/usr/share/dict`的结构，创造了`/Library/Dictionaries`目录。
+OS X模仿`/usr/share/dict`的结构，创造了`/Library/Dictionaries`目录。
 我们现在就看一下OS X在共享性的系统字典方面比Unix有所超越的地方————它同样认同非英语字典的存在：
 
 ~~~
@@ -84,7 +84,7 @@ $ ls /Library/Dictionaries/
     The Standard Dictionary of Contemporary Chinese.dictionary/
 ~~~
 
-Mac OS X为我们带来了包括英文字典在内的汉语、法语、德语、意大利语、日语、韩语专业字典，甚至包含一个专门讲解Apple术语的字典！
+OS X为我们带来了包括英文字典在内的汉语、法语、德语、意大利语、日语、韩语专业字典，甚至包含一个专门讲解Apple术语的字典！
 
 让我们研究的更深一点，看看这些`.dictionary`的bundle文件里面到底有什么：
 
@@ -116,7 +116,7 @@ $ ls "/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents"
 
 #### 获取单词的释义
 
-在Mac OS X获取一个单词的释义，需要用到Core Services framework的`DCSCopyTextDefinition`函数：
+在OS X获取一个单词的释义，需要用到Core Services framework的`DCSCopyTextDefinition`函数：
 
 ~~~{objective-c}
 #import <CoreServices/CoreServices.h>
@@ -153,7 +153,7 @@ dictionaryPreferences[@"DCSActiveDictionaries"] = activeDictionaries;
 [userDefaults setPersistentDomain:dictionaryPreferences forName:@"com.apple.DictionaryServices"];
 ~~~
 
-看到这里你可能会愤怒地说："但这是Mac OS X啊，一般应用是不能通过沙箱从Cupertino获取manifest权限的，就没有更方便的方法么？比如说私有API？"
+看到这里你可能会愤怒地说："但这是OS X啊，一般应用是不能通过沙箱从Cupertino获取manifest权限的，就没有更方便的方法么？比如说私有API？"
 
 答案是：当然有。
 
