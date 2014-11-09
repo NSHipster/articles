@@ -5,5 +5,32 @@
   twitter: mattt
   github: mattt
   google: 106751358503565042647
-  gravatar: f32c3cab150e7018cbe4d00401f597e2
+  image: http://nshipster.s3.amazonaws.com/mattt-thompson.jpg
   bio: "[Mattt Thompson](http://mattt.me) is the creator & maintainer of [AFNetworking](https://github.com/afnetworking/afnetworking) and other popular [open-source projects](https://github.com/mattt?tab=repositories), including [Postgres.app](http://postgresapp.com), [ASCIIwwdc](http://asciiwwdc.com) and [Nomad](http://nomad-cli.com)."
+"Mike Lazer-Walker":
+  name: Mike Lazer-Walker
+  email: michael@lazerwalker.com
+  url: https:/twitter.com/lazerwalker
+  twitter: lazerwalker
+  github: lazerwalker
+  google: ""
+  image: http://nshipster.s3.amazonaws.com/mike-lazer-walker.jpg
+  bio: "Mike Lazer-Walker is an independent app and game developer, and the creator of [F***ing Block Syntax](https://fuckingblocksyntax.com). He frequently writes about engineering and design on his [blog](https://blog.lazerwalker.com)."
+"Nate Cook":
+  name: Nate Cook
+  email: nate@natecook.com
+  url: https://twitter.com/nnnnnnnn
+  twitter: nnnnnnnn
+  github: natecook1000
+  google: ""
+  image: http://nshipster.s3.amazonaws.com/nate-cook.jpg
+  bio: "[Nate Cook](http://natecook.com) is an independent web and application developer who [writes frequently about topics in Swift](http://natecook.com/blog/)."
+"Natasha Murashev":
+  name: Natasha Murashev
+  email: nmurashev@gmail.com
+  url: https://twitter.com/NatashaTheRobot
+  twitter: NatashaTheRobot
+  github: NatashaTheRobot
+  google: ""
+  image: http://nshipster.s3.amazonaws.com/natasha-murashev.jpg
+  bio: "[Natasha Murashev](https://twitter.com/NatashaTheRobot) is an iOS Engineer at Capital One and secretly a robot. Natasha writes about iOS and Swift on her blog, [NatashaTheRobot.com](http://natashatherobot.com/), and has recently started a [weekly Swift Newsletter](http://swiftnews.curated.co/)."
