@@ -1,0 +1,16 @@
+{% assign content = site.data.books[include.book] %}
+<div id="{{ identifier }}" class="book" itemscope itemtype="http://schema.org/Product">
+  <div itemscope itemtype="http://schema.org/Book">
+    <link itemprop="bookFormat" href="http://schema.org/EBook"/>
+    <a href="{{ content.url }}" title="{{ content.title }}">
+      <img src="{{ content.image }}" class="cover" alt="{{ content.title }}" itemprop="image"/>
+    </a>
+    <span itemprop="name" style="display:none;" hidden>{{ content.title }}</span>
+    <span itemprop="author" style="display:none;" hidden>{{ content.author }}</span>
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" style="display:none;">
+      <link itemprop="availability" href="http://schema.org/InStock"/>
+      <meta itemprop="priceCurrency" content="USD"/>
+      <span itemprop="price">{{ content.price }}</span>
+    </div>
+  </div>
+</div>
