@@ -29,7 +29,6 @@ The standard library defines 10 such protocols:
 
 - `ArrayLiteralConvertible`
 - `BooleanLiteralConvertible`
-- `CharacterLiteralConvertible`
 - `DictionaryLiteralConvertible`
 - `ExtendedGraphemeClusterLiteralConvertible`
 - `FloatLiteralConvertible`
@@ -37,6 +36,7 @@ The standard library defines 10 such protocols:
 - `IntegerLiteralConvertible`
 - `StringLiteralConvertible`
 - `StringInterpolationConvertible`
+- `UnicodeScalarLiteralConvertible`
 
 Any `class` or `struct` conforming to one of these protocols will be eligible to have an instance of itself statically initialized from the corresponding literal.
 
@@ -54,11 +54,10 @@ enum Optional<T> : Reflectable, NilLiteralConvertible {
     case Some(T)
     init()
     init(_ some: T)
-    var hasValue: Bool { get }
+    init(nilLiteral: ())
 
     func map<U>(f: (T) -> U) -> U?
     func getMirror() -> MirrorType
-    static func convertFromNilLiteral() -> T?
 }
 ```
 
@@ -66,7 +65,7 @@ Notice that `Optional` conforms to the `NilLiteralConvertible` protocol:
 
 ```swift
 protocol NilLiteralConvertible {
-    class func convertFromNilLiteral() -> Self
+    init(nilLiteral: ())
 }
 ```
 
@@ -79,9 +78,9 @@ var b: AnyObject? = nil
 
 The declaration of `var a` generates the compiler warning `Type 'AnyObject' does not conform to the protocol 'NilLiteralConvertible`, while the declaration `var b` works as expected.
 
-Under the hood, when a literal value is assigned, the Swift compiler consults the corresponding `protocol` (in this case `NilLiteralConvertible`), and assigns the return value of the conversion function (`convertFromNilLiteral()`).
+Under the hood, when a literal value is assigned, the Swift compiler consults the corresponding `protocol` (in this case `NilLiteralConvertible`), and calls the associated initializer (`init(nilLiteral: ())`).
 
-Although the implementation of `convertFromNilLiteral()` is private, the end result is that an `Optional` set to `nil` becomes `.None`.
+Although the implementation of `init(nilLiteral: ())` is private, the end result is that an `Optional` set to `nil` becomes `.None`.
 
 ## StringLiteralConvertible and Regular Expressions
 
@@ -115,17 +114,21 @@ Developers coming from a Ruby or Perl background may be disappointed by Swift's 
 extension Regex: StringLiteralConvertible {
     typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
 
-    static func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterLiteralType) -> Regex {
-        return self(pattern: value)
+    init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
+        self.pattern = "\(value)"
     }
-
-    static func convertFromStringLiteral(value: StringLiteralType) -> Regex {
-        return self(pattern: value)
+    
+    init(extendedGraphemeClusterLiteral value: ExtendedGraphemeClusterLiteralType) {
+        self.pattern = value
+    }
+    
+    init(stringLiteral value: StringLiteralType) {
+        self.pattern = value
     }
 }
 ```
 
-> `StringLiteralConvertible` itself inherits from the `ExtendedGraphemeClusterLiteralConvertible` protocol. `ExtendedGraphemeClusterLiteralType` is an internal type representing a `String` of length 1. In order to implement `convertFromExtendedGraphemeClusterLiteral()`, `ExtendedGraphemeClusterLiteralType` can be `typealias`'d to `StringLiteralType`.
+> `StringLiteralConvertible` itself inherits from the `ExtendedGraphemeClusterLiteralConvertible` protocol, which in turn inherits from `UnicodeScalarLiteralConvertible`. `ExtendedGraphemeClusterLiteralType` is an internal type representing a `String` of length 1, while `UnicodeScalarLiteralType` is an internal type representing a `Character`. In order to implement the required `init`s, `ExtendedGraphemeClusterLiteralType` and `UnicodeScalarLiteralType` can be `typealias`'d to `StringLiteralType` and `Character`, respectively.
 
 Now, we can do this:
 
@@ -169,11 +172,7 @@ So here's a simple example of how `Set` might be implemented in Swift, using the
 ```swift
 struct Set<T: Hashable> {
     typealias Index = T
-    private var dictionary: [T: Bool]
-
-    init() {
-        self.dictionary = [T: Bool]()
-    }
+    private var dictionary: [T: Bool] = [:]
 
     var count: Int {
         return self.dictionary.count
@@ -209,7 +208,7 @@ Of course, a standard collection class is only as useful as it is convenient to 
 ```swift
 protocol ArrayLiteralConvertible {
     typealias Element
-    class func convertFromArrayLiteral(elements: Element...) -> Self
+    init(arrayLiteral elements: Element...)
 }
 ```
 
@@ -217,13 +216,10 @@ Extending `Set` to adopt this protocol is relatively straightforward:
 
 ```swift
 extension Set: ArrayLiteralConvertible {
-    static func convertFromArrayLiteral(elements: T...) -> Set<T> {
-        var set = Set<T>()
+    public init(arrayLiteral elements: T...) {
         for element in elements {
-            set.put(element)
+            put(element)
         }
-
-        return set
     }
 }
 ```
