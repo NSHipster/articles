@@ -205,7 +205,7 @@ Only `Hashable` types can be stored as the key of a Swift `Dictionary`:
 struct Dictionary<Key : Hashable, Value> : CollectionType, DictionaryLiteralConvertible { ... }
 ~~~
 
-For a type to conform to `Hashable, `it must provide a getter for the `hashValue` property.
+For a type to conform to `Hashable`, it must provide a getter for the `hashValue` property.
 
 ~~~{swift}
 protocol Hashable : Equatable {
