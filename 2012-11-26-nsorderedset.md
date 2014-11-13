@@ -25,14 +25,6 @@ As expertly demonstrated by [Tom Dalling](http://tomdalling.com) in [this Stack 
 
 To start, let's look at how `-mutableCopy` is supposed to work in a class cluster:
 
-~~~{objective-c}
-NSSet* immutable = [NSSet set];
-NSMutableSet* mutable = [immutable mutableCopy];
-
-[mutable isKindOfClass:[NSSet class]]; // YES
-[mutable isKindOfClass:[NSMutableSet class]]; // YES
-~~~
-
 ~~~{swift}
 let immutable: NSSet = NSSet()
 var mutable: NSMutableSet = immutable.mutableCopy() as NSMutableSet
@@ -41,17 +33,15 @@ mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // true
 ~~~
 
-Now let's suppose that `NSOrderedSet` was indeed a subclass of `NSSet`:
-
 ~~~{objective-c}
-// @interface NSOrderedSet : NSSet
-
-NSOrderedSet* immutable = [NSOrderedSet orderedSet];
-NSMutableOrderedSet* mutable = [immutable mutableCopy];
+NSSet* immutable = [NSSet set];
+NSMutableSet* mutable = [immutable mutableCopy];
 
 [mutable isKindOfClass:[NSSet class]]; // YES
-[mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
+[mutable isKindOfClass:[NSMutableSet class]]; // YES
 ~~~
+
+Now let's suppose that `NSOrderedSet` was indeed a subclass of `NSSet`:
 
 ~~~{swift}
 // class NSOrderedSet: NSSet {...}
@@ -63,21 +53,19 @@ mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // false (!)
 ~~~
 
-<img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.svg" />
-
-That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
-
 ~~~{objective-c}
 // @interface NSOrderedSet : NSSet
-// @interface NSMutableOrderedSet : NSMutableSet
 
 NSOrderedSet* immutable = [NSOrderedSet orderedSet];
 NSMutableOrderedSet* mutable = [immutable mutableCopy];
 
 [mutable isKindOfClass:[NSSet class]]; // YES
-[mutable isKindOfClass:[NSMutableSet class]]; // YES
-[mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
+[mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
 ~~~
+
+<img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.svg" />
+
+That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
 
 ~~~{swift}
 // class NSOrderedSet: NSSet {...}
@@ -89,6 +77,18 @@ var mutable: NSMutableOrderedSet = immutable.mutableCopy() as NSMutableOrderedSe
 mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // true
 mutable.isKindOfClass(NSOrderedSet.self) // false (!)
+~~~
+
+~~~{objective-c}
+// @interface NSOrderedSet : NSSet
+// @interface NSMutableOrderedSet : NSMutableSet
+
+NSOrderedSet* immutable = [NSOrderedSet orderedSet];
+NSMutableOrderedSet* mutable = [immutable mutableCopy];
+
+[mutable isKindOfClass:[NSSet class]]; // YES
+[mutable isKindOfClass:[NSMutableSet class]]; // YES
+[mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
 ~~~
 
 <img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-2.svg" />

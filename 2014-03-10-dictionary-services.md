@@ -3,8 +3,11 @@ layout: post
 title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"
 author: Mattt Thompson
 category: Cocoa
+tags: cfhipsterref
 excerpt: "Though widely usurped of their 'go-to reference' status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."
 ---
+
+<img src="http://nshipster.s3.amazonaws.com/cfhipsterref-illustration-librarian.png" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
 
 This week's article is about dictionaries. Not the `NSDictionary` / `CFDictionaryRef` we encounter everyday, but those distant lexicographic vestiges of school days past.
 

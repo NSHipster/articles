@@ -25,6 +25,16 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 `NSDataDetector` objects are initialized with a bitmask of types of information to check, and then passed strings to match on. Like `NSRegularExpression`, each match found in a string is represented by a `NSTextCheckingResult`, which has details like character range and match type. However, `NSDataDetector`-specific types may also contain metadata such as address or date components.
 
+~~~{swift}
+let string = "123 Main St. / (555) 555-5555"
+let types: NSTextCheckingType = .Address | .PhoneNumber
+var error: NSError?
+let detector = NSDataDetector(types: types.toRaw(), error: &error)
+detector.enumerateMatchesInString(string, options: nil, range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
+    println(result)
+}
+~~~
+
 ~~~{objective-c}
 NSError *error = nil;
 NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
@@ -39,16 +49,6 @@ NSString *string = @"123 Main St. / (555) 555-5555";
 ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
   NSLog(@"Match: %@", result);
 }];
-~~~
-
-~~~{swift}
-let string = "123 Main St. / (555) 555-5555"
-let types: NSTextCheckingType = .Address | .PhoneNumber
-var error: NSError?
-let detector = NSDataDetector(types: types.toRaw(), error: &error)
-detector.enumerateMatchesInString(string, options: nil, range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
-    println(result)
-}
 ~~~
 
 > When initializing `NSDataDetector`, be sure to specify only the types you're interested in. With each additional type to be checked comes a nontrivial performance cost.

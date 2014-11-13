@@ -137,12 +137,6 @@ For example, to describe the process of downloading and resizing an image from a
 
 Expressed in code:
 
-~~~{objective-c}
-[resizingOperation addDependency:networkingOperation];
-[operationQueue addOperation:networkingOperation];
-[operationQueue addOperation:resizingOperation];
-~~~
-
 ~~~{swift}
 let networkingOperation : NSOperation = ...
 let resizingOperation : NSOperation = ...
@@ -150,6 +144,12 @@ resizingOperation.addDependency(networkingOperation)
 
 let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperations([networkingOperation, resizingOperation], waitUntilFinished: false)
+~~~
+
+~~~{objective-c}
+[resizingOperation addDependency:networkingOperation];
+[operationQueue addOperation:networkingOperation];
+[operationQueue addOperation:resizingOperation];
 ~~~
 
 An operation will not be started until all of its dependencies return `true` for `finished`.
@@ -160,15 +160,6 @@ Make sure not to accidentally create a dependency cycle, such that A depends on 
 
 When an `NSOperation` finishes, it will execute its `completionBlock` exactly once. This provides a really nice way to customize the behavior of an operation when used in a model or view controller.
 
-~~~{objective-c}
-NSOperation *operation = ...;
-operation.completionBlock = ^{
-    NSLog("Completed");
-};
-
-[[NSOperationQueue mainQueue] addOperation:operation];
-~~~
-
 ~~~{swift}
 let operation : NSOperation = NSOperation()
 operation.completionBlock = {
@@ -177,6 +168,15 @@ operation.completionBlock = {
 
 let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(operation)
+~~~
+
+~~~{objective-c}
+NSOperation *operation = ...;
+operation.completionBlock = ^{
+    NSLog("Completed");
+};
+
+[[NSOperationQueue mainQueue] addOperation:operation];
 ~~~
 
 For example, you could set a completion block on a network operation to do something with the response data from the server once it's finished loading.

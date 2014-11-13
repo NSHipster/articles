@@ -50,9 +50,7 @@ Rather than specifying all of an alert's buttons in an initializer, instances of
 let alertView = UIAlertView(title: "Default Style", message: "A standard alert.", delegate: self, cancelButtonTitle: "Cancel", otherButtonTitles: "OK")
 alertView.alertViewStyle = .Default
 alertView.show()
-```
 
-```swift
 // MARK: UIAlertViewDelegate
 
 func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
@@ -92,9 +90,7 @@ self.presentViewController(alertController, animated: true) {
 let actionSheet = UIActionSheet(title: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: "Destroy", otherButtonTitles: "OK")
 actionSheet.actionSheetStyle = .Default
 actionSheet.showInView(self.view)
-```
 
-```swift
 // MARK: UIActionSheetDelegate
 
 func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: Int) {
