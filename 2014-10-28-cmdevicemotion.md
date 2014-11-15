@@ -8,7 +8,7 @@ excerpt: "Beneath the smooth glass of each shiny iPhone, nestled on a logic boar
 
 Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected.
 
-Need it be so? The Core Motion framework makes it surprisingly easy to harness these sensors, opening the door to user interactions above and beyond the tapping and swiping we do every day.
+Need it be so? The *[Core Motion framework](https://developer.apple.com/library/ios/documentation/coremotion/reference/coremotion_reference/index.html)* makes it surprisingly easy to harness these sensors, opening the door to user interactions above and beyond the tapping and swiping we do every day.
 
 > For devices that include the M7 or M8 motion processor, the Core Motion framework also provides access to stored motion activity, such as step counts, stairs climbed, and movement type (walking, cycling, etc.).
 
@@ -16,7 +16,7 @@ Need it be so? The Core Motion framework makes it surprisingly easy to harness t
 
 Core Motion allows a developer to observe and respond to the motion and orientation of an iOS device by inspecting the raw and processed data from a combination of built-in sensors, including the accelerometer, gyroscope, and magnetometer.
 
-Both accelerometer and gyroscope data are presented in terms of three axes that run through the iOS device. For an iPhone held in portrait orientation, the X axis runs through the device from left (negative values) to right (positive values), the Y axis through the device from bottom (-) to top (+), and the Z axis runs perpendicularly through the screen from the back (-) to the front (+).
+Both accelerometer and gyroscope data are presented in terms of three axes that run through the iOS device. For an iPhone held in portrait orientation, the X-axis runs through the device from left (negative values) to right (positive values), the Y-axis through the device from bottom (-) to top (+), and the Z-axis runs perpendicularly through the screen from the back (-) to the front (+).
 
 The composited device motion data are presented in a few different ways, each with their own uses, as we'll see below.
 
@@ -28,7 +28,7 @@ The `CoreMotionManager` class provides access to all the motion data on an iOS d
 
 To keep performance at the highest level, Apple recommends using a single shared `CoreMotionManager` instance throughout your app.
 
-`CoreMotionManager` provides a consistent interface for each of the four motion data types: `accelerometer`, `gyro`, `magnetometer`, and `deviceMotion`. As an example, here are the ways you can interact with the gyroscope -- simply replace `gyro` with the motion data type you need:
+`CoreMotionManager` provides a consistent interface for each of the four motion data types: `accelerometer`, `gyro`, `magnetometer`, and `deviceMotion`. As an example, here are the ways you can interact with the gyroscope—simply replace `gyro` with the motion data type you need.
 
 #### Checking for Availability
 
@@ -81,7 +81,7 @@ Let's say we want to give the splash page of our app a fun effect, with the back
 
 Consider the following code:
 
-First, we check to make sure our device makes accelerometer data available, next we specify a very high update rate, and then we begin updates to a closure that will rotate a `UIImageView` property.
+First, we check to make sure our device makes accelerometer data available, next we specify a very high update rate, and then we begin updates to a closure that will rotate a `UIImageView` property:
 
 ```swift
 if manager.accelerometerAvailable {
@@ -107,13 +107,13 @@ if (manager.accelerometerAvailable) {
 }
 ```
 
-Each packet of `CMAccelerometerData` includes an `x`, `y`, and `z` value -- each of these shows the amount of acceleration in Gs (where G is one unit of gravity) for that axis. That is, if your device were stationary and straight up in portrait orientation, it would have acceleration `(0, -1, 0)`; laying flat on its back on the table would be `(0, 0, -1)`; and tilted forty-five degrees to the right would be something like `(0.707, -0.707, 0)`.
+Each packet of `CMAccelerometerData` includes an `x`, `y`, and `z` value—each of these shows the amount of acceleration in Gs (where G is one unit of gravity) for that axis. That is, if your device were stationary and straight up in portrait orientation, it would have acceleration `(0, -1, 0)`; laying flat on its back on the table would be `(0, 0, -1)`; and tilted forty-five degrees to the right would be something like `(0.707, -0.707, 0)`.
 
-We're calculating the rotation by computing the [`arctan2`](http://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data, and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned:
+We're calculating the rotation by computing the [`arctan2`](http://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
 
 ![Rotation with accelerometer](http://s3-us-west-2.amazonaws.com/natecook/NSHipster/accelerometer.gif)
 
-The results are not terribly satisfactory -- the image movement is jittery, and moving the device in space affects the accelerometer as much as or even more than rotating. These issues *could* be mitigated by sampling multiple readings and averaging them together, but instead let's look at what happens when we involve the gyroscope.
+The results are not terribly satisfactory—the image movement is jittery, and moving the device in space affects the accelerometer as much as or even more than rotating. These issues *could* be mitigated by sampling multiple readings and averaging them together, but instead let's look at what happens when we involve the gyroscope.
 
 
 
@@ -153,7 +153,7 @@ Much better!
 
 We can also use the other, non-gravity portion of this composited gyro/acceleration data to add new methods of interaction. In this case, let's use the `userAcceleration` property of `CMDeviceMotionData` to navigate backward whenever a user taps the left side of her device against her hand.
 
-Remember that the X axis runs laterally through the device in our hand, with negative values to the left. If we sense a *user* acceleration to the left of more than 2.5 Gs, that will be the cue to pop our view controller from the stack. The implementation is only a couple lines different from our previous example:
+Remember that the X-axis runs laterally through the device in our hand, with negative values to the left. If we sense a *user* acceleration to the left of more than 2.5 Gs, that will be the cue to pop our view controller from the stack. The implementation is only a couple lines different from our previous example:
 
 ```swift
 if manager.deviceMotionAvailable {
@@ -181,7 +181,7 @@ if (manager.deviceMotionAvailable) {
 }
 ```
 
-And it works like a charm:
+And it works like a charm—tapping the device in a detail view immediately takes us back to the list of exhibits:
 
 ![Clunk to go back](http://s3-us-west-2.amazonaws.com/natecook/NSHipster/clunk.gif)
 
@@ -189,16 +189,16 @@ And it works like a charm:
 
 ## Getting an Attitude
 
-Better acceleration data isn't the only thing we gain by including gyroscope data - we now also know the device's true orientation in space. We find this data in the `attitude` property of `CMDeviceMotionData`, an instance of `CMAttitude`. `CMAttitude` contains three different representations of the device's orientation: Euler angles, a quaternion, and a rotation matrix. Each of these is in relation to a given reference frame.
+Better acceleration data isn't the only thing we gain by including gyroscope data—we now also know the device's true orientation in space. We find this data in the `attitude` property of `CMDeviceMotionData`, an instance of `CMAttitude`. `CMAttitude` contains three different representations of the device's orientation: Euler angles, a quaternion, and a rotation matrix. Each of these is in relation to a given reference frame.
 
 ### Finding a Frame of Reference
 
 You can think of a reference frame as the resting orientation of the device from which an attitude is calculated. All four possible reference frames describe the device laying flat on a table, with increasing specificity about the direction it's pointing.
 
-- `CMAttitudeReferenceFrameXArbitraryZVertical` describes a device laying flat (vertical Z axis) with an "arbitrary" X axis. In practice the X axis is fixed to the orientation of the device when you *first* start device motion updates.
-- `CMAttitudeReferenceFrameXArbitraryCorrectedZVertical` is essentially the same, but uses the magnetometer to correct possible variation in the gyroscope's measurement over time. Using the magnetometer adds a CPU (and therefore battery) cost.
-- `CMAttitudeReferenceFrameXMagneticNorthZVertical` describes a device laying flat, with its X axis (i.e., the right side of the device) pointed toward magnetic north. This setting may require your user to perform that figure-eight motion with their device to calibrate the magnetometer.
-- `CMAttitudeReferenceFrameXTrueNorthZVertical` is the same as the last, but adjusts for the magnetic/true north discrepancy, and therefore requires location data as well as the magnetometer.
+- `CMAttitudeReferenceFrameXArbitraryZVertical` describes a device laying flat (vertical Z-axis) with an "arbitrary" X-axis. In practice, the X-axis is fixed to the orientation of the device when you *first* start device motion updates.
+- `CMAttitudeReferenceFrameXArbitraryCorrectedZVertical` is essentially the same but uses the magnetometer to correct possible variation in the gyroscope's measurement over time. Using the magnetometer adds a CPU (and therefore battery) cost.
+- `CMAttitudeReferenceFrameXMagneticNorthZVertical` describes a device laying flat, with its X-axis (i.e., the right side of the device) pointed toward magnetic north. This setting may require your user to perform that figure-eight motion with their device to calibrate the magnetometer.
+- `CMAttitudeReferenceFrameXTrueNorthZVertical` is the same as the last, but this adjusts for the magnetic/true north discrepancy and therefore requires location data in addition to the magnetometer.
 
 For our purposes, the default "arbitrary" reference frame will be fine - you'll see why in a moment.
 
@@ -212,9 +212,9 @@ Of the three attitude representations, Euler angles are the most readily underst
 
 Lastly, let's try using the device's attitude to enable a new interaction for a flash-card app, designed to be used by two study buddies. Instead of manually switching between the prompt and the answer, we'll automatically switch the view as the device turns around, so the quizzer sees the answer while the person being quizzed only sees the prompt.
 
-Figuring out this switch from the reference frame would be tricky. We'd need to somehow take into account the starting orientation of the device and then determine which direction the device is pointing so we know which angles to monitor. Instead, we can save a `CMAttitude` instance and use it as the "zero point" for an adjusted set of Euler angles, using the `multiplyByInverseOfAttitude()` method to translate all future attitude updates.
+Figuring out this switch from the reference frame would be tricky. To know which angles to monitor, we would somehow need to take into account the starting orientation of the device and then determine which direction the device is pointing. Instead, we can save a `CMAttitude` instance and use it as the "zero point" for an adjusted set of Euler angles, calling the `multiplyByInverseOfAttitude()` method to translate all future attitude updates.
 
-When the quizzer taps the button to begin the quiz, we first configure the interaction - note the "pull" of the deviceMotion for `initialAttitude`:
+When the quizzer taps the button to begin the quiz, we first configure the interaction—note the "pull" of the deviceMotion for `initialAttitude`:
 
 ```swift
 // get magnitude of vector via Pythagorean theorem
@@ -320,7 +320,7 @@ I skimmed over the [quaternion](http://en.wikipedia.org/wiki/Quaternions_and_spa
 
 ## Queueing Up
 
-To keep the code examples readable, we've been sending all our `CoreMotionManager` updates to the main queue. As a best practice, it would be better to have these updates on their own queue, so they can't get slow down user interaction, but then we'll need to get back on the main queue to update user interface elements. [`NSOperationQueue`](http://nshipster.com/nsoperation/) makes this easy, with its `addOperationWithBlock` method:
+To keep the code examples readable, we've been sending all our `CoreMotionManager` updates to the main queue. As a best practice, it would be better to have these updates on their own queue so they can't slow down user interaction, but then we'll need to get back on the main queue to update user interface elements. [`NSOperationQueue`](http://nshipster.com/nsoperation/) makes this easy with its `addOperationWithBlock` method:
 
 ```swift
 let queue = NSOperationQueue()
@@ -350,4 +350,4 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 ----
 
-Clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.
+As a final note, clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.
