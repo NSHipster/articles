@@ -6,7 +6,7 @@ category: Open Source
 excerpt: "AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 ---
 
-[AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With over 8,700 stars, 2,200 forks, and 130 contributors, the project is also among the most active and influential in the community.
+[AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With thousands of stars and forks, and hundreds of contributors, the project is also among the most active and influential in the community.
 
 By all accounts, AFNetworking is about as mainstream as it gets.
 
@@ -53,7 +53,6 @@ With its second major release, AFNetworking aims to reconcile many of the quirks
 
 - **NSURLSession Compatibility** - `NSURLSession` is a replacement for `NSURLConnection` introduced in iOS 7. `NSURLConnection` isn't deprecated, and likely won't be for some time, but `NSURLSession` is the future of networking in Foundation, and it's a bright future at that, addressing many of the shortcomings of its predecessor. (See WWDC 2013 Session 705 "What’s New in Foundation Networking" for a good overview). Some had initially speculated that `NSURLSession` would obviate the need for AFNetworking; although there is overlap, there is still much that a higher-level abstraction can provide. __AFNetworking 2.0 does just this, embracing and extending `NSURLSession` to pave over some of the rough spots, and maximize its usefulness.__
 - **Modularity** - One of the major criticisms of AFNetworking is how bulky it is. Although its architecture lent itself well to modularity on a class level, its packaging didn't allow for individual features to be selected à la carte. Over time, `AFHTTPClient` in particular became overburdened in its responsibilities (creating requests, serializing query string parameters, determining response parsing behavior, creating and managing operations, monitoring network reachability). __In AFNetworking 2.0, you can pick and choose only the components you need using [CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs).__
-- **Real-time** - With this new release, AFNetworking seeks to set an agenda for real-time functionality. In the next 18 months, real-time is going to go from being a niche feature of the top 1% to how users expect things to work by default. __AFNetworking 2.0 follows the [Rocket](http://rocket.github.io) technique, which leverages web standards like [Server-Sent Events](http://dev.w3.org/html5/eventsource/) and [JSON Patch](http://tools.ietf.org/html/rfc6902) to build semantic real-time on top of existing REST web services.__
 
 ### Meet the Cast
 
@@ -140,11 +139,7 @@ You can start playing around with AFNetworking 2.0 by putting the following in y
 
 ~~~{ruby}
 platform :ios, '7.0'
-pod "AFNetworking", "2.0.0"
+pod "AFNetworking", "2.5.0"
 ~~~
 
 For anyone coming over to AFNetworking from the current 1.x release, you may find [the AFNetworking 2.0 Migration Guide](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide) especially useful.
-
-If you run into any bugs or general weirdness, please help by [opening an issue on GitHub](https://github.com/afnetworking/afnetworking/issues?state=open). Your help will be greatly appreciated.
-
-For general usage questions, feel free tweet at [@AFNetworking](https://twitter.com/AFNetworking).
