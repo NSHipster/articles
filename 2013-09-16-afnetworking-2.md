@@ -57,8 +57,6 @@ AFNetworking 胜在易于使用和可扩展之间取得的平衡，但也并不�
 
 - **模块化** - 对于 AFNetworking 的主要批评之一是笨重。虽然它的构架使在类的层面上是模块化的，但它的包装并不允许选择独立的一些功能。随着时间的推移，`AFHTTPClient` 尤其变得不堪重负（其任务包括创建请求、序列化 query string 参数、确定响应解析行为、生成和管理 operation、监视网络可达性）。 __在 AFNetworking 2.0 中，你可以挑选并通过 [CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs) 选择你所需要的组件。__
 
-- **实时性** - 在新版本中，AFNetworking 尝试将实时性功能提上日程。在接下来的 18 个月，实时性将从最棒的 1% 变成用户都期待的功能。 __AFNetworking 2.0 采用 [Rocket](http://rocket.github.io) 技术，利用 [Server-Sent Event](http://dev.w3.org/html5/eventsource/) 和 [JSON Patch](http://tools.ietf.org/html/rfc6902) 等网络标准在现有的 REST 网络服务上构建语义上的实时服务。__
-
 ### 演员阵容
 
 #### `NSURLConnection` 组件 _(iOS 6 & 7)_
