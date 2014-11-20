@@ -49,12 +49,17 @@ var locale: NSLocale?
 override func setUp() {
     super.setUp()
 
-    self.calendar = NSCalendar(identifier: NSGregorianCalendar)
-    self.locale = NSLocale(localeIdentifier: "en_US")
+    calendar = NSCalendar(identifier: NSGregorianCalendar)
+    locale = NSLocale(localeIdentifier: "en_US")
 }
 ~~~
 
-> Since `XCTestCase` is not intended to be initialized directly from within a test case definition, shared properties initialized in `setUp` are declared as optional `var`s.
+Since `XCTestCase` is not intended to be initialized directly from within a test case definition, shared properties initialized in `setUp` are declared as optional `var`s. As such, it's often much simpler to forgo `setUp` and assign default values instead:
+
+~~~{swift}
+var calendar: NSCalendar = NSCalendar(identifier: NSGregorianCalendar)
+var locale: NSLocale = NSLocale(localeIdentifier: "en_US")
+~~~
 
 ### Functional Testing
 
@@ -146,7 +151,7 @@ func testDateFormatterPerformance() {
 
     let date = NSDate()
 
-    self.measureBlock() {
+    measureBlock() {
         let string = dateFormatter.stringFromDate(date)
     }
 }
@@ -173,9 +178,9 @@ let expectation = expectationWithDescription("...")
 Then, at the bottom of the method, add the `waitForExpectationsWithTimeout` method, specifying a timeout, and handler to execute if the conditions of a test are not satisfied within that timeframe:
 
 ~~~{swift}
-waitForExpectationsWithTimeout(10, handler: { error in
+waitForExpectationsWithTimeout(10) { (error) in
     // ...
-})
+}
 ~~~
 
 Now, the only remaining step is to `fulfill` that `expecation` in the relevant callback of the asynchronous method being tested:
@@ -190,30 +195,30 @@ Here's an example of how the response of an asynchronous networking request can 
 
 ~~~{swift}
 func testAsynchronousURLConnection() {
-    let URL = "http://nshipster.com/"
+    let URL = NSURL("http://nshipster.com/")!
     let expectation = expectationWithDescription("GET \(URL)")
 
     let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithURL(NSURL(string: URL), completionHandler: {(data, response, error) in
+    let task = session.dataTaskWithURL(URL) { (data, response, error) in
         expectation.fulfill()
 
         XCTAssertNotNil(data, "data should not be nil")
         XCTAssertNil(error, "error should be nil")
 
-        if let HTTPResponse = response as NSHTTPURLResponse! {
+        if let HTTPResponse = response as NSHTTPURLResponse {
             XCTAssertEqual(HTTPResponse.URL.absoluteString, URL, "HTTP response URL should be equal to original URL")
             XCTAssertEqual(HTTPResponse.statusCode, 200, "HTTP response status code should be 200")
             XCTAssertEqual(HTTPResponse.MIMEType as String, "text/html", "HTTP response content type should be text/html")
         } else {
             XCTFail("Response was not NSHTTPURLResponse")
         }
-    })
+    }
 
     task.resume()
 
-    waitForExpectationsWithTimeout(task.originalRequest.timeoutInterval, handler: { error in
+    waitForExpectationsWithTimeout(task.originalRequest.timeoutInterval) { (error) in
         task.cancel()
-    })
+    }
 }
 ~~~
 
@@ -221,7 +226,7 @@ func testAsynchronousURLConnection() {
 
 With first-class support for asynchronous testing, Xcode 6 seems to have fulfilled all of the needs of a modern test-driven developer. Well, perhaps save for one: [mocking](http://en.wikipedia.org/wiki/Mock_object).
 
-Mocking is a useful technique for isolating and controlling behavior in systems that, for reasons of complexity, non-determinism, or performance constraints, do not usually lend themselves to testing. Examples include simulating network requests, intensive database queries, or inducing states that might emerge under a particular race condition.
+Mocking can be a useful technique for isolating and controlling behavior in systems that, for reasons of complexity, non-determinism, or performance constraints, do not usually lend themselves to testing. Examples include simulating specific networking interactions, intensive database queries, or inducing states that might emerge under a particular race condition.
 
 There are a couple of [open source libraries](http://nshipster.com/unit-testing/#open-source-libraries) for creating mock objects and [stubbing](http://en.wikipedia.org/wiki/Test_stub) method calls, but these libraries largely rely on Objective-C runtime manipulation, something that is not currently possible with Swift.
 
