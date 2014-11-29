@@ -20,6 +20,17 @@ And while automatic text translation has reached an acceptable level for everyda
 
 Introduced in iOS 7, `AVSpeechSynthesizer` produces synthesized speech from a given `AVSpeechUtterance`. Each utterance can adjust its rate of speech and pitch, and be configured to use any one of the available `AVSpeechSynthesisVoice`s:
 
+```swift
+import AVFoundation
+
+let string = "Hello, World!"
+let utterance = AVSpeechUtterance(string: string)
+utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+
+let synthesizer = AVSpeechSynthesizer()
+synthesizer.speakUtterance(utterance)
+```
+
 ~~~{objective-c}
 NSString *string = @"Hello, World!";
 AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:string];
@@ -43,7 +54,7 @@ Mac OS 9 users will no doubt have fond memories of the old system voices: Bubble
 
 In the name of quality over quantity, each language is provided a voice for each major locale region. So instead of asking for "Fred" and "Markus", `AVSpeechSynthesisVoice` asks for `en-US` and `de-DE`.
 
-As of iOS 7.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages and locales are supported:
+As of iOS 8.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages and locales are supported:
 
 - Arabic (`ar-SA`)
 - Chinese (`zh-CN`, `zh-HK`, `zh-TW`)
@@ -82,6 +93,22 @@ What makes `AVSpeechSynthesizer` really amazing for developers is the ability to
 
 For example, an app, in addition to synthesizing a voice utterance, could show that utterance in a label, and highlight the word currently being spoken:
 
+```swift
+var utteranceLabel: UILabel!
+
+// MARK: AVSpeechSynthesizerDelegate
+
+func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, willSpeakRangeOfSpeechString characterRange: NSRange, utterance: AVSpeechUtterance!) {
+    let mutableAttributedString = NSMutableAttributedString(string: utterance.speechString)
+    mutableAttributedString.addAttribute(NSForegroundColorAttributeName, value: UIColor.redColor(), range: characterRange)
+    utteranceLabel.attributedText = mutableAttributedString
+}
+
+func speechSynthesizer(synthesizer: AVSpeechSynthesizer!, didFinishSpeechUtterance utterance: AVSpeechUtterance!) {
+    utteranceLabel.attributedText = NSAttributedString(string: utterance.speechString)
+}
+```
+
 ~~~{objective-c}
 #pragma mark - AVSpeechSynthesizerDelegate
 
@@ -96,12 +123,6 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 }
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
-  didStartSpeechUtterance:(AVSpeechUtterance *)utterance
-{
-    self.utteranceLabel.attributedText = [[NSAttributedString alloc] initWithString:self.utteranceString];
-}
-
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
  didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
 {
     self.utteranceLabel.attributedText = [[NSAttributedString alloc] initWithString:self.utteranceString];
@@ -110,7 +131,7 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 
 ![AVSpeechSynthesizer Example](http://nshipster.s3.amazonaws.com/avspeechsynthesizer-example.gif)
 
-> See [this example app](https://github.com/mattt/AVSpeechSynthesizer-Example) for a demonstration of live text-highlighting for all of the supported languages.
+See [this example app](https://github.com/mattt/AVSpeechSynthesizer-Example) for a demonstration of live text-highlighting for all of the supported languages.
 
 * * *
 
