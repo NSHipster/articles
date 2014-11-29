@@ -107,7 +107,7 @@ Alamofire encapsulates all of the logic for encoding parameters into an HTTP mes
 ```swift
 enum ParameterEncoding {
     case URL
-    case JSON(options: NSJSONWritingOptions)
+    case JSON
     case PropertyList(format: NSPropertyListFormat,
                       options: NSPropertyListWriteOptions)
 
