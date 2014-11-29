@@ -36,14 +36,18 @@ NSString *string = @"Hello, World!";
 AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:string];
 utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
 
-AVSpeechSynthesizer *speechSynthesizer = [[AVSpeechSynthesizer alloc] init];
-[speechSynthesizer speakUtterance:utterance];
+AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
+[synthesizer speakUtterance:utterance];
 ~~~
 
 When speaking, a synthesizer can either be paused immediately or on the next word boundary, which makes for a less jarring user experience.
 
+```swift
+synthesizer.pauseSpeakingAtBoundary(.Word)
+```
+
 ~~~{objective-c}
-[speechSynthesizer pauseSpeakingAtBoundary:AVSpeechBoundaryWord];
+[synthesizer pauseSpeakingAtBoundary:AVSpeechBoundaryWord];
 ~~~
 
 ## Supported Languages
