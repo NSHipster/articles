@@ -66,6 +66,7 @@ As of iOS 8.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages a
 - French (`fr-CA`, `fr-FR`)
 - German (`de-DE`)
 - Greek (`el-GR`)
+- Hebrew (`he-IL`)
 - Hindi (`hi-IN`)
 - Hungarian (`hu-HU`)
 - Indonesian (`id-ID`)
