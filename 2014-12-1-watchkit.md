@@ -159,7 +159,7 @@ It may not seem like much, but this approach is well-suited for the watch, and i
 
 ### WKInterfaceLabel
 
-By contrast, `WKInterface` is perhaps the least-changed thing carried over from iOS. With support for `NSAttributedString`, custom fonts, and font scaling, it's pretty much everything you could ask for.
+By contrast, `WKInterfaceLabel` is perhaps the least-changed thing carried over from iOS. With support for `NSAttributedString`, custom fonts, and font scaling, it's pretty much everything you could ask for.
 
 ### WKInterfaceDate & WKInterfaceTimer
 
