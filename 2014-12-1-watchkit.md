@@ -2,7 +2,7 @@
 layout: post
 title: WatchKit
 author: Mattt Thompson
-category: ""
+category: " "
 translator: Bob Liu
 excerpt: "看过WatchKit之后，会有许多东西从UIKit里冒出来。这些主观、固执己见的东西不太好整理成文档。但是对于正在学习的人来说，可能是有趣或是有用的。"
 ---
