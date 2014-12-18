@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+{% assign author = page %}
+
+<article class="author" itemscope itemtype="http://schema.org/Person">
+  <header role="heading">
+    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ author.image }}" draggable="false"/>
+    <h1 itemprop="name">{{ author.name }}</h1>
+
+    {{ author.bio | markdownify }}
+  </header>
+
+
+  <section class="archive">
+    <h1>Articles</h1>
+
+    <ol>
+    {% for post in site.posts %}
+      {% if post.author == author.name %}
+        <li>
+          <a href="{{ post.url }}" title="{{ post.title }}" class="title">{{ post.title }}</a>
+          <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | ordinalize }}</time>
+          {{ post.excerpt | markdownify }}
+        </li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </section>
+</article>
+

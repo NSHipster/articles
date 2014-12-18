@@ -223,6 +223,20 @@ html, body
       +media($tablet)
         font-size: 0.67em
 
+article.author
+  padding-top: 2em
+
+  header
+    min-height: 200px
+
+    .avatar
+      +span-columns(3 of 12)
+      padding-right: 1em
+      padding-bottom: 1em
+
+    h1
+      margin-bottom: 1em
+
 
 // Typography
 
@@ -258,6 +272,7 @@ section
     margin-bottom: 1em
 
   header
+    +row
     text-align: center
     margin-bottom: 3em
 
@@ -446,6 +461,23 @@ a, a:visited
   &:hover
     text-decoration: none
 
+#contributors
+  .author
+    +span-columns(4 of 12)
+    &:nth-of-type(3)
+      +omega
+
+    margin-bottom: 1em
+
+    .avatar
+      display: block
+      margin: 0em auto 1em auto
+      width: 70%
+
+    a
+      text-align: center
+      display: block
+
 .archive
   dl
     +span-columns(4 of 12)
@@ -458,6 +490,27 @@ a, a:visited
 
     +media($mobile)
       +fill-parent
+
+  ol, ul
+    list-style: none
+
+    li
+      margin: 2em 0
+
+      span, time
+        display: block
+
+      .title
+        font-family: $sans-serif-font-family
+        font-weight: 700
+        font-size: 1.5em
+
+      time
+        color: lighten($text-color, 25%)
+        white-space: nowrap
+        font-style: italic
+        font-weight: 300
+        margin-bottom: 1em
 
 #sharing
   ul
@@ -499,18 +552,6 @@ a, a:visited
       display: table-cell
       padding-right: 0.5em
 
-  ol
-    counter-reset: list
-
-  ol > li
-    list-style: disc inside !important
-    display: table-row
-
-    &:before
-      counter-increment: list
-      content: counter(list) "."
-      display: table-cell
-      padding-right: 0.5em
 
   dl
     padding: 0 0.5em
@@ -533,9 +574,9 @@ section > h1
   font-weight: 300
   font-style: italic
   text-align: center
-  margin-bottom: 3em
+  margin-bottom: 2em
+  margin-top: 2em
   font-size: 1.5em
-
 
 article.excerpt
   h1

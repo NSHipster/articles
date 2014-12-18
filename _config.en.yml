@@ -20,6 +20,11 @@ highlighter: pygments
 
 exclude: ["articles", "books", "training"]
 
+collections:
+  authors:
+    output: true
+    permalink: /authors/:path/
+
 groups:
   - Cocoa
   - Objective-C

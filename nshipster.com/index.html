@@ -53,6 +53,19 @@ title: NSHipster
   {% endfor %}
 </section>
 
+<section id="contributors">
+  <h1>Contributors</h1>
+
+  <ul>
+  {% for author in site.authors %}
+    <li class="author">
+      <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ author.image }}" draggable="false"/>
+      <a href="{{ author.url }}">{{ author.name }}</a>
+    </li>
+  {% endfor %}
+  </ul>
+</section>
+
 <section class="archive" role="navigation">
   {% for group in site.groups %}
     <dl>
