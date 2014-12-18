@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Mattt Thompson
+
 name: Mattt Thompson
 email: mattt@nshipster.com
 url: https://twitter.com/mattt

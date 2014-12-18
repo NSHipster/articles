@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Delisa Mason
+
 name: Delisa Mason
 email: delisa.mason@gmail.com
 url: https://twitter.com/kattrali

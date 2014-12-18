@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Natasha Murashev
+
 name: Natasha Murashev
 email: nmurashev@gmail.com
 url: https://twitter.com/NatashaTheRobot

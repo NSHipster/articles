@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Mike Lazer-Walker
+
 name: Mike Lazer-Walker
 email: michael@lazerwalker.com
 url: https://twitter.com/lazerwalker

@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Jack Flintermann
+
 name: Jack Flintermann
 email: jack@stripe.com
 url: https://twitter.com/jflinter

@@ -1,5 +1,7 @@
 ---
 layout: author
+title: Nate Cook
+
 name: Nate Cook
 email: nate@natecook.com
 url: https://twitter.com/nnnnnnnn
