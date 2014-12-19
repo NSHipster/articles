@@ -34,7 +34,7 @@ To register a simple undo operation, invoke `NSUndoManger -registerUndoWithTarge
 
 ```swift
 func updateScore(score: NSNumber) {
-    undoManager.registerUndoWithTarget(self, selector:Selector("updateScore:"), object:score)
+    undoManager.registerUndoWithTarget(self, selector:Selector("updateScore:"), object:myMovie.score)
     undoManager.setActionName(NSLocalizedString("actions.update", comment: "Update Score"))
     myMovie.score = score
 }
@@ -42,7 +42,7 @@ func updateScore(score: NSNumber) {
 
 ```objective-c
 - (void)updateScore:(NSNumber*)score {
-    [undoManager registerUndoWithTarget:self selector:@selector(updateScore:) object:score];
+    [undoManager registerUndoWithTarget:self selector:@selector(updateScore:) object:myMovie.score];
     [undoManager setActionName:NSLocalizedString(@"actions.update", @"Update Score")];
     myMovie.score = score;
 }
