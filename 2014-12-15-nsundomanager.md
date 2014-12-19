@@ -8,7 +8,7 @@ excerpt: "We all make mistakes. Thankfully, Foundation comes to our rescue for m
 
 We all make mistakes. Thankfully, Foundation comes to our rescue for more than just our misspellings. Cocoa includes a simple yet robust API for undoing or redoing actions through `NSUndoManager`.
 
-By default, each application window has an undo manager, and any object in the responder chain can manage a custom undo manager for performing undo and redo operations local to their respective view. `UITextField` and `UITextArea` use this functionality to automatically provide support for undoing text edits while first responder. However, indicating whether other actions can be undone is an exercise left for the app developer.
+By default, each application window has an undo manager, and any object in the responder chain can manage a custom undo manager for performing undo and redo operations local to their respective view. `UITextField` and `UITextView` use this functionality to automatically provide support for undoing text edits while first responder. However, indicating whether other actions can be undone is an exercise left for the app developer.
 
 Creating an undoable action requires three steps: performing a change, registering an "undo operation" which can reverse the change, and responding to a request to undo the change.
 
