@@ -134,7 +134,7 @@ namespace :assets do
 end
 
 task :publish, [:locale] do |task, args|
-  locale ||= "en"
+  locale = args.locale || "en"
 
   Rake::Task["articles:build"].invoke(locale)
   Rake::Task["articles:compress"].invoke
