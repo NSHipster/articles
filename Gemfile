@@ -6,8 +6,12 @@ gem 'jekyll'
 gem 'nokogiri'
 gem 'redcarpet'
 gem 'pygments.rb'
-gem 'rake'
 
 gem 'bourbon'
 gem 'neat'
 gem 'bitters'
+
+group :development do
+  gem 'rake'
+  gem 'foreman'
+end
