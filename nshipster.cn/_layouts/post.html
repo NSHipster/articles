@@ -9,9 +9,10 @@ layout: default
     <h1 class="title" itemprop="name">
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
-    <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> 撰写，
+    <h2>
+      <a class="author" href="{{ author.url }}">{{ author.name }}</a>撰写、
       {% if page.translator %}
-        {{ page.translator }}翻译，
+        {{ page.translator }}翻译、
       {% endif %}
 
       发布于<time datetime="{{ page.date }}" pubdate="{{ page.date }}" itemprop="datePublished">{{ page.date | date:"%Y年%-m月%-d日" }}</time></h2>
@@ -22,10 +23,6 @@ layout: default
   </div>
 
   <footer role="complementary">
-    <section id="sharing">
-      <wb:share-button count="y" type="button" ralateUid="5066373892" psize="big" title="{{ page.title }} —— 来自NSHipster：介绍Cocoa &amp; Objective-C中的晦涩主题" url="{{ page.url }}"></wb:share-button>
-    </section>
-
     <section id="attribution">
       {% include contributor.html role="author" %}
       {% if page.translator %}
