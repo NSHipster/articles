@@ -2,7 +2,7 @@
 layout: post
 title: WatchKit
 author: Mattt Thompson
-category: " "
+category: ""
 translator: Bob Liu
 excerpt: "看过WatchKit之后，会有许多东西从UIKit里冒出来。这些主观、固执己见的东西不太好整理成文档。但是对于正在学习的人来说，可能是有趣或是有用的。"
 ---
@@ -73,7 +73,7 @@ override init(context: AnyObject?) {
     // ...
 }
 ```
- 
+
 什么是 `context` ? 它是你想要的任何事情： 一个日期， 一个字符串， 一个数据模型，或者什么也不是。
 `context` 的开放性一开始可能会让你迷惑，但是实际上它是对于 UIKit 长期存在问题提出来一种非常聪明的解决方式-即视图与控制器之间很难传递信息。在 `UIViewController` 被压栈，退栈，展出时候，没有一个标准统一的传递数值的方法，开发者经常遇见艰难的的选择，自定义初始器（不完全被Storyboards兼容），属性设定（容易创建控制伴随不完整的状态），自定义代理（如果做到正确，过于正式），或是用通知（额。。。不太好）。许多应用使用 Core Data 传递信息，通过在 App 代理里面存入其引用 `managedObjectContext` 的模型。
 
@@ -125,7 +125,7 @@ class WatchListsInterfaceController: WKInterfaceController， ListsControllerDel
 ```
 
 ### WKInterfaceObject
- 
+
 `WKInterfaceObject` 好像 `UIView` 的翻译，包括属性 `alpha` ， `hidden` ， `horizontal` & `vertical` ，`alignment` ，和 `width` & `height`。
 
 最显著的不同是没有了 `frame` 。 取而代之的是手动的指定坐标点和设置自动布局适应，WatchKit interface objects 在网隔里根据边缘和各自的顺序布局，就好像过去使用 CSS 的框架工作，好像[Bootstrap](http://getbootstrap.com) (或者你是一名 Rubyists 还记得[Shoes](http://shoesrb.com)吗?)。
@@ -172,7 +172,7 @@ WatchKit 列表没有 sections 或者 headers， 或 footers， 或 editing， �
 ### WKInterfaceSlider & WKInterfaceSwitch
 
 滑动条和开关应该在手表上回归。没有了触摸手势的福利，交互回归到基础。_Tap， Tap_， `On` / `Off`。 _Tap， Tap_， `+` / `-`。
- 
+
 `WKInterfaceSlider` 和 `WKInterfaceSwitch` 便显出高水准和易自定义性。
 
 * * *
