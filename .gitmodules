@@ -1,12 +1,11 @@
-[submodule "_posts"]
-	path = _posts
-	url = https://github.com/NSHipster/articles
 [submodule "nshipster.com/_posts"]
 	path = nshipster.com/_posts
 	url = git@github.com:NSHipster/articles.git
+  ignore = all
 [submodule "nshipster.cn/_posts"]
 	path = nshipster.cn/_posts
 	url = git@github.com:NSHipster/articles.git
+  ignore = all
 [submodule "nshipster.ru/_posts"]
 	path = nshipster.ru/_posts
 	url = git@github.com:NSHipster/articles.git
