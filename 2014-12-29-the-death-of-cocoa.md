@@ -57,7 +57,7 @@ The peril of strings is that they can encode so many different kinds of informat
 
 `NSString` is perhaps _too_ versatile, though. Although it handles Unicode like a champ, the entire API is burdened by the conflation of strings as paths. `stringByAppendingPathComponent:` and its ilk are genuinely useful, but this usefulness ultimately stems from a misappropriation of strings as URLs.
 
-Much of this is due to the fact that `@"this"` (a string literal) is much more convenient than `[NSURL URLWithString:@"that"]` (a constructor). However, with [Swift's literal convertibles](http://nshipster.com/swift-literal-convertible/), it can be just as easy to built URL or Path values.
+Much of this is due to the fact that `@"this"` (a string literal) is much more convenient than `[NSURL URLWithString:@"that"]` (a constructor). However, with [Swift's literal convertibles](http://nshipster.com/swift-literal-convertible/), it can be just as easy to build URL or Path values.
 
 One of the truly clever design choices for Swift's `String` is the internal use of encoding-independent Unicode characters, with exposed "views" to specific encodings:
 
@@ -73,7 +73,7 @@ An ideal URL implementation would be a value-type (i.e. `struct`) implementation
 
 ### Data Structures
 
-Swift's functional data structures, from generators to sequences to collections, is, well, beautiful. The use of `Array` and `Dictionary` literals for syntactic sugar strikes a fine balance with the more interesting underlying contours of the Standard Library.
+Swift's functional data structures, from generators to sequences to collections, are, well, beautiful. The use of `Array` and `Dictionary` literals for syntactic sugar strikes a fine balance with the more interesting underlying contours of the Standard Library.
 
 Building on these strong primitives, it is remarkably easy to create production-ready implementations of the data structures from an undergraduate Computer Science curriculum. Armed with Wikipedia and a spare afternoon, pretty much anyone could do it—or at least get close.
 
@@ -91,11 +91,11 @@ In order to do any calendaring calculations, such as getting the date one month 
 
 Another shortfall (albeit incredibly minor) of `NSCalendar` is that it doesn't allow for new calendars to be added. For someone doing their darnedest to advocate conversion to the [French Republican Calendar](http://en.wikipedia.org/wiki/French_Republican_Calendar), this is bothersome.
 
-Fortunately, all of the new language features of Swift could be used to solve both of these problems is a really elegant way. It'd take some work to implement, but a calendaring system based on generics could really be something. If anyone wants to take me up on that challenge, [here are some ideas](https://gist.github.com/mattt/7edb54f8f4fde4a3783e).
+Fortunately, all of the new language features of Swift could be used to solve both of these problems in a really elegant way. It'd take some work to implement, but a calendaring system based on generics could really be something. If anyone wants to take me up on that challenge, [here are some ideas](https://gist.github.com/mattt/7edb54f8f4fde4a3783e).
 
 ### Interchange Formats
 
-One of the most astonishing thing about Objective-C is how long it took for it to have a standard way of working with JSON (iOS 5 / OS X Lion!). Developers hoping to work with the _most popular interchange format for new web services_ were forced to choose from one of a handful of mutually incompatible third-party libraries.
+One of the most astonishing things about Objective-C is how long it took for it to have a standard way of working with JSON (iOS 5 / OS X Lion!). Developers hoping to work with the _most popular interchange format for new web services_ were forced to choose from one of a handful of mutually incompatible third-party libraries.
 
 However, `NSJSONSerialization` is such a miserable experience in Swift that we're repeating history with a new crop of third-party alternatives:
 
@@ -157,7 +157,7 @@ In Swift, this pattern is unnecessary, since a method can return a tuple with an
 func moveItemAtPath(from: String toPath to: String) -> (Bool, NSError?) { ... }
 ```
 
-We can even take things a step further and define a generic `Result` type, with associated value for success and failure cases:
+We can even take things a step further and define a generic `Result` type, with associated values for success and failure cases:
 
 ```swift
 struct Error { ... }
@@ -211,7 +211,7 @@ Here's an overview of the [functionality offered in its standard library](http:/
 | Number Theory | Document Generation | Table Formatting | Mathematical Typesetting |
 | Interactive Controls | Interface Building | Form Construction | XML Templating |
 
-Conventional wisdom would suggest that, yes: is is unreasonable for a standard library to encode [the production budget of the movie _Avatar_](http://reference.wolfram.com/language/ref/MovieData.html#Examples), [the max speed of a McDonnell Douglas F/A-18 Hornet](http://reference.wolfram.com/language/ref/AircraftData.html#Example), or [the shape of France](http://reference.wolfram.com/language/ref/CountryData.html#Example). That is information that can be retrieved by querying IMDB, scraping Wikipedia, and importing from a GIS system.
+Conventional wisdom would suggest that, yes: it is unreasonable for a standard library to encode [the production budget of the movie _Avatar_](http://reference.wolfram.com/language/ref/MovieData.html#Examples), [the max speed of a McDonnell Douglas F/A-18 Hornet](http://reference.wolfram.com/language/ref/AircraftData.html#Example), or [the shape of France](http://reference.wolfram.com/language/ref/CountryData.html#Example). That is information that can be retrieved by querying IMDB, scraping Wikipedia, and importing from a GIS system.
 
 But other things, like [converting miles to kilometers](http://reference.wolfram.com/language/ref/UnitConvert.html#Example), [clustering values](http://reference.wolfram.com/language/ref/FindClusters.html), or [knowing the size of the Earth](http://reference.wolfram.com/language/ref/PlanetData.html#Example)—these are things that would be generally useful to a variety of different applications.
 
@@ -229,7 +229,7 @@ Swift is compelling not just in terms of what the language itself can do, but wh
 
 Will Swift be released under an open source license? Will Swift unseat Javascript as the only viable web scripting language by adding interpreter to Safari? Ultimately, these will be the kinds of deciding factors for what will become of the Swift Standard Library. If Swift is to become a portable systems and scripting language, it would first need to extricate itself from the Objective-C runtime and a web of heavy dependencies.
 
-What is almost certain, however, is that Cocoa, like Objective-C, is doomed. It's not as much a question of whether, but when. _(And we're talking years from now, no one is really arguing that Objective-C & Cocoa are going away entirely all at once)_.
+What is almost certain, however, is that Cocoa, like Objective-C, is doomed. It's not as much a question of whether, but when. _(And we're talking years from now; no one is really arguing that Objective-C & Cocoa are going away entirely all at once)_.
 
 **The Swift Standard Library is on a collision course with Cocoa, and if the new language continues to gain momentum, one should expect to see further fracturing and reinvention within the system frameworks.**
 
