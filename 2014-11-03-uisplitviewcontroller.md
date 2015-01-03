@@ -66,7 +66,7 @@ Even when the navigation controller is in place, the UI is not that much better 
 
 ![UISplitViewController iPad Navigation Bar No Button](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-ipad-navigation-bar-no-button.png)
 
-### displayModeButtonItem
+### `displayModeButtonItem`
 
 The simplest way to fix this issue would be to somehow indicate that there is more to the app than what's currently on-screen. Luckily, the UISplitViewController has a **displayModeButtonItem**, which can be added to the navigation bar:
 
@@ -135,6 +135,6 @@ When the user first opens up the app on iPhone 6+ in portrait orientation, `Sele
 
 Be sure to check out the [`UISplitViewControllerDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISplitViewControllerDelegate_protocol/index.html) documentation to learn about all the other fancy things you can do with the `UISplitViewController`.
 
-Given the new different device sizes we now have to work with as iOS developers, the UISplitViewController will soon have to become our new best friend!
+Given the new different device sizes we now have to work with as iOS developers, the UISplitViewController will soon be our new best friend!
 
 > You can get the complete source code for the project used in this post [on GitHub](https://github.com/NatashaTheRobot/UISplitViewControllerDemo).
