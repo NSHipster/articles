@@ -8,7 +8,7 @@ excerpt: "The introduction of iPhone 6+ brought on a new importance for UISplitV
 
 The introduction of iPhone 6+ brought on a new importance for `UISplitViewController`. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.
 
-Check out the `UISplitViewController` doing it's magic on iPhone 6+:
+Check out the `UISplitViewController` doing its magic on iPhone 6+:
 
 <video src="https://s3.amazonaws.com/uisplitviewcontroller/SplitViewDemo.mov" width="640" controls/>
 
@@ -44,7 +44,7 @@ There is one last part to making the split view controller work: specifying the 
 
 ![UISplitViewController Show Detail Segue](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-show-detail-segue.png)
 
-In the example below, when the user taps on a cell in the `SelectColorTableViewController`, they'll be shown a navigation controller with the `ColorViewController` at it's root.
+In the example below, when the user taps on a cell in the `SelectColorTableViewController`, they'll be shown a navigation controller with the `ColorViewController` at its root.
 
 ### Double Navigation Controllers‽
 
