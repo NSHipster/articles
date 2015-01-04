@@ -8,7 +8,7 @@ excerpt: "The introduction of iPhone 6+ brought on a new importance for UISplitV
 
 The introduction of iPhone 6+ brought on a new importance for `UISplitViewController`. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.
 
-Check out the `UISplitViewController` doing it's magic on iPhone 6+:
+Check out the `UISplitViewController` doing its magic on iPhone 6+:
 
 <video src="https://s3.amazonaws.com/uisplitviewcontroller/SplitViewDemo.mov" width="640" controls/>
 
@@ -36,7 +36,7 @@ Do this by selecting the appropriate Relationship Segue:
 
 ![UISplitViewController Relationship Segue](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-relationship-segue.png)
 
-The Master view controller is usually the navigation controller containing the list view (a `UITableView` in most cases). The Detail view controller is the Navigation Controller for the view corresponding to what shows up when the user taps on the list item.
+The master view controller is usually the navigation controller containing the list view (a `UITableView` in most cases). The detail view controller is the Navigation Controller for the view corresponding to what shows up when the user taps on the list item.
 
 ### Show Detail
 
@@ -44,7 +44,7 @@ There is one last part to making the split view controller work: specifying the 
 
 ![UISplitViewController Show Detail Segue](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-show-detail-segue.png)
 
-In the example below, when the user taps on a cell in the `SelectColorTableViewController`, they'll be shown a navigation controller with the `ColorViewController` at it's root.
+In the example below, when the user taps on a cell in the `SelectColorTableViewController`, they'll be shown a navigation controller with the `ColorViewController` at its root.
 
 ### Double Navigation Controllers‽
 
@@ -66,7 +66,7 @@ Even when the navigation controller is in place, the UI is not that much better 
 
 ![UISplitViewController iPad Navigation Bar No Button](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-ipad-navigation-bar-no-button.png)
 
-### displayModeButtonItem
+### `displayModeButtonItem`
 
 The simplest way to fix this issue would be to somehow indicate that there is more to the app than what's currently on-screen. Luckily, the UISplitViewController has a **displayModeButtonItem**, which can be added to the navigation bar:
 
@@ -85,7 +85,7 @@ Build and Run on the iPad again, and now the user gets a nice indication of how 
 
 <video src="https://s3.amazonaws.com/uisplitviewcontroller/iPadNavBarWithButton.mov" width="640" controls/>
 
-`UISplitViewController`'s `displayModeButtonItem` adds a bit of extra-cool usability to the iPhone 6+ in Landscape mode, too:
+`UISplitViewController`'s `displayModeButtonItem` adds a bit of extra-cool usability to the iPhone 6+ in landscape mode, too:
 
 <video src="https://s3.amazonaws.com/uisplitviewcontroller/iPhone6PluseDisplayModeButton.mov" width="640" controls/>
 
@@ -95,7 +95,7 @@ By using the `displayModeButtonItem`, you're once again letting Apple figure out
 
 There is one more optimization we can do for the iPhone 6+ via [`UISplitViewControllerDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISplitViewControllerDelegate_protocol/index.html).
 
-When the user first launches the app, we can make the Master view controller fully displayed until the user selects a list item:
+When the user first launches the app, we can make the master view controller fully displayed until the user selects a list item:
 
 ```swift
 import UIKit
@@ -135,6 +135,6 @@ When the user first opens up the app on iPhone 6+ in portrait orientation, `Sele
 
 Be sure to check out the [`UISplitViewControllerDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISplitViewControllerDelegate_protocol/index.html) documentation to learn about all the other fancy things you can do with the `UISplitViewController`.
 
-Given the new different device sizes we now have to work with as iOS developers, the UISplitViewController will soon have to become our new best friend!
+Given the new different device sizes we now have to work with as iOS developers, the UISplitViewController will soon be our new best friend!
 
-> You can get the complete source code for the project used in this post [on Github](https://github.com/NatashaTheRobot/UISplitViewControllerDemo).
+> You can get the complete source code for the project used in this post [on GitHub](https://github.com/NatashaTheRobot/UISplitViewControllerDemo).
