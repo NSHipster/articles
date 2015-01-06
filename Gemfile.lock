@@ -46,6 +46,8 @@ GEM
       coffee-script (~> 2.2)
     jekyll-gist (1.1.0)
     jekyll-paginate (1.0.0)
+    jekyll-redirect-from (0.6.2)
+      jekyll (~> 2.0)
     jekyll-sass-converter (1.0.0)
       sass (~> 3.2)
     jekyll-watch (1.0.0)
@@ -90,6 +92,7 @@ DEPENDENCIES
   bourbon
   foreman
   jekyll
+  jekyll-redirect-from
   neat
   nokogiri
   pygments.rb

@@ -20,6 +20,9 @@ highlighter: pygments
 
 exclude: ["articles", "books", "training"]
 
+gems:
+  - jekyll-redirect-from
+
 collections:
   authors:
     output: true
