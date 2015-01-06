@@ -13,7 +13,7 @@ In many ways, the story of Apple has been about fusing together technologies thr
 
 While this is true for many aspects of Apple's technology stack, inter-process communication is a flagrant counter-example.
 
-Rather than taking the best of what was available at each juncture, solutions just kinda piled up. As a result, a handful of overlapping, mutually-incompatible IPC technologies are scattered across various abstraction layers. footnote:[Whereas all of these are available on OS X, only Grand Central Dispatch and Pasteboard (albeit to a lesser extent) can be used on iOS.]
+Rather than taking the best of what was available at each juncture, solutions just kinda piled up. As a result, a handful of overlapping, mutually-incompatible IPC technologies are scattered across various abstraction layers. Whereas all of these are available on OS X, only Grand Central Dispatch and Pasteboard (albeit to a lesser extent) can be used on iOS.[^1]
 
 - Mach Ports
 - Distributed Notifications
@@ -28,7 +28,7 @@ Ranging from low-level kernel abstractions to high-level, object-oriented APIs, 
 
 All inter-process communication ultimately relies on functionality provided by Mach kernel APIs.
 
-Mach ports are light-weight and powerful, but poorly documented footnote:[How poorly documented? The most up-to-date authoritative resource was a Mach 3.0 PostScript file circa 1990 tucked away on a Carnegie Mellon University FTP server.] and inconvenient to use directly. footnote:[How inconvenient? Well, just look at the code samples.]
+Mach ports are light-weight and powerful, but poorly documented
 
 Sending a message over a given Mach port comes down to a single `mach_msg_send` call, but it takes a bit of configuration in order to build the message to be sent:
 
@@ -141,7 +141,7 @@ if (status == kCFMessagePortSuccess) {
 
 There are many ways for objects to communicate with one another in Cocoa:
 
-There is, of course, sending a message directly. There are also the target-action, delegate, and callbacks, which are all loosely-coupled, one-to-one design patterns. KVO allows for multiple objects to subscribe to events, but it strongly couples those objects together. Notifications, on the other hand, allow messages to be broadcast globally, and intercepted by any object that knows what to listen for. footnote:[It's pretty astonishing just how many notifications are fired off during the lifecycle of an application. Try adding `NSNotificationCenter -addObserverForName:object:queue:usingBlock` with `nil` values for `name` and `object` just as an application launches, and see just how many times that block fires.]
+There is, of course, sending a message directly. There are also the target-action, delegate, and callbacks, which are all loosely-coupled, one-to-one design patterns. KVO allows for multiple objects to subscribe to events, but it strongly couples those objects together. Notifications, on the other hand, allow messages to be broadcast globally, and intercepted by any object that knows what to listen for.
 
 Each application manages its own `NSNotificationCenter` instance for infra-application pub-sub. But there is also a lesser-known Core Foundation API, `CFNotificationCenterGetDistributedCenter` that allows notifications to be communicated system-wide as well.
 
@@ -212,7 +212,7 @@ id proxy = [NSConnection rootProxyForConnectionWithRegisteredName:@"server" host
 [proxy setProtocolForProxy:@protocol(Protocol)];
 ~~~
 
-Any time a distributed object proxy is messaged, a Remote Procedure Call (RPC) would be made over the `NSConnection` to evaluate the message against the vended object and return the result back to the proxy. footnote:[Behind the scenes, a shared `NSPortNameServer` instance managed by the operating system was responsible for hooking up named connections.]
+Any time a distributed object proxy is messaged, a Remote Procedure Call (RPC) would be made over the `NSConnection` to evaluate the message against the vended object and return the result back to the proxy.
 
 Distributed Objects are simple, transparent, and robust. And they would have been a flagpole feature of Cocoa had any of it worked as advertised.
 
@@ -232,7 +232,7 @@ All that's really left are traces of the annotations used by Distributed Objects
 
 ##  AppleEvents & AppleScript
 
-AppleEvents are the most enduring legacies of the classic Macintosh operating system. Introduced in System 7, AppleEvents allowed apps to be controlled locally using AppleScript, or remotely using a feature called Program Linking. To this day, AppleScript, using the Cocoa Scripting Bridge, remains the most direct way to programmatically interact with OS X applications. footnote:[Mac OS's Apple Event Manager provided the initial low-level transport mechanism for AppleEvents, but was reimplemented on top of Mach ports for OS X.]
+AppleEvents are the most enduring legacies of the classic Macintosh operating system. Introduced in System 7, AppleEvents allowed apps to be controlled locally using AppleScript, or remotely using a feature called Program Linking. To this day, AppleScript, using the Cocoa Scripting Bridge, remains the most direct way to programmatically interact with OS X applications.
 
 That said, it's easily one of the weirdest technologies to work with.
 
@@ -332,7 +332,7 @@ XPC takes responsibility for both inter-process communication and service lifecy
 
 As part of the new security model adopted by iOS and backported in OS X, XPC services are run with the most restricted environment possible by default: no file system access, no network access, and no root privilege escalation. Any capabilities must be whitelisted by a set of entitlements.
 
-XPC can be accessed through either the `libxpc` C API, or the `NSXPCConnection` Objective-C API. footnote:[Though one should always try to use the highest-level API available to accomplish a particular task, this book _does_ have the words "Low-Level" in the title, so the examples in this section will use `libxpc`.]
+XPC can be accessed through either the `libxpc` C API, or the `NSXPCConnection` Objective-C API.
 
 XPC services either reside within an application bundle or are advertised to run in the background using launchd.
 
@@ -353,7 +353,7 @@ int main(int argc, const char *argv[]) {
 }
 ~~~
 
-Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer. footnote:[This is similar to `accept` in the BSD sockets API, in that the server listens on a single file descriptor that creates additional descriptors for each inbound connection.] :
+Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer.  :
 
 ~~~{objective-c}
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
