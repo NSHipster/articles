@@ -35,7 +35,7 @@ Standard libraries should implement standards.
 
 When we talk about technologies being intuitive, what we usually mean is that they're familiar. Standards from the IETF, ISO, and other bodies should be the common ground on which any new standard library should be built.
 
-Based on this assertion, let's take at some specific examples of what Cocoa does, and how a new Swift standard library could improve.
+Based on this assertion, let's take a look at some specific examples of what Cocoa does, and how a new Swift standard library could improve.
 
 ### Numbers
 
