@@ -149,7 +149,6 @@ def tld_for_locale(locale)
   return case locale
             when "en" then "com"
             when "zh" then "cn"
-            when "ru" then "ru"
             else
               raise "Invalid Locale"
           end
