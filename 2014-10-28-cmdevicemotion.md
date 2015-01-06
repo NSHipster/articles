@@ -33,7 +33,7 @@ To keep performance at the highest level, Apple recommends using a single shared
 #### Checking for Availability
 
 ```swift
-let manager = CoreMotionManager()
+let manager = CMMotionManager()
 if manager.gyroAvailable {
      // ...
 }
@@ -119,13 +119,13 @@ The results are not terribly satisfactory—the image movement is jittery, and m
 
 ## Adding the Gyroscope
 
-Rather than use the raw gyroscope data that we would get with `startGyroUpdates...`, let's get composited gyroscope *and* accelerometer data from the `deviceMotion` data type. Using the gyroscope, Core Motion separates user movement from gravitational acceleration and presents each as its own property of the `CMDeviceMotionData` instance that we receive in our handler. The code is very similar to our first example:
+Rather than use the raw gyroscope data that we would get with `startGyroUpdates...`, let's get composited gyroscope *and* accelerometer data from the `deviceMotion` data type. Using the gyroscope, Core Motion separates user movement from gravitational acceleration and presents each as its own property of the `CMDeviceMotion` instance that we receive in our handler. The code is very similar to our first example:
 
 ```swift
 if manager.deviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
-        [weak self] (data: CMDeviceMotionData!, error: NSError!) in
+        [weak self] (data: CMDeviceMotion!, error: NSError!) in
 
         let rotation = atan2(data.gravity.x, data.gravity.y) - M_PI
         self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
@@ -151,7 +151,7 @@ Much better!
 
 ## UIClunkController
 
-We can also use the other, non-gravity portion of this composited gyro/acceleration data to add new methods of interaction. In this case, let's use the `userAcceleration` property of `CMDeviceMotionData` to navigate backward whenever a user taps the left side of her device against her hand.
+We can also use the other, non-gravity portion of this composited gyro/acceleration data to add new methods of interaction. In this case, let's use the `userAcceleration` property of `CMDeviceMotion` to navigate backward whenever a user taps the left side of her device against her hand.
 
 Remember that the X-axis runs laterally through the device in our hand, with negative values to the left. If we sense a *user* acceleration to the left of more than 2.5 Gs, that will be the cue to pop our view controller from the stack. The implementation is only a couple lines different from our previous example:
 
@@ -189,7 +189,7 @@ And it works like a charm—tapping the device in a detail view immediately take
 
 ## Getting an Attitude
 
-Better acceleration data isn't the only thing we gain by including gyroscope data—we now also know the device's true orientation in space. We find this data in the `attitude` property of `CMDeviceMotionData`, an instance of `CMAttitude`. `CMAttitude` contains three different representations of the device's orientation: Euler angles, a quaternion, and a rotation matrix. Each of these is in relation to a given reference frame.
+Better acceleration data isn't the only thing we gain by including gyroscope data—we now also know the device's true orientation in space. We find this data in the `attitude` property of `CMDeviceMotion`, an instance of `CMAttitude`. `CMAttitude` contains three different representations of the device's orientation: Euler angles, a quaternion, and a rotation matrix. Each of these is in relation to a given reference frame.
 
 ### Finding a Frame of Reference
 
