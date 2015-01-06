@@ -138,23 +138,23 @@ NSLog(@"struct     : %s", @encode(typeof(Struct)));
 
 Result:
 
-    int        : i
-    float      : f
-    float *    : ^f
-    char       : c
-    char *     : *
-    BOOL       : c
-    void       : v
-    void *     : ^v
-
-    NSObject * : @
-    NSObject   : #
-    [NSObject] : {NSObject=#}
-    NSError ** : ^@
-
-    int[]      : [5i]
-    float[]    : [3f]
-    struct     : {_struct=sqQ}
+|  Type        | Encoding           |
+|--------------|--------------------|
+| `int`        | `i`                |
+| `float`      | `f`                |
+| `float *`    | `^f`               |
+| `char`       | `c`                |
+| `char *`     | `*`                |
+| `BOOL`       | `c`                |
+| `void`       | `v`                |
+| `void *`     | `^v`               |
+| `NSObject *` | `@`                |
+| `NSObject`   | `#`                |
+| `[NSObject]` | `{NSObject=#}`     |
+| `NSError **` | `^@`               |
+| `int[]`      | `[5i]`             |
+| `float[]`    | `[3f]`             |
+| `struct`     | `{_struct=sqQ}`    |
 
 There are some interesting takeaways from this:
 
