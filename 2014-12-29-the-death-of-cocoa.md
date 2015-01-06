@@ -87,7 +87,7 @@ The three big collections in Foundation are `NSArray`, `NSDictionary`, and `NSSe
 
 The calendaring functionality is some of the oldest and most robust in Cocoa. Whereas with most other languages, date and time programming is cause for fear, one does not get the same sense of dread when working with `NSDate` and `NSCalendar`. However, it suffers from being difficult to use and impossible to extend.
 
-In order to do any calendaring calculations, such as getting the date one month from today, one would use `NSCalendar` and [`NSDateComponents`](http://nshipster.com/nsdatecomponents/). That's the _correct_ way to do it, at least. Worryingly, a majority of developers probably still use `dateWithTimeIntervalSinceNow:` with a constant number of seconds hardcoded. Tragically, it's not enough for an API to do things the right way, it must also be easier than doing it the wrong way.
+In order to do any calendaring calculations, such as getting the date one month from today, one would use `NSCalendar` and [`NSDateComponents`](http://nshipster.com/nsdatecomponents/). That's the _correct_ way to do it, at least... a majority of developers probably still use `dateWithTimeIntervalSinceNow:` with a constant number of seconds hardcoded. Tragically, it's not enough for an API to do things the right way, it must also be easier than doing it the wrong way.
 
 Another shortfall (albeit incredibly minor) of `NSCalendar` is that it doesn't allow for new calendars to be added. For someone doing their darnedest to advocate conversion to the [French Republican Calendar](http://en.wikipedia.org/wiki/French_Republican_Calendar), this is bothersome.
 
