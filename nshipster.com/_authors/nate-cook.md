@@ -9,5 +9,5 @@ twitter: nnnnnnnn
 github: natecook1000
 google: ""
 image: http://nshipster.s3.amazonaws.com/nate-cook.jpg
-bio: "[Nate Cook](http://natecook.com) is an independent web and application developer who [writes frequently about topics in Swift](http://natecook.com/blog/), and the creator of [SwiftDoc](http://swiftdoc.org)."
+bio: "[Nate Cook](http://natecook.com) ([@nnnnnnnn](https://twitter.com/nnnnnnnn)) is an independent web and application developer who [writes frequently about topics in Swift](http://natecook.com/blog/), and the creator of [SwiftDoc.org](http://swiftdoc.org)."
 ---
