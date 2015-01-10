@@ -24,7 +24,7 @@ And on that note, this week's topic has to do with two simple-but-handy macros: 
 
 ---
 
-Introduced in Foundation with iOS 6 / OS X Mountain Lion, the `NS_ENUM` and `NS_OPTIONS` macros are the new, preferred way to declare `enum` types.
+Introduced in Foundation with iOS 6 / OS X Mountain Lion, the `NS_ENUM` and `NS_OPTIONS` macros are the new, preferred way to declare `enum` types. `enum`s that are declared in Objective-C using `NS_ENUM` and `NS_OPTIONS` are imported into Swift natively.
 
 > If you'd like to use either macro when targeting a previous version of iOS or OS X, you can simply inline like so:
 
