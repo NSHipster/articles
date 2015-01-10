@@ -27,6 +27,8 @@ collections:
   authors:
     output: true
     permalink: /authors/:path/
+  books:
+    output: false
 
 groups:
   - Cocoa

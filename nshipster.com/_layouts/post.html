@@ -8,11 +8,7 @@ layout: default
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
 
-    {% for candidate in site.authors %}
-      {% if page.author == candidate.name %}
-        {% assign author = candidate %}
-      {% endif %}
-    {% endfor %}
+    {% assign author = site.authors | where:"name",page.author | first %}
 
     {% if author %}
       <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
@@ -57,25 +53,11 @@ layout: default
     </section>
 
     {% if page.tags contains "nshipster" %}
-      <section id="promotion">
-        <small>Recommended Reading</small>
-        {% include book.html book="nshipster" %}
-        <h3>NSHipster</h3>
-        <h4>Obscure Topics in Cocoa &amp; Objective-C</h4>
-        {{ site.data.books.nshipster.summary | markdownify }}
-        <a class="buy" href="{{ site.data.books.nshipster.url }}" target="_blank">Buy Now on Gumroad</a>
-      </section>
+      {% include promo.html book="nshipster" %}
     {% endif %}
 
     {% if page.tags contains "cfhipsterref" %}
-      <section id="promotion">
-        <small>Recommended Reading</small>
-        {% include book.html book="cfhipsterref" %}
-        <h3>CFHipsterRef</h3>
-        <h4>Low-Level Programming on iOS &amp; OS X</h4>
-        {{ site.data.books.cfhipsterref.summary | markdownify }}
-        <a class="buy" href="{{ site.data.books.cfhipsterref.url }}" target="_blank">Buy Now on Gumroad</a>
-      </section>
+      {% include promo.html book="cfhipsterref" %}
     {% endif %}
 
     <section>

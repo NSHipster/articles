@@ -12,22 +12,20 @@ layout: xml
     <language>{{ site.lang }}</language>
     <lastBuildDate>{{ site.time  | date_to_rfc822 }}</lastBuildDate>
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    {% for book in site.data.books %}
-      {% assign identifier = book[0] %}
-      {% assign content = book[1] %}
+    {% for book in site.books %}
       <item>
-        <title>{{ content.title | xml_escape }}</title>
-        <link>{{ content.url }}</link>
-        <description>{{ content.summary | xml_escape }}</description>
-        <g:product_type>{{ content.category | xml_escape }}</g:product_type>
-        <g:google_product_category>{{ content.category | xml_escape }}</g:google_product_category>
-        <g:id>{{ identifier }}</g:id>
+        <title>{{ book.title | xml_escape }}</title>
+        <link>{{ book.book_url }}</link>
+        <description>{{ book.summary | xml_escape }}</description>
+        <g:product_type>{{ book.category | xml_escape }}</g:product_type>
+        <g:google_product_category>{{ book.category | xml_escape }}</g:google_product_category>
+        <g:id>{{ book.name }}</g:id>
         <g:condition>new</g:condition>
-        <g:price>{{ content.price }} USD</g:price>
+        <g:price>{{ book.price }} USD</g:price>
         <g:availability>in stock</g:availability>
-        <g:image_link>{{ content.image }}</g:image_link>
+        <g:image_link>{{ book.image }}</g:image_link>
         <g:brand>NSHipster</g:brand>
-        <g:gtin>{{ content.isbn }}</g:gtin>
+        <g:gtin>{{ book.isbn }}</g:gtin>
         <g:shipping>
            <g:country>US</g:country>
            <g:region>*</g:region>
