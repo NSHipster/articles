@@ -19,4 +19,11 @@ layout: xml
     <priority>0.9</priority>
   </url>
   {% endfor %}
+
+  {% for author in site.authors %}
+  <url>
+    <loc>{{ site.url }}{{ author.url }}</loc>
+    <changefreq>monthly</changefreq>
+  </url>
+  {% endfor %}
 </urlset>
