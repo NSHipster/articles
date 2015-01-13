@@ -3,7 +3,7 @@ layout: author
 title: Nate Cook
 
 name: Nate Cook
-email: nate@natecook.com
+email: nate@nshipster.com
 url: https://twitter.com/nnnnnnnn
 twitter: nnnnnnnn
 github: natecook1000

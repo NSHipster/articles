@@ -16,10 +16,11 @@ layout: rss
     <webMaster>mattt@nshipster.com (Mattt Thompson)</webMaster>
     <managingEditor>mattt@nshipster.com (Mattt Thompson)</managingEditor>
     {% for post in site.posts limit: 25 %}
+      {% assign author = site.authors | where:"name",post.author | first %}
       <item>
         <title>{{ post.title | replace:'<br/>',' ' | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
-        <author>mattt@nshipster.com (Mattt Thompson)</author>
+        <author>{{ author.email }} ({{ author.name }})</author>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ site.url }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
