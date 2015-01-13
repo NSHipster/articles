@@ -71,6 +71,7 @@ UIGraphicsBeginImageContextWithOptions(size, !hasAlpha, scale)
 image.drawInRect(CGRect(origin: CGPointZero, size: size))
 
 let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+UIGraphicsEndImageContext()
 ~~~
 
 `UIGraphicsBeginImageContextWithOptions()` creates a temporary rendering context into which the original is drawn. The first argument, `size`, is the target size of the scaled image. The second argument, `isOpaque` is used to determine whether an alpha channel is rendered. Setting this to `false` for images without transparency (i.e. an alpha channel) may result in an image with a pink hue. The third argument `scale` is the display scale factor. When set to `0.0`, the scale factor of the main screen is used, which for Retina displays is `2.0` or higher (`3.0` on the iPhone 6 Plus).
