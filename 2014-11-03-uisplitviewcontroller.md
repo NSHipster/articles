@@ -10,11 +10,11 @@ The introduction of iPhone 6+ brought on a new importance for `UISplitViewContro
 
 Check out the `UISplitViewController` doing its magic on iPhone 6+:
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/SplitViewDemo.mov" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewDemo.jpg" width="640" controls/>
 
 > Note that the view does not split when the iPhone 6+ is in _Zoomed_ Display mode! (You can change between Standard and Zoomed Display Mode by going to Settings.app → Display & Brightness → View)
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/SplitViewZoomedDemo.mov" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.jpg" width="640" />
 
 Again, Apple handles the logic for figuring out exactly when to show the split views.
 
@@ -58,7 +58,7 @@ By all accounts, the app would still work just fine. On an iPhone 6+, the only d
 
 It's not a big deal, unless you do want your navigation bar to show a title. This ends up being a deal-breaker on an iPad.
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/iPadSplitViewNoNavBar.mov" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/iPadSplitViewNoNavBar.mov" poster="http://nshipster.s3.amazonaws.com/iPadSplitViewNoNavBar.jpg" width="540" controls/>
 
 Notice that when the iPad app is first opened up, there is no indication that this is a split view controller at all! To trigger the Master view controller, the user has to magically know to swipe left to right.
 
@@ -83,11 +83,11 @@ override func viewDidLoad() {
 
 Build and Run on the iPad again, and now the user gets a nice indication of how to get at the rest of the app:
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/iPadNavBarWithButton.mov" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/iPadNavBarWithButton.mov" poster="http://nshipster.s3.amazonaws.com/iPadNavBarWithButton.jpg" width="540" controls/>
 
 `UISplitViewController`'s `displayModeButtonItem` adds a bit of extra-cool usability to the iPhone 6+ in landscape mode, too:
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/iPhone6PluseDisplayModeButton.mov" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/iPhone6PluseDisplayModeButton.mov" poster="http://nshipster.s3.amazonaws.com/iPhone6PluseDisplayModeButton.jpg" width="640" controls/>
 
 By using the `displayModeButtonItem`, you're once again letting Apple figure out what's appropriate for which screen sizes / rotations. Instead of sweating the small (and big) stuff yourself, you can sit back and relax.
 
@@ -129,7 +129,7 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 
 When the user first opens up the app on iPhone 6+ in portrait orientation, `SelectColorViewController` gets displayed as the primary view controller. Once the user selects a color or the app goes into the background, the `SelectColorViewController` gets collapsed again, and the `ColorViewController` is displayed:
 
-<video src="https://s3.amazonaws.com/uisplitviewcontroller/iPhone6PlusPrimaryVCRotation.mp4" width="640" controls/>
+<video preload="none" src="http://nshipster.s3.amazonaws.com/iPhone6PlusPrimaryVCRotation.mov" poster="http://nshipster.s3.amazonaws.com/iPhone6PlusPrimaryVCRotation.jpg" width="640" controls/>
 
 * * *
 
