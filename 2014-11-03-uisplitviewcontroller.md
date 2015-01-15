@@ -14,7 +14,7 @@ Check out the `UISplitViewController` doing its magic on iPhone 6+:
 
 > Note that the view does not split when the iPhone 6+ is in _Zoomed_ Display mode! (You can change between Standard and Zoomed Display Mode by going to Settings.app → Display & Brightness → View)
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.jpg" width="640" />
+<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.jpg" width="640" controls/>
 
 Again, Apple handles the logic for figuring out exactly when to show the split views.
 
