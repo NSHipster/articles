@@ -29,7 +29,7 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 let string = "123 Main St. / (555) 555-5555"
 let types: NSTextCheckingType = .Address | .PhoneNumber
 var error: NSError?
-let detector = NSDataDetector(types: types.toRaw(), error: &error)
+let detector = NSDataDetector(types: types.rawValue, error: &error)
 detector.enumerateMatchesInString(string, options: nil, range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
     println(result)
 }
