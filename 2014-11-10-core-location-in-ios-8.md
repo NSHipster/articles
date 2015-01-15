@@ -66,7 +66,7 @@ If the user has previously given permission to use location services, this deleg
 func locationManager(manager: CLLocationManager!,
                      didChangeAuthorizationStatus status: CLAuthorizationStatus)
 {
-    if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
+    if status == .Authorized || status == .AuthorizedWhenInUse {
         manager.startUpdatingLocation()
         // ...
     }
@@ -94,7 +94,7 @@ switch CLLocationManager.authorizationStatus() {
     case .Authorized:
         // ...
     case .NotDetermined:
-        manager.requestWhenAlwaysAuthorization()
+        manager.requestAlwaysAuthorization()
     case .AuthorizedWhenInUse, .Restricted, .Denied:
         let alertController = UIAlertController(
             title: "Background Location Access Disabled",
