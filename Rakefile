@@ -65,7 +65,7 @@ namespace :assets do
       }
     end
 
-    task :deploy, [:tld] do
+    task :deploy, [:tld] do |task, args|
       system %{
         s3cmd put -c ./.s3cfg                                    \
                   -M                                             \
@@ -80,7 +80,7 @@ namespace :assets do
   end
 
   namespace :javascripts do
-    task :deploy, [:tld] do
+    task :deploy, [:tld] do |task, args|
       system %{
         s3cmd put -c ./.s3cfg                                    \
                   -M                                             \
@@ -94,7 +94,7 @@ namespace :assets do
   end
 
   namespace :fonts do
-    task :deploy, [:tld] do
+    task :deploy, [:tld] do |task, args|
       system %{
         s3cmd put -c ./.s3cfg                                    \
                   -M                                             \
@@ -108,7 +108,7 @@ namespace :assets do
   end
 
   namespace :icons do
-    task :deploy, [:tld] do
+    task :deploy, [:tld] do |task, args|
       system %{
         s3cmd put -c ./.s3cfg                                    \
                   -M                                             \
