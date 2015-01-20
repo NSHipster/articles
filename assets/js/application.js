@@ -50,6 +50,10 @@ $(document).ready(function() {
   });
 });
 
-String.prototype.toProperCase = function () {
-  return this.replace(/\b\w+/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+String.prototype.toProperCase = function() {
+  switch (this.toLowerCase()) {
+    case 'json': return 'JSON';
+    case 'javascript': return 'JavaScript';
+    default: return this.replace(/\b\w+/g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); })
+  }
 };
