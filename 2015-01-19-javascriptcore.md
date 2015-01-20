@@ -309,7 +309,7 @@ if let peopleJSON = NSString(contentsOfFile:..., encoding: NSUTF8StringEncoding,
   
         // get rendering function and create template
         let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
-        let template = "{{getFullName}}, born {{birthYear}}"
+        let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
       
         // loop through people and render Person object as string
         for person in people {
@@ -335,7 +335,7 @@ NSArray *people = [loadResult toArray];
     
 // get rendering function and create template
 JSValue *mustacheRender = context[@"Mustache"][@"render"];
-NSString *template = @"{{getFullName}}, born {{birthYear}}";
+NSString *template = @"{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}";
 
 // loop through people and render Person object as string
 for (Person *person in people) {
