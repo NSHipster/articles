@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Stewardship
 author: Mattt Thompson
 category: ""

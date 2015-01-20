@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Key-Value Observing
 author: Mattt Thompson
 category: Cocoa

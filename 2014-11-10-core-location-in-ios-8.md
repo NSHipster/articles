@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Core Location in iOS 8
 author: Mike Lazer-Walker
 category: Cocoa

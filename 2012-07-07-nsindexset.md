@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSIndexSet
 author: Mattt Thompson
 category: Cocoa

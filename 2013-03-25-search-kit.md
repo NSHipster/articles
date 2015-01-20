@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Search Kit
 author: Mattt Thompson
 category: Cocoa

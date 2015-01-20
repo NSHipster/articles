@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Pay
 author: Jack Flintermann
 category: ""

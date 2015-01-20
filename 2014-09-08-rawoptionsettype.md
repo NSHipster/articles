@@ -1,5 +1,4 @@
 ---
-layout: post
 title: RawOptionSetType
 author: Mattt Thompson
 category: Swift

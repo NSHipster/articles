@@ -1,5 +1,4 @@
 ---
-layout: post
 title: MKLocalSearch
 author: Mattt Thompson
 category: Cocoa

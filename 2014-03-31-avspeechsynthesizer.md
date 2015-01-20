@@ -1,5 +1,4 @@
 ---
-layout: post
 title: AVSpeechSynthesizer
 author: Mattt Thompson
 category: Cocoa

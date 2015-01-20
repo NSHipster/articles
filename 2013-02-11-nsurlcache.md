@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSURLCache
 author: Mattt Thompson
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIActivityViewController
 author: Mattt Thompson
 category: Cocoa

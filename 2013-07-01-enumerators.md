@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NSFastEnumeration / NSEnumerator"
 author: Mattt Thompson
 category: Cocoa

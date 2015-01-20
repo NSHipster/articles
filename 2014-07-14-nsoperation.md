@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSOperation
 author: Mattt Thompson
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSFormatter
 author: Mattt Thompson
 category: Cocoa

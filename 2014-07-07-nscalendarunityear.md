@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSCalendarUnitYear
 author: Mattt Thompson
 category: Swift

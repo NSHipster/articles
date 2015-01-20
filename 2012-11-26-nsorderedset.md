@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSOrderedSet
 author: Mattt Thompson
 category: Cocoa

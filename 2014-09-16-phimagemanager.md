@@ -1,5 +1,4 @@
 ---
-layout: post
 title: PHImageManager
 author: Mattt Thompson
 category: Cocoa

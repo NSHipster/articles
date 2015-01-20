@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSSortDescriptor
 author: Mattt Thompson
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Documentation
 author: Mattt Thompson
 category: Objective-C

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSPredicate
 author: Mattt Thompson
 category: Cocoa

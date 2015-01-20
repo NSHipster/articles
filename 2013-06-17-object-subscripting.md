@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Object Subscripting
 author: Mattt Thompson
 category: Objective-C

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Benchmarking
 author: Mattt Thompson
 category: Objective-C

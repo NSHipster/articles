@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift System Version Checking
 author: Mattt Thompson
 category: Swift

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CGGeometry
 author: Mattt Thompson
 category: Cocoa

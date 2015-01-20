@@ -1,5 +1,4 @@
 ---
-layout: post
 title: The Death of Cocoa
 author: Mattt Thompson
 category: ""

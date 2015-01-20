@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Core Data Libraries & Utilities"
 author: Mattt Thompson
 category: Open Source

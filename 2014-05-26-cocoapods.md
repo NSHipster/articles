@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CocoaPods
 author: Mattt Thompson
 category: Open Source

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"
 author: Mattt Thompson
 category: Cocoa

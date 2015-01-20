@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CMDeviceMotion
 author: Nate Cook
 category: Cocoa

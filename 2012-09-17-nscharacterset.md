@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSCharacterSet
 author: Mattt Thompson
 category: Cocoa

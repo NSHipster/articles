@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSAssertionHandler
 author: Mattt Thompson
 category: Cocoa

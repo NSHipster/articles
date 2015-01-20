@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Inter-Process Communication
 author: Mattt Thompson
 category: ""

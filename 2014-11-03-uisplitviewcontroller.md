@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UISplitViewController
 author: Natasha Murashev
 category: Cocoa

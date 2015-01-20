@@ -1,5 +1,4 @@
 ---
-layout: post
 title: KVC Collection Operators
 author: Mattt Thompson
 category: Cocoa

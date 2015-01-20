@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift Default Protocol Implementations
 author: Mattt Thompson
 category: Swift

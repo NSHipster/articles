@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NSHipster Quiz #5"
 author: Mattt Thompson
 category: Trivia

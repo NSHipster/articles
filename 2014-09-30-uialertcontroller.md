@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIAlertController
 author: Mattt Thompson
 category: Cocoa

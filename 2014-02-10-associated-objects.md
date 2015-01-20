@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Associated Objects
 author: Mattt Thompson
 category: Objective-C

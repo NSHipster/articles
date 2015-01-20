@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"
 author: Mattt Thompson
 category: Cocoa

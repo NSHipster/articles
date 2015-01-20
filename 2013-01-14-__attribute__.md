@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "__attribute__"
 author: Mattt Thompson
 category: Objective-C

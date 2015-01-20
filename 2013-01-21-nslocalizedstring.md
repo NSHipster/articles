@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSLocalizedString
 author: Mattt Thompson
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Namespacing
 author: Mattt Thompson
 category: Objective-C

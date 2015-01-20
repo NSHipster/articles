@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Method Swizzling
 author: Mattt Thompson
 category: Objective-C

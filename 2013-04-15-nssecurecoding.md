@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSSecureCoding
 author: Mattt Thompson
 category: Cocoa

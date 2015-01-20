@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Launch Arguments &<br/>Environment Variables"
 author: Mattt Thompson
 category: Xcode

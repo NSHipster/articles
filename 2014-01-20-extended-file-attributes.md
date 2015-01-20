@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Extended File Attributes
 author: Mattt Thompson
 category: Objective-C

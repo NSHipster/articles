@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor"
 author: Mattt Thompson
 category: Cocoa

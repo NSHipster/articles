@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSDataDetector
 author: Mattt Thompson
 category: Cocoa

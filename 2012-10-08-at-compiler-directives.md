@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "@"
 author: Mattt Thompson
 category: Objective-C

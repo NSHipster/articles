@@ -1,5 +1,4 @@
 ---
-layout: post
 title: WatchKit
 author: Mattt Thompson
 category: ""

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSDateComponents
 author: Mattt Thompson
 category: Cocoa

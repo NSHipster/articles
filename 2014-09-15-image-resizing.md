@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Image Resizing Techniques
 author: Mattt Thompson
 category: ""

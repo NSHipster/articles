@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()"
 author: Mattt Thompson
 category: Xcode

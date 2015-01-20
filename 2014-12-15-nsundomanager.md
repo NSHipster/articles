@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSUndoManager
 author: Delisa Mason
 category: Cocoa

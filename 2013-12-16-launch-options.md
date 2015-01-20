@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIApplicationDelegate launchOptions
 author: Mattt Thompson
 category: Cocoa

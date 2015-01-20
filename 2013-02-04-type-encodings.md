@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Type Encodings
 author: Mattt Thompson
 category: Objective-C

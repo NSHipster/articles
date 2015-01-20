@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "IBAction / IBOutlet / IBOutletCollection"
 author: Mattt Thompson
 category: Cocoa

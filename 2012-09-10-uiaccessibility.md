@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIAccessibility
 author: Mattt Thompson
 category: Cocoa

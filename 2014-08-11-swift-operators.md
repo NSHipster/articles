@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift Operators
 author: Mattt Thompson
 category: Swift

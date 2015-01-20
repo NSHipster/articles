@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Configuration Profiles
 author: Mattt Thompson
 category: ""

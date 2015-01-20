@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Network Link Conditioner
 author: Mattt Thompson
 category: Xcode

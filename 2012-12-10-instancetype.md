@@ -1,5 +1,4 @@
 ---
-layout: post
 title: instancetype
 author: Mattt Thompson
 category: Cocoa

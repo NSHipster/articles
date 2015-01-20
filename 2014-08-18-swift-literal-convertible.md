@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift Literal Convertibles
 author: Mattt Thompson
 category: Swift

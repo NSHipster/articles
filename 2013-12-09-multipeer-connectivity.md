@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Multipeer Connectivity
 author: Mattt Thompson
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Alamofire
 author: Mattt Thompson
 category: Open Source

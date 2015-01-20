@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"
 author: Mattt Thompson
 category: Cocoa

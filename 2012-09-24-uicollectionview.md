@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UICollectionView
 author: Mattt Thompson
 category: Cocoa

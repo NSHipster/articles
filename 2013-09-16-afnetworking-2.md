@@ -1,5 +1,4 @@
 ---
-layout: post
 title: AFNetworking 2.0
 author: Mattt Thompson
 category: Open Source

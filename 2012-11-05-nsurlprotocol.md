@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSURLProtocol
 author: Mattt Thompson
 category: Cocoa

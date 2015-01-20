@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NSHashTable & NSMapTable"
 author: Mattt Thompson
 category: Cocoa

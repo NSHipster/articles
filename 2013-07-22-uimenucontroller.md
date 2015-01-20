@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIMenuController
 author: Mattt Thompson
 category: Cocoa

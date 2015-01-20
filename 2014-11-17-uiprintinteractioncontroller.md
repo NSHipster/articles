@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UIPrintInteractionController
 author: Nate Cook
 category: Cocoa

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xcode Snippets
 author: Mattt Thompson
 category: Xcode

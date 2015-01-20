@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSIncrementalStore
 author: Mattt Thompson
 category: Cocoa

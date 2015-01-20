@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift Documentation
 author: Mattt Thompson
 category: Swift

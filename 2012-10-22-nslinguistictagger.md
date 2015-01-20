@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSLinguisticTagger
 author: Mattt Thompson
 category: Cocoa

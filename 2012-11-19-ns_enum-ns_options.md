@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "NS_ENUM & NS_OPTIONS"
 author: Mattt Thompson
 category: Cocoa

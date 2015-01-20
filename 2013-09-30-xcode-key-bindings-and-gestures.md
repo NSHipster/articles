@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xcode Key Bindings & Gestures
 author: Mattt Thompson
 category: Xcode

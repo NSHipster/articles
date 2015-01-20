@@ -1,5 +1,4 @@
 ---
-layout: post
 title: NSFileManager
 author: Mattt Thompson
 category: Cocoa

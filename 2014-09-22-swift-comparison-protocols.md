@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Swift Comparison Protocols
 author: Mattt Thompson
 category: Swift

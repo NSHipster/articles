@@ -1,5 +1,4 @@
 ---
-layout: post
 title: AddressBookUI
 author: Mattt Thompson
 category: Cocoa

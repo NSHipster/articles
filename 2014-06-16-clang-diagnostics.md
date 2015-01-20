@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Clang Diagnostics
 author: Mattt Thompson
 category: Objective-C

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Xcode Plugins
 author: Mattt Thompson
 category: Xcode

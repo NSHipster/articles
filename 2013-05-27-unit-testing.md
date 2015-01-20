@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Unit Testing
 author: Mattt Thompson
 category: Objective-C

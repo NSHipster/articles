@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Changing of the Guard"
 author: Mattt Thompson
 category: ""

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Long Live Cocoa"
 author: Nate Cook
 category: ""

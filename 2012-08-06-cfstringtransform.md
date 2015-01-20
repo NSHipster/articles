@@ -1,5 +1,4 @@
 ---
-layout: post
 title: CFStringTransform
 author: Mattt Thompson
 category: Cocoa

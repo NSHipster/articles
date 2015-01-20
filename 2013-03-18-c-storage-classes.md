@@ -1,5 +1,4 @@
 ---
-layout: post
 title: C Storage Classes
 author: Mattt Thompson
 category: Objective-C

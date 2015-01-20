@@ -1,5 +1,4 @@
 ---
-layout: post
 title: UILocalizedIndexedCollation
 author: Mattt Thompson
 category: Cocoa
