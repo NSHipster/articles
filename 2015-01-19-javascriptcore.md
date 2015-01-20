@@ -71,7 +71,7 @@ println("The first name: \(initialName.toString())")
 ````
 ````objective-c
 JSValue *names = context[@"names"];
-NSString *initialName = names[0];
+JSValue *initialName = names[0];
 NSLog(@"The first name: %@", [initialName toString]);
 // The first name: Grace
 ````
@@ -178,7 +178,7 @@ Our `Person` class implements the `PersonJSExports` protocol, which specifies wh
 @objc protocol PersonJSExports : JSExport {
     var firstName: String { get set }
     var lastName: String { get set }
-    var ageToday: NSNumber? { get set }
+    var birthYear: NSNumber? { get set }
     
     func getFullName() -> String
 
@@ -191,7 +191,7 @@ Our `Person` class implements the `PersonJSExports` protocol, which specifies wh
     // properties must be declared as `dynamic`
     dynamic var firstName: String
     dynamic var lastName: String
-    dynamic var ageToday: NSNumber?
+    dynamic var birthYear: NSNumber?
     
     init(firstName: String, lastName: String) {
         self.firstName = firstName
