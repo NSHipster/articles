@@ -38,14 +38,16 @@ $(document).ready(function() {
 
   $('a[data-lang]').on('click', function() {
     var lang = $(this).data('lang');
-    $(this).siblings('a').removeClass('active');
-    $(this).addClass('active');
-    $(this).parent().siblings('.highlight').each(function() {
-      if ($(this).find('code').data('lang') === lang) {
-        $(this).show();
-      } else {
-        $(this).hide()
-      }
+    $('a[data-lang=' + lang + ']').each( function() {
+      $(this).siblings('a').removeClass('active');
+      $(this).addClass('active');
+      $(this).parent().siblings('.highlight').each(function() {
+        if ($(this).find('code').data('lang') === lang) {
+          $(this).show();
+        } else {
+          $(this).hide()
+        }
+      });
     });
   });
 });
