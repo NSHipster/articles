@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Natasha Murashev
 
 name: Natasha Murashev

@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Mike Lazer-Walker
 
 name: Mike Lazer-Walker

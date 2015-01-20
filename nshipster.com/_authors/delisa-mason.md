@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Delisa Mason
 
 name: Delisa Mason

@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Jack Flintermann
 
 name: Jack Flintermann

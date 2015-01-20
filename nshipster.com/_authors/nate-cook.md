@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Nate Cook
 
 name: Nate Cook

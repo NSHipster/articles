@@ -1,5 +1,4 @@
 ---
-layout: author
 title: Mattt Thompson
 
 name: Mattt Thompson

@@ -38,3 +38,23 @@ groups:
   - Xcode
   - Miscellanea
   - Trivia
+
+defaults:
+  -
+    scope:
+      path: ""
+    values:
+      layout: "default"
+  -
+    scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
+  -
+    scope:
+      path: ""
+      type: "post"
+    values:
+      layout: "post"
+
