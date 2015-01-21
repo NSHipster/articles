@@ -1,0 +1,262 @@
+---
+title: Pay
+author: Jack Flintermann
+category: ""
+excerpt: "There's a unique brand of modern angst that manifests the moment you decide to buy something online. While there's no English word for it, it translates roughly to \"Where is my credit card? What is its number? How badly do I actually want this thing, anyway?\""
+---
+
+There's a unique brand of modern angst that manifests the moment you decide to buy something online. While there's no English word for it, it translates roughly to "Where is my credit card? What is its number? How badly do I actually want this thing, anyway?".
+
+When you're on an iOS device, this ennui intensifies: there's a good chance you don't have your card with you, and holding your credit card and typing on your phone simultaneously is a feat best left to gymnasts and astronauts. (I'm sort of joking, but also willing to bet Apple has measured this in a lab somewhere.)
+
+And if you're a developer accepting credit card payments in your app, this unfortunate phenomenon is directly correlated to lost revenue.
+
+[Apple Pay](http://apple.com/apple-pay) changes all this. Though a lot of the attention around its launch has focused on physical payments in stores (where customers can use their iPhone to pay at NFC-enabled payment terminals), there's an equally large opportunity for iOS developers to improve the checkout experience in their apps.
+
+> Just a reminder: if you're selling digital goods or virtual currencies in your app, you should use In-App Purchases—not Apple Pay—to sell your content (See [section 11.2](https://developer.apple.com/app-store/review/guidelines/#purchasing-currencies) of the App Store Review Guidelines). You can use Apple Pay for selling physical goods and services.
+
+* * *
+
+## Obtaining an Apple Merchant ID
+
+You'll have to register an Apple Merchant ID before testing anything out. Before doing this, you should choose a payment provider to actually handle your credit card processing. Apple provides a list of recommended ones at their [Apple Pay Developer Page](http://developer.apple.com/apple-pay) (disclosure: I work for [Stripe](https://stripe.com/), one of the recommended companies, but the code in this article doesn't depend on you choosing any specific provider). While your provider should have a specific guide for how to get set up using Apple Pay with their platform, the process looks like this:
+
+- Head to the `Certificates, Identifiers, and Profiles` section of the Apple Developer center and [create a new merchant ID](https://developer.apple.com/account/ios/identifiers/merchant/merchantCreate.action).
+- Next, [head to the Certificates section](https://developer.apple.com/account/ios/certificate/certificateCreate.action) and create a new Apple Pay Certificate. This involves uploading a Certificate Signing Request (CSR) to Apple. When you're signing up for a payment processor, they'll typically give you a CSR to use. You can use a CSR that you generate yourself to follow along with this guide, but your payment processor won't be able to decrypt payments made with it and you'll need to redo it later.
+- In Xcode, go to the "Capabilities" section of your project settings and turn "Apple Pay" to on. You may have to select the merchant ID you created earlier from the list provided.
+
+## Making Your First Charge
+
+> Apple Pay will only work on an iOS device capable of using Apple Pay (e.g. iPhone 6/6+, iPad Mini 3, iPad Air 2). In addition, you have to have successfully added the Apple Pay entitlement (described in "Obtaining an Apple Merchant ID") in order to test it in your app. If you'd like to approximate its behavior on the simulator, you can find a testing library that mimics its functionality (with test credit card details) at https://github.com/stripe/ApplePayStubs.
+
+Once you're up and running with a merchant account, getting started with Apple Pay is really straightforward. When it's time to check out, you'll first need to see if Apple Pay is supported on the device you're running and your customer has added any cards to Passbook:
+
+```swift
+let paymentNetworks = [PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa]
+if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(paymentNetworks) {
+    // Pay is available!
+} else {
+    // Show your own credit card form.
+}
+```
+
+Assuming Apple Pay is available, the next step is to assemble a `PKPaymentRequest`. This object describes the charge you're requesting from your customer. If you're requesting payment in the U.S. (reasonable, as Apple Pay is currently US-only), here's some default options you'll need to set that'll likely stay constant:
+
+```swift
+let request = PKPaymentRequest()
+request.supportedNetworks = [PKPaymentNetworkAmex, PKPaymentNetworkMasterCard, PKPaymentNetworkVisa]
+request.countryCode = "US"
+request.currencyCode = "USD"
+request.merchantIdentifier = "<#Replace me with your Apple Merchant ID#>"
+request.merchantCapabilities = .Capability3DS
+```
+
+Next, describe the things the customer is actually buying with the `paymentSummaryItems` property. This takes an array of `PKPaymentSummaryItem`s, which have a `label` and `amount`. They're analogous to line items on a receipt (which we'll see momentarily).
+
+![Payment Authorization](http://nshipster.s3.amazonaws.com/apple-pay-payment-authorization.png)
+
+```swift
+let wax = PKPaymentSummaryItem(label: "Mustache Wax", amount: NSDecimalNumber(string: "10.00"))
+let discount = PKPaymentSummaryItem(label: "Discount", amount: NSDecimalNumber(string: "-1.00"))
+
+let totalAmount = wax.amount.decimalNumberByAdding(discount.amount)
+                            .decimalNumberByAdding(shipping.amount)
+let total = PKPaymentSummaryItem(label: "NSHipster", amount: totalAmount)
+
+request.paymentSummaryItems = [wax, discount, shipping, total]
+```
+
+Note that you can specify zero or negative amounts here to apply coupons or communicate other information. However, the total amount requested must be greater than zero. You'll note we use a `PKShippingMethod` (inherits from `PKPaymentSummaryItem`) to describe our shipping item. More on this later.
+
+Next, to display the actual payment sheet to the customer, we create an instance of `PKPaymentAuthorizationViewController` with our `PKPaymentRequest` and present it. (Assume for this example that all this code is inside a `UIViewController` that will sit behind the payment screen).
+
+```swift
+let viewController = PKPaymentAuthorizationViewController(paymentRequest: request)
+viewController.delegate = self
+presentViewController(viewController, animated: true, completion: nil)
+```
+
+A few style nits to be aware of:
+
+- The view controller doesn't fully obscure the screen (in this case the blue background is part of our application). You can update the background view controller while the `PKPaymentAuthorizationViewController` is visible if you want.
+- All text is automatically capitalized.
+- The final line item is separated from the rest, and is intended to display the total amount you're charging. The label will be prepended with the word "PAY", so it usually makes sense to put your company name for the payment summary item's `label`.
+- The entire UI is presented via a Remote View Controller. This means that outside the `PKPaymentRequest` you give it, it's impossible to otherwise style or modify the contents of this view.
+
+## PKPaymentAuthorizationViewControllerDelegate
+
+In order to actually handle the payment information returned by the `PKPaymentAuthorizationViewController`, you need to implement the `PKPaymentAuthorizationViewControllerDelegate` protocol. This has 2 required methods, `-(void)paymentAuthorizationViewController:didAuthorizePayment:completion:` and `-(void)paymentAuthorizationViewControllerDidFinish:`.
+
+To understand how each of these components work, let's check out a timeline of how an Apple Pay purchase works:
+
+- You present a `PKPaymentAuthorizationViewController` as described above.
+- The customer approves the purchase using Touch ID (or, if that fails 3 times, by entering their passcode).
+- The thumbprint icon turns into a spinner, with the label "Processing"
+- Your delegate receives the `paymentAuthorizationViewController:didAuthorizePayment:completion:` callback.
+- Your application communicates asynchronously with your payment processor and website backend to actually make a charge with those payment details. Once this complete, you invoke the `completion` handler that you're given as a parameter with either `PKPaymentAuthorizationStatus.Success` or `PKPaymentAuthorizationStatus.Failure` depending on the result.
+- The `PKPaymentAuthorizationViewController` spinner animates into a success or failure icon. If successful, a notification will arrive from PassBook indicating a charge on the customer's credit card.
+- Your delegate receives the `paymentAuthorizationViewControllerDidFinish:` callback. It is then responsible for calling `dismissViewControllerAnimated:completion` to dismiss the payment screen.
+
+![Status Indicator](http://nshipster.s3.amazonaws.com/apple-pay-indicators.png)
+
+Concretely, this comes out looking like this:
+
+```swift
+// MARK: - PKPaymentAuthorizationViewControllerDelegate
+
+func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didAuthorizePayment payment: PKPayment!, completion: ((PKPaymentAuthorizationStatus) -> Void)!) {
+    // Use your payment processor's SDK to finish charging your customer.
+    // When this is done, call completion(PKPaymentAuthorizationStatus.Success)
+}
+
+func paymentAuthorizationViewControllerDidFinish(controller: PKPaymentAuthorizationViewController!) {
+    dismissViewControllerAnimated(true, completion: nil)
+}
+```
+
+Here, the `processPayment:payment completion:` method is your own code, and would leverage your payment processor's SDK to finish the charge.
+
+## Dynamic Shipping Methods and Pricing
+
+If you're using Apple Pay to let your customer buy physical goods, you might want to offer them different shipping options. You can do this by setting the `shippingMethods` property on `PKPaymentRequest`. Then, you can respond to your customer's selection by implementing the optional `PKPaymentAuthorizationViewControllerDelegate` method, `paymentAuthorizationViewController:didSelectShippingMethod:completion:`. This method follows a similar pattern to the `didAuthorizePayment` method described above, where you're allowed to do asynchronous work and then call a callback with an updated array of `PKPaymentSummaryItem`s that includes the customer's desired shipping method. (Remember from earlier that `PKShippingMethod` inherits from `PKPaymentSummaryItem`? This is really helpful here!)
+
+Here's a modified version of our earlier example, implemented as a computed property on the view controller and helper function:
+
+```swift
+var paymentRequest: PKPaymentRequest {
+    let request = ... // initialize as before
+
+    let freeShipping = PKShippingMethod(label: "Free Shipping", amount: NSDecimalNumber(string: "0"))
+    freeShipping.identifier = "freeshipping"
+    freeShipping.detail = "Arrives in 6-8 weeks"
+
+    let expressShipping = PKShippingMethod(label: "Express Shipping", amount: NSDecimalNumber(string: "10.00"))
+    expressShipping.identifier = "expressshipping"
+    expressShipping.detail = "Arrives in 2-3 days"
+
+    request.shippingMethods = [freeShipping, expressShipping]
+    request.paymentSummaryItems = paymentSummaryItemsForShippingMethod(freeShipping)
+
+    return request
+}
+
+func paymentSummaryItemsForShippingMethod(shipping: PKShippingMethod) -> ([PKPaymentSummaryItem]) {
+    let wax = PKPaymentSummaryItem(label: "Mustache Wax", amount: NSDecimalNumber(string: "10.00"))
+    let discount = PKPaymentSummaryItem(label: "Discount", amount: NSDecimalNumber(string: "-1.00"))
+
+    let totalAmount = wax.amount.decimalNumberByAdding(discount.amount)
+                                .decimalNumberByAdding(shipping.amount)
+    let total = PKPaymentSummaryItem(label: "NSHipster", amount: totalAmount)
+
+    return [wax, discount, shipping, total]
+}
+
+// MARK: - PKPaymentAuthorizationViewControllerDelegate
+
+func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didSelectShippingMethod shippingMethod: PKShippingMethod!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!) -> Void)!) {
+    completion(PKPaymentAuthorizationStatus.Success, paymentSummaryItemsForShippingMethod(shippingMethod))
+}
+```
+
+In this example, the customer will get the option to choose either free or express shipping—and the price they're quoted will adjust accordingly as they change their selection.
+
+_But wait, there's more!_
+
+Instead of having to provide a bunch of flat-rate shipping options, you can let your customer choose their shipping address and then calculate shipping rates dynamically based on that. To do that, you'll first need to set the `requiredShippingAddressFields` property on your `PKPaymentRequest`. This can represent any combination of `PKAddressField.Email` , .`PhoneNumber`, and .`PostalAddress`.
+
+> Alternatively, if you don't need the user's full mailing address but need to collect some contact information (like an email address to send receipts to), this is a good way to do it.
+
+When this field is set, a new "Shipping Address" row appears in the payment UI that allows the customer to choose one of their saved addresses. Every time they choose one, the (aptly named) `paymentAuthorizationViewController:didSelectShippingAddress:completion:` message will be sent to your `PKPaymentAuthorizationViewControllerDelegate`.
+
+Here, you should calculate the shipping rates for the selected address and then call the `completion` callback with 3 arguments:
+
+1. The result of the call
+    - `PKPaymentAuthorizationStatus.Success` if successful
+    - ``PKPaymentAuthorizationStatus.`Failure` if a connection error occurs
+    - `.InvalidShippingPostalAddress` if the API returns an empty array (i.e. shipping to that address is impossible).
+2. An array of `PKShippingMethod`s representing the customer's available shipping options
+3. A new array of `PKPaymentSummaryItem`s that contains one of the shipping methods
+
+I've set up a really simple web backend that queries the EasyPost API for shipping rates to a given address. The source is available at https://github.com/jflinter/example-shipping-api.
+
+Here's a function to query it, using [Alamofire](http://nshipster.com/alamofire/):
+
+```swift
+import AddressBook
+import PassKit
+import Alamofire
+
+func addressesForRecord(record: ABRecord) -> [[String: String]] {
+    var addresses: [[String: String]] = []
+    let values: ABMultiValue = ABRecordCopyValue(record, kABPersonAddressProperty).takeRetainedValue()
+    for index in 0..<ABMultiValueGetCount(values) {
+        if let address = ABMultiValueCopyValueAtIndex(values, index).takeRetainedValue() as? [String: String] {
+            addresses.append(address)
+        }
+    }
+
+    return addresses
+}
+
+func fetchShippingMethodsForAddress(address: [String: String], completion: ([PKShippingMethod]?) -> Void) {
+    let parameters = [
+        "street": address[kABPersonAddressStreetKey] ?? "",
+        "city": address[kABPersonAddressCityKey] ?? "",
+        "state": address[kABPersonAddressStateKey] ?? "",
+        "zip": address[kABPersonAddressZIPKey] ?? "",
+        "country": address[kABPersonAddressCountryKey] ?? ""
+    ]
+
+    Alamofire.request(.GET, "http://example.com", parameters: parameters)
+             .responseJSON { (_, _, JSON, _) in
+                if let rates = JSON as? [[String: String]] {
+                    let shippingMethods = map(rates) { (rate) -> PKShippingMethod in
+                        let identifier = rate["id"]
+                        let carrier = rate["carrier"] ?? "Unknown Carrier"
+                        let service = rate["service"] ?? "Unknown Service"
+                        let amount = NSDecimalNumber(string: rate["amount"])
+                        let arrival = rate["formatted_arrival_date"] ?? "Unknown Arrival"
+
+                        let shippingMethod = PKShippingMethod(label: "\(carrier) \(service)", amount: amount)
+                        shippingMethod.identifier = identifier
+                        shippingMethod.detail = arrival
+
+                        return shippingMethod
+                    }
+                }
+             }
+}
+```
+
+With this, it's simple to implement `PKPaymentAuthorizationViewControllerDelegate`:
+
+```swift
+func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewController!, didSelectShippingAddress record: ABRecord!, completion: ((PKPaymentAuthorizationStatus, [AnyObject]!, [AnyObject]!) -> Void)!) {
+    if let address = addressesForRecord(record).first {
+        fetchShippingMethodsForAddress(address) { (shippingMethods) in
+            switch shippingMethods?.count {
+            case .None:
+                completion(PKPaymentAuthorizationStatus.Failure, nil, nil)
+            case .Some(0):
+                completion(PKPaymentAuthorizationStatus.InvalidShippingPostalAddress, nil, nil)
+            default:
+                completion(PKPaymentAuthorizationStatus.Success, shippingMethods, self.paymentSummaryItemsForShippingMethod(shippingMethods!.first!))
+            }
+        }
+    } else {
+        completion(PKPaymentAuthorizationStatus.Failure, nil, nil)
+    }
+}
+```
+
+![Select a Shipping Method](http://nshipster.s3.amazonaws.com/apple-pay-select-shipping-method.png)
+
+Now, the customer can select an address and receive a different set of shipping options depending on where they live. Both the `shippingAddress` and `shippingMethod` they ultimately select will be available as properties on the `PKPayment` that is given to your delegate in the `paymentAuthorizationViewController:didAuthorizePayment:completion:` method.
+
+> You can find all of the source code in this article at https://github.com/jflinter/ApplePayExample.
+
+* * *
+
+Even though Apple Pay only exposes a small number of public APIs,  its possible applications are [wide-ranging](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewFeature?id=927678292&mt=8&ls=1) and you can customize your checkout flow to fit your app. It even enables you to build new types of flows, such as letting your customers buy stuff without having to create an account first.
+
+As more apps start using Apple Pay (and as more customers own devices that support it), it'll become a ubiquitous way of paying for things in iOS apps. I'm excited to hear what you build with Apple Pay— if you have any questions, or want to show anything off, please [get in touch](mailto:jack+nshipster@stripe.com)!
