@@ -2,30 +2,31 @@
 title: Pay
 author: Jack Flintermann
 category: ""
-excerpt: "There's a unique brand of modern angst that manifests the moment you decide to buy something online. While there's no English word for it, it translates roughly to \"Where is my credit card? What is its number? How badly do I actually want this thing, anyway?\""
+translator: "Croath Liu"
+excerpt: "你要在网上买东西的那一刻你会发现有一种现代化带来的独有的焦虑感。那种感觉不能用语言形容，大概是这样的：\"我的信用卡去哪了？卡号是多少？我好想买这个啊卡去哪了！\""
 ---
 
-There's a unique brand of modern angst that manifests the moment you decide to buy something online. While there's no English word for it, it translates roughly to "Where is my credit card? What is its number? How badly do I actually want this thing, anyway?".
+你要在网上买东西的那一刻你会发现有一种现代化带来的独有的焦虑感。那种感觉不能用语言形容，大概是这样的："我的信用卡去哪了？卡号是多少？我好想买这个啊卡去哪了！"
 
-When you're on an iOS device, this ennui intensifies: there's a good chance you don't have your card with you, and holding your credit card and typing on your phone simultaneously is a feat best left to gymnasts and astronauts. (I'm sort of joking, but also willing to bet Apple has measured this in a lab somewhere.)
+当你用 iOS 设备的时候，这种困难又加剧了一层：身为运动员或宇航员的你很适合采用一手拿着信用卡一手拿着手机输入的优美姿势。（开个玩笑，但我打赌苹果应该在某个实验室里面这样实验过了。）
 
-And if you're a developer accepting credit card payments in your app, this unfortunate phenomenon is directly correlated to lost revenue.
+如果你刚好在开发一款能够接受信用卡付款的应用，这种状况将直接影响你的收入。
 
-[Apple Pay](http://apple.com/apple-pay) changes all this. Though a lot of the attention around its launch has focused on physical payments in stores (where customers can use their iPhone to pay at NFC-enabled payment terminals), there's an equally large opportunity for iOS developers to improve the checkout experience in their apps.
+[Apple Pay](http://apple.com/apple-pay) 改变了这一切。大多数人可能还在关注它发布时提到的在实体店的功用（消费者可以用 iPhone NFC 功能付款），与此同时这也为开发者提升在应用内付款体验的巨大机会。
 
-> Just a reminder: if you're selling digital goods or virtual currencies in your app, you should use In-App Purchases—not Apple Pay—to sell your content (See [section 11.2](https://developer.apple.com/app-store/review/guidelines/#purchasing-currencies) of the App Store Review Guidelines). You can use Apple Pay for selling physical goods and services.
+> 提示：如果你在应用内卖电子化商品或虚拟货币，那么应该用应用内支付而不是 Apple Pay。(请看 App Store Review Guidelines 的这一章 [section 11.2](https://developer.apple.com/app-store/review/guidelines/#purchasing-currencies))。Apple Pay 可以用来销售实体商品和服务。
 
 * * *
 
-## Obtaining an Apple Merchant ID
+## 获取一个 Apple Merchant ID
 
-You'll have to register an Apple Merchant ID before testing anything out. Before doing this, you should choose a payment provider to actually handle your credit card processing. Apple provides a list of recommended ones at their [Apple Pay Developer Page](http://developer.apple.com/apple-pay) (disclosure: I work for [Stripe](https://stripe.com/), one of the recommended companies, but the code in this article doesn't depend on you choosing any specific provider). While your provider should have a specific guide for how to get set up using Apple Pay with their platform, the process looks like this:
+测试支付之前需要注册一个 Apple Merchant ID。还要先选择一个能够控制信用卡支付流程的服务提供商。苹果提供了一个这类提供商的推荐列表：[Apple Pay Developer Page](http://developer.apple.com/apple-pay) (作者自曝就职于这个推荐列表中的 [Stripe](https://stripe.com/) 公司，但本文涉及到的代码和选择什么服务提供商是无关的)。你的服务提供商会给你一份特别说明指导如何在他们的平台上使用 Apple Pay 来支付，整个流程类似于这样：
 
-- Head to the `Certificates, Identifiers, and Profiles` section of the Apple Developer center and [create a new merchant ID](https://developer.apple.com/account/ios/identifiers/merchant/merchantCreate.action).
-- Next, [head to the Certificates section](https://developer.apple.com/account/ios/certificate/certificateCreate.action) and create a new Apple Pay Certificate. This involves uploading a Certificate Signing Request (CSR) to Apple. When you're signing up for a payment processor, they'll typically give you a CSR to use. You can use a CSR that you generate yourself to follow along with this guide, but your payment processor won't be able to decrypt payments made with it and you'll need to redo it later.
-- In Xcode, go to the "Capabilities" section of your project settings and turn "Apple Pay" to on. You may have to select the merchant ID you created earlier from the list provided.
+- 前往 Apple Developer Center `Certificates, Identifiers, and Profiles` 部分 [创建一个 merchant ID](https://developer.apple.com/account/ios/identifiers/merchant/merchantCreate.action)。
+- 接下来，[前往 Certificates 部分](https://developer.apple.com/account/ios/certificate/certificateCreate.action) 新建一个 Apple Pay Certificate。这步需要上传一个 Certificate Signing Request。注册服务提供商的时候他们会给你一个可用的 CSR 文件，你也可以用自己生成的 CSR 文件走完整个流程，但你的服务提供商不能用你生成的 CSR 来完成支付的解谜流程。
+- 在 Xcode 里，在工程设置的 "Capabilities" 部分打开 "Apple Pay"。这步可能会要求你选择之前创建的 merchant ID。
 
-## Making Your First Charge
+## 拿到第一桶金
 
 > Apple Pay will only work on an iOS device capable of using Apple Pay (e.g. iPhone 6/6+, iPad Mini 3, iPad Air 2). In addition, you have to have successfully added the Apple Pay entitlement (described in "Obtaining an Apple Merchant ID") in order to test it in your app. If you'd like to approximate its behavior on the simulator, you can find a testing library that mimics its functionality (with test credit card details) at https://github.com/stripe/ApplePayStubs.
 
