@@ -8,7 +8,7 @@ translator: April Peng
 excerpt: "自从 iPhone 存在以来，位置服务就一直处于非常重要的位置。iOS 8 给 Core Location 带来了三个主要更新：更分化的权限，室内定位以及访问监控。"
 ---
 
-自从 iPhone 存在以来，位置服务就一直处于非常重要的位置。Maps.app 是第一代 iPhone 里杀手锏的功能之一。Core Location API 也在 iPhone OS SDK 最初的公开版本里就存在了。每一次发布 iOS，Apple 都会给这个库逐步添加新功能，比如后台运行的位置服务，坐标化，以及 iBeacons。
+自从 iPhone 存在以来，位置服务就一直处于非常重要的位置。Maps.app 是第一代 iPhone 里杀手锏的功能之一。Core Location API 也在 iPhone OS SDK 最初的公开版本里就存在了。每一次发布 iOS，Apple 都会给这个库逐步添加新功能，比如后台运行的位置服务，坐标化，以及室内定位（iBeacons）。
 
 iOS 8 仍然继续坚定的延续着这个进程。跟其他最新的更新类似，Core Location 被改动了不少，不管是允许开发者做之前并不被允许的开发，还是帮助维护用户隐私。更特别的是，iOS 8 给 Core Location 带来了三个主要的改进：更分化的权限，室内定位以及访问监控。
 
@@ -181,7 +181,7 @@ class CLFloor : NSObject {
 
 由 `CLLocationManager` 返回的 `CLLocation` 对象可能包括一个 `floor` 属性，但如果你是写一个使用定位服务的示例应用程序，你会发现 `CLLocation` 对象的 `floor` 属性总是 `nil`。
 
-这是因为该API的变化只是 iOS8 中引入的室内定位跟踪这个大功能的冰山一角。对于大型空间的应用开发，例如艺术博物馆或百货公司这种， Apple 现在已经有结合了无线，GPS，蜂窝，和 iBeacon 数据的内置 Core Location API 支持 <abbr title="Indoor Positioning Systems">IPS</abbr> 。
+这是因为该API的变化只是 iOS8 中引入的室内定位跟踪这个大功能的冰山一角。对于大型空间的应用开发，例如艺术博物馆或百货公司这种， Apple 现在已经有结合了无线，GPS，蜂窝，和 室内定位数据的内置 Core Location API 支持 <abbr title="Indoor Positioning Systems">IPS</abbr> 。
 
 也就是说，这个新功能的信息令人吃惊的来之不易。该项目目前被很好的严格限制访问了，仅允许已通过从 [Apple Maps Connect](https://mapsconnect.apple.com) 申请的程序。关于该项目的的有限信息是在[今年的WWDC（Session 708: Taking Core Location Indoors）]（http://asciiwwdc.com/2014/sessions/708）被初露头角的，但大部分的后台细节都被隐藏在被关上的门之后了。对于大多数的我们来说，别无选择的，只能打消没有用的好奇心。
 
@@ -189,7 +189,7 @@ class CLFloor : NSObject {
 
 很多应用程序，使用位置监控的原因是确定用户是否在某个确定的地方。概念上讲，你在想的是诸如“地方”或“访问”的名词术语，而不是原始的 GPS 坐标。
 
-然而，除非你可以通过使用区域监视（被限制在一个相对小的数量的区域）或iBeacon测距（这要求 beacon 硬件来真正的安装在一个空间）收益很多，否则用 Core Location 的后台监控工具并不是非常适合。开发一个登记应用或像 [Moves](https://moves-app.com) 这样的全面的日志应用，位置监控和花费很多时间做特定处理一般意味着消耗大量的电量。
+然而，除非你可以通过使用区域监视（被限制在一个相对小的数量的区域）或室内定位（iBeacon）测距（这要求把室内定位硬件真正安装在一个空间内）收益很多，否则用 Core Location 的后台监控工具并不是非常适合。开发一个登记应用或像 [Moves](https://moves-app.com) 这样的全面的日志应用，位置监控和花费很多时间做特定处理一般意味着消耗大量的电量。
 
 在 iOS 8  里， Apple 曾试图通过引进 `CLVisit` 来解决这个问题， 这是一种新型的后台位置的监控。一个 `CLVisit` 表示该用户已经处于某个位置的时间长度，包括一个坐标和开始/结束的时间戳。
 
