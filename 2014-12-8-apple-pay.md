@@ -172,7 +172,7 @@ _别急，还有更多的东西呢_
 
 1. 调用结果
     - `PKPaymentAuthorizationStatus.Success` 代表成功
-    - ``PKPaymentAuthorizationStatus.`Failure` 代表网络连接出错
+    - `.Failure` 代表网络连接出错
     - `.InvalidShippingPostalAddress` 代表 API 返回了一个空数组(例如填入了一个不可送达的地址)
 2. 用 `PKShippingMethod` 类型的数组表示用户的可用物流选项
 3. 含有物流信息的新 `PKPaymentSummaryItem` 数组
