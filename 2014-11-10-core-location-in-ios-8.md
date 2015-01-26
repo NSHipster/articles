@@ -3,7 +3,6 @@ layout: post
 title: Core Location in iOS 8
 author: Mike Lazer-Walker
 category: Cocoa
-excerpt: "For as long has the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."
 translator: April Peng
 excerpt: "自从 iPhone 存在以来，位置服务就一直处于非常重要的位置。iOS 8 给 Core Location 带来了三个主要更新：更分化的权限，室内定位以及访问监控。"
 ---
@@ -183,7 +182,7 @@ class CLFloor : NSObject {
 
 这是因为该API的变化只是 iOS8 中引入的室内定位跟踪这个大功能的冰山一角。对于大型空间的应用开发，例如艺术博物馆或百货公司这种， Apple 现在已经有结合了无线，GPS，蜂窝，和 室内定位数据的内置 Core Location API 支持 <abbr title="Indoor Positioning Systems">IPS</abbr> 。
 
-也就是说，这个新功能的信息令人吃惊的来之不易。该项目目前被很好的严格限制访问了，仅允许已通过从 [Apple Maps Connect](https://mapsconnect.apple.com) 申请的程序。关于该项目的的有限信息是在[今年的WWDC（Session 708: Taking Core Location Indoors）]（http://asciiwwdc.com/2014/sessions/708）被初露头角的，但大部分的后台细节都被隐藏在被关上的门之后了。对于大多数的我们来说，别无选择的，只能打消没有用的好奇心。
+也就是说，这个新功能的信息令人吃惊的来之不易。该项目目前被很好的严格限制访问了，仅允许已通过从 [Apple Maps Connect](https://mapsconnect.apple.com) 申请的程序。关于该项目的的有限信息是在[今年的WWDC(Session 708: Taking Core Location Indoors)](http://asciiwwdc.com/2014/sessions/708)被初露头角的，但大部分的后台细节都被隐藏在被关上的门之后了。对于大多数的我们来说，别无选择的，只能打消没有用的好奇心。
 
 ## CLVisit
 
