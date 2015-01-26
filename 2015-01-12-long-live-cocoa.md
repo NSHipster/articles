@@ -3,25 +3,24 @@ title: "Long Live Cocoa"
 author: Nate Cook
 translator: Henry Lee
 category: ""
-excerpt: "Swift 是一个对于我们大多数人而言十分令人兴奋的语言，但是它依旧崭新。Objective-C 的稳定性和 Cocoa 的底蕴也意味着 Swift 确实没有准备好成为巨大改变的驱动力，至少现在没有。Cocoa的深度和它提供的力量，与 Swift 携手让 Cocoa 变得从未如此相关与有前景。事实上，作为一个 Cocoa 开发者我不认为有比现在更兴奋的时候。
-"
+excerpt: "Swift 是一个对于我们大多数人而言十分令人兴奋的语言，但是它依旧崭新。Objective-C 的稳定性和 Cocoa 的底蕴也意味着 Swift 确实没有准备好成为巨大改变的驱动力，至少现在没有。Cocoa 的深度和它提供的力量，与 Swift 携手让 Cocoa 变得从未如此相关与有前景。事实上，作为一个 Cocoa 开发者我不认为有比现在更兴奋的时候。"
 ---
 
 现在正是属于 Watch 的2015年的伊始，也是 Swift 的第一年，也是 NSHipster 的一个小小的新起点。在我们为新设备和下一个 beta 版本的 Xcode 的发布兴奋之前，或者在我们为 WWDC 2015 的行程准备之前，让我们先花点时间看看我们今天用的这些工具，以及他们现在的样子：Objective-C、Swift 和最重要的 Cocoa。
 
-Swift 是一个对于我们大多数人而言十分令人兴奋的语言，但它依旧崭新。Objective-C 的稳定性和 Cocoa 的底蕴也意味着 Swift 确实没有准备好成为[巨大改变](/the-death-of-cocoa/)的驱动力，至少现在没有。Cocoa的深度和它提供的力量，与 Swift 携手让 Cocoa 变得从未如此相关与有前景。事实上，作为一个 Cocoa 开发者我并不认为有比现在更兴奋的时刻。
+Swift 是一个对于我们大多数人而言十分令人兴奋的语言，但它依旧崭新。Objective-C 的稳定性和 Cocoa 的底蕴也意味着 Swift 确实没有准备好成为[巨大改变](/the-death-of-cocoa/)的驱动力，至少现在没有。Cocoa 的深度和它提供的力量，与 Swift 携手让 Cocoa 变得从未如此相关与有前景。事实上，作为一个 Cocoa 开发者我并不认为有比现在更兴奋的时刻。
 
 * * *
 
 Cocoa 是一个可以非常深的 API，你只要把一些常用工具从表面挖深一点点，你就会发现一堆被藏起来的功能。无须太远，你可以直接从 [Mattt](http://nshipster.com/authors/mattt-thompson/) 这几年来做过的不可思议的工作中找到证据，这些证据告诉我们，其实还有很多我们并不知道的 Cocoa 能做到的。举几个例子来说：
 
-- 一些基础的自然语言接口：[`NSLinguisticTagger`](/nslinguistictagger/) 和 [`AVSpeechSynthesizer`](/avspeechsynthesizer/)
-- 简单数据持久化：[`NSCoding` 和 `NSKeyedArchiver`](/nscoding/)
-- 面向对象的并行执行接口：[`NSOperation`](/nsoperation/)
-- 规范并翻译多种语言的输入：[`CFStringTransform`](/cfstringtransform/)
-- 检测所有种类的数据：[`NSDataDetector`](/nsdatadetector/)
-- 原生的自定义分享与编辑的控件：[`UIActivityViewController`](/uiactivityviewcontroller/) 和 [`UIMenuController`](/uimenucontroller/)
-- 内建的给 [NSURL](/nsurl/) 请求的缓存：[NSURLCache](/nsurlcache/)
+- 一些基础的自然语言接口：[`NSLinguisticTagger`](http://nshipster.cn/nslinguistictagger/) 和 [`AVSpeechSynthesizer`](http://nshipster.com/avspeechsynthesizer/)
+- 简单数据持久化：[`NSCoding` 和 `NSKeyedArchiver`](http://nshipster.cn/nscoding/)
+- 面向对象的并行执行接口：[`NSOperation`](http://nshipster.cn/nsoperation/)
+- 规范并翻译多种语言的输入：[`CFStringTransform`](http://nshipster.cn/cfstringtransform/)
+- 检测所有种类的数据：[`NSDataDetector`](http://nshipster.com/nsdatadetector/)
+- 原生的自定义分享与编辑的控件：[`UIActivityViewController`](http://nshipster.com/uiactivityviewcontroller/) 和 [`UIMenuController`](http://nshipster.com/uimenucontroller/)
+- 内建的给 [NSURL](http://nshipster.cn/nsurl/) 请求的缓存：[NSURLCache](http://nshipster.cn/nsurlcache/)
 
 这个列表还可以有很多，要查看的话，请出门右转到[首页](/#archive)。
 
@@ -94,5 +93,5 @@ NSTimer.scheduledTimerWithTimeInterval(10, repeats: true) { [weak self] timer in
 
 * * *
 
-其实这篇文章完全没有在反驳[Mattt的上一篇文章](/the-death-of-cocoa/)，越过无垠的时间轴，我们肯定有一天会在土卫六的表面用我们的 42 吋iPad来用 Cocoa 的继承者来编码，但是只要 Cocoa 存在一天，难道不是依旧*万岁*么？
+其实这篇文章完全没有在反驳[Mattt的上一篇文章](/the-death-of-cocoa/)，越过无垠的时间轴，我们肯定有一天会在土卫六的表面用我们的 42 吋iPad来用 Cocoa 的继承者来编码，但是只要 Cocoa 存在一天，难道不是依旧*很棒*么？
 
