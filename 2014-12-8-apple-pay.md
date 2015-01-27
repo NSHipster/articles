@@ -6,6 +6,8 @@ translator: Croath Liu
 excerpt: "你要在网上买东西的那一刻你会发现有一种现代化带来的独有的焦虑感。那种感觉不能用语言形容，大概是这样的：\"我的信用卡去哪了？卡号是多少？我好想买这个啊卡去哪了！\""
 ---
 
+**注意：截止 2015 年 1 月，Apple Pay 仅在美国可用。**
+
 你要在网上买东西的那一刻你会发现有一种现代化带来的独有的焦虑感。那种感觉不能用语言形容，大概是这样的："我的信用卡去哪了？卡号是多少？我好想买这个啊卡去哪了！"
 
 当你用 iOS 设备的时候，这种困难又加剧了一层：很有可能你的卡并不在身边，也有可能你会一手拿着信用卡另一手同时在手机上输入，这样的壮举最好还是留给体操运动员和宇航员吧。（开个玩笑，但我打赌苹果应该在某个实验室里面这样实验过了。）
@@ -40,7 +42,7 @@ if PKPaymentAuthorizationViewController.canMakePaymentsUsingNetworks(paymentNetw
     // Show your own credit card form.
 }
 ```
-假设此时 Apple Pay 是可使用状态，下一步就是构建一个 `PKPaymentRequest`。这是一个描述用户扣款信息的对象。如果付款行为发生在美国(当然母亲 Apple Pay 仅在美国可用)，还有其他一些你需要配置的常量：
+假设此时 Apple Pay 是可使用状态，下一步就是构建一个 `PKPaymentRequest`。这是一个描述用户扣款信息的对象。如果付款行为发生在美国(当然目前 Apple Pay 仅在美国可用)，还有其他一些你需要配置的常量：
 
 ```swift
 let request = PKPaymentRequest()
