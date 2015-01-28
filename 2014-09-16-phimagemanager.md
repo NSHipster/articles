@@ -23,30 +23,32 @@ But first, here's a simple example of how a table view might asynchronously load
 
 ~~~{swift}
 var assets: [PHAsset]
-var imageRequests: [NSIndexPath: PHImageRequestID]
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
     let manager = PHImageManager.defaultManager()
 
-    if let request = imageRequests[indexPath] {
-        manager.cancelImageRequest(request)
+    if cell.tag != 0 {
+        manager.cancelImageRequest(PHImageRequestID(cell.tag))
     }
 
     let asset = assets[indexPath.row]
 
     cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(asset.creationDate, dateStyle: .MediumStyle, timeStyle: .MediumStyle)
 
-    imageRequests[indexPath] = manager.requestImageForAsset(asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .AspectFill, options: nil) { (result, _) in
-        cell.imageView?.image = result
-    }
+    cell.tag = Int(manager.requestImageForAsset(asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .AspectFill, options: nil) { (result, _) in
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+            cell.imageView?.image = result
+            cell.tag = 0
+        }
+    })
 
     return cell
 }
 ~~~
 
-API usage is pretty straightforward: the `defaultManager` asynchronously requests an image for the asset corresponding to the cell at a particular index path, and the cell image view is set whenever the result comes back. The one tricky part is using `imageRequests` to keep track of image requests, in order to cancel any pending requests when a cell is reused.
+API usage is pretty straightforward: the `defaultManager` asynchronously requests an image for the asset corresponding to the cell at a particular index path, and the cell image view is set whenever the result comes back. The only tricky part is handling cell reuse—(1) before assigning the resulting image to the cell's image view, we call `cellForRowAtIndexPath` to be sure we're working with the right cell, and (2) we use the cell's `tag` to keep track of image requests, in order to cancel any pending requests when a cell is reused.
 
 ## Batch Pre-Caching Asset Images
 
