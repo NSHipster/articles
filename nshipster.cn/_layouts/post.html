@@ -2,7 +2,8 @@
 layout: default
 ---
 
-{% assign author = site.data.authors["Mattt Thompson"] %}
+{% assign author     = site.authors     | where:"name",page.author     | first %}
+{% assign translator = site.translators | where:"name",page.translator | first %}
 
 <article role="article" itemscope itemtype="http://schema.org/Article">
   <header role="heading">
@@ -11,8 +12,10 @@ layout: default
     </h1>
     <h2>
       <a class="author" href="{{ author.url }}">{{ author.name }}</a>撰写、
-      {% if page.translator %}
-        {{ page.translator }}翻译、
+      {% if translator %}
+        <a class="author" href="{{ translator.url }}">{{ translator.name }}</a>翻译、
+      {% else if page.translator %}
+          {{ page.translator }}翻译、
       {% endif %}
 
       发布于<time datetime="{{ page.date }}" pubdate="{{ page.date }}" itemprop="datePublished">{{ page.date | date:"%Y年%-m月%-d日" }}</time></h2>

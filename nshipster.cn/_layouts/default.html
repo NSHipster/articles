@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-  {% if page.id %}
-    <title>{{ page.title | replace:'<br/>',' ' | strip_html }} - {{ site.title }}</title>
-    <meta name="description" content="{{ page.excerpt | strip_html }}"/>
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
-  {% else %}
+  {% if page.title == "NSHipster" %}
     <title>{{ page.title | strip_html }}</title>
     <meta name="description" content="{{ site.description | strip_html }}"/>
     <link rel="canonical" href="{{ site.url }}"/>
+  {% else %}
+    <title>{{ page.title | replace:'<br/>',' ' | strip_html }} - {{ site.title }}</title>
+    <meta name="description" content="{{ page.excerpt | strip_html }}"/>
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}"/>
   {% endif %}
   <meta name="author" content="Mattt Thompson"/>
   <meta name="revisit-after" content="7 days"/>
@@ -79,9 +79,9 @@
       </nav>
       {% endif %}
 
-      {% unless page.id %}
+      {% if page.title == "NSHipster" %}
         <h2 class="tagline">{{ site.description }}</h2>
-      {% endunless %}
+      {% endif %}
     </header>
 
     <div role="main" itemprop="mainContentOfPage">
@@ -95,12 +95,28 @@
           除非另有声明、本网站采用知识共享「<a href="http://creativecommons.org/licenses/by-nc/3.0/cn/" rel="license">署名-非商业性使用 3.0 中国大陆</a>」许可协议授权。
         </p>
         <p>
-          <span class="author">本站文章由 <a href="http://mattt.me">Mattt Thompson</a> 撰写、</span>
-
+          {% assign authors = site.posts | sort: 'author' | map: 'author' | uniq %}
+          <span class="authors">本站文章由 
+          {% for author in authors %}
+            {% assign author_obj = site.authors | where:"name",author | first %}
+            <nobr class="author"><a href="{{ author_obj.url }}">{{ author_obj.name }}</a></nobr>
+            {% if forloop.rindex0 > 1 %}、
+            {% elsif forloop.rindex0 == 1 %}
+            和
+            {% endif %}
+          {% endfor %}
+           撰写、
+          </span>
+          
           {% assign translators = site.posts | sort: 'translator' | map: 'translator' | uniq %}
           <span class="translators">
           {% for translator in translators %}
-            <nobr class="translator">{{ translator }}</nobr>
+            {% assign translator_obj = site.translators | where:"name",translator | first %}
+            {% if translator_obj %}
+              <nobr class="translator"><a href="{{ translator_obj.url }}">{{ translator }}</a></nobr>
+            {% else %}
+              <nobr class="translator">{{ translator }}</nobr>
+            {% endif %}
             {% if forloop.rindex0 > 1 %}
             、
             {% elsif forloop.rindex0 == 1 %}

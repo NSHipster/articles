@@ -1,8 +1,10 @@
 {% case include.role %}
 {% when 'author' %}
-  {% assign contributor = site.data.authors["Mattt Thompson"] %}
+  {% assign contributor = site.authors     | where:"name",page.author     | first %}
 {% when 'translator' %}
-  {% assign contributor = site.data.translators[page.translator] %}
+  {% if site.translators | where:"name",page.translator | first %}
+    {% assign contributor = site.translators | where:"name",page.translator | first %}
+  {% endif %}
 {% endcase %}
 
 <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
@@ -13,14 +15,25 @@
     <small>翻译者</small>
   {% endcase %}
 
-  <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/{{ contributor.gravatar }}?size=300" draggable="false"/>
-  <div class="details">
-    <span itemprop="name">{{ contributor.name }}</span>
-
-    {{ contributor.bio | markdownify }}
-
-    {% if contributor.google %}
-      <a href="https://plus.google.com/{{ contributor.google }}?rel=author" rel="author"></a>
+  {% if contributor %}
+    {% if contributor.image %}
+      <img class="avatar" alt="{{ contributor.name }}" itemprop="image" src="{{ contributor.image }}" draggable="false"/>
+    {% else %}
+      <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/{{ contributor.gravatar }}?size=300" draggable="false"/>
     {% endif %}
+    <div class="details">
+      <span itemprop="name"><a href="{{ contributor.url }}">{{ contributor.name }}</a></span>
+   
+      {{ contributor.bio | markdownify }}
+   
+      {% if contributor.google %}
+        <a href="https://plus.google.com/{{ contributor.google }}?rel=author" rel="author"></a>
+      {% endif %}
+    </div>
+  {% else %}
+  <div class="details">
+    <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/?size=300" draggable="false"/>
+    <span itemprop="name">{{ page.translator }}</span>
   </div>
+  {% endif %}
 </div>
