@@ -39,14 +39,17 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
     dispatch_once(&onceToken, ^{
         Class class = [self class];
 
-        // When swizzling a class method, use the following:
-        // Class class = object_getClass((id)self);
-
         SEL originalSelector = @selector(viewWillAppear:);
         SEL swizzledSelector = @selector(xxx_viewWillAppear:);
 
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
+
+        // When swizzling a class method, use the following:
+        // Class class = object_getClass((id)self);
+        // ...
+        // Method originalMethod = class_getClassMethod(class, originalSelector);
+        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
 
         BOOL didAddMethod =
             class_addMethod(class,
