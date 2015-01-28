@@ -1,6 +1,7 @@
 ---
 layout: post
 title: NSFileManager
+author: Mattt Thompson
 translator: "Lin Xiangyu"
 category: Cocoa
 rating: 7.9
@@ -246,3 +247,4 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
 
 
 关于文件系统需要知道很多东西，但大多数是理论测验层面的。别误会，这些理论测验并没有错！但理论并不能教你代码该怎么写。NSFileManager可以让你不用学习它们大多数的内容就能完成工作。
+

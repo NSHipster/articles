@@ -12,7 +12,7 @@ Swift 是一个对于我们大多数人而言十分令人兴奋的语言，但�
 
 * * *
 
-Cocoa 是一个可以非常深的 API，你只要把一些常用工具从表面挖深一点点，你就会发现一堆被藏起来的功能。无须太远，你可以直接从 [Mattt](http://nshipster.com/authors/mattt-thompson/) 这几年来做过的不可思议的工作中找到证据，这些证据告诉我们，其实还有很多我们并不知道的 Cocoa 能做到的。举几个例子来说：
+Cocoa 是一个可以非常深的 API，你只要把一些常用工具从表面挖深一点点，你就会发现一堆被藏起来的功能。无须太远，你可以直接从 [Mattt](/authors/mattt-thompson/) 这几年来做过的不可思议的工作中找到证据，这些证据告诉我们，其实还有很多我们并不知道的 Cocoa 能做到的。举几个例子来说：
 
 - 一些基础的自然语言接口：[`NSLinguisticTagger`](http://nshipster.cn/nslinguistictagger/) 和 [`AVSpeechSynthesizer`](http://nshipster.com/avspeechsynthesizer/)
 - 简单数据持久化：[`NSCoding` 和 `NSKeyedArchiver`](http://nshipster.cn/nscoding/)

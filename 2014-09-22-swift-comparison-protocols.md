@@ -2,6 +2,7 @@
 layout: post
 title: Swift Comparison Protocols
 category: "Swift"
+author: Mattt Thompson
 translator: Croath Liu
 excerpt: "Objective-C 让我们对相等性和唯一性的本质慢慢有了带有哲学色彩的思考。为了解救那些不愿意向论文一样的哲理卑身屈膝的开发者，Swift 为此作出了很多改进。"
 ---
