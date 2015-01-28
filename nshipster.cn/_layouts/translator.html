@@ -7,7 +7,7 @@ layout: default
     {% if page.image %}
       <img class="avatar" alt="{{ page.name }}" itemprop="image" src="{{ page.image }}" draggable="false"/>
     {% else %}
-      <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/{{ contributor.gravatar }}?size=300" draggable="false"/>
+      <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/{{ page.gravatar }}?size=300" draggable="false"/>
     {% endif %}
     <h1 itemprop="name">{{ page.name }}</h1>
 
