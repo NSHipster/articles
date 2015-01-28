@@ -9,7 +9,7 @@ layout: default
     <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ author.image }}" draggable="false"/>
     <h1 itemprop="name">{{ author.name }}</h1>
 
-    {{ author.bio | markdownify }}
+    {{ author.content | markdownify }}
   </header>
 
 
