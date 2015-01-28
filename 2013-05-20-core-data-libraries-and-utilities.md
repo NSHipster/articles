@@ -19,7 +19,7 @@ This week on NSHipster: a guided tour of the best open source libraries for work
 
 ---
 
-> For your convenience, the following table is provided. Contained within are the most significant open source libraries and utilities for working with Core Data. This is list is by no means comprehensive, so if you think something is missing or out of place, please tweet [@NSHipster](https://twitter.com/NSHipster)—or better yet, [submit a pull request](https://github.com/NSHipster/articles).
+> For your convenience, the following table is provided. Contained within are the most significant open source libraries and utilities for working with Core Data. This list is by no means comprehensive, so if you think something is missing or out of place, please tweet [@NSHipster](https://twitter.com/NSHipster)—or better yet, [submit a pull request](https://github.com/NSHipster/articles).
 
 <table>
   <thead>
