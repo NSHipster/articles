@@ -38,9 +38,9 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(asset.creationDate, dateStyle: .MediumStyle, timeStyle: .MediumStyle)
 
     cell.tag = Int(manager.requestImageForAsset(asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .AspectFill, options: nil) { (result, _) in
+        // this result handler is called on the main thread for asynchronous requests
         if let cell = tableView.cellForRowAtIndexPath(indexPath) {
             cell.imageView?.image = result
-            cell.tag = 0
         }
     })
 
