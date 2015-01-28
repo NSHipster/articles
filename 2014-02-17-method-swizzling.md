@@ -48,6 +48,10 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
 
+        // When swizzling a class method, use the following:
+        // Method originalMethod = class_getClassMethod(class, originalSelector);
+        // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
+
         BOOL didAddMethod =
             class_addMethod(class,
                 originalSelector,
