@@ -261,4 +261,4 @@ func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewCo
 
 虽然 Apple Pay 只开放了很少的 API，但[很多](https://itunes.apple.com/WebObjects/MZStore.woa/wa/viewFeature?id=927678292&mt=8&ls=1) 应用还是借此实现了多种多样的功能，你可以通过定制化应用到自己的应用中。其实它开启了一个购买的新篇章，比如说，用户根本不用先注册就可以买东西。
 
-随着越来越多的应用开始使用 Apple Pay(也随着越来越多的用户拥有支持 Apple Pay 的设备)，很快这就会成为 iOS 应用中普遍存在的支付方式。我很乐意看一看你们都如何用 Apple Pay 来丰富的你的产品 - 如果你有任何问题，或者想像我展示你的成果，请[联系我](mailto:jack+nshipster@stripe.com)！
+随着越来越多的应用开始使用 Apple Pay(也随着越来越多的用户拥有支持 Apple Pay 的设备)，很快这就会成为 iOS 应用中普遍存在的支付方式。我很乐意看一看你们都如何用 Apple Pay 来丰富的你的产品 - 如果你有任何问题，或者想向我展示你的成果，请[联系我](mailto:jack+nshipster@stripe.com)！
