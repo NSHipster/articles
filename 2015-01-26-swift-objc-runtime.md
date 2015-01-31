@@ -14,7 +14,7 @@ This week we take a new, Swift-focused look at two runtime techniques covered on
 
 ## Associated Objects
 
-Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they're limited in the same way as their Objective-C brethren, categories. Namely, you can't add a property to an existing class via extension.
+Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they're limited in the same way as their Objective-C brethren, categories. Namely, you can't add a property to an existing class via an extension.
 
 Happily, Objective-C *associated objects* come to the rescue. For example, to add a `descriptiveName` property to all the view controllers in a project, we simply add a computed property using `objc_get/setAssociatedObject()` in the backing `get` and `set` blocks:
 
