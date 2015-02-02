@@ -100,11 +100,38 @@ string = [components componentsJoinedByString:@" "];
 
 例如，你想从这样一个字符串中解析出开门时间：
 
-    Mon-Thurs:  8:00 - 18:00
-    Fri:        7:00 - 17:00
-    Sat-Sun:    10:00 - 15:00
+~~~
+Mon-Thurs:  8:00 - 18:00
+Fri:        7:00 - 17:00
+Sat-Sun:    10:00 - 15:00
+~~~
 
 你会 `enumerateLinesUsingBlock:` 并像这样用一个 `NSScanner` 来解析：
+
+~~~{swift}
+let skippedCharacters = NSMutableCharacterSet()
+skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
+
+string.enumerateLines { (line, _) in
+    let scanner = NSScanner(string: line)
+    scanner.charactersToBeSkipped = skippedCharacters
+
+    var startDay, endDay: NSString?
+    var startHour: Int = 0
+    var startMinute: Int = 0
+    var endHour: Int = 0
+    var endMinute: Int = 0
+
+    scanner.scanCharactersFromSet(NSCharacterSet.letterCharacterSet(), intoString: &startDay)
+    scanner.scanCharactersFromSet(NSCharacterSet.letterCharacterSet(), intoString: &endDay)
+
+    scanner.scanInteger(&startHour)
+    scanner.scanInteger(&startMinute)
+    scanner.scanInteger(&endHour)
+    scanner.scanInteger(&endMinute)
+}
+~~~
 
 ~~~{objective-c}
 NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCharacterSet];
