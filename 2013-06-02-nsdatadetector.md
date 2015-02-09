@@ -135,6 +135,29 @@ Somewhat confusingly, iOS also defines `UIDataDetectorTypes`. A bitmask of these
 
 `UIDataDetectorTypes` is distinct from `NSTextCheckingTypes` in that equivalent enum constants (e.g. `UIDataDetectorTypePhoneNumber` and `NSTextCheckingTypePhoneNumber`) do not have the same integer value, and not all values in one are found in the other. Converting from `UIDataDetectorTypes` to `NSTextCheckingTypes` can be accomplished with a function:
 
+~~~{swift}
+func NSTextCheckingTypesFromUIDataDetectorTypes (dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
+    var textCheckingType: NSTextCheckingType = nil
+    
+    if dataDetectorType & .Address != nil {
+        textCheckingType |= .Address
+    }
+    
+    if dataDetectorType & .CalendarEvent != nil {
+        textCheckingType |= .Date
+    }
+    
+    if dataDetectorType & .Link != nil {
+        textCheckingType |= .Link
+    }
+    
+    if dataDetectorType & .PhoneNumber != nil {
+        textCheckingType |= .PhoneNumber
+    }
+    
+    return textCheckingType
+}
+~~~
 ~~~{objective-c}
 static inline NSTextCheckingType NSTextCheckingTypesFromUIDataDetectorTypes(UIDataDetectorTypes dataDetectorType) {
     NSTextCheckingType textCheckingType = 0;
