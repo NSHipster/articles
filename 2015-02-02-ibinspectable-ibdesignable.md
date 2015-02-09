@@ -1,5 +1,5 @@
 ---
-title: "IBInspectable / IBDesignable"
+title: "IBInspectable&nbsp;/ IBDesignable"
 category: Xcode
 author: Nate Cook
 excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
@@ -83,7 +83,7 @@ class MyCustomView: UIView {
 
 ![IBDesignable Live Preview](http://nshipster.s3.amazonaws.com/IBInspectable-designable.png)
 
-The time-savings from this feature can't be understated. Combined with `IBInspectable` properties, a designer or developer can easily tweak the rendering of a custom control to get the exact result she wants. Any changes, whether made in code or the attribute inspector, are immediately rendered on the canvas.
+The time-savings from this feature can't be overstated. Combined with `IBInspectable` properties, a designer or developer can easily tweak the rendering of a custom control to get the exact result she wants. Any changes, whether made in code or the attribute inspector, are immediately rendered on the canvas.
 
 Moreover, any problems can be debugged without compiling and running the whole project. To kick off a debugging session right in place, simply set a breakpoint in your code, select the view in Interface Builder, and choose **Editor** ➔ **Debug Selected Views**.
 
@@ -104,7 +104,7 @@ Since the custom view won't have the full context of your app when rendered in I
 
 ## IBCalculatorConstructorSet
 
-What can you create with a combination of `IBInspectable` attributes in your `IBDesignable` custom view? As an example, let's update an old classic from [Apple folklore](http://www.folklore.org/StoryView.py?story=Calculator_Construction_Set.txt): the "Steve Jobs Roll Your Own Calculator Construction Set", Xcode 6-style:
+What can you create with a combination of `IBInspectable` attributes in your `IBDesignable` custom view? As an example, let's update an old classic from [Apple folklore](http://www.folklore.org/StoryView.py?story=Calculator_Construction_Set.txt): the "Steve Jobs Roll Your Own Calculator Construction Set," Xcode 6-style ([gist](https://gist.github.com/natecook1000/4269059121ec247fbb90)):
 
 ![Calculator Construction Set](http://nshipster.s3.amazonaws.com/IBInspectable-CCS.gif)
 
