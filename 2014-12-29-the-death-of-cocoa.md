@@ -98,6 +98,17 @@ One of the most astonishing things about Objective-C is how long it took for it 
 
 However, `NSJSONSerialization` is such a miserable experience in Swift that we're repeating history with a new crop of third-party alternatives:
 
+```swift
+let data: NSData
+var error: NSError? = nil
+if let JSON = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? NSDictionary {
+    for product in JSON["products"]! as NSArray {
+        let name: String = product["name"] as String
+        let price: Double = product["price"] as Double
+    }
+}
+```
+
 ```objective-c
 NSData *data;
 NSError *error = nil;
@@ -110,17 +121,6 @@ if (!error) {
         NSNumber *price = product[@"price"];
 
         // ...
-    }
-}
-```
-
-```swift
-let data: NSData
-var error: NSError? = nil
-if let JSON = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as? NSDictionary {
-    for product in JSON["products"]! as NSArray {
-        let name: String = product["name"] as String
-        let price: Double = product["price"] as Double
     }
 }
 ```

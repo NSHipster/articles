@@ -25,17 +25,17 @@ In another departure from the old-school table view way of doing things, the pro
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
-~~~{objective-c}
-UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
-if (!cell) {
-  cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
-}
-~~~
 ~~~{swift}
 let identifier = "Cell"
 var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(identifier) as? UITableViewCell
 if cell == nil {
     cell = UITableViewCell(...)
+}
+~~~
+~~~{objective-c}
+UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
+if (!cell) {
+  cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
 }
 ~~~
 

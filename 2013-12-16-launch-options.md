@@ -111,14 +111,14 @@ A local notification populates the launch options on `UIApplicationLaunchOptions
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
 ~~~{objective-c}
+// .h
 @import AVFoundation;
 
 @interface AppDelegate ()
 @property (readwrite, nonatomic, assign) SystemSoundID localNotificationSound;
 @end
-~~~
 
-~~~{objective-c}
+// .m
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification
 {
@@ -159,14 +159,14 @@ But fear not! With iOS region monitoring, your app can be launched on location e
 Here's an example of how an app might go about monitoring for significant location change to determine launch behavior:
 
 ~~~{objective-c}
+// .h
 @import CoreLocation;
 
 @interface AppDelegate () <CLLocationManagerDelegate>
 @property (readwrite, nonatomic, strong) CLLocationManager *locationManager;
 @end
-~~~
 
-~~~{objective-c}
+// .m
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -223,14 +223,14 @@ If an app launches, instantiates a `CBCentralManager` or `CBPeripheralManager` w
 > - `UIApplicationLaunchOptionsBluetoothPeripheralsKey`:  Indicates that the app previously had one or more `CBPeripheralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a peripheral manager object.
 
 ~~~{objective-c}
+// .h
 @import CoreBluetooth;
 
 @interface AppDelegate () <CBCentralManagerDelegate>
 @property (readwrite, nonatomic, strong) CBCentralManager *centralManager;
 @end
-~~~
 
-~~~{objective-c}
+// .m
 self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionRestoreIdentifierKey:(launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey] ?: [[NSUUID UUID] UUIDString])}];
 
 if (self.centralManager.state == CBCentralManagerStatePoweredOn) {

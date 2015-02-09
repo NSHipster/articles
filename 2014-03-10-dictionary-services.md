@@ -20,7 +20,7 @@ Though widely usurped of their "go-to reference" status by the Internet, diction
 
 Nearly all Unix distributions include a small collection newline-delimited list of words. On OS X, these can be found at `/usr/share/dict`:
 
-~~~
+~~~bash
 $ ls /usr/share/dict
     README
     connectives
@@ -32,14 +32,14 @@ $ ls /usr/share/dict
 
 Symlinked to `words` is the `web2` word list, which, though not exhaustive, is still a sizable corpus:
 
-~~~
+~~~bash
 $ wc /usr/share/dict/words
     235886  235886 2493109
 ~~~
 
 Skimming with `head` shows what fun lies herein. Such excitement is rarely so palpable as it is among words beginning with "a":
 
-~~~
+~~~bash
 $ head /usr/share/dict/words
     A
     a
@@ -64,7 +64,7 @@ OS X builds upon this with its own system dictionaries. Never one to disappoint,
 The OS X analog to `/usr/share/dict` can be found in `/Library/Dictionaries`.
 A quick peek into the shared system dictionaries demonstrates one immediate improvement over Unix, by acknowledging the existence of languages other than English:
 
-~~~
+~~~bash
 $ ls /Library/Dictionaries/
 
     Apple Dictionary.dictionary/
@@ -89,7 +89,7 @@ OS X ships with dictionaries in Chinese, English, French, Dutch, Italian, Japane
 
 Diving deeper into the rabbit hole, we peruse the `.dictionary` bundles to see them for what they really are:
 
-~~~
+~~~bash
 $ ls "/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents"
 
     Body.data

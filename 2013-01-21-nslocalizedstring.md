@@ -28,9 +28,7 @@ textField.placeholder = NSLocalizedString(@"Username", nil);
 
 ~~~{objective-c}
 self.title = [NSString stringWithFormat:NSLocalizedString(@"%@'s Profile", @"{User First Name}'s Profile"), user.name];
-~~~
 
-~~~{objective-c}
 label.text = [NSString stringWithFormat:NSLocalizedString(@"Showing %lu of %lu items", @"Showing {number} of {total number} items"), [page count], [items count]];
 ~~~
 
@@ -43,26 +41,20 @@ NSString * NSLocalizedString(
   NSString *key,
   NSString *comment
 )
-~~~
 
-~~~{objective-c}
 NSString * NSLocalizedStringFromTable(
   NSString *key,
   NSString *tableName,
   NSString *comment
 )
-~~~
 
-~~~{objective-c}
 NSString * NSLocalizedStringFromTableInBundle(
   NSString *key,
   NSString *tableName,
   NSBundle *bundle,
   NSString *comment
 )
-~~~
 
-~~~{objective-c}
 NSString * NSLocalizedStringWithDefaultValue(
   NSString *key,
   NSString *tableName,
@@ -95,13 +87,13 @@ Here's what that looks like:
 
 ## No Madlibs
 
-After reading that part about localized format strings, you may be tempted to take a clever, DRY approach by creating reusable grammar templates like `@"{Noun} {Verb} {Noun}", and localizing each word individually...
+After reading that part about localized format strings, you may be tempted to take a clever, DRY approach by creating reusable grammar templates like `@"{Noun} {Verb} {Noun}"`, and localizing each word individually...
 
 **DON'T.** This cannot be stressed enough: _don't subdivide localized strings_. Context will be lost, grammatical constructions will be awkward and unidiomatic, verbs will be incorrectly conjugated, and you'll have missed the point entirely—taking great effort to make something worse than if you hadn't bothered in the first place.
 
 Numbers, dates, and similar values are almost always safe replacements. Nouns are subject to pluralization and verb conjugation, but usually safe as direct or indirect objects.
 
-For additional guidelines, see [Localizing String Resources from Apple's Internationalization Programming guide](https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPInternational/Articles/StringsFiles.html#//apple_ref/doc/uid/20000005).
+For additional guidelines, see [Apple's Internationalization and Localization guide](https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/Introduction/Introduction.html#//apple_ref/doc/uid/10000171i).
 
 ---
 

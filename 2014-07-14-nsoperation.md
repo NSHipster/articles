@@ -61,16 +61,6 @@ One thing to watch out for are the spelling peculiarities of the word "cancel". 
 
 All operations may not be equally important. Setting the `queuePriority` property will promote or defer an operation in an `NSOperationQueue` according to the following rankings:
 
-~~~{objective-c}
-typedef enum : NSInteger {
-   NSOperationQueuePriorityVeryLow = -8,
-   NSOperationQueuePriorityLow = -4,
-   NSOperationQueuePriorityNormal = 0,
-   NSOperationQueuePriorityHigh = 4,
-   NSOperationQueuePriorityVeryHigh = 8
-} NSOperationQueuePriority;
-~~~
-
 ### NSOperationQueuePriority
 
 ~~~{swift}
@@ -81,6 +71,15 @@ enum NSOperationQueuePriority : Int {
     case High
     case VeryHigh
 }
+~~~
+~~~{objective-c}
+typedef enum : NSInteger {
+   NSOperationQueuePriorityVeryLow = -8,
+   NSOperationQueuePriorityLow = -4,
+   NSOperationQueuePriorityNormal = 0,
+   NSOperationQueuePriorityHigh = 4,
+   NSOperationQueuePriorityVeryHigh = 8
+} NSOperationQueuePriority;
 ~~~
 
 ## Quality of Service
@@ -106,6 +105,15 @@ enum NSQualityOfService : Int {
     case Default
 }
 ~~~
+~~~{objective-c}
+typedef enum : NSInteger {
+    NSQualityOfServiceUserInteractive = 0x21,
+    NSQualityOfServiceUserInitiated = 0x19,
+    NSQualityOfServiceUtility = 0x11,
+    NSQualityOfServiceBackground = 0x09,
+    NSQualityOfServiceDefault = -1
+} NSQualityOfService;
+~~~
 
 - `.UserInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
 - `.UserInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
@@ -120,6 +128,13 @@ backgroundOperation.qualityOfService = .Background
 
 let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(backgroundOperation)
+~~~
+~~~{objective-c}
+NSOperation *backgroundOperation = [[NSOperation alloc] init];
+backgroundOperation.queuePriority = NSOperationQueuePriorityLow;
+backgroundOperation.qualityOfService = NSOperationQualityOfServiceBackground;
+
+[[NSOperationQueue mainQueue] addOperation:backgroundOperation];
 ~~~
 
 ## Asynchronous Operations
@@ -146,7 +161,11 @@ operationQueue.addOperations([networkingOperation, resizingOperation], waitUntil
 ~~~
 
 ~~~{objective-c}
+NSOperation *networkingOperation = ...
+NSOperation *resizingOperation = ...
 [resizingOperation addDependency:networkingOperation];
+
+NSOperationQueue *operationQueue = [NSOperationQueue mainQueue];
 [operationQueue addOperation:networkingOperation];
 [operationQueue addOperation:resizingOperation];
 ~~~
@@ -160,13 +179,12 @@ Make sure not to accidentally create a dependency cycle, such that A depends on 
 When an `NSOperation` finishes, it will execute its `completionBlock` exactly once. This provides a really nice way to customize the behavior of an operation when used in a model or view controller.
 
 ~~~{swift}
-let operation : NSOperation = NSOperation()
+let operation = NSOperation()
 operation.completionBlock = {
     println("Completed")
 }
 
-let operationQueue = NSOperationQueue.mainQueue()
-operationQueue.addOperation(operation)
+NSOperationQueue.mainQueue().addOperation(operation)
 ~~~
 
 ~~~{objective-c}

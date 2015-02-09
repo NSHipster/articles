@@ -56,7 +56,7 @@ switch (style) {
 
 This week, as a public service, we've compiled a (mostly) comprehensive list of Clang warning strings and their associated flags, which can be found here:
 
-**[F***ingClangWarnings.com](http://fuckingclangwarnings.com)**
+**[F\*\*\*ingClangWarnings.com](http://fuckingclangwarnings.com)**
 
 You can also find the compiler and analyzer flags for any warning you might encounter by `^`-Clicking the corresponding entry in the Xcode Issue Navigator and selecting "Reveal in Log". (If this option is disabled, try building the project again).
 
