@@ -2,21 +2,21 @@
 title: Swift & the Objective-C Runtime
 author: Nate Cook
 category: "Swift"
-excerpt: "Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential. <br><br>This week we take a new, Swift-focused look at two runtime techniques covered on NSHipster back when Objective-C was the only game in town: associated objects and method swizzling."
+translator: Croath Liu
+excerpt: "即使一行 Objective-C 代码也不写，每一个 Swift app 都会在 Objective-C runtime 中运行，开启动态任务分发和运行时对象关联的世界。更确切地说，可能在仅使用 Swift 库的时候只运行 Swift runtime。但 Objective-C runtime 与我们共处了如此长的时间，我们也应该将其发挥到极致。 <br><br>本周的 NShipster 我们将以 Swift 视角来观察这两个运行时中关于关联对象和方法交叉的技术。"
 ---
 
-Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential.
+即使一行 Objective-C 代码也不写，每一个 Swift app 都会在 Objective-C runtime 中运行，开启动态任务分发和运行时对象关联的世界。更确切地说，可能在仅使用 Swift 库的时候只运行 Swift runtime。但 Objective-C runtime 与我们共处了如此长的时间，我们也应该将其发挥到极致。
 
-This week we take a new, Swift-focused look at two runtime techniques covered on NSHipster back when Objective-C was the only game in town: [associated objects](/associated-objects/) and [method swizzling](/method-swizzling/).
+本周的 NShipster 我们将以 Swift 视角来观察这两个运行时中关于关联对象([associated objects](/associated-objects/))和方法交叉([method swizzling](/method-swizzling/))的技术。
 
-> *Note:* This post primarily covers the use of these techniques in Swift—for the full run-down, please refer to the original articles.
+> *提醒：* 本文主要从 Swift 角度讲这两种技术，如果需要更详细的解释，请参考上述两篇原文。
 
+## 关联对象(Associated Objects)
 
-## Associated Objects
+Swift extension 能对已经存在 Cocoa 类中添加极为丰富的功能，但它的兄弟 Objective-C 的 category 却逊色了不少。比如说 Objective-C 中的 extension 就无法向既有类添加属性。
 
-Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they're limited in the same way as their Objective-C brethren, the category. Namely, you can't add a property to an existing class via extension.
-
-Happily, Objective-C *associated objects* come to the rescue. For example, to add a `descriptiveName` property to all the view controllers in a project, we simply add a computed property using `objc_get/setAssociatedObject()` in the backing `get` and `set` blocks:
+令人庆幸的是 Objective-C 的 *关联对象* 可以缓解这种局面。例如要向一个工程里所有的 view controllers 中添加一个 `descriptiveName` 属性，我们可以简单的使用  `objc_get/setAssociatedObject()`来填充其 `get` 和 `set` 块：
 
 ````swift
 extension UIViewController {
@@ -42,14 +42,13 @@ extension UIViewController {
 }
 ````
 
-> Note the use of `static var` in a private nested `struct`—this pattern creates the static associated object key we need but doesn't muck up the global namespace.
+> 注意，在私有嵌套 `struct` 中使用 `static var`，这样会生成我们所需的关联对象键，但不会污染整个命名空间。
 
+## 方法交叉(Method Swizzling)
 
-## Method Swizzling
+有时为了方便，也有可能是解决某些框架内的 bug，或者别无他法时，需要修改一个已经存在类的方法的行为。方法交叉可以让你交换两个方法的实现，相当于是用你写的方法来重载原有方法，并且还能够是原有方法的行为保持不变。
 
-Sometimes for convenience, sometimes to work around a bug in a framework, or sometimes because there's just no other way, you need to modify the behavior of an existing class's methods. Method swizzling lets you swap the implementations of two methods, essentially overriding an existing method with your own while keeping the original around.
-
-In this example, we swizzle `UIViewController`'s `viewWillAppear` method to print a message any time a view is about to appear on screen. The swizzling happens in the special class method `initialize` (see note below); the replacement implementation is in the `nsh_viewWillAppear` method:
+这个例子中我们交叉 `UIViewController` 的 `viewWillAppear` 方法以打印出每一个在屏幕上显示的 view。方法交叉发生在 `initialize` 类方法调用时(如下代码所示)；替代的实现在 `nsh_viewWillAppear` 方法中：
 
 ````swift
 extension UIViewController {
@@ -94,23 +93,23 @@ extension UIViewController {
 ````
 
 
-### load vs. initialize (Swift Edition)
+### load vs. initialize (Swift 版本)
 
-The Objective-C runtime typically calls two class methods automatically when loading and initializing classes in your app's process: `load` and `initialize`. In the full article on [method swizzling](/method-swizzling/), Mattt writes that swizzling should *always* be done in `load()`, for safety and consistency. `load` is called only once per class and is called on each class that is loaded. On the other hand, a single `initialize` method can be called on a class and all its subclasses, which are likely to exist for `UIViewController`, or not called at all if that particular class isn't ever messaged.
+Objective-C runtime 理论上会在加载和初始化类的时候调用两个类方法： `load` and `initialize`。在讲解 [method swizzling](/method-swizzling/) 的原文中 Mattt 老师指出出于安全性和一致性的考虑，方法交叉过程 *永远* 会在 `load()` 方法中进行。每一个类在加载时只会调用一次 `load` 方法。另一方面，一个 `initialize` 方法可以被一个类和它所有的子类调用，比如说 `UIViewController` 的该方法，如果那个类没有被传递信息，那么它的 `initialize` 方法就永远不会被调用了。
 
-Unfortunately, a `load` class method implemented in Swift is *never* called by the runtime, rendering that recommendation an impossibility. Instead, we're left to pick among second-choice options:
+不幸的是，在 Swift 中 `load` 类方法永远不会被 runtime 调用，因此方法交叉就变成了不可能的事。但我们还有两个办法：
 
-- **Implement method swizzling in `initialize`**   
-This can be done safely, so long as you check the type at execution time and wrap the swizzling in `dispatch_once` (which you should be doing anyway).
+- **在 `initialize` 中实现方法交叉**
+这种做法很安全，你只需要确保相关的方法交叉在一个 `dispatch_once` 中就好了(这也是最推荐的做法)。
 
-- **Implement method swizzling in the app delegate**  
-Instead of adding method swizzling via a class extension, simply add a method to the app delegate to be executed when `application(_:didFinishLaunchingWithOptions:)` is called. Depending on the classes you're modifying, this may be sufficient and should guarantee your code is executed every time.
+- **在 app delegate 中实现方法交叉** 
+不像上面通过类扩展进行方法交叉，而是简单地在 app delegate 的 `application(_:didFinishLaunchingWithOptions:)` 方法调用时中执行相关代码也是可以的。基于对类的修改，这种方法应该就足够确保这些代码会被执行到。
 
 
 * * *
 
 
-In closing, remember that tinkering with the Objective-C runtime should be much more of a last resort than a place to start. Modifying the frameworks that your code is based upon, as well as any third-party code you run, is a quick way to destabilize the whole stack. Tread softly!
+最后，请记住仅在不得已的情况下使用 Objective-C runtime。随便修改基础框架或所使用的三方代码是毁掉你的应用的绝佳方法哦。请务必要小心哦。
 
 
 
