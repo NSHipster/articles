@@ -4,7 +4,7 @@ category: Xcode
 author: Nate Cook
 excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
 translator: April Peng
-excerpt: "在替换一个界面的时候如果我们能够看见和控制那将比需要我们记住并且输入什么进步了很多。Xcode 6 提供了这样一个替代，用 `IBInspectable` 和 `IBDesignable`，在旧技术上建立新的互动。"
+excerpt: "比起一个需要我们记住并且输入什么的界面来说，如果替换成我们能够看见并可控制的界面的话将会是巨大的进步。Xcode 6 提供了这样一个替代，用 `IBInspectable` 和 `IBDesignable`，在旧技术上建立新的互动。"
 ---
 
 Show, don't tell. Seeing is believing. A picture is worth a thousand <del>emails</del> words. 
@@ -13,14 +13,14 @@ Show, don't tell. Seeing is believing. A picture is worth a thousand <del>emails
 
 Whatever the cliché, replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. Xcode 6 makes just such a substitution, building new interactions on top of old technologies. With `IBInspectable` and `IBDesignable`, it's possible to build a custom interface for configuring your custom controls and have them rendered in real-time while designing your project.
 
-无论陈词滥调多少次，在替换一个界面的时候如果我们能够看见和控制那将比需要我们记住并且输入什么进步了很多。 Xcode 6 提供了这样一个替代，在旧技术上建立新的互动。在设计项目的时候建立一个自定义的界面使你可以配置自定义控制并将它们实时显示出来，用 `IBInspectable` 和 `IBDesignable`，这将成为可能。
+无论陈词滥调多少次，比起一个需要我们记住并且输入什么的界面来说，如果替换成我们能够看见并可控制的界面的话将会是巨大的进步。 Xcode 6 提供了这样一个替代，在旧技术上建立新的互动。在设计项目的时候建立一个自定义的界面使你可以配置自定义控制并将它们实时显示出来，用 `IBInspectable` 和 `IBDesignable`，这将成为可能。
 
 
 ## IBInspectable
 
 `IBInspectable` properties provide new access to an old feature: user-defined runtime attributes. Currently accessible from the identity inspector, these attributes have been available since before Interface Builder was integrated into Xcode. They provide a powerful mechanism for configuring any key-value coded property of an instance in a NIB, XIB, or storyboard:
 
-`IBInspectable` 属性提供了访问旧功能的新方式：用户自定义的运行时属性。从目前的身份检查器（identity inspector）中访问，这些属性在 Interface Builder 被整合到 Xcode 之前就可用了。他们提供了一个强有力的机制来配置一个 NIB，XIB，或者 storyboard 实例中的任何键 - 值编码属性：
+`IBInspectable` 属性提供了访问旧功能的新方式：用户自定义的运行时属性。从目前的身份检查器（identity inspector）中访问，这些属性在 Interface Builder 被整合到 Xcode 之前就可用了。他们提供了一个强有力的机制来配置一个 NIB，XIB，或者 storyboard 实例中的任何键值编码（key-value coded）属性：
 
 ![User-Defined Runtime Attributes](http://nshipster.s3.amazonaws.com/IBInspectable-runtime-attributes.png)
 
@@ -156,4 +156,4 @@ What can you create with a combination of `IBInspectable` attributes in your `IB
 
 That was almost a thousand words—let's see some more pictures. What are *you* creating with these powerful new tools? [Tweet an image](http://twitter.com/share?hashtags=IBInspectable) of your `IBInspectable` or `IBDesignable` creations with the hashtag `#IBInspectable`—we can all learn from seeing what's possible.
 
-这差不多就是千言万语了，让我们来看看更多的图片。*你*用这些强大的新工具创造了什么？把你的 `IBInspectable` 或 `IBDesignable` 创作加上话题 `＃IBInspectable` [po 成一张图片](http://twitter.com/share?hashtags=IBInspectable)，我们都可以看看还可以学到些什么。
+现在你差不多已经眼见为实了，那让我们来看看更多的图片吧。*你*用这些强大的新工具创造了什么？把你的 `IBInspectable` 或 `IBDesignable` 创作加上话题 `＃IBInspectable` [po 成一张图片](http://twitter.com/share?hashtags=IBInspectable)，我们都可以看看还可以学到些什么。
