@@ -120,7 +120,7 @@ context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
 
 ## JavaScript Calling
 
-Now we know how to extract values from a JavaScript environment and call functions defined therein. What about the reverse? How can we get access our custom objects and methods, defined in Objective-C or Swift, from within the JavaScript realm?
+Now we know how to extract values from a JavaScript environment and call functions defined therein. What about the reverse? How can we get access to our custom objects and methods, defined in Objective-C or Swift, from within the JavaScript realm?
 
 There are two main ways of giving a `JSContext` access to our native client code: blocks and the `JSExport` protocol.
 
