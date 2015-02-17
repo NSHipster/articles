@@ -11,7 +11,11 @@ layout: default
     {% assign author = site.authors | where:"name",page.author | first %}
 
     {% if author %}
-      <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
+      <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+      {% if page.revisions %}
+      (<a href="#revisions">revised</a>)
+      {% endif %}
+      </h2>
     {% else %}
       <h2>Written on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
     {% endif %}
@@ -22,6 +26,19 @@ layout: default
   </div>
 
   <footer role="complementary">
+    {% if page.revisions %}
+    <section id="revisions">
+      <small>NSMutableHipster</small>
+
+      <dl>
+      {% for revision in page.revisions %}
+        <dt>Revised {{ revision[0] | ordinalize }}</dt>
+        <dd>{{ revision[1] | markdownify }}</dd>
+      {% endfor %}
+      </dl>
+    </section>
+    {% endif %}
+
     <section id="follow">
       <small>Follow NSHipster</small>
 
