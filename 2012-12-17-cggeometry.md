@@ -3,6 +3,8 @@ title: CGGeometry
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulae into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier."
+revisions:
+    "2015-02-17": Added Swift examples and information about how `Swift + CGRect == awesome`; added section for `CGRectIntersect` and `CGRectUnion`.
 ---
 
 Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulæ into your TI-8X calculator.
@@ -21,6 +23,8 @@ Fortunately for us, Quartz comes with a slew of useful functions to reduce the a
 
 This will not stand! Let's shine some light on the most useful functions and save y'all some typing!
 
+> In Swift, the CoreGraphics framework augments `CGRect` by adding all this functionality as static properties, instance properties, and both mutating and non-mutating functions where appropriate. For idiomatic Swift code, prefer properties and nonmutating instance methods whenever possible.
+
 ---
 
 Transformations
@@ -30,8 +34,17 @@ First on our list are the geometric transformations. These functions return a `C
 
 ### `CGRectOffset`
 
-> `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
+> `rectByOffsetting` / `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
 
+~~~{swift}
+// methods:
+extension CGRect {
+    func rectByOffsetting(dx: CGFloat, dy: CGFloat) -> CGRect
+    mutating func offset(dx: CGFloat, dy: CGFloat)
+}
+// function:
+func CGRectOffset(rect: CGRect, dx: CGFloat, dy: CGFloat) -> CGRect
+~~~
 ~~~{objective-c}
 CGRect CGRectOffset(
   CGRect rect,
@@ -44,8 +57,17 @@ Consider using this anytime you're changing the origin of a rectangle. Not only 
 
 ### `CGRectInset`
 
-> `CGRectInset`: Returns a rectangle that is smaller or larger than the source rectangle, with the same center point.
+> `rectByInsetting` / `CGRectInset`: Returns a rectangle that is smaller or larger than the source rectangle, with the same center point.
 
+~~~{swift}
+// methods:
+extension CGRect {
+    func rectByInsetting(dx: CGFloat, dy: CGFloat) -> CGRect
+    mutating func inset(dx: CGFloat, dy: CGFloat)
+}
+// function:
+func CGRectInset(rect: CGRect, dx: CGFloat, dy: CGFloat) -> CGRect
+~~~
 ~~~{objective-c}
 CGRect CGRectInset(
   CGRect rect,
@@ -60,8 +82,17 @@ If you're using `CGRectInset` as a convenience function for resizing a rectangle
 
 ### `CGRectIntegral`
 
-> `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
+> `integerRect` / `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
 
+~~~{swift}
+// methods:
+extension CGRect {
+    var integerRect: CGRect { get }
+    mutating func integerize()
+}
+// function:
+func CGRectIntegral(rect: CGRect) -> CGRect
+~~~
 ~~~{objective-c}
 CGRect CGRectIntegral (
   CGRect rect
@@ -75,6 +106,7 @@ It's important that `CGRect` values all are rounded to the nearest whole point. 
 As a rule of thumb, if you are performing any operations that could result in fractional point values (e.g. division, `CGRectGetMid[X|Y]`, or `CGRectDivide`), use `CGRectIntegral` to normalize rectangles to be set as a view frame.
 
 > † Technically, since the coordinate system operates in terms of points, Retina screens, which have 4 pixels for every point, can draw `± 0.5f` point values on odd pixels without blurriness.
+
 
 Value Helper Functions
 ----------------------
@@ -92,6 +124,9 @@ These functions provide a shorthand way to calculate interesting dimensional val
 
 These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form:
 
+~~~{swift}
+func CGRectGet[Min|Mid|Max][X|Y](rect: CGRect) -> CGPoint
+~~~
 ~~~{objective-c}
 CGFloat CGRectGet[Min|Mid|Max][X|Y] (
   CGRect rect
@@ -102,23 +137,52 @@ These functions will replace code like `frame.origin.x + frame.size.width` with 
 
 ### `CGRectGet[Width|Height]`
 
-> `CGRectGetHeight`: Returns the height of a rectangle.
+~~~{swift}
+// Returns the height of a rectangle.
+func CGRectGetHeight(rect: CGRect) -> CGFloat
 
+// Returns the width of a rectangle.
+func CGRectGetWidth(rect: CGRect) -> CGFloat
+~~~
 ~~~{objective-c}
+// Returns the height of a rectangle.
 CGFloat CGRectGetHeight (
    CGRect rect
 )
-~~~
 
-> `CGRectGetWidth`: Returns the width of a rectangle.
-
-~~~{objective-c}
+// Returns the width of a rectangle.
 CGFloat CGRectGetWidth (
    CGRect rect
 )
 ~~~
 
 Much like the previous functions, `CGRectGetWidth` & `CGRectGetHeight` are often preferable to returning the corresponding member of a `CGRect`'s `size`. While it's not extremely competitive in terms of character savings, remember that semantic clarity trumps brevity every time.
+
+### Swift Additions
+
+~~~{swift}
+extension CGRect {
+    var minX: CGFloat { get }
+    var minY: CGFloat { get }
+    var midX: CGFloat { get }
+    var midY: CGFloat { get }
+    var maxX: CGFloat { get }
+    var maxY: CGFloat { get }
+    var width: CGFloat { get }
+    var height: CGFloat { get }
+}
+~~~
+
+The `CGRect` Swift extensions for dimensional values make a huge difference in code readability, as each of the value helper functions is mapped to individual computed properties.
+
+~~~{swift}
+// instead of calling the function
+let rightEdge = CGRectMaxX(view.frame)
+
+// simply access the property
+let leftEdge = view.frame.minX
+~~~
+
 
 Identities
 ----------
@@ -127,9 +191,9 @@ There are three special rectangle values, each of which have unique properties t
 
 ### `CGRectZero`, `CGRectNull`, & `CGRectInfinite`
 
-> - `const CGRect CGRectZero`: A rectangle constant with location (0,0), and width and height of 0. The zero rectangle is equivalent to CGRectMake(0.0f, 0.0f, 0.0f, 0.0f).
-> - `const CGRect CGRectNull`: The null rectangle. This is the rectangle returned when, for example, you intersect two disjoint rectangles. **Note that the null rectangle is not the same as the zero rectangle**.
-> - `const CGRect CGRectInfinite`: A rectangle that has infinite extent.
+> - `CGRect.zeroRect` / `const CGRect CGRectZero`: A rectangle constant with location (0,0), and width and height of 0. The zero rectangle is equivalent to CGRectMake(0.0f, 0.0f, 0.0f, 0.0f).
+> - `CGRect.nullRect` / `const CGRect CGRectNull`: The null rectangle. This is the rectangle returned when, for example, you intersect two disjoint rectangles. **Note that the null rectangle is not the same as the zero rectangle**.
+> - `CGRect.infiniteRect` / `const CGRect CGRectInfinite`: A rectangle that has infinite extent.
 
 `CGRectZero` is perhaps the most useful of all of the special rectangle values. When initializing subviews, their frames are often initialized to `CGRectZero`, deferring their layout to `-layoutSubviews`.
 
@@ -137,15 +201,86 @@ There are three special rectangle values, each of which have unique properties t
 
 `CGRectInfinite` is the most exotic of all, and has some of the most interesting properties. It intersects with all points and rectangles, contains all rectangles, and its union with any rectangle is itself. Use `CGRectIsInfinite` to check to see if a rectangle is infinite.
 
+
+Relationships
+-------------
+
+Moving from one rectangle to two, a pair of rectangles can be either intersected or combined to create a new `CGRect`:
+
+### `CGRectIntersection`
+
+> `rectByIntersecting` / `CGRectIntersection`: Returns the intersection of two rectangles.
+
+~~~{swift}
+// methods:
+extension CGRect {
+    func rectByIntersecting(withRect: CGRect) -> CGRect
+    mutating func intersect(withRect: CGRect)
+}
+// function:
+func CGRectIntersection(rect1: CGRect, rect2: CGRect) -> CGRect
+~~~
+~~~{objective-c}
+CGRect CGRectIntersection (
+  CGRect rect1,
+  CGRect rect2
+)
+~~~
+
+`CGRectIntersection` is a fast way to find the overlapping region between two views. The intersection of two non-overlapping rectangles is a null rect, but if you need to simply check for intersection or containment, use `intersects` / `CGRectIntersectsRect` or `contains` / `CGRectContainsRect` instead.
+
+
+### `CGRectUnion`
+
+> `rectByUnion` / `CGRectUnion`: Returns the smallest rectangle that contains the two source rectangles.
+
+~~~{swift}
+// methods:
+extension CGRect {
+    func rectByUnion(withRect: CGRect) -> CGRect
+    mutating func union(withRect: CGRect)
+}
+// function:
+func CGRectUnion(rect1: CGRect, rect2: CGRect) -> CGRect
+~~~
+~~~{objective-c}
+CGRect CGRectUnion (
+  CGRect rect1,
+  CGRect rect2
+)
+~~~
+
+Need a rectangle that can wrap two separate regions in your view? Remember that you can chain together different methods to produce the rectangle you need. Use `CGRectUnion` and negative values with `CGRectInset` to find a padded rectangle around two items:
+
+~~~{swift}
+let combinedRect = imageRect.rectByUnion(textRect).rectByInsetting(dx: -10, dy: -10)
+~~~
+~~~{objective-c}
+CGRect combinedRect = CGRectInset(CGRectUnion(imageRect, textRect), -10, -10);
+~~~
+
 And Finally...
 --------------
 
 Behold, the most obscure, misunderstood, and useful of the `CGGeometry` functions: `CGRectDivide`.
 
-## `CGRectDivide`
+### `CGRectDivide`
 
 > `CGRectDivide`: Divides a source rectangle into two component rectangles.
 
+~~~{swift}
+// method:
+extension CGRect {
+    func rectsByDividing(atDistance: CGFloat, fromEdge edge: CGRectEdge) 
+            -> (slice: CGRect, remainder: CGRect)
+}
+// function:
+CGRectDivide(rect: CGRect, 
+            slice: UnsafeMutablePointer<CGRect>,
+        remainder: UnsafeMutablePointer<CGRect>,
+           amount: CGFloat,
+             edge: CGRectEdge)
+~~~
 ~~~{objective-c}
 void CGRectDivide(
   CGRect rect,
@@ -163,8 +298,20 @@ void CGRectDivide(
 - Everything from the `edge` to the measured `amount` is stored in the rectangle referenced in the `slice` argument.
 - The rest of the original rectangle is stored in the `remainder` out argument.
 
+> Don't fret about the `UnsafeMutablePointer<CGRect>` in the Swift version; those pointers act just like `inout` properties in this case. Create your slice and remainder instances up-front, and prefix with an `&` in the call. Or better yet, use the instance method on an existing `CGRect`:
+>
+> `let (slice, remainder) = frame.rectsByDividing(120, fromEdge:.MinXEdge)`
+
 That `edge` argument takes a value from the `CGRectEdge` enum:
 
+~~~{swift}
+enum CGRectEdge {
+   case MinXEdge
+   case MinYEdge
+   case MaxXEdge
+   case MaxYEdge
+}
+~~~
 ~~~{objective-c}
 enum CGRectEdge {
    CGRectMinXEdge,
@@ -178,7 +325,7 @@ enum CGRectEdge {
 
 ---
 
-So what if you didn't pay attention in Geometry class--this is the real world, and in the real world, you have `CGGeometry.h`
+So what if you didn't pay attention in Geometry class—this is the real world, and in the real world, you have `CGGeometry.h`.
 
 Know it well, and you'll be on your way to discovering great new user interfaces in your apps. Do good enough of a job with that, and you may run into the greatest arithmetic problem of all: adding up all of the money you'll make with your awesome new app. Mathematical!
 
