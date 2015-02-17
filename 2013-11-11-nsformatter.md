@@ -229,19 +229,19 @@ NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
 By default, specifying a `0` byte count will yield a localized string like "Zero KB". For a more consistent format, set `allowsNonnumericFormatting` to `false`:
 
 ~~~{swift}
-NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
-long long byteCount = 0;
+let formatter = NSByteCountFormatter()
+let byteCount = 0
 
-formatter.stringFromByteCount(CLongLong(byteCount))
+formatter.stringFromByteCount(Int64(byteCount))
 // Zero KB
 
 formatter.allowsNonnumericFormatting = false
-formatter.stringFromByteCount(CLongLong(byteCount))
+formatter.stringFromByteCount(Int64(byteCount))
 // 0 bytes
 ~~~
 ~~~{objective-c}
-let formatter = NSByteCountFormatter()
-let byteCount = 0
+NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+long long byteCount = 0;
 
 NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
 // Zero KB
@@ -452,7 +452,7 @@ func fooWithNumber(number: NSNumber) {
 }
 ~~~
 
-If the formatter is used across several methods in the same class, that static instance can be refactored into a singleton method in Objective-C or a static class type in Swift:
+If the formatter is used across several methods in the same class, that static instance can be refactored into a singleton method in Objective-C or a static type property in Swift:
 
 ~~~{swift}
 static let numberFormatter: NSNumberFormatter = {
@@ -477,7 +477,7 @@ static let numberFormatter: NSNumberFormatter = {
 
 If the same formatter is privately implemented across several classes, one could either expose it publicly in one of the classes, or implement the static singleton method in a category on `NSNumberFormatter`.
 
-> Prior to iOS 5 and OS X Lion, `NSDateFormatter` & `NSNumberFormatter` were not thread safe. Under these circumstances, the safest way to reuse formatter instances was with a thread dictionary:
+> Prior to iOS 7 and OS X Mavericks, `NSDateFormatter` & `NSNumberFormatter` were not thread safe. Under these circumstances, the safest way to reuse formatter instances was with a thread dictionary:
 
 ~~~{objective-c}
 NSMutableDictionary *threadDictionary = [[NSThread currentThread] threadDictionary];
@@ -574,7 +574,7 @@ let string = formatter.stringFromArray(array)
 // "Russell, Spinoza & Rawls"
 ~~~
 ~~~{objective-c}
-TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+TTTArrayFormatter *formatter = [[TTTArrayFormatter alloc] init];
 formatter.usesAbbreviatedConjunction = YES; // Use '&' instead of 'and'
 formatter.usesSerialDelimiter = YES; // Omit Oxford Comma
 
@@ -592,7 +592,7 @@ let hex = formatter.hexadecimalStringFromColor(color);
 // #ffa500
 ~~~
 ~~~{objective-c}
-TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+TTTColorFormatter *formatter = [[TTTColorFormatter alloc] init];
 UIColor *color = [UIColor orangeColor];
 NSLog(@"%@", [formatter hexadecimalStringFromColor:color]);
 // #ffa500
@@ -612,7 +612,7 @@ let string = formatter.stringFromDistanceAndBearingFromLocation(pittsburgh, toLo
 // "1,218 miles SW"
 ~~~
 ~~~{objective-c}
-TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+TTTLocationFormatter *formatter = [[TTTLocationFormatter alloc] init];
 formatter.numberFormatter.maximumSignificantDigits = 4;
 formatter.bearingStyle = TTTBearingAbbreviationWordStyle;
 formatter.unitSystem = TTTImperialSystem;
