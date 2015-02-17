@@ -4,8 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster, popular
 excerpt: "Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."
-created: "2013-11-11"
-updated: "2014-06-30"
+revisions:
+    "2014-06-30": Converted examples to Swift; added iOS 8 & OS X Yosemite formatter classes.
+    "2015-02-17": Converted remaining examples to Swift; reintroduced Objective-C examples; added Objective-C examples for new formatter classes.
 ---
 
 Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.
@@ -215,21 +216,38 @@ For apps that work with files, data in memory, or information downloaded from a 
 ~~~{swift}
 let formatter = NSByteCountFormatter()
 let byteCount = 8475891734
-let string = formatter.stringFromByteCount(CLongLong(byteCount))
+let string = formatter.stringFromByteCount(Int64(byteCount))
+// 8.48 GB
+~~~
+~~~{objective-c}
+NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+long long byteCount = 8475891734;
+NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
 // 8.48 GB
 ~~~
 
 By default, specifying a `0` byte count will yield a localized string like "Zero KB". For a more consistent format, set `allowsNonnumericFormatting` to `false`:
 
 ~~~{swift}
-let formatter = NSByteCountFormatter()
-let byteCount = 0
+NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
+long long byteCount = 0;
 
 formatter.stringFromByteCount(CLongLong(byteCount))
 // Zero KB
 
 formatter.allowsNonnumericFormatting = false
 formatter.stringFromByteCount(CLongLong(byteCount))
+// 0 bytes
+~~~
+~~~{objective-c}
+let formatter = NSByteCountFormatter()
+let byteCount = 0
+
+NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
+// Zero KB
+
+formatter.allowsNonnumericFormatting = NO;
+NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
 // 0 bytes
 ~~~
 
@@ -272,6 +290,17 @@ components.hour = 2
 let string = formatter.stringFromDateComponents(components)
 // 1 day, 2 hours
 ~~~
+~~~{objective-c}
+NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
+formatter.unitsStyle = NSDateComponentsFormatterUnitsStyleFull;
+
+NSDateComponents *components = [[NSDateComponents alloc] init];
+components.day = 1;
+components.hour = 2;
+
+NSLog(@"%@", [formatter stringFromDateComponents:components]);
+// 1 day, 2 hours
+~~~
 
 #### `NSDateComponentsFormatterUnitsStyle`
 
@@ -289,12 +318,24 @@ Like `NSDateComponentsFormatter`, `NSDateIntervalFormatter` deals with ranges of
 
 ~~~{swift}
 let formatter = NSDateIntervalFormatter()
+formatter.dateStyle = .NoStyle
 formatter.timeStyle = .ShortStyle
 
 let fromDate = NSDate()
 let toDate = fromDate.dateByAddingTimeInterval(10000)
 
 let string = formatter.stringFromDate(fromDate, toDate: toDate)
+// 5:49 - 8:36 PM
+~~~
+~~~{objective-c}
+NSDateIntervalFormatter *formatter = [[NSDateIntervalFormatter alloc] init];
+formatter.dateStyle = NSDateIntervalFormatterNoStyle;
+formatter.timeStyle = NSDateIntervalFormatterShortStyle;
+
+NSDate *fromDate = [NSDate date];
+NSDate *toDate = [fromDate dateByAddingTimeInterval:10000];
+
+NSLog(@"%@", [formatter stringFromDate:fromDate toDate:toDate]);
 // 5:49 - 8:36 PM
 ~~~
 
@@ -327,6 +368,11 @@ let massFormatter = NSMassFormatter()
 let kilograms = 60.0
 println(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
 ~~~
+~~~{objective-c}
+NSMassFormatter *massFormatter = [[NSMassFormatter alloc] init];
+double kilograms = 60;
+NSLog(@"%@", [massFormatter stringFromKilograms:kilograms]); // "132 lb"
+~~~
 
 ### NSLengthFormatter
 
@@ -336,6 +382,11 @@ println(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
 let lengthFormatter = NSLengthFormatter()
 let meters = 5_000.0
 println(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
+~~~
+~~~{objective-c}
+NSLengthFormatter *lengthFormatter = [[NSLengthFormatter alloc] init];
+double meters = 5000;
+NSLog(@"%@", [lengthFormatter stringFromMeters:meters]); // "3.107 mi"
 ~~~
 
 ### NSEnergyFormatter
@@ -349,6 +400,13 @@ energyFormatter.forFoodEnergyUse = true
 let joules = 10_000.0
 println(energyFormatter.stringFromJoules(joules)) // "2.39 Cal"
 ~~~
+~~~{objective-c}
+NSEnergyFormatter *energyFormatter = [[NSEnergyFormatter alloc] init];
+energyFormatter.forFoodEnergyUse = YES;
+
+double joules = 10000;
+NSLog(@"%@", [energyFormatter stringFromJoules:joules]); // "2.39 Cal"
+~~~
 
 ---
 
@@ -360,7 +418,26 @@ Therefore, it's strongly recommended that formatters be created once, and re-use
 
 If it's just a single method using a particular formatter, a static instance is a good strategy:
 
+~~~{swift}
+// a nested struct can have a static property, 
+// created only the first time it's encountered.
+func fooWithNumber(number: NSNumber) {
+    struct NumberFormatter {
+        static let formatter: NSNumberFormatter = {
+            let formatter = NSNumberFormatter()
+            formatter.numberStyle = .DecimalStyle
+            return formatter
+        }()
+    }
+    
+    let string = NumberFormatter.formatter.stringFromNumber(number)
+    // ...
+}
+~~~
+
 ~~~{objective-c}
+// dispatch_once guarantees that the specified block is called 
+// only the first time it's encountered.
 - (void)fooWithNumber:(NSNumber *)number {
     static NSNumberFormatter *_numberFormatter = nil;
     static dispatch_once_t onceToken;
@@ -375,9 +452,15 @@ If it's just a single method using a particular formatter, a static instance is 
 }
 ~~~
 
-> `dispatch_once` guarantees that the specified block is called only the first time it's encountered.
+If the formatter is used across several methods in the same class, that static instance can be refactored into a singleton method in Objective-C or a static class type in Swift:
 
-If the formatter is used across several methods in the same class, that static instance can be refactored into a singleton method:
+~~~{swift}
+static let numberFormatter: NSNumberFormatter = {
+    let formatter = NSNumberFormatter()
+    formatter.numberStyle = .DecimalStyle
+    return formatter
+}()
+~~~
 
 ~~~{objective-c}
 + (NSNumberFormatter *)numberFormatter {
@@ -454,7 +537,7 @@ let date = formatter.dateFromString(timestamp)
 
 ~~~{swift}
 let formatter = TTTAddressFormatter()
-let formatter.locale = NSLocale(localeIdentifier: "en_GB")
+formatter.locale = NSLocale(localeIdentifier: "en_GB")
 
 let street = "221b Baker St"
 let locality = "Paddington"
@@ -463,6 +546,19 @@ let postalCode = "NW1 6XE"
 let country = "United Kingdom"
 
 let string = formatter.stringFromAddressWithStreet(street: street, locality: locality, region: region, postalCode: postalCode, country: country)
+// 221b Baker St / Paddington / Greater London / NW1 6XE / United Kingdom
+~~~
+~~~{objective-c}
+TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+[formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_GB"]];
+
+NSString *street = @"221b Baker St";
+NSString *locality = @"Paddington";
+NSString *region = @"Greater London";
+NSString *postalCode = @"NW1 6XE";
+NSString *country = @"United Kingdom";
+
+NSLog(@"%@", [formatter stringFromAddressWithStreet:street locality:locality region:region postalCode:postalCode country:country]);
 // 221b Baker St / Paddington / Greater London / NW1 6XE / United Kingdom
 ~~~
 
@@ -477,6 +573,15 @@ let array = ["Russel", "Spinoza", "Rawls"]
 let string = formatter.stringFromArray(array)
 // "Russell, Spinoza & Rawls"
 ~~~
+~~~{objective-c}
+TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+formatter.usesAbbreviatedConjunction = YES; // Use '&' instead of 'and'
+formatter.usesSerialDelimiter = YES; // Omit Oxford Comma
+
+NSArray *array = @[@"Russel", @"Spinoza", @"Rawls"];
+NSLog(@"%@", [formatter stringFromArray:array]);
+// "Russell, Spinoza & Rawls"
+~~~
 
 #### TTTColorFormatter
 
@@ -484,6 +589,12 @@ let string = formatter.stringFromArray(array)
 let formatter = TTTColorFormatter()
 let color = UIColor.orangeColor()
 let hex = formatter.hexadecimalStringFromColor(color);
+// #ffa500
+~~~
+~~~{objective-c}
+TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+UIColor *color = [UIColor orangeColor];
+NSLog(@"%@", [formatter hexadecimalStringFromColor:color]);
 // #ffa500
 ~~~
 
@@ -500,6 +611,17 @@ let austin = CLLocation(latitude: 30.2669444, longitude: -97.7427778)
 let string = formatter.stringFromDistanceAndBearingFromLocation(pittsburgh, toLocation: austin)
 // "1,218 miles SW"
 ~~~
+~~~{objective-c}
+TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
+formatter.numberFormatter.maximumSignificantDigits = 4;
+formatter.bearingStyle = TTTBearingAbbreviationWordStyle;
+formatter.unitSystem = TTTImperialSystem;
+
+CLLocation *pittsburgh = [[CLLocation alloc] initWithLatitude:40.4405556 longitude:-79.9961111];
+CLLocation *austin = [[CLLocation alloc] initWithLatitude:30.2669444 longitude:-97.7427778];
+NSLog(@"%@", [formatter stringFromDistanceAndBearingFromLocation:pittsburgh toLocation:austin]);
+// "1,218 miles SW"
+~~~
 
 #### TTTOrdinalNumberFormatter
 
@@ -507,18 +629,32 @@ let string = formatter.stringFromDistanceAndBearingFromLocation(pittsburgh, toLo
 let formatter = TTTOrdinalNumberFormatter()
 formatter.locale = NSLocale(localeIdentifier: "fr_FR")
 formatter.grammaticalGender = TTTOrdinalNumberFormatterMaleGender
-let string = NSString(format: "You came in %@ place", [formatter.stringFromNumber(2)])
+let string = NSString(format: NSLocalizedString("You came in %@ place", comment: ""), formatter.stringFromNumber(2))
+// "Vous êtes arrivé à la 2e place!"
+~~~
+~~~{objective-c}
+TTTOrdinalNumberFormatter *formatter = [[TTTOrdinalNumberFormatter alloc] init];
+[formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"fr_FR"]];
+[formatter setGrammaticalGender:TTTOrdinalNumberFormatterMaleGender];
+NSLog(@"%@", [NSString stringWithFormat:NSLocalizedString(@"You came in %@ place!", nil), [formatter stringFromNumber:@2]]);
 // "Vous êtes arrivé à la 2e place!"
 ~~~
 
 #### TTTURLRequestFormatter
 
 ~~~{swift}
-let request = NSMutableURLRequest(URL: NSURL(string: "http://nshipster.com"))
+let request = NSMutableURLRequest(URL: NSURL(string: "http://nshipster.com")!)
 request.HTTPMethod = "GET"
 request.addValue("text/html", forHTTPHeaderField: "Accept")
 
 let command = TTTURLRequestFormatter.cURLCommandFromURLRequest(request)
+// curl -X GET "https://nshipster.com/" -H "Accept: text/html"
+~~~
+~~~{objective-c}
+NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.example.com/"]];
+[request setHTTPMethod:@"GET"];
+[request addValue:@"text/html" forHTTPHeaderField:@"Accept"];
+NSLog(@"%@", [TTTURLRequestFormatter cURLCommandFromURLRequest:request]);
 // curl -X GET "https://nshipster.com/" -H "Accept: text/html"
 ~~~
 
