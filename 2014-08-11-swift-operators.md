@@ -217,10 +217,9 @@ func * (left: String, right: Int) -> String {
 
     return result
 }
-```
 
-```swift
-"a" * 6 // "aaaaaa"
+"a" * 6 
+// "aaaaaa"
 ```
 
 This is, however, a controversial language feature.
@@ -320,14 +319,13 @@ infix operator ** { associativity left precedence 160 }
 - `associativity left` means that operations are grouped from the left
 - `precedence 160` means that it will evaluate with the same precedence as the exponential operators `<<` and `>>` (left and right bitshift).
 
-```
+```swift
 func ** (left: Double, right: Double) -> Double {
     return pow(left, right)
 }
-```
 
-```swift
-2 ** 3 // 8
+2 ** 3 
+// 8
 ```
 
 When creating custom operators, make sure to also create the corresponding assignment operator, if appropriate:
@@ -386,10 +384,9 @@ prefix operator √ {}
 prefix func √ (number: Double) -> Double {
     return sqrt(number)
 }
-```
 
-```swift
-√4 // 2
+√4 
+// 2
 ```
 
 Or consider the `±` operator, which can be used either as an `infix` or `prefix` to return a tuple with the sum and difference:
@@ -404,11 +401,12 @@ prefix operator ± {}
 prefix func ± (value: Double) -> (Double, Double) {
     return 0 ± value
 }
-```
 
-```swift
-2 ± 3 // (5, -1)
-±4 // (4, -4)
+2 ± 3
+// (5, -1)
+
+±4
+// (4, -4)
 ```
 
 > For more examples of functions using mathematical notation in Swift, check out [Euler](https://github.com/mattt/Euler).
