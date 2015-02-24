@@ -427,7 +427,7 @@ UIImageWriteToSavedPhotosAlbum(image, completionTarget, completionSelector, cont
 @import MessageUI;
 
 MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
-messageComposeViewController.delegate = self;
+messageComposeViewController.mailComposeDelegate = self;
 messageComposeViewController.recipients = @[@"mattt@nshipster•com"];
 messageComposeViewController.body = @"Lorem ipsum dolor sit amet";
 [navigationController presentViewController:messageComposeViewController animated:YES completion:^{
