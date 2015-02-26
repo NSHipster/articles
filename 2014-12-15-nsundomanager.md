@@ -8,7 +8,7 @@ excerpt: "每个人都会犯错误。多亏了 Foundation 库提供了比拼写�
 
 每个人都会犯错误。多亏了 Foundation 库提供了比拼写错误更强大的功能来解救我们。Cocoa 有一套简单强壮的 NSUndoManager API 管理撤销和重做。
 
-默认地，每个应用的 window 都有一个 undo manager，每一个响应链条中的对象都可以管理一个自定义的 undo manager 来进行各自页面上本地操作的撤销和重做操作管理。`UITextField` 和 `UITextView` 用这个功能自动提供了文本编辑的撤销重做支持。然而，标明哪些动作可以被撤销是留给应用开发工程师的工作。
+默认地，每个应用的 window 都有一个 undo manager，每一个响应链条中的对象都可以管理一个自定义的 undo manager 来管理各自页面上本地操作的撤销和重做操作。`UITextField` 和 `UITextView` 用这个功能自动提供了文本编辑的撤销重做支持。然而，标明哪些动作可以被撤销是留给应用开发工程师的工作。
 
 创建一个可以撤销的动作需要三步：做出改变，注册一个可以逆向的 "撤销操作"，响应撤销改变的动作。
 
@@ -30,7 +30,7 @@ excerpt: "每个人都会犯错误。多亏了 Foundation 库提供了比拼写�
 
 ### 注册一个简单的撤销操作
 
-注册一个简单的撤销操作，调用可撤销操作的目标的 `NSUndoManger -registerUndoWithTarget:selector:object:` 方法就可以了。目标不必是那个被改变的对象，通常是管理对象状态的工具或容器。同时调用 `NSUndoManager -setActionName:` 指定撤销操作的名称。撤销对话会展示动作的名称，所以应该进行本地化操作。
+注册一个简单的撤销操作，如果目标可进行撤销操作，调用其 `NSUndoManger -registerUndoWithTarget:selector:object:` 方法就可以了。目标不必是那个被改变的对象，通常是管理对象状态的工具或容器。同时调用 `NSUndoManager -setActionName:` 指定撤销操作的名称。撤销对话会展示动作的名称，所以应该进行本地化操作。
 
 ```swift
 func updateScore(score: NSNumber) {
@@ -87,7 +87,7 @@ func movePiece(piece: ChessPiece, row:UInt, column:UInt) {
 
 1. 能成为 first responder
 2. 一旦页面显示(view appears)，即变成 first responder
-3. 一旦页面小时(view disappears)，即放弃 first responder
+3. 一旦页面消失(view disappears)，即放弃 first responder
 
 当 view controller 接收到运动事件，当撤销或重做可用时，系统会展示给用户一个会话界面。View controller 的 `undoManager` 属性不需要其他操作就可以响应用户的选择。
 
