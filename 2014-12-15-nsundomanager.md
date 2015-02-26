@@ -30,7 +30,7 @@ excerpt: "每个人都会犯错误。多亏了 Foundation 库提供了比拼写�
 
 ### 注册一个简单的撤销操作
 
-注册一个简单的撤销操作，如果目标可进行撤销操作，调用其 `NSUndoManger -registerUndoWithTarget:selector:object:` 方法就可以了。目标不必是那个被改变的对象，通常是管理对象状态的工具或容器。同时调用 `NSUndoManager -setActionName:` 指定撤销操作的名称。撤销对话会展示动作的名称，所以应该进行本地化操作。
+- 注册一个简单的撤销操作，如果目标可进行撤销操作，调用其 `NSUndoManger -registerUndoWithTarget:selector:object:` 方法就可以了。目标不必是那个被改变的对象，通常是管理对象状态的工具或容器。同时调用 `NSUndoManager -setActionName:` 指定撤销操作的名称。撤销对话会展示动作的名称，所以应该进行本地化操作。
 
 ```swift
 func updateScore(score: NSNumber) {
@@ -235,6 +235,6 @@ func removeItem(item: NSObject) {
 
 ----
 
-`NSUndoManager` 也有其他更多的可以总结的行为，特别是操作组合和管理方面。苹果为在适当场景下合理使用撤销和重做提供了 [可用性指南](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/UndoRedo.html) 。
+用 `NSUndoManager` 还能有更多方式提炼许多行为，特别是一些组合操作和管理适用范围方面。苹果为在适当场景下合理使用撤销和重做提供了 [可用性指南](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/UndoRedo.html) 。
 
-我们都希望生活中不犯错，但 Cocoa 给我们的生活提供了能够后悔的机会，可以更简单地做出一些改变。
+我们都希望生活中不犯错，但 Cocoa 给了我们一个让我们生活有更少遗憾的机会，可以更简单地做出一些改变。
