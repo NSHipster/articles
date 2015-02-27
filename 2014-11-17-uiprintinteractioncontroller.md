@@ -14,7 +14,7 @@ UIKit 可以很容易的把用户设备里存储的定制设计直接打印出�
 
 > 这篇文章的“打印”图像都来自苹果的 *打印机模拟器*。（黄色边表示纸张的非打印边距）
 
-> 在 Xcode 6 上，打印机模拟器必须下载，它是*[Xcode 的硬件 IO 工具](https://developer.apple.com/downloads/index.action?name=hardware%20io%20tools)的一部分*。
+> 在 Xcode 6 上，打印机模拟器必须下载，它是*[Xcode 的硬件 IO 工具](https://developer.apple.com/downloads/index.action?name=hardware%20io%20tools)*的一部分。
 
 ![从苹果开发者网站下载硬件 I/O 工具](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-hardware-io-tools-download.png)
 
@@ -36,7 +36,7 @@ UIKit 可以很容易的把用户设备里存储的定制设计直接打印出�
 
 > - `jobName` _`String`_：此打印任务的名称。这个名字将被显示在设备的打印中心，对于有些打印机则显示在液晶屏上。
 > - `orientation` _`UIPrintInfoOrientation`_：`.Portrait` （默认值）或 `.Landscape`，如果你打印的内容有一个内置的方向值，如 PDF，这个属性将被忽略。
-> - `duplex` _`UIPrintInfoDuplex`_：`.None`、`.ShortEdge` 或 `.LongEd​​ge`。short- 和 long- 的边界设置指示如何绑定双面页面，而 `.None` 不支持双面打印（这里不是 UI 切换为双面打印，令人困惑）。
+> - `duplex` _`UIPrintInfoDuplex`_：`.None`、`.ShortEdge` 或 `.LongEd​​ge`。short- 和 long- 的边界设置指示如何装订双面页面，而 `.None` 不支持双面打印（这里不是 UI 切换为双面打印，令人困惑）。
 > - `outputType` _`UIPrintInfoOutputType`_：给 UIKit 提供要打印内容的类型提示。可以是以下任意一个：
 >      - `.General`（默认）：文本和图形混合类型；允许双面打印。
 >      - `.Grayscale`：如果你的内容只包括黑色文本，那么该类型比 `.General` 更好。
