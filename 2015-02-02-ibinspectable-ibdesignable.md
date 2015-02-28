@@ -7,7 +7,7 @@ excerpt: "Replacing an interface that requires us to memorize and type with one 
 
 Show, don't tell. Seeing is believing. A picture is worth a thousand <del>emails</del> words. 
 
-Whatever the cliché, replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. Xcode 6 makes just such a substitution, building new interactions on top of old technologies. With `IBInspectable` and `IBDesignable`, it's possible to build a custom interface for configuring your custom controls and have them rendered in real-time while designing your project.
+Whatever the cliché, replacing an interface that requires us to memorize and type with one we can see and manipulate can be an enormous improvement. Xcode 6 makes just such a substitution, building new interactions on top of old technologies. With `IBInspectable` and `IBDesignable`, it's possible to build a custom interface for configuring your custom controls and have them rendered in real-time while designing your project.
 
 
 ## IBInspectable
