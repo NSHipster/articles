@@ -37,7 +37,7 @@ An `NSScanner` instance has two additional read-only properties: `string`, which
 
 ## Extracting Substrings and Numeric Values
 
-The *raison d'être* of `NSScanner` is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, *all* of which follow the same basic pattern. Each method takes a reference to an output variable as a paramter and returns a boolean value indicating success or failure of the scan:
+The *raison d'être* of `NSScanner` is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, *all* of which follow the same basic pattern. Each method takes a reference to an output variable as a parameter and returns a boolean value indicating success or failure of the scan:
 
 ````swift
 let stringScanner = NSScanner(string: "John & Paul & Ringo & George.")
@@ -69,7 +69,7 @@ while ([stringScanner scanUpToCharactersFromSet:whitespaceAndPunctuationSet into
 // George
 ````
 
-There are two 
+The NSScanner API has methods for two use-cases: scanning for strings generally, or for numeric types specifically.
 
 #### 1) String Scanners
 
