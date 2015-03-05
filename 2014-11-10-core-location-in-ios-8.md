@@ -2,10 +2,10 @@
 title: Core Location in iOS 8
 author: Mike Lazer-Walker
 category: Cocoa
-excerpt: "For as long has the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."
+excerpt: "For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."
 ---
 
-For as long has the iPhone has existed, location services have been front and center. Maps.app was one of the killer features that launched with the original iPhone. The Core Location API has existed in public form since the first public iPhone OS SDK. With each release of iOS, Apple has steadily added new features to the framework, like background location services, geocoding, and iBeacons.
+For as long as the iPhone has existed, location services have been front and center. Maps.app was one of the killer features that launched with the original iPhone. The Core Location API has existed in public form since the first public iPhone OS SDK. With each release of iOS, Apple has steadily added new features to the framework, like background location services, geocoding, and iBeacons.
 
 iOS 8 continues that inexorable march of progress. Like many other aspects of the latest update, Core Location has been shaken up, with changes designed both to enable developers to build new kinds of things they couldn't before and to help maintain user privacy. Specifically, iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring.
 
