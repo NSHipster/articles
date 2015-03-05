@@ -14,14 +14,19 @@ $(document).ready(function() {
         group = [];
       }
   });
-
+  
+  var hiddenSingleLanguages = $("meta[property='nshipster:hide-single-lang']").attr('content').split(',');
   $('.highlight-group').each(function() {
     var languages = [];
     $(this).find($("code")).each(function() {
       languages.push($(this).data('lang'));
     });
 
-    $(this).children(".highlight:not(:first-child)").hide();
+    if ((languages.length == 1) && (hiddenSingleLanguages.indexOf(languages[0].toLowerCase()) != -1)) {
+        return;
+    }
+    
+    $(this).children('.highlight:not(:first-child)').hide();
 
     var span = $('<span class="language-toggle"></span>');
     for (i in languages) {

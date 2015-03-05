@@ -45,6 +45,7 @@ defaults:
       path: ""
     values:
       layout: "default"
+      hiddenlang: "swift,objective-c"
   -
     scope:
       path: ""
