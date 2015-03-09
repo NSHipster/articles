@@ -31,7 +31,7 @@ Specifically, classes that override `-initWithCoder` and conform to `NSSecureCod
 
 Why is this important? Recall that `NSCoding` is Foundation's way of marshaling objects to be either archived on a file system, or copied to another address space. When `-decodeObjectForKey:` is used to decode representations of objects into actual objects, there is no guarantee that the result of creating the object will be what was expected. If that representation is corrupted—specifically, in changing the target class (and thus designated initializer)—the application runs the risk of constructing unknown objects. Whether by malicious intent or an incidental coding error, this can cause serious problems.
 
-为什么这很重要？回想一下，`NSCoding` 是 Foundation 为整理文件系统上的归档对象，或整理复制到另一个地址空间的对象一种方式。如果用 `-decodeObjectForKey:` 用于把对象解码成实际的对象，就不能保证创建的对象是预期的结果。如果该表示已损坏 - 具体地说，在改变目标类（并且因此指定初始化方法）的时候 - 应用程序将会面临构造未知对象的风险。无论是恶意或偶然的编码错误，这都可能会导致严重的问题。
+为什么这很重要？回想一下，`NSCoding` 是基础类库中将对象归档到文件系统上，或复制到另一个地址空间的一种方式。如果用 `-decodeObjectForKey:` 用于把对象解码成实际的对象，就不能保证创建的对象是预期的结果。如果该表示已损坏 - 具体地说，在改变目标类（并且因此指定初始化方法）的时候 - 应用程序将会面临构造未知对象的风险。无论是恶意或偶然的编码错误，这都可能会导致严重的问题。
 
 It's not an apples-to-apples comparison, but it's somewhat similar to [recent YAML exploit found in Rails](http://tenderlovemaking.com/2013/02/06/yaml-f7u12.html).
 
