@@ -40,9 +40,13 @@ An `NSScanner` instance has two additional read-only properties: `string`, which
 The *raison d'être* of `NSScanner` is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, *all* of which follow the same basic pattern. Each method takes a reference to an output variable as a parameter and returns a boolean value indicating success or failure of the scan:
 
 ````swift
+let whitespaceAndPunctuationSet = NSMutableCharacterSet.whitespaceAndNewlineCharacterSet()
+whitespaceAndPunctuationSet.formUnionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+
 let stringScanner = NSScanner(string: "John & Paul & Ringo & George.")
 stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet
 
+// using the latest Swift 1.2 beta 2 syntax:
 var name: NSString?
 while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name), 
         let name = name
@@ -56,6 +60,9 @@ while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoS
 ````
 
 ````objective-c
+NSMutableCharacterSet *whitespaceAndPunctuationSet = [NSMutableCharacterSet punctuationCharacterSet];
+[whitespaceAndPunctuationSet formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+
 NSScanner *stringScanner = [[NSScanner alloc] initWithString:@"John & Paul & Ringo & George."];
 stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet;
 
