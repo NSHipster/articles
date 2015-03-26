@@ -230,11 +230,11 @@ Each activity type supports a number of different data types. For example, a Twe
     </tbody>
 </table>
 
-## `<UIActivityItemSource>` & `UIActivityProvider`
+## `<UIActivityItemSource>` & `UIActivityItemProvider`
 
 Similar to how a [pasteboard item](https://developer.apple.com/library/mac/documentation/cocoa/reference/NSPasteboardItem_Class/Reference/Reference.html) can be used to provide data only when necessary, in order to avoid excessive memory allocation or processing time, activity items can be of a custom type.
 
-Any object conforming to `<UIActivityItemSource>`, including the built-in `UIActivityProvider` class, can be used to dynamically provide different kinds of data depending on the activity type.
+Any object conforming to `<UIActivityItemSource>`, including the built-in `UIActivityItemProvider` class, can be used to dynamically provide different kinds of data depending on the activity type.
 
 ### `<UIActivityItemSource>`
 
