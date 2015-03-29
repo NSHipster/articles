@@ -1,10 +1,19 @@
   {% assign book = site.books | where:"name",include.book | first %}
 
-  <section id="promotion">
+  <section id="promotion"{% if include.home %} class="home"{% endif %}>
+    {% if book.availability == 'in_stock' %}
     <small>Recommended Reading</small>
+    {% else %}
+    <small>Just Announced</small>
+    {% endif %}
+    
     {% include book.html book=book.name %}
     <h3>{{ book.short_title }}</h3>
     <h4>{{ book.sub_title }}</h4>
     {{ book.summary | markdownify }}
+    {% if book.availability == 'in_stock' %}
     <a class="buy" href="{{ book.book_url }}" target="_blank">Buy Now on Gumroad</a>
+    {% else %}
+    <a class="buy" href="{{ book.book_url }}" target="_blank">Pre-Order on Gumroad</a>
+    {% endif %}
   </section>

@@ -69,6 +69,10 @@ layout: default
       {% include contributor.html %}
     </section>
 
+    {% if page.tags contains "swift" %}
+      {% include promo.html book="nshipster-swift" %}
+    {% endif %}
+
     {% if page.tags contains "nshipster" %}
       {% include promo.html book="nshipster" %}
     {% endif %}
