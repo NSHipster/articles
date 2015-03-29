@@ -2,6 +2,7 @@
 title: Swift Default Protocol Implementations
 author: Mattt Thompson
 category: Swift
+tags: swift
 excerpt: "Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven't noticed."
 ---
 

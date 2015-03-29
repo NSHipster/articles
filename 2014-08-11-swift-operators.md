@@ -2,6 +2,7 @@
 title: Swift Operators
 author: Mattt Thompson
 category: Swift
+tags: swift
 excerpt: "Operators in Swift are among the most interesting and indeed controversial features of this new language."
 ---
 

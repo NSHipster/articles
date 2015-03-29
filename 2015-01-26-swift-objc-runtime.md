@@ -2,6 +2,7 @@
 title: Swift & the Objective-C Runtime
 author: Nate Cook
 category: "Swift"
+tags: swift
 excerpt: "Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential."
 ---
 
