@@ -137,8 +137,6 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 
 See [this example app](https://github.com/mattt/AVSpeechSynthesizer-Example) for a demonstration of live text-highlighting for all of the supported languages.
 
-> As of Xcode 6 / iOS 8, [there is a bug](http://openradar.appspot.com/17299966) that prevents `AVSpeectSynthesizer` audio from playing in the simulator. In order to hear `AVSpeechSynthesizer` in action, you must run it from a device.
-
 * * *
 
 Anyone who travels to an unfamiliar place returns with a profound understanding of what it means to communicate. It's totally different from how one is taught a language in High School: instead of genders and cases, it's about emotions and patience and clinging onto every shred of understanding. One is astounded by the extent to which two humans can communicate with hand gestures and facial expressions. One is also humbled by how frustrating it can be when pantomiming breaks down.
