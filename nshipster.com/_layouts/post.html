@@ -11,7 +11,7 @@ layout: default
     {% assign author = site.authors | where:"name",page.author | first %}
 
     {% if author %}
-      <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+      <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> — <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
       {% if page.revisions %}
       (<a href="#revisions">revised</a>)
       {% endif %}
