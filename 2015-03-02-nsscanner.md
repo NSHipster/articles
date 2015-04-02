@@ -163,18 +163,31 @@ NSScanner *benzinPriceScanner = [[NSScanner alloc] initWithString:@"1,38 pro Lit
 
 To take `NSScanner` out for a spin, we'll look at parsing the path data from an SVG path. SVG path data are stored as a string of instructions for drawing the path, where "M" indicates a "move-to" step, "L" stands for "line-to", and "C" stands for a curve. Uppercase instructions are followed by points in absolute coordinates; lowercase instructions are followed by coordinates relative to the last point in the path.
 
-Here's an SVG path I happen to have lying around:
+Here's an SVG path I happen to have lying around (and a point-offsetting helper we'll use later):
 
 ````swift
 var svgPathData = "M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"
+
+extension CGPoint {
+    func offset(p: CGPoint) -> CGPoint {
+        return CGPoint(x: x + p.x, y: y + p.y)
+    }
+}
+````
+````objective-c
+static NSString *const svgPathData = @"M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z";
+
+CGPoint offsetPoint(CGPoint p1, CGPoint p2) {
+    return CGPointMake(p1.x + p2.x, p1.y + p2.y);
+}
 ````
 
 Note that the point data are fairly irregular. Sometimes the `x` and `y` values of a point are separated by a comma, sometimes not, and likewise with points themselves. Parsing these data with regular expressions could turn into a mess pretty quickly, but with `NSScanner` the code is clear and straightforward.
 
-We'll define a `bezierPathFromData` function that will convert a string of path data into an `UIBezierPath`. Our scanner is set up to skip commas and whitespace while scanning for values:
+We'll define a `bezierPathFromSVGPath` function that will convert a string of path data into an `UIBezierPath`. Our scanner is set up to skip commas and whitespace while scanning for values:
 
 ````swift
-func bezierPathFromData(str: String) -> UIBezierPath {
+func bezierPathFromSVGPath(str: String) -> UIBezierPath {
     let scanner = NSScanner(string: str)
     
     // skip commas and whitespace
@@ -185,8 +198,20 @@ func bezierPathFromData(str: String) -> UIBezierPath {
     // the resulting bezier path
     var path = UIBezierPath()
 ````
+````objective-c
+- (UIBezierPath *)bezierPathFromSVGPath:(NSString *)str {
+    NSScanner *scanner = [NSScanner scannerWithString:str];
+    
+    // skip commas and whitespace
+    NSMutableCharacterSet *skipChars = [NSMutableCharacterSet characterSetWithCharactersInString:@","];
+    [skipChars formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    scanner.charactersToBeSkipped = skipChars;
+    
+    // the resulting bezier path
+    UIBezierPath *path = [UIBezierPath bezierPath];
+````
 
-With the setup out of the way, it's time to start scanning. We start by scanning for a string made up characters in the allowed set of instructions:
+With the setup out of the way, it's time to start scanning. We start by scanning for a string made up of characters in the allowed set of instructions:
 
 ````swift
     // instructions code can be upper- or lower-case
@@ -195,6 +220,14 @@ With the setup out of the way, it's time to start scanning. We start by scanning
     
     // scan for an instruction code
     while scanner.scanCharactersFromSet(instructionSet, intoString: &instruction) {
+````
+````objective-c
+    // instructions codes can be upper- or lower-case
+    NSCharacterSet *instructionSet = [NSCharacterSet characterSetWithCharactersInString:@"MCSQTAmcsqta"];
+    NSString *instruction;
+    
+    // scan for an instruction code
+    while ([scanner scanCharactersFromSet:instructionSet intoString:&instruction]) {
 ````
 
 The next section scans for two `Double` values in a row, converts them to a `CGPoint`, and then ultimately adds the correct step to the bezier path:
@@ -224,6 +257,37 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
     }
     
     return path
+}
+````
+````objective-c
+        double x, y;
+        NSMutableArray *points = [NSMutableArray array];
+        
+        // scan for pairs of Double, adding them as CGPoints to the points array
+        while ([scanner scanDouble:&x] && [scanner scanDouble:&y]) {
+            [points addObject:[NSValue valueWithCGPoint:CGPointMake(x, y)]];
+        }
+        
+        // new point in path
+        if ([instruction isEqualToString:@"M"]) {
+            [path moveToPoint:[points[0] CGPointValue]];
+        } else if ([instruction isEqualToString:@"C"]) {
+            [path addCurveToPoint:[points[2] CGPointValue]
+                    controlPoint1:[points[0] CGPointValue]
+                    controlPoint2:[points[1] CGPointValue]];
+        } else if ([instruction isEqualToString:@"c"]) {
+            CGPoint newPoint = offsetPoint(path.currentPoint, [points[2] CGPointValue]);
+            CGPoint control1 = offsetPoint(path.currentPoint, [points[0] CGPointValue]);
+            CGPoint control2 = offsetPoint(path.currentPoint, [points[1] CGPointValue]);
+            
+            [path addCurveToPoint:newPoint
+                    controlPoint1:control1
+                    controlPoint2:control2];
+        }
+    }
+    
+    [path applyTransform:CGAffineTransformMakeScale(1, -1)];
+    return path;
 }
 ````
 
