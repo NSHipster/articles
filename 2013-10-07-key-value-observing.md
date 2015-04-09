@@ -167,11 +167,11 @@ NSStringFromSelector(@selector(isFinished))
 
 KVO 很有用并且被广泛采用。正是因为这样，大部分需要得到正确绑定的工作自动被编译和进行时接管。
 
-> Classes可以选择自动退出KVO通过复写：`+automaticallyNotifiesObserversForKey:` 并且返回 `No`。
+> Classes 可以选择自动退出 KVO 通过复写： `+automaticallyNotifiesObserversForKey:` 并且返回 `No` 。
 
-但是如果想复合或者派生values又该怎么办呢？让我告诉你有一个带有 `@dynamic`, `readonly` `address`属性，它读取并且格式化它的`streetAddress`, `locality`, `region`, 和 `postalCode`？
+但是如果想复合或者派生 values 又该怎么办呢？让我告诉你有一个带有 `@dynamic`, `readonly` `address` 属性，它读取并且格式化它的`streetAddress`, `locality`, `region`, 和 `postalCode`？
 
-好吧，你可以实现 `keyPathsForValuesAffectingAddress`方法（或者 `+keyPathsForValuesAffectingValueForKey:`）:
+好吧，你可以实现 `keyPathsForValuesAffectingAddress` 方法（或者 `+keyPathsForValuesAffectingValueForKey:` ）:
 
 ```
 + (NSSet *)keyPathsForValuesAffectingAddress {
@@ -179,4 +179,4 @@ KVO 很有用并且被广泛采用。正是因为这样，大部分需要得到�
 }
 ```
 
-现在你知道了：关于 KVO 的一些一般性意见和最佳实践。作为一个积极的 NSHipster，KVO 可以看做那些高度灵活和抽象的上层的一个强大的基板。明智的使用它，理解其中的规则和惯例，在你的应用中充分利用这个特性。
+现在你知道了：关于 KVO 的一些一般性意见和最佳实践。作为一个积极的 NSHipster ，KVO 可以看做那些高度灵活和抽象的上层的一个强大的基板。明智的使用它，理解其中的规则和惯例，在你的应用中充分利用这个特性。
