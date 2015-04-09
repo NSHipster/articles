@@ -167,9 +167,9 @@ NSStringFromSelector(@selector(isFinished))
 
 KVO 很有用并且被广泛采用。正是因为这样，大部分需要得到正确绑定的工作自动被编译和进行时接管。
 
-> Classes 可以选择自动退出 KVO 通过复写： `+automaticallyNotifiesObserversForKey:` 并且返回 `No` 。
+> Classes 可以选择自动退出 KVO 通过复写： `+automaticallyNotifiesObserversForKey:` 并且返回 `No`。
 
-但是如果想复合或者派生 values 又该怎么办呢？让我告诉你有一个带有 `@dynamic`, `readonly` `address` 属性，它读取并且格式化它的`streetAddress`, `locality`, `region`, 和 `postalCode`？
+但是如果想复合或者派生 values 又该怎么办呢？让我告诉你有一个带有 `@dynamic`， `readonly` `address` 属性，它读取并且格式化它的`streetAddress`， `locality`， `region` 和 `postalCode`？
 
 好吧，你可以实现 `keyPathsForValuesAffectingAddress` 方法（或者 `+keyPathsForValuesAffectingValueForKey:` ）:
 
