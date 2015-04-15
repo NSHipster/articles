@@ -9,7 +9,11 @@ Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all rev
 
 > For the uninitiated, [Clang](http://clang.llvm.org/index.html) is the open source C language family front end to the [LLVM](http://www.llvm.org) compiler. Clang is responsible for all of the killer language features in Objective-C going back a few years, such as "Build & Analyze", ARC, blocks, and a nearly 3× performance boost when compiling over GCC.
 
-Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: __`NSNumber` Literals__, __Collection Literals__, and __Object Subscripting__.
+Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: [`NSNumber` Literals][num], [Collection Literals][col], and [Object Subscripting][sub].
+
+[num]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#nsnumber-literals
+[col]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#container-literals
+[sub]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#object-subscripting
 
 In a single Xcode release, Objective-C went from this:
 
@@ -54,21 +58,11 @@ Where this really becomes interesting is when you extend your own classes with s
 
 ### Custom Indexed Subscripting
 
-To add custom-indexed subscripting support to your class, simply declare and implement the following methods:
-
-~~~{objective-c}
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
-- (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
-~~~
+To add custom-indexed subscript reading support to your class, simply declare and implement `objectAtIndexedSubscript:`, where the parameter is of any integral type (such as `char`, `int`, or `NSUInteger`) and the return type is an Objective-C object pointer type. For indexed subscript writing, implement `setObject:atIndexedSubscript:`, where the first parameter is of Objective-C object pointer type, the second of integral type, and the return type is `void`.
 
 ### Custom Keyed Subscripting
 
-Similarly, custom-keyed subscripting can be added to your class by declaring and implementing these methods:
-
-~~~{objective-c}
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
-- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
-~~~
+Similarly, custom-keyed subscripting can be added to your class by declaring and implementing `objectForKeyedSubscript:` and `setObject:forKeyedSubscript:`, where the subscript parameters are of Objective-C object pointer type.
 
 ## Custom Subscripting as DSL
 
