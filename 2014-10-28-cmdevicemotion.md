@@ -21,13 +21,13 @@ The composited device motion data are presented in a few different ways, each wi
 
 ![Device X-, Y-, and Z-axes](http://nshipster.s3.amazonaws.com/cmdm-axes.png)
 
-## CoreMotionManager
+## CMMotionManager
 
-The `CoreMotionManager` class provides access to all the motion data on an iOS device. Interestingly, Core Motion provides both "pull" and "push" access to motion data. To "pull" motion data, you can access the current status of any sensor or the composited data as read-only properties of `CoreMotionManager`. To receive "pushed" data, you start the collection of your desired data with a block or closure that receives updates at a specified interval.
+The `CMMotionManager` class provides access to all the motion data on an iOS device. Interestingly, Core Motion provides both "pull" and "push" access to motion data. To "pull" motion data, you can access the current status of any sensor or the composited data as read-only properties of `CMMotionManager`. To receive "pushed" data, you start the collection of your desired data with a block or closure that receives updates at a specified interval.
 
-To keep performance at the highest level, Apple recommends using a single shared `CoreMotionManager` instance throughout your app.
+To keep performance at the highest level, Apple recommends using a single shared `CMMotionManager` instance throughout your app.
 
-`CoreMotionManager` provides a consistent interface for each of the four motion data types: `accelerometer`, `gyro`, `magnetometer`, and `deviceMotion`. As an example, here are the ways you can interact with the gyroscope—simply replace `gyro` with the motion data type you need.
+`CMMotionManager` provides a consistent interface for each of the four motion data types: `accelerometer`, `gyro`, `magnetometer`, and `deviceMotion`. As an example, here are the ways you can interact with the gyroscope—simply replace `gyro` with the motion data type you need.
 
 #### Checking for Availability
 
