@@ -1,6 +1,7 @@
 ---
 title: Type Encodings
 author: Mattt Thompson
+translator: Ricky Tan
 category: Objective-C
 tags: nshipster
 excerpt: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
