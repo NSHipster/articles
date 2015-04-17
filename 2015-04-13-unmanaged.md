@@ -77,6 +77,10 @@ Now that we've looked at how to work with `Unmanaged`, let's look at how to get 
 
 For example, let's take a function that combines two `CFString` instances and annotate that function to tell Swift how to memory-manage the resulting string. Following the naming conventions described above, our function will be called `CreateJoinedString`—that name communicates that the caller will own the returned string.
 
+```c
+CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2);
+```
+
 Sure enough, in the implementation you can see that this creates `resultString` with `CFStringCreateMutableCopy` and returns it without a balancing `CFRelease`: 
 
 ```c
@@ -103,11 +107,7 @@ Since our function follows the naming conventions described in the Create Rule, 
 CF_IMPLICIT_BRIDGING_ENABLED            // get rid of Unmanaged
 #pragma clang assume_nonnull begin      // also get rid of !s
 
-CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2) {
-    CFMutableStringRef resultString = CFStringCreateMutableCopy(NULL, 0, string1);
-    CFStringAppend(resultString, string2);
-    return resultString;
-}
+CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2);
 
 #pragma clang assume_nonnull begin
 CF_IMPLICIT_BRIDGING_DISABLED
@@ -128,11 +128,7 @@ Finally, when your function naming *doesn't* comply with the Create/Get Rules, t
 ```c
 CF_RETURNS_RETAINED
 __nonnull CFStringRef MakeJoinedString(__nonnull CFStringRef string1,
-                                       __nonnull CFStringRef string2) {
-    CFMutableStringRef resultString = CFStringCreateMutableCopy(NULL, 0, string1);
-    CFStringAppend(resultString, string2);
-    return resultString;
-}
+                                       __nonnull CFStringRef string2);
 ```
 
 * * *
