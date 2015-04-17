@@ -4,27 +4,27 @@ author: Mattt Thompson
 translator: Ricky Tan
 category: Objective-C
 tags: nshipster
-excerpt: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
+excerpt: "从数字电台和数学命理到象形文字和流浪汉码，找到看似平常的东西中隐藏的意思真是令人着迷。即使它们中隐藏的信息很少用到或者并不特别有趣，但正是那种寻找的快感激发着我们强烈的好奇心。"
 ---
 
-From [number stations](http://en.wikipedia.org/wiki/Numbers_station) and [numerology](http://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities.
+从 [数字电台](http://en.wikipedia.org/wiki/Numbers_station) 和 [数学命理](http://en.wikipedia.org/wiki/Numerology) 到 [象形文字](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) 和 [流浪汉码](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code)，找到看似平常的东西中隐藏的意思真是令人着迷。即使它们中隐藏的信息很少用到或者并不特别有趣，但正是那种寻找的快感激发着我们强烈的好奇心。
 
-It is in this spirit that we take a look at [Objective-C Type Encodings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) in this week's edition of NSHipster.
+在这种精神下，本周的 NSHipster 我们来看看 [Objective-C Type Encodings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html)。
 
 ---
 
-[Last week](http://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive.
+[上一周](http://nshipster.cn/nsvalue/)，在讨论 `NSValue` 时提到了 `+valueWithBytes:objCType:`，它的第二个参数需要用 Objective-C 的编译器指令 `@encode()` 来创建。
 
-`@encode`, one of the [`@` Compiler Directives](http://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the ANSI C `typeof` operator. Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
+`@encode`，[`@`编译器指令](http://nshipster.com/at-compiler-directives/) 之一，返回一个给定类型编码为一种内部表示的字符串（例如，`@encode(int)` → `i`），类似于 ANSI C 的 `typeof` 操作。苹果的 Objective-C 运行时库内部利用类型编码帮助加快消息分发。
 
-Here's a rundown of all of the different Objective-C Type Encodings:
+这里有一个所有不同的 Objective-C 类型编码的概要：
 
 <table id="type-encodings">
   <caption>Objective-C Type Encodings</caption>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Meaning</th>
+      <th>编码</th>
+      <th>意义</th>
     </tr>
   </thead>
   <tbody>
@@ -105,7 +105,7 @@ Here's a rundown of all of the different Objective-C Type Encodings:
   </tbody>
 </table>
 
-Of course, charts are fine, but experimenting in code is even better:
+当然，用图表很不错，但是用代码实践更好：
 
 ~~~{objective-c}
 NSLog(@"int        : %s", @encode(int));
@@ -136,9 +136,9 @@ typedef struct _struct {
 NSLog(@"struct     : %s", @encode(typeof(Struct)));
 ~~~
 
-Result:
+结果：
 
-|  Type        | Encoding           |
+|  类型         | 编码               |
 |--------------|--------------------|
 | `int`        | `i`                |
 | `float`      | `f`                |
@@ -156,24 +156,28 @@ Result:
 | `float[]`    | `[3f]`             |
 | `struct`     | `{_struct=sqQ}`    |
 
+这里有一些有趣的点：
+
+（我靠，外卖啊！！！！这怎么翻译？？！！！！）
+
 There are some interesting takeaways from this:
 
-- Whereas the standard encoding for pointers is a preceding `^`, `char *` gets its own code: `*`. This makes sense conceptually, as C strings are thought to be entities in and of themselves, rather than a pointer to something else.
-- `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`.
-- Passing `NSObject` directly yields `#`. However, passing `[NSObject class]` yields a struct named `NSObject` with a single class field. That is, of course, the `isa` field, which all `NSObject` instances have to signify their type.
+- 指针的标准编码是加一个前置的 `^`，而 `char *` 拥有自己的编码 `*`。这在概念上是很好理解的，因为 C 的字符串被认为是一个实体，而不是指针。
+- `BOOL` 是 `c`，而不是某些人以为的 `i`。原因是 `char` 比 `int` 小，且在 80 年代 Objective-C 最开始设计的时候，每一个 bit 位都比今天的要值钱（就像美元一样）。`BOOL` 更确切地说是 `signed char` （即使设置了 `-funsigned-char` 参数），以在不同编译器之间保持一致，因为 `char` 可以是 `signed` 或者 `unsigned`。
+- 直接传入 `NSObject` 将产生 `#`。但是传入 `[NSObject class]` 产生一个名为 `NSObject` 只有一个类字段的结构体。很明显，那就是 `isa` 字段，所有的 `NSObject` 实例都用它来表示自己的类型。
 
-## Method Encodings
+## 方法编码
 
-As mentioned in Apple's ["Objective-C Runtime Programming Guide"](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html), there are a handful of type encodings that are used internally, but cannot be returned with `@encode`.
+如苹果的 ["Objective-C Runtime Programming Guide"](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) 中所提到的，有一大把内部使用的类型编码无法用 `@encode()` 返回。
 
-These are the type qualifiers for methods declared in a protocol:
+以下是协议中声明的方法的类型修饰符：
 
 <table id="method-encodings">
   <caption>Objective-C Method Encodings</caption>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Meaning</th>
+      <th>编码</th>
+      <th>意义</th>
     </tr>
   </thead>
   <tbody>
@@ -208,7 +212,7 @@ These are the type qualifiers for methods declared in a protocol:
   </tbody>
 </table>
 
-For anyone familiar with [NSDistantObject](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html), you'll doubtless recognize these as a vestige of [Distributed Objects](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i).
+对于那些熟悉 [NSDistantObject](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html) 的人，你无疑会认出这些是 [Distributed Objects](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i) 的残留。
 
 Although DO has fallen out of fashion in the age of iOS, it was an interprocess messaging protocol used between Cocoa applications--even running on different machines on the network. Under these constraints, there were benefits to be had from the additional context.
 
