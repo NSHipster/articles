@@ -214,16 +214,16 @@ There are some interesting takeaways from this:
 
 对于那些熟悉 [NSDistantObject](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html) 的人，你无疑会认出这些是 [Distributed Objects](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i) 的残留。
 
-Although DO has fallen out of fashion in the age of iOS, it was an interprocess messaging protocol used between Cocoa applications--even running on different machines on the network. Under these constraints, there were benefits to be had from the additional context.
+尽管 DO (Distributed Objects) 在 iOS 时代已经不那么时髦了，它仍是用于 Cocoa 应用程序进程间通信的协议————甚至用于网络上的不同机器之间。在这些约束下， Under these constraints, there were benefits to be had from the additional context.
 
-For example, parameters in distributed object messages were passed as proxies by default. In situations where proxying would be unnecessarily inefficient, the `bycopy` qualifier could be added to make sure a full copy of the object was sent. Also by default, parameters were `inout`, signifying that objects needed to be sent back and forth when sending the message. By specifying a parameter as `in` or `out` instead, the application could avoid the round-trip overhead.
+例如，分页式的对象消息的参数默认是用代理传递的。在那些没必要用到低效的代理的情况下，增加一个 `bycopy` 修饰符以保证发送了一份完整的拷贝。同样，默认情况下，带用 `inout` 的参数表明它在发消息时对象即可传入又可传出。将参数特别标注为 `in` 或 `out`，程序将避免一些来回的开销。
 
 ---
 
-So what do we gain from our newfound understanding of Objective-C Type Encodings?
-Honestly, not that much (unless you're doing any crazy metaprogramming).
+我们从对 Objective-C 的类型编码的全新理解上能得到什么呢？
+不瞒您说，其实没多少（除非你在做一些疯狂的元编程）。
 
-But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.
+但是就如我们最开始所说的，在追求破译密文的过程中要用到不少智慧。
 
-Looking at type encodings reveals details about Objective-C runtime internals, which is a noble pursuit in and of itself. Going further down the rabbit hole, and we come to the secret history of Distributed Objects, and the obscure parameter qualifiers that [still linger around to this day](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22).
+看看类型编码为我们展现的有关 Objective-C 内部的细节，这本身就是一种高尚的追求。如果刨根问到底的话，我们需要了解一下 Distributed Objects 神秘的历史以及那 [至今仍然存在](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22) 的复杂的参数修饰符。
 
