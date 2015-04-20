@@ -9,7 +9,11 @@ Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all rev
 
 > For the uninitiated, [Clang](http://clang.llvm.org/index.html) is the open source C language family front end to the [LLVM](http://www.llvm.org) compiler. Clang is responsible for all of the killer language features in Objective-C going back a few years, such as "Build & Analyze", ARC, blocks, and a nearly 3× performance boost when compiling over GCC.
 
-Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: __`NSNumber` Literals__, __Collection Literals__, and __Object Subscripting__.
+Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact is comparable to the changes brought about in Objective-C 2.0: [`NSNumber` Literals][num], [Collection Literals][col], and [Object Subscripting][sub].
+
+[num]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#nsnumber-literals
+[col]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#container-literals
+[sub]: http://clang.llvm.org/docs/ObjectiveCLiterals.html#object-subscripting
 
 In a single Xcode release, Objective-C went from this:
 
@@ -37,7 +41,7 @@ However, what remains relatively under-utilized even now—a year after the thes
 
 ---
 
-Elements in a C array are laid out contiguously in memory, and is referenced by the address of its first element. To get the value at a particular index, one would offset this address by the size of an array element, multiplied by the desired index. This pointer arithmetic is provided by the `[]` operator.
+Elements in a C array are laid out contiguously in memory, and are referenced by the address of the first element. To get the value at a particular index, one would offset this address by the size of an array element, multiplied by the desired index. This pointer arithmetic is provided by the `[]` operator.
 
 Over time, scripting languages began to take greater liberties with this familiar convention, expanding its role to get & set values in arrays, as well as hashes and objects.
 
@@ -57,18 +61,24 @@ Where this really becomes interesting is when you extend your own classes with s
 To add custom-indexed subscripting support to your class, simply declare and implement the following methods:
 
 ~~~{objective-c}
-- (id)objectAtIndexedSubscript:(NSUInteger)idx;
-- (void)setObject:(id)obj atIndexedSubscript:(NSUInteger)idx;
+- (id)objectAtIndexedSubscript:(*IndexType*)idx;
+- (void)setObject:(id)obj atIndexedSubscript:(*IndexType*)idx;
 ~~~
+
+`*IndexType*` can be any integral type, such as `char`, `int`, or `NSUInteger`, as used by `NSArray`.
 
 ### Custom Keyed Subscripting
 
 Similarly, custom-keyed subscripting can be added to your class by declaring and implementing these methods:
 
 ~~~{objective-c}
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
-- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
+- (id)objectForKeyedSubscript:(*KeyType*)key;
+- (void)setObject:(id)obj forKeyedSubscript:(*KeyType*)key;
 ~~~
+
+`*KeyType*` can be any Objective-C object pointer type.
+
+> In fact, for non-general-purpose collections, indexed and keyed subscripting can get and set *any* Objective-C object pointer type, not just `id`. 
 
 ## Custom Subscripting as DSL
 

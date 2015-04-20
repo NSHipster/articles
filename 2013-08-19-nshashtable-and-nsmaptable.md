@@ -76,18 +76,23 @@ Equal to `NSPointerFunctionsObjectPointerPersonality`.
 
 ### Subscripting
 
-After looking at a few code examples, a clever NSHipster may have thought "why aren't we using [object subscripting](http://nshipster.com/object-subscripting/)?". A particularly enterprising NSHipster may even have gotten a few lines of code into implementing a subscripting category for `NSMapTable`!
-
-So why doesn't `NSMapTable` implement subscripting? Take a look at these method signatures:
+`NSMapTable` doesn't implement [object subscripting](http://nshipster.com/object-subscripting/), but it can be trivially added in a category. `NSDictionary`'s `NSCopying` requirement for keys belongs to `NSDictionary` alone:
 
 ~~~{objective-c}
-- (id)objectForKeyedSubscript:(id <NSCopying>)key;
-- (void)setObject:(id)obj forKeyedSubscript:(id <NSCopying>)key;
+@implementation NSMapTable (NSHipsterSubscripting)
+
+- (id)objectForKeyedSubscript:(id)key
+{
+	return [self objectForKey:key];
+}
+
+- (void)setObject:(id)obj forKeyedSubscript:(id)key
+{
+	[self setObject:obj forKey:key];
+}
+
+@end
 ~~~
-
-Notice that the `key` argument is of type `<NSCopying>`. This is great for `NSDictionary` `NSMutableDictionary`, but we can't make that assumption for `NSMapTable`. And so we arrive at an impasse: with an `id <NSCopying>` type, we can't implement for `NSMapTable`, however if object subscripting methods were to drop the `<NSCopying>` constraint, then we would miss out on the compiler check in `NSMutableDictionary` `-setObject:forKeyedSubscript:`.
-
-So it goes. Honestly, in a situation where `NSMapTable` is merited, syntactic sugar is probably the least of one's concerns.
 
 ---
 
