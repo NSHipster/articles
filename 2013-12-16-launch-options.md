@@ -3,7 +3,7 @@ title: UIApplicationDelegate launchOptions
 author: Mattt Thompson
 category: Cocoa
 translator: Croath Liu
-excerpt: "AppDelegate is the dumping ground for functionality in iOS."
+excerpt: "AppDelegate 是 iOS 各种功能的集散中心。"
 ---
 
 AppDelegate 是 iOS 各种功能的集散中心。
@@ -40,10 +40,10 @@ NSHipster 本周披露的知识点是关于我们平时关心最少的、但又�
 
 > - `UIApplicationLaunchOptionsURLKey`: 标示应用是通过 URL 大家的。其对应的值代表应用被打开时使用的 `NSURL` 对象。
 
-An app can also be launched through URLs with additional system information. When an app is launched from an `UIDocumentInteractionController` or via AirDrop, the following keys are set in `launchOptions`:
+应用也可以通过 URL 和附加系统信息打开。当应用从 AirDrop 的 `UIDocumentInteractionController` 中打开时，`launchOptions` 会包含下列这键：
 
-> - `UIApplicationLaunchOptionsSourceApplicationKey`: Identifies the app that requested the launch of your app. The value of this key is an `NSString` object that represents the bundle ID of the app that made the request
-> - `UIApplicationLaunchOptionsAnnotationKey`: Indicates that custom data was provided by the app that requested the opening of the URL. The value of this key is a property-list object containing the custom data.
+> - `UIApplicationLaunchOptionsSourceApplicationKey`：请求打开应用的应用 id。对应的值是请求打开应用的 bundle ID 的 `NSString` 对象
+> - `UIApplicationLaunchOptionsAnnotationKey`：标示通过 URL 打开应用时携带了自定义数据。对应的值是包含自定义数据的属性列表对象
 
 ~~~{objective-c}
 NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"Document" withExtension:@"pdf"];
@@ -55,15 +55,15 @@ if (fileURL) {
 }
 ~~~
 
-## Responding to Notification
+## 响应通知
 
-Not to be confused with [`NSNotification`](http://nshipster.com/nsnotification-and-nsnotificationcenter/), apps can be sent remote or local notifications.
+不要和 [`NSNotification`](http://nshipster.com/nsnotification-and-nsnotificationcenter/) 混淆了，应用可以通过本地（local）或远程（remote）通知打开。
 
 ### Remote Notification
 
-Introduced in iOS 3, remote, or "push" notifications are one of the defining features of the mobile platform.
+自 iOS 3 开始引入的 remote（或者叫 push）notification 是在移动平台上的重要特性。
 
-To register for remote notifications, `registerForRemoteNotificationTypes:` is called in `application:didFinishLaunchingWithOptions:`.
+在 `application:didFinishLaunchingWithOptions:` 中调用 `registerForRemoteNotificationTypes:` 来注册推送通知。
 
 ~~~{objective-c}
 [application registerForRemoteNotificationTypes:
@@ -72,16 +72,16 @@ To register for remote notifications, `registerForRemoteNotificationTypes:` is c
 	UIRemoteNotificationTypeAlert];
 ~~~
 
-...which, if successful, calls  `-application:didRegisterForRemoteNotificationsWithDeviceToken:`. Once the device has been successfully registered, it can receive push notifications at any time.
+如果调用成功则会回调 `-application:didRegisterForRemoteNotificationsWithDeviceToken:`，之后该设备就能随时收到推送通知了。
 
-If an app receives a notification while in the foreground, its delegate will call `application:didReceiveRemoteNotification:`. However, if the app is launched, perhaps by swiping the alert in notification center, `application:didFinishLaunchingWithOptions:` is called with the  `UIApplicationLaunchOptionsRemoteNotificationKey` launch option:
+如果应用在打开时收到了推送通知，delegate 会调用 `application:didReceiveRemoteNotification:`。但是如果是通过在通知中心中滑动通知打开的应用，则会调用 `application:didFinishLaunchingWithOptions:` 并携带 `UIApplicationLaunchOptionsRemoteNotificationKey` 启动参数：
 
-> - `UIApplicationLaunchOptionsRemoteNotificationKey`: Indicates that a remote notification is available for the app to process. The value of this key is an `NSDictionary` containing the payload of the remote notification.
->> - `alert`: Either a string for the alert message or a dictionary with two keys: `body` and `show-view`.
->> - `badge`: A number indicating the quantity of data items to download from the provider. This number is to be displayed on the app icon. The absence of a badge property indicates that any number currently badging the icon should be removed.
->> - `sound`: The name of a sound file in the app bundle to play as an alert sound. If “default” is specified, the default sound should be played.
+> - `UIApplicationLaunchOptionsRemoteNotificationKey`：标示推送通知母亲处于可用状态。对应的值是包含通知内容的 `NSDictionary`。
+>> - `alert`：一个字符串或包含两个键 `body` 和 `show-view` 的字典。
+>> - `badge`：标示从通知发出者那应该获取数据的数量。这个数字会显示在应用图标上。没有 badge 信息则表示应该从图片上移除数字显示。
+>> - `sound`：通知接收时播放音频的文件名。如果值为 "default" 那么则播放默认音频。
 
-Since this introduces two separate code paths for notification handling, a common approach is to have `application:didFinishLaunchingWithOptions:` manually call `application:didReceiveRemoteNotification:`:
+因为通知可以通过两种方式控制，通常的做法是在 `application:didFinishLaunchingWithOptions:` 中手动调用 `application:didReceiveRemoteNotification:`：
 
 ~~~{objective-c}
 - (BOOL)application:(UIApplication *)application
@@ -95,9 +95,9 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 }
 ~~~
 
-### Local Notification
+### 本地通知
 
-[Local notifications](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW1) were added in iOS 4, and to this day, are still surprisingly misunderstood.
+[本地通知](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW1) 是在 iOS 4 中加入的功能，这个功能至今都被误解了。
 
 Apps can schedule `UILocalNotification`s to trigger at some future time or interval. If the app is active in the foreground at that time, the app calls `-application:didReceiveLocalNotification:` on its delegate. However, if the app is not active, the notification will be posted to Notification Center.
 
