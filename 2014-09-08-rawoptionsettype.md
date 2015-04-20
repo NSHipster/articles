@@ -167,15 +167,16 @@ Either way, if you're looking to implement an `NS_OPTIONS` equivalent in your co
 
 ~~~{swift}
 struct <# Options #> : RawOptionSetType, BooleanType {
-    private let value: UInt = 0
-    init(nilLiteral: ()) {}
+    let rawValue: UInt
+    init(nilLiteral: ()) { self.value = 0 }
+    init(_ value: UInt = 0) { self.value = value }
     init(rawValue value: UInt) { self.value = value }
     var boolValue: Bool { return value != 0 }
     var rawValue: UInt { return value }
-    static var allZeros: <# Options #> { return self(rawValue: 0) }
+    static var allZeros: <# Options #> { return self(0) }
 
-    static var None: <# Options #>         { return self(rawValue: 0b0000) }
-    static var <# Option #>: <# Options #>     { return self(rawValue: 0b0001) }
+    static var None: <# Options #>         { return self(0b0000) }
+    static var <# Option #>: <# Options #>     { return self(0b0001) }
     // ...
 }
 ~~~
