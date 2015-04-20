@@ -109,7 +109,7 @@ CF_IMPLICIT_BRIDGING_ENABLED            // get rid of Unmanaged
 
 CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2);
 
-#pragma clang assume_nonnull begin
+#pragma clang assume_nonnull end
 CF_IMPLICIT_BRIDGING_DISABLED
 ```
 
