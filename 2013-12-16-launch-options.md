@@ -76,7 +76,7 @@ if (fileURL) {
 
 如果应用在打开时收到了推送通知，delegate 会调用 `application:didReceiveRemoteNotification:`。但是如果是通过在通知中心中滑动通知打开的应用，则会调用 `application:didFinishLaunchingWithOptions:` 并携带 `UIApplicationLaunchOptionsRemoteNotificationKey` 启动参数：
 
-> - `UIApplicationLaunchOptionsRemoteNotificationKey`：标示推送通知母亲处于可用状态。对应的值是包含通知内容的 `NSDictionary`。
+> - `UIApplicationLaunchOptionsRemoteNotificationKey`：标示推送通知目前处于可用状态。对应的值是包含通知内容的 `NSDictionary`。
 >> - `alert`：一个字符串或包含两个键 `body` 和 `show-view` 的字典。
 >> - `badge`：标示从通知发出者那应该获取数据的数量。这个数字会显示在应用图标上。没有 badge 信息则表示应该从图片上移除数字显示。
 >> - `sound`：通知接收时播放音频的文件名。如果值为 "default" 那么则播放默认音频。
@@ -99,15 +99,15 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 [本地通知](https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/IPhoneOSClientImp.html#//apple_ref/doc/uid/TP40008194-CH103-SW1) 是在 iOS 4 中加入的功能，这个功能至今都被误解了。
 
-Apps can schedule `UILocalNotification`s to trigger at some future time or interval. If the app is active in the foreground at that time, the app calls `-application:didReceiveLocalNotification:` on its delegate. However, if the app is not active, the notification will be posted to Notification Center.
+应用可以制定计划在未来某个时间点触发 `UILocalNotification`。如果应用处于打开状态，那么将回调 `-application:didReceiveLocalNotification:` 方法。如果应用处于非活跃状态，通知将会被发送到通知中心。
 
-Unlike remote notifications, `UIApplication` delegate provides a unified code path for handling local notifications. If an app is launched through a local notification, it calls `-application:didFinishLaunchingWithOptions:` followed by `-application:didReceiveLocalNotification:` (that is, there is no need to call it from `-application:didFinishLaunchingWithOptions:` like remote notifications).
+不像推送通知，`UIApplication` 的 delegate 提供了统一控制本地通知的方法。如果应用是通过本地通知启动的，`-application:didReceiveLocalNotification:` 将会在 `-application:didFinishLaunchingWithOptions:` 之后被自动调用（意思就是不需要像推送通知一样在 `-application:didFinishLaunchingWithOptions:` 中手动调用了）。
 
-A local notification populates the launch options on `UIApplicationLaunchOptionsLocalNotificationKey`, which contains a payload with the same structure as a remote notification:
+本地通知会在启动参数中携带和推送通知有类似结构的 `UIApplicationLaunchOptionsLocalNotificationKey`：
 
-- `UIApplicationLaunchOptionsLocalNotificationKey`: Indicates that a local notification is available for the app to process. The value of this key is an `NSDictionary` containing the payload of the local notification.
+- `UIApplicationLaunchOptionsLocalNotificationKey`: 标示本地通知目前处于可用状态。对应的值是包含通知内容的 `NSDictionary`。
 
-In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
+如果应用在运行中时收到本地通知需要显示提示框、其他情况不显示提示框，可以手动从 `UILocalNotification` 获取相关信息进行操作：
 
 ~~~{objective-c}
 // .h
@@ -147,15 +147,15 @@ didReceiveLocalNotification:(UILocalNotification *)notification
 }
 ~~~
 
-## Location Event
+## 地理位置事件
 
-Building the next great geomobilelocalsocial check-in photo app? Well, you're about 4 years late to the party.
+听说你在开发一个 LBS 签到照片的应用？哈哈，看起来你的动作好像落后时代四年多了。
 
-But fear not! With iOS region monitoring, your app can be launched on location events:
+但不要害怕！有了 iOS 的位置监控，你的应用可以通过地理位置触发的事件启动了：
 
-> - `UIApplicationLaunchOptionsLocationKey`: Indicates that the app was launched in response to an incoming location event. The value of this key is an `NSNumber` object containing a Boolean value. You should use the presence of this key as a signal to create a `CLLocationManager` object and start location services again. Location data is delivered only to the location manager delegate and not using this key.
+> - `UIApplicationLaunchOptionsLocationKey`：标示应用是响应地理位置事件启动的。对应的值是包含 Boolean 值的 `NSNumber` 对象。可以把这个键作为信号来创建 `CLLocationManager` 对象并开始进行定位。位置数据会传给 location manager 的 delegate（并不需要这个键）。
 
-Here's an example of how an app might go about monitoring for significant location change to determine launch behavior:
+以下是检测位置变化来判断启动行为的例子：
 
 ~~~{objective-c}
 // .h
@@ -189,34 +189,34 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 }
 ~~~
 
-## Newsstand
+## 报刊杂志（Newsstand）
 
-_All of the Newsstand developers in the house: say "Yeah!"_
+_所有的报刊杂志开发者都会为此欢呼的！_
 
-_`crickets.aiff`_
+_`欢呼声.aiff`_
 
-Well alright, then.
+够了...
 
-Newsstand can launch when newly-downloaded assets are available.
+有新的可用下载时，报刊杂志应用可以启动。
 
-This is how you register:
+这样注册即可：
 
 ~~~{objective-c}
 [application registerForRemoteNotificationTypes:
 	UIRemoteNotificationTypeNewsstandContentAvailability];
 ~~~
 
-And this is the key to look out for in `launchOptions`:
+然后在启动参数中找到这个键：
 
-> - `UIApplicationLaunchOptionsNewsstandDownloadsKey`: Indicates that newly downloaded Newsstand assets are available for your app. The value of this key is an array of string identifiers that identify the `NKAssetDownload` objects corresponding to the assets. Although you can use the identifiers for cross-checking purposes, you should obtain the definitive array of `NKAssetDownload` objects (representing asset downloads in progress or in error) through the downloadingAssets property of the `NKLibrary` object representing the Newsstand app’s library.
+> - `UIApplicationLaunchOptionsNewsstandDownloadsKey`：标示应用有新的可用杂志资源下载。对应的值是包含 `NKAssetDownload` id 的字符串数组。虽然你可以通过这些 id 进行检查，但还是应该通过 `NKLibrary` 对象的 downloadingAssets 属性来持有这些 `NKAssetDownload` 对象（可用用于展示下载进度或错误）以便显示在报刊杂志书架中。
 
-Not too much more to say about that.
+详细情况不再赘述。
 
-## Bluetooth
+## 蓝牙
 
-iOS 7 introduced functionality that allows apps to be relaunched by Bluetooth peripherals.
+iOS 7 开始支持外围蓝牙设备重唤醒应用。
 
-If an app launches, instantiates a `CBCentralManager` or `CBPeripheralManager` with a particular identifier, and connects to other Bluetooth peripherals, the app can be re-launched by certain actions from the Bluetooth system. Depending on whether it was a central or peripheral manager that was notified, one of the following keys will be passed into `launchOptions`:
+应用启动后通过特定的 id 实例化一个 `CBCentralManager` 或 `CBPeripheralManager` 用于连接蓝牙设备，之后应用就可以通过蓝牙系统的相关动作来被重新唤醒了。取决于发出通知的是一个中心设备还是外围设备，`launchOptions` 会传入以下两个键中的一个：
 
 > - `UIApplicationLaunchOptionsBluetoothCentralsKey`: Indicates that the app previously had one or more `CBCentralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a central manager object.
 > - `UIApplicationLaunchOptionsBluetoothPeripheralsKey`:  Indicates that the app previously had one or more `CBPeripheralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a peripheral manager object.
