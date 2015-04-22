@@ -10,7 +10,9 @@ AppDelegate 是 iOS 各种功能的集散中心。
 
 应用生命周期管理？URL 路由？通知？Core Data 咒语？各种三方 SDK 的初始化？一些似乎放在哪里都不合适的零散功能？统统丢进 `AppDelegate.m` 里吧！
 
-对于很多开发者来说 `launchOptions` 参数就是类似于 Java 的 `main` 函数中 `String[] args` 的作用 —— 在构建应用时候一般是被忽略的。在其平淡的外表下，`launchOptions` 其实隐藏 iOS 应用启动时携带的大量核心信息。
+在 AppDelegate 所有这些拥挤的、超出负载的方法中，-application:didFinishLaunchingWithOptions: 是最臃肿的一个了。
+
+对于很多开发者来说 `launchOptions` 参数就是类似于 Java 的 `main` 函数中 `String[] args` 的作用 —— 在构建应用时候一般是被忽略的。在其平淡的外表下，`launchOptions` 其实隐藏着 iOS 应用启动时携带的大量核心信息。
 
 NSHipster 本周披露的知识点是关于我们平时关心最少的、但又是 UIKit 中最重要的东西：`launchOptions`。
 
@@ -38,7 +40,7 @@ NSHipster 本周披露的知识点是关于我们平时关心最少的、但又�
 
 这些情况下 `UIApplicationLaunchOptionsURLKey` 键就会很常用了。
 
-> - `UIApplicationLaunchOptionsURLKey`: 标示应用是通过 URL 大家的。其对应的值代表应用被打开时使用的 `NSURL` 对象。
+> - `UIApplicationLaunchOptionsURLKey`: 标示应用是通过 URL 打开的。其对应的值代表应用被打开时使用的 `NSURL` 对象。
 
 应用也可以通过 URL 和附加系统信息打开。当应用从 AirDrop 的 `UIDocumentInteractionController` 中打开时，`launchOptions` 会包含下列这键：
 
@@ -214,7 +216,7 @@ _`欢呼声.aiff`_
 
 ## 蓝牙
 
-iOS 7 开始支持外围蓝牙设备重唤醒应用。
+iOS 7 开始支持外围蓝牙设备重新唤醒应用。
 
 应用启动后通过特定的 id 实例化一个 `CBCentralManager` 或 `CBPeripheralManager` 用于连接蓝牙设备，之后应用就可以通过蓝牙系统的相关动作来被重新唤醒了。取决于发出通知的是一个中心设备还是外围设备，`launchOptions` 会传入以下两个键中的一个：
 
