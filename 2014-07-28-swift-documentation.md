@@ -160,7 +160,79 @@ Open Quick Documentation for the method `travel`, and the parameter is parsed ou
 
 ![Swift func Declaration Documentation](http://nshipster.s3.amazonaws.com/swift-documentation-method-declaration.png)
 
-> Again, not much is known about this new documentation format yet... as it's currently undocumented. But this article will be updated as soon as more is known. In the meantime, feel free to adopt the conventions described so far, as they're at least useful for the time being.
+Documentation comments are distinguished by using `/** ... */` for multi-line comments or `/// ...` for single-line comments. Only a subset of the [reStructuredText specification](http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#field-lists) is implemented, but there's enough there to cover basic formatting.
+
+#### Basic Markup
+
+In reStructuredText, paragraphs are separated by blank lines. Unordered lists can be made with several bullet characters: `-`, `+`, `*`, `•`, etc, while ordered lists use Arabic numerals (1, 2, 3, ...) followed by a period `1.` or right parenthesis `1)` or parentheses on both sides `(1)`:
+
+~~~{swift}
+/**
+	You can apply *italic*, **bold**, or `code` inline styles.
+	
+	- Lists are great,
+	- but perhaps don't nest
+	- Sub-list formatting
+
+	  - isn't the best.
+
+	1. Ordered lists, too
+	2. for things that are sorted;
+	3. Arabic numerals
+	4. are the only kind supported.
+*/
+~~~
+
+#### Definition & Field Lists
+
+Defininition and field lists are displayed similarly in Xcode's Quick Documentation popup, with definition lists a little more compact:
+
+~~~{swift}
+/**
+	Definition list
+		A list of terms and their definitions.
+	Format
+		Terms left-justified, definitions indented underneath.
+		
+	:Field header:
+		Field lists are spaced out a little more.
+		
+	:Another field: Field lists can start the body immediately, without a line break and indentation.
+		Subsequent indented lines are treated as part of the body, too.
+*/
+~~~
+
+Two special fields are used to document parameters and return values: `:param:` and `:returns:`, respectively. `:param:` is followed by the name of the paramenter, then the description. Return values don't have a name, so the description begins immediately after `:returns:`:
+
+~~~{swift}
+/**
+	Repeats a string `times` times.
+
+	:param: str     The string to repeat.
+	:param: times   The number of times to repeat `str`.
+
+	:returns: A new string with `str` repeated `times` times.
+*/
+func repeatString(str: String, times: Int) -> String {
+	return join("", Array(count: times, repeatedValue: str))
+}
+~~~
+
+#### Code blocks
+
+Code blocks can be embedded in documentation comments as well, which can be useful for demonstrating proper usage or implementation details. Inset the code block by at least two spaces:
+
+~~~{swift}
+/**
+	The area of the `Shape` instance.
+	
+	Computation depends on the shape of the instance. For a triangle, `area` will be equivalent to:
+	
+	  let height = triangle.calculateHeight()
+	  let area = triangle.base * height / 2
+*/
+var area: CGFloat { get }
+~~~
 
 ## MARK / TODO / FIXME
 
