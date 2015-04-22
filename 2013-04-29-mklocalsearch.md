@@ -53,7 +53,7 @@ MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
 
 **API 的限制。** 或者说，它们的缺陷。让我来解释一下：
 
-或许关于 iOS 6 中 MapKit 最反直觉的事情是_它仍然被广泛的使用_。别去管 “苹果地图门” 的闹剧，即使从 [Google](https://developers.google.com/maps/documentation/ios/) 和 [MapBox](http://mapbox.com/mobile/) 引入了非常棒的 iOS 地图 SDK，[开发者们仍在使用 MapKit](http://appleinsider.com/articles/13/03/18/developers-prefer-apples-ios-maps-sdk-over-google-maps).
+或许关于 iOS 6 中 MapKit 最反直觉的事情是 _它仍然被广泛的使用_。别去管 “苹果地图门” 的闹剧，即使从 [Google](https://developers.google.com/maps/documentation/ios/) 和 [MapBox](http://mapbox.com/mobile/) 引入了非常棒的 iOS 地图 SDK，[开发者们仍在使用 MapKit](http://appleinsider.com/articles/13/03/18/developers-prefer-apples-ios-maps-sdk-over-google-maps).
 
 有部分原因可能是审美问题，但更多的则是因为主场优势。由于 MapKit 与 UIKit 紧密联系，它可以更容易，更广泛地由第三方开发者定制。
 
@@ -61,7 +61,7 @@ MKLocalSearch *search = [[MKLocalSearch alloc] initWithRequest:request];
 
 ## 我们还能做什么呢？
 
-通过引入 `MKLocalSearch`，应用更有希望出现在类似趋势的苹果网络服务中。扩展的地理空间搜索？或者是 iTunes 流媒体的第一方 API？
+通过引入 `MKLocalSearch`，在类似的场景中，苹果提供了越来越多的原生 API。扩展的地理空间搜索？或者是 iTunes 流媒体的第一方 API？
 
 毕竟，人们可以敢于梦想...
 
