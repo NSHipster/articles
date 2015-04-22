@@ -218,8 +218,8 @@ iOS 7 开始支持外围蓝牙设备重唤醒应用。
 
 应用启动后通过特定的 id 实例化一个 `CBCentralManager` 或 `CBPeripheralManager` 用于连接蓝牙设备，之后应用就可以通过蓝牙系统的相关动作来被重新唤醒了。取决于发出通知的是一个中心设备还是外围设备，`launchOptions` 会传入以下两个键中的一个：
 
-> - `UIApplicationLaunchOptionsBluetoothCentralsKey`: Indicates that the app previously had one or more `CBCentralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a central manager object.
-> - `UIApplicationLaunchOptionsBluetoothPeripheralsKey`:  Indicates that the app previously had one or more `CBPeripheralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a peripheral manager object.
+> - `UIApplicationLaunchOptionsBluetoothCentralsKey`：标示应用之前曾有过一个或多个 `CBCentralManager` 对象并被蓝牙系统的相关动作唤醒过。对应的值是包含 `NSString` 对象的数组。数组中每一个字符串表示一个中心设备的恢复连接 id。
+> - `UIApplicationLaunchOptionsBluetoothPeripheralsKey`：标示应用之前曾有过一个或多个 `CBPeripheralManager` 对象并被蓝牙系统的相关动作唤醒过。对应的值是包含 `NSString` 对象的数组。数组中每一个字符串表示一个外围设备的恢复连接 id。
 
 ~~~{objective-c}
 // .h
@@ -242,6 +242,6 @@ if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
 
 * * *
 
-Keeping track of all of the various ways and means of application launching can be exhausting. So it's fortunate that any given app will probably only have to handle one or two of these possibilities.
+要搞清楚所有的启动参数确实要费点力气。幸运的是一般的应用只需要处理其中的一两种就够了。
 
-Knowing what's possible is often what it takes to launch an app from concept to implementation, so bear in mind all of your options when the next great idea springs to mind.
+了解所有的可能性需要从理解概念走到亲自实现的步骤上。当你了解到事情有这么多可能性的时候，下一个改变世界的想法可能就已经在脑中开始酝酿了。
