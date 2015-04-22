@@ -59,7 +59,7 @@ if (fileURL) {
 
 不要和 [`NSNotification`](http://nshipster.com/nsnotification-and-nsnotificationcenter/) 混淆了，应用可以通过本地（local）或远程（remote）通知打开。
 
-### Remote Notification
+### 推送通知
 
 自 iOS 3 开始引入的 remote（或者叫 push）notification 是在移动平台上的重要特性。
 
@@ -107,7 +107,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
 - `UIApplicationLaunchOptionsLocalNotificationKey`: 标示本地通知目前处于可用状态。对应的值是包含通知内容的 `NSDictionary`。
 
-如果应用在运行中时收到本地通知需要显示提示框、其他情况不显示提示框，可以手动从 `UILocalNotification` 获取相关信息进行操作：
+如果应用在运行中收到本地通知需要显示提示框、其他情况不显示提示框，可以手动从 `UILocalNotification` 获取相关信息进行操作：
 
 ~~~{objective-c}
 // .h
