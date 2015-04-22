@@ -1,7 +1,7 @@
 ---
 title: "Key-Value Observing"
 author: Mattt Thompson
-translator: change2hao
+translator: Tiny Tian
 category: Cocoa
 tag: nshipster, popular
 excerpt: 问了几次研究 NSBlock 的人员：Key-Value Observing 在 Cocoa 框架里有着最不好用的 API。它很难对付，啰嗦，令人迷惑。最糟糕的是，它的 API 掩盖了 framework 中很引人注目的特性。
