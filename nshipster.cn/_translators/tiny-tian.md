@@ -8,4 +8,4 @@ twitter: change2hao
 github: change2hao
 ---
 
-iOS开发工程师，爱技术，爱生活
+iOS开发工程师，爱技术，爱生活。
