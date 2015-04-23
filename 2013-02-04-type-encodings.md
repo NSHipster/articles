@@ -156,11 +156,7 @@ NSLog(@"struct     : %s", @encode(typeof(Struct)));
 | `float[]`    | `[3f]`             |
 | `struct`     | `{_struct=sqQ}`    |
 
-这里有一些有趣的点：
-
-（我靠，外卖啊！！！！这怎么翻译？？！！！！）
-
-There are some interesting takeaways from this:
+这里有一些特别需要注意的：
 
 - 指针的标准编码是加一个前置的 `^`，而 `char *` 拥有自己的编码 `*`。这在概念上是很好理解的，因为 C 的字符串被认为是一个实体，而不是指针。
 - `BOOL` 是 `c`，而不是某些人以为的 `i`。原因是 `char` 比 `int` 小，且在 80 年代 Objective-C 最开始设计的时候，每一个 bit 位都比今天的要值钱（就像美元一样）。`BOOL` 更确切地说是 `signed char` （即使设置了 `-funsigned-char` 参数），以在不同编译器之间保持一致，因为 `char` 可以是 `signed` 或者 `unsigned`。
