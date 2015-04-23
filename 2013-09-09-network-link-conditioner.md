@@ -5,12 +5,12 @@ category: Xcode
 tag: popular
 excerpt: "Product design is about empathy. Knowing what a user wants, what they like, what they dislike, what causes them frustration, and learning to understand and embody those motivations in design decisions—this is what it takes to make something insanely great."
 translator: April Peng
-excerpt: "产品设计是一种同情。知道用户想要什么，他们喜欢什么，他们不喜欢什么，是什么原因会让他们沮丧，学习去理解并且把那些动机决实现于设计 - 这就是把一些疯狂的事情做得漂亮要去做的事情。"
+excerpt: "产品设计是一种感同身受。知道用户想要什么，他们喜欢什么，他们不喜欢什么，是什么原因会让他们沮丧，学习去理解并且把那些动机决实现于设计 - 这就是把一些疯狂的事情做得漂亮要去做的事情。"
 ---
 
 Product design is about empathy. Knowing what a user wants, what they like, what they dislike, what causes them frustration, and learning to understand and embody those motivations in design decisions—this is what it takes to make something insanely great.
 
-产品设计是一种同情。知道用户想要什么，他们喜欢什么，他们不喜欢什么，什么原因会让他们沮丧，学习去理解并且把那些动机决实现于设计 - 这就是把一些疯狂的事情做得漂亮需要去做的事情。
+产品设计是一种感同身受。知道用户想要什么，他们喜欢什么，他们不喜欢什么，什么原因会让他们沮丧，学习去理解并且把那些动机决实现于设计 - 这就是把一些疯狂的事情做得漂亮需要去做的事情。
 
 And so we invest in reaching beyond our own operational model of the world. We tailor our experience for [different locales](http://nshipster.com/nslocalizedstring/). We consider the usability implications of [screen readers or other assistive technologiess](http://nshipster.com/uiaccessibility/). We [continuously evaluate](http://nshipster.com/unit-testing/) our implementation against these expectations.
 
