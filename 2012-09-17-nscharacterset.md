@@ -116,8 +116,8 @@ You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
 ~~~{swift}
 let skippedCharacters = NSMutableCharacterSet()
-skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
-skippedCharacters.formIntersectionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
+skippedCharacters.formUnionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+skippedCharacters.formUnionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
 
 string.enumerateLines { (line, _) in
     let scanner = NSScanner(string: line)
