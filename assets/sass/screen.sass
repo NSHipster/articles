@@ -22,6 +22,7 @@ $mobile: new-breakpoint(max-width 480px 4)
 
 $sans-serif-font-family: "Helvetica Neue", "Helvetica", sans-serif
 $serif-font-family: "Georgia Pro", Georgia, serif
+$monospace-font-family: Courier, Monaco, monospace
 
 @import "./functions"
 @import "./fonts"
@@ -463,6 +464,14 @@ a, a:visited
 
   &:hover
     text-decoration: none
+
+code
+  font-family: $monospace-font-family
+  font-size: 85%
+
+pre
+  code
+    font-size: 80%  
 
 #contributors
   .author
