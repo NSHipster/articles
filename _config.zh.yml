@@ -17,7 +17,9 @@ highlighter: pygments
 groups:
   - Cocoa
   - Objective-C
+  - Swift
   - Open Source
+  - Xcode
   - Miscellanea
 
 collections:
