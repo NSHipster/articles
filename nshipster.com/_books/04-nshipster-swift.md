@@ -9,8 +9,8 @@ image: "//cdn.nshipster.com/images/nshipster-swift-cover@2x.png"
 formats:
   ebook:
     isbn: 978-0-9912182-6-4
-availability: pre_order
-book_url: https://gum.co/nshipster-swift/preorder
+availability: in_stock
+book_url: https://gum.co/nshipster-swift/
 price: 29
 category: Media > Books > Non-Fiction > Technology Books
 isbn: 978-0-9912182-6-4
