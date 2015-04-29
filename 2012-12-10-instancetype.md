@@ -1,7 +1,7 @@
 ---
 title: instancetype
 author: Mattt Thompson
-category: Cocoa
+category: Objective-C
 excerpt: "Objective-C is a rapidly evolving language, in a way that you just don't see in established programming languages. Developments range from the mundane to paradigm-changing, but telling the difference takes practice. Because we're talking about low-level language features, it's difficult to understand what implications they may have higher up with API design."
 ---
 

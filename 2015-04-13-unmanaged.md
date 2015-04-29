@@ -2,6 +2,7 @@
 title: Unmanaged
 author: Nate Cook
 category: Swift
+tags: swift
 excerpt: "A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking \"here be dragons.\""
 hiddenlang: ""
 ---
