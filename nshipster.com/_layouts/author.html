@@ -18,7 +18,7 @@ layout: default
 
     <ol>
     {% for post in site.posts %}
-      {% if post.author == author.name %}
+      {% if post.author == author.name or post.authors contains author.name %}
         <li>
           <a href="{{ post.url }}" title="{{ post.title }}" class="title">{{ post.title }}</a>
           <time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | ordinalize }}</time>

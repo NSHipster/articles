@@ -10,7 +10,20 @@ layout: default
 
     {% assign author = site.authors | where:"name",page.author | first %}
 
-    {% if author %}
+    {% if page.authors %}
+      <h2>Written by 
+      {% for auth in page.authors %}
+          {% if forloop.last %}&{% endif %}
+          {% assign author = site.authors | where:"name",auth | first %}
+          <a class="author" href="{{ author.url }}">{{ author.name }}</a>
+      {% endfor %}    
+      — <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+      {% if page.revisions %}
+      (<a href="#revisions">revised</a>)
+      {% endif %}
+      </h2>
+
+    {% elsif author %}
       <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> — <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
       {% if page.revisions %}
       (<a href="#revisions">revised</a>)
@@ -32,7 +45,7 @@ layout: default
 
       <dl>
       {% for revision in page.revisions %}
-        <dt>Revised {{ revision[0] | ordinalize }}</dt>
+        <dt>{{ revision[0] | ordinalize }}</dt>
         <dd>{{ revision[1] | markdownify }}</dd>
       {% endfor %}
       </dl>
