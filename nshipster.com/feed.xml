@@ -13,14 +13,16 @@ layout: rss
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <pubDate>{{ site.posts.first.date | date_to_rfc822 }}</pubDate>
     <copyright>Released under a Creative Commons BY-NC License</copyright>
-    <webMaster>mattt@nshipster.com (Mattt Thompson)</webMaster>
-    <managingEditor>mattt@nshipster.com (Mattt Thompson)</managingEditor>
+    <webMaster>nate@nshipster.com (Nate Cook)</webMaster>
+    <managingEditor>nate@nshipster.com (Nate Cook)</managingEditor>
     {% for post in site.posts limit: 25 %}
       {% assign author = site.authors | where:"name",post.author | first %}
       <item>
         <title>{{ post.title | replace:'<br/>',' ' | xml_escape }}</title>
         <description>{{ post.content | xml_escape }}</description>
+        {% if author %}
         <author>{{ author.email }} ({{ author.name }})</author>
+        {% endif %}
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ site.url }}{{ post.url }}</link>
         <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>

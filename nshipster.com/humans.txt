@@ -10,6 +10,12 @@ Contact: mattt [at] nshipster.com
 Twitter: @mattt
 Location: Portland, OR, United States
 
+Managing Editor: Nate Cook
+Site: http://natecook.com
+Contact: nate [at] nshipster.com
+Twitter: @nnnnnnnn
+Location: Bloomington, IN, United States
+
 /* SITE */
 
 Last update: {{ site.time | date: "%Y/%-m/%-d" }}
