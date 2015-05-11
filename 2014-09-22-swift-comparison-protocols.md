@@ -251,7 +251,7 @@ extension Binomen: Hashable {
 // MARK: Equatable
 
 func ==(lhs: Binomen, rhs: Binomen) -> Bool {
-    return lhs.genus == rhs.genus && rhs.species == rhs.species
+    return lhs.genus == rhs.genus && lhs.species == rhs.species
 }
 ~~~
 
