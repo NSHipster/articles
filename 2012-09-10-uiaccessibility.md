@@ -13,7 +13,7 @@ excerpt: 辅助功能，如同国际化一样，是一个很难让开发者提�
 
 你知道我最想每个人都从苹果抄袭什么么？它们的肢体障碍者辅助技术。
 
-iPhones 和 iPad 本身已经如此神奇，但是凭借苹果的肢体障碍者辅助功能，它们同时让许多肢体障碍者和他们的家人的生活_完全改变_。我们就可以看看最近的[WWDC 2012 开场视频](http://www.youtube.com/watch?v=MbP_pxR5cMk)，视频里一个叫 Per Busch 的德国盲人，在 [Ariadne GPS](http://www.ariadnegps.eu) 的帮助下，竟然能在 Kassel 森林里行走。这其实是一个提醒，告诉你你的工作可能对另一个人的生活产生巨大的影响。
+iPhones 和 iPad 本身已经如此神奇，但是凭借苹果的肢体障碍者辅助功能，它们同时让许多肢体障碍者和他们的家人的生活_完全改变_。我们就可以看看最近的 [WWDC 2012 开场视频](http://www.youtube.com/watch?v=MbP_pxR5cMk)，视频里一个叫 Per Busch 的德国盲人，在 [Ariadne GPS](http://www.ariadnegps.eu) 的帮助下，竟然能在 Kassel 森林里行走。这其实是一个提醒，告诉你你的工作可能对另一个人的生活产生巨大的影响。
 
 辅助功能，如同国际化一样，是一个很难让开发者提起兴致来的话题，但是你也知道，让你对这些东西感兴趣起来就是 NSHipster 的任务。让我们现在开始吧：
 
