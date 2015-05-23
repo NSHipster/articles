@@ -129,7 +129,7 @@ Unlike [Swift's *other* documentation syntax](/swift-documentation/), Swift Play
 ### Lists of Links
 
 - [NSHipster](http://nshipster.com)
-- [ASCIIwwdc](http://asciiwwdc.org)
+- [ASCIIwwdc](http://asciiwwdc.com)
 - [SwiftDoc](http://swiftdoc.org)
 
 ### Images, Too
