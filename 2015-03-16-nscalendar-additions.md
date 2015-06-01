@@ -23,7 +23,7 @@ NSCalendar *calendar = [NSCalendar currentCalendar];
 
 ## 便利的日期组件存取
 
-哇, `NSDateComponents` 真是既实用又灵活，但当我只是想知道现在是多少小时的时候，它用起来感觉又太麻烦了。不要慌， `NSCalendar` 来救你了！
+哇, `NSDateComponents` 真是既实用又灵活，但当我只是想知道间隔的小时数时，它用起来感觉又太麻烦了。不要慌， `NSCalendar` 来救你了！
 
 ```swift
 let hour = calendar.component(.CalendarUnitHour, fromDate: NSDate())
@@ -37,7 +37,7 @@ NSInteger hour = [calendar component:NSCalendarUnitHour fromDate:[NSDate date]];
 > - `getEra(_:yearForWeekOfYear:weekOfYear:weekday:fromDate:)`: 根据传入的日期引用返回纪元，年，当年第几周，星期几。不需要的参数可以传入 `nil`/`NULL`。
 > - `getHour(_:minute:second:nanosecond:fromDate:)`: 根据传入的日期引用返回时间信息，然后 `nil`/`NULL` 巴拉巴拉, 你懂的。
 
-`NSDateComponents`，刚才我是逗你玩呢，我收回前面吐槽你话。下面还有不少属于你的方法：
+`NSDateComponents`，刚才我是逗你玩呢，我收回前面吐槽你的话。下面还有不少属于你的方法：
 
 > - `componentsInTimeZone(_:fromDate:)`: 根据传入的的日期和时区返回一个 `NSDateComponents` 实例。
 > - `components(_:fromDateComponents:toDateComponents:options:)`: 返回两个 `NSDateComponents` 实例间的差异。如果有未赋值的组件，该方法会使用默认值，所以我们传入的实例至少得设置了年属性。options参数暂时没有用，传 `nil`/`0` 就行。
@@ -54,7 +54,7 @@ NSInteger hour = [calendar component:NSCalendarUnitHour fromDate:[NSDate date]];
 > - `isDateInWeekend(_:)`: 如果传入的日期是周末返回 `true` 。
 > - `isDate(_:inSameDayAsDate:)`: 如果两个 `NSDate` 实例在同一天返回 `true` - 没必要再去获取日期部件进行比较了。
 > - `isDate(_:equalToDate:toUnitGranularity:)`: 如果传入的日期在同一指定单位内返回 `true` 。这意味着，两个在同一周的日期实例调用 `calendar.isDate(tuesday, equalToDate: thursday, toUnitGranularity: .CalendarUnitWeekOfYear)` 方法时会返回 `true` ，就算他们不在同一个月也是如此。
-> - `compareDate(_:toDate:toUnitGranularity:)`: 返回一个`NSComparisonResult`，当做和任何指定区间内的日期相等。
+> - `compareDate(_:toDate:toUnitGranularity:)`: 返回一个 `NSComparisonResult`，当做和任何指定区间内的日期相等。
 > - `date(_:matchesComponents:)`: 如果日期匹配指定的部件返回 `true` 。
 
 
@@ -64,11 +64,11 @@ NSInteger hour = [calendar component:NSCalendarUnitHour fromDate:[NSDate date]];
 
 ### `NSCalendarOptions`
 
-最简单的 `NSCalendarOptions` 选项是 `.SearchBackwards`，使用它我们可以在所有方法中进行反向搜索。反向搜索和正向搜索得到的结果是类似的。举个例子，反向搜索 11 之前的一个 `小时` 会给你返回 11：00， 而不是 11：59， 虽然在反向搜索中 11：59 严格意义上来讲是比 11：00 “早”。确实，反向搜索咋一看是符合直觉的，但想多了很可能会把你绕进去。既然`.SearchBackwards` 是已经是最简单的选项，你大概能才猜到后面都是些什么鬼。
+最简单的 `NSCalendarOptions` 选项是 `.SearchBackwards`，使用它我们可以在所有方法中进行反向搜索。反向搜索和正向搜索得到的结果是类似的。举个例子，反向搜索 11 之前的一个 `小时` 会给你返回 11：00， 而不是 11：59， 虽然在反向搜索中 11：59 严格意义上来讲是比 11：00 “早”。确实，反向搜索咋一看是符合直觉的，但想多了很可能会把你绕进去。既然 `.SearchBackwards` 是已经是最简单的选项，你大概能才猜到后面都是些什么鬼。
 
 接下来的 `NSCalendarOptions` 选项能够帮助我们处理那些 “消失” 的时间。举个最直观的例子来说，当你进行一个短时窗搜索时碰到夏令时调整，时间提前了一个小时。或者搜索时遇到类似 2 月 或者 4 月 31 号，它都能帮我们跳过这些缺失的时间。
 
-当遇到缺失的时间时，如果我们设置了 `NSCalendarOptions.MatchStrictly`，相关方法会根据传入的组件寻找一个 `精确` 的匹配。如果没有设置的话，那么必须提供`.MatchNextTime`, `.MatchNextTimePreservingSmallerUnits`, 和 `.MatchPreviousTimePreservingSmallerUnits` 中的任一项。这些选项决定了如何处理我们请求时遇到的时间缺失问题。
+当遇到缺失的时间时，如果我们设置了 `NSCalendarOptions.MatchStrictly`，相关方法会根据传入的组件寻找一个 `精确` 的匹配。如果没有设置的话，那么必须提供 `.MatchNextTime`, `.MatchNextTimePreservingSmallerUnits`, 和  `.MatchPreviousTimePreservingSmallerUnits` 中的任一项。这些选项决定了如何处理我们请求时遇到的时间缺失问题。
 
 这种情况，往往一例胜千言：
 
@@ -98,7 +98,7 @@ NSDate *date = [calendar nextDateAfterDate:valentines matchingComponents:compone
 // Mar 31, 2015, 12:00 AM
 ```
 
-不使用精确匹配的话，`nextDateAfterDate` 方法会在找到匹配的指定天数前就在二月底停了下来，然后在下个月继续寻找。 可见，你所提供的选项决定了最终返回的具体日期。举例来说，使用`.MatchNextTime` 选项找到下一个合适的日子：
+不使用精确匹配的话，`nextDateAfterDate` 方法会在找到匹配的指定天数前就在二月底停了下来，然后在下个月继续寻找。 可见，你所提供的选项决定了最终返回的具体日期。举例来说，使用  `.MatchNextTime` 选项找到下一个合适的日子：
 
 ```swift
 calendar.nextDateAfterDate(valentines, matchingComponents: components, options: .MatchNextTime)
@@ -154,7 +154,7 @@ date = [calendar nextDateAfterDate:valentines matchingHour:15 minute:30 second:0
 
 ### 枚举插值日期
 
-`NSCalendar` 提供了一个API去枚举日期， 所以大家没有必要反复的调用`nextDateAfterDate` 方法。`enumerateDatesStartingAfterDate(_:matchingComponents:options:usingBlock:)` 方法根据提供的日期组件和选项，依次获取匹配的日期。可以将 `stop` 属性设为 `true` 去停止枚举。 
+`NSCalendar` 提供了一个API去枚举日期， 所以大家没有必要反复的调用 `nextDateAfterDate` 方法。`enumerateDatesStartingAfterDate(_:matchingComponents:options:usingBlock:)` 方法根据提供的日期组件和选项，依次获取匹配的日期。可以将 `stop` 属性设为 `true` 去停止枚举。 
 
 来试试这个 `NSCalendarOptions` 的新方法吧，下面展示了一种获取随后50个闰年的方法：
 
