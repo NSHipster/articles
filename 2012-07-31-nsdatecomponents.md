@@ -16,8 +16,8 @@ Whereas dates represent a particular moment in time, date components depend on w
 ~~~{swift}
 let calendar = NSCalendar.currentCalendar()
 let date = NSDate()
-let components = calendar.components(.MonthCalendarUnit | .DayCalendarUnit, fromDate: date)
-~~~
+let components = calendar.components(.CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
+~~~ 
 
 ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -36,6 +36,7 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 .CalendarUnitMinute
 .CalendarUnitSecond
 .CalendarUnitWeekday
+.CalendarUnitWeekdayOrdinal
 .CalendarUnitQuarter
 .CalendarUnitWeekOfMonth
 .CalendarUnitWeekOfYear
@@ -52,7 +53,6 @@ NSCalendarUnitDay
 NSCalendarUnitHour
 NSCalendarUnitMinute
 NSCalendarUnitSecond
-NSCalendarUnitWeek
 NSCalendarUnitWeekday
 NSCalendarUnitWeekdayOrdinal
 NSCalendarUnitQuarter
