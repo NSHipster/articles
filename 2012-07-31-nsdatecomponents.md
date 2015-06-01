@@ -22,7 +22,7 @@ let components = calendar.components(.MonthCalendarUnit | .DayCalendarUnit, from
 ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
-[calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit) fromDate:date];
+[calendar components:(NSCalendarUnitDay | NSCalendarUnitMonth) fromDate:date];
 ~~~
 
 The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
@@ -45,22 +45,22 @@ The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) 
 ~~~
 
 ~~~{objective-c}
-NSEraCalendarUnit
-NSYearCalendarUnit
-NSMonthCalendarUnit
-NSDayCalendarUnit
-NSHourCalendarUnit
-NSMinuteCalendarUnit
-NSSecondCalendarUnit
-NSWeekCalendarUnit
-NSWeekdayCalendarUnit
-NSWeekdayOrdinalCalendarUnit
-NSQuarterCalendarUnit
-NSWeekOfMonthCalendarUnit
-NSWeekOfYearCalendarUnit
-NSYearForWeekOfYearCalendarUnit
-NSCalendarCalendarUnit
-NSTimeZoneCalendarUnit
+NSCalendarUnitEra
+NSCalendarUnitYear
+NSCalendarUnitMonth
+NSCalendarUnitDay
+NSCalendarUnitHour
+NSCalendarUnitMinute
+NSCalendarUnitSecond
+NSCalendarUnitWeek
+NSCalendarUnitWeekday
+NSCalendarUnitWeekdayOrdinal
+NSCalendarUnitQuarter
+NSCalendarUnitWeekOfMonth
+NSCalendarUnitWeekOfYear
+NSCalendarUnitYearForWeekOfYear
+NSCalendarUnitCalendar
+NSCalendarUnitTimeZone
 ~~~
 
 > Since it would be expensive to compute all of the possible values, specify only the components that will be used in subsequent calculations (joining with `|`, the bitwise `OR` operator).
