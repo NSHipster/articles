@@ -11,7 +11,14 @@ layout: default
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
     <h2>
-      <a class="author" href="{{ author.url }}">{{ author.name }}</a>撰写、
+      {% if page.authors %}
+        {% for auth in page.authors %}
+            {% assign author = site.authors | where:"name",auth | first %}
+            {% if forloop.last %}和{% else %}{% unless forloop.first %}、{% endunless %}{% endif %}
+            <a class="author" href="{{ author.url }}">{{ author.name }}</a>{% endfor %}撰写、
+      {% else %}
+        <a class="author" href="{{ author.url }}">{{ author.name }}</a>撰写、
+      {% endif %}
       {% if translator %}
         <a class="author" href="{{ translator.url }}">{{ translator.name }}</a>翻译、
       {% else if page.translator %}

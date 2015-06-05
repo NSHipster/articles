@@ -2,36 +2,32 @@
 layout: default
 ---
 
+{% assign author     = site.authors     | where:"name",page.author     | first %}
+
 <article role="article" itemscope itemtype="http://schema.org/Article">
   <header role="heading">
     <h1 class="title" itemprop="name">
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
     </h1>
 
-    {% assign author = site.authors | where:"name",page.author | first %}
-
+    <h2>
     {% if page.authors %}
-      <h2>Written by 
+      Written by 
       {% for auth in page.authors %}
           {% if forloop.last %}&{% endif %}
           {% assign author = site.authors | where:"name",auth | first %}
           <a class="author" href="{{ author.url }}">{{ author.name }}</a>
-      {% endfor %}    
-      — <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
-      {% if page.revisions %}
-      (<a href="#revisions">revised</a>)
-      {% endif %}
-      </h2>
-
+      {% endfor %}
+      —
     {% elsif author %}
-      <h2>Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> — <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
-      {% if page.revisions %}
-      (<a href="#revisions">revised</a>)
-      {% endif %}
-      </h2>
-    {% else %}
-      <h2>Written on <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time></h2>
+      Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> —
     {% endif %}
+    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+    {% if page.revisions %}
+    (<a href="#revisions">revised</a>)
+    {% endif %}
+    </h2>
+
   </header>
 
   <div class="content" itemprop="articleBody" data-swiftype-index="true">
