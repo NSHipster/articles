@@ -210,7 +210,7 @@ NSLog(@"struct     : %s", @encode(typeof(Struct)));
 
 对于那些熟悉 [NSDistantObject](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSDistantObject_Class/Reference/Reference.html) 的人，你无疑会认出这些是 [Distributed Objects](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/DistrObjects/DistrObjects.html#//apple_ref/doc/uid/10000102i) 的残留。
 
-尽管 DO (Distributed Objects) 在 iOS 时代已经不那么时髦了，它仍是用于 Cocoa 应用程序进程间通信的协议————甚至用于网络上的不同机器之间。在这些约束下， Under these constraints, there were benefits to be had from the additional context.
+尽管 DO (Distributed Objects) 在 iOS 时代已经不那么时髦了，它仍是用于 Cocoa 应用程序进程间通信的协议————甚至用于网络上的不同机器之间。在这些约束下，上下文里附加的内容就带来了很多好处。
 
 例如，分页式的对象消息的参数默认是用代理传递的。在那些没必要用到低效的代理的情况下，增加一个 `bycopy` 修饰符以保证发送了一份完整的拷贝。同样，默认情况下，带用 `inout` 的参数表明它在发消息时对象即可传入又可传出。将参数特别标注为 `in` 或 `out`，程序将避免一些来回的开销。
 
