@@ -70,7 +70,7 @@ __不要把 Configuration Profiles 与 Provisioning Profiles 混淆.__
 
 安全已迅速成为应用程序的一个杀手级功能，如我们文章中对 [Multipeer Connectivity](http://nshipster.com/multipeer-connectivity/) 的讨论。
 
-也许配置概要文件的 嵌入证书 和 单点登录认证的能力可以增加
+也许配置概要文件的嵌入证书和单点登录认证的能力可以增加通信类应用程序的安全级别。
 
 ### 扩大应用内购买的范围
 
