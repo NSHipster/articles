@@ -11,7 +11,7 @@ excerpt: "字符串也许是计算中最通用的数据类型。它们以符号�
 
 在 Foundation 中，有一个方便的宏表示作为面向用户的字符串：`NSLocalizedString`。
 
-`NSLocalizedString` 提供本地化字符串的 “一次编译 / 随处运行” 的方式，根据用户设置的字符串表把所有本地化字符串替换成对应的翻译。但是，即使你不打算把你的应用程序本地化到任何其他市场，`NSLocalizedString` 在拷贝与编辑上仍然有神器的作用。
+`NSLocalizedString` 提供本地化字符串的 “一次编译 / 随处运行” 的方式，根据用户设置的字符串表把所有本地化字符串替换成对应的翻译。但是，即使你不打算把你的应用程序本地化到任何其他市场，`NSLocalizedString` 在拷贝与编辑上仍然有神奇的作用。
 
 >有关本地化（l10n）和国际化（i18n）的更多信息[请查看 NSHipster 有关 NSLocale 的文章](http://nshipster.cn/nslocale/)。
 
