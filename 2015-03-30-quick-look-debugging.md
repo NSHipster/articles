@@ -63,7 +63,7 @@ func buildPathWithRadius(radius: CGFloat, steps: CGFloat, loopCount: CGFloat) ->
 }
 ```
 
-为了看到结果，你肯定可以为这个 bezier 路径新建一个自定义视图或画成一个 `UIImage`。但更好的是，你可以在方法结尾插入一个断点并把鼠标椅上去查看 `path`：
+为了看到结果，你肯定可以为这个 bezier 路径新建一个自定义视图或画成一个 `UIImage`。但更好的是，你可以在方法结尾插入一个断点并把鼠标移上去查看 `path`：
 
 ![Spiral UIBezierPath Quick Look](http://nshipster.s3.amazonaws.com/quicklook-spiral.gif)
 
@@ -82,7 +82,7 @@ func buildPathWithRadius(radius: CGFloat, steps: CGFloat, loopCount: CGFloat) ->
 > - **地区** `CLLocation` 将显示一个很大的，互动的映射位置，并显示高度和精度的细节。
 > - **URLs：** `NSURL` 将显示 URL 所指的本地或远程的内容。
 > - **光标：** `NSCursor`，为我们中间的光标指示。
-> - ** SpriteKit：** `SKSpriteNode`，`SKShapeNode`，`SKTexture`，和 `SKTextureAtlas` 都会被显示。
+> - **SpriteKit：** `SKSpriteNode`，`SKShapeNode`，`SKTexture`，和 `SKTextureAtlas` 都会被显示。
 > - **数据：** `NSData` 将漂亮的显示出偏移的十六进制和 ASCII 值。
 > - **视图：** 最后但并非最不重要的，任何 `UIView` 子类都将在快速查看弹出框中显示其内容，方便极了。
 
