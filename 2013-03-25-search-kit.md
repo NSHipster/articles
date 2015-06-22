@@ -94,7 +94,7 @@ The end result of extracting, filtering, and reducing content into an array of n
 
 After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.
 
-对全集中的每一份文档或记录重复这一过程之后，每个符号可以指向许多不同的文章。在搜索过程中，一个查询映射到一个或多个符号，检索出符号对应的文章的并集。
+对语料库中的每一份文档或记录重复这一过程之后，每个符号可以指向许多不同的文章。在搜索过程中，一个查询映射到一个或多个符号，检索出符号对应的文章的并集。
 
 ## Using Search Kit
 
@@ -186,7 +186,7 @@ SKIndexRef index = SKIndexCreateWithURL((CFURLRef)url, NULL, kSKIndexInverted, (
 
 `SKSearchRef` is the data type constructed to perform a search on an `SKIndexRef`. It contains a reference to the index, a query string, and a set of options:
 
-
+`SKSearchRef` 是在 `SKIndexRef` 上执行搜索时构建的数据类型。它包含索引的引用，查询字符串，和一些选项：
 
 ~~~{objective-c}
 NSString *query = @"kind of blue";
@@ -196,18 +196,34 @@ SKSearchRef search = SKSearchCreate(index, (CFStringRef)query, options);
 
 `SKSearchOptions` is a bitmask with the following possible values:
 
+`SKSearchOptions` 是有以下可能值的位掩码：
+
 > - `kSKSearchOptionDefault`: Default search options include:
 >   - Relevance scores will be computed
 >   - Spaces in a query are interpreted as Boolean AND operators.
 >   - Do not use similarity searching.
 
+> - `kSKSearchOptionDefault`：默认搜索选项包括：
+>   - 计算相关度的值
+>   - 查询中的空格解释为逻辑**与**操作
+>   - 不使用相似搜索
+
 These options can be specified individually as well:
+
+这些选项也可以单独指定：
 
 > - `kSKSearchOptionNoRelevanceScores`: This option saves time during a search by suppressing the computation of relevance scores.
 > - `kSKSearchOptionSpaceMeansOR`: This option alters query behavior so that spaces are interpreted as Boolean OR operators.
 > - `kSKSearchOptionFindSimilar`: This option alters query behavior so that Search Kit returns references to documents that are similar to an example text string. When this option is specified, Search Kit ignores all query operators.
 
+> - `kSKSearchOptionNoRelevanceScores`：这个选项不计算相关度值可以节省搜索时间。
+> - `kSKSearchOptionSpaceMeansOR`：这个选项将查询语句中的空格改为逻辑**或**操作。
+> - `kSKSearchOptionFindSimilar`：这个选项使 Search Kit 返回与示例文本相似的文档引用。当这个选项指定时，Search Kit 忽略所有查询操作符。
+
+
 Putting this all together is `SKIndexCopyDocumentURLsForDocumentIDs`, which performs the search and fills arrays with the results. Iterating through the range of found matches provides access to the document URL and relevance score (if calculated):
+
+将所有这些放到一起的是 `SKIndexCopyDocumentURLsForDocumentIDs`，它执行搜索然后用结果填充数组。在匹配的范围中遍历可以访问文档的 URL 和相关度值（如果计算了的话）：
 
 ~~~{objective-c}
 NSUInteger limit = ...; // Maximum number of results
@@ -237,8 +253,15 @@ NSMutableArray *mutableResults = [NSMutableArray array];
 
 > For more examples of Search Kit in action, be sure to check out [Indragie Karunaratne's](https://github.com/indragiek) project, [SNRSearchIndex](https://github.com/indragiek/SNRSearchIndex).
 
+> 更多 Search Kit 实例请查看 [Indragie Karunaratne's](https://github.com/indragiek) 项目，[SNRSearchIndex](https://github.com/indragiek/SNRSearchIndex)。
+
+
 ---
 
 And so this article becomes yet another document in the corpus we call the Internet. By pointing to Search Kit, and explaining even the briefest of its features, this—the strings of tokens you read at this very moment—are (perhaps) making it easier for others to find Search Kit.
 
+本文也成了互联网上语料库的另一个文档了。通过指向 Search Kit，并解释哪怕它最简单的特性，本文———— 你当前正在读的字符串符号 ———— （也许）让他人更容易地找到 Search Kit。
+
 ...and it's a good thing, too, because Search Kit is a wonderful and all-too-obscure framework, which anyone building a content-based system would do well to investigate.
+
+...当然了这也是一件好事，因为 Search Kit 是个了不起的又晦涩的框架，那些在建立基于内容的系统的人都将好好调研一下。
