@@ -74,7 +74,7 @@ func locationManager(manager: CLLocationManager!,
 
 ### Descriptive String
 
-Another change is required to use location services in iOS 8. In the past, one could optionally include a 'NSLocationUsageDescription' key in `Info.plist`. This value was a plain-text string explaining to the user for what the app planning to use location services. This has since been split up into two separate keys (`NSLocationWhenInUseUsageDescription` and `NSLocationAlwaysUsageDescription`), and is now mandatory; if you call `requestWhenInUseAuthorization` or `requestAlwaysAuthorization` without the corresponding key, the prompt simply won't be shown to the user.
+Another change is required to use location services in iOS 8. In the past, one could optionally include a 'NSLocationUsageDescription' key in `Info.plist`. This value was a plain-text string explaining to the user for what the app was planning to use location services. This has since been split up into two separate keys (`NSLocationWhenInUseUsageDescription` and `NSLocationAlwaysUsageDescription`), and is now mandatory; if you call `requestWhenInUseAuthorization` or `requestAlwaysAuthorization` without the corresponding key, the prompt simply won't be shown to the user.
 
 ![Core Location Always Authorization](http://nshipster.s3.amazonaws.com/core-location-always-authorization.png)
 
@@ -154,7 +154,7 @@ There is a common thread running throughout all of the changes in iOS 8: they al
 
 Explicit calls to request authorization encourage apps to not ask for permission until the user attempts to do something that requires authorization. Including a usage description makes it easy to explain why you need location access and what the app will use it for. The distinction between "When In Use" and "Always" authorization makes users feel comfortable that you only have as much of their data as is needed.
 
-Of course, there is little in these new APIs to stop one from doing things the same way as always. All one "needs" to do for iOS 8 support is to add in a call to `useAlwaysAuthorization` and add in a generic usage string. But with these new changes, Apple is sending the strong message that you should to respect your users. Once users get accustomed to apps that respect users' privacy in this way, it isn't hard to imagine that irresponsible use of location services could result in negative App Store ratings.
+Of course, there is little in these new APIs to stop one from doing things the same way as always. All one "needs" to do for iOS 8 support is to add in a call to `useAlwaysAuthorization` and add in a generic usage string. But with these new changes, Apple is sending the strong message that you should respect your users. Once users get accustomed to apps that respect users' privacy in this way, it isn't hard to imagine that irresponsible use of location services could result in negative App Store ratings.
 
 ## Indoor Positional Tracking
 
@@ -190,7 +190,7 @@ However, unless you have the benefit of being able to use region monitoring (whi
 
 With iOS 8, Apple has tried to solve this by introducing `CLVisit`, a new type of background location monitoring. A single `CLVisit` represents a period of time a user has spent in a single location, including both a coordinate and start / end timestamps.
 
-In theory, using visit monitoring is no more work than any other background location tracking. Simply calling `manager.startMonitoringVisits()` will enable background visit tracking, assuming the user has given Always authorization to your app. Once started, your app will be woken up periodically in the background when new updates come in. Unlike with basic location monitoring, if the system has a number of visit updates queued up (typically be enabling deferred updates), your delegate method will be called multiple times, with each call having a single visit, rather than the array of CLLocation objects that `locationManager:didReceiveUpdates:` is called with. Calling `manager.stopMonitoringVisits()` will stop tracking.
+In theory, using visit monitoring is no more work than any other background location tracking. Simply calling `manager.startMonitoringVisits()` will enable background visit tracking, assuming the user has given Always authorization to your app. Once started, your app will be woken up periodically in the background when new updates come in. Unlike with basic location monitoring, if the system has a number of visit updates queued up (typically by enabling deferred updates), your delegate method will be called multiple times, with each call having a single visit, rather than the array of CLLocation objects that `locationManager:didReceiveUpdates:` is called with. Calling `manager.stopMonitoringVisits()` will stop tracking.
 
 ### Handling Visits
 
@@ -210,4 +210,4 @@ func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
 
 ### Caveat Implementor
 
-CLVisit is, as of iOS 8.1, not all that precise. While start and end times are generally accurate within a minute or two, lines get blurred at the edges of what is and is what not a visit. Ducking into a corner coffee shop for a minute might not trigger a visit, but waiting at a particularly long traffic light might. It's likely that Apple will improve the quality of visit detection in future OS upgrades, but for now you might want to hold off on relying on `CLVisit` in favor of your own visit detection for use cases where it's vital your data is as accurate can be.
+CLVisit is, as of iOS 8.1, not all that precise. While start and end times are generally accurate within a minute or two, lines get blurred at the edges of what is and what is not a visit. Ducking into a corner coffee shop for a minute might not trigger a visit, but waiting at a particularly long traffic light might. It's likely that Apple will improve the quality of visit detection in future OS upgrades, but for now you might want to hold off on relying on `CLVisit` in favor of your own visit detection for use cases where it's vital your data is as accurate as it can be.
