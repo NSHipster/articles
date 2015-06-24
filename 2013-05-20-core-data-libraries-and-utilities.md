@@ -142,7 +142,7 @@ There are a number of open source libraries that collectively identify and corre
 
 It should be no surprise that programmers, having learned how to do things a certain way, will bring those ideas and conventions to other technologies. For the large influx of Ruby developers coming over to iOS, that familiar paradigm was [Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html).
 
-Contrary to popular belief, Core Data is _not_ an [Object-Relational Mappers](http://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](http://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
+Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](http://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](http://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
 
 #### [Magical Record](https://github.com/magicalpanda/MagicalRecord)
 
