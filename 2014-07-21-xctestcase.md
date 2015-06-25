@@ -255,10 +255,10 @@ let expectation = expectationWithDescription("...")
 XCTestExpectation *expectation = [self expectationWithDescription:@"..."];
 ```
 
-Then, at the bottom of the method, add the `waitForExpectationsWithTimeout` method, specifying a timeout, and handler to execute if the conditions of a test are not satisfied within that timeframe:
+Then, at the bottom of the method, add the `waitForExpectationsWithTimeout` method, specifying a timeout, and optionally a handler to execute when either the conditions of your test are met or the timeout is reached (a timeout is automatically treated as a failed test):
 
 ```swift
-waitForExpectationsWithTimeout(10) { (error) in
+waitForExpectationsWithTimeout(10) { error in
     // ...
 }
 ```
@@ -287,14 +287,17 @@ func testAsynchronousURLConnection() {
     let expectation = expectationWithDescription("GET \(URL)")
 
     let session = NSURLSession.sharedSession()
-    let task = session.dataTaskWithURL(URL) { (data, response, error) in
+    let task = session.dataTaskWithURL(URL) { data, response, error in
         XCTAssertNotNil(data, "data should not be nil")
         XCTAssertNil(error, "error should be nil")
-
-        if let HTTPResponse = response as NSHTTPURLResponse {
-            XCTAssertEqual(HTTPResponse.URL.absoluteString, URL, "HTTP response URL should be equal to original URL")
+        
+        if let HTTPResponse = response as? NSHTTPURLResponse,
+            responseURL = HTTPResponse.URL,
+            MIMEType = HTTPResponse.MIMEType
+        {
+            XCTAssertEqual(responseURL.absoluteString, URL.absoluteString, "HTTP response URL should be equal to original URL")
             XCTAssertEqual(HTTPResponse.statusCode, 200, "HTTP response status code should be 200")
-            XCTAssertEqual(HTTPResponse.MIMEType as String, "text/html", "HTTP response content type should be text/html")
+            XCTAssertEqual(MIMEType, "text/html", "HTTP response content type should be text/html")
         } else {
             XCTFail("Response was not NSHTTPURLResponse")
         }
@@ -304,7 +307,10 @@ func testAsynchronousURLConnection() {
 
     task.resume()
 
-    waitForExpectationsWithTimeout(task.originalRequest.timeoutInterval) { (error) in
+    waitForExpectationsWithTimeout(task.originalRequest!.timeoutInterval) { error in
+        if let error = error {
+            print("Error: \(error.localizedDescription)")
+        }
         task.cancel()
     }
 }
@@ -337,6 +343,9 @@ func testAsynchronousURLConnection() {
     [task resume];
     
     [self waitForExpectationsWithTimeout:task.originalRequest.timeoutInterval handler:^(NSError *error) {
+        if (error != nil) {
+            NSLog(@"Error: %@", error.localizedDescription);    
+        }
         [task cancel];
     }];
 }
