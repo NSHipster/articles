@@ -13,11 +13,11 @@ excerpt: "产品设计是一种感同身受。知道用户想要什么，他们�
 
 尽管还有一个应用程序开发人员开始常常错过的关键因素，那就是**网络状况**，或更具体的说是互联网连接的延迟和带宽。对于一款产品来说，对用户体验如此重要的东西，基本上大多数开发者采取 ad-hoc 的方式来测试不同环境是非常不幸的。
 
-本周的 NSHipster，让我来聊聊 [Network Link Conditioner](https://developer.apple.com/downloads/index.action?q=Network%20Link%20Conditioner)，一个 Mac 和 iOS 的实用工具，用来精确和持续模拟不良的网络环境。
+本周的 NSHipster，让我来聊聊 [Network Link Conditioner](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools)，一个 Mac 和 iOS 的实用工具，用来精确和持续模拟不良的网络环境。
 
 ## 安装
 
-Network Link Conditioner 可以在 “Xcode 的硬件 IO 工具” 包中找到。这可以从[苹果开发者下载](https://developer.apple.com/downloads/index.action?q=Network%20Link%20Conditioner)页面下载。
+Network Link Conditioner 可以在 “Xcode 的硬件 IO 工具” 包中找到。这可以从[苹果开发者下载](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools)页面下载。
 
 ![Download](http://nshipster.s3.amazonaws.com/network-link-conditioner-download.png)
 
