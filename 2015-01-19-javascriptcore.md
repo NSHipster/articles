@@ -76,7 +76,7 @@ NSLog(@"The first name: %@", [initialName toString]);
 // The first name: Grace
 ````
 
-> Swift shows its youth, here—while Objective-C code can take advantage of subscript notation, Swift currently only exposes the [raw methods](/object-subscripting/) that should make such subscripting possible: `objectAtKeyedSubscript()` and `objectAtIndexedSubscript()`.
+> Swift shows its youth, here—while Objective-C code can take advantage of subscript notation, Swift currently only exposes the [raw methods](/object-subscripting/) that should make such subscripting possible: `objectForKeyedSubscript()` and `objectAtIndexedSubscript()`.
 
 
 ### Calling Functions
