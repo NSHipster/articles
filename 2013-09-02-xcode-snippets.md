@@ -2,7 +2,7 @@
 title: Xcode Snippets
 author: Mattt Thompson
 translator: GWesley
-category: Xcode。
+category: Xcode
 excerpt: "一般搞 iOS 开发都得用到 Xcode。如果我们已经准备在开发流程中使用 IDE，那我们就应该充分利用它，不是么？所以本周的 NSHipster，我们就来聊聊 Xcode 中强大但未被充分利用的功能之一：**代码块**。"
 ---
 
