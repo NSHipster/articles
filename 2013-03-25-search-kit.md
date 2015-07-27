@@ -17,7 +17,7 @@ There's this framework called [Search Kit](https://developer.apple.com/library/m
 
 It's true! I'd reckon there's a better chance that more of you have implemented your own search functionality from scratch than have ever even heard of Search Kit. (Heck, most people haven't even heard of [Core Services](https://developer.apple.com/library/mac/#documentation/Carbon/Reference/CoreServicesReferenceCollection/_index.html), its parent framework)
 
-这是真的！比起听说过 Search Kit，我猜你们大部分人更可能从零开始实现你自己的搜索功能。（真是哔了狗了，大部分人甚至都没听说过 [Core Services](https://developer.apple.com/library/mac/#documentation/Carbon/Reference/CoreServicesReferenceCollection/_index.html)，它的父框架）
+这是真的！比起听说过 Search Kit，我猜你们大部分人更可能从零开始实现你自己的搜索功能。（真是够了，大部分人甚至都没听说过 [Core Services](https://developer.apple.com/library/mac/#documentation/Carbon/Reference/CoreServicesReferenceCollection/_index.html)，它的父框架）
 
 If only everyone knew that they could harness the same killer search functionality that Apple uses for their own applications...
 
