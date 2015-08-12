@@ -8,9 +8,9 @@ excerpt: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a f
 
 Rubyists laugh at Objective-C's bloated syntax.
 
-Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and their fancy [`Symbol#to_proc`](http://pragdave.pragprog.com/pragdave/2005/11/symbolto_proc.html).
+Although we lost a few pounds over the summer with our [sleek new object literals](http://nshipster.com/at-compiler-directives/), those Red-headed bullies still taunt us with their `map` one-liners and their fancy [`Symbol#to_proc`](http://pragdave.me/blog/2005/11/04/symboltoproc/).
 
-Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. `for`, `while`; even [fast enumeration expressions](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocFastEnumeration.html) are a drag. No matter how you sugar-coat them, loops will be a block of code that does something that is much simpler to describe in natural language.
+Really, a lot of how elegant (or clever) a language is comes down to how well it avoids loops. `for`, `while`; even [fast enumeration expressions](http://nshipster.com/enumerators/) are a drag. No matter how you sugar-coat them, loops will be a block of code that does something that is much simpler to describe in natural language.
 
 "get me the average salary of all of the employees in this array", versus...
 
@@ -24,13 +24,13 @@ double averageSalary = totalSalary / [employees count];
 
 Meh.
 
-Fortunately, [Key-Value Coding](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html) gives us a much more concise--almost Ruby-like--way to do this:
+Fortunately, [Key-Value Coding](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/KeyValueCoding.html) gives us a much more concise--almost Ruby-like--way to do this:
 
 ~~~{objective-c}
 [employees valueForKeyPath:@"@avg.salary"];
 ~~~
 
-[KVC Collection Operators](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html#//apple_ref/doc/uid/20002176-BAJEAIEE) allows actions to be performed on a collection using key path notation in `valueForKeyPath:`. Any time you see `@` in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.
+[KVC Collection Operators](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html) allows actions to be performed on a collection using key path notation in `valueForKeyPath:`. Any time you see `@` in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.
 
 Collection Operators fall into one of three different categories, according to the kind of value they return:
 
@@ -138,7 +138,7 @@ _Example_:
 
 ## This is Probably a Terrible Idea
 
-Curiously, [Apple's documentation on KVC collection operators](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/KeyValueCoding/Articles/CollectionOperators.html) goes out of its way to make the following point:
+Curiously, [Apple's documentation on KVC collection operators](https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html) goes out of its way to make the following point:
 
 > **Note**: It is not currently possible to define your own collection operators.
 
