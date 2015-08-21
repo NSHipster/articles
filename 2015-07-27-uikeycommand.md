@@ -28,7 +28,7 @@ excerpt: "为了使 iPad 更高效的工作，iOS 9 增加了 *可发现特性*�
 - `modifierFlags`：一个或多个 `UIKeyModifierFlags`，描述了需要与 `input` 键同时使用的键：
 	- `.Command`，`.Alternate`，`.Shift`，`.Control`：分别表示 Command, Option, Shift, 和 Control 键。
 	- `.NumericPad`：表示 `input` 应该来自数字键盘，而不是标准键盘的最上面一行。
-	- `.AlphaShift`：表示大小写锁定键应该作为按键组合的一部分被*按下*。
+	- `.AlphaShift`：表示大小写锁定键是否作为按键组合的一部分 （大写状态）。
 
 - `action`：按键命令调用的方法，`UIKeyCommand` 作为其唯一的参数。键盘事件将追溯响应链，直到发现一个匹配的方法。
 
