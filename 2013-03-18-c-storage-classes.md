@@ -16,7 +16,7 @@ It's time, once again, to take a few steps back from the world of Objective-C, a
 
 In C, the _scope_ and _lifetime_ of a variable or function within a program is determined by its _storage class_. Each variable has a _lifetime_, or the context in which they store their value. Functions, along with variables, also exist within a particular _scope_, or visibility, which dictates which parts of a program know about and can access them.
 
-在 C 语言中，程序内变量或函数的 _范围_ 和 _寿命_ 是由其 _存储类_ 确定的。每个变量都具有 _生存周期_，或存储其值的上下文。方法，同变量一样，也存在，或可见于，一个特殊的 _范围里_，这就决定了哪一部分程序知道且能够访问它们。
+在 C 语言中，程序内变量或函数的 _作用域_ 和 _寿命_ 是由其 _存储类_ 确定的。每个变量都具有 _生存周期_，或存储其值的上下文。方法，同变量一样，也存在，或可见于，一个特殊的 _范围里_，这就决定了哪一部分程序知道且能够访问它们。
 
 There are 4 storage classes in C:
 
@@ -39,7 +39,7 @@ There's a good chance you've never seen this keyword in the wild. That's because
 
 Automatic variables have memory automatically allocated when a program enters a block, and released when the program leaves that block. Access to automatic variables is limited to only the block in which they are declared, as well as any nested blocks.
 
-当程序进入程序块时变量能自动分配内存，并且在该程序离开程序块时释放。仅限于在声明自动变量的块，以及任何嵌套块内才能访问它们。
+当运行到程序块时，auto 类型的变量能自动分配内存，并且在该程序块运行完成时释放。访问 auto 变量仅限于在声明它们的 block，以及任何嵌套 block 内。
 
 ## `register`
 
