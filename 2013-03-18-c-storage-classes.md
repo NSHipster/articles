@@ -4,7 +4,7 @@ author: Mattt Thompson
 category: Objective-C
 tags: nshipster
 translator: April Peng
-excerpt: "在 C 语言中，程序中的变量或函数的生存周期是由它的存储类确定的。了解这些存储类能帮助我们解密整个 Objective-C 中都常见的术语"
+excerpt: "在 C 语言中，程序中的变量或函数的作用域和生存周期是由它的存储类确定的。了解这些存储类能帮助我们解密整个 Objective-C 中都常见的术语"
 ---
 
 是时候再次从 Objective-C 的世界退回几步，来看看一些底层的 C 语言特性。Hold 住你们的帽子，女士们和先生们，让我们深入到 NSHipster 本周 C 存储类的文章吧。
