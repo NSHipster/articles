@@ -454,16 +454,15 @@ mailComposeViewController.mailComposeDelegate = self;
 ### Post Tweet
 
 ~~~{objective-c}
-@import Twitter;
+@import Social;
 
-TWTweetComposeViewController *tweetComposeViewController =
-    [[TWTweetComposeViewController alloc] init];
+SLComposeViewController *tweetComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
 [tweetComposeViewController setInitialText:@"Lorem ipsum dolor sit amet."];
 [self.navigationController presentViewController:tweetComposeViewController
-                                        animated:YES
+                                        animated:true
                                       completion:^{
-    //...
-}];
+                                          // ...
+                                      }];
 ~~~
 
 ## IntentKit
