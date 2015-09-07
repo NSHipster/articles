@@ -631,7 +631,7 @@ navigationController?.presentViewController(tweetComposeViewController, animated
 SLComposeViewController *tweetComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
 [tweetComposeViewController setInitialText:@"Lorem ipsum dolor sit amet."];
 [self.navigationController presentViewController:tweetComposeViewController
-                                        animated:true
+                                        animated:YES
                                       completion:^{
                                           // ...
                                       }];
