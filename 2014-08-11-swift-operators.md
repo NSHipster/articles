@@ -349,24 +349,19 @@ Take, for example, a custom operator, `=~`, which returns whether the left hand 
 
 ```swift
 protocol RegularExpressionMatchable {
-    func match(pattern: String, options: NSRegularExpressionOptions) -> Bool
+    func match(pattern: String, options: NSRegularExpressionOptions) throws -> Bool
 }
 
 extension String: RegularExpressionMatchable {
-    func match(pattern: String, options: NSRegularExpressionOptions = []) -> Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: pattern, options: options)
-            return regex.numberOfMatchesInString(self, options: [], range: NSMakeRange(0, utf16.count)) != 0
-        } catch let error {
-            assertionFailure("Invalid regular expression: \(pattern) - \(error)")
-            abort()
-        }
+    func match(pattern: String, options: NSRegularExpressionOptions = []) throws -> Bool {
+        let regex = try NSRegularExpression(pattern: pattern, options: options)
+        return regex.numberOfMatchesInString(self, options: [], range: NSRange(location: 0, length: 0.distanceTo(utf16.count))) != 0
     }
 }
 
 infix operator =~ { associativity left precedence 130 }
 func =~<T: RegularExpressionMatchable> (left: T, right: String) -> Bool {
-    return left.match(right)
+    return try! left.match(right, options: [])
 }
 ```
 
@@ -379,8 +374,8 @@ By doing this, a user has the option to use the `match` function instead of the 
 ```swift
 let cocoaClassPattern = "^[A-Z]{2,}[A-Za-z0-9]+$"
 
-"NSHipster".match(cocoaClassPattern)
-"NSHipster" =~ cocoaClassPattern
+try? "NSHipster".match(cocoaClassPattern)       // true
+"NSHipster" =~ cocoaClassPattern                // true
 ```
 
 This is all to say: **a custom operator should only ever be provided as a convenience for an existing function.**
