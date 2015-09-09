@@ -3,6 +3,8 @@ title: "MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
+status:
+    swift: t.b.c.
 ---
 
 Unless you work with `MKMapView` on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been [under the cheeriest of circumstances](http://www.apple.com/letter-from-tim-cook-on-maps/). Even now, years after the ire of armchair usability experts has moved on to iOS 7's distinct "look and feel", the phrase "Apple Maps" still does not inspire confidence in the average developer.

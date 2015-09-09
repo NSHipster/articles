@@ -3,6 +3,9 @@ title: UIActivityViewController
 author: Mattt Thompson
 category: Cocoa
 excerpt: "The relationship between code and data has long been a curious one."
+status:
+    swift: 2.0
+    reviewed: September 7, 2015
 ---
 
 The relationship between code and data has long been a curious one.

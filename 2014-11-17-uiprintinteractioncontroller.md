@@ -3,6 +3,8 @@ title: UIPrintInteractionController
 author: Nate Cook
 category: Cocoa
 excerpt: "With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper."
+status:
+    swift: 1.0
 ---
 
 With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper.

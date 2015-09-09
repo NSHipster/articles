@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Machines speak in binary, while humans speak in riddles, half-truths, and omissions.
@@ -26,14 +29,12 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 ~~~{swift}
 let string = "123 Main St. / (555) 555-5555"
-let types: NSTextCheckingType = .Address | .PhoneNumber
-var error: NSError?
-let detector = NSDataDetector(types: types.rawValue, error: &error)
-detector.enumerateMatchesInString(string, options: nil, range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
-    println(result)
+let types: NSTextCheckingType = [.Address, .PhoneNumber]
+let detector = try? NSDataDetector(types: types.rawValue)
+detector?.enumerateMatchesInString(string, options: [], range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
+    print(result)
 }
 ~~~
-
 ~~~{objective-c}
 NSError *error = nil;
 NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
@@ -136,23 +137,23 @@ Somewhat confusingly, iOS also defines `UIDataDetectorTypes`. A bitmask of these
 `UIDataDetectorTypes` is distinct from `NSTextCheckingTypes` in that equivalent enum constants (e.g. `UIDataDetectorTypePhoneNumber` and `NSTextCheckingTypePhoneNumber`) do not have the same integer value, and not all values in one are found in the other. Converting from `UIDataDetectorTypes` to `NSTextCheckingTypes` can be accomplished with a function:
 
 ~~~{swift}
-func NSTextCheckingTypesFromUIDataDetectorTypes (dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
-    var textCheckingType: NSTextCheckingType = nil
+func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
+    var textCheckingType: NSTextCheckingType = []
     
-    if dataDetectorType & .Address != nil {
-        textCheckingType |= .Address
+    if dataDetectorType.contains(.Address) {
+        textCheckingType.insert(.Address)
     }
     
-    if dataDetectorType & .CalendarEvent != nil {
-        textCheckingType |= .Date
+    if dataDetectorType.contains(.CalendarEvent) {
+        textCheckingType.insert(.Date)
     }
     
-    if dataDetectorType & .Link != nil {
-        textCheckingType |= .Link
+    if dataDetectorType.contains(.Link) {
+        textCheckingType.insert(.Link)
     }
     
-    if dataDetectorType & .PhoneNumber != nil {
-        textCheckingType |= .PhoneNumber
+    if dataDetectorType.contains(.PhoneNumber) {
+        textCheckingType.insert(.PhoneNumber)
     }
     
     return textCheckingType

@@ -3,6 +3,8 @@ title: UISplitViewController
 author: Natasha Murashev
 category: Cocoa
 excerpt: "The introduction of iPhone 6+ brought on a new importance for UISplitViewController. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes."
+status:
+    swift: 1.0
 ---
 
 The introduction of iPhone 6+ brought on a new importance for `UISplitViewController`. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.

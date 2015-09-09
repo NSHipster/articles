@@ -3,6 +3,8 @@ title: PHImageManager
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Yesterday's article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you."
+status:
+    swift: 1.0
 ---
 
 [Yesterday's article](http://nshipster.com/image-resizing/) described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.

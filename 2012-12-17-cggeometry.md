@@ -5,6 +5,9 @@ category: Cocoa
 excerpt: "Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulae into your TI-8X calculator. Keeping in the tradition of doing the least amount of math possible, here are some semi-obscure CoreGraphics functions to make your job easier."
 revisions:
     "2015-02-17": Added Swift examples and information about how `Swift + CGRect == awesome`; added section for `CGRectIntersect` and `CGRectUnion`.
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Unless you were a Math Geek or an Ancient Greek, Geometry was probably not your favorite subject in high school. No, chances are that you were that kid in class who dutifully programmed all of the necessary formulæ into your TI-8X calculator.
@@ -34,13 +37,13 @@ First on our list are the geometric transformations. These functions return a `C
 
 ### `CGRectOffset`
 
-> `rectByOffsetting` / `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
+> `offsetBy` / `CGRectOffset`: Returns a rectangle with an origin that is offset from that of the source rectangle.
 
 ~~~{swift}
 // methods:
 extension CGRect {
-    func rectByOffsetting(dx: CGFloat, dy: CGFloat) -> CGRect
-    mutating func offset(dx: CGFloat, dy: CGFloat)
+    func offsetBy(dx: CGFloat, dy: CGFloat) -> CGRect
+    mutating func offsetInPlace(dx: CGFloat, dy: CGFloat)
 }
 // function:
 func CGRectOffset(rect: CGRect, dx: CGFloat, dy: CGFloat) -> CGRect
@@ -62,8 +65,8 @@ Consider using this anytime you're changing the origin of a rectangle. Not only 
 ~~~{swift}
 // methods:
 extension CGRect {
-    func rectByInsetting(dx: CGFloat, dy: CGFloat) -> CGRect
-    mutating func inset(dx: CGFloat, dy: CGFloat)
+    func insetBy(dx: CGFloat, dy: CGFloat) -> CGRect
+    mutating func insetInPlace(dx: CGFloat, dy: CGFloat)
 }
 // function:
 func CGRectInset(rect: CGRect, dx: CGFloat, dy: CGFloat) -> CGRect
@@ -82,13 +85,13 @@ If you're using `CGRectInset` as a convenience function for resizing a rectangle
 
 ### `CGRectIntegral`
 
-> `integerRect` / `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
+> `integral` / `CGRectIntegral`: Returns the smallest rectangle that results from converting the source rectangle values to integers.
 
 ~~~{swift}
 // methods:
 extension CGRect {
-    var integerRect: CGRect { get }
-    mutating func integerize()
+    var integral: CGRect { get }
+    mutating func makeIntegralInPlace()
 }
 // function:
 func CGRectIntegral(rect: CGRect) -> CGRect
@@ -191,9 +194,9 @@ There are three special rectangle values, each of which have unique properties t
 
 ### `CGRectZero`, `CGRectNull`, & `CGRectInfinite`
 
-> - `CGRect.zeroRect` / `const CGRect CGRectZero`: A rectangle constant with location (0,0), and width and height of 0. The zero rectangle is equivalent to CGRectMake(0.0f, 0.0f, 0.0f, 0.0f).
-> - `CGRect.nullRect` / `const CGRect CGRectNull`: The null rectangle. This is the rectangle returned when, for example, you intersect two disjoint rectangles. **Note that the null rectangle is not the same as the zero rectangle**.
-> - `CGRect.infiniteRect` / `const CGRect CGRectInfinite`: A rectangle that has infinite extent.
+> - `CGRect.zero` / `const CGRect CGRectZero`: A rectangle constant with location (0,0), and width and height of 0. The zero rectangle is equivalent to CGRectMake(0.0f, 0.0f, 0.0f, 0.0f).
+> - `CGRect.null` / `const CGRect CGRectNull`: The null rectangle. This is the rectangle returned when, for example, you intersect two disjoint rectangles. **Note that the null rectangle is not the same as the zero rectangle**.
+> - `CGRect.infinite` / `const CGRect CGRectInfinite`: A rectangle that has infinite extent.
 
 `CGRectZero` is perhaps the most useful of all of the special rectangle values. When initializing subviews, their frames are often initialized to `CGRectZero`, deferring their layout to `-layoutSubviews`.
 
@@ -209,13 +212,13 @@ Moving from one rectangle to two, a pair of rectangles can be either intersected
 
 ### `CGRectIntersection`
 
-> `rectByIntersecting` / `CGRectIntersection`: Returns the intersection of two rectangles.
+> `intersect` / `CGRectIntersection`: Returns the intersection of two rectangles.
 
 ~~~{swift}
 // methods:
 extension CGRect {
-    func rectByIntersecting(withRect: CGRect) -> CGRect
-    mutating func intersect(withRect: CGRect)
+    func intersect(withRect: CGRect) -> CGRect
+    mutating func intersectInPlace(withRect: CGRect)
 }
 // function:
 func CGRectIntersection(rect1: CGRect, rect2: CGRect) -> CGRect
@@ -232,13 +235,13 @@ CGRect CGRectIntersection (
 
 ### `CGRectUnion`
 
-> `rectByUnion` / `CGRectUnion`: Returns the smallest rectangle that contains the two source rectangles.
+> `union` / `CGRectUnion`: Returns the smallest rectangle that contains the two source rectangles.
 
 ~~~{swift}
 // methods:
 extension CGRect {
-    func rectByUnion(withRect: CGRect) -> CGRect
-    mutating func union(withRect: CGRect)
+    func union(rect: CGRect) -> CGRect
+    mutating func unionInPlace(rect: CGRect)
 }
 // function:
 func CGRectUnion(rect1: CGRect, rect2: CGRect) -> CGRect
@@ -253,7 +256,7 @@ CGRect CGRectUnion (
 Need a rectangle that can wrap two separate regions in your view? Remember that you can chain together different methods to produce the rectangle you need. Use `CGRectUnion` and negative values with `CGRectInset` to find a padded rectangle around two items:
 
 ~~~{swift}
-let combinedRect = imageRect.rectByUnion(textRect).rectByInsetting(dx: -10, dy: -10)
+let combinedRect = imageRect.union(textRect).insetBy(dx: -10, dy: -10)
 ~~~
 ~~~{objective-c}
 CGRect combinedRect = CGRectInset(CGRectUnion(imageRect, textRect), -10, -10);
@@ -271,8 +274,7 @@ Behold, the most obscure, misunderstood, and useful of the `CGGeometry` function
 ~~~{swift}
 // method:
 extension CGRect {
-    func rectsByDividing(atDistance: CGFloat, fromEdge edge: CGRectEdge) 
-            -> (slice: CGRect, remainder: CGRect)
+    func divide(atDistance: CGFloat, fromEdge: CGRectEdge) -> (slice: CGRect, remainder: CGRect)
 }
 // function:
 CGRectDivide(rect: CGRect, 
@@ -300,7 +302,7 @@ void CGRectDivide(
 
 > Don't fret about the `UnsafeMutablePointer<CGRect>` in the Swift version; those pointers act just like `inout` properties in this case. Create your slice and remainder instances up-front, and prefix with an `&` in the call. Or better yet, use the instance method on an existing `CGRect`:
 >
-> `let (slice, remainder) = frame.rectsByDividing(120, fromEdge:.MinXEdge)`
+> `let (slice, remainder) = frame.divide(120, fromEdge: .MinXEdge)`
 
 That `edge` argument takes a value from the `CGRectEdge` enum:
 

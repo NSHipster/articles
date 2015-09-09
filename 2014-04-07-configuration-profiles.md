@@ -3,6 +3,8 @@ title: Configuration Profiles
 author: Mattt Thompson
 category: ""
 excerpt: "One of the major criticisms of iOS as a platform is how locked down it is. iOS Configuration Profiles offer an interesting mechanism to work around these restrictions."
+status:
+    swift: n/a
 ---
 
 One of the major criticisms of iOS as a platform is how locked down it is.

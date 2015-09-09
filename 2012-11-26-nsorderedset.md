@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
+status:
+    swift: 1.1
 ---
 
 Here's a question: why isn't `NSOrderedSet` a subclass of `NSSet`?

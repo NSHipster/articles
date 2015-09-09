@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: ""
 tags: cfhipsterref
 excerpt: "In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS & NeXTSTEP. Objective-C as the combination of Smalltalk's OOP paradigm and C. iCloud as the byproduct of MobileMe and actual clouds (presumably)."
+status:
+    swift: t.b.c.
 ---
 
 <img src="http://nshipster.s3.amazonaws.com/cfhipsterref-illustration-postman.png" width="151" height="300" alt="IPC Postman, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>

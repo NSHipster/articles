@@ -3,6 +3,8 @@ title: NSURLProtocol
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."
+status:
+    swift: n/a
 ---
 
 iOS is all about networking--whether it's reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.

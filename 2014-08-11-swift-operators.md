@@ -4,7 +4,9 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "Operators in Swift are among the most interesting and indeed controversial features of this new language."
-
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 What would a program be without statements? A mish-mash of classes, namespaces, conditionals, loops, and namespaces signifying nothing.

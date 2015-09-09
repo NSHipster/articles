@@ -3,6 +3,8 @@ title: Unit Testing
 author: Mattt Thompson
 category: Objective-C
 excerpt: "Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality."
+status:
+    swift: n/a
 ---
 
 Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. [Cargo Cults like TDD](http://ntoll.org/article/tdd-cargo-cult) stake their reputation on unit testing to the point of co-opting and conflating utility with morality.

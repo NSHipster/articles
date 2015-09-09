@@ -4,6 +4,8 @@ author: Nate Cook
 category: ""
 excerpt: "Swift is an exciting language for many of us, but it's still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn't ready to be the driving force behind a major change, at least not quite yet. Cocoa's depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever."
 hiddenlang: ""
+status:
+    swift: 1.0
 ---
 
 It's the start of a new year—2015, the year of Watch, the first full year for Swift, and a bit of a new start for NSHipster. Before we get caught up in the excitement of new devices and the next beta of Xcode or start planning our trips to WWDC 2015, let's take a moment to look at our tools as they are today: Objective-C, Swift, and most importantly, Cocoa.

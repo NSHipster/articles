@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Open Source
 tags: cfhipsterref
 excerpt: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
+status:
+    swift: n/a
 ---
 
 <img src="http://nshipster.s3.amazonaws.com/cfhipsterref-illustration-egg-merchant.png" width="139" height="300" alt="Egg Merchant, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>

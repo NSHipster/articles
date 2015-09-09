@@ -7,6 +7,9 @@ excerpt: "Conversion is the tireless errand of software development. Most progra
 revisions:
     "2014-06-30": Converted examples to Swift; added iOS 8 & OS X Yosemite formatter classes.
     "2015-02-17": Converted remaining examples to Swift; reintroduced Objective-C examples; added Objective-C examples for new formatter classes.
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.
@@ -72,7 +75,7 @@ formatter.numberStyle = NSNumberFormatterStyle.CurrencyStyle
 
 for identifier in ["en_US", "fr_FR", "ja_JP"] {
     formatter.locale = NSLocale(localeIdentifier: identifier)
-    println("\(identifier) \(formatter.stringFromNumber(1234.5678))")
+    print("\(identifier) \(formatter.stringFromNumber(1234.5678))")
 }
 ~~~
 
@@ -366,7 +369,7 @@ Although the fundamental unit of physical existence, mass is pretty much relegat
 ~~~{swift}
 let massFormatter = NSMassFormatter()
 let kilograms = 60.0
-println(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
+print(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
 ~~~
 ~~~{objective-c}
 NSMassFormatter *massFormatter = [[NSMassFormatter alloc] init];
@@ -381,7 +384,7 @@ NSLog(@"%@", [massFormatter stringFromKilograms:kilograms]); // "132 lb"
 ~~~{swift}
 let lengthFormatter = NSLengthFormatter()
 let meters = 5_000.0
-println(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
+print(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
 ~~~
 ~~~{objective-c}
 NSLengthFormatter *lengthFormatter = [[NSLengthFormatter alloc] init];
@@ -398,7 +401,7 @@ let energyFormatter = NSEnergyFormatter()
 energyFormatter.forFoodEnergyUse = true
 
 let joules = 10_000.0
-println(energyFormatter.stringFromJoules(joules)) // "2.39 Cal"
+print(energyFormatter.stringFromJoules(joules)) // "2.39 Cal"
 ~~~
 ~~~{objective-c}
 NSEnergyFormatter *energyFormatter = [[NSEnergyFormatter alloc] init];

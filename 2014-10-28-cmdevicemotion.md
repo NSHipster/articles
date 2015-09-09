@@ -3,6 +3,8 @@ title: CMDeviceMotion
 author: Nate Cook
 category: Cocoa
 excerpt: "Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."
+status:
+    swift: 1.0
 ---
 
 Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected.

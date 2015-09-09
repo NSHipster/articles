@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "Swift enumerations are a marked improvement over the `NS_ENUM` macro in Objective-C. Unfortunately, `NS_OPTIONS` does not compare as favorably."
+status:
+    swift: 1.2
 ---
 
 In Objective-C, [`NS_ENUM` & `NS_OPTIONS`](http://nshipster.com/ns_enum-ns_options/) are used to annotate C `enum`s in such a way that sets clear expectations for both the compiler and developer. Since being introduced to Objective-C with Xcode 4.5, these macros have become a standard convention in system frameworks, and a best practice within the community.

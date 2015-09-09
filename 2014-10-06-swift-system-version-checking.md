@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "C uses preprocessor directives capable of unspeakable evil. Swift has a safe subset of preprocessor directives. So how do we check system version for API compatibility?"
+status:
+    swift: 1.0
 ---
 
 While it's not accurate to say that Swift is "Objective-C without the C", it's for lack of resemblance to Objective-C, not the absence of C. Swift is _vehemently_ **_not_** C.

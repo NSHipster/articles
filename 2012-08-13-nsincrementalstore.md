@@ -3,6 +3,9 @@ title: NSIncrementalStore
 author: Mattt Thompson
 category: Cocoa
 excerpt: Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
+status:
+    swift: 1.1
+    reviewed: September 8, 2015
 ---
 
 Even for a blog dedicated to obscure APIs, `NSIncrementalStore` brings a new meaning to the word "obscure".

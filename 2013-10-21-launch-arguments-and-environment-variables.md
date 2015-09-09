@@ -3,6 +3,8 @@ title: "Launch Arguments &<br/>Environment Variables"
 author: Mattt Thompson
 category: Xcode
 excerpt: "There are a number of options that can be passed into a target's scheme to enable useful debugging behavior, but like a fast food secret menu, they're obscure and widely unknown."
+status:
+    swift: n/a
 ---
 
 Walk into any American fast food establishment, and you'll be greeted with a colorful, back-lit display of specials, set menus, and other a la carte items. But as those in-the-know are quick to point out, larger chains often have a _secret_ menu, passed down by oral tradition between line cook workers and patrons over the generations.

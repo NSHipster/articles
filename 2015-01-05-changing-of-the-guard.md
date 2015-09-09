@@ -3,6 +3,8 @@ title: "Changing of the Guard"
 author: Mattt Thompson
 category: ""
 excerpt: "An important site announcement."
+status:
+    swift: n/a
 ---
 
 I started NSHipster in the summer of 2012. What began as a snarky writing exercise to capture  observations from my daily interactions with Cocoa & Objective-C became a full-time passion for learning as much as I could about my craft.

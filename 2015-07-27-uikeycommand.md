@@ -3,6 +3,8 @@ title: UIKeyCommand
 author: Nate Cook
 category: Cocoa
 excerpt: "As part of the push for greater productivity on the iPad, iOS 9 adds *Discoverability*, an overlay showing the currently available key commands inside an app. This small change suddenly makes key commands far more viable on the iPad and, with it, makes `UIKeyCommand` a necessary addition to your app."
+status:
+    swift: 2.0
 ---
 
 Adding a new feature to a product is always a tradeoff. Will the added utility of a new feature be enough to offset the added complexity? Shortcuts would seem to side-step this issue—after all, they're simply a quicker alternative for features already in your app. But that creates another dilemma: what if a new feature is added and no one knows it's there?

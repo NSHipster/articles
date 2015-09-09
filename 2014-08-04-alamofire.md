@@ -3,6 +3,8 @@ title: Alamofire
 author: Mattt Thompson
 category: Open Source
 excerpt: "Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."
+status:
+    swift: 1.1
 ---
 
 Swift has hit a reset button on the iOS developer community. It's really been something to behold for seasoned Objective-C developers.

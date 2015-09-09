@@ -3,6 +3,8 @@ title: "NSScanner"
 author: Nate Cook
 category: "Cocoa"
 excerpt: "Being able to pull apart strings and extract particular bits of data is a powerful skill, one that we use over and over building apps and shaping our tools. Cocoa provides a powerful set of frameworks to handle string processing. This week's article focuses on `NSScanner`, a highly configurable tool designed for extracting substrings and numeric values from loosely demarcated strings."
+status:
+    swift: 1.2
 ---
 
 Strings are a ubiquitous and diverse part of our computing lives. They comprise emails and essays, poems and novels—and indeed, every article on [nshipster.com](http://nshipster.com), the configuration files that shape the site, and the code that builds it.

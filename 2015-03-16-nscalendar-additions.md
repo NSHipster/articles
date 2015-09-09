@@ -3,6 +3,8 @@ title: NSCalendar Additions
 author: Nate Cook
 category: "Cocoa"
 excerpt: "`NSCalendar` has been quietly building a powerful set of methods for accessing and manipulating dates. From new ways of accessing individual date components and flexibly comparing dates to powerful date interpolation and enumeration methods, there's far too much to ignore. Make some room in your calendar and read on for more."
+status:
+    swift: 1.2
 ---
 
 *Dates.* More than any other data type, the gulf between the initial banality of dates and their true, multifaceted complexity looms terrifyingly large. Combining sub-second precision, overlapping units, geopolitical time zone boundaries, localization differences in both language and grammar, and Daylight Saving shifts and leap year adjustments that literally add and remove whole chunks of time from measured existence, there's a lot to process.

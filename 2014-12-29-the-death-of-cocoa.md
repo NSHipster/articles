@@ -3,6 +3,8 @@ title: The Death of Cocoa
 author: Mattt Thompson
 category: ""
 excerpt: "For many of us, the simplicity, elegance, and performance of Apple's hardware and software working together are the reason why we build on their platforms. And yet, after just a few months of working with Swift, Cocoa has begun to lose its luster."
+status:
+    swift: 1.0
 ---
 
 Cocoa is the de facto standard library of Objective-C, containing many of the essential frameworks for working in the language, such as Foundation, AppKit, and Core Data. Cocoa Touch is basically just Cocoa with UIKit substituted for AppKit, and is often used interchangeably with Cocoa to refer to the system frameworks on iOS.

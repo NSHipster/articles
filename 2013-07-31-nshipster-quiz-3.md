@@ -3,6 +3,8 @@ title: "NSHipster Quiz #3"
 author: Mattt Thompson
 category: Trivia
 excerpt: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
+status:
+    swift: n/a
 ---
 
 NSHipster Pub Quiz came to New York City on July 30th. Like our [first](http://nshipster.com/nshipster-quiz-1/) and [second](http://nshipster.com/nshipster-quiz-2/) quizzes, questions ranged from random Apple trivia to obscure framework questions—this time, with a particular focus on hardware rumors and questions about iOS [REDACTED].

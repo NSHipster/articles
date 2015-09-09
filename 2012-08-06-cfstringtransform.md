@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
+status:
+    swift: 1.2
 ---
 
 There are two indicators that tell you everything you need to know about how nice a language is to use:

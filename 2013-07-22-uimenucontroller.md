@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population.
@@ -18,14 +21,31 @@ In the past, we've mentioned [localization](http://nshipster.com/nslocalizedstri
 
 iOS 3's killer feature was undoubtedly push notifications, but the ability to copy-paste is probably a close second. For how much we use it everyday, it's difficult to imagine how we got along without it. And yet, it remains a relatively obscure feature for 3rd-party apps.
 
-This may be due to how cumbersome it is to implement. Let's look at a simple implementation, and then dive into some specifics about the APIs:
+This may be due to how cumbersome it is to implement. Let's look at a simple implementation, and then dive into some specifics about the APIs. First the label itself:
 
-### `HipsterLabel.{h,m}`
+~~~{swift}
+class HipsterLabel : UILabel {
+    override func canBecomeFirstResponder() -> Bool {
+        return true
+    }
+    
+    override func canPerformAction(action: Selector, withSender sender: AnyObject?) -> Bool {
+        return (action == "copy:")
+    }
+    
+    // MARK: - UIResponderStandardEditActions
 
+    override func copy(sender: AnyObject?) {
+        UIPasteboard.generalPasteboard().string = text
+    }    
+}
+~~~
 ~~~{objective-c}
+// HipsterLabel.h
 @interface HipsterLabel : UILabel
 @end
 
+// HipsterLabel.m
 @implementation HipsterLabel
 
 - (BOOL)canBecomeFirstResponder {
@@ -47,8 +67,33 @@ This may be due to how cumbersome it is to implement. Let's look at a simple imp
 @end
 ~~~
 
-### `ViewController.m`
+And with that out of the way, the view controller that uses it:
 
+~~~{swift}
+override func viewDidLoad() {
+	super.viewDidLoad()
+	
+	let label: HipsterLabel = ...
+	label.userInteractionEnabled = true
+	view.addSubview(label)
+
+	let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: "handleLongPressGesture:")
+	label.addGestureRecognizer(gestureRecognizer)
+}
+
+// MARK: - UIGestureRecognizer
+
+func handleLongPressGesture(recognizer: UIGestureRecognizer) {
+	if let recognizerView = recognizer.view,
+		recognizerSuperView = recognizerView.superview
+	{
+		let menuController = UIMenuController.sharedMenuController()
+		menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
+		menuController.setMenuVisible(true, animated:true)
+		recognizerView.becomeFirstResponder()
+	}
+}
+~~~
 ~~~{objective-c}
 - (void)viewDidLoad {
 	HipsterLabel *label = ...;
@@ -86,7 +131,7 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 `UIMenuController` is responsible for presenting edit action menu items. Each app has its own singleton instance, `sharedMenuController`. By default, a menu controller will show commands for any methods in the `UIResponderStandardEditActions` informal protocol that the responder returns `YES` for in `canPerformAction:withSender:`.
 
-### `<UIResponderStandardEditActions>`
+### `UIResponderStandardEditActions`
 
 #### Handling Copy, Cut, Delete, and Paste Commands
 

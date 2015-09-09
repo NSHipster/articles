@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 tag: nshipster, popular
 excerpt: "Ask anyone who's been around the NSBlock a few times: Key-Value Observing has the _worst_ API in all of Cocoa. It's awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework."
+status:
+    swift: t.b.c.
 ---
 
 Ask anyone who's been around the NSBlock a few times: Key-Value Observing has the _worst_ API in all of Cocoa. It's awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework.

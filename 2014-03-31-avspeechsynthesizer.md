@@ -3,6 +3,8 @@ title: AVSpeechSynthesizer
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
+status:
+    swift: 1.1
 ---
 
 Though we're a long way off from [_Hal_](https://www.youtube.com/watch?v=ARJ8cAGm6JE) or [_Her_](https://www.youtube.com/watch?v=WzV6mXIOVl4), we should never forget about the billions of other people out there for us to talk to.

@@ -3,6 +3,8 @@ title: "NSHipster Quiz #7"
 author: Nate Cook
 category: Trivia
 excerpt: "Our third annual WWDC NSHipster Pub Quiz! Scores of developers, dozens of teams, and a down-to-the-wire finish. How will you fare?"
+status:
+    swift: n/a
 ---
 
 On June 9th, we organized the third annual WWDC edition of the NSHipster Pub Quiz, with topics ranging from pop cultural trivia to technical pedantry. A huge thanks to [Realm](https://realm.io), who opened their offices and hosted with aplomb the scores of developers who turned out for the quiz.
