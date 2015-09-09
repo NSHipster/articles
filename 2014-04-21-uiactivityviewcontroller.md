@@ -311,7 +311,7 @@ As an example, let's create a custom activity type that takes an image URL and a
     </tr>
 </table>
 
-First, we define a [reverse-DNS identifier](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type, specify the category as `UIActivityCategoryAction`, and provide a localized title & iOS version appropriate image:
+First, we define a [reverse-DNS identifier](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
 
 ~~~{swift}
 let HIPMustachifyActivityType = "com.nshipster.activity.Mustachify"
@@ -320,6 +320,8 @@ let HIPMustachifyActivityType = "com.nshipster.activity.Mustachify"
 ~~~{objective-c}
 static NSString * const HIPMustachifyActivityType = @"com.nshipster.activity.Mustachify";
 ~~~
+
+Then specify the category as `UIActivityCategoryAction` and provide a localized title & iOS version appropriate image:
 
 ~~~{swift}
 // MARK: - UIActivity
@@ -429,7 +431,7 @@ override func prepareWithActivityItems(activityItems: [AnyObject]) {
 }
 ~~~
 
-Our webservice provides a variety of mustache options, which are defined in an [`NS_ENUM`](http://nshipster.com/ns_enum-ns_options/):
+Our webservice provides a variety of mustache options, which are defined in an enumeration:
 
 ~~~{swift}
 enum HIPMustacheType: Int {
