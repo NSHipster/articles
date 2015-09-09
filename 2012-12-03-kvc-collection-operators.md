@@ -6,6 +6,7 @@ tags: nshipster
 excerpt: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."
 status:
     swift: t.b.c.
+    reviewed: August 12, 2015
 ---
 
 Rubyists laugh at Objective-C's bloated syntax.

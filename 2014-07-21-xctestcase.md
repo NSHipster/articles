@@ -8,6 +8,7 @@ revisions:
 hiddenlang: ""
 status:
     swift: 1.2
+    reviewed: June 25, 2015
 ---
 
 Although iOS 8 and Swift has garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
