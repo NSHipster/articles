@@ -15,7 +15,11 @@
     <link rel="alternate" hreflang="zh-Hans" href="http://nshipster.cn/"/>
     <link rel="alternate" hreflang="x-default" href="http://nshipster.com/"/>
   {% endif %}
-  <meta name="author" content="Mattt Thompson"/>
+  
+  {% assign author     = site.authors     | where:"name",page.author     | first %}
+  {% if author %}
+  <meta name="author" content="{{ author.name }}"/>
+  {% endif %}
   <meta name="revisit-after" content="7 days"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"/>
@@ -30,7 +34,9 @@
 
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:site" content="@NSHipster"/>
-  <meta name="twitter:creator" content="@mattt"/>
+  {% if author %}
+  <meta name="twitter:creator" content="@{{ author.twitter }}"/>
+  {% endif %}
   {% if page.id %}
     <meta name="twitter:title" content="{{ page.title }}"/>
     <meta name="twitter:description" content="{{ page.excerpt | strip_html | escape }}"/>
@@ -98,6 +104,9 @@
 
     <footer role="contentinfo">
       <section class="credits colophon">
+        <p>
+          Questions? Corrections? <a href="https://twitter.com/NSHipster">@NSHipster</a> or <a href="https://github.com/NSHipster/articles">on GitHub</a>.
+        </p>
         <p>
           <i aria-hidden="true" class="icon-cc"></i>
           <i aria-hidden="true" class="icon-cc-by"></i>
