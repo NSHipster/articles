@@ -49,14 +49,14 @@ UINavigationBar.appearance().tintColor = myColor
 > To customize the appearances for instances of a class when contained within an instance of a container class, or instances in a hierarchy, you use `appearanceWhenContainedInInstancesOfClasses(_:)` to get the appearance proxy for the class (the older, variadic `appearanceWhenContainedIn` method has been deprecated):
 
 ```swift
-UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses(
-							[UINavigationBar.self]).tintColor = myNavBarColor
-UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses(
-							[UINavigationBar.self, UIPopoverController.self]).tintColor = myNavBarColor
-UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses(
-							[UIToolbar.self]).tintColor = myNavBarColor
-UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses(
-							[UIToolbar.self, UIPopoverController.self]).tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self, UIPopoverController.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIPopoverController.self])
+				.tintColor = myNavBarColor
 ```
 ```objective-c
 [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
@@ -87,7 +87,7 @@ $ grep -H UI_APPEARANCE_SELECTOR ./* | sed 's/ __OSX_AVAILABLE_STARTING(__MAC_NA
 
 `UIAppearance` looks for the `UI_APPEARANCE_SELECTOR` macro in method signatures. Any method with this annotation can be used with the `appearance` proxy.
 
-For your convenience, [here is the list of properties as of iOS 7.0](https://gist.github.com/mattt/5135521)
+For your convenience, [here is the list of properties as of iOS 7.0](https://gist.github.com/mattt/5135521).
 
 ## Implementing `<UIAppearance>` in Custom UIView Subclasses
 
