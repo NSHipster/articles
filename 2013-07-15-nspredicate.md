@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."
+status:
+    swift: 1.1
 ---
 
 `NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.

@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
+status:
+    swift: n/a
 ---
 
 > We all want to help one another, human beings are like that.

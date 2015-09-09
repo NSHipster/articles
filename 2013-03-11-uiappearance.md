@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Style vs. Substance.
@@ -34,24 +37,37 @@ Appearance can be customized for all instances, or scoped to particular view hie
 > - `+appearance`: Returns the appearance proxy for the receiver.
 > - `+appearanceWhenContainedIn:(Class <UIAppearanceContainer>)ContainerClass,...`: Returns the appearance proxy for the receiver in a given containment hierarchy.
 >
-> To customize the appearance of all instances of a class, you use `appearance` to get the appearance proxy for the class. For example, to modify the tint color for all instances of UINavigationBar:
+> To customize the appearance of all instances of a class, you use `appearance()` to get the appearance proxy for the class. For example, to modify the tint color for all instances of UINavigationBar:
 
-~~~{objective-c}
+```swift
+UINavigationBar.appearance().tintColor = myColor
+```
+```objective-c
 [[UINavigationBar appearance] setTintColor:myColor];
-~~~
+```
 
-> To customize the appearances for instances of a class when contained within an instance of a container class, or instances in a hierarchy, you use appearanceWhenContainedIn: to get the appearance proxy for the class:
+> To customize the appearances for instances of a class when contained within an instance of a container class, or instances in a hierarchy, you use `appearanceWhenContainedInInstancesOfClasses(_:)` to get the appearance proxy for the class (the older, variadic `appearanceWhenContainedIn` method has been deprecated):
 
-~~~{objective-c}
-[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
+```swift
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self, UIPopoverController.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self])
+				.tintColor = myNavBarColor
+UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIPopoverController.self])
+				.tintColor = myNavBarColor
+```
+```objective-c
+[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
        setTintColor:myNavBarColor];
-[[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], [UIPopoverController class], nil]
+[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class], [UIPopoverController class]]]
         setTintColor:myPopoverNavBarColor];
-[[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil]
+[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIToolbar class]]]
         setTintColor:myToolbarColor];
-[[UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], [UIPopoverController class], nil]
+[[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UIToolbar class], [UIPopoverController class]]]
         setTintColor:myPopoverToolbarColor];
-~~~
+```
 
 ## Determining Which Properties Work With `UIAppearance`
 
@@ -63,15 +79,15 @@ One major downside to `UIAppearance`'s proxy approach is that it's difficult to 
 
 In order to find out what methods work with `UIAppearance`, you have to [look at the headers](http://stackoverflow.com/questions/9424112/what-properties-can-i-set-via-an-uiappearance-proxy):
 
-~~~
+```
 $ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/
   Developer/SDKs/iPhoneOS*.sdk/System/Library/Frameworks/UIKit.framework/Headers
 $ grep -H UI_APPEARANCE_SELECTOR ./* | sed 's/ __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0) UI_APPEARANCE_SELECTOR;//'
-~~~
+```
 
 `UIAppearance` looks for the `UI_APPEARANCE_SELECTOR` macro in method signatures. Any method with this annotation can be used with the `appearance` proxy.
 
-For your convenience, [here is the list of properties as of iOS 7.0](https://gist.github.com/mattt/5135521)
+For your convenience, [here is the list of properties as of iOS 7.0](https://gist.github.com/mattt/5135521).
 
 ## Implementing `<UIAppearance>` in Custom UIView Subclasses
 

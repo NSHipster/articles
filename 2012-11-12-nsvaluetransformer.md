@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Of all the Foundation classes, `NSValueTransformer` is perhaps the one that fared the worst in the shift from OS X to iOS.
@@ -25,16 +28,17 @@ A typical implementation would look something like this:
 ~~~{swift}
 class ClassNameTransformer: NSValueTransformer {
 
-    override class func transformedValueClass() -> AnyClass! {
+    override class func transformedValueClass() -> AnyClass {
         return NSString.self
     }
-
+    
     override class func allowsReverseTransformation() -> Bool {
         return false
     }
-
-    override func transformedValue(value: AnyObject!) -> AnyObject! {
-        return (value == nil) ? nil : NSStringFromClass(value as AnyClass)
+    
+    override func transformedValue(value: AnyObject?) -> AnyObject? {
+        guard let type = value as? AnyClass else { return nil }
+		return NSStringFromClass(type)
     }
 }
 ~~~
@@ -90,6 +94,15 @@ In this age of blocks, we want--nay, _demand_--a way to declare functionality in
 
 Nothing [a little metaprogramming](https://github.com/mattt/TransformerKit/blob/master/TransformerKit/NSValueTransformer%2BTransformerKit.m#L36) can't fix. Behold:
 
+~~~{swift}
+let TKCapitalizedStringTransformerName = "TKCapitalizedStringTransformerName"
+
+NSValueTransformer.registerValueTransformerWithName(TKCapitalizedStringTransformerName,
+    transformedValueClass:NSString.self) { obj in
+        guard let str = obj as? String else { return nil }
+		return str.capitalizedString
+}
+~~~
 ~~~{objective-c}
 NSString * const TKCapitalizedStringTransformerName = @"TKCapitalizedStringTransformerName";
 

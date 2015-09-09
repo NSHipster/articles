@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a [cat playing Fruit Ninja](http://www.youtube.com/watch?v=CdEBgZ5Y46U) in order to get at what they want... you may want to rethink your UI approach.
@@ -60,16 +63,14 @@ All told, here's what a typical table view data source implementation looks like
 
 ~~~{swift}
 class ObjectTableViewController: UITableViewController {
-    let collation = UILocalizedIndexedCollation.currentCollation() as UILocalizedIndexedCollation
-    var sections: [[Object]] = []
-    var objects: [Object] {
+    let collation = UILocalizedIndexedCollation.currentCollation()
+    var sections: [[AnyObject]] = []
+    var objects: [AnyObject] = [] {
         didSet {
             let selector: Selector = "localizedTitle"
+            sections = Array(count: collation.sectionTitles.count, repeatedValue: [])
 
-
-            sections = [[Object]](count: collation.sectionTitles.count, repeatedValue: [])
-
-            let sortedObjects = collation.sortedArrayFromArray(objects, collationStringSelector: selector) as [Object]
+            let sortedObjects = collation.sortedArrayFromArray(objects, collationStringSelector: selector)
             for object in sortedObjects {
                 let sectionNumber = collation.sectionForObject(object, collationStringSelector: selector)
                 sections[sectionNumber].append(object)
@@ -81,15 +82,15 @@ class ObjectTableViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String! {
-        return collation.sectionTitles![section] as String
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+        return collation.sectionTitles[section]
     }
 
-    override func sectionIndexTitlesForTableView(tableView: UITableView!) -> [AnyObject]! {
+    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String] {
         return collation.sectionIndexTitles
     }
 
-    override func tableView(tableView: UITableView!, sectionForSectionIndexTitle title: String!, atIndex index: Int) -> Int {
+    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
         return collation.sectionForSectionIndexTitleAtIndex(index)
     }
 }

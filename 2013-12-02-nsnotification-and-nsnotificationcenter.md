@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: popular
 excerpt: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.
@@ -82,6 +85,12 @@ The `name` and `object` parameters of both methods are used to decide whether th
 
 > <sup>*</sup>See for yourself! An ordinary iOS app fires dozens of notifications just in the first second of being launched—many that you've probably never heard of before, nor will ever have to think about again.
 
+~~~{swift}
+let center = NSNotificationCenter.defaultCenter()
+center.addObserverForName(nil, object: nil, queue: nil) { notification in
+    print("\(notification.name): \(notification.userInfo ?? [:])")
+}
+~~~
 ~~~{objective-c}
 NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 [center addObserverForName:nil
@@ -107,17 +116,23 @@ Notifications are created with `+notificationWithName:object:userInfo:`.
 
 Notification names are generally defined as string constants. Like any string constant, it should be declared `extern` in a public interface, and defined privately in the corresponding implementation. It doesn't matter too much what a notification name's value is defined to be; the name of the variable itself is commonplace, but a reverse-DNS identifier is also a classy choice. So long as notification names are unique (or explicitly aliased), everything will work as expected.
 
-Keys for `userInfo` should likewise be defined as string constants. It's important to clearly document the expected kinds of values for each key, since the compiler can't enforce constraints on dictionaries the same way it can for an object.
+Keys for `userInfo` should likewise be defined as string constants. It's important to clearly document the expected kinds of values for each key, since the compiler can't enforce constraints on dictionaries the same way it can for an object. 
 
-#### Foo.h
+~~~{swift}
+class FooController : UIViewController {
+    enum Notifications {
+        static let FooDidBar    = "XXFooDidBarNotification"
+        static let FooDidBazoom = "XXFooDidBazoomNotification"
+    }
 
-~~~{objective-c}
-extern NSString * const XXFooDidBarNotification;
+    // ...
+}
 ~~~
-
-#### Foo.m
-
 ~~~{objective-c}
+// Foo.h
+extern NSString * const XXFooDidBarNotification;
+
+// Foo.m
 NSString * const XXFooDidBarNotification = @"XXFooDidBarNotification";
 ~~~
 
@@ -133,6 +148,10 @@ Something that often slips up developers is how similar the method signatures fo
 
 #### Key-Value Observing
 
+~~~{swift}
+func addObserver(observer: NSObject, forKeyPath keyPath: String, 
+    options: NSKeyValueObservingOptions, 
+    context: UnsafeMutablePointer<Void>)
 ~~~{objective-c}
 - (void)addObserver:(NSObject *)observer
          forKeyPath:(NSString *)keyPath
@@ -142,6 +161,17 @@ Something that often slips up developers is how similar the method signatures fo
 
 #### NSNotificationCenter
 
+~~~{swift}
+func addObserver(observer: AnyObject, 
+    selector aSelector: Selector,
+    name aName: String?, 
+    object anObject: AnyObject?)
+
+func addObserverForName(name: String?, 
+    object obj: AnyObject?,
+    queue: NSOperationQueue?, 
+    usingBlock block: (NSNotification) -> Void) -> NSObjectProtocol
+~~~
 ~~~{objective-c}
 - (void)addObserver:(id)notificationObserver
            selector:(SEL)notificationSelector

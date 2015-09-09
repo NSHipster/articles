@@ -3,6 +3,8 @@ title: "NSFastEnumeration / NSEnumerator"
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Enumeration is where computation gets interesting. It's one thing to encode logic that's executed once, but applying it across a collection—that's what makes programming so powerful."
+status:
+    swift: n/a
 ---
 
 Enumeration is where computation gets interesting. It's one thing to encode logic that's executed once, but applying it across a collection—that's what makes programming so powerful.

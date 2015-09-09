@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "Objective-C required us to wax philosophic about the nature of equality and identity. To the relief of any developer less inclined towards handwavy treatises, this is not as much the case for Swift."
+status:
+    swift: 1.2
 ---
 
 Objective-C required us to [wax philosophic](http://nshipster.com/equality/) about the nature of equality and identity. To the relief of any developer less inclined towards handwavy treatises, this is not as much the case for Swift.

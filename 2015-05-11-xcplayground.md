@@ -4,6 +4,8 @@ author: Nate Cook
 category: Swift
 tags: swift
 excerpt: "Playgrounds aren't a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."
+status:
+    swift: 1.2
 ---
 
 > Stop right there! Given the topic, wouldn't you rather read this article as a Playground? **<a href="http://nshipster.s3.amazonaws.com/XCPlayground.playground.zip" onclick="ga('send', 'event', 'link', 'click', 'XCPlayground.playground');">Download Now &rarr;</a>**

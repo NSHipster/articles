@@ -3,6 +3,8 @@ title: Search Kit
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."
+status:
+    swift: t.b.c.
 ---
 
 NSHipsters love irony, right? How about this for irony:

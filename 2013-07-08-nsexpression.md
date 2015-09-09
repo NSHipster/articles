@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With `NSPredicate`, [`NSSortDescriptor`](http://nshipster.com/nssortdescriptor/), and an occasional `NSFetchRequest`, even the most complex data tasks can be reduced into just a few, _extremely-understandable_ lines of code.
@@ -20,6 +23,11 @@ The first thing you should know about `NSExpression` is that it lives to reduce 
 
 Which leads us to `NSExpression`'s first trick: **doing math**.
 
+```swift
+let mathExpression = NSExpression(format: "4 + 5 - 2**3")
+let mathValue = mathExpression.expressionValueWithObject(nil, context: nil) as? Int 
+// 1
+```
 ~~~ objective-c
 NSExpression *expression = [NSExpression expressionWithFormat:@"4 + 5 - 2**3"];
 id value = [expression expressionValueWithObject:nil context:nil]; // => 1
@@ -31,6 +39,12 @@ It's no [Wolfram Alpha](http://www.wolframalpha.com/input/?i=finn+the+human+like
 
 But we've only just scratched the surface with `NSExpression`. Not impressed by a computer doing primary-school maths? How about high school statistics, then?
 
+```swift
+let numbers = [1, 2, 3, 4, 4, 5, 9, 11]
+let statsExpression = NSExpression(forFunction:"stddev:", arguments:[NSExpression(forConstantValue: numbers)])
+let statsValue = statsExpression.expressionValueWithObject(nil, context: nil) as? Double
+// 3.21859...
+```
 ~~~ objective-c
 NSArray *numbers = @[@1, @2, @3, @4, @4, @5, @9, @11];
 NSExpression *expression = [NSExpression expressionForFunction:@"stddev:" arguments:@[[NSExpression expressionForConstantValue:numbers]]];
@@ -119,6 +133,13 @@ In addition to these built-in functions, it's possible to invoke custom function
 
 First, define the corresponding method in a category:
 
+```swift
+extension NSNumber {
+    func factorial() -> NSNumber {
+        return tgamma(self.doubleValue + 1)
+    }
+}
+```
 ~~~ objective-c
 @interface NSNumber (Factorial)
 - (NSNumber *)factorial;
@@ -133,6 +154,11 @@ First, define the corresponding method in a category:
 
 Then, use the function thusly (the `FUNCTION()` macro in `+expressionWithFormat:` is shorthand for the process of building out with `-expressionForFunction:`, et al.):
 
+```swift
+let functionExpression = NSExpression(format:"FUNCTION(4.2, 'factorial')")
+let functionValue = functionExpression.expressionValueWithObject(nil, context: nil) as? Double
+// 32.578...
+```
 ~~~ objective-c
 NSExpression *expression = [NSExpression expressionWithFormat:@"FUNCTION(4.2, 'factorial')"];
 id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...

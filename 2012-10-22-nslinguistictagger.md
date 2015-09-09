@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Cocoa
 tags: nshipster
 excerpt: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 `NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](http://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](http://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](http://en.wikipedia.org/wiki/Writing_system) used in the string.
@@ -22,16 +25,15 @@ Computers are a long ways off from "understanding" this question literally, but 
 
 ~~~{swift}
 let question = "What is the weather in San Francisco?"
-let options: NSLinguisticTaggerOptions = .OmitWhitespace | .OmitPunctuation | .JoinNames
+let options: NSLinguisticTaggerOptions = [.OmitWhitespace, .OmitPunctuation, .JoinNames]
 let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
 let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
 tagger.string = question
-tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, sentenceRange, _) in
+tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
     let token = (question as NSString).substringWithRange(tokenRange)
     println("\(token): \(tag)")
 }
 ~~~
-
 ~~~{objective-c}
 NSString *question = @"What is the weather in San Francisco?";
 NSLinguisticTaggerOptions options = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerJoinNames;
@@ -150,6 +152,20 @@ The last option is specific to `NSLinguisticTagSchemeNameType`:
 - `NSLinguisticTaggerJoinNames`
 
 By default, each token in a name is treated as separate instances. In many circumstances, it makes sense to treat names like "San Francisco" as a single token, rather than two separate tokens. Passing this token makes this so.
+
+---
+
+Finally, NSString provides convenience methods that handle the setup and configuration of NSLinguisticTagger on your behalf. For one-off tokenizing, you can save a lot of boilerplate:
+
+```swift
+var tokenRanges: NSArray?
+let tags = "Where in the world is Carmen San Diego?".linguisticTagsInRange(
+				NSMakeRange(0, (question as NSString).length), 
+				scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, 
+				options: options, orthography: nil, tokenRanges: &tokenRanges
+			)
+// tags: ["Pronoun", "Preposition", "Determiner", "Noun", "Verb", "PersonalName"]
+```
 
 ---
 

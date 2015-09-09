@@ -10,6 +10,8 @@ excerpt: "Code structure and organization is a matter of pride for developers. C
 revisions:
     "2014-07-28": Original publication.
     "2015-05-05": Extended detail on supported markup; revised examples.
+status:
+    swift: 1.2
 ---
 
 Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Even though the compiler lacks a discerning palate when it comes to naming, whitespace, or documentation, it makes all of the difference for human collaborators.

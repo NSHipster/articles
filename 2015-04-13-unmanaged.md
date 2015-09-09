@@ -5,6 +5,8 @@ category: Swift
 tags: swift
 excerpt: "A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking \"here be dragons.\""
 hiddenlang: ""
+status:
+    swift: 1.2
 ---
 
 APIs do more than just exposing functionality to developers. They also communicate values about how the API should be used and why. This communication is what makes naming things one of the Hard Parts of computer science; it's what separates the good APIs from the great.

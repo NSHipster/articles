@@ -3,6 +3,8 @@ title: Object Subscripting
 author: Mattt Thompson
 category: Objective-C
 excerpt: "Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace."
+status:
+    swift: n/a
 ---
 
 Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace: Xcode 4.4 shipped with Apple LLVM Compiler 4.0, which incorporated changes effective in the Clang front-end as of version 3.1.

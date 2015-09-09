@@ -3,6 +3,8 @@ title: "JavaScriptCore"
 author: Nate Cook
 category: "Cocoa"
 excerpt: "Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit's JavaScript engine, providing easy, fast, and safe access to the world's most prevalent language. Love it or hate it, JavaScript's ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."
+status:
+    swift: 1.0
 ---
 
 An updated ranking of programming language popularity is [out this week](http://redmonk.com/sogrady/category/programming-languages/), showing Swift leaping upward through the ranks from 68th to 22nd, while Objective-C holds a strong lead up ahead at #10. Both, however, are blown away by the only other language allowed to run natively on iOS: the current champion, JavaScript.

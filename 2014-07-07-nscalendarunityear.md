@@ -3,6 +3,8 @@ title: NSCalendarUnitYear
 author: Mattt Thompson
 category: Swift
 excerpt: "NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."
+status:
+    swift: 1.0
 ---
 
 NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](http://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.

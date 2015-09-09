@@ -3,6 +3,9 @@ title: "Core Data Libraries & Utilities"
 author: Mattt Thompson
 category: Open Source
 excerpt: "We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."
+status:
+    swift: n/a
+    reviewed: August 12, 2015
 ---
 
 So let's say that, having determined your particular needs and compared all of the alternatives, you've chosen [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) for your next app.

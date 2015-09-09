@@ -3,6 +3,8 @@ title: UIApplicationDelegate launchOptions
 author: Mattt Thompson
 category: Cocoa
 excerpt: "AppDelegate is the dumping ground for functionality in iOS."
+status:
+    swift: t.b.c.
 ---
 
 AppDelegate is the dumping ground for functionality in iOS.

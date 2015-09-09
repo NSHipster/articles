@@ -3,6 +3,8 @@ title: Clang Diagnostics
 author: Mattt Thompson
 category: Objective-C
 excerpt: "Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang."
+status:
+    swift: n/a
 ---
 
 Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent.

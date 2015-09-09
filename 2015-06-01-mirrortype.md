@@ -3,6 +3,8 @@ title: MirrorType
 author: Nate Cook
 category: Swift
 excerpt: "Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift's tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds. This week, we'll reflect on reflection in Swift, its mirror types, and `MirrorType`, the protocol that binds them together."
+status:
+    swift: 1.2
 ---
 
 Reflection in Swift is a limited affair, providing read-only access to a subset of type metadata. While far from the rich array of run-time hackery familiar to seasoned Objective-C developers, Swift's tools enable the immediate feedback and sense of exploration offered by Xcode Playgrounds.

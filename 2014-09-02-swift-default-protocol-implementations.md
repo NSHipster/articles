@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven't noticed."
+status:
+    swift: 1.2
 ---
 
 Swift was announced 3 months ago to the day. For many of us, it was among the most shocking and exciting events in our professional lives. In these intervening months, it's safe to say our collective understanding and appreciation of the language has evolved and changed significantly.

@@ -3,6 +3,8 @@ title: NSSecureCoding
 author: Mattt Thompson
 category: Cocoa
 excerpt: "A short post for this week: everything you need to know about NSSecureCoding."
+status:
+    swift: 1.1
 ---
 
 A short post for this week: everything you need to know about `NSSecureCoding`.

@@ -3,6 +3,8 @@ title: "NSHipster Quiz #2"
 author: Mattt Thompson
 category: Trivia
 excerpt: "Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"
+status:
+    swift: n/a
 ---
 
 On June 11th, we organized an NSHipster Pub Quiz for WWDC attendees. Like [our first quiz](http://nshipster.com/nshipster-quiz-1/), questions ranged from random Apple trivia to obscure framework questions. The event was hosted by [New Relic](http://newrelic.com), and sponsored by [Heroku](https://heroku.com) & [Mutual Mobile](http://www.mutualmobile.com). About 100 developers attended the event, with the team "UIResponders" taking top prize.

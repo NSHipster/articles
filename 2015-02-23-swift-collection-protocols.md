@@ -5,6 +5,8 @@ category: Swift
 tags: swift
 excerpt: "Swift's collection protocols act like the steps on a ladder. With each step up, a collection type gains more functionality within the language and the standard library. This week we'll explore these protocols: what they are, how to conform to them, and what benefits they can provide for your own custom collection types."
 hiddenlang: "swift"
+status:
+    swift: 1.2
 ---
 
 

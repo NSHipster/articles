@@ -3,6 +3,8 @@ title: "IBInspectable&nbsp;/ IBDesignable"
 category: Xcode
 author: Nate Cook
 excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
+status:
+    swift: 1.0
 ---
 
 Show, don't tell. Seeing is believing. A picture is worth a thousand <del>emails</del> words. 

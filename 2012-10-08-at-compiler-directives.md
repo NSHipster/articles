@@ -4,6 +4,8 @@ author: Mattt Thompson
 category: Objective-C
 tags: nshipster
 excerpt: "If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and `@`'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
+status:
+    swift: n/a
 ---
 
 Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](http://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.

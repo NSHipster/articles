@@ -4,6 +4,9 @@ author: Mattt Thompson
 category: Swift
 tags: swift
 excerpt: "Operators in Swift are among the most interesting and indeed controversial features of this new language."
+status:
+    swift: 2.0
+    reviewed: September 8, 2015
 ---
 
 What would a program be without statements? A mish-mash of classes, namespaces, conditionals, loops, and namespaces signifying nothing.
@@ -201,7 +204,7 @@ In addition to the aforementioned standard operators, there are some _de facto_ 
 
 Swift has the ability to overload operators such that existing operators, like `+`, can be made to work with additional types.
 
-To overload an operator, simply define a new function for the operator symbol, taking the appropriate number of arguments.
+To overload an operator, simply define a new function for the operator symbol, taking the appropriate number and type of arguments.
 
 For example, to overload `*` to repeat a string a specified number of times:
 
@@ -348,19 +351,19 @@ Take, for example, a custom operator, `=~`, which returns whether the left hand 
 
 ```swift
 protocol RegularExpressionMatchable {
-    func match(pattern: String, options: NSRegularExpressionOptions) -> Bool
+    func match(pattern: String, options: NSRegularExpressionOptions) throws -> Bool
 }
 
 extension String: RegularExpressionMatchable {
-    func match(pattern: String, options: NSRegularExpressionOptions = nil) -> Bool {
-        let regex = NSRegularExpression(pattern: pattern, options: options, error: nil)
-        return regex.numberOfMatchesInString(self, options: nil, range: NSMakeRange(0, self.utf16Count)) != 0
+    func match(pattern: String, options: NSRegularExpressionOptions = []) throws -> Bool {
+        let regex = try NSRegularExpression(pattern: pattern, options: options)
+        return regex.numberOfMatchesInString(self, options: [], range: NSRange(location: 0, length: 0.distanceTo(utf16.count))) != 0
     }
 }
 
 infix operator =~ { associativity left precedence 130 }
 func =~<T: RegularExpressionMatchable> (left: T, right: String) -> Bool {
-    return left.match(right, options: nil)
+    return try! left.match(right, options: [])
 }
 ```
 
@@ -370,7 +373,12 @@ func =~<T: RegularExpressionMatchable> (left: T, right: String) -> Bool {
 
 By doing this, a user has the option to use the `match` function instead of the operator. It also has the added benefit of greater flexibility in what options are passed into the method.
 
-> Actually, there's an [even more clever way](https://gist.github.com/mattt/2099ee21bbfbebaa94a3) that this could be done. We'll look into that more next week.
+```swift
+let cocoaClassPattern = "^[A-Z]{2,}[A-Za-z0-9]+$"
+
+try? "NSHipster".match(cocoaClassPattern)       // true
+"NSHipster" =~ cocoaClassPattern                // true
+```
 
 This is all to say: **a custom operator should only ever be provided as a convenience for an existing function.**
 
@@ -426,3 +434,4 @@ When overriding or defining new operators in your own code, make sure to follow 
 2. Custom operators should only be provided as a convenience. Complex functionality should always be implemented in a function, preferably one specified as a generic using a custom protocol.
 3. Pay attention to the precedence and associativity of custom operators. Find the closest existing class of operators and use the appropriate precedence value.
 4. If it makes sense, be sure to implement assignment shorthand for a custom operator (e.g. `+=` for `+`).
+

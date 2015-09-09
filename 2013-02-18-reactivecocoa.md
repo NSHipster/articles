@@ -3,6 +3,8 @@ title: ReactiveCocoa
 author: Mattt Thompson
 category: Open Source
 excerpt: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
+status:
+    swift: n/a
 ---
 
 Languages are living works. They are nudged and challenged and bastardized and mashed-up in a perpetual cycle of undirected and rapid evolution. Technologies evolve, requirements change, corporate stewards and open source community come and go; obscure dialects are vaulted to prominence on the shoulders of exciting new frameworks, and thrust into a surprising new context after a long period of dormancy.

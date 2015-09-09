@@ -3,6 +3,8 @@ title: Image Resizing Techniques
 author: Mattt Thompson
 category: ""
 excerpt: "Since time immemorial, iOS developers have been perplexed by a singular question: 'How do you resize an image?'. This article endeavors to provide a clear answer to this eternal question."
+status:
+    swift: 1.2
 ---
 
 Since time immemorial, iOS developers have been perplexed by a singular question: "How do you resize an image?". It is a question of beguiling clarity, spurred on by a mutual mistrust of developer and platform. A thousand code samples litter web search results, each claiming to be the One True Solution, and all the others false prophets.

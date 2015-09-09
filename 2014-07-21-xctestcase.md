@@ -6,6 +6,9 @@ excerpt: "This week, we'll take a look at `XCTest`, the testing framework built 
 revisions:
     "2015-04-07": Added note about location of call to `fulfill()`; new Objective-C examples
 hiddenlang: ""
+status:
+    swift: 1.2
+    reviewed: June 25, 2015
 ---
 
 Although iOS 8 and Swift has garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
