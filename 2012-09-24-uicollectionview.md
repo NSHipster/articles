@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: September 9, 2015
 ---
 
 `UICollectionView` is the new `UITableView`. It's that important.
@@ -29,9 +30,9 @@ In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar i
 
 ~~~{swift}
 let identifier = "Cell"
-var cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(identifier) as? UITableViewCell
+var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
 if cell == nil {
-    cell = UITableViewCell(...)
+    cell = UITableView(...)
 }
 ~~~
 ~~~{objective-c}
