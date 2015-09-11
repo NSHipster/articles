@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: September 9, 2015
 ---
 
 As mentioned [previously](http://nshipster.com/cfstringtransform/), Foundation boasts one of the best, most complete implementations of strings around.
@@ -52,9 +53,9 @@ So let's say you do want to get rid of excessive inter-word spacing for that str
 ~~~{swift}
 var string = "  Lorem    ipsum dolar   sit  amet. "
 
-let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).filter({!isEmpty($0)})
+let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).filter { !$0.isEmpty }
 
-string = join(" ", components)
+string = components.joinWithSeparator(" ")
 ~~~
 
 ~~~{objective-c}
