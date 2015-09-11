@@ -146,19 +146,19 @@ NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCha
 [skippedCharacters formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
 
 [hours enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
-  NSScanner *scanner = [NSScanner scannerWithString:line];
-  [scanner setCharactersToBeSkipped:skippedCharacters];
+    NSScanner *scanner = [NSScanner scannerWithString:line];
+    [scanner setCharactersToBeSkipped:skippedCharacters];
 
-  NSString *startDay, *endDay;
-  NSUInteger startHour, startMinute, endHour, endMinute;
+    NSString *startDay, *endDay;
+    NSUInteger startHour, startMinute, endHour, endMinute;
 
-  [scanner scanCharactersFromSet:[NSCharacterSet letterCharacterSet] intoString:&startDay];
-  [scanner scanCharactersFromSet:[NSCharacterSet letterCharacterSet] intoString:&endDay];
+    [scanner scanCharactersFromSet:[NSCharacterSet letterCharacterSet] intoString:&startDay];
+    [scanner scanCharactersFromSet:[NSCharacterSet letterCharacterSet] intoString:&endDay];
 
-  [scanner scanInteger:&startHour];
-  [scanner scanInteger:&startMinute];
-  [scanner scanInteger:&endHour];
-  [scanner scanInteger:&endMinute];
+    [scanner scanInteger:&startHour];
+    [scanner scanInteger:&startMinute];
+    [scanner scanInteger:&endHour];
+    [scanner scanInteger:&endMinute];
 }];
 ~~~
 
