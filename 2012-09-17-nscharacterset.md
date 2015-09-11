@@ -118,11 +118,10 @@ Sat-Sun:    10:00 - 15:00
 You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
 ~~~{swift}
-let skippedCharacters = NSMutableCharacterSet()
-skippedCharacters.formUnionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+let skippedCharacters = NSMutableCharacterSet.punctuationCharacterSet()
 skippedCharacters.formUnionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
 
-string.enumerateLines { (line, _) in
+hours.enumerateLines { (line, _) in
     let scanner = NSScanner(string: line)
     scanner.charactersToBeSkipped = skippedCharacters
 
