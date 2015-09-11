@@ -32,7 +32,7 @@ In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar i
 let identifier = "Cell"
 var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
 if cell == nil {
-    cell = UITableView(...)
+    cell = UITableViewCell(...)
 }
 ~~~
 ~~~{objective-c}
