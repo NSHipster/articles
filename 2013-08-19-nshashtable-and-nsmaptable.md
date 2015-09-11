@@ -116,12 +116,12 @@ extension NSMapTable {
 
 - (id)objectForKeyedSubscript:(id)key
 {
-  return [self objectForKey:key];
+    return [self objectForKey:key];
 }
 
 - (void)setObject:(id)obj forKeyedSubscript:(id)key
 {
-  [self setObject:obj forKey:key];
+    [self setObject:obj forKey:key];
 }
 
 @end
