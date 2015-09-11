@@ -116,6 +116,7 @@ Developers coming from a Ruby or Perl background may be disappointed by Swift's 
 ```swift
 extension Regex: StringLiteralConvertible {
     typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
+    typealias UnicodeScalarLiteralType = Character
 
     init(unicodeScalarLiteral value: UnicodeScalarLiteralType) {
         self.pattern = "\(value)"
