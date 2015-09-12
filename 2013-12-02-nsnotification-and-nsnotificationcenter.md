@@ -152,6 +152,7 @@ Something that often slips up developers is how similar the method signatures fo
 func addObserver(observer: NSObject, forKeyPath keyPath: String, 
     options: NSKeyValueObservingOptions, 
     context: UnsafeMutablePointer<Void>)
+~~~
 ~~~{objective-c}
 - (void)addObserver:(NSObject *)observer
          forKeyPath:(NSString *)keyPath
