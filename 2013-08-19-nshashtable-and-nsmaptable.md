@@ -100,7 +100,7 @@ Equal to `NSPointerFunctionsObjectPointerPersonality`.
 
 ~~~{swift}
 extension NSMapTable {
-    subscript(key: AnyObject?) -> AnyObject? {
+    subscript(key: AnyObject) -> AnyObject? {
         get {
             return objectForKey(key)
         }
