@@ -35,9 +35,8 @@ hashTable.addObject("foo")
 hashTable.addObject("bar")
 hashTable.addObject(42)
 hashTable.removeObject("bar")
-print(hashTable.allObjects)
+print("Members: \(hashTable.allObjects)")
 ~~~
-
 ~~~{objective-c}
 NSHashTable *hashTable = [NSHashTable hashTableWithOptions:NSPointerFunctionsCopyIn];
 [hashTable addObject:@"foo"];
@@ -65,6 +64,8 @@ NSLog(@"Members: %@", [hashTable allObjects]);
 - `NSMapTable` can `copy` its values on input.
 - `NSMapTable` can contain arbitrary pointers, and use pointer identity for equality and hashing checks.
 
+> *Note:* `NSMapTable`'s focus on strong and weak references means that Swift's prevalent value types are a no go—reference types only, please.
+
 ### Usage
 
 Instances where one might use `NSMapTable` include non-copyable keys and storing weak references to keyed delegates or another kind of weak object.
@@ -72,10 +73,10 @@ Instances where one might use `NSMapTable` include non-copyable keys and storing
 ~~~{swift}
 let delegate: AnyObject = ...
 let mapTable = NSMapTable(keyOptions: .StrongMemory, valueOptions: .WeakMemory)
+
 mapTable.setObject(delegate, forKey: "foo")
 print("Keys: \(mapTable.keyEnumerator().allObjects)")
 ~~~
-
 ~~~{objective-c}
 id delegate = ...;
 NSMapTable *mapTable = [NSMapTable mapTableWithKeyOptions:NSMapTableStrongMemory
@@ -105,7 +106,11 @@ extension NSMapTable {
         }
 
         set {
-            setObject(newValue, forKey: key)
+            if newValue != nil {
+                setObject(newValue, forKey: key)
+            } else {
+                removeObjectForKey(key)
+            }
         }
     }
 }
@@ -121,7 +126,11 @@ extension NSMapTable {
 
 - (void)setObject:(id)obj forKeyedSubscript:(id)key
 {
-    [self setObject:obj forKey:key];
+    if (obj != nil) {
+        [self setObject:obj forKey:key];
+    } else {
+        [self removeObjectForKey:key];
+    }
 }
 
 @end
