@@ -82,7 +82,6 @@ override func viewDidLoad() {
     navigationItem.leftItemsSupplementBackButton = true
 }
 ~~~
-
 ~~~{objective-c}
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -111,12 +110,8 @@ There is one more optimization we can do for the iPhone 6+ via [`UISplitViewCont
 When the user first launches the app, we can make the master view controller fully displayed until the user selects a list item:
 
 ~~~{swift}
-import UIKit
-
 class SelectColorTableViewController: UITableViewController, UISplitViewControllerDelegate {
     private var collapseDetailViewController = true
-
-    // MARK: UITableViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +121,7 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 
     // ...
 
-    // MARK: UITableViewDelegate
+    // MARK: - UITableViewDelegate
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         collapseDetailViewController = false
@@ -139,12 +134,13 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
     }
 }
 ~~~
-
 ~~~{objective-c}
-@import UIKit;
+// SelectColorTableViewController.h
 
 @interface SelectColorTableViewController : UITableViewController <UISplitViewControllerDelegate>
 @end
+
+// SelectColorTableViewController.m
 
 @interface SelectColorTableViewController ()
 
@@ -153,8 +149,6 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 @end
 
 @implementation SelectColorTableViewController
-
-#pragma mark - UITableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
