@@ -153,13 +153,9 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // ...
-
     self.shouldCollapseDetailViewController = true;
     self.splitViewController.delegate = self;
 }
-
-// ...
 
 #pragma mark - UITableViewDelegate
 
