@@ -5,7 +5,8 @@ category: Cocoa
 tags: nshipster, popular
 excerpt: "NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: September 19, 2015
 ---
 
 `NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.
@@ -244,7 +245,7 @@ Analyzing its class constructor provides a glimpse into the way `NSPredicate` fo
 ### `NSComparisonPredicate` Types
 
 ~~~{swift}
-enum NSPredicateOperatorType : UInt {
+public enum NSPredicateOperatorType : UInt {
     case LessThanPredicateOperatorType
     case LessThanOrEqualToPredicateOperatorType
     case GreaterThanPredicateOperatorType
@@ -296,7 +297,7 @@ Finally, if you just can't be bothered to learn the `NSPredicate` format syntax,
 
 ~~~{swift}
 let shortNamePredicate = NSPredicate { (evaluatedObject, _) in
-    return (evaluatedObject as Person).firstName.utf16Count <= 5
+    return (evaluatedObject as! Person).firstName.utf16.count <= 5
 }
 
 (people as NSArray).filteredArrayUsingPredicate(shortNamePredicate)
