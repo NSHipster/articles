@@ -5,7 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."
 status:
-    swift: 1.2
+    swift: 2.0
+    reviewed: September 15, 2015
 ---
 
 In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence.
@@ -66,7 +67,7 @@ All operations may not be equally important. Setting the `queuePriority` propert
 ### NSOperationQueuePriority
 
 ~~~{swift}
-enum NSOperationQueuePriority : Int {
+public enum NSOperationQueuePriority : Int {
     case VeryLow
     case Low
     case Normal
@@ -75,13 +76,13 @@ enum NSOperationQueuePriority : Int {
 }
 ~~~
 ~~~{objective-c}
-typedef enum : NSInteger {
-   NSOperationQueuePriorityVeryLow = -8,
-   NSOperationQueuePriorityLow = -4,
-   NSOperationQueuePriorityNormal = 0,
-   NSOperationQueuePriorityHigh = 4,
-   NSOperationQueuePriorityVeryHigh = 8
-} NSOperationQueuePriority;
+typedef NS_ENUM(NSInteger, NSOperationQueuePriority) {
+    NSOperationQueuePriorityVeryLow = -8L,
+    NSOperationQueuePriorityLow = -4L,
+    NSOperationQueuePriorityNormal = 0,
+    NSOperationQueuePriorityHigh = 4,
+    NSOperationQueuePriorityVeryHigh = 8
+};
 ~~~
 
 ## Quality of Service
@@ -99,7 +100,8 @@ The following enumerated values are used to denote the nature and urgency of an 
 ### NSQualityOfService
 
 ~~~{swift}
-enum NSQualityOfService : Int {
+@available(iOS 8.0, OSX 10.10, *)
+public enum NSQualityOfService : Int {    
     case UserInteractive
     case UserInitiated
     case Utility
@@ -108,13 +110,13 @@ enum NSQualityOfService : Int {
 }
 ~~~
 ~~~{objective-c}
-typedef enum : NSInteger {
-    NSQualityOfServiceUserInteractive = 0x21,
-    NSQualityOfServiceUserInitiated = 0x19,
-    NSQualityOfServiceUtility = 0x11,
+typedef NS_ENUM(NSInteger, NSQualityOfService) {
+    NSQualityOfServiceUserInteractive = 0x21,    
+    NSQualityOfServiceUserInitiated = 0x19,    
+    NSQualityOfServiceUtility = 0x11,    
     NSQualityOfServiceBackground = 0x09,
     NSQualityOfServiceDefault = -1
-} NSQualityOfService;
+} NS_ENUM_AVAILABLE(10_10, 8_0);
 ~~~
 
 - `.UserInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
@@ -124,7 +126,7 @@ typedef enum : NSInteger {
 - `.Default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
 
 ~~~{swift}
-let backgroundOperation: NSOperation = NSOperation()
+let backgroundOperation = NSOperation()
 backgroundOperation.queuePriority = .Low
 backgroundOperation.qualityOfService = .Background
 
@@ -154,8 +156,8 @@ For example, to describe the process of downloading and resizing an image from a
 Expressed in code:
 
 ~~~{swift}
-let networkingOperation : NSOperation = ...
-let resizingOperation : NSOperation = ...
+let networkingOperation: NSOperation = ...
+let resizingOperation: NSOperation = ...
 resizingOperation.addDependency(networkingOperation)
 
 let operationQueue = NSOperationQueue.mainQueue()
@@ -183,7 +185,7 @@ When an `NSOperation` finishes, it will execute its `completionBlock` exactly on
 ~~~{swift}
 let operation = NSOperation()
 operation.completionBlock = {
-    println("Completed")
+    print("Completed")
 }
 
 NSOperationQueue.mainQueue().addOperation(operation)

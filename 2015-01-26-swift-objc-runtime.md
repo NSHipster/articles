@@ -5,7 +5,8 @@ category: "Swift"
 tags: swift
 excerpt: "Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential."
 status:
-    swift: 1.0
+    swift: 2.0
+    reviewed: September 19, 2015
 ---
 
 Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential.
@@ -31,13 +32,14 @@ extension UIViewController {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.DescriptiveName) as? String
         }
+
         set {
             if let newValue = newValue {
                 objc_setAssociatedObject(
                     self,
                     &AssociatedKeys.DescriptiveName,
                     newValue as NSString?,
-                    UInt(OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                    .OBJC_ASSOCIATION_RETAIN_NONATOMIC
                 )
             }
         }
@@ -61,7 +63,7 @@ extension UIViewController {
             static var token: dispatch_once_t = 0
         }
 
-        // make sure this isn't a subclass        
+        // make sure this isn't a subclass
         if self !== UIViewController.self {
             return
         }
@@ -69,12 +71,12 @@ extension UIViewController {
         dispatch_once(&Static.token) {
             let originalSelector = Selector("viewWillAppear:")
             let swizzledSelector = Selector("nsh_viewWillAppear:")
-            
+
             let originalMethod = class_getInstanceMethod(self, originalSelector)
             let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
-            
+
             let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
-            
+
             if didAddMethod {
                 class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
             } else {
@@ -82,15 +84,15 @@ extension UIViewController {
             }
         }
     }
-    
+
     // MARK: - Method Swizzling
-    
+
     func nsh_viewWillAppear(animated: Bool) {
         self.nsh_viewWillAppear(animated)
         if let name = self.descriptiveName {
-            println("viewWillAppear: \(name)")
+            print("viewWillAppear: \(name)")
         } else {
-            println("viewWillAppear: \(self)")
+            print("viewWillAppear: \(self)")
         }
     }
 }
@@ -114,6 +116,3 @@ Instead of adding method swizzling via a class extension, simply add a method to
 
 
 In closing, remember that tinkering with the Objective-C runtime should be much more of a last resort than a place to start. Modifying the frameworks that your code is based upon, as well as any third-party code you run, is a quick way to destabilize the whole stack. Tread softly!
-
-
-

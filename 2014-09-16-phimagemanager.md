@@ -4,8 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "Yesterday's article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you."
 status:
-    swift: 1.0
-    reviewed: January 28, 2015
+    swift: 2.0
+    reviewed: September 15, 2015
 ---
 
 [Yesterday's article](http://nshipster.com/image-resizing/) described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.
@@ -25,10 +25,12 @@ A great example of this is `PHImageManager`, which acts as a centralized coordin
 But first, here's a simple example of how a table view might asynchronously load cell images with asset thumbnails:
 
 ~~~{swift}
+import Photos
+
 var assets: [PHAsset]
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 
     let manager = PHImageManager.defaultManager()
 
@@ -38,16 +40,60 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
 
     let asset = assets[indexPath.row]
 
-    cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(asset.creationDate, dateStyle: .MediumStyle, timeStyle: .MediumStyle)
+    if let creationDate = asset.creationDate {
+        cell.textLabel?.text = NSDateFormatter.localizedStringFromDate(creationDate,
+            dateStyle: .MediumStyle,
+            timeStyle: .MediumStyle
+        )
+    } else {
+        cell.textLabel?.text = nil
+    }
 
-    cell.tag = Int(manager.requestImageForAsset(asset, targetSize: CGSize(width: 100.0, height: 100.0), contentMode: .AspectFill, options: nil) { (result, _) in
-        // this result handler is called on the main thread for asynchronous requests
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
+    cell.tag = Int(manager.requestImageForAsset(asset,
+        targetSize: CGSize(width: 100.0, height: 100.0),
+        contentMode: .AspectFill,
+        options: nil) { (result, _) in
             cell.imageView?.image = result
-        }
     })
 
     return cell
+}
+~~~
+
+~~~{objective-c}
+@import Photos;
+
+@property (nonatomic, strong) NSArray<PHAsset *> *assets;
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"
+                                                            forIndexPath:indexPath];
+
+    PHImageManager *manager = [PHImageManager defaultManager];
+
+    if (cell.tag) {
+        [manager cancelImageRequest:(PHImageRequestID)cell.tag];
+    }
+
+    PHAsset *asset = self.assets[indexPath.row];
+
+    if (asset.creationDate) {
+        cell.textLabel.text = [NSDateFormatter localizedStringFromDate:asset.creationDate
+                                                             dateStyle:NSDateFormatterMediumStyle
+                                                             timeStyle:NSDateFormatterMediumStyle];
+    } else {
+        cell.textLabel.text = nil;
+    }
+
+    cell.tag = [manager requestImageForAsset:asset
+                                  targetSize:CGSizeMake(100.0, 100.0)
+                                 contentMode:PHImageContentModeAspectFill
+                                     options:nil
+                               resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                                   cell.imageView.image = result;
+                               }];
+
+    return cell;
 }
 ~~~
 
@@ -68,16 +114,42 @@ options.sortDescriptors = [
     NSSortDescriptor(key: "creationDate", ascending: true)
 ]
 
-if let results = PHAsset.fetchAssetsWithMediaType(.Image, options: options) {
-    var assets: [PHAsset] = []
-    results.enumerateObjectsUsingBlock { (object, idx, _) in
-        if let asset = object as? PHAsset {
-            assets.append(asset)
-        }
+let results = PHAsset.fetchAssetsWithMediaType(.Image, options: options)
+var assets: [PHAsset] = []
+results.enumerateObjectsUsingBlock { (object, _, _) in
+    if let asset = object as? PHAsset {
+        assets.append(asset)
     }
-
-    cachingImageManager.startCachingImagesForAssets(assets, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFit, options: nil)
 }
+
+cachingImageManager.startCachingImagesForAssets(assets,
+    targetSize: PHImageManagerMaximumSize,
+    contentMode: .AspectFit,
+    options: nil
+)
+~~~
+
+~~~{objective-c}
+PHCachingImageManager *cachingImageManager = [[PHCachingImageManager alloc] init];
+
+PHFetchOptions *options = [[PHFetchOptions alloc] init];
+options.predicate = [NSPredicate predicateWithFormat:@"favorite == YES"];
+options.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"" ascending:YES]];
+
+PHFetchResult *results = [PHAsset fetchAssetsWithMediaType:PHAssetMediaTypeImage
+                                                  options:nil];
+
+NSMutableArray<PHAsset *> *assets = [[NSMutableArray alloc] init];
+[results enumerateObjectsUsingBlock:^(id  _Nonnull object, NSUInteger idx, BOOL * _Nonnull stop) {
+    if ([object isKindOfClass:[PHAsset class]]) {
+        [assets addObject:object];
+    }
+}];
+
+[cachingImageManager startCachingImagesForAssets:assets
+                                      targetSize:PHImageManagerMaximumSize
+                                     contentMode:PHImageContentModeAspectFit
+                                         options:nil];
 ~~~
 
 Alternatively, Swift `willSet` / `didSet` hooks offer a convenient way to automatically start pre-caching assets as they are loaded:
@@ -90,7 +162,11 @@ var assets: [PHAsset] = [] {
     }
 
     didSet {
-        cachingImageManager.startCachingImagesForAssets(self.assets, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFit, options: nil)
+        cachingImageManager.startCachingImagesForAssets(self.assets,
+            targetSize: PHImageManagerMaximumSize,
+            contentMode: .AspectFit,
+            options: nil
+        )
     }
 }
 ~~~
@@ -137,27 +213,101 @@ override func viewDidLoad() {
     initialRequestOptions.resizeMode = .Fast
     initialRequestOptions.deliveryMode = .FastFormat
 
-    manager.requestImageForAsset(asset, targetSize: CGSize(width: 250.0, height: 250.0), contentMode: .AspectFit, options: initialRequestOptions) { (initialResult, _) in
-        let finalRequestOptions = PHImageRequestOptions()
-        finalRequestOptions.progressHandler = { (progress, _, _, _) in
-            self.progressView.progress = Float(progress)
-        }
-
-        let detector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyLow])
-        let features = detector.featuresInImage(CIImage(CGImage: initialResult.CGImage)) as [CIFeature]
-        if features.count > 0 {
-            var rect = CGRectZero
-            for feature in features {
-                rect = CGRectUnion(rect, feature.bounds)
+    manager.requestImageForAsset(asset,
+        targetSize: CGSize(width: 250.0, height: 250.0),
+        contentMode: .AspectFit,
+        options: initialRequestOptions) { (initialResult, _) in
+            guard let ciImage = initialResult?.CIImage else {
+                return
             }
 
-            finalRequestOptions.normalizedCropRect = CGRectApplyAffineTransform(rect, CGAffineTransformMakeScale(1.0 / initialResult.size.width, 1.0 / initialResult.size.height))
+            let finalRequestOptions = PHImageRequestOptions()
+            finalRequestOptions.progressHandler = { (progress, _, _, _) in
+                self.progressView.progress = Float(progress)
+            }
+
+            let detector = CIDetector(
+                ofType: CIDetectorTypeFace,
+                context: nil,
+                options: [CIDetectorAccuracy: CIDetectorAccuracyLow]
+            )
+
+            let features = detector.featuresInImage(ciImage)
+            if features.count > 0 {
+                var rect = CGRectZero
+                features.forEach {
+                    rect.unionInPlace($0.bounds)
+                }
+
+                let transform = CGAffineTransformMakeScale(1.0 / initialResult!.size.width, 1.0 / initialResult!.size.height)
+                finalRequestOptions.normalizedCropRect = CGRectApplyAffineTransform(rect, transform)
+            }
+
+            manager.requestImageForAsset(self.asset,
+                targetSize: PHImageManagerMaximumSize,
+                contentMode: .AspectFit,
+                options: finalRequestOptions) { (finalResult, _) in
+                    self.imageView.image = finalResult
+            }
+    }
+}
+~~~
+
+~~~{objective-c}
+@property (nonatomic, strong) PHAsset *asset;
+@property (nonatomic, weak) IBOutlet UIImageView *imageView;
+@property (nonatomic, weak) IBOutlet UIProgressView *progressView;
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    PHImageManager *manager = [PHImageManager defaultManager];
+
+    PHImageRequestOptions *initialRequestOptions = [[PHImageRequestOptions alloc] init];
+    initialRequestOptions.synchronous = true;
+    initialRequestOptions.resizeMode = PHImageRequestOptionsResizeModeFast;
+    initialRequestOptions.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+
+    void (^resultHandler)(UIImage *, NSDictionary *) = ^(UIImage * _Nullable initialResult, NSDictionary * _Nullable info) {
+        if (!initialResult.CIImage) {
+            return;
         }
 
-        manager.requestImageForAsset(asset, targetSize: PHImageManagerMaximumSize, contentMode: .AspectFit, options: finalRequestOptions) { (finalResult, _) in
-            self.imageView.image = finalResult
+        PHImageRequestOptions *finalRequestOptions = [[PHImageRequestOptions alloc] init];
+        finalRequestOptions.progressHandler = ^(double progress, NSError *error, BOOL *stop, NSDictionary *info) {
+            self.progressView.progress = progress;
+        };
+
+        CIDetector *detector = [CIDetector detectorOfType:CIDetectorTypeFace
+                                                  context:nil
+                                                  options:@{CIDetectorAccuracy : CIDetectorAccuracyLow}];
+        NSArray<CIFeature *> *features = [detector featuresInImage:initialResult.CIImage];
+        if (features.count) {
+            CGRect rect;
+            for (CIFeature *feature in features) {
+                CGRectUnion(rect, feature.bounds);
+            }
+
+            CGAffineTransform transform = CGAffineTransformMakeScale(1.0 / initialResult.size.width, 1.0 / initialResult.size.height);
+            finalRequestOptions.normalizedCropRect = CGRectApplyAffineTransform(rect, transform);
         }
-    }
+
+        [manager requestImageForAsset:self.asset
+                           targetSize:PHImageManagerMaximumSize
+                          contentMode:PHImageContentModeAspectFit
+                              options:finalRequestOptions
+                        resultHandler:^(UIImage * _Nullable finalResult, NSDictionary * _Nullable info) {
+                            self.imageView.image = finalResult;
+                        }];
+    };
+    // typedef void (^ PHAssetImageProgressHandler)(double progress, NSError *__nullable error, BOOL *stop, NSDictionary *__nullable info) NS_AVAILABLE_IOS(8_0);
+
+    [manager requestImageForAsset:self.asset
+                       targetSize:PHImageManagerMaximumSize
+                      contentMode:PHImageContentModeAspectFit
+                          options:initialRequestOptions
+                    resultHandler:resultHandler];
+
 }
 ~~~
 

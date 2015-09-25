@@ -5,7 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: September 15, 2015
 ---
 
 Here's a question: why isn't `NSOrderedSet` a subclass of `NSSet`?
@@ -27,8 +28,8 @@ As expertly demonstrated by [Tom Dalling](http://tomdalling.com) in [this Stack 
 To start, let's look at how `-mutableCopy` is supposed to work in a class cluster:
 
 ~~~{swift}
-let immutable: NSSet = NSSet()
-var mutable: NSMutableSet = immutable.mutableCopy() as NSMutableSet
+let immutable = NSSet()
+let mutable = immutable.mutableCopy() as! NSMutableSet
 
 mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // true
@@ -47,8 +48,8 @@ Now let's suppose that `NSOrderedSet` was indeed a subclass of `NSSet`:
 ~~~{swift}
 // class NSOrderedSet: NSSet {...}
 
-let immutable: NSOrderedSet = NSOrderedSet()
-var mutable: NSMutableOrderedSet = immutable.mutableCopy() as NSMutableOrderedSet
+let immutable = NSOrderedSet()
+let mutable = immutable.mutableCopy() as! NSMutableOrderedSet
 
 mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // false (!)
@@ -72,8 +73,8 @@ That's no good... since `NSMutableOrderedSet` couldn't be used as a method param
 // class NSOrderedSet: NSSet {...}
 // class NSMutableOrderedSet: NSMutableSet {...}
 
-let immutable: NSOrderedSet = NSOrderedSet()
-var mutable: NSMutableOrderedSet = immutable.mutableCopy() as NSMutableOrderedSet
+let immutable = NSOrderedSet()
+let mutable = immutable.mutableCopy() as! NSMutableOrderedSet
 
 mutable.isKindOfClass(NSSet.self) // true
 mutable.isKindOfClass(NSMutableSet.self) // true
