@@ -6,17 +6,18 @@ authors:
     - Nate Cook
 category: Swift
 tags: swift
-excerpt: "Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 6 & Swift."
+excerpt: "Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Read on to learn about the recent changes to documentation with Xcode 7 & Swift 2."
 revisions:
     "2014-07-28": Original publication.
     "2015-05-05": Extended detail on supported markup; revised examples.
+    "2015-09-26": Updated to new format in Xcode 7.
 status:
-    swift: 1.2
+    swift: 2.0
 ---
 
 Code structure and organization is a matter of pride for developers. Clear and consistent code signifies clear and consistent thought. Even though the compiler lacks a discerning palate when it comes to naming, whitespace, or documentation, it makes all of the difference for human collaborators.
 
-Readers of NSHipster will no doubt remember the [article about documentation published last year](http://nshipster.com/documentation/), but a lot has changed with Xcode 6 (fortunately, for the better, in most cases). So this week, we'll be documenting the here and now of documentation for aspiring Swift developers.
+Readers of NSHipster will no doubt remember the [article about documentation published last year](http://nshipster.com/documentation/), but a lot has changed with Xcode 6 and again in Xcode 7 (fortunately, for the better, in most cases). So this week, we'll be documenting the here and now of documentation for aspiring Swift developers.
 
 Let's dive in.
 
@@ -45,30 +46,30 @@ func foo(bar: String) -> AnyObject { ... }
 
 What _is_ parsed, however, is something markedly different:
 
-![New Recognized Format](http://nshipster.s3.amazonaws.com/swift-documentation-new-format.png)
-
 ~~~{swift}
 /**
     Lorem ipsum dolor sit amet.
 
-    :param: bar Consectetur adipisicing elit.
+    - Parameter bar: Consectetur adipisicing elit.
 
-    :returns: Sed do eiusmod tempor.
+    - Returns: Sed do eiusmod tempor.
 */
 func foo(bar: String) -> AnyObject { ... }
 ~~~
 
-So what is this strange new documentation format? It turns out that SourceKit (the private framework powering Xcode, previously known for its high FPS crashes) includes a basic parser for [reStructuredText](http://docutils.sourceforge.net/docs/user/rst/quickref.html). Only a subset of the [specification](http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html#field-lists) is implemented, but there's enough in there to cover basic formatting.
+![New Recognized Format](http://nshipster.s3.amazonaws.com/swift-documentation-new-format.png)
+
+So what is this strange new documentation format? It turns out Xcode 7 now suports Markdown with some recognized keywords for special flavoring.
 
 
 #### Basic Markup
 
-Documentation comments are distinguished by using `/** ... */` for multi-line comments or `/// ...` for single-line comments. Inside comment blocks, paragraphs are separated by blank lines. Unordered lists can be made with several bullet characters: `-`, `+`, `*`, `•`, etc, while ordered lists use Arabic numerals (1, 2, 3, ...) followed by a period `1.` or right parenthesis `1)` or surrounded by parentheses on both sides `(1)`:
+Documentation comments are distinguished by using `/** ... */` for multi-line comments or `/// ...` for single-line and multi-line comments. Inside comment blocks, paragraphs are separated by blank lines. Unordered lists can be made with several bullet characters: `-`, `+`, `*`, `•`, etc, while ordered lists use Arabic numerals (1, 2, 3, ...) followed by a period `1.` or right parenthesis `1)` or surrounded by parentheses on both sides `(1)`:
 
 ~~~{swift}
 /**
 	You can apply *italic*, **bold**, or `code` inline styles.
-	
+
 	- Lists are great,
 	- but perhaps don't nest
 	- Sub-list formatting
@@ -84,51 +85,79 @@ Documentation comments are distinguished by using `/** ... */` for multi-line co
 
 #### Definition & Field Lists
 
-Defininition and field lists are displayed similarly in Xcode's Quick Documentation popup, with definition lists a little more compact:
+Defininition and field lists are displayed similarly in Xcode's Quick Documentation popup. Field lists are marked by a top-level list that starts with a recognized keyword like `Parameter`. Any text that does not belong to a keyword-ed top-level list will render as the symbol definition.
 
 ~~~{swift}
 /**
-	Definition list
-		A list of terms and their definitions.
-	Format
-		Terms left-justified, definitions indented underneath.
-		
-	:Field header:
-		Field lists are spaced out a little more.
-		
-	:Another field: Field lists can start the body immediately, without a line break and indentation.
-		Subsequent indented lines are treated as part of the body, too.
+    The description of the current symbol. First paragraph appers is
+    visible in auto complete.
+
+    The rest appears in Quick Help.
+    - Along with lists
+    - And any other content
+
+    - Parameter aParam: Description for the parameter.
+      Any text adyacent is treated as part of the same paragraph.
+
+    - Parameter anotherParam: The next parameter.
 */
 ~~~
 
-Two special fields are used to document parameters and return values: `:param:` and `:returns:`, respectively. `:param:` is followed by the name of the paramenter, then the description. Return values don't have a name, so the description begins immediately after `:returns:`:
+Parameters are marked by the `Parameter` keyword followed by the parameter name, a colon, and then the description. Return values dont have names so these are marked with `Returns:` followed by the description.
 
 ~~~{swift}
 /**
-	Repeats a string `times` times.
+    Repeats a string `times` times.
 
-	:param: str     The string to repeat.
-	:param: times   The number of times to repeat `str`.
+    - Parameter str: The string to repeat.
+    - Parameter times: The number of times to repeat `str`.
 
-	:returns: A new string with `str` repeated `times` times.
+    - Returns: A new string with `str` repeated `times` times.
 */
 func repeatString(str: String, times: Int) -> String {
 	return join("", Array(count: times, repeatedValue: str))
 }
 ~~~
 
+
+#### Other Field
+
+Other top-level list keywords that receive a special treatment like `Parameter` and `Returns` are:
+
+- Attention
+- Author
+- Authors
+- Bug
+- Complexity
+- Copyright
+- Date
+- Experiment
+- Important
+- Invariant
+- Note
+- Postcondition
+- Precondition
+- Remark
+- Requires
+- See
+- SeeAlso
+- Since
+- TODO
+- Version
+- Warning
+
 #### Code blocks
 
-Code blocks can be embedded in documentation comments as well, which can be useful for demonstrating proper usage or implementation details. Inset the code block by at least two spaces:
+Code blocks can be embedded in documentation comments as well, which can be useful for demonstrating proper usage or implementation details. Inset the code block by at least four spaces:
 
 ~~~{swift}
 /**
-	The area of the `Shape` instance.
-	
-	Computation depends on the shape of the instance. For a triangle, `area` will be equivalent to:
-	
-	  let height = triangle.calculateHeight()
-	  let area = triangle.base * height / 2
+    The area of the `Shape` instance.
+
+    Computation depends on the shape of the instance. For a triangle, `area` will be equivalent to:
+
+        let height = triangle.calculateHeight()
+        let area = triangle.base * height / 2
 */
 var area: CGFloat { get }
 ~~~
@@ -198,12 +227,12 @@ class Bicycle {
     /**
         Initializes a new bicycle with the provided parts and specifications.
 
-        :param: style The style of the bicycle
-        :param: gearing The gearing of the bicycle
-        :param: handlebar The handlebar of the bicycle
-        :param: centimeters The frame size of the bicycle, in centimeters
+        - Parameter style: The style of the bicycle
+        - Parameter gearing: The gearing of the bicycle
+        - Parameter handlebar: The handlebar of the bicycle
+        - Parameter centimeters: The frame size of the bicycle, in centimeters
 
-        :returns: A beautiful, brand-new, custom built just for you.
+        - Returns: A beautiful, brand-new, custom built just for you.
     */
     init(style: Style, gearing: Gearing, handlebar: Handlebar, frameSize centimeters: Int) {
         self.style = style
@@ -218,7 +247,7 @@ class Bicycle {
     /**
         Take a bike out for a spin.
 
-        :param: meters The distance to travel in meters.
+        - Parameter meters: The distance to travel in meters.
     */
     func travel(distance meters: Double) {
         if meters > 0 {
@@ -260,7 +289,7 @@ To show these new tags in action, here's how the `Bicycle` class could be extend
 extension Bicycle: Printable {
     var description: String {
         var descriptors: [String] = []
-        
+
         switch self.style {
         case .Road:
             descriptors.append("A road bike for streets or trails")
@@ -271,14 +300,14 @@ extension Bicycle: Printable {
         case .Hybrid:
             descriptors.append("A hybrid bike for general-purpose transportation")
         }
-        
+
         switch self.gearing {
         case .Fixed:
             descriptors.append("with a single, fixed gear")
         case .Freewheel(let n):
             descriptors.append("with a \(n)-speed freewheel gear")
         }
-        
+
         switch self.handlebar {
         case .Riser:
             descriptors.append("and casual, riser handlebars")
@@ -289,14 +318,14 @@ extension Bicycle: Printable {
         case .Bullhorn:
             descriptors.append("and powerful bullhorn handlebars")
         }
-        
+
         descriptors.append("on a \(frameSize)\" frame")
-        
+
         // FIXME: Use a distance formatter
         descriptors.append("with a total of \(distanceTravelled) meters traveled over \(numberOfTrips) trips.")
-        
+
         // TODO: Allow bikes to be named?
-        
+
         return join(", ", descriptors)
     }
 }
