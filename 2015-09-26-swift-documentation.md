@@ -85,25 +85,25 @@ Documentation comments are distinguished by using `/** ... */` for multi-line co
 
 #### Definition & Field Lists
 
-Defininition and field lists are displayed similarly in Xcode's Quick Documentation popup. Field lists are marked by a top-level list that starts with a recognized keyword like `Parameter`. Any text that does not belong to a keyword-ed top-level list will render as the symbol definition.
+Defininition and field lists are displayed similarly in Xcode's Quick Documentation popup. Field lists are marked by a top-level list that start with a recognized keyword like `Parameter`. Any text that does not belong to a keyword'ed top-level list will render as the symbol definition.
 
 ~~~{swift}
 /**
-    The description of the current symbol. First paragraph appers is
-    visible in auto complete.
+    The description of the current symbol. First paragraph is visible in
+    the auto complete popup.
 
     The rest appears in Quick Help.
     - Along with lists
     - And any other content
 
-    - Parameter aParam: Description for the parameter.
+    - Parameter aParam: Description of the parameter.
       Any text adyacent is treated as part of the same paragraph.
 
     - Parameter anotherParam: The next parameter.
 */
 ~~~
 
-Parameters are marked by the `Parameter` keyword followed by the parameter name, a colon, and then the description. Return values dont have names so these are marked with `Returns:` followed by the description.
+Parameters are marked by the `Parameter` keyword followed by the parameter name, a colon, and then the description. Return values don't have names so these are marked with `Returns:` followed by the description.
 
 ~~~{swift}
 /**
