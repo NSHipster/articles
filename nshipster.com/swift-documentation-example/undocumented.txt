@@ -1,0 +1,12 @@
+Bicycle.swift
+	case Road, Touring, Cruiser, Hybrid
+	case Road, Touring, Cruiser, Hybrid
+	case Road, Touring, Cruiser, Hybrid
+	case Road, Touring, Cruiser, Hybrid
+	case Fixed
+	case Freewheel(speeds: Int)
+	case Riser, Café, Drop, Bullhorn
+	case Riser, Café, Drop, Bullhorn
+	case Riser, Café, Drop, Bullhorn
+	case Riser, Café, Drop, Bullhorn
+	public var description: String
