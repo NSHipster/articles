@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "NSDateComponents serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: September 19, 2015
 ---
 
 `NSDateComponents` serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with `NSCalendar`, `NSDateComponents` becomes a remarkably convenient interchange format for calendar calculations.
@@ -18,8 +19,8 @@ Whereas dates represent a particular moment in time, date components depend on w
 ~~~{swift}
 let calendar = NSCalendar.currentCalendar()
 let date = NSDate()
-let components = calendar.components(.CalendarUnitMonth | .CalendarUnitDay, fromDate: date)
-~~~ 
+let components = calendar.components([.Month, .Day], fromDate: date)
+~~~
 
 ~~~{objective-c}
 NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -30,21 +31,21 @@ NSDate *date = [NSDate date];
 The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
 
 ~~~{swift}
-.CalendarUnitEra
-.CalendarUnitYear
-.CalendarUnitMonth
-.CalendarUnitDay
-.CalendarUnitHour
-.CalendarUnitMinute
-.CalendarUnitSecond
-.CalendarUnitWeekday
-.CalendarUnitWeekdayOrdinal
-.CalendarUnitQuarter
-.CalendarUnitWeekOfMonth
-.CalendarUnitWeekOfYear
-.CalendarUnitYearForWeekOfYear
-.CalendarUnitCalendar
-.CalendarUnitTimeZone
+NSCalendarUnit.Era
+NSCalendarUnit.Year
+NSCalendarUnit.Month
+NSCalendarUnit.Day
+NSCalendarUnit.Hour
+NSCalendarUnit.Minute
+NSCalendarUnit.Second
+NSCalendarUnit.Weekday
+NSCalendarUnit.WeekdayOrdinal
+NSCalendarUnit.Quarter
+NSCalendarUnit.WeekOfMonth
+NSCalendarUnit.WeekOfYear
+NSCalendarUnit.YearForWeekOfYear
+NSCalendarUnit.Calendar
+NSCalendarUnit.TimeZone
 ~~~
 
 ~~~{objective-c}
@@ -79,7 +80,7 @@ let components = NSDateComponents()
 components.weekOfYear = 1
 components.hour = 12
 
-println("1 week and 12 hours from now: \(calendar.dateByAddingComponents(components, toDate: date, options: nil))")
+print("1 week and 12 hours from now: \(calendar.dateByAddingComponents(components, toDate: date, options: []))")
 ~~~
 
 ~~~{objective-c}
@@ -98,7 +99,7 @@ NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:
 Perhaps the most powerful feature of `NSDateComponents`, however, is the ability to go the opposite direction—creating an `NSDate` object from components. `NSCalendar -dateFromComponents:` is the method used for this purpose:
 
 ~~~{swift}
-let calendar = NSCalendar(identifier: NSGregorianCalendar)
+let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 let components = NSDateComponents()
 components.year = 1987
@@ -108,7 +109,7 @@ components.hour = 14
 components.minute = 20
 components.second = 0
 
-let date = calendar.dateFromComponents(components)
+let date = calendar?.dateFromComponents(components)
 ~~~
 
 ~~~{objective-c}
