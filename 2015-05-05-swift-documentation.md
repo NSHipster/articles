@@ -386,7 +386,7 @@ building site
 jam out ♪♫ to your fresh new docs in `docs`
 ```
 
-[Take a peek](/swift-documentation-example/) at a Jazzy-generated docset for the `Bicycle` class.
+[Take a peek](/swift-documentation-example/Classes/Bicycle.html) at a Jazzy-generated docset for the `Bicycle` class.
 
 
 * * *
