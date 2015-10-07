@@ -163,7 +163,7 @@ Safe and clean. Swift at its best.
 
 ### (Any Other) Defer Considered Harmful
 
-As handy as the `defer` statement is, be aware of how its capabilities can lead to confusing, untraceable code. It may be tempting to use `defer` in cases where a function needs to a return a value that should also be modified, as in this typical implementation of the postfix `++` operator:
+As handy as the `defer` statement is, be aware of how its capabilities can lead to confusing, untraceable code. It may be tempting to use `defer` in cases where a function needs to return a value that should also be modified, as in this typical implementation of the postfix `++` operator:
 
 ```swift
 postfix func ++(inout x: Int) -> Int {
