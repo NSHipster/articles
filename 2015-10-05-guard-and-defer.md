@@ -88,16 +88,16 @@ extension UInt8 {
 
 Much better. Each error case is handled as soon as it has been checked, so we can follow the flow of execution straight down the left-hand side. 
 
-Even more importantly, using `guard` prevents the logic flaw in our first attempt; that final `throw` is called every time because it isn't enclosed in an `else` statement. With `guard`, the compiler forces us to break scope inside the else-block, guaranteeing the execution of that particular `throw` only at the right times.
+Even more importantly, using `guard` prevents the logic flaw in our first attempt: that final `throw` is called every time because it isn't enclosed in an `else` statement. With `guard`, the compiler forces us to break scope inside the else-block, guaranteeing the execution of that particular `throw` only at the right times.
 
-Also note that the middle `guard` statement isn't strictly necessary. Since it doesn't unwrap an optional value, an `if` statement would work perfectly well. Using `guard` in this case simply provides an extra layer of safety—the compiler ensures that you leave the initializer if the test fails, so there's no way to accidentally comment out the `throw` or introduce another error that would lose part of the initializer's logic.
+Also note that the middle `guard` statement isn't strictly necessary. Since it doesn't unwrap an optional value, an `if` statement would work perfectly well. Using `guard` in this case simply provides an extra layer of safety—the compiler ensures that you leave the initializer if the test fails, leaving no way to accidentally comment out the `throw` or introduce another error that would lose part of the initializer's logic.
 
 
 ## defer
 
 Between `guard` and the new `throw` statement for error handling, Swift 2.0 certainly seems to be encouraging a style of early return (an NSHipster favorite) rather than nested `if` statements. Returning early poses a distinct challenge, however, when resources that have been initialized (and may still be in use) must be cleaned up before returning.
 
-The new `defer` keyword provides a safe and easy way to handle this challenge, by declaring a block that will be executed only when execution leaves the current scope. Consider this snippet of a function working with `vImage` from the Accelerate framework, taken from the newly-updated article on [image resizing](/image-resizing/):
+The new `defer` keyword provides a safe and easy way to handle this challenge by declaring a block that will be executed only when execution leaves the current scope. Consider this snippet of a function working with `vImage` from the Accelerate framework, taken from the newly-updated article on [image resizing](/image-resizing/):
 
 ```swift
 func resizeImage(url: NSURL) -> UIImage? {
