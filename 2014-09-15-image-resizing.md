@@ -101,7 +101,7 @@ CGContextSetInterpolationQuality(context, kCGInterpolationHigh)
 
 CGContextDrawImage(context, CGRect(origin: CGPointZero, size: CGSize(width: CGFloat(width), height: CGFloat(height))), cgImage)
 
-let scaledImage = CGBitmapContextCreateImage(context).flatMap { UIImage(CGImage: $0 }
+let scaledImage = CGBitmapContextCreateImage(context).flatMap { UIImage(CGImage: $0) }
 ```
 
 `CGBitmapContextCreate` takes several arguments to construct a context with desired dimensions and amount of memory for each channel within a given colorspace. In the example, these values are fetched from the `CGImage`. Next, `CGContextSetInterpolationQuality` allows for the context to interpolate pixels at various levels of fidelity. In this case, `kCGInterpolationHigh` is passed for best results. `CGContextDrawImage` allows for the image to be drawn at a given size and position, allowing for the image to be cropped on a particular edge or to fit a set of image features, such as faces. Finally, `CGBitmapContextCreateImage` creates a `CGImage` from the context.
