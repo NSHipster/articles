@@ -310,7 +310,7 @@ let load = context.objectForKeyedSubscript("loadPeopleFromJSON")
 guard let people = load.callWithArguments([peopleJSON]).toArray() as? [Person]
     else { return }
     
-let template = "{{getFullName}}, born {{birthYear}}"
+let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
 let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
 for person in people {
     print(mustacheRender.callWithArguments([template, person]))
