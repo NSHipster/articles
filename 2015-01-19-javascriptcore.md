@@ -301,19 +301,21 @@ All that remains is to load the JSON data, call into the `JSContext` to parse th
 
 ````swift
 // get JSON string
-guard let peopleJSON = try? String(contentsOfFile: ..., encoding: NSUTF8StringEncoding)
-    else { return }
+let peopleJSON = try! String(contentsOfFile: ..., encoding: NSUTF8StringEncoding)
 
 // get load function
 let load = context.objectForKeyedSubscript("loadPeopleFromJSON")
 // call with JSON and convert to an Array
-guard let people = load.callWithArguments([peopleJSON]).toArray() as? [Person]
-    else { return }
+if let people = load.callWithArguments([peopleJSON]).toArray() as? [Person] {
     
-let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
-let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
-for person in people {
-    print(mustacheRender.callWithArguments([template, person]))
+    // get rendering function and create template
+    let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
+    let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
+
+    // loop through people and render Person object as string
+    for person in people {
+        print(mustacheRender.callWithArguments([template, person]))
+    }
 }
 
 // Output:
