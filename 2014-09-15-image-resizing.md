@@ -242,5 +242,5 @@ Loading, scaling, and displaying a reasonably large (1024 ⨉ 1024 px 1MB PNG) r
 - For general image scaling without any additional functionality, **`UIGraphicsBeginImageContextWithOptions`** is probably the best option.
 - If image quality is a consideration, consider using **`CGBitmapContextCreate`** in combination with **`CGContextSetInterpolationQuality`**.
 - When scaling images with the intent purpose of displaying thumbnails, **`CGImageSourceCreateThumbnailAtIndex`** offers a compelling solution for both rendering and caching.
-- Unless you're already working with `vImage`, the extra work to use the low-level Accelerate framework for resizing doesn't pay off.
+- Unless you're already working with **`vImage`**, the extra work to use the low-level Accelerate framework for resizing doesn't pay off.
 
