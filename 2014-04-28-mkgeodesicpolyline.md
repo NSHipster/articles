@@ -58,7 +58,7 @@ print(geodesicPolyline.pointCount) // 3984
 NSLog(@"%d", geodesicPolyline.pointCount) // 3984
 ~~~
 
-Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
+Like any object conforming to the `MKOverlay` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `addOverlay()` and implementing `mapView(_:rendererForOverlay:)`:
 
 ### Rendering `MKGeodesicPolyline` on an `MKMapView`
 
@@ -184,7 +184,7 @@ func updatePlanePosition() {
 
 We'll perform this method roughly 30 times a second, until the plane has arrived at its final destination.
 
-Finally, we implement `mapView:viewForAnnotation:` to have the annotation render on the map view:
+Finally, we implement `mapView(_:viewForAnnotation:)` to have the annotation render on the map view:
 
 ~~~{swift}
 func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -284,7 +284,7 @@ static inline double XXDegreesToRadians(double degrees) {
 }
 ~~~
 
-That direction is stored in a new property, `var planeDirection: CLLocationDirection = 0`, calculated from `self.planeDirection = directionBetweenPoints(currentMapPoint, nextMapPoint)` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+That direction is stored in a new property, `var planeDirection: CLLocationDirection`, calculated from `self.planeDirection = directionBetweenPoints(currentMapPoint, nextMapPoint)` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
 ~~~{swift}
 annotationView.transform = CGAffineTransformRotate(mapView.transform, 

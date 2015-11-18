@@ -369,7 +369,7 @@ func stepImagesFromDirectionsResponse(response: MKDirectionsResponse, completion
             for mapItem in [response.source, response.destination]
                 where mapItem.placemark.location != nil {
                 var point = snapshot.pointForCoordinate(mapItem.placemark.location!.coordinate)
-                if CGRectContainsPoint(visibleRect, point) {
+                if visibleRect.contains(point) {
                     let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
                     pin.pinTintColor = mapItem.isEqual(response.source) ?
                             MKPinAnnotationView.greenPinColor() : MKPinAnnotationView.redPinColor()
