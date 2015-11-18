@@ -14,7 +14,7 @@ status:
 
 最近更新的 Swift 2.0 带来了两个新的能够简化程序和提高效率的控制流表达形式：`guard` 和 `defer`。前者可以让代码编写更流畅，后者能够让执行推迟。我们应该如何使用这两个新的声明方式呢？`guard` 和 `defer` 将如何帮我们厘清程序和进程间的对应关系呢？
 
-我们推迟一下 `defer` 先看 `guard`。
+我们 defer（推迟）一下 `defer` 先看 `guard`。
 
 ---
 
@@ -33,7 +33,7 @@ for imageName in imageNamesList {
 }
 ```
 
-Let's take a before-and-after look at how `guard` can improve our code and help prevent errors. As an example, we'll build a new string-to-`UInt8` initializer. `UInt8` already declares a failable initializer that takes a `String`, but if the conversion fails we don't learn the reason—was the format invalid or was the value out of bounds for the numeric type? Our new initializer throws a `ConversionError` that provides more information.
+我们来对比一下使用 `guard` 关键字之后能如何帮助我们避免错误。例如，我们创建一个字符串转为 `UInt8` 的初始化方法。`UInt8` 已经实现了一个可以接受 `String` 的初始化方法并且可以抛出错误，但是如果上下文出现了我们不能预知的问题，比如说格式错误了，或者超出了数值边界，应该怎么办呢？我们新实现的初始化方法将抛出一个能够提供更多错误信息的 `ConversionError`。
 
 ```swift
 enum ConversionError : ErrorType {
@@ -63,9 +63,9 @@ extension UInt8 {
 }
 ```
 
-Note how far apart the format check and the invalid format `throw` are in this example. Not ideal. Moreover, the actual initialization happens two levels deep, inside a nested `if` statement. And if that isn't enough, there's a bug in the logic of this initializer that isn't immediately apparent. Can you spot the flaw? What's really going to bake your noodle later on is, would you still have noticed it if I hadn't said anything?
+注意这个例子中格式检查和抛出错误格式的代码距离有多远，写出这样的代码并不理想。此外，真正的初始化被放在了两层深的 `if` 嵌套中。如果我们的代码写的有问题，里面有 bug 的话，根本不能一眼看出问题在哪。这里面有什么问题你能立刻发现吗？如果我不告诉你的话，你能知道到底是哪部分代码出了问题吗？
 
-Next, let's take a look at how using `guard` transforms this initializer:
+下面我们来用 `guard` 改善一下这段代码：
 
 ```swift
 extension UInt8 {
@@ -87,18 +87,17 @@ extension UInt8 {
 }
 ```
 
-Much better. Each error case is handled as soon as it has been checked, so we can follow the flow of execution straight down the left-hand side. 
+这样就好多了。每一个错误都在相应的检查之后立刻被抛出，所以我们可以按照左手边的代码顺序来梳理工作流的顺序。
 
-Even more importantly, using `guard` prevents the logic flaw in our first attempt; that final `throw` is called every time because it isn't enclosed in an `else` statement. With `guard`, the compiler forces us to break scope inside the else-block, guaranteeing the execution of that particular `throw` only at the right times.
+更重要的是，用 `guard` 能够避免我们第一次写代码时候的逻辑错误，第一次我们写的最后一个 `throw` 每次都被调用了，因为它不在 `else` 里面。使用 `guard` 编译器会强制我们在 else-block 里跳出当前上下文，这保证了 `throw` 只在他们应该出现的时候被调用。
 
-Also note that the middle `guard` statement isn't strictly necessary. Since it doesn't unwrap an optional value, an `if` statement would work perfectly well. Using `guard` in this case simply provides an extra layer of safety—the compiler ensures that you leave the initializer if the test fails, so there's no way to accidentally comment out the `throw` or introduce another error that would lose part of the initializer's logic.
-
+同时请注意中间那个 `guard` 语句并不是严格必需的。因为它并不能转换一个 optional 值，所以只用 `if` 语句也能完美工作，在这种情况下使用 `guard` 只是从控制层面保证了安全 —— 让编译器确保如果测试失败也能够退出初始化函数，所以就没有必要为每一个 `throw` 或可能产生错误的地方写注释来避免逻辑混淆了。
 
 ## defer
 
-Between `guard` and the new `throw` statement for error handling, Swift 2.0 certainly seems to be encouraging a style of early return (an NSHipster favorite) rather than nested `if` statements. Returning early poses a distinct challenge, however, when resources that have been initialized (and may still be in use) must be cleaned up before returning.
+在错误处理方面，`guard` 和新的 `throw` 语法之间，Swift 2.0 也鼓励用尽早返回错误（这也是 NSHipster 最喜欢的方式）来代替嵌套 if 的处理方式。尽早返回让处理更清晰了，但是已经被初始化（可能也正在被使用）的资源必须在返回前被处理干净。
 
-The new `defer` keyword provides a safe and easy way to handle this challenge, by declaring a block that will be executed only when execution leaves the current scope. Consider this snippet of a function working with `vImage` from the Accelerate framework, taken from the newly-updated article on [image resizing](/image-resizing/):
+新的 `defer` 关键字为此提供了安全又简单的处理方式：声明一个 block，当前代码执行的闭包退出时会执行该 block。下面的代码是使用 Accelerate framework 对 `vImage` 进行操作的一些函数（这个函数是从 [image resizing](http://nshipster.com/image-resizing/) 这篇文章中截取的）：
 
 ```swift
 func resizeImage(url: NSURL) -> UIImage? {
