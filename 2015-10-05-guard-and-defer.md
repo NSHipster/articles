@@ -8,9 +8,9 @@ status:
     swift: 2.0
 ---
 
-> "我们应该（聪明的程序员明白自己的局限性）尽力……让文本里的程序（program）和时间轴上的进程（process）的对应尽量简单。"
+> 「我们应该（聪明的程序员明白自己的局限性）尽力……让文本里的程序（program）和时间轴上的进程（process）的对应尽量简单。」
 
-> —[Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra), "Go To 有害论"
+> —[Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra), 《Go To 有害论》
 
 最近更新的 Swift 2.0 带来了两个新的能够简化程序和提高效率的控制流表达形式：`guard` 和 `defer`。前者可以让代码编写更流畅，后者能够让执行推迟。我们应该如何使用这两个新的声明方式呢？`guard` 和 `defer` 将如何帮我们厘清程序和进程间的对应关系呢？
 
@@ -125,11 +125,11 @@ func resizeImage(url: NSURL) -> UIImage? {
 }
 ```
 
-Here an `UnsafeMutablePointer<UInt8>` is allocated for the destination data early on, but we need to remember to deallocate at both failure points *and* once we no longer need the pointer.
+这里有一个在最开始就创建的 `UnsafeMutablePointer<UInt8>` 用于存储目标数据，但是我 *既要* 在错误发生后销毁它，*又要* 在正常流程下不再使用它时对其进行销毁。
 
-Error prone? Yes. Frustratingly repetitive? Check.
+这种设计很容易导致错误，而且不停地在做重复工作。
 
-A `defer` statement removes any chance of forgetting to clean up after ourselves while also simplifying our code. Even though the `defer` block comes immediately after the call to `alloc()`, its execution is delayed until the end of the current scope:
+`defer` 语句能让我们在做完主体工作之后不会忘记脏数据，也能让代码更简洁。虽然 `defer` block 紧接着 `alloc()` 出现，但会等到当前上下文结束的时候才真正执行：
 
 ```swift
 func resizeImage(url: NSURL) -> UIImage? {
@@ -154,16 +154,16 @@ func resizeImage(url: NSURL) -> UIImage? {
 }
 ```
 
-Thanks to `defer`, `destData` will be properly deallocated no matter which exit point is used to return from the function.
+多亏了 `defer`，`destData` 才能无论在哪个点退出函数都可以被释放。
 
-Safe and clean. Swift at its best.
+安全又干净，Swift 优势发挥到极致。
 
-> `defer` blocks are executed in the reverse order of their appearance. This reverse order is a vital detail, ensuring everything that was in scope when a deferred block was created will still be in scope when the block is executed.
+> `defer` 的 block 执行顺序和书写的顺序是相反的，这种相反的顺序是必要的，是为了确保每样东西的 defer block 在被创建的时候，该元素依然在当前上下文中存在。
 
 
-### (Any Other) Defer Considered Harmful
+### (其他情况下)  Defer 会带来坏处
 
-As handy as the `defer` statement is, be aware of how its capabilities can lead to confusing, untraceable code. It may be tempting to use `defer` in cases where a function needs to a return a value that should also be modified, as in this typical implementation of the postfix `++` operator:
+虽然 `defer` 像一个语法糖一样，但也要小心使用避免形成容易误解、难以阅读的代码。在某些情况下你可能会尝试用 `defer` 来对某些值返回之前做最后一步的处理，例如说在后置运算符 `++` 的实现中：
 
 ```swift
 postfix func ++(inout x: Int) -> Int {
@@ -173,7 +173,7 @@ postfix func ++(inout x: Int) -> Int {
 }
 ```
 
-In this case, `defer` offers a clever alternative. Why create a temporary variable when we can just defer the increment? 
+在这种情况下，可以用 `defer` 来进行一个很另类的操作。如果能在 defer 中处理的话为什么要创建临时变量呢？ 
 
 ```swift
 postfix func ++(inout x: Int) -> Int {
@@ -182,10 +182,9 @@ postfix func ++(inout x: Int) -> Int {
 }
 ```
 
-Clever indeed, yet this inversion of the function's flow harms readability. Using `defer` to explicitly alter a program's flow, rather than to clean up allocated resources, will lead to a twisted and tangled execution process.
-
+这种写法确实聪明，但这样却颠倒了函数的逻辑顺序，极大降低了代码的可读性。应该严格遵循 `defer` 在整个程序最后运行以释放已申请资源的原则，其他任何使用方法都可能让代码乱成一团。
 
 ---
 
-"As wise programmers aware of our limitations," we must weigh the benefits of each language feature against its costs. A new statement like `guard` leads to a more linear, more readable program; apply it as widely as possible. Likewise, `defer` solves a significant challenge but forces us to keep track of its declaration as it scrolls out of sight; reserve it for its minimum intended purpose to guard against confusion and obscurity.
+「聪明的程序员明白自己的局限性」，我们必须权衡每种语言特性的好处和其成本。类似于 `guard` 的新特性能让代码流程上更线性，可读性更高，就应该尽可能使用。同样 `defer` 也解决了重要的问题，但是会强迫我们一定要找到它声明的地方才能追踪到其销毁的方法，因为声明方法很容易被滚动出了视野之外，所以应该尽可能遵循它出现的初衷尽可能少地使用，避免造成混淆和晦涩。
 
