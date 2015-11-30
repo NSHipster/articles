@@ -156,6 +156,7 @@ Creating a `CIContext` is an expensive operation, so a cached context should alw
 The [Accelerate framework](https://developer.apple.com/library/prerelease/ios/documentation/Accelerate/Reference/AccelerateFWRef/index.html#//apple_ref/doc/uid/TP40009465) includes a suite of `vImage` image-processing functions, with a [set of functions](https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/vImage_geometric/index.html#//apple_ref/doc/uid/TP40005490-CH212-145717) that scale an image buffer. These lower-level APIs promise high performance with low power consumption, but at the cost of managing the buffers yourself. The following is a Swift version of a method [suggested by Nyx0uf on GitHub](https://gist.github.com/Nyx0uf/217d97f81f4889f4445a):
 
 ```swift
+let fitSize = CGSizeMake(100, 100)
 let cgImage = UIImage(contentsOfFile: self.URL.absoluteString!).CGImage
 
 // create a source buffer
@@ -172,8 +173,8 @@ guard error == kvImageNoError else { return nil }
     
 // create a destination buffer
 let scale = UIScreen.mainScreen().scale
-let destWidth = Int(image.size.width * CGFloat(scalingFactor) * scale)
-let destHeight = Int(image.size.height * CGFloat(scalingFactor) * scale)
+let destWidth = Int(fitSize.width * scale)
+let destHeight = Int(fitSize.height * scale)
 let bytesPerPixel = CGImageGetBitsPerPixel(image.CGImage) / 8
 let destBytesPerRow = destWidth * bytesPerPixel
 let destData = UnsafeMutablePointer<UInt8>.alloc(destHeight * destBytesPerRow)
