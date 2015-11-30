@@ -172,8 +172,8 @@ guard error == kvImageNoError else { return nil }
     
 // create a destination buffer
 let scale = UIScreen.mainScreen().scale
-let destWidth = Int(image.size.width * CGFloat(scalingFactor) * scale)
-let destHeight = Int(image.size.height * CGFloat(scalingFactor) * scale)
+let destWidth = Int(image.size.width * 0.5 * scale)
+let destHeight = Int(image.size.height * 0.5 * scale)
 let bytesPerPixel = CGImageGetBitsPerPixel(image.CGImage) / 8
 let destBytesPerRow = destWidth * bytesPerPixel
 let destData = UnsafeMutablePointer<UInt8>.alloc(destHeight * destBytesPerRow)
