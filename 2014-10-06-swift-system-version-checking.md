@@ -64,11 +64,11 @@ Anticipating the need for a Swift-friendly API for determining API version at ru
 
 ### isOperatingSystemAtLeastVersion
 
-For a simple check, like "is this app running on iOS 8?", `isOperatingSystemAtLeastVersion` is the most straightforward approach.
+For a simple check, like "is this app running on iOS 9?", `isOperatingSystemAtLeastVersion` is the most straightforward approach.
 
 ~~~{swift}
-if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion: 8, minorVersion: 0, patchVersion: 0)) {
-    println("iOS >= 8.0.0")
+if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)) {
+    println("iOS >= 9.0.0")
 }
 ~~~
 
