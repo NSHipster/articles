@@ -281,16 +281,21 @@ override var data: NSData! {
 ### 还有很多，很多...
 ### And Much, Much More...
 
-> 在组成 Alamofire 的不到 1000 行的代码中还有很多干货。
+> 在组成 Alamofire 的不到 1000 行的代码中还有很多干货。对于所有有志于 Swift 语言的开发者和 API 作者们，我都建议你们[深入项目的源代码]((https://github.com/Alamofire/Alamofire)，以更好地了解底层的实现内幕。
 There's a lot baked into the < 1000 LOC comprising Alamofire. Any aspiring Swift developer or API author would be advised to [peruse through the source code](https://github.com/Alamofire/Alamofire) to get a better sense of what's going on.
 
 * * *
 
-> 可能有人会想，AFNetworking
+> 可能有人会想，那 AFNetworking 呢？放心，**AFNetworking 依然稳定而且可靠，并且会继续被维护**。实际上，最近这几个月以来，很多开发者在 AFNetworking 以及它的一方扩展上投入了大量的工作，以提高测试覆盖率，同时完善文档。
+
 > For anyone wondering where this leaves AFNetworking, don't worry: **AFNetworking is stable and reliable, and isn't going anywhere.** In fact, over the coming months, a great deal of work is going to be put into improving test coverage and documentation for AFNetworking 2 and its first-party extensions.
+
+> 另外，AFNetworking 也可以很方便地在 Swift 使用，和使用其它的 Objective-C 代码没有区别。Alamofire 作为一个单独的项目，从发送 HTTP 请求这个问题出发，致力于对新语言的特性和范式进行探索。
 
 > It's also important to note that AFNetworking can be easily used from Swift code, just like any other Objective-C code. Alamofire is a separate project investigating the implications of new language features and conventions on the problem of making HTTP requests.
 
+Alamofire 1.0 计划在 Swift 1.0 版本发布时同时释出（具体什么时候就不确定了）。里程碑当中的一部分包括[完成全部文档](http://nshipster.com/swift-documentation/)，以及借助于 [Xcode 6 的测试支持](http://nshipster.com/xctestcase/) 和 [Kenneth Reitz](http://www.kennethreitz.org) 编写的 [httpbin](http://httpbin.org)，实现 100% 的单元测试覆盖率。
 Alamofire 1.0 is scheduled to coincide with the 1.0 release of Swift... whenever that is. Part of that milestone is [complete documentation](http://nshipster.com/swift-documentation/), and 100% Unit Test Coverage, making use of the new [Xcode 6 testing infrastructure](http://nshipster.com/xctestcase/) & [httpbin](http://httpbin.org) by [Kenneth Reitz](http://www.kennethreitz.org).
 
+我们每个人都在尽最大努力去理解如何设计，实现以及发布 Swift 代码。Alamofire 只是众多激动人心的新库当中的一个，它们将会在接下来的数月乃至数年时间当中，指导语言本身以及社区的发展。对于想参与其中的人，欢迎你们做出贡献，就像俗话说的：[pull requests 永远不嫌多](https://github.com/Alamofire/Alamofire/compare/)
 We're all doing our best to understand how to design, implement, and distribute code in Swift. Alamofire is just one of many exciting new libraries that will guide the development of the language and community in the coming months and years. For anyone interested in being part of this, I welcome your contributions. As the mantra goes: [pull requests welcome](https://github.com/Alamofire/Alamofire/compare/).
