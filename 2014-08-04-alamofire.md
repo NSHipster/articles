@@ -3,14 +3,14 @@ title: Alamofire
 author: Mattt Thompson
 translator: Chester Liu
 category: Open Source
-excerpt: "尽管我们离使用 Swift 发布 App 还有几个月的时间，已经有若干使用这门新语言的开源项目开始生根发芽了， Alamofire 便是这些项目中的一个。"
+excerpt: "尽管我们离使用 Swift 发布 App 还有几个月的时间，已经有若干使用这门新语言的开源项目开始生根发芽了，Alamofire 便是这些项目中的一个。"
 status:
     swift: 1.1
 ---
 
 Swift 像是在 iOS 开发者社区中按下了一个“重启”按钮，成了很多常年使用 Objective-C 的开发者的新宠儿。
 
-一夜之间，大家谈论的主题从命名空间([namespacing](http://nshipster.com/namespacing/)) 和 方法交叉([swizzling](http://nshipster.com/method-swizzling/))，延伸到泛型 ([generics](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_272)) 和类型推导([type inference](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-XID_487))。每年这个时候， Twitter 上通常会充斥着关于最新的 API 的讨论，以及将要发布的硬件设备的传言。然而今年，一切都被 Swift 占领了。
+一夜之间，大家谈论的主题从命名空间([namespacing](http://nshipster.com/namespacing/)) 和方法交叉([swizzling](http://nshipster.com/method-swizzling/))，延伸到泛型 ([generics](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_272))和类型推导([type inference](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-XID_487))。每年这个时候， Twitter 上通常会充斥着关于最新的 API 的讨论，以及将要发布的硬件设备的传言。然而今年，一切都被 Swift 占领了。
 
 Swift 有着全新的语法，语言规范还处在不断演进的过程当中。Swift 已经吸引了新老开发者的关注，给 iOS & OS X 开发带来了新的想象空间。
 
@@ -59,11 +59,11 @@ Alamofire.request(.GET, "http://httpbin.org/get")
 
 一个很小的语法差异也有可能对一个语言的通用惯例产生广泛的影响。
 
-在人们对于 Objective-C 的诸多抱怨当中，首当其中的便是使用方括号来表示消息传递([message passing](http://en.wikipedia.org/wiki/Message_passing))。使用 `[ ]` 语法的潜在影响之一，就是很难把方法串联在一起。尽管有 Xcode 自动补全的帮助， `@property` 点(.)语法，以及 [key-value coding key-paths](http://nshipster.com/kvc-collection-operators/)，大家还是很难在代码中看到嵌套层次很深的函数调用。
+在人们对于 Objective-C 的诸多抱怨当中，首当其中的便是使用方括号来表示消息传递([message passing](http://en.wikipedia.org/wiki/Message_passing))。使用 `[ ]` 语法的潜在影响之一，就是很难把方法调用串联在一起。尽管有 Xcode 自动补全的帮助， `@property` 点(.)语法，以及 [key-value coding key-paths](http://nshipster.com/kvc-collection-operators/) 的支持，大家还是很难在代码中看到嵌套层次很深的函数调用。
 
 > Objective-C 2.0 中引入了属性点(.)语法，在很大程度上，这种妥协反而使得语法上的矛盾更严重了。最近这些年语法惯例才重新开始稳定下来。
 
-在 Swift 中,所有的方法调用都是使用点(.)语法，参数使用括号传递，在传递过程中会保持顺序，并进行参数的形参化。方法可以返回 `Self` 来让多个方法串联在一起。
+在 Swift 中，所有的方法调用都是使用点(.)语法，参数使用括号传递，在传递过程中会保持顺序，并进行参数的形参化。方法可以返回 `Self` 来让多个方法串联在一起。
 
 Alamofire 采用了这种模式，让网络请求的声明变得更加简洁和局部化。
 
@@ -204,9 +204,9 @@ lazy var defaultHeaders: [String: String] = {
 }()
 ```
 
-### 使对内可变的属性对外不可变
+### 使对外不可变的属性对内可变
 
-在 Objective-C 中，一个类对外暴露出 `readonly` 的不可变属性，要想同时在类的内部实现其可变，需要在变量声明时使用一些小技巧(译者注：参考[这里](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html)。
+在 Objective-C 中，一个类对外暴露出 `readonly` 的不可变属性，要想同时在类的内部实现其可变，需要在变量声明时使用一些小技巧(译者注：参考[这里](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html))。
 
 Xcode 6 β4 给 Swift 带来了访问控制特性，让我们可以更加方便地设计一个安全的，对外不可变的 API：
 
@@ -219,14 +219,14 @@ override var data: NSData! {
 
 ### 还有很多，很多...
 
-> 在组成 Alamofire 的不到 1000 行的代码中还有很多干货。对于所有有志于 Swift 语言的开发者和 API 作者们，我都建议你们[深入项目的源代码]((https://github.com/Alamofire/Alamofire)，以更好地了解底层的实现内幕。
+在组成 Alamofire 的不到 1000 行的代码中还有很多干货。对于所有有志于 Swift 语言的开发者和 API 作者们，我都建议你们[深入项目的源代码](https://github.com/Alamofire/Alamofire)，以更好地了解底层的实现内幕。
 
 * * *
 
-> 可能有人会想，那 AFNetworking 呢？放心，**AFNetworking 依然稳定而且可靠，并且会继续被维护**。实际上，最近这几个月以来，很多开发者在 AFNetworking 以及它的一方扩展上投入了大量的工作，以提高测试覆盖率，同时完善文档。
+> 可能有人会想，那 AFNetworking 呢？放心，**AFNetworking 依然稳定而且可靠，并且会继续被维护**。事实上，在接下来的几个月时间里，开发者将在 AFNetworking 2 以及它的一方扩展上继续投入大量的工作，以提高测试覆盖率，同时完善文档。
 
-> 另外，AFNetworking 也可以很方便地在 Swift 使用，和使用其它的 Objective-C 代码没有区别。Alamofire 作为一个单独的项目，从发送 HTTP 请求这个问题出发，致力于对新语言的特性和范式进行探索。
+> 另外，AFNetworking 也可以很方便地在 Swift 中使用，和使用其它的 Objective-C 代码没有什么区别。Alamofire 作为一个单独的项目，从发送 HTTP 请求这个问题出发，致力于对新语言的特性和范式进行探索。
 
 Alamofire 1.0 计划在 Swift 1.0 版本发布时同时释出（具体什么时候就看苹果了）。里程碑当中的一部分包括[完成全部文档](http://nshipster.com/swift-documentation/)，以及借助于 [Xcode 6 的测试支持](http://nshipster.com/xctestcase/) 和 [Kenneth Reitz](http://www.kennethreitz.org) 编写的 [httpbin](http://httpbin.org)，实现 100% 的单元测试覆盖率。
 
-我们每个人都在尽最大努力去理解如何设计，实现以及发布 Swift 代码。Alamofire 只是众多激动人心的新库当中的一个，它们将会在接下来的数月乃至数年时间当中，指导语言本身以及社区的发展。对于想参与其中的人，欢迎你们做出贡献。俗话说得好：[pull requests 永远不嫌多](https://github.com/Alamofire/Alamofire/compare/)
+我们每个人都在尽最大努力去理解如何设计，实现以及发布 Swift 代码。Alamofire 只是众多激动人心的新库当中的一个，它们将会在接下来的数月乃至数年时间当中，指导语言本身以及社区的发展。对于想参与其中的人，欢迎你们做出贡献。俗话说得好：[pull requests 永远不嫌多](https://github.com/Alamofire/Alamofire/compare/)。
