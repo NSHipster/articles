@@ -1,5 +1,6 @@
 lang: en-US
 source: ./nshipster.com
+destination: ./_site-nshipster.com
 url: http://nshipster.com
 
 title: NSHipster

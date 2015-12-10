@@ -1,5 +1,6 @@
 lang: zh-Hans
 source: ./nshipster.cn
+destination: ./_site-nshipster.cn
 url: http://nshipster.cn
 
 title: NSHipster
