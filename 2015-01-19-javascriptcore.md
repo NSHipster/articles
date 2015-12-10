@@ -4,7 +4,8 @@ author: Nate Cook
 category: "Cocoa"
 excerpt: "Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit's JavaScript engine, providing easy, fast, and safe access to the world's most prevalent language. Love it or hate it, JavaScript's ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."
 status:
-    swift: 1.0
+    swift: 2.0
+    reviewed: November 9, 2015
 ---
 
 An updated ranking of programming language popularity is [out this week](http://redmonk.com/sogrady/category/programming-languages/), showing Swift leaping upward through the ranks from 68th to 22nd, while Objective-C holds a strong lead up ahead at #10. Both, however, are blown away by the only other language allowed to run natively on iOS: the current champion, JavaScript.
@@ -52,7 +53,7 @@ As that last line shows, any value that comes *out* of a `JSContext` is wrapped 
 To retrieve the value of `tripleNum` from the above example, simply use the appropriate method:
 
 ````swift
-println("Tripled: \(tripleNum.toInt32())")
+print("Tripled: \(tripleNum.toInt32())")
 // Tripled: 30
 ````
 ````objective-c
@@ -68,7 +69,7 @@ We can easily access any values we've created in our `context` using subscript n
 ````swift
 let names = context.objectForKeyedSubscript("names")
 let initialName = names.objectAtIndexedSubscript(0)
-println("The first name: \(initialName.toString())")
+print("The first name: \(initialName.toString())")
 // The first name: Grace
 ````
 ````objective-c
@@ -88,7 +89,7 @@ With a `JSValue` that wraps a JavaScript function, we can call that function dir
 ````swift
 let tripleFunction = context.objectForKeyedSubscript("triple")
 let result = tripleFunction.callWithArguments([5])
-println("Five tripled: \(result.toInt32())")
+print("Five tripled: \(result.toInt32())")
 ````
 ````objective-c
 JSValue *tripleFunction = context[@"triple"];
@@ -103,7 +104,7 @@ NSLog(@"Five tripled: %d", [result toInt32]);
 
 ````swift
 context.exceptionHandler = { context, exception in
-    println("JS Error: \(exception)")
+    print("JS Error: \(exception)")
 }
 
 context.evaluateScript("function multiply(value1, value2) { return value1 * value2 ")
@@ -128,18 +129,16 @@ There are two main ways of giving a `JSContext` access to our native client code
 
 ### Blocks
 
-When an Objective-C block is assigned to an identifier in a `JSContext`, JavaScriptCore automatically wraps the block in a JavaScript function. This makes it simple to use Foundation and Cocoa classes from within JavaScript—again, all the bridging happens for you. Witness the full power of `CFStringTransform`, now accessible to JavaScript:
+When an Objective-C block is assigned to an identifier in a `JSContext`, JavaScriptCore automatically wraps the block in a JavaScript function. This makes it simple to use Foundation and Cocoa classes from within JavaScript—again, all the bridging happens for you. Witness the full power of Foundation string transformations, now accessible to JavaScript:
 
 ````swift
-let simplifyString: @objc_block String -> String = { input in
-    var mutableString = NSMutableString(string: input) as CFMutableStringRef
-    CFStringTransform(mutableString, nil, kCFStringTransformToLatin, Boolean(0))
-    CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, Boolean(0))
-    return mutableString
+let simplifyString: @convention(block) String -> String = { input in
+    let result = input.stringByApplyingTransform(NSStringTransformToLatin, reverse: false)
+    return result?.stringByApplyingTransform(NSStringTransformStripCombiningMarks, reverse: false) ?? ""
 }
 context.setObject(unsafeBitCast(simplifyString, AnyObject.self), forKeyedSubscript: "simplifyString")
 
-println(context.evaluateScript("simplifyString('안녕하새요!')"))
+print(context.evaluateScript("simplifyString('안녕하새요!')"))
 // annyeonghasaeyo!
 ````
 ````objective-c
@@ -153,7 +152,7 @@ context[@"simplifyString"] = ^(NSString *input) {
 NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하새요!')"]);
 ````
 
-> There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, it needs to be (a) declared with the `@objc_block` attribute, and (b) cast to `AnyObject` using Swift's knuckle-whitening `unsafeBitCast()` function.
+> There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, it needs to be (a) declared with the `@convention(block)` attribute, and (b) cast to `AnyObject` using Swift's knuckle-whitening `unsafeBitCast()` function.
 
 #### Memory Management
 
@@ -302,21 +301,20 @@ All that remains is to load the JSON data, call into the `JSContext` to parse th
 
 ````swift
 // get JSON string
-if let peopleJSON = NSString(contentsOfFile:..., encoding: NSUTF8StringEncoding, error: nil) {
+let peopleJSON = try! String(contentsOfFile: ..., encoding: NSUTF8StringEncoding)
 
-    // get load function
-    let load = context.objectForKeyedSubscript("loadPeopleFromJSON")
-    // call with JSON and convert to an array of `Person`
-    if let people = load.callWithArguments([peopleJSON]).toArray() as? [Person] {
-  
-        // get rendering function and create template
-        let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
-        let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
-      
-        // loop through people and render Person object as string
-        for person in people {
-            println(mustacheRender.callWithArguments([template, person]))
-        }
+// get load function
+let load = context.objectForKeyedSubscript("loadPeopleFromJSON")
+// call with JSON and convert to an Array
+if let people = load.callWithArguments([peopleJSON]).toArray() as? [Person] {
+    
+    // get rendering function and create template
+    let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
+    let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
+
+    // loop through people and render Person object as string
+    for person in people {
+        print(mustacheRender.callWithArguments([template, person]))
     }
 }
 

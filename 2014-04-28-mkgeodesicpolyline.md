@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."
 status:
-    swift: t.b.c.
+    swift: 2.0
+    reviewed: November 12, 2015
 ---
 
 We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery.
@@ -23,6 +24,15 @@ An `MKGeodesicPolyline` is created with an array of 2 `MKMapPoint`s or `CLLocati
 
 ### Creating an `MKGeodesicPolyline`
 
+~~~{swift}
+let LAX = CLLocation(latitude: 33.9424955, longitude: -118.4080684)
+let JFK = CLLocation(latitude: 40.6397511, longitude: -73.7789256)
+
+var coordinates = [LAX.coordinate, JFK.coordinate]
+let geodesicPolyline = MKGeodesicPolyline(coordinates: &coordinates, count: 2)
+
+mapView.addOverlay(geodesicPolyline)
+~~~
 ~~~{objective-c}
 CLLocation *LAX = [[CLLocation alloc] initWithLatitude:33.9424955
                                              longitude:-118.4080684];
@@ -41,14 +51,33 @@ MKGeodesicPolyline *geodesicPolyline =
 
 Although the overlay looks like a smooth curve, it is actually comprised of thousands of tiny line segments (true to its `MKPolyline` lineage):
 
+~~~{swift}
+print(geodesicPolyline.pointCount) // 3984
+~~~
 ~~~{objective-c}
-NSLog(@"%d", geodesicPolyline.pointsCount) // 3984
+NSLog(@"%d", geodesicPolyline.pointCount) // 3984
 ~~~
 
-Like any object conforming to the `<MKOverlay>` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `-addOverlay:` and implementing `mapView:rendererForOverlay:`:
+Like any object conforming to the `MKOverlay` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `addOverlay()` and implementing `mapView(_:rendererForOverlay:)`:
 
 ### Rendering `MKGeodesicPolyline` on an `MKMapView`
 
+~~~{swift}
+// MARK: MKMapViewDelegate
+
+func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    guard let polyline = overlay as? MKPolyline else {
+        return MKOverlayRenderer()
+    }
+    
+    let renderer = MKPolylineRenderer(polyline: polyline)
+    renderer.lineWidth = 3.0
+    renderer.alpha = 0.5
+    renderer.strokeColor = UIColor.blueColor()
+    
+    return renderer
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MKMapViewDelegate
 
@@ -85,6 +114,13 @@ Since geodesics make reasonable approximations for flight paths, a common use ca
 
 To do this, we'll make properties for our map view and geodesic polyline between LAX and JFK, and add new properties for the `planeAnnotation` and `planeAnnotationPosition` (the index of the current map point for the polyline):
 
+~~~{swift}
+// MARK: Flight Path Properties
+var mapView: MKMapView!
+var flightpathPolyline: MKGeodesicPolyline!
+var planeAnnotation: MKPointAnnotation!
+var planeAnnotationPosition = 0
+~~~
 ~~~{objective-c}
 @interface MapViewController () <MKMapViewDelegate>
 @property MKMapView *mapView;
@@ -96,6 +132,14 @@ To do this, we'll make properties for our map view and geodesic polyline between
 
 Next, right below the initialization of our map view and polyline, we create an `MKPointAnnotation` for our plane:
 
+~~~{swift}
+let annotation = MKPointAnnotation()
+annotation.title = NSLocalizedString("Plane", comment: "Plane marker")
+mapView.addAnnotation(annotation)
+
+self.planeAnnotation = annotation
+self.updatePlanePosition()
+~~~
 ~~~{objective-c}
 self.planeAnnotation = [[MKPointAnnotation alloc] init];
 self.planeAnnotation.title = NSLocalizedString(@"Plane", nil);
@@ -106,6 +150,21 @@ self.planeAnnotation.title = NSLocalizedString(@"Plane", nil);
 
 That call to `updatePlanePosition` in the last line ticks the animation and updates the position of the plane:
 
+~~~{swift}
+func updatePlanePosition() {
+    let step = 5
+    guard planeAnnotationPosition + step < flightpathPolyline.pointCount
+        else { return }
+
+    let points = flightpathPolyline.points()
+    self.planeAnnotationPosition += step
+    let nextMapPoint = points[planeAnnotationPosition]
+    
+    self.planeAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
+    
+    performSelector("updatePlanePosition", withObject: nil, afterDelay: 0.03)
+}
+~~~
 ~~~{objective-c}
 - (void)updatePlanePosition {
     static NSUInteger const step = 5;
@@ -123,11 +182,22 @@ That call to `updatePlanePosition` in the last line ticks the animation and upda
 }
 ~~~
 
-
 We'll perform this method roughly 30 times a second, until the plane has arrived at its final destination.
 
-Finally, we implement `mapView:viewForAnnotation:` to have the annotation render on the map view:
+Finally, we implement `mapView(_:viewForAnnotation:)` to have the annotation render on the map view:
 
+~~~{swift}
+func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+    let planeIdentifier = "Plane"
+    
+    let annotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(planeIdentifier)
+            ?? MKAnnotationView(annotation: annotation, reuseIdentifier: planeIdentifier)
+    
+    annotationView.image = UIImage(named: "airplane")
+
+    return annotationView
+}
+~~~
 ~~~{objective-c}
 - (MKAnnotationView *)mapView:(MKMapView *)mapView
             viewForAnnotation:(id <MKAnnotation>)annotation
@@ -137,7 +207,7 @@ Finally, we implement `mapView:viewForAnnotation:` to have the annotation render
     MKAnnotationView *annotationView = [mapView dequeueReusableAnnotationViewWithIdentifier:PinIdentifier];
     if (!annotationView) {
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:PinIdentifier];
-    };
+    }
 
     annotationView.image = [UIImage imageNamed:@"plane"];
 
@@ -155,6 +225,14 @@ Let's update the rotation of the plane as it moves across its flightpath.
 
 To calculate the plane's direction, we'll take the slope from the previous and next points:
 
+~~~{swift}
+let previousMapPoint = points[planeAnnotationPosition]
+planeAnnotationPosition += step
+let nextMapPoint = points[planeAnnotationPosition]
+
+self.planeDirection = directionBetweenPoints(previousMapPoint, nextMapPoint)
+self.planeAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint)
+~~~
 ~~~{objective-c}
 MKMapPoint previousMapPoint = self.flightpathPolyline.points[self.planeAnnotationPosition];
 self.planeAnnotationPosition += step;
@@ -164,10 +242,18 @@ self.planeDirection = XXDirectionBetweenPoints(previousMapPoint, nextMapPoint);
 self.planeAnnotation.coordinate = MKCoordinateForMapPoint(nextMapPoint);
 ~~~
 
-`XXDirectionBetweenPoints` is a function that returns a `CLLocationDirection` (0 – 360 degrees, where North = 0) given two `MKMapPoint`s.
+`directionBetweenPoints` is a function that returns a `CLLocationDirection` (0 – 360 degrees, where North = 0) given two `MKMapPoint`s.
 
 > We calculate from `MKMapPoint`s rather than converted coordinates, because we're interested in the slope of the line on the flat projection.
 
+~~~{swift}
+private func directionBetweenPoints(sourcePoint: MKMapPoint, _ destinationPoint: MKMapPoint) -> CLLocationDirection {
+    let x = destinationPoint.x - sourcePoint.x
+    let y = destinationPoint.y - sourcePoint.y
+    
+    return radiansToDegrees(atan2(y, x)) % 360 + 90
+}
+~~~
 ~~~{objective-c}
 static CLLocationDirection XXDirectionBetweenPoints(MKMapPoint sourcePoint, MKMapPoint destinationPoint) {
     double x = destinationPoint.x - sourcePoint.x;
@@ -177,8 +263,17 @@ static CLLocationDirection XXDirectionBetweenPoints(MKMapPoint sourcePoint, MKMa
 }
 ~~~
 
-That convenience function `XXRadiansToDegrees` (and its partner, `XXDegreesToRadians`) are simply:
+That convenience function `radiansToDegrees` (and its partner, `degreesToRadians`) are simply:
 
+~~~{swift}
+private func radiansToDegrees(radians: Double) -> Double {
+    return radians * 180 / M_PI
+}
+
+private func degreesToRadians(degrees: Double) -> Double {
+    return degrees * M_PI / 180
+}
+~~~
 ~~~{objective-c}
 static inline double XXRadiansToDegrees(double radians) {
     return radians * 180.0f / M_PI;
@@ -189,10 +284,14 @@ static inline double XXDegreesToRadians(double degrees) {
 }
 ~~~
 
-That direction is stored in a new property, `@property CLLocationDirection planeDirection;`, calculated from `self.planeDirection = XXDirectionBetweenPoints(currentMapPoint, nextMapPoint);` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+That direction is stored in a new property, `var planeDirection: CLLocationDirection`, calculated from `self.planeDirection = directionBetweenPoints(currentMapPoint, nextMapPoint)` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
+~~~{swift}
+annotationView.transform = CGAffineTransformRotate(mapView.transform, 
+        degreesToRadians(planeDirection))
+~~~
 ~~~{objective-c}
-annotationView.transform =
+self.annotationView.transform =
     CGAffineTransformRotate(self.mapView.transform,
                             XXDegreesToRadians(self.planeDirection));
 ~~~

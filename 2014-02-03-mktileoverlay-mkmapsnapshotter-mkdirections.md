@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
 status:
-    swift: t.b.c.
+    swift: 2.0
+    reviewed: November 12, 2015
 ---
 
 Unless you work with `MKMapView` on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been [under the cheeriest of circumstances](http://www.apple.com/letter-from-tim-cook-on-maps/). Even now, years after the ire of armchair usability experts has moved on to iOS 7's distinct "look and feel", the phrase "Apple Maps" still does not inspire confidence in the average developer.
@@ -23,6 +24,14 @@ Don't like the default Apple Maps tiles? [`MKTileOverlay`](https://developer.app
 
 ### Setting Custom Map View Tile Overlay
 
+~~~{swift}
+let template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
+
+let overlay = MKTileOverlay(URLTemplate: template)
+overlay.canReplaceMapContent = true
+
+mapView.addOverlay(overlay, level: .AboveLabels)
+~~~
 ~~~{objective-c}
 static NSString * const template = @"http://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
@@ -62,6 +71,17 @@ After setting `canReplaceMapContent` to `YES`, the overlay is added to the `MKMa
 
 In the map view's delegate, `mapView:rendererForOverlay:` is implemented simply to return a new `MKTileOverlayRenderer` instance when called for the `MKTileOverlay` overlay.
 
+~~~{swift}
+// MARK: MKMapViewDelegate
+
+func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
+    guard let tileOverlay = overlay as? MKTileOverlay else {
+        return MKOverlayRenderer()
+    }
+    
+    return MKTileOverlayRenderer(tileOverlay: tileOverlay)
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MKMapViewDelegate
 
@@ -82,6 +102,33 @@ In the map view's delegate, `mapView:rendererForOverlay:` is implemented simply 
 
 If you need to accommodate a different tile coordinate scheme with your server, or want to add in-memory or offline caching, this can be done by subclassing `MKTileOverlay` and overriding `-URLForTilePath:` and `-loadTileAtPath:result:`:
 
+~~~{swift}
+class MKHipsterTileOverlay : MKTileOverlay {
+    let cache = NSCache()
+    let operationQueue = NSOperationQueue()
+
+    override func URLForTilePath(path: MKTileOverlayPath) -> NSURL {
+        return NSURL(string: String(format: "http://tile.example.com/%d/%d/%d", path.z, path.x, path.y))!
+    }
+    
+    override func loadTileAtPath(path: MKTileOverlayPath, result: (NSData?, NSError?) -> Void) {
+        let url = URLForTilePath(path)
+        if let cachedData = cache.objectForKey(url) as? NSData {
+            result(cachedData, nil)
+        } else {
+            let request = NSURLRequest(URL: url)
+            NSURLConnection.sendAsynchronousRequest(request, queue: operationQueue) {
+                [weak self]
+                response, data, error in
+                if let data = data {
+                    self?.cache.setObject(data, forKey: url)
+                }
+                result(data, error)
+            }
+        }
+    }
+}
+~~~
 ~~~{objective-c}
 @interface XXTileOverlay : MKTileOverlay
 @property NSCache *cache;
@@ -123,6 +170,25 @@ Another addition to iOS 7 was [`MKMapSnapshotter`](https://developer.apple.com/l
 
 ### Creating a Map View Snapshot
 
+~~~{swift}
+let options = MKMapSnapshotOptions()
+options.region = mapView.region
+options.size = mapView.frame.size
+options.scale = UIScreen.mainScreen().scale
+
+let fileURL = NSURL(fileURLWithPath: "path/to/snapshot.png")
+
+let snapshotter = MKMapSnapshotter(options: options)
+snapshotter.startWithCompletionHandler { snapshot, error in
+    guard let snapshot = snapshot else {
+        print("Snapshot error: \(error)")
+        return
+    }
+    
+    let data = UIImagePNGRepresentation(snapshot.image)
+    data?.writeToURL(fileURL, atomically: true)
+}
+~~~
 ~~~{objective-c}
 MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
 options.region = self.mapView.region;
@@ -154,6 +220,36 @@ However, this only draws the map for the specified region; annotations are rende
 
 Including annotations—or indeed, any additional information to the map snapshot—can be done by dropping down into Core Graphics:
 
+~~~{swift}
+snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { snapshot, error in
+    guard let snapshot = snapshot else {
+        print("Snapshot error: \(error)")
+        fatalError()
+    }
+    
+    let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+    let image = snapshot.image
+    
+    UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
+    image.drawAtPoint(CGPoint.zero)
+
+    let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
+    for annotation in mapView.annotations {
+        var point = snapshot.pointForCoordinate(annotation.coordinate)
+        if visibleRect.contains(point) {
+            point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
+            point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
+            pin.image?.drawAtPoint(point)
+        }
+    }
+
+    let compositeImage = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    let data = UIImagePNGRepresentation(compositeImage)
+    data?.writeToURL(fileURL, atomically: true)
+}
+~~~
 ~~~{objective-c}
 [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
               completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
@@ -203,12 +299,104 @@ Building on the previous example, here is how `MKDirections` might be used to cr
 
 ### Getting Snapshots for each Step of Directions on a Map View
 
+~~~{swift}
+let request = MKDirectionsRequest()
+request.source = MKMapItem.mapItemForCurrentLocation()
+request.destination = MKMapItem(...)
+        
+let directions = MKDirections(request: request)
+directions.calculateDirectionsWithCompletionHandler { response, error in
+    guard let response = response else {
+        print("Directions error: \(error)")
+        return
+    }
+
+    stepImagesFromDirectionsResponse(response) { stepImages in
+        stepImages.first
+        print(stepImages)
+    }
+}
+
+func stepImagesFromDirectionsResponse(response: MKDirectionsResponse, completionHandler: ([UIImage]) -> Void) {
+    guard let route = response.routes.first else {
+        completionHandler([])
+        return
+    }
+
+    var stepImages: [UIImage?] = Array(count: route.steps.count, repeatedValue: nil)
+    var stepImageCount = 0
+    
+    for (index, step) in route.steps.enumerate() {
+        let snapshotter = MKMapSnapshotter(options: options)
+        snapshotter.startWithCompletionHandler { snapshot, error in
+            ++stepImageCount
+            
+            guard let snapshot = snapshot else {
+                print("Snapshot error: \(error)")
+                return
+            }
+            
+            let image = snapshot.image
+            
+            UIGraphicsBeginImageContextWithOptions(image.size, true, image.scale)
+            image.drawAtPoint(CGPoint.zero)
+            
+            // draw the path
+            guard let c = UIGraphicsGetCurrentContext() else { return }
+            CGContextSetStrokeColorWithColor(c, UIColor.blueColor().CGColor)
+            CGContextSetLineWidth(c, 3)
+            CGContextBeginPath(c)
+            
+            var coordinates: UnsafeMutablePointer<CLLocationCoordinate2D> = UnsafeMutablePointer.alloc(step.polyline.pointCount)
+            defer { coordinates.dealloc(step.polyline.pointCount) }
+            
+            step.polyline.getCoordinates(coordinates, range: NSRange(location: 0, length: step.polyline.pointCount))
+            
+            for i in 0 ..< step.polyline.pointCount {
+                let p = snapshot.pointForCoordinate(coordinates[i])
+                if i == 0 {
+                    CGContextMoveToPoint(c, p.x, p.y)
+                } else {
+                    CGContextAddLineToPoint(c, p.x, p.y)
+                }
+            }
+
+            CGContextStrokePath(c)
+
+            // add the start and end points
+            let visibleRect = CGRect(origin: CGPoint.zero, size: image.size)
+
+            for mapItem in [response.source, response.destination]
+                where mapItem.placemark.location != nil {
+                var point = snapshot.pointForCoordinate(mapItem.placemark.location!.coordinate)
+                if visibleRect.contains(point) {
+                    let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
+                    pin.pinTintColor = mapItem.isEqual(response.source) ?
+                            MKPinAnnotationView.greenPinColor() : MKPinAnnotationView.redPinColor()
+                    point.x = point.x + pin.centerOffset.x - (pin.bounds.size.width / 2)
+                    point.y = point.y + pin.centerOffset.y - (pin.bounds.size.height / 2)
+                    pin.image?.drawAtPoint(point)
+                }
+            }
+
+            let stepImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            stepImages[index] = stepImage
+            
+            if stepImageCount == stepImages.count {
+                completionHandler(stepImages.flatMap({ $0 }))
+            }
+        }
+    }
+}
+~~~
 ~~~{objective-c}
 NSMutableArray *mutableStepImages = [NSMutableArray array];
 
 MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
 request.source = [MKMapItem mapItemForCurrentLocation];
-request.destination = nil;//...;
+request.destination = ...;
 
 MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
 [directions calculateDirectionsWithCompletionHandler:^(MKDirectionsResponse *response, NSError *error) {

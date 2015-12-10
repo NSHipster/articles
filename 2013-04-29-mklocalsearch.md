@@ -4,7 +4,8 @@ author: Mattt Thompson
 category: Cocoa
 excerpt: "In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1."
 status:
-    swift: 1.1
+    swift: 2.0
+    reviewed: November 12, 2015
 ---
 
 Look, we get it: people are upset about Apple Maps.
@@ -26,12 +27,16 @@ request.region = mapView.region
 
 let search = MKLocalSearch(request: request)
 search.startWithCompletionHandler { (response, error) in
+    guard let response = response else {
+        print("Search error: \(error)")
+        return
+    }
+    
     for item in response.mapItems {
         // ...
     }
 }
 ~~~
-
 ~~~{objective-c}
 MKLocalSearchRequest *request = [[MKLocalSearchRequest alloc] init];
 request.naturalLanguageQuery = @"Restaurants";

@@ -68,7 +68,7 @@ If the user has previously given permission to use location services, this deleg
 func locationManager(manager: CLLocationManager!,
                      didChangeAuthorizationStatus status: CLAuthorizationStatus)
 {
-    if status == .Authorized || status == .AuthorizedWhenInUse {
+    if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
         manager.startUpdatingLocation()
         // ...
     }
@@ -93,7 +93,7 @@ Here's an example of how an app that prompts for both kinds of permissions might
 
 ```swift
 switch CLLocationManager.authorizationStatus() {
-    case .Authorized:
+    case .AuthorizedAlways:
         // ...
     case .NotDetermined:
         manager.requestAlwaysAuthorization()
@@ -145,7 +145,7 @@ func startUpdatingLocation() {
 // MARK: - CLLocationManagerDelegate
 
 func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-    if status == .AuthorizedWhenInUse || status == .Authorized {
+    if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
         startUpdatingLocation()
     }
 }
