@@ -6,7 +6,7 @@ layout: default
 
 <article class="author" itemscope itemtype="http://schema.org/Person">
   <header role="heading">
-    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ author.image }}" draggable="false"/>
+    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ site.asseturl }}/{{ author.image }}" draggable="false"/>
     <h1 itemprop="name">{{ author.name }}</h1>
 
     {{ author.content | markdownify }}
