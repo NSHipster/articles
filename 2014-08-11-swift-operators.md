@@ -19,7 +19,7 @@ translator: Candyan
 
 虽然这个表达式是线性的，但编译器会用树形表示或者 AST：
 
-![1 + 2 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two.svg)
+![1 + 2 AST]({{ site.asseturl }}/swift-operators-one-plus-two.svg)
 
 复合语句，像 `1 + 2 + 3`
 
@@ -28,7 +28,7 @@ translator: Candyan
 |       左操作数       |        运算符        |       右操作数       |
 
 
-![1 + 2 + 3 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-plus-three.svg)
+![1 + 2 + 3 AST]({{ site.asseturl }}/swift-operators-one-plus-two-plus-three.svg)
 
 或者，更复杂的语句，`1 + 2 * 3 % 4`，编译器会用运算符优先级来把表达式解析为单一语句：
 
@@ -38,7 +38,7 @@ translator: Candyan
 |       左操作数       |        运算符        |          右操作数          |
 
 
-![1 + 2 * 3 % 4 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-times-three-mod-four.svg)
+![1 + 2 * 3 % 4 AST]({{ site.asseturl }}/swift-operators-one-plus-two-times-three-mod-four.svg)
 
 就像[你小学学过的](http://zh.wikipedia.org/wiki/%E9%81%8B%E7%AE%97%E6%AC%A1%E5%BA%8F)运算符优先级规则一样，它为复合语句提供了一套标准的运算次序。
 

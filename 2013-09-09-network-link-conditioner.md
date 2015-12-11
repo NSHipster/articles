@@ -19,19 +19,19 @@ excerpt: "产品设计是一种感同身受。知道用户想要什么，他们�
 
 Network Link Conditioner 可以在 “Xcode 的硬件 IO 工具” 包中找到。这可以从[苹果开发者下载](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools)页面下载。
 
-![Download](http://nshipster.s3.amazonaws.com/network-link-conditioner-download.png)
+![Download]({{ site.asseturl }}/network-link-conditioner-download.png)
 
 搜索 “Network Link Conditioner”，然后选择正确版本的 “Xcode 的硬件 IO 工具” 包。
 
-![Package](http://nshipster.s3.amazonaws.com/network-link-conditioner-dmg.png)
+![Package]({{ site.asseturl }}/network-link-conditioner-dmg.png)
 
 下载完成后，打开 DMG，然后双击 “Network Link Condition.prefPane” 来进行安装。
 
-![System Preferences](http://nshipster.s3.amazonaws.com/network-link-conditioner-install.png)
+![System Preferences]({{ site.asseturl }}/network-link-conditioner-install.png)
 
 现在起，你可以在系统设置的底部启用 Network Link Conditioner。
 
-![Network Link Conditioner](http://nshipster.s3.amazonaws.com/network-link-conditioner-system-preference.png)
+![Network Link Conditioner]({{ site.asseturl }}/network-link-conditioner-system-preference.png)
 
 启用后，Network Link Conditioner 可以根据内置的某个预设来改变 iPhone 模拟器的网络环境根：
 
@@ -45,7 +45,7 @@ Network Link Conditioner 可以在 “Xcode 的硬件 IO 工具” 包中找到�
 
 每个预置可以设置上行或下行的[带宽](http://en.wikipedia.org/wiki/Bandwidth_%28computing%29)极限，[延迟](http://en.wikipedia.org/wiki/Latency_％28engineering％29％23Communication_latency)，和[丢包](http://en.wikipedia.org/wiki/Packet_loss)概率（当任何值被设置为 0 时，该值将会同你的计算机的网络环境保持一致）。
 
-![Preset](http://nshipster.s3.amazonaws.com/network-link-conditioner-preset.png)
+![Preset]({{ site.asseturl }}/network-link-conditioner-preset.png)
 
 如果你想同时模拟多种因素的特定组合，你也可以创建自己的预设。
 
@@ -64,6 +64,6 @@ Network Link Conditioner 可以在 “Xcode 的硬件 IO 工具” 包中找到�
 3. 在侧边栏中选择你的设备
 4. 单击 “Use for Development”
 
-![iOS Devices](http://nshipster.s3.amazonaws.com/network-link-conditioner-ios.png)
+![iOS Devices]({{ site.asseturl }}/network-link-conditioner-ios.png)
 
 现在，你可以在设置应用程序里看到开发者分区了，你可以在那里找到 Network Link Conditioner（只是别忘了在完成测试后把它关掉！）。

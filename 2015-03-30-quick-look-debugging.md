@@ -10,13 +10,13 @@ excerpt: "调试可能会是一个讽刺的实践。我们创建了各种任务�
 
 例如，假设我试图找出为什么我的应用程序里的 `UINavigationBar` 没有按我预计的显示。为了调查清楚，我可能会使用调试器来看看诸如我在导航栏上设置的 `UIColor` 实例，这东西*到底是*什么颜色？
 
-![UIColor in Debug](http://nshipster.s3.amazonaws.com/quicklook-debug.gif)
+![UIColor in Debug]({{ site.asseturl }}/quicklook-debug.gif)
 
 Hold 住！并没有试图找出如何将这些组件加在一起的办法。*其实有一个更好的办法。*
 
 自从版本 5 开始，Xcode 在调试器已经附带了快速查看显示。正如你可以在桌面上快速点击空格键来查看文件的内容，在 Xcode 中你可以用可视化的快速查看各种数据类型。在我们的 `color` 变量上按空格键立即给出了一个答案，你脑海中应该马上浮现起了需要 RGB 转化计算：
 
-![UIColor Quick Look](http://nshipster.s3.amazonaws.com/quicklook-color.gif)
+![UIColor Quick Look]({{ site.asseturl }}/quicklook-color.gif)
 
 * * *
 
@@ -65,7 +65,7 @@ func buildPathWithRadius(radius: CGFloat, steps: CGFloat, loopCount: CGFloat) ->
 
 为了看到结果，你肯定可以为这个 bezier 路径新建一个自定义视图或画成一个 `UIImage`。但更好的是，你可以在方法结尾插入一个断点并把鼠标移上去查看 `path`：
 
-![Spiral UIBezierPath Quick Look](http://nshipster.s3.amazonaws.com/quicklook-spiral.gif)
+![Spiral UIBezierPath Quick Look]({{ site.asseturl }}/quicklook-spiral.gif)
 
 它是螺旋的！
 

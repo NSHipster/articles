@@ -43,7 +43,7 @@ excerpt: "你知道 `UIAlertView`、`UIActionSheet` (以及它们各自的 deleg
 
 ### 标准的 Alert 样式
 
-![A Standard Alert](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-defautl-style.png)
+![A Standard Alert]({{ site.asseturl }}/uialertcontroller-alert-defautl-style.png)
 
 #### 旧方法：UIAlertView
 
@@ -83,7 +83,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### 标准的 Action Sheet 样式
 
-![A Standard Action Sheet](http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png)
+![A Standard Action Sheet]({{ site.asseturl }}/uialertcontroller-action-sheet-automatic-style.png)
 
 #### UIActionSheet
 
@@ -134,7 +134,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### 带有警示按钮的 Alert
 
-![Alert with Destructive Button](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-cancel-destroy.png)
+![Alert with Destructive Button]({{ site.asseturl }}/uialertcontroller-alert-cancel-destroy.png)
 
 这种行为已经被 `UIAlertActionStyle` 所涵盖，共有三种类型：
 
@@ -164,7 +164,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### 大于 2 个按钮的 Alert
 
-![Alert with More Than 2 Buttons](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-one-two-three-cancel.png)
+![Alert with More Than 2 Buttons]({{ site.asseturl }}/uialertcontroller-alert-one-two-three-cancel.png)
 
 有 1 个或者 2 个操作的时候，按钮会水平排布。更多按钮的情况，就会像 action sheet 那样展示：
 
@@ -182,7 +182,7 @@ alertController.addAction(cancelAction)
 
 ### 创建登录表单
 
-![Creating a Login Form](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-username-password-login-forgot-password-cancel.png)
+![Creating a Login Form]({{ site.asseturl }}/uialertcontroller-alert-username-password-login-forgot-password-cancel.png)
 
 iOS 5 就为 `UIAlertView` 加入了 `alertViewStyle` 属性，将原本私有的 API 暴露出来给开发者使用 —— 像某些系统内建应用一样允许在 alert 中显示登录和密码框。
 
@@ -220,7 +220,7 @@ alertController.addAction(cancelAction)
 
 ### 创建注册表单
 
-![Creating a Sign Up Form](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-sign-up.png)
+![Creating a Sign Up Form]({{ site.asseturl }}/uialertcontroller-alert-sign-up.png)
 
 `UIAlertController` 想得比以前更周到一些，它提供了展示无限个输入框的权限，并且每一个输入框都可以根据需求进行自定义。这让仅在一个模态的 alert 中实现完善的注册功能成为可能：
 

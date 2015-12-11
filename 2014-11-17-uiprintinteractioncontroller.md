@@ -16,11 +16,11 @@ UIKit 可以很容易的把用户设备里存储的定制设计直接打印出�
 
 > 在 Xcode 6 上，打印机模拟器必须下载，它是*[Xcode 的硬件 IO 工具](https://developer.apple.com/downloads/index.action?name=hardware%20io%20tools)*的一部分。
 
-![从苹果开发者网站下载硬件 I/O 工具](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-hardware-io-tools-download.png)
+![从苹果开发者网站下载硬件 I/O 工具]({{ site.asseturl }}/uiprintinteractioncontroller-hardware-io-tools-download.png)
 
-![PrintSimulator 应用信息](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printer-simulator-app.png)
+![PrintSimulator 应用信息]({{ site.asseturl }}/uiprintinteractioncontroller-printer-simulator-app.png)
 
-![PrintSimulator 应用加载说明](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printersimulator-load-paper.pnd.png)
+![PrintSimulator 应用加载说明]({{ site.asseturl }}/uiprintinteractioncontroller-printersimulator-load-paper.pnd.png)
 
 * * *
 
@@ -109,7 +109,7 @@ UIKit 可以很容易的把用户设备里存储的定制设计直接打印出�
 
 易如反掌！ _(或者应景的说，像做煎瑞士甜菜一样简单。)_
 
-![用 .printingItem 打印](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-image-print.png)
+![用 .printingItem 打印]({{ site.asseturl }}/uiprintinteractioncontroller-image-print.png)
 
 > `presentAnimated(:completionHandler:)` 方法是在 **iPhone** 上呈现打印 UI。如果是从 **iPad** 打印，使用 `presentFromBarButtonItem(:animated:completionHandler:)` 或
 `presentFromRect(:inView:animated:completionHandler:)` 方法代替。
@@ -142,21 +142,21 @@ printController.printFormatter = formatter;
 
 结果嘞？一个漂亮的 HTML 页面：
 
-![用 UIMarkupTextPrintFormatter 打印](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-html-print.png)
+![用 UIMarkupTextPrintFormatter 打印]({{ site.asseturl }}/uiprintinteractioncontroller-html-print.png)
 
 另一方面，使用 `UIViewPrintFormatter`，你可以从 `viewPrintFormatter` 属性得到一个你想要打印的视图。下面就来看看格式化如何格式它所支持的三个视图的：
 
 #### 1) UITextView
 
-![打印 UITextView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-textview-print.png)
+![打印 UITextView]({{ site.asseturl }}/uiprintinteractioncontroller-textview-print.png)
 
 #### 2) UIWebView
 
-![打印 UIWebView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-webview-print.png)
+![打印 UIWebView]({{ site.asseturl }}/uiprintinteractioncontroller-webview-print.png)
 
 #### 3) MKMapView
 
-![打印 MKMapView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-mapview-print.png)
+![打印 MKMapView]({{ site.asseturl }}/uiprintinteractioncontroller-mapview-print.png)
 
 ## UIPrintPageRenderer
 
@@ -302,7 +302,7 @@ printController.printPageRenderer = renderer;
 
 > 需要注意的是菜谱的文本是由一个 `UIMarkupTextPrintFormatter` 来格式化的，然而页眉和图像则通过自定义代码绘制。
 
-![用 UIPrintPageRenderer 子类打印](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-renderer-print.png)
+![用 UIPrintPageRenderer 子类打印]({{ site.asseturl }}/uiprintinteractioncontroller-renderer-print.png)
 
 ## 通过共享表单打印
 

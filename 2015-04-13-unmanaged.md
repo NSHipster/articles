@@ -20,7 +20,7 @@ API 对于开发者来说不只是把功能点接口暴露出来而已，同时�
 
 自动引用计数（ARC）的到来让和手动内存管理相关的一切都失去了必要。在 ARC 下，编译器会在每一个生命周期内按照规则帮你进行 `retain`/`release`/`autorelease` 指令的调用，减少了很多麻烦。[这幅图](https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) 绝对会让你感受到抛弃手动内存管理的益处：
 
-![ARC 出现前后内存管理差异](http://nshipster.s3.amazonaws.com/unmanaged-arc.png)
+![ARC 出现前后内存管理差异]({{ site.asseturl }}/unmanaged-arc.png)
 
 在现在这个后 ARC 的世界里，所有的 Objective-C 和 从 Objective-C 方法返回的 Core Foundation 类型的内存都被自动管理，只剩下由 C 函数返回的 Core Foundation 类型还没有收编。对于后者而言，对象所有权的管理仍然停留在调用 `CFRetain()` 和 `CFRelease()`、或通过某个 `__bridge` 函数桥接到 Objective-C 对象的方式的层面上。
 

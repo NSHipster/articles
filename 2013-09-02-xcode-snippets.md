@@ -21,21 +21,21 @@ excerpt: "一般搞 iOS 开发都得用到 Xcode。如果我们已经准备在�
 
 打开编辑器右侧的工具面板，就能看到所有可用的代码块。在工具面板的下方，有 4 个水平分布的小图标。
 
-![Utilities Divider](http://nshipster.s3.amazonaws.com/xcode-snippet-utilities-divider.png)
+![Utilities Divider]({{ site.asseturl }}/xcode-snippet-utilities-divider.png)
 
 点击 `{ }` 图标可以查看代码块仓库。
 
-![Utilities Panel](http://nshipster.s3.amazonaws.com/xcode-snippet-utilties-panel.png)
+![Utilities Panel]({{ site.asseturl }}/xcode-snippet-utilties-panel.png)
 
 有两种方法将一个代码块插入你的代码：
 
 你可以从代码块仓库拖到你的编辑器里面：
 
-![Drag-and-Drop](http://nshipster.s3.amazonaws.com/xcode-snippet-drag-and-drop.gif)
+![Drag-and-Drop]({{ site.asseturl }}/xcode-snippet-drag-and-drop.gif)
 
 。。。亦或那些有快捷输入码的代码块，你可以这样：
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-text-completion-shortcut.gif)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-text-completion-shortcut.gif)
 
 为了让你能够对代码块的用途有个较直观的印象，下面是 Xcode 内置代码块的概览：
 
@@ -57,11 +57,11 @@ excerpt: "一般搞 iOS 开发都得用到 Xcode。如果我们已经准备在�
 
 创建代码块的过程不是非常直观很难用文字去描述。它使用了 OS X 系统中一个比较隐晦的功能，让用户拖拽选中文本生成“剪切文本”。看下实际操作就很好理解：
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-create.gif)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-create.gif)
 
 用户将自定义的代码块添加到库里面后，可以双击列表中的块去编辑。
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-editor.png)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-editor.png)
 
 每个块都有以下内容：
 
@@ -87,7 +87,7 @@ excerpt: "一般搞 iOS 开发都得用到 Xcode。如果我们已经准备在�
 
 在你使用其他代码块时你可能已经注意到了这些占位符：
 
-![Placeholder Token](http://nshipster.s3.amazonaws.com/xcode-snippet-token.png)
+![Placeholder Token]({{ site.asseturl }}/xcode-snippet-token.png)
 
 在 Xcode 中，占位符使用 `<#` 和 `#>` 来分隔，中间是占位文本。赶紧打开 Xcode 试试吧，看看井号中间的文本是怎样魔法般的转换到你眼前的。
 

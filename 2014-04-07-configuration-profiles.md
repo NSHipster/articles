@@ -42,7 +42,7 @@ __不要把 Configuration Profiles 与 Provisioning Profiles 混淆.__
 
 > 除了部署配置文件，在 [Apple Configurator](https://itunes.apple.com/us/app/apple-configurator/id434433123?mt=12) 还可以生成配置文件，以替代你自己手写 XML。
 
-![iOS Configurator - Generate](http://nshipster.s3.amazonaws.com/ios-configurator-generate.png)
+![iOS Configurator - Generate]({{ site.asseturl }}/ios-configurator-generate.png)
 
 ## 用例
 
