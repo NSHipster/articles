@@ -17,7 +17,7 @@
 
   {% if contributor %}
     {% if contributor.image %}
-      <img class="avatar" alt="{{ contributor.name }}" itemprop="image" src="{{ contributor.image }}" draggable="false"/>
+      <img class="avatar" alt="{{ contributor.name }}" itemprop="image" src="{{ site.asseturl }}/{{ contributor.image }}" draggable="false"/>
     {% else %}
       <img class="avatar" itemprop="image" src="//0.gravatar.com/avatar/{{ contributor.gravatar }}?size=300" draggable="false"/>
     {% endif %}

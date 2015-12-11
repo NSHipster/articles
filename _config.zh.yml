@@ -1,6 +1,5 @@
 lang: zh-Hans
 source: ./nshipster.cn
-destination: ./_site-nshipster.cn
 url: http://nshipster.cn
 
 title: NSHipster
@@ -8,6 +7,8 @@ description: "<strong>NSHipster</strong> 关注被忽略的 Objective-C、Swift 
 permalink: /:title/
 timezone: Asia/Shanghai
 lsi: false
+
+asseturl: http://nshipster.s3.amazonaws.com
 
 markdown: redcarpet
 redcarpet:
