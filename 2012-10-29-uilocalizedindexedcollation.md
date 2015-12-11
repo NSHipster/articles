@@ -19,7 +19,7 @@ You could also add a `UISearchBar` to the top of your table view, allowing the u
 
 There is also a third approach, which is generally under-utilized in iOS applications: **section index titles**. These are the vertically flowing letters found along the right side of table views in your Address Book contacts list or Music library:
 
-![Section Index Titles Example](http://nshipster.s3.amazonaws.com/uilocalizedindexedcollation-example.png)
+![Section Index Titles Example]({{ site.asseturl }}/uilocalizedindexedcollation-example.png)
 
 As the user scrolls their finger down the list, the table view jumps to the corresponding section. Even the most tiresome table view is rendered significantly more usable as a result.
 

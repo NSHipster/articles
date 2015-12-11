@@ -21,7 +21,7 @@ If we were to take apart a statement—say `1 + 2`—decomposing it into its con
 
 Although expressions are flat, the compiler will construct a tree representation, or AST:
 
-![1 + 2 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two.svg)
+![1 + 2 AST]({{ site.asseturl }}/swift-operators-one-plus-two.svg)
 
 
 Compound statements, like `1 + 2 + 3`
@@ -31,7 +31,7 @@ Compound statements, like `1 + 2 + 3`
 |     left operand    |       operator      |     right operand   |
 
 
-![1 + 2 + 3 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-plus-three.svg)
+![1 + 2 + 3 AST]({{ site.asseturl }}/swift-operators-one-plus-two-plus-three.svg)
 
 Or, to take an even more complex statement, `1 + 2 * 3 % 4`, the compiler would use operator precedence to resolve the expression into a single statement:
 
@@ -40,7 +40,7 @@ Or, to take an even more complex statement, `1 + 2 * 3 % 4`, the compiler would 
 |     left operand    |       operator      |      right operand        |
 
 
-![1 + 2 * 3 % 4 AST](http://nshipster.s3.amazonaws.com/swift-operators-one-plus-two-times-three-mod-four.svg)
+![1 + 2 * 3 % 4 AST]({{ site.asseturl }}/swift-operators-one-plus-two-times-three-mod-four.svg)
 
 Operator precedence rules, similar to the ones [you learned in primary school](http://en.wikipedia.org/wiki/Order_of_operations), provide a canonical ordering for any compound statement:
 

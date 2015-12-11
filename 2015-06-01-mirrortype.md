@@ -151,7 +151,7 @@ let session801 = WWDCSession(number: 801,
 
 By default, reflection on a `WWDCSession` instance uses the built-in `_StructMirror` type. This provides a property-based summary on the right (useful) but only the class name in a captured value pane (not so useful):
 
-![Default WWDCSession Representation](http://nshipster.s3.amazonaws.com/mirrortype-default.gif)
+![Default WWDCSession Representation]({{ site.asseturl }}/mirrortype-default.gif)
 
 To provide a richer representation of a `WWDCSession`, we'll implement a new type, `WWDCSessionMirror`. This type must conform to `MirrorType`,  including all the properties listed above:
 
@@ -216,7 +216,7 @@ extension WWDCSession : Reflectable {
 
 That's it! The Playground now uses our custom representation instead of the default:
 
-![Custom WWDCSession Representation](http://nshipster.s3.amazonaws.com/mirrortype-custom.gif)
+![Custom WWDCSession Representation]({{ site.asseturl }}/mirrortype-custom.gif)
 
 > In the absence of `Printable` conformance, `println()` and `toString()` will also pull the string representation from an instance's mirror.
 

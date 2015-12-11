@@ -62,43 +62,43 @@ With over 1 Million iOS & Mac Apps on the App Store, it's clear that the true se
 
 - 1. What is the name of this iOS game?
 
-![Question 1](http://nshipster-quiz-3.s3.amazonaws.com/question-1.png)
+![Question 1]({{ site.asseturl }}/quiz-3/question-1.png)
 
 - 2. What is the name of this iOS game?
 
-![Question 2](http://nshipster-quiz-3.s3.amazonaws.com/question-2.png)
+![Question 2]({{ site.asseturl }}/quiz-3/question-2.png)
 
 - 3. What is the name of this iOS app?
 
-![Question 3](http://nshipster-quiz-3.s3.amazonaws.com/question-3.png)
+![Question 3]({{ site.asseturl }}/quiz-3/question-3.png)
 
 - 4. What is the name of this popular iOS app?
 
-![Question 4](http://nshipster-quiz-3.s3.amazonaws.com/question-4.png)
+![Question 4]({{ site.asseturl }}/quiz-3/question-4.png)
 
 - 5. While not on the App Store, jailbreakers will know this icon well. What's its name?
 
-![Question 5](http://nshipster-quiz-3.s3.amazonaws.com/question-5.png)
+![Question 5]({{ site.asseturl }}/quiz-3/question-5.png)
 
 - 6. Which classic Mac app sports this delightful moving truck?
 
-![Question 6](http://nshipster-quiz-3.s3.amazonaws.com/question-6.png)
+![Question 6]({{ site.asseturl }}/quiz-3/question-6.png)
 
 - 7. Which indispensible development tool has this incongruous icon?
 
-![Question 7](http://nshipster-quiz-3.s3.amazonaws.com/question-7.png)
+![Question 7]({{ site.asseturl }}/quiz-3/question-7.png)
 
 - 8. Which app sports this sleek icon?
 
-![Question 8](http://nshipster-quiz-3.s3.amazonaws.com/question-8.png)
+![Question 8]({{ site.asseturl }}/quiz-3/question-8.png)
 
 - 9. Which app is represented by this delightful mail bag?
 
-![Question 9](http://nshipster-quiz-3.s3.amazonaws.com/question-9.png)
+![Question 9]({{ site.asseturl }}/quiz-3/question-9.png)
 
 - 10. Which (unfortunately stalled) app has this beautiful icon?
 
-![Question 10](http://nshipster-quiz-3.s3.amazonaws.com/question-10.png)
+![Question 10]({{ site.asseturl }}/quiz-3/question-10.png)
 
 
 Round 4: [REDACTED]

@@ -21,21 +21,21 @@ From `@interface` declarations to `if (!self) return nil;` incantations, there i
 
 To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half the Utilities panel, there will be a horizontal divider with 4 icons.
 
-![Utilities Divider](http://nshipster.s3.amazonaws.com/xcode-snippet-utilities-divider.png)
+![Utilities Divider]({{ site.asseturl }}/xcode-snippet-utilities-divider.png)
 
 Click the `{ }` icon to show the Code Snippets Library.
 
-![Utilities Panel](http://nshipster.s3.amazonaws.com/xcode-snippet-utilties-panel.png)
+![Utilities Panel]({{ site.asseturl }}/xcode-snippet-utilties-panel.png)
 
 There are two ways to insert a snippet into your code:
 
 You can drag and drop from the code snippets library into your editor:
 
-![Drag-and-Drop](http://nshipster.s3.amazonaws.com/xcode-snippet-drag-and-drop.gif)
+![Drag-and-Drop]({{ site.asseturl }}/xcode-snippet-drag-and-drop.gif)
 
 ...or for snippets that include a text completion shortcut, you can start typing that:
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-text-completion-shortcut.gif)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-text-completion-shortcut.gif)
 
 To get a sense of what you can do with snippets, here's an overview of the ones built-in to Xcode:
 
@@ -57,11 +57,11 @@ Of course, what really makes snippets such a powerful feature is the ability to 
 
 The process of creating a snippet is actually pretty unintuitive and difficult to explain. It uses an obscure OS X system feature that allows users to create a "Text Clipping" by dragging and dropping selected text. Much easier to just show it in action:
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-create.gif)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-create.gif)
 
 After being added to the code snippet library, a user-defined snippet can be edited by double-clicking its listing:
 
-![Text Completion Shortcut](http://nshipster.s3.amazonaws.com/xcode-snippet-editor.png)
+![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-editor.png)
 
 Each snippet has the following fields:
 
@@ -87,7 +87,7 @@ Each snippet has the following fields:
 
 Something you may have noticed in using other Xcode snippets are placeholder tokens:
 
-![Placeholder Token](http://nshipster.s3.amazonaws.com/xcode-snippet-token.png)
+![Placeholder Token]({{ site.asseturl }}/xcode-snippet-token.png)
 
 In Xcode, placeholder tokens are delimited by `<#` and `#>`, with the placeholder text in the middle. Go ahead—try typing that into Xcode, and watch as the text between the octothorp tags magically transforms right in front of your eyes.
 

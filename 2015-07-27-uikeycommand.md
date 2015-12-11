@@ -99,7 +99,7 @@ func selectTab(sender: UIKeyCommand) {
 
 In the Discoverability layover, accessed by holding down the Command key, key commands are listed in the order you specified:
 
-![Discoverability Layover](http://nshipster.s3.amazonaws.com/uikeycommand-discoverability.png)
+![Discoverability Layover]({{ site.asseturl }}/uikeycommand-discoverability.png)
 
 *Voila!* Secrets, revealed!
 

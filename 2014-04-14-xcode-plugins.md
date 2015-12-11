@@ -39,13 +39,13 @@ Finding it _too easy_ to quit Xcode? Try [XVim](https://github.com/JugglerShu/XV
 
 ### SublimeText
 
-![SCXcodeMiniMap](http://nshipster.s3.amazonaws.com/scxcodeminimap.png)
+![SCXcodeMiniMap]({{ site.asseturl }}/scxcodeminimap.png)
 
 Do you miss having a code minimap along the right gutter of your editor to put things into perspective? Install  [SCXcodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap) and never again miss the tree nodes for the forest.
 
 ### Atom
 
-![Show in GitHub](http://nshipster.s3.amazonaws.com/showingithub.png)
+![Show in GitHub]({{ site.asseturl }}/showingithub.png)
 
 Looking to be more in tune with GitHub? Add the [Show in GitHub / BitBucket](https://github.com/larsxschneider/ShowInGitHub) plugin to open to the selected lines of a file online.
 
@@ -55,19 +55,19 @@ Rather than waiting with crossed fingers and clenched teeth each June, as Apple 
 
 ### Add Line Breaks to Issue Navigator
 
-![BBUFullIssueNavigator](http://nshipster.s3.amazonaws.com/bbufullissuenavigator.png)
+![BBUFullIssueNavigator]({{ site.asseturl }}/bbufullissuenavigator.png)
 
 An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by surprise ellipses when compiler warnings were just starting to get interesting, with  [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
 
 ### Dismiss Debugging Console When Typing
 
-![BBUDebuggerTuckAway](http://nshipster.s3.amazonaws.com/bbudebuggertuckaway.gif)
+![BBUDebuggerTuckAway]({{ site.asseturl }}/bbudebuggertuckaway.gif)
 
 Another annoyance going back to Xcode 4 is how the debugging console seems to always get in the way. No more, with [BBUDebuggerTuckAway](https://github.com/neonichu/BBUDebuggerTuckAway). As soon as you start typing in the editor, the debugging window will get out of your way.
 
 ### Add ANSI Color Support to Debugging Console
 
-![XcodeColors](http://nshipster.s3.amazonaws.com/xcodecolors.png)
+![XcodeColors]({{ site.asseturl }}/xcodecolors.png)
 
 `ncurses` enthusiasts will no doubt be excited by the [XcodeColors](https://github.com/robbiehanson/XcodeColors) plugin, which adds support for ANSI colors to appear in the debugging console.
 
@@ -85,13 +85,13 @@ Not being the most verbose language in existence, Objective-C can use all the he
 
 ### Autocomplete `switch` Statements
 
-![SCXcodeSwitchExpander](http://nshipster.s3.amazonaws.com/scxcodeswitchexpander.gif)
+![SCXcodeSwitchExpander]({{ site.asseturl }}/scxcodeswitchexpander.gif)
 
 Fact: `switch` statements and [`NS_ENUM`](http://nshipster.com/ns_enum-ns_options/) go together like <a href="http://www.thaitable.com/thai/recipe/mango-on-sticky-rice" rel="nofollow">mango and sweet sticky rice</a>. The only way it could be improved would be with [SCXcodeSwitchExpander](https://github.com/stefanceriu/SCXcodeSwitchExpander) with automagically fills out a `case` statement for each value in the enumeration.
 
 ### Autocomplete Documentation
 
-![VVDocumenter](http://nshipster.s3.amazonaws.com/vvdocumenter.gif)
+![VVDocumenter]({{ site.asseturl }}/vvdocumenter.gif)
 
 [Documentation](http://nshipster.com/documentation/) adds a great deal of value to a code base, but it's a tough habit to cultivate. The [VVDocumenter-Xcode](https://github.com/onevcat/VVDocumenter-Xcode) plugin does a great deal to reduce the amount of work necessary to add [appledoc](http://gentlebytes.com/appledoc/)-compatible header documentation. Install it and wrap your code in a loving lexical embrace.
 
@@ -105,7 +105,7 @@ Fact: `switch` statements and [`NS_ENUM`](http://nshipster.com/ns_enum-ns_option
 
 ### Statement Alignment
 
-![XAlign](http://nshipster.s3.amazonaws.com/xalign.gif)
+![XAlign]({{ site.asseturl }}/xalign.gif)
 
 Fancy yourself a code designer, automated formatters be damned? [XAlign](https://github.com/qfish/XAlign) automatically aligns assignments _just so_, to appease your most egregious OCD tendencies.
 
@@ -115,7 +115,7 @@ In a similar vein to what [Bret Victor writes about Learnable Programming](http:
 
 ### Inspect `NSColor` / `UIColor` Instances
 
-![ColorSense](http://nshipster.s3.amazonaws.com/colorsense.png)
+![ColorSense]({{ site.asseturl }}/colorsense.png)
 
 Telling what a color is from its RGB values alone is a hard-won skill, so faced with an `NSColor` or `UIColor` value, we have little recourse to know what it'll look like until the code is built and run. Enter [ColorSense for Xcode](https://github.com/omz/ColorSense-for-Xcode)
 
@@ -125,13 +125,13 @@ Quoth the README:
 
 ### Autocomplete Images from Project Bundle
 
-![KSImageNamed](http://nshipster.s3.amazonaws.com/ksimagenamed.gif)
+![KSImageNamed]({{ site.asseturl }}/ksimagenamed.gif)
 
 Similar to the ColorSense plugin, [KSImageNamed](https://github.com/ksuther/KSImageNamed-Xcode) will preview and autocomplete images in `[UIImage imageNamed:]` declarations.
 
 ### Semantics Highlighting
 
-![Polychromatic](http://nshipster.s3.amazonaws.com/polychromatic.png)
+![Polychromatic]({{ site.asseturl }}/polychromatic.png)
 
 Any editor worth its salt is expected to have some form of syntax highlighting. But [this recent post by Evan Brooks](https://medium.com/p/3a6db2743a1e) presents the idea of _semantic_ highlighting in editors. The idea is that each variable within a scope would be assigned a particular color, which would be consistent across references. This way, one could easily tell the difference between two instance variables in the same method.
 
@@ -139,9 +139,9 @@ Any editor worth its salt is expected to have some form of syntax highlighting. 
 
 ### Localization
 
-![Lin](http://nshipster.s3.amazonaws.com/lin-1.png)
+![Lin]({{ site.asseturl }}/lin-1.png)
 
-![Lin](http://nshipster.s3.amazonaws.com/lin-2.png)
+![Lin]({{ site.asseturl }}/lin-2.png)
 
 It's no secret that NSHipster has [a soft spot for localization](http://nshipster.com/nslocalizedstring/). For this reason, this publication is emphatic in its recommendation of [Lin](https://github.com/questbeat/Lin-Xcode5), a clever Xcode plugin that brings the localization editor to your code.
 

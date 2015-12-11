@@ -43,7 +43,7 @@ There are several ways to deploy configuration profiles:
 
 > In addition to deploying configuration profiles, the [Apple Configurator](https://itunes.apple.com/us/app/apple-configurator/id434433123?mt=12) can generate profiles, as an alternative to hand-writing XML yourself.
 
-![iOS Configurator - Generate](http://nshipster.s3.amazonaws.com/ios-configurator-generate.png)
+![iOS Configurator - Generate]({{ site.asseturl }}/ios-configurator-generate.png)
 
 ## Use Cases
 

@@ -23,11 +23,11 @@ So this week on NSHipster, we'll take a look at the hidden world of Xcode runtim
 
 To enable launch arguments and set environment variables for your app, select your target from the Xcode toolbar and select "Edit Scheme..."
 
-![Edit Scheme...](http://nshipster.s3.amazonaws.com/launch-arguments-edit-scheme.png)
+![Edit Scheme...]({{ site.asseturl }}/launch-arguments-edit-scheme.png)
 
 On the left side of the panel, select "Run [AppName].app", and select the "Arguments" segment on the right side. There will be two drop-downs, for "Arguments Passed on Launch" and "Environment Variables".
 
-![Edit Scheme Panel](http://nshipster.s3.amazonaws.com/launch-arguments-edit-scheme-panel.png)
+![Edit Scheme Panel]({{ site.asseturl }}/launch-arguments-edit-scheme-panel.png)
 
 For the purposes of debugging an app target, launch arguments and environment variables can be thought to be equivalent—both change the runtime behavior by defining certain values. In practice, the main difference between the two is that launch arguments begin with a dash (`-`) and don't have a separate field for argument values.
 
@@ -69,7 +69,7 @@ While you're waiting for the first batch of translations to come back, or are me
 -NSDoubleLocalizedStrings YES
 ~~~
 
-![NSDoubleLocalizedStrings - Before & After](http://nshipster.s3.amazonaws.com/launch-arguments-nsdoublelocalizedstrings.png)
+![NSDoubleLocalizedStrings - Before & After]({{ site.asseturl }}/launch-arguments-nsdoublelocalizedstrings.png)
 
 #### NSShowNonLocalizedStrings
 

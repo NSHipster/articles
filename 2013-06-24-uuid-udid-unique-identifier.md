@@ -45,7 +45,7 @@ As the sole component of the [Ad Support framework](http://developer.apple.com/l
 
 Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found at **Settings > General > About > Advertising**:
 
-![Limit Ad Tracking](http://nshipster.s3.amazonaws.com/ad-support-limit-ad-tracking.png)
+![Limit Ad Tracking]({{ site.asseturl }}/ad-support-limit-ad-tracking.png)
 
 ## NSUUID & CFUUIDRef
 

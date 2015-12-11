@@ -22,7 +22,7 @@ Back in the Stone Age (aka 2011), reference counting in Objective-C was still a 
 
 The advent of automatic reference counting (ARC) made all of that manual memory management unnecessary. Under ARC, the compiler inserts the `retain`/`release`/`autorelease` calls for you, reducing the cognitive load of applying the rules at every turn. If [this graphic](https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) doesn't convince you of the boon of dropping manual memory management, nothing will:
 
-![Memory management before and after ARC](http://nshipster.s3.amazonaws.com/unmanaged-arc.png)
+![Memory management before and after ARC]({{ site.asseturl }}/unmanaged-arc.png)
 
 Now, in this post-ARC world, all Objective-C and Core Foundation types returned from Objective-C methods are automatically memory managed, leaving Core Foundation types returned from C functions as the lone holdout. For this last category, management of an object's ownership is still done with calls to `CFRetain()` and `CFRelease()` or by bridging to Objective-C objects with one of the `__bridge` functions. 
 

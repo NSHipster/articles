@@ -43,11 +43,11 @@ In the midst of Swift code, Headerdoc comments are not parsed correctly when inv
 func foo(bar: String) -> AnyObject { ... }
 ```
 
-![Unrecognized Headerdoc](http://nshipster.s3.amazonaws.com/swift-documentation-headerdoc.png)
+![Unrecognized Headerdoc]({{ site.asseturl }}/swift-documentation-headerdoc.png)
 
 What _is_ parsed, however, is something markedly different:
 
-![New Recognized Format](http://nshipster.s3.amazonaws.com/swift-documentation-new-format.png)
+![New Recognized Format]({{ site.asseturl }}/swift-documentation-new-format.png)
 
 ```swift
 /**
@@ -289,11 +289,11 @@ class Bicycle {
 
 Option-click on the `Style` `enum` declaration, and the description renders beautifully with a bulleted list:
 
-![Swift enum Declaration Documentation](http://nshipster.s3.amazonaws.com/swift-documentation-enum-declaration.png)
+![Swift enum Declaration Documentation]({{ site.asseturl }}/swift-documentation-enum-declaration.png)
 
 Open Quick Documentation for the method `travel`, and the parameter is parsed out into a separate field, as expected:
 
-![Swift func Declaration Documentation](http://nshipster.s3.amazonaws.com/swift-documentation-method-declaration.png)
+![Swift func Declaration Documentation]({{ site.asseturl }}/swift-documentation-method-declaration.png)
 
 
 ## MARK / TODO / FIXME
@@ -310,7 +310,7 @@ As of Xcode 6β4, the following comments will be surfaced in the Xcode source na
 
 To show these new tags in action, here's how the `Bicycle` class could be extended to adopt the `Printable` protocol, and implement `description`.
 
-![Xcode 6 Documentation Source Navigator MARK / TODO / FIXME](http://nshipster.s3.amazonaws.com/swift-documentation-xcode-source-navigator.png)
+![Xcode 6 Documentation Source Navigator MARK / TODO / FIXME]({{ site.asseturl }}/swift-documentation-xcode-source-navigator.png)
 
 ```swift
 // MARK: CustomStringConvertible

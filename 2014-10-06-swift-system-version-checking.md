@@ -79,13 +79,15 @@ For more involved version comparison, the `operatingSystemVersion` can be inspec
 ~~~{swift}
 let os = NSProcessInfo().operatingSystemVersion
 switch (os.majorVersion, os.minorVersion, os.patchVersion) {
-case (9, _, _):
-    println("iOS >= 9.0.0")
 case (8, 0, _):
     println("iOS >= 8.0.0, < 8.1.0")
+case (8, _, _):
+    println("iOS >= 8.1.0, < 9.0")
+case (9, _, _):
+    println("iOS >= 9.0.0")
 default:
-    // this case is never run for IOS < 8.0.0 as NSProcessInfo().operatingSystemVersion crashes app if run on iOS earlier than 8.0.0
-    println("iOS > 8.1.0, < 9.0.0, or iOS >= 10.0.0")
+    // this code will have already crashed on iOS 7, so >= iOS 10.0
+    println("iOS >= 10.0.0")
 }
 ~~~
 

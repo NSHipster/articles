@@ -62,16 +62,16 @@ Round 3: Picture Round - Indie Devs
 
 Following another tradition of the NSHipster quiz is everybody's favorite: the Picture Round! This time, the theme is indie developers. Earn up to 3 points for each set of pictures by naming the **founder**, the **name of the company** they're known for, and the **name of their flagship app** represented by the icon.
 
-1. ![Question 1](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-1.png)
-2. ![Question 2](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-2.png)
-3. ![Question 3](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-3.png)
-4. ![Question 4](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-4.png)
-5. ![Question 5](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-5.png)
-6. ![Question 6](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-6.png)
-7. ![Question 7](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-7.png)
-8. ![Question 8](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-8.png)
-9. ![Question 9](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-9.png)
-10. ![Question 10](http://nshipster-quiz-4.s3.amazonaws.com/nshipster-quiz-4-question-10.png)
+1. ![Question 1]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-1.png)
+2. ![Question 2]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-2.png)
+3. ![Question 3]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-3.png)
+4. ![Question 4]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-4.png)
+5. ![Question 5]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-5.png)
+6. ![Question 6]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-6.png)
+7. ![Question 7]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-7.png)
+8. ![Question 8]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-8.png)
+9. ![Question 9]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-9.png)
+10. ![Question 10]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-10.png)
 
 Round 4: NSAnagram
 ------------------

@@ -52,7 +52,7 @@ UIActivityViewController *activityViewController =
 
 This would present the following at the bottom of the screen:
 
-![UIActivityViewController](http://nshipster.s3.amazonaws.com/uiactivityviewcontroller.png)
+![UIActivityViewController]({{ site.asseturl }}/uiactivityviewcontroller.png)
 
 By default, `UIActivityViewController` will show all available services supporting the provided items, but certain activity types can be excluded:
 
@@ -302,8 +302,8 @@ As an example, let's create a custom activity type that takes an image URL and a
 
 <table>
     <tr>
-        <td><img alt="Jony Ive Before" src="http://nshipster.s3.amazonaws.com/jony-ive-unstache.png"/></td>
-        <td><img alt="Jony Ive After" src="http://nshipster.s3.amazonaws.com/jony-ive-mustache.png"/></td>
+        <td><img alt="Jony Ive Before" src="{{ site.asseturl }}/jony-ive-unstache.png"/></td>
+        <td><img alt="Jony Ive After" src="{{ site.asseturl }}/jony-ive-mustache.png"/></td>
     </tr>
     <tr>
         <td>Before</td>

@@ -16,7 +16,7 @@ Whatever the cliché, replacing an interface that requires us to memorize and ty
 
 `IBInspectable` properties provide new access to an old feature: user-defined runtime attributes. Currently accessible from the identity inspector, these attributes have been available since before Interface Builder was integrated into Xcode. They provide a powerful mechanism for configuring any key-value coded property of an instance in a NIB, XIB, or storyboard:
 
-![User-Defined Runtime Attributes](http://nshipster.s3.amazonaws.com/IBInspectable-runtime-attributes.png)
+![User-Defined Runtime Attributes]({{ site.asseturl }}/IBInspectable-runtime-attributes.png)
 
 While powerful, runtime attributes can be cumbersome to work with. The key path, type, and value of an attribute need to be set on each instance, without any autocompletion or type hinting, which requires trips to the documentation or a custom subclass's source code to double-check the settings. `IBInspectable` properties solve this problem outright: in Xcode 6 you can now specify any property as inspectable and get a user interface built just for your custom class.
 
@@ -43,7 +43,7 @@ For example, these properties in a `UIView` subclass update the backing layer wi
 
 Marked with `@IBInspectable` (or `IBInspectable` in Objective-C), they are easily editable in Interface Builder's inspector panel. Note that Xcode goes the extra mile here—property names are converted from camel- to title-case and related names are grouped together:
 
-![IBInspectable Attribute Inspector](http://nshipster.s3.amazonaws.com/IBInspectable-inspectable.png)
+![IBInspectable Attribute Inspector]({{ site.asseturl }}/IBInspectable-inspectable.png)
 
 Since inspectable properties are simply an interface on top of user-defined runtime attributes, the same list of types is supported: booleans, strings, and numbers (i.e., `NSNumber` or any of the numeric value types), as well as `CGPoint`, `CGSize`, `CGRect`, `UIColor`, and `NSRange`, adding `UIImage` for good measure.
 
@@ -83,7 +83,7 @@ class MyCustomView: UIView {
 }
 ````
 
-![IBDesignable Live Preview](http://nshipster.s3.amazonaws.com/IBInspectable-designable.png)
+![IBDesignable Live Preview]({{ site.asseturl }}/IBInspectable-designable.png)
 
 The time-savings from this feature can't be overstated. Combined with `IBInspectable` properties, a designer or developer can easily tweak the rendering of a custom control to get the exact result she wants. Any changes, whether made in code or the attribute inspector, are immediately rendered on the canvas.
 
@@ -108,7 +108,7 @@ Since the custom view won't have the full context of your app when rendered in I
 
 What can you create with a combination of `IBInspectable` attributes in your `IBDesignable` custom view? As an example, let's update an old classic from [Apple folklore](http://www.folklore.org/StoryView.py?story=Calculator_Construction_Set.txt): the "Steve Jobs Roll Your Own Calculator Construction Set," Xcode 6-style ([gist](https://gist.github.com/natecook1000/4269059121ec247fbb90)):
 
-![Calculator Construction Set](http://nshipster.s3.amazonaws.com/IBInspectable-CCS.gif)
+![Calculator Construction Set]({{ site.asseturl }}/IBInspectable-CCS.gif)
 
 * * *
 <br>

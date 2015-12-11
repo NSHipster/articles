@@ -295,7 +295,7 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
 
 Lo and behold, the result:
 
-![NSMustacheScanner](http://nshipster.s3.amazonaws.com/nsscanner-rendered.gif)
+![NSMustacheScanner]({{ site.asseturl }}/nsscanner-rendered.gif)
 
 The required flipping, resizing, waxing, and twirling are left as an exercise for the reader.
 
