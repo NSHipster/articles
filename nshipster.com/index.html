@@ -64,7 +64,7 @@ title: NSHipster
   <ul>
   {% for author in site.authors %}
     <li class="author">
-      <a href="{{ author.url }}"><img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ author.image }}" draggable="false"/></a>
+      <a href="{{ author.url }}"><img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ site.asseturl }}/{{ author.image }}" draggable="false"/></a>
       <a href="{{ author.url }}">{{ author.name }}</a>
     </li>
   {% endfor %}
