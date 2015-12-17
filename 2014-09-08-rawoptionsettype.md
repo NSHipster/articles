@@ -74,11 +74,11 @@ typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
 
 `RawOptionsSetType` is the Swift equivalent of `NS_OPTIONS` (or at least as close as it gets). It is a protocol that adopts the `RawRepresentable`, `Equatable`, `BitwiseOperationsType`, and `NilLiteralConvertible` protocols. An option type can be represented by a `struct` conforming to `RawOptionsSetType`.
 
-`RawOptionsSetType` 是 `NS_OPTIONS` 类型在 Swift 当中的替代品（至少是最接近的东西了）。它是一个协议，遵守 `RawRepresentable`, `Equatable`, `BitwiseOperationsType`, 和 `NilLiteralConvertible` 这几个协议。一个选项(option)类型可以用一个遵守 `RawOptionsSetType` 的 `struct` 表示。
+`RawOptionsSetType` 是 `NS_OPTIONS` 类型在 Swift 当中的替代品（至少是最接近的东西了）。它是一个协议，遵守 `RawRepresentable`, `Equatable`, `BitwiseOperationsType`, 和 `NilLiteralConvertible` 这几个协议。一个选项(option)类型可以用一个遵守 `RawOptionsSetType` 协议的 `struct` 表示。
 
 Why does this suck so much? Well, the same integer bitmasking tricks in C don't work for enumerated types in Swift. An `enum` represents a type with a closed set of valid options, without a built-in mechanism for representing a conjunction of options for that type. An `enum` could, ostensibly, define a case for all possible combinations of values, but for `n > 3`, the combinatorics make this approach untenable. There are a few different ways `NS_OPTIONS` could be implemented in Swift, but `RawOptionSetType` is probably the least bad.
 
-为什么这货这么差劲？主要是因为 C 语言中位运算的技巧不能用于 Swift 中的枚举类型。一个 `enum` 代表着一系列可用选项的封闭集合，但是并没有内建一个用来表示若干选项的交集的机制。表面上，一个 `enum` 可以定义出所有可能的值的组合，但是对于 `n > 3` 的情况，组合数学告诉我们这种办法是不靠谱的。在 Swift 中实现 `NS_OPTIONS` 有很多种方式，`RawOptionSetType` 可能还不是最差的。
+为什么这货这么差劲？主要是因为 C 语言中位运算的技巧不能用于 Swift 中的枚举类型。一个 `enum` 代表着一系列可用选项的封闭集合，但是并没有内建一个用来表示若干选项的交集的机制。表面上，一个 `enum` 可以定义出选项值所有可能的组合，但是对于 `n > 3` 的情况，组合数学告诉我们这种办法是不靠谱的。在 Swift 中实现 `NS_OPTIONS` 有很多种方式，`RawOptionSetType` 可能还不是最差的。
 
 Compared to the syntactically concise `enum` declaration, `RawOptionsSetType` is awkward and cumbersome, requiring over a dozen lines of boilerplate for computed properties:
 
@@ -187,11 +187,11 @@ dinner.isVegetarian // false
 
 In all fairness, it may be too early to really appreciate what role option types will have in the new language. It could very well be that Swift's other constructs, like tuples or pattern matching—or indeed, even `enum`s—make options little more than a vestige of the past.
 
-平行而论，现在来谈论选项(option)类型在 Swift 语言当中的角色还为时过早。很有可能 Swift 中的其他结构，例如元组(tuple)和模式匹配(pattern matching)，也可能就是 `enum` 本身，会让选项类型变得不再只是来自过去的遗迹。
+平心而论，现在来谈论选项(option)类型在 Swift 语言当中的角色还为时过早。很有可能 Swift 中的其他结构，例如元组(tuple)和模式匹配(pattern matching)，也可能就是 `enum` 本身，会让选项类型变得不再只是来自过去的遗迹。
 
 Either way, if you're looking to implement an `NS_OPTIONS` equivalent in your code base, here's an [Xcode snippet](http://nshipster.com/xcode-snippets/)-friendly example of how to go about it:
 
-不管怎样，如果你想在代码中实现类似 `NS_OPTIONS` 的结构，这里是一段 [Xcode snippet](http://nshipster.com/xcode-snippets/)，可以帮助你快速上手：
+不管怎样，如果你想在代码中实现类似 `NS_OPTIONS` 的结构，下面是一段 [Xcode snippet](http://nshipster.com/xcode-snippets/)，可以帮助你快速上手：
 
 ~~~{swift}
 struct <# Options #> : RawOptionSetType, BooleanType {
