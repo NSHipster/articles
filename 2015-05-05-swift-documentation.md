@@ -168,7 +168,7 @@ Code blocks can be embedded in documentation comments as well, which can be usef
 var area: CGFloat { get }
 ```
 
-Fenced code blocks are also recognized, with three backticks (`\``) or tildes (`~`) marking the beginning and end of a block:
+Fenced code blocks are also recognized, with three backticks (<code>&grave;</code>) or tildes (`~`) marking the beginning and end of a block:
 
 ```swift
 /**
