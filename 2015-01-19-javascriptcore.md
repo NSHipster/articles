@@ -149,7 +149,7 @@ context[@"simplifyString"] = ^(NSString *input) {
    return mutableString;
 };
 
-NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하새요!')"]);
+NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하세요!')"]);
 ````
 
 > There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, it needs to be (a) declared with the `@convention(block)` attribute, and (b) cast to `AnyObject` using Swift's knuckle-whitening `unsafeBitCast()` function.
