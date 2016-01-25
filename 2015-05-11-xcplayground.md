@@ -3,6 +3,7 @@ title: XCPlayground
 author: Nate Cook
 category: Swift
 tags: swift
+translator: Yifan Xiao
 excerpt: "Playgrounds 本质上并不是Swift语言的一个特性——相反的，他们是Swift对于其所有功能，从其效率和性能，到他的深度和透明度的展现。透过Playgrounds的表面，去看看那些工具，他们使得Playgrounds成为了一个强大开发过程的一部分：source和resource，captured values和extended execution，以及整合了的rich formatting使得Playground成为了一个互动性的教学工具。"
 status:
     swift: 1.2
