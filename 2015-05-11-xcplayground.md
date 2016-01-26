@@ -39,7 +39,7 @@ Playgrounds 本质上并不是 Swift 语言的一个特性——相反的，他�
 
 ## Resources
 
-没有 sandbox 的 Playground 是不完整的，同样，Swift Playground 也不会让你失望。Playgrounds 有*两个*与相关的resources关联起来：一个是每一个独立的 playground 本地的，另一个则是 playground 之间共享的。在你的实验过程中，Playgrounds 能够支持 XML，JSON数据，XIB，和图像文件。这也增加了其使用可用性。
+没有 sandbox 的 Playground 是不完整的，同样，Swift Playground 也不会让你失望。Playgrounds 有*两个*与相关的resources关联起来：一个是每一个独立的 playground 本地的，另一个则是 playground 之间共享的。在你的实验过程中，Playgrounds 能够支持 XML，JSON 数据，XIB，和图像文件。这也增加了其使用可用性。
 
 
 ### 本地
