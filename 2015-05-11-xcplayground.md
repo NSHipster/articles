@@ -44,7 +44,7 @@ Playgrounds 本质上并不是 Swift 语言的一个特性——相反的，他�
 
 ### 本地
 
- `Resources` 文件夹, 与 `Sources` 文件夹一样在Playground的包路径中, 通过 Project Navigator 就可见了——只需要简单的拖拽图像和数据文件，就可以在 Playground 中使用了。对应的内容在 main bundle 中也是可见的。比如，我们可以像这样非常快捷的加载一个包含天气数据的 JSON 文件：
+ `Resources` 文件夹, 与 `Sources` 文件夹一样在 Playground 的包路径中, 通过 Project Navigator 就可见了——只需要简单的拖拽图像和数据文件，就可以在 Playground 中使用了。对应的内容在 main bundle 中也是可见的。比如，我们可以像这样非常快捷的加载一个包含天气数据的 JSON 文件：
 
 ```swift
 let jsonPath = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("weather.json")
