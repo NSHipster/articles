@@ -168,8 +168,8 @@ extension CSSSelector.Specificity: Comparable {}
 
 func <(lhs: CSSSelector.Specificity, rhs: CSSSelector.Specificity) -> Bool {
     return lhs.id < rhs.id ||
-        lhs.`class` < rhs.`class` ||
-        lhs.element < rhs.element
+        (lhs.id == rhs.id && lhs.`class` < rhs.`class`) ||
+        (lhs.id == rhs.id && lhs.`class` == rhs.`class` && lhs.element < rhs.element)
 }
 
 // MARK: Equatable
