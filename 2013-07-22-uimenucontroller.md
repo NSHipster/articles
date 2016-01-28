@@ -140,17 +140,16 @@ So, to recap, in order to allow a label's text to be copied, the following must 
 总结一下，为了能够支持复制一个 label 中的文字，需要完成下面几步：
 
 - `UILabel` must be subclassed to implement `canBecomeFirstResponder` & `canPerformAction:withSender:`
-- Each performable action must implement a corresponding method that interacts with `UIPasteboard`
-- When instantiated by a controller, the label must have `userInteractionEnabled` set to `YES` (it is not recommended that this be hard-coded into the subclass implementation)
-- A `UIGestureRecognizer` must be added to the label (else, `UIResponder` methods like `touchesBegan:withEvent:` are implemented manually in the subclass)
-- In the method implementation corresponding to the gesture recognizer action, `UIMenuController` must be positioned and made visible
-- Finally, the label must become first responder
-
 - 必须要继承 `UILabel`，并且在子类中实现 `canBecomeFirstResponder` 和 `canPerformAction:withSender:` 方法
+- Each performable action must implement a corresponding method that interacts with `UIPasteboard`
 - 每个可以执行的操作，都要实现一个对应的方法，并且在方法中和 `UIPasteboard` 进行交互
+- When instantiated by a controller, the label must have `userInteractionEnabled` set to `YES` (it is not recommended that this be hard-coded into the subclass implementation)
 - 当在控制器中被初始化时，label 必须把 `userInteractionEnabled` 属性设置为 `YES`（不推荐把这个操作硬编码到子类的实现中）
+- A `UIGestureRecognizer` must be added to the label (else, `UIResponder` methods like `touchesBegan:withEvent:` are implemented manually in the subclass)
 - label 中必须添加一个 `UIGestureRecognizer`（或者手动在子类中实现 `UIResponder` 的方法，例如 `touchesBegan:withEvent:`）
-- 在响应手势识别事件的函数实现中，`UIMenuController` 需要被指定位置，并且设为可见
+- In the method implementation corresponding to the gesture recognizer action, `UIMenuController` must be positioned and made visible
+- 在响应手势识别事件的函数实现中，需要指定 `UIMenuController` 显示的位置，并且设为可见
+- Finally, the label must become first responder
 - 最后，label 必须要成为第一响应者（first responder）
 
 If you're wondering why, _oh why_, this isn't just built into `UILabel`, well... join the club.
@@ -175,10 +174,10 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 > Each command travels from the first responder up the responder chain until it is handled; it is ignored if no responder handles it. If a responder doesn't handle the command in the current context, it should pass it to the next responder.
 
-> 每个命令都会沿着响应链从第一响应者开始向上传递，如果没有人处理这个命令它就会被忽略。如果某个响应者没有响应它，它会被传递给下一个响应者。
+> 每个命令都会沿着响应链从第一响应者开始向上传递，如果没有人处理这个命令它就会被忽略。如果某个响应者没有响应它，它会被传递给下一个响应者。(译者注：下面具体的操作细节不做翻译）
 
 > `copy:` This method is invoked when the user taps the Copy command of the editing menu. A subclass of UIResponder typically implements this method. Using the methods of the UIPasteboard class, it should convert the selection into an appropriate object (if necessary) and write that object to a pasteboard.
- 
+
 > `cut:` This method is invoked when the user taps the Cut command of the editing menu. A subclass of UIResponder typically implements this method. Using the methods of the UIPasteboard class, it should convert the selection into an appropriate object (if necessary) and write that object to a pasteboard. It should also remove the selected object from the user interface and, if applicable, from the application's data model.
 
 > `delete:` This method is invoked when the user taps the Delete command of the editing menu. A subclass of UIResponder typically implements this method by removing the selected object from the user interface and, if applicable, from the application's data model. It should not write any data to the pasteboard.
@@ -187,28 +186,47 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 #### Handling Selection Commands
 
+#### 处理选择命令
+
 > `select:` This method is invoked when the user taps the Select command of the editing menu. This command is used for targeted selection of items in the receiving view that can be broken up into chunks. This could be, for example, words in a text view. Another example might be a view that puts lists of visible objects in multiple groups; the select: command could be implemented to select all the items in the same group as the currently selected item.
 
 > `selectAll:` This method is invoked when the user taps the Select All command of the editing menu.
 
 In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionLeftToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
 
+除了这些基本从操作命令之外，还有一些富文本编辑有关的命令（`toggleBoldface:`，`toggleItalics:`， 和 `toggleUnderline:`）以及书写方向改变有关的命令（`makeTextWritingDirectionLeftToLeft:` 和 `makeTextWritingDirectionLeftToRight:`)。这些命令除了在编写文本编辑器时有所应用之外，适用的情况并不常见，这里我们就不再赘述了。
+
 ## `UIMenuItem`
 
 With iOS 3.2, developers could now add their own commands to the menu controller. As yet unmentioned, but familiar commands like "Define" or spell check suggestions take advantage of this.
 
+在 iOS 3.2 上，开发者可以向菜单控制器中添加自定义的命令。之前没有提到的类似“定义”或者拼写检查建议这些大家很熟悉的命令，就是利用了这一特性。
+
 `UIMenuController` has a `menuItems` property, which is an `NSArray` of `UIMenuItem` objects. Each `UIMenuItem` object has a `title` and `action`. In order to have a menu item command display in a menu controller, the responder must implement the corresponding selector.
+
+`UIMenuController` 有一个 `menuItems` 属性，是一个包含 `UIMenuItem` 对象的 `NSArray`。每一个 `UIMenuItem` 对象都有一个 `title` 和 `action`。为了让这个菜单项命令能在菜单控制器中显示，响应者必须实现对应的方法选择器。
 
 ---
 
 Just as a skilled coder designs software to be flexible and adaptable to unforeseen use cases, any app developer worth their salt understands the need to accommodate users with different needs from themselves.
 
+就像有经验的工程师会把软件设计的尽可能灵活和可伸缩，以应对可能出现的未知的使用需求一样，任何对得起他们工资的应用开发者也懂得考虑到用户的各种需求。
+
 As you develop your app, take to heart the following guidelines:
 
+当你开发应用的时候，用心考虑下面的几个原则：
+
 - For every control, think about what you would expect a right-click (control-click) to do if used from the desktop.
+- 对于每个控件，思考一下如果它是在桌面端使用，你会期望右击操作（控制操作）会出现什么样的结果
 - Any time information is shown to the user, consider whether it should be copyable.
+- 当把信息展示给用户的时候，考虑一下它应不应该是可复制的
 - With formatted or multi-faceted information, consider whether multiple kinds of copy commands are appropriate.
+- 对于格式化过的，或者由多个部分组成的信息，考虑一下采用多种复制的命令是不是更合适一些
 - When implementing `copy:` make sure to copy only valuable information to the pasteboard.
+- 实现 `copy:` 的时候，确保只把真正有价值的信息复制到剪切板
 - For editable controls, ensure that your implementation `paste:` can handle a wide range of valid and invalid input.
+- 对于可编辑的控件，保证你的 `paste:` 实现能够处理各种有效或者无效输入
 
 If mobile is to become most things to most people, the least we can do is make our best effort to allow users to be more productive. Your thoughtful use of `UIMenuController` will not go unnoticed.
+
+如果移动计算在绝大部分人的生活中都占了非常大的比例，我们有必要尽我们最大的努力去提升移动设备的使用效率。经过你细致考虑并采用的 `UIMenuController`，不会成为没有人注意到的无用功。
