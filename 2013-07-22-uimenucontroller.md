@@ -21,11 +21,11 @@ Yet despite its advances, one can't help but feel occasionally... trapped.
 
 All too often, there will be information on the screen that you _just can't access_. Whether its flight information stuck in a table view cell or an unlinked URL, users are forced to solve problems creatively for lack of a provided solution.
 
-总有些时候，屏幕上出现了一些信息，但是你_就是不能使用_。不管是 table view cell 里的航班信息，还是一个没有被链接的 URL，用户在这种时候只能被迫去发挥想象力，因为没有现成的方案供他们使用。
+总有些时候，屏幕上出现了一些信息，但是你_就是不能使用_。不管是被限制在一个小小的 table view cell 里的航班信息，或是一个不能点击的 URL，用户在这种时候只能被迫去发挥想象力，因为没有现成的办法供他们使用。
 
 In the past, we've mentioned [localization](http://nshipster.com/nslocalizedstring) and [accessibility](http://nshipster.com/uiaccessibility) as two factors that distinguish great apps from the rest of the pack. This week, we'll add another item to that list: **Edit Actions**.
 
-过去的文章中，我们提到过[国际化（localization）](http://nshipster.com/nslocalizedstring)和[辅助功能（accessibility）
+过去的文章中，我们提到过[本地化（localization）](http://nshipster.cn/nslocalizedstring)和[辅助功能（accessibility）
 ](http://nshipster.com/uiaccessibility)支持是把高品质应用和其他应用所区分开的两个特性，这周我们再往这个名单里添加一项：**编辑操作**。
 
 ### Copy, Cut, Paste, Delete, Select
