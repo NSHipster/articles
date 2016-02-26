@@ -85,7 +85,7 @@ self.presentViewController(alertController, animated: true) {
 
 ![A Standard Action Sheet]({{ site.asseturl }}/uialertcontroller-action-sheet-automatic-style.png)
 
-#### UIActionSheet
+#### The Old Way: UIActionSheet
 
 ```swift
 let actionSheet = UIActionSheet(title: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: "Destroy", otherButtonTitles: "OK")
@@ -101,7 +101,7 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
 }
 ```
 
-#### UIAlertController
+#### The New Way: UIAlertController
 
 ```swift
 let alertController = UIAlertController(title: nil, message: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", preferredStyle: .ActionSheet)
