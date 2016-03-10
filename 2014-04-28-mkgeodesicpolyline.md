@@ -98,11 +98,11 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
 }
 ~~~
 
-![MKGeodesicPolyline on an MKMapView](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline.jpg)
+![MKGeodesicPolyline on an MKMapView]({{ site.asseturl }}/mkgeodesicpolyline.jpg)
 
 > For comparison, here's the same geodesic overlaid with a route created from [`MKDirections`](http://nshipster.com/mktileoverlay-mkmapsnapshotter-mkdirections/):
 
-![MKGeodesicPolyline on an MKMapView compared to MKDirections Polyline](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-with-directions.jpg)
+![MKGeodesicPolyline on an MKMapView compared to MKDirections Polyline]({{ site.asseturl }}/mkgeodesicpolyline-with-directions.jpg)
 
 [As the crow flies](http://en.wikipedia.org/wiki/As_the_crow_flies), it's 3,983 km.<br/>
 As the wolf runs, it's 4,559 km—nearly 15% longer.<br/>
@@ -215,7 +215,7 @@ func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> 
 }
 ~~~
 
-![MKAnnotationView without Rotation](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate.gif)
+![MKAnnotationView without Rotation]({{ site.asseturl }}/mkgeodesicpolyline-airplane-animate.gif)
 
 Hmm… close but no [SkyMall Personalized Cigar Case Flask](http://www.skymall.com/personalized-cigar-case-flask/GC900.html).
 
@@ -296,7 +296,7 @@ self.annotationView.transform =
                             XXDegreesToRadians(self.planeDirection));
 ~~~
 
-![MKAnnotationView with Rotation](http://nshipster.s3.amazonaws.com/mkgeodesicpolyline-airplane-animate-rotate.gif)
+![MKAnnotationView with Rotation]({{ site.asseturl }}/mkgeodesicpolyline-airplane-animate-rotate.gif)
 
 Ah much better! At last, we have mastered the skies with a fancy visualization, worthy of any travel-related app.
 

@@ -17,11 +17,11 @@ UIKit makes it easy to print straight from a user's device with custom designs t
 >
 > As of Xcode 6, the printer simulator must be downloaded as part of the *[Hardware IO Tools for Xcode](https://developer.apple.com/downloads/index.action?name=hardware%20io%20tools)*.
 
-![Download Hardware I/O Tools from Apple Developer Website ](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-hardware-io-tools-download.png)
+![Download Hardware I/O Tools from Apple Developer Website ]({{ site.asseturl }}/uiprintinteractioncontroller-hardware-io-tools-download.png)
 
-![PrintSimulator App Info](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printer-simulator-app.png)
+![PrintSimulator App Info]({{ site.asseturl }}/uiprintinteractioncontroller-printer-simulator-app.png)
 
-![PrintSimulator App Load Paper](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-printersimulator-load-paper.pnd.png)
+![PrintSimulator App Load Paper]({{ site.asseturl }}/uiprintinteractioncontroller-printersimulator-load-paper.pnd.png)
 
 * * *
 
@@ -110,7 +110,7 @@ Let's walk through a very simple case: showing the UI to print an image when the
 
 Easy as pie! _(Or, in this case, sautéed Swiss chard.)_
 
-![Print with .printingItem](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-image-print.png)
+![Print with .printingItem]({{ site.asseturl }}/uiprintinteractioncontroller-image-print.png)
 
 > The `presentAnimated(:completionHandler:)` method is for presenting the printing UI on the **iPhone**. If printing from the **iPad**, use one of the `presentFromBarButtonItem(:animated:completionHandler:)` or
 `presentFromRect(:inView:animated:completionHandler:)` methods instead.
@@ -143,21 +143,21 @@ printController.printFormatter = formatter;
 
 The result? A handsomely rendered HTML page:
 
-![Print with UIMarkupTextPrintFormatter](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-html-print.png)
+![Print with UIMarkupTextPrintFormatter]({{ site.asseturl }}/uiprintinteractioncontroller-html-print.png)
 
 On the other hand, to use a `UIViewPrintFormatter`, you retrieve one from the view you want to print via its `viewPrintFormatter` property. Here's a look at how the formatter does its job for each of the three supported views:
 
 #### 1) UITextView
 
-![Print with UITextView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-textview-print.png)
+![Print with UITextView]({{ site.asseturl }}/uiprintinteractioncontroller-textview-print.png)
 
 #### 2) UIWebView
 
-![Print with UIWebView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-webview-print.png)
+![Print with UIWebView]({{ site.asseturl }}/uiprintinteractioncontroller-webview-print.png)
 
 #### 3) MKMapView
 
-![Print with MKMapView](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-mapview-print.png)
+![Print with MKMapView]({{ site.asseturl }}/uiprintinteractioncontroller-mapview-print.png)
 
 ## UIPrintPageRenderer
 
@@ -303,7 +303,7 @@ The final result is much nicer than any of the built-in formatters.
 
 > Note that the text of the recipe is being formatted by a `UIMarkupTextPrintFormatter`, while the header and images are drawn via custom code.
 
-![Print with UIPrintPageRenderer subclass](http://nshipster.s3.amazonaws.com/uiprintinteractioncontroller-renderer-print.png)
+![Print with UIPrintPageRenderer subclass]({{ site.asseturl }}/uiprintinteractioncontroller-renderer-print.png)
 
 ## Printing via a Share Sheet
 

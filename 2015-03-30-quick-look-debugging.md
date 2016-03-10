@@ -11,13 +11,13 @@ Debugging can be an exercise in irony. We create programs that tell our pint-siz
 
 For example, suppose I'm trying to figure out why the `UINavigationBar` in my app doesn't appear as I expected. To investigate, I might use the debugger to look at the `UIColor` instance I'm setting on the navigation bar—what color *is* this, exactly?
 
-![UIColor in Debug](http://nshipster.s3.amazonaws.com/quicklook-debug.gif)
+![UIColor in Debug]({{ site.asseturl }}/quicklook-debug.gif)
 
 Hold on! No more trying to figure out how those components add together. *There's a better way.*
 
 Since version 5, Xcode has shipped with Quick Look display in the debugger. Just as you can inspect the contents of a file on the Desktop with a quick tap of the space bar, in Xcode you can use Quick Look to see a visual representation of a variety of datatypes. Tapping the space bar on our `color` variable gives an instant answer—no off-the-top-of-your-head RGB calculations required:
 
-![UIColor Quick Look](http://nshipster.s3.amazonaws.com/quicklook-color.gif)
+![UIColor Quick Look]({{ site.asseturl }}/quicklook-color.gif)
 
 * * *
 
@@ -66,7 +66,7 @@ func buildPathWithRadius(radius: CGFloat, steps: CGFloat, loopCount: CGFloat) ->
 
 To see the result, you could surely create a custom view for the bezier path or draw it into a `UIImage`. But better yet, you could insert a breakpoint at the end of the method and mouse over `path`:
 
-![Spiral UIBezierPath Quick Look](http://nshipster.s3.amazonaws.com/quicklook-spiral.gif)
+![Spiral UIBezierPath Quick Look]({{ site.asseturl }}/quicklook-spiral.gif)
 
 Spiraltastic!
 

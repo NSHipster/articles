@@ -8,7 +8,7 @@ status:
     swift: t.b.c.
 ---
 
-<img src="http://nshipster.s3.amazonaws.com/cfhipsterref-illustration-librarian.png" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
+<img src="{{ site.asseturl }}/cfhipsterref-illustration-librarian.png" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
 
 This week's article is about dictionaries. Not the `NSDictionary` / `CFDictionaryRef` we encounter everyday, but those distant lexicographic vestiges of school days past.
 
@@ -234,7 +234,7 @@ for (NSString *name in availableDictionariesKeyedByName) {
 
 Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
 
-![Entry for "apple" in Dictionary.app](http://nshipster.s3.amazonaws.com/dictionary.png)
+![Entry for "apple" in Dictionary.app]({{ site.asseturl }}/dictionary.png)
 
 > For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"](https://gist.github.com/mattt/9453538).
 
@@ -258,13 +258,13 @@ UIReferenceLibraryViewController *referenceLibraryViewController =
                            completion:nil];
 ~~~
 
-![Presenting a UIReferenceLibraryViewController](http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-1.png)
+![Presenting a UIReferenceLibraryViewController]({{ site.asseturl }}/uireferencelibraryviewcontroller-1.png)
 
 This is the same behavior that one might encounter by tapping the "Define" `UIMenuItem` on a highlighted word in a `UITextView`.
 
 > Tapping on "Manage" brings up a view to download additional dictionaries.
 
-![Presenting a UIReferenceLibraryViewController](http://nshipster.s3.amazonaws.com/uireferencelibraryviewcontroller-2.png)
+![Presenting a UIReferenceLibraryViewController]({{ site.asseturl }}/uireferencelibraryviewcontroller-2.png)
 
 `UIReferenceLibraryViewController` also provides the class method `dictionaryHasDefinitionForTerm:`. A developer would do well to call this before presenting a dictionary view controller that will inevitably have nothing to display.
 

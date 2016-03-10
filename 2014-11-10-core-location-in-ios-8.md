@@ -79,9 +79,9 @@ func locationManager(manager: CLLocationManager!,
 
 Another change is required to use location services in iOS 8. In the past, one could optionally include a 'NSLocationUsageDescription' key in `Info.plist`. This value was a plain-text string explaining to the user for what the app was planning to use location services. This has since been split up into two separate keys (`NSLocationWhenInUseUsageDescription` and `NSLocationAlwaysUsageDescription`), and is now mandatory; if you call `requestWhenInUseAuthorization` or `requestAlwaysAuthorization` without the corresponding key, the prompt simply won't be shown to the user.
 
-![Core Location Always Authorization](http://nshipster.s3.amazonaws.com/core-location-always-authorization.png)
+![Core Location Always Authorization]({{ site.asseturl }}/core-location-always-authorization.png)
 
-![Core Location When In Use Authorization](http://nshipster.s3.amazonaws.com/core-location-when-in-use-authorization.png)
+![Core Location When In Use Authorization]({{ site.asseturl }}/core-location-when-in-use-authorization.png)
 
 ### Requesting Multiple Permissions
 
@@ -117,11 +117,11 @@ switch CLLocationManager.authorizationStatus() {
 }
 ```
 
-![Core Location Settings Alert](http://nshipster.s3.amazonaws.com/core-location-settings-alert.png)
+![Core Location Settings Alert]({{ site.asseturl }}/core-location-settings-alert.png)
 
-![Core Location Settings Location Never](http://nshipster.s3.amazonaws.com/core-location-settings-1.png)
+![Core Location Settings Location Never]({{ site.asseturl }}/core-location-settings-1.png)
 
-![Core Location Settings Location Always](http://nshipster.s3.amazonaws.com/core-location-settings-2.png)
+![Core Location Settings Location Always]({{ site.asseturl }}/core-location-settings-2.png)
 
 ### Backwards Compatibility
 

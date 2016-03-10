@@ -43,7 +43,7 @@ Rather than specifying all of an alert's buttons in an initializer, instances of
 
 ### A Standard Alert
 
-![A Standard Alert](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-defautl-style.png)
+![A Standard Alert]({{ site.asseturl }}/uialertcontroller-alert-defautl-style.png)
 
 #### The Old Way: UIAlertView
 
@@ -83,7 +83,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### A Standard Action Sheet
 
-![A Standard Action Sheet](http://nshipster.s3.amazonaws.com/uialertcontroller-action-sheet-automatic-style.png)
+![A Standard Action Sheet]({{ site.asseturl }}/uialertcontroller-action-sheet-automatic-style.png)
 
 #### UIActionSheet
 
@@ -132,7 +132,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### Alert with Destructive Button
 
-![Alert with Destructive Button](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-cancel-destroy.png)
+![Alert with Destructive Button]({{ site.asseturl }}/uialertcontroller-alert-cancel-destroy.png)
 
 The type of an action is specified by `UIAlertActionStyle`, which has three values:
 
@@ -162,7 +162,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### Alert with >2 Buttons
 
-![Alert with More Than 2 Buttons](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-one-two-three-cancel.png)
+![Alert with More Than 2 Buttons]({{ site.asseturl }}/uialertcontroller-alert-one-two-three-cancel.png)
 
 With one or two actions, buttons in an alert are stacked horizontally. Any more than that, though, and it takes on a display characteristic closer to an action sheet:
 
@@ -180,7 +180,7 @@ alertController.addAction(cancelAction)
 
 ### Creating a Login Form
 
-![Creating a Login Form](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-username-password-login-forgot-password-cancel.png)
+![Creating a Login Form]({{ site.asseturl }}/uialertcontroller-alert-username-password-login-forgot-password-cancel.png)
 
 iOS 5 added the `alertViewStyle` property to `UIAlertView`, which exposed much sought-after private APIs that allowed login and password fields to be displayed in an alert, as seen in several built-in system apps.
 
@@ -218,7 +218,7 @@ alertController.addAction(cancelAction)
 
 ### Creating a Sign Up Form
 
-![Creating a Sign Up Form](http://nshipster.s3.amazonaws.com/uialertcontroller-alert-sign-up.png)
+![Creating a Sign Up Form]({{ site.asseturl }}/uialertcontroller-alert-sign-up.png)
 
 `UIAlertController` goes even further to allow any number of text fields, each with the ability to be configured and customized as necessary. This makes it possible to create a fully-functional signup form in a single modal alert:
 

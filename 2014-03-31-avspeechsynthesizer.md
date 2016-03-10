@@ -136,7 +136,7 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 }
 ~~~
 
-![AVSpeechSynthesizer Example](http://nshipster.s3.amazonaws.com/avspeechsynthesizer-example.gif)
+![AVSpeechSynthesizer Example]({{ site.asseturl }}/avspeechsynthesizer-example.gif)
 
 See [this example app](https://github.com/mattt/AVSpeechSynthesizer-Example) for a demonstration of live text-highlighting for all of the supported languages.
 

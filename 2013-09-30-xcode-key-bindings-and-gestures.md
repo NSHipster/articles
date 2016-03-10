@@ -43,7 +43,7 @@ Xcode key bindings and gestures not only shave off seconds of precious work, but
 
 ## Open Quickly (`⇧⌘O`)
 
-![Open Quickly](http://nshipster.s3.amazonaws.com/xcode-shortcuts-quick-open.png)
+![Open Quickly]({{ site.asseturl }}/xcode-shortcuts-quick-open.png)
 
 Learn to rely less on the Project Navigator by learning to love Open Quickly. There's a lot to love, too—with support for partial case- and position-insensitive matches, Xcode does a great job of finding what you want with just a minimal amount of input on your part.
 
@@ -51,7 +51,7 @@ Learn to rely less on the Project Navigator by learning to love Open Quickly. Th
 
 ## Quick Documentation (`⌥ʘ` on Symbol / Three-Finger Tap) <br/> Open Documentation (`⌥ʘʘ` on Symbol)
 
-![Quick Documentation](http://nshipster.s3.amazonaws.com/xcode-shortcuts-quick-documentation.gif)
+![Quick Documentation]({{ site.asseturl }}/xcode-shortcuts-quick-documentation.gif)
 
 Quick Documentation is probably the first Xcode shortcut developers should learn. Just alt-click (or three-finger tap) any class, variable, or constant value, and Xcode will give you a quick rundown of what you're looking at. Alt-double-click to bring up the documentation window, opened to the relevant entry.
 
@@ -61,7 +61,7 @@ Also well-know to an expert Xcoder's workflow is Jump to Definition, which opens
 
 ## Jump to Next Counterpart (`^⌘↑` / `^⌘↓` / Three-Finger Vertical Swipe)
 
-![Jump to Next Counterpart](http://nshipster.s3.amazonaws.com/xcode-shortcuts-counterpart.gif)
+![Jump to Next Counterpart]({{ site.asseturl }}/xcode-shortcuts-counterpart.gif)
 
 Last, but certainly not least, there's Jump to Next Counterpart, which is very likely the shortcut used the most on any given day. Quickly switch between a `.h` header and it's corresponding `.m` implementation with a simple three-finger swipe up or down (or `^⌘↑` / `^⌘↓` if you feel so inclined).
 
@@ -69,23 +69,23 @@ Last, but certainly not least, there's Jump to Next Counterpart, which is very l
 
 ## Comment Selection / Current Line (`⌘/`)
 
-![Comment Selection](http://nshipster.s3.amazonaws.com/xcode-shortcuts-comment.gif)
+![Comment Selection]({{ site.asseturl }}/xcode-shortcuts-comment.gif)
 
 Sure, you _could_ be debugging the "right way" by setting breakpoints and being clever with your code paths, but there's quite so refreshingly simple and powerful as phasing code in and out of computational existence with a comment. Add or remove `//` comments to the current line or selection.
 
 ## Show Standard Editor (`⌘↵`) <br/> Show Assistant Editor (`⌥⌘↵`) <br/> Show Version Editor (`⌥⇧⌘↵`)
 
-![Editors](http://nshipster.s3.amazonaws.com/xcode-shortcuts-editors.gif)
+![Editors]({{ site.asseturl }}/xcode-shortcuts-editors.gif)
 
 For how useful the Assistant Editor can be, surprisingly few developers can actually remember the key combo to turn it on and off. But now with `⌘↵` and `⌥⌘↵` fresh in your mind, you'll be helping Xcode help yourself more often.
 
-![Assistant Editor Position](http://nshipster.s3.amazonaws.com/xcode-shortcuts-assistant-editor-position.png)
+![Assistant Editor Position]({{ site.asseturl }}/xcode-shortcuts-assistant-editor-position.png)
 
 As an aside, if you're not big on how editors are stacking, a different horizontal or vertical arrangement can be chosen in View > Assistant Editor.
 
 ---
 
-![Panels](http://nshipster.s3.amazonaws.com/xcode-shortcuts-panels.gif)
+![Panels]({{ site.asseturl }}/xcode-shortcuts-panels.gif)
 
 Sandwiching the editors on the left and right flanks, the Navigator and Utilities panels encircle your code in their loving embrace. Learning how to get them to show what's useful and GTFO when needed are critical for inner peace and maximum productivity.
 
@@ -122,7 +122,7 @@ Sandwiching the editors on the left and right flanks, the Navigator and Utilitie
 
 ## Show / Hide Debug Area (`⇧⌘Y`) <br/> Activate Console (`⇧⌘C`)
 
-![Show / Hide Debug Area](http://nshipster.s3.amazonaws.com/xcode-shortcuts-debug-area.gif)
+![Show / Hide Debug Area]({{ site.asseturl }}/xcode-shortcuts-debug-area.gif)
 
 Anyone miss the option in Xcode 3 to have a detached debugger window? Yeah, me too.
 
@@ -132,19 +132,19 @@ Knowing how to toggle the debug area and activate the console in a single keystr
 
 ## Find (`⌘F`) /<br/>Find & Replace (`⌥⌘F`) /<br/>Find in Project (`⇧⌘F`) /<br/>Find & Replace in Project (`⌥⇧⌘F`)
 
-![Find](http://nshipster.s3.amazonaws.com/xcode-shortcuts-find.gif)
+![Find]({{ site.asseturl }}/xcode-shortcuts-find.gif)
 
 For when Xcode's refactoring capabilities come up short... which is to say: often. On the plus side, Xcode allows reference, definition, and regular expression search in addition to literal text.
 
 ## Spelling & Grammar (`⌘:`)
 
-![Spelling & Grammar](http://nshipster.s3.amazonaws.com/xcode-shortcuts-spelling-and-grammar.png)
+![Spelling & Grammar]({{ site.asseturl }}/xcode-shortcuts-spelling-and-grammar.png)
 
 All-powerful as Clang is, it still can't help your nightmarish grammar and punctuation in your comments. Especially for anyone releasing code into the open-source wilds, do yourself a favor and give it a once-over with a built-in OS X spelling and grammar check.
 
 ---
 
-![Xcode Shortcut Preferences](http://nshipster.s3.amazonaws.com/xcode-shortcuts-preferences.png)
+![Xcode Shortcut Preferences]({{ site.asseturl }}/xcode-shortcuts-preferences.png)
 
 But, of course, the fun doesn't stop there! Like any respectable editor, Xcode allows you to customize the key bindings for every menu item and action across the app.
 

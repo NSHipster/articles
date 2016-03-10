@@ -62,43 +62,43 @@ Round 3: Picture Round
 
 - 1. Which WWDC keynote was this from?
 
-![Question 1](http://nshipster-quiz-2.s3.amazonaws.com/question-1.jpg)
+![Question 1]({{ site.asseturl }}/quiz-2/question-1.jpg)
 
 - 2. Which WWDC keynote was this from?
 
-![Question 2](http://nshipster-quiz-2.s3.amazonaws.com/question-2.jpg)
+![Question 2]({{ site.asseturl }}/quiz-2/question-2.jpg)
 
 - 3. Which WWDC keynote was this from?
 
-![Question 3](http://nshipster-quiz-2.s3.amazonaws.com/question-3.jpg)
+![Question 3]({{ site.asseturl }}/quiz-2/question-3.jpg)
 
 - 4. Which WWDC keynote was this from?
 
-![Question 4](http://nshipster-quiz-2.s3.amazonaws.com/question-4.jpg)
+![Question 4]({{ site.asseturl }}/quiz-2/question-4.jpg)
 
 - 5. WTF is this?
 
-![Question 5](http://nshipster-quiz-2.s3.amazonaws.com/question-5.jpg)
+![Question 5]({{ site.asseturl }}/quiz-2/question-5.jpg)
 
 - 6. What is this?
 
-![Question 6](http://nshipster-quiz-2.s3.amazonaws.com/question-6.jpg)
+![Question 6]({{ site.asseturl }}/quiz-2/question-6.jpg)
 
 - 7. What is this?
 
-![Question 7](http://nshipster-quiz-2.s3.amazonaws.com/question-7.jpg)
+![Question 7]({{ site.asseturl }}/quiz-2/question-7.jpg)
 
 - 8. What is this? (and which generation?)
 
-![Question 8](http://nshipster-quiz-2.s3.amazonaws.com/question-8.jpg)
+![Question 8]({{ site.asseturl }}/quiz-2/question-8.jpg)
 
 - 9. Which "Core" framework is represented by this logo?
 
-![Question 9](http://nshipster-quiz-2.s3.amazonaws.com/question-9.jpg)
+![Question 9]({{ site.asseturl }}/quiz-2/question-9.jpg)
 
 - 10. Everybody loves Craig _/fɛdɹ̩igi/_ (Pictured). How do you spell his last name?
 
-![Question 10](http://nshipster-quiz-2.s3.amazonaws.com/question-10.jpg)
+![Question 10]({{ site.asseturl }}/quiz-2/question-10.jpg)
 
 Round 4: Name That Framework!
 -----------------------------

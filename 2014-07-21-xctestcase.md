@@ -115,7 +115,7 @@ func testOnePlusOneEqualsTwo() {
 
 ### All of the XCTest Assertions You _Really_ Need To Know
 
-`XCTest` comes with [a number of built-in assertions](https://developer.apple.com/library/prerelease/ios/documentation/DeveloperTools/Conceptual/testing_with_xcode/testing_3_writing_test_classes/testing_3_writing_test_classes.html#//apple_ref/doc/uid/TP40014132-CH4-SW34), but one could narrow them down to just a few essentials:
+`XCTest` comes with a number of built-in assertions, but one could narrow them down to just a few essentials:
 
 #### Fundamental Test
 

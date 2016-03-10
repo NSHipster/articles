@@ -21,7 +21,7 @@ Both accelerometer and gyroscope data are presented in terms of three axes that 
 
 The composited device motion data are presented in a few different ways, each with their own uses, as we'll see below.
 
-![Device X-, Y-, and Z-axes](http://nshipster.s3.amazonaws.com/cmdm-axes.png)
+![Device X-, Y-, and Z-axes]({{ site.asseturl }}/cmdm-axes.png)
 
 ## CMMotionManager
 
@@ -112,7 +112,7 @@ Each packet of `CMAccelerometerData` includes an `x`, `y`, and `z` value—each 
 
 We're calculating the rotation by computing the [`arctan2`](http://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
 
-![Rotation with accelerometer](http://nshipster.s3.amazonaws.com/cmdm-accelerometer.gif)
+![Rotation with accelerometer]({{ site.asseturl }}/cmdm-accelerometer.gif)
 
 The results are not terribly satisfactory—the image movement is jittery, and moving the device in space affects the accelerometer as much as or even more than rotating. These issues *could* be mitigated by sampling multiple readings and averaging them together, but instead let's look at what happens when we involve the gyroscope.
 
@@ -148,7 +148,7 @@ if (manager.deviceMotionAvailable) {
 
 Much better!
 
-![Rotation with gravity](http://nshipster.s3.amazonaws.com/cmdm-gravity.gif)
+![Rotation with gravity]({{ site.asseturl }}/cmdm-gravity.gif)
 
 ## UIClunkController
 
@@ -184,7 +184,7 @@ if (manager.deviceMotionAvailable) {
 
 And it works like a charm—tapping the device in a detail view immediately takes us back to the list of exhibits:
 
-![Clunk to go back](http://nshipster.s3.amazonaws.com/cmdm-clunk.gif)
+![Clunk to go back]({{ site.asseturl }}/cmdm-clunk.gif)
 
 
 
@@ -312,7 +312,7 @@ if (manager.deviceMotionAvailable) {
 
 Having implemented all that, let's take a look at the interaction. As the device rotates, the display automatically switches views and the quizee never sees the answer:
 
-![Prompt by turning the device](http://nshipster.s3.amazonaws.com/cmdm-prompt.gif)
+![Prompt by turning the device]({{ site.asseturl }}/cmdm-prompt.gif)
 
 ### Further Reading
 

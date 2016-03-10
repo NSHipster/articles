@@ -65,7 +65,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
 ~~~
 
-<img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.svg" />
+<img src="{{ site.asseturl }}/nsorderedset-case-1.svg" />
 
 That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
 
@@ -93,7 +93,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
 ~~~
 
-<img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-2.svg" />
+<img src="{{ site.asseturl }}/nsorderedset-case-2.svg" />
 
 This is perhaps even worse, as now `NSMutableOrderedSet` couldn't be used as a method parameter expecting an `NSOrderedSet`.
 
