@@ -3,8 +3,11 @@ title: "NSTemporaryDirectory /<br/>NSItemReplacementDirectory /<br/>mktemp(3)"
 author: Mattt Thompson
 category: Cocoa
 excerpt: "Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself)."
+revisions:
+    "2016-03-10": Translated sample code into Swift.
 status:
-    swift: t.b.c.
+    swift: 2.1.1
+    reviewed: March 10, 2016
 ---
 
 Volumes have been written about persisting data, but when it comes to short-lived, temporary files, there is very little to go on for Objective-C. (Or if there has, perhaps it was poetically ephemeral itself).
@@ -39,6 +42,9 @@ _Actually_, this method appears to be intended for moving _existing_ temporary f
 
 So much for the `NSString` filesystem API migration. Let's stick to something that works:
 
+~~~{swift}
+NSURL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
+~~~
 ~~~{objective-c}
 [NSURL fileURLWithPath:NSTemporaryDirectory() isDirectory:YES];
 ~~~
@@ -49,6 +55,9 @@ With a place to call home (temporarily), the next step is to figure out what to 
 
 The best way to generate a unique identifier is to use the `globallyUniqueString` method on `NSProcessInfo`
 
+~~~{swift}
+let identifier = NSProcessInfo.processInfo().globallyUniqueString
+~~~
 ~~~{objective-c}
 NSString *identifier = [[NSProcessInfo processInfo] globallyUniqueString];
 ~~~
@@ -59,6 +68,9 @@ This will return a string in the format: `5BD255F4-CA55-4B82-A555-0F4BC5CA2AD6-4
 
 Alternatively, `NSUUID` ([discussed previously](http://nshipster.com/uuid-udid-unique-identifier)) also produces workable results, assuming that you're not doing anything _too_ crazy.
 
+~~~{swift}
+NSUUID().UUIDString
+~~~
 ~~~{objective-c}
 [[NSUUID UUID] UUIDString]
 ~~~
@@ -69,6 +81,10 @@ This produces a string in the format: `22361D15-E17B-4C48-AEA6-C73BBEA17011`
 
 Using the aforementioned technique for generating unique identifiers, we can create unique temporary file paths:
 
+~~~{swift}
+let fileName = String(format: "%@_%@", NSProcessInfo.processInfo().globallyUniqueString, "file.txt")
+let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(fileName)
+~~~
 ~~~{objective-c}
 NSString *fileName = [NSString stringWithFormat:@"%@_%@", [[NSProcessInfo processInfo] globallyUniqueString], @"file.txt"];
 NSURL *fileURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:fileName]];
@@ -80,6 +96,14 @@ In situations where many temporary files might be created by a process, it may b
 
 Creating a temporary directory is no different than any other invocation of `NSFileManager -createDirectoryAtURL:withIntermediateDirectories:attributes:error:`:
 
+~~~{swift}
+let directoryURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(NSProcessInfo.processInfo().globallyUniqueString, isDirectory: true)
+do {
+    try NSFileManager.defaultManager().createDirectoryAtURL(directoryURL, withIntermediateDirectories: true, attributes: nil)
+} catch {
+    // ...
+}
+~~~
 ~~~{objective-c}
 NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByAppendingPathComponent:[[NSProcessInfo processInfo] globallyUniqueString]] isDirectory:YES];
 [[NSFileManager defaultManager] createDirectoryAtURL:directoryURL withIntermediateDirectories:YES attributes:nil error:&error];
@@ -87,6 +111,9 @@ NSURL *directoryURL = [NSURL fileURLWithPath:[NSTemporaryDirectory() stringByApp
 
 And, of course, temporary file paths relative to this directory can be created with `URLByAppendingPathComponent:`:
 
+~~~{swift}
+let fileURL = directoryURL.URLByAppendingPathComponent(fileName)
+~~~
 ~~~{objective-c}
 NSURL *fileURL = [directoryURL URLByAppendingPathComponent:fileName];
 ~~~
@@ -99,6 +126,14 @@ Files don't exist on the file system until a particular file path is either touc
 
 There are several ways in which data is written to disk in Foundation. The most straightforward of which is `NSData -writeToURL:options:error`:
 
+~~~{swift}
+let data: NSData = ...
+do {
+    try data.writeToURL(fileURL, options: .AtomicWrite)
+} catch {
+    // ...
+}
+~~~
 ~~~{objective-c}
 NSData *data = ...;
 NSError *error = nil;
@@ -109,6 +144,9 @@ NSError *error = nil;
 
 For more advanced APIs, it is not uncommon to pass an `NSOutputStream` instance to direct the flow of data. Again, creating an output stream to a temporary file path is no different than any other kind of file path:
 
+~~~{swift}
+let outputStream = NSOutputStream(toFileAtPath: fileURL.absoluteString, append: false)
+~~~
 ~~~{objective-c}
 NSOutputStream *outputStream = [NSOutputStream outputStreamToFileAtPath:[fileURL absoluteString] append:NO];
 ~~~
@@ -121,6 +159,13 @@ Although files in a system-designated temporary directory make no guarantees abo
 
 Do that with `NSFileManager -removeItemAtURL:`, which works for both a temporary file and a temporary directory:
 
+~~~{swift}
+do {
+    try NSFileManager.defaultManager().removeItemAtURL(fileURL)
+} catch {
+    // ...
+}
+~~~
 ~~~{objective-c}
 NSError *error = nil;
 [[NSFileManager defaultManager] removeItemAtURL:fileURL error:&error];
