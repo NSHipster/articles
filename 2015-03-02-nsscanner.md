@@ -50,8 +50,7 @@ stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet
 
 // using the latest Swift 1.2 beta 2 syntax:
 var name: NSString?
-while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name), 
-        let name = name
+while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name)
 {
     println(name)
 }
