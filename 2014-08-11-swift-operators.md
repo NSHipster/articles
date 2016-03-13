@@ -384,7 +384,7 @@ This is all to say: **a custom operator should only ever be provided as a conven
 
 ### Use of Mathematical Symbols
 
-Custom operators can begin with one of the ASCII characters /, =, -, +, !, *, %, <, >, &, |, ^, or ~, or any of the Unicode characters in the "Math Symbols" character set.
+Custom operators can contain any of the following ASCII characters /, =, -, +, !, *, %, <, >, &, |, ^, or ~, or any of the Unicode characters in the "Math Symbols" character set.
 
 This makes it possible to take the square root of a number with a single `√` prefix operator (`⌥v`):
 
