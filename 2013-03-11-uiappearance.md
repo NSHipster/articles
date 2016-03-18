@@ -38,11 +38,11 @@ And while we all continue our search for beauty and understanding in the univers
 
 When someone purchases an iPhone, they are buying into Apple's philosophy that things that work well should look good, too. The same goes for when we choose to develop for iOS—a sloppy UI reflects poorly on the underlying code.
 
-当一个人买了一台 iPhone 的时候，他同时也是“买”了苹果的哲学——所有好用的东西也应该是好看的。同样的道理也适用于开发领域，粗糙的界面会让人们感觉代码也不会很好。
+当一个人买了一台 iPhone 的时候，他同时也是“买”了苹果的哲学——所有好用的东西也应该是好看的。同样的道理也适用于开发领域，粗糙的界面会让人们感觉代码也不会好到哪里去。
 
 It used to be that even trivial UI customization on iOS required AppStore-approval-process-taunting ju-ju like method swizzling. Fortunately, with iOS 5, developers were given an easier way: `UIAppearance`.
 
-在以前的 iOS 开发中，一些很细小的界面定制工作也需要那些可能会影响到审核的办法，例如 method swizzling。幸运的是，在 iOS 5 上，出现一种新的解决办法：`UIAppearance`。
+在以前的 iOS 开发中，一些很细小的界面定制工作也需要用到一些会影响到 AppStore 审核的办法，例如 method swizzling。幸运的是，在 iOS 5 上，出现一种新的解决办法：`UIAppearance`。
 
 ---
 
@@ -162,7 +162,7 @@ Cocoa 开发者痴迷于视觉审美的历史可以追溯到很久之前，他�
 
 This spirit of dedication to making things look good is alive and well in iOS. As a community and as an ecosystem, we have relentlessly pushed the envelope in terms of what users should expect from their apps. And though this makes our jobs more challenging, it makes the experience of developing for iOS all the more enjoyable.
 
-这种决心让东西看起来好看的精神，在 iOS 平台上同样生机盎然。作为社区和生态系统的一员，在用户对于应用的期望上，我们不懈地努力，去挑战极限。在这个过程中，我们的工作变得更加具有挑战性，也使得开发 iOS 的体验更加像是一种享受。
+这种决心让东西看起来好看的精神，在 iOS 平台上同样蔚然成风。作为社区和生态系统的一员，在用户对于应用的期望上，我们不懈地努力，去挑战极限。在这个过程中，我们的工作变得更加具有挑战性，也使得开发 iOS 的体验更加像是一种享受。
 
 Settle for nothing less than the whole package.
 Make your apps beautiful from interface to implementation.
