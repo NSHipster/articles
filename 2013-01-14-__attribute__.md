@@ -109,7 +109,7 @@ Using `nonnull` encodes expectations about values into an explicit contract, whi
 
 > A few standard library functions, such as `abort` and `exit`, cannot return. GCC knows this automatically. The `noreturn` attribute specifies this for any other function that never returns.
 
-> 少数的一个标准库函数，例如 `abort` 和 `exit`，是不能返回的。GCC 了解这一点。`noreturn` 这个属性用于声明其他不能返回的函数。
+> 少数的几个标准库函数，例如 `abort` 和 `exit`，是不能返回的。GCC 了解这一点。`noreturn` 这个属性用于声明其他不能返回的函数。
 
 For example, AFNetworking [uses the `noreturn` attribute for its network request thread entry point method](https://github.com/AFNetworking/AFNetworking/blob/1.1.0/AFNetworking/AFURLConnectionOperation.m#L157). This method is used when spawning the dedicated network `NSThread` to ensure that the detached thread continues execution for the lifetime of the application.
 
@@ -162,7 +162,7 @@ To check the availability of a particular attribute, you can use the `__has_attr
 
 > Clang introduces the availability attribute, which can be placed on declarations to describe the lifecycle of that declaration relative to operating system versions. Consider the function declaration for a hypothetical function f:
 
-> Clang 引入了可用性属性，可以放在声明之后，表明这个声明在操作系统版本层次上的生命周期。考虑下面这个虚构的函数 f：
+> Clang 引入了可用性属性，可以放在声明之后，表明这个声明在操作系统版本层次上的生命周期。考虑下面这个虚构的函数 f 的声明：
 
 ~~~{objective-c}
 void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,obsoleted=10.7)));
