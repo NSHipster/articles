@@ -119,7 +119,7 @@ For example, AFNetworking [uses the `noreturn` attribute for its network request
 
 > The `pure` attribute specifies that a function has no effects except the return value, such that their return value depends only on the parameters and/or global variables. Such a function can be subject to common subexpression elimination and loop optimization just as an arithmetic operator would be.
 
-> `pure` 属性表明这个函数除了返回值以外没有任何副作用，也就是说它们的返回值值依赖于传入的参数和/或全局变量。这种函数可以通过常见的子表达式消除和循环优化技术进行优化，就像算术操作符一样。
+> `pure` 属性表明这个函数除了返回值以外没有任何副作用，也就是说它们的返回值只依赖于传入的参数和/或全局变量。这种函数可以通过常见的子表达式消除和循环优化技术进行优化，就像算术操作符一样。
 
 > The `const` attribute specifies that a function does not examine any values except their arguments, and have no effects except the return value. Note that a function that has pointer arguments and examines the data pointed to must not be declared const. Likewise, a function that calls a non-`const` function usually must not be `const`. It does not make sense for a `const` function to return `void`.
 
@@ -131,11 +131,11 @@ int square(int n) __attribute__((const));
 
 `pure` and `const` are both attributes that invoke a functional programming paradigm in order to allow for significant performance optimizations. `const` can be thought as a stricter form of `pure` since it doesn't depend on global values or pointers.
 
-`pure` 和 `const` 属性都包含着函数式编程的范例，可以支持高效的性能优化。`const` 可以被看做是更加严格的 `pure`，因为它不依赖于全局变量或者指针。
+`pure` 和 `const` 都是为了支持高效的性能优化而营造出函数式编程范例的属性。`const` 可以被看做是更加严格的 `pure`，因为它不依赖于全局变量或者指针。
 
 For example, because the result of a function declared `const` does not depend on anything other than the arguments passed in, the result of the function can cache that result and return any time the function is called with that same combination of arguments. (i.e. we know that the square of a number is constant, so we only need to compute it once).
 
-举个例子，因为被声明为 `const` 的函数结果除了传入参数之外不依赖于任何东西，那么这个函数的结果就可以被缓存起来，当之后用同样的参数调用的时候可以直接把缓存返回（就像我们知道一个数字的平方是另一个常数，所以我们只需要计算一次就可以了）。
+举个例子，因为被声明为 `const` 的函数结果除了传入参数之外不依赖于任何东西，这个函数的结果就可以被缓存起来，当之后用同样的参数调用的时候可以直接把缓存返回（就像我们知道一个数字的平方是另一个常数，所以我们只需要计算一次就可以了）。
 
 ### `unused`
 
@@ -189,7 +189,7 @@ void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,
 - `unavailable`: This declaration is never available on this platform.
 - `unavailable`: 声明在这个平台上从来就是不可用的
 - `message` Additional message text that Clang will provide when emitting a warning or error about use of a deprecated or obsoleted declaration. Useful to direct users to replacement APIs.
-- `message` 额外的文本信息，Clang 在对于废弃和淘汰声明给出警告或者错误的时候会提供这些信息，可以用于指导用户进行 API 替换。
+- `message`: 额外的文本信息，Clang 在对于废弃和淘汰声明给出警告或者错误的时候会提供这些信息，可以用于指导用户进行 API 替换。
 
 > Multiple availability attributes can be placed on a declaration, which may correspond to different platforms. Only the availability attribute with the platform corresponding to the target platform will be used; any others will be ignored. If no availability attribute specifies availability for the current target platform, the availability attributes are ignored.
 
