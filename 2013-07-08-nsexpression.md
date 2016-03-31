@@ -100,10 +100,10 @@ So mentioned, because `ceiling` is easily confused with `ceil(3)`. Whereas `ceil
 
 ### Random Functions
 
-Two variations—one with and one without an argument. Taking no argument, `random` returns an equivalent of `rand(3)`, while `random:` takes a random element from the `NSExpression` of an array of numbers.
+Two variations—one with and one without an argument. Taking no argument, `random` returns an equivalent of `rand()`, while `randomn:` takes a single number and returns an equivalent of `rand(3)`.
 
 - `random`
-- `random:`
+- `randomn:`
 
 ### Binary Arithmetic
 
