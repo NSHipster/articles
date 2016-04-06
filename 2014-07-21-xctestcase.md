@@ -235,7 +235,7 @@ func testDateFormatterPerformance() {
 }
 ```
 
-The test output shows the average execution time for the measured block as well as individual run times and standard deviation:
+The measured block is executed ten times and the test output shows the average execution time as well as individual run times and standard deviation:
 
 ```
 Test Case '-[_Tests testDateFormatterPerformance]' started.
@@ -243,7 +243,7 @@ Test Case '-[_Tests testDateFormatterPerformance]' started.
 Test Case '-[_Tests testDateFormatterPerformance]' passed (0.274 seconds).
 ```
 
-Performance tests help establish a baseline of performance for hot code paths. Sprinkle them into your test cases to ensure that significant algorithms and procedures remain performant as time goes on.
+Performance tests help establish a per-device baseline of performance for hot code paths and will fail if execution time becomes significantly slower. Sprinkle them into your test cases to ensure that significant algorithms and procedures remain performant as time goes on.
 
 ## XCTestExpectation
 
