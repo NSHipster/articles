@@ -5,7 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?"
 status:
-    swift: 1.1
+    swift: 2.2
+    reviewed: April 10, 2016
 ---
 
 Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?
@@ -79,8 +80,8 @@ let charlie = Person(firstName: "Charlie", lastName: "Smith", age: 33)
 let quentin = Person(firstName: "Quentin", lastName: "Alberts", age: 31)
 let people = [alice, bob, charlie, quentin]
 
-let firstNameSortDescriptor = NSSortDescriptor(key: "firstName", ascending: true, selector: "localizedStandardCompare:")
-let lastNameSortDescriptor = NSSortDescriptor(key: "lastName", ascending: true, selector: "localizedStandardCompare:")
+let firstNameSortDescriptor = NSSortDescriptor(key: "firstName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+let lastNameSortDescriptor = NSSortDescriptor(key: "lastName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
 let ageSortDescriptor = NSSortDescriptor(key: "age", ascending: false)
 
 let sortedByAge = (people as NSArray).sortedArrayUsingDescriptors([ageSortDescriptor])
