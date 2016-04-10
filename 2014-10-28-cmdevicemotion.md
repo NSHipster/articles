@@ -4,7 +4,8 @@ author: Nate Cook
 category: Cocoa
 excerpt: "Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."
 status:
-    swift: 1.0
+    swift: 2.2
+    reviewed: April 10, 2016
 ---
 
 Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected.
@@ -61,7 +62,7 @@ After this call, `manager.gyroData` is accessible at any time with the device's 
 #### Starting Updates to "push" Data
 
 ```swift
-let queue = NSOperationQueue.mainQueue
+let queue = NSOperationQueue.mainQueue()
 manager.startGyroUpdatesToQueue(queue) {
     (data, error) in
     // ...
@@ -88,10 +89,11 @@ First, we check to make sure our device makes accelerometer data available, next
 if manager.accelerometerAvailable {
     manager.accelerometerUpdateInterval = 0.01
     manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) {
-        [weak self] (data: CMAccelerometerData!, error: NSError!) in
-
-        let rotation = atan2(data.acceleration.x, data.acceleration.y) - M_PI
-        self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
+        [weak self] (data: CMAccelerometerData?, error: NSError?) in
+        if let acceleration = data?.acceleration {
+            let rotation = atan2(acceleration.x, acceleration.y) - M_PI
+            self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
+        }
     }
 }
 ```
@@ -126,10 +128,11 @@ Rather than use the raw gyroscope data that we would get with `startGyroUpdates.
 if manager.deviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
-        [weak self] (data: CMDeviceMotion!, error: NSError!) in
-
-        let rotation = atan2(data.gravity.x, data.gravity.y) - M_PI
-        self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
+        [weak self] (data: CMDeviceMotion?, error: NSError?) {
+        if let gravity = data?.gravity {
+            let rotation = atan2(data.gravity.x, data.gravity.y) - M_PI
+            self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
+        }
     }
 }
 ```
@@ -160,9 +163,9 @@ Remember that the X-axis runs laterally through the device in our hand, with neg
 if manager.deviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.02
     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
-        [weak self] (data: CMDeviceMotion!, error: NSError!) in
+        [weak self] (data: CMDeviceMotion?, error: NSError?) in
 
-        if data.userAcceleration.x < -2.5 {
+        if data?.userAcceleration.x < -2.5 {
             self?.navigationController?.popViewControllerAnimated(true)
         }
     }
@@ -224,7 +227,7 @@ func magnitudeFromAttitude(attitude: CMAttitude) -> Double {
 }
 
 // initial configuration
-var initialAttitude = manager.deviceMotion.attitude
+var initialAttitude = manager.deviceMotion!.attitude
 var showingPrompt = false
 
 // trigger values - a gap so there isn't a flicker zone
@@ -253,7 +256,9 @@ Then, in our now familiar call to `startDeviceMotionUpdates`, we calculate the m
 ```swift
 if manager.deviceMotionAvailable {
     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
-        [weak self] (data: CMDeviceMotion!, error: NSError!) in
+        [weak self] (data: CMDeviceMotion?, error: NSError?) in
+
+        guard let data = data else { return }
 
         // translate the attitude
         data.attitude.multiplyByInverseOfAttitude(initialAttitude)
@@ -267,7 +272,7 @@ if manager.deviceMotionAvailable {
                 showingPrompt = true
 
                 promptViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
-                self!.presentViewController(promptViewController, animated: true, completion: nil)
+                self?.presentViewController(promptViewController, animated: true, completion: nil)
             }
         }
 
@@ -326,7 +331,7 @@ To keep the code examples readable, we've been sending all our `CoreMotionManage
 ```swift
 let queue = NSOperationQueue()
 manager.startDeviceMotionUpdatesToQueue(queue) {
-    [weak self] (data: CMDeviceMotion!, error: NSError!) in
+    [weak self] (data: CMDeviceMotion?, error: NSError?) in
 
     // motion processing here
 
