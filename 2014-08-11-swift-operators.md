@@ -53,7 +53,7 @@ Operator precedence rules, similar to the ones [you learned in primary school](h
 
 However, consider the statement `5 - 2 + 3`. Addition and subtraction have the same operator precedence, but evaluating the subtraction first `(5 - 2) + 3` yields 6, whereas evaluating subtraction after addition, `5 - (2 + 3)`, yields `0`. In code, arithmetic operators are left-associative, meaning that the left hand side will evaluate first (`(5 - 2) + 3`).
 
-Operators can be unary and ternary as well. The `!` prefix operator negates a logical value of the operand, whereas the `++` postfix operator increments the operand. The `?:` ternary operator collapses an `if-else` expression, by evaluating the statement to the left of the `?` in order to either execute the statement left of the `:` (statement is `true`) or right of `:` (statement is `false`).
+Operators can be unary and ternary as well. The `!` prefix operator negates a logical value of the operand. The `?:` ternary operator collapses an `if-else` expression, by evaluating the statement to the left of the `?` in order to either execute the statement left of the `:` (statement is `true`) or right of `:` (statement is `false`).
 
 ## Swift Operators
 
@@ -61,8 +61,6 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
 
 ### Prefix
 
-- `++`: Increment
-- `--`: Decrement
 - `+`: Unary plus
 - `-`: Unary minus
 - `!`: Logical NOT
@@ -183,12 +181,6 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
         <tr><td><tt>||=</tt></td><td>Logical OR and assign</td></tr>
     </tbody>
 </table>
-
-### Postfix
-
-
-- `++`: Increment
-- `--`: Decrement
 
 ### Member Functions
 
