@@ -101,7 +101,7 @@ NSRange misspelledRange = [textChecker
 // misspelledRange.location == NSNotFound
 ```
 
-As expected, the search above returns `NSNotFound`, for `UITextChecker` has leaned the word we created. `UITextChecker` also provides class methods for checking and unlearning words: `UITextChecker.hasLearnedWord(_:)` and `UITextChecker.unlearnWord(_:)`.
+As expected, the search above returns `NSNotFound`, for `UITextChecker` has learned the word we created. `UITextChecker` also provides class methods for checking and unlearning words: `UITextChecker.hasLearnedWord(_:)` and `UITextChecker.unlearnWord(_:)`.
 
 ## Suggesting Completions
 
