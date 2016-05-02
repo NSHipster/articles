@@ -27,7 +27,7 @@ import UIKit
 let str = "hipstar"
 let textChecker = UITextChecker()
 let misspelledRange = textChecker.rangeOfMisspelledWordInString(
-        str, range: NSMakeRange(0, str.utf16.count), 
+        str, range: NSRange(0..<str.utf16.count), 
         startingAt: 0, wrap: false, language: "en_US")
 
 if misspelledRange.location != NSNotFound,
@@ -87,7 +87,7 @@ UITextChecker.learnWord(str)
 
 ```swift
 let misspelledRange = textChecker.rangeOfMisspelledWordInString(str, 
-        range: NSMakeRange(0, str.utf16.count), 
+        range: NSRange(0..<str.utf16.count), 
         startingAt: 0, wrap: false, language: "en_US")
 // misspelledRange.location == NSNotFound
 ```
@@ -110,7 +110,7 @@ There's one more `UITextChecker` API, this time for finding possible completions
 ```swift
 let partial = "hipst"
 let completions = textChecker.completionsForPartialWordRange(
-        NSMakeRange(0, partial.utf16.count), inString: partial, 
+        NSRange(0..<partial.utf16.count), inString: partial, 
         language: "en_US")
 // completions == ["hipster", "hipsters"]
 ```
