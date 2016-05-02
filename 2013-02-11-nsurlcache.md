@@ -189,4 +189,4 @@ As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (
 
 Untold numbers of developers have hacked together an awkward, fragile system for network caching functionality, all because they weren't aware that `NSURLCache` could be setup in two lines and do it 100× better. Even more developers have never known the benefits of network caching, and never attempted a solution, causing their apps to make untold numbers of unnecessary requests to the server.
 
-So be the change you want to see in the world, and be sure to always start you app on the right foot, by setting a shared `NSURLCache` in `-application:didFinishLaunchingWithOptions:`.
+So be the change you want to see in the world, and be sure to always start your app on the right foot, by setting a shared `NSURLCache` in `-application:didFinishLaunchingWithOptions:`.
