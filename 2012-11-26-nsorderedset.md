@@ -45,8 +45,8 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
 ~~~
 
-<object data="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.svg" type="image/svg+xml">
-  <img src="http://nshipster.s3.amazonaws.com/nsorderedset-case-1.png" />
+<object data="{{ site.asseturl }}/nsorderedset-case-1.svg" type="image/svg+xml">
+  <img src="{{ site.asseturl }}/nsorderedset-case-1.png" />
 </object>
 
 这样不太好。。。因为这样`NSMutableOrderedSet`就不能被用来做`NSMutableSet`类型的方法参数了。那么如果我们让`NSMutableOrderedSet`作为`NSMutableSet`的子类会发生什么事情哪？

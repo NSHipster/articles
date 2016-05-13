@@ -78,9 +78,9 @@ func locationManager(manager: CLLocationManager!,
 
 想在 iOS 8 中使用定位，另一个改变是必须的。在这之前，应用可以选择性的在 `Info.plist` 中包含 'NSLocationUsageDescription' 的关键字。这个值是一个纯文本的字符串，向用户说明了应用预期要使用位置服务。现在这个值被拆分成了两个不同的关键字（`NSLocationWhenInUseUsageDescription` 和 `NSLocationAlwaysUsageDescription`），而且是必填的；如果你不添加对应的关键字就去调用 `requestWhenInUseAuthorization` 或 `requestAlwaysAuthorization`，那么将不会有任何的弹出提示给用户。
 
-![Core Location Always Authorization](http://nshipster.s3.amazonaws.com/core-location-always-authorization.png)
+![Core Location Always Authorization]({{ site.asseturl }}/core-location-always-authorization.png)
 
-![Core Location When In Use Authorization](http://nshipster.s3.amazonaws.com/core-location-when-in-use-authorization.png)
+![Core Location When In Use Authorization]({{ site.asseturl }}/core-location-when-in-use-authorization.png)
 
 ### 获取多个权限
 
@@ -116,11 +116,11 @@ switch CLLocationManager.authorizationStatus() {
 }
 ```
 
-![Core Location Settings Alert](http://nshipster.s3.amazonaws.com/core-location-settings-alert.png)
+![Core Location Settings Alert]({{ site.asseturl }}/core-location-settings-alert.png)
 
-![Core Location Settings Location Never](http://nshipster.s3.amazonaws.com/core-location-settings-1.png)
+![Core Location Settings Location Never]({{ site.asseturl }}/core-location-settings-1.png)
 
-![Core Location Settings Location Always](http://nshipster.s3.amazonaws.com/core-location-settings-2.png)
+![Core Location Settings Location Always]({{ site.asseturl }}/core-location-settings-2.png)
 
 ### 向后兼容
 

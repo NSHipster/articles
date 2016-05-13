@@ -17,7 +17,7 @@ excerpt: 当 UITableView 有一百来行时，它就变得有些笨重了。如�
 
 还有第三种在 iOS 应用中并没有被很好利用的办法：**区域索引标题（section index titles）**。它们是在列表右边纵向排列的字母，你可以在电话本联系人界面和音乐曲库界面中看到它们。
 
-![Section Index Titles Example](http://nshipster.s3.amazonaws.com/uilocalizedindexedcollation-example.png)
+![Section Index Titles Example]({{ site.asseturl }}/uilocalizedindexedcollation-example.png)
 
 当用户在那个列表里向下移动手指时，列表会在对应的区域间跳动。这会使得冗长的列表视图变得超级好用。
 

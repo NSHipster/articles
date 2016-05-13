@@ -10,11 +10,11 @@ iPhone 6+ 的推出让 `UISplitViewController` 变得更为重要。现在只需
 
 看看 `UISplitViewController` 怎样在 iPhone 6+ 上施展魔力的：
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewDemo.jpg" width="640" controls/>
+<video preload="none" src="{{ site.asseturl }}/SplitViewDemo.mov" poster="{{ site.asseturl }}/SplitViewDemo.jpg" width="640" controls/>
 
 >注意，当 iPhone 6+ 是 _缩放_ 显示模式视图时不会分屏！（你可以在 Settings.app → Display & Brightness → View 里切换 Standard 或 Zoomed 显示模式）
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.mov" poster="http://nshipster.s3.amazonaws.com/SplitViewZoomedDemo.jpg" width="640" controls/>
+<video preload="none" src="{{ site.asseturl }}/SplitViewZoomedDemo.mov" poster="{{ site.asseturl }}/SplitViewZoomedDemo.jpg" width="640" controls/>
 
 同样，究竟在什么时候显示拆分视图的逻辑苹果都会处理。
 
@@ -22,7 +22,7 @@ iPhone 6+ 的推出让 `UISplitViewController` 变得更为重要。现在只需
 
 这是一个带有 split view controller 的 Storyboard 的布局概览，它看起来是这样的：
 
-![UISplitViewController Storyboard Layout](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-storyboard-layout.png)
+![UISplitViewController Storyboard Layout]({{ site.asseturl }}/uisplitviewcontroller-storyboard-layout.png)
 
 让我们来看看更多的细节：
 
@@ -30,11 +30,11 @@ iPhone 6+ 的推出让 `UISplitViewController` 变得更为重要。现在只需
 
 使用 `UISplitViewController` 的第一步是把它拖到 storyboard 里。接下来，指定哪个视图控制器是 **Master** 哪一个是 **Detail**。
 
-![UISplitViewController Master-Detail Storyboard ](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-master-detail-storyboard.png)
+![UISplitViewController Master-Detail Storyboard ]({{ site.asseturl }}/uisplitviewcontroller-master-detail-storyboard.png)
 
 通过选择适当的 Relationship Segue 来做：
 
-![UISplitViewController Relationship Segue](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-relationship-segue.png)
+![UISplitViewController Relationship Segue]({{ site.asseturl }}/uisplitviewcontroller-relationship-segue.png)
 
 主视图控制器通常是包含列表视图（在大多数情况下是一个 `UITableView`）的导航控制器。详细信息视图控制器则是显示用户点击列表某项时对应的导航控制器视图。
 
@@ -42,7 +42,7 @@ iPhone 6+ 的推出让 `UISplitViewController` 变得更为重要。现在只需
 
 还有最后一个部分让拆分视图控制器真正工作：指定 "Show Detail" segue：
 
-![UISplitViewController Show Detail Segue](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-show-detail-segue.png)
+![UISplitViewController Show Detail Segue]({{ site.asseturl }}/uisplitviewcontroller-show-detail-segue.png)
 
 在下面的例子中，当用户点击了 `SelectColorTableViewController` 里的一个单元格，它们会被展示在一个以 `colorviewcontroll` 为根的导航控制器中。
 
@@ -50,21 +50,21 @@ iPhone 6+ 的推出让 `UISplitViewController` 变得更为重要。现在只需
 
 在这一点上，你可能想知道为什么主视图控制器和详细信息视图控制器都必须是导航控制器，特别是当有一个 "Show Detail" segue 从表格视图（这是导航堆栈的一部分）连接到详细信息视图控制器。如果详细视图控制器一开始不带导航控制器呢？
 
-![UISplitViewController No Detail Navigation Controller](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-no-detail-navigation-controller.png)
+![UISplitViewController No Detail Navigation Controller]({{ site.asseturl }}/uisplitviewcontroller-no-detail-navigation-controller.png)
 
 大体来看，应用程序仍然会工作得很好。在 iPhone 6+ 上，唯一的区别是当手机在横向模式下会没有导航工具栏：
 
-![](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-no-navigation-bar.png)
+![]({{ site.asseturl }}/uisplitviewcontroller-no-navigation-bar.png)
 
 这不是什么大不了的事，除非你想让你的导航栏显示一个标题。但在 iPad 上这最终会是致命的弱点。
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/iPadSplitViewNoNavBar.mov" poster="http://nshipster.s3.amazonaws.com/iPadSplitViewNoNavBar.jpg" width="540" controls/>
+<video preload="none" src="{{ site.asseturl }}/iPadSplitViewNoNavBar.mov" poster="{{ site.asseturl }}/iPadSplitViewNoNavBar.jpg" width="540" controls/>
 
 请注意，当 iPad 应用程序第一次打开的时候，没有任何迹象表明这是一个拆分视图控制器！触发主视图控制器，用户必须奇迹般的知道要去向右滑动。
 
 即使有导航控制器，在刚开始的时候用户界面也没有好太多（虽然能看到一个标题绝对是一个改进）：
 
-![UISplitViewController iPad Navigation Bar No Button](http://nshipster.s3.amazonaws.com/uisplitviewcontroller-ipad-navigation-bar-no-button.png)
+![UISplitViewController iPad Navigation Bar No Button]({{ site.asseturl }}/uisplitviewcontroller-ipad-navigation-bar-no-button.png)
 
 ### `displayModeButtonItem`
 
@@ -83,11 +83,11 @@ override func viewDidLoad() {
 
 编译并重新在 iPad 上运行，现在用户就看到很好的指示，显示如何显示应用程序的其余部分：
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/iPadNavBarWithButton.mov" poster="http://nshipster.s3.amazonaws.com/iPadNavBarWithButton.jpg" width="540" controls/>
+<video preload="none" src="{{ site.asseturl }}/iPadNavBarWithButton.mov" poster="{{ site.asseturl }}/iPadNavBarWithButton.jpg" width="540" controls/>
 
 `UISplitViewController` 的 `displayModeButtonItem` 在 iPhone 6+ 的横向模式下也增加了一些额外的炫酷功能：
 
-<video preload="none" src="http://nshipster.s3.amazonaws.com/iPhone6PluseDisplayModeButton.mov" poster="http://nshipster.s3.amazonaws.com/iPhone6PluseDisplayModeButton.jpg" width="640" controls/>
+<video preload="none" src="{{ site.asseturl }}/iPhone6PluseDisplayModeButton.mov" poster="{{ site.asseturl }}/iPhone6PluseDisplayModeButton.jpg" width="640" controls/>
 
 通过使用 `displayModeButtonItem`，你再次让苹果来决定在不同屏幕尺寸、旋转下怎样做最合适。而不是自己辛苦的做这些小事，就可以高枕无忧了。
 

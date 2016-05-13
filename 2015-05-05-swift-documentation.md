@@ -40,11 +40,11 @@ NSHipster 的读者无疑会记得[去年发表的关于文档的文章](http://
 func foo(bar: String) -> AnyObject { ... }
 ~~~
 
-![Unrecognized Headerdoc](http://nshipster.s3.amazonaws.com/swift-documentation-headerdoc.png)
+![Unrecognized Headerdoc]({{ site.asseturl }}/swift-documentation-headerdoc.png)
 
 但如果修改一下标记方式，就 _可以_ 被正确解析：
 
-![New Recognized Format](http://nshipster.s3.amazonaws.com/swift-documentation-new-format.png)
+![New Recognized Format]({{ site.asseturl }}/swift-documentation-new-format.png)
 
 ~~~{swift}
 /**
@@ -231,11 +231,11 @@ class Bicycle {
 
 在 `Style` 的 `enum` 声明里使用 Option-click，说明就精美的以符号列表呈现了：
 
-![Swift enum Declaration Documentation](http://nshipster.s3.amazonaws.com/swift-documentation-enum-declaration.png)
+![Swift enum Declaration Documentation]({{ site.asseturl }}/swift-documentation-enum-declaration.png)
 
 对 `travel` 方法快速查看文档，参数一如预期的被解析成单独的字段：
 
-![Swift func Declaration Documentation](http://nshipster.s3.amazonaws.com/swift-documentation-method-declaration.png)
+![Swift func Declaration Documentation]({{ site.asseturl }}/swift-documentation-method-declaration.png)
 
 
 ## MARK / TODO / FIXME
@@ -252,7 +252,7 @@ class Bicycle {
 
 要显示这些新的标签，下面是 `Bicycle` 类如何扩展的使用 `Printable` 协议，并实现 `description` 的。
 
-![Xcode 6 Documentation Source Navigator MARK / TODO / FIXME](http://nshipster.s3.amazonaws.com/swift-documentation-xcode-source-navigator.png)
+![Xcode 6 Documentation Source Navigator MARK / TODO / FIXME]({{ site.asseturl }}/swift-documentation-xcode-source-navigator.png)
 
 ~~~{swift}
 // MARK: Printable

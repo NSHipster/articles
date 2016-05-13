@@ -43,7 +43,7 @@ iPhones 和 iPad 本身已经如此神奇，但是凭借苹果的肢体障碍者
 
 不要绝望！——不像你把设备变成另一个语言一样，VoiceOver 不会引发这种你不知道如果关掉它的危险。
 
-![VoiceOver Settings](http://nshipster.s3.amazonaws.com/uiaccessibility-voiceover.png)
+![VoiceOver Settings]({{ site.asseturl }}/uiaccessibility-voiceover.png)
 
 调至 VoiceOver 模式的设备可能和你之前习惯的用法有些不一样：
 

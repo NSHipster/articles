@@ -55,7 +55,7 @@ request.merchantCapabilities = .Capability3DS
 
 接下来，用 `paymentSummaryItems` 属性来描述消费者购买的商品。这个属性可以接受一个 `PKPaymentSummaryItem` 数组，`PKPaymentSummaryItem` 有 `label` 和 `amount` 两个属性。这些属性和收据(马上就能看到收据了)上显示的条目相关。
 
-![Payment Authorization](http://nshipster.s3.amazonaws.com/apple-pay-payment-authorization.png)
+![Payment Authorization]({{ site.asseturl }}/apple-pay-payment-authorization.png)
 
 ```swift
 let wax = PKPaymentSummaryItem(label: "Mustache Wax", amount: NSDecimalNumber(string: "10.00"))
@@ -99,7 +99,7 @@ presentViewController(viewController, animated: true, completion: nil)
 - `PKPaymentAuthorizationViewController` 的加载动画变成成功或者失败的图案。如果付款成功了，PassBook 会收到一个通知来对用户的信用卡进行扣款。
 - Delegate 收到 `paymentAuthorizationViewControllerDidFinish:` 回调，然后就可以调用 `dismissViewControllerAnimated:completion` 方法来关闭付款页面了。
 
-![Status Indicator](http://nshipster.s3.amazonaws.com/apple-pay-indicators.png)
+![Status Indicator]({{ site.asseturl }}/apple-pay-indicators.png)
 
 具体代码如下：
 
@@ -251,7 +251,7 @@ func paymentAuthorizationViewController(controller: PKPaymentAuthorizationViewCo
 }
 ```
 
-![Select a Shipping Method](http://nshipster.s3.amazonaws.com/apple-pay-select-shipping-method.png)
+![Select a Shipping Method]({{ site.asseturl }}/apple-pay-select-shipping-method.png)
 
 至此，用户可以选择寄送地址以及基于其居住地得到的可用物流方式。用户最终选择的 `shippingAddress` 和 `shippingMethod` 会成为回调到 delegate 方法 `paymentAuthorizationViewController:didAuthorizePayment:completion:` 中 `PKPayment` 对象的某些属性。
 
