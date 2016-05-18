@@ -132,7 +132,7 @@ static char * XXObject;//将“XXObject”重新定义为不同的符号
 
 直到最近，由于[CocoaPods](http://cocoapods.org/)的出现和大量新的iOS开发者的涌现，开源代码的遍布，第三方代码在很大程度上对苹果和其余的Objective-C开发社区来说已经不是问题了。最近苹果官方的命名指南也发生了变化，它将三个字母作为前缀的建议只是做为一个习惯做法。
 
-正因为这样，那些已经存在的第三方库依然使用2个字母作为前缀，你可以参考一些那些[在GitHub上得到很多start的Objective-C的仓库](https://github.com/search?l=Objective-C&q=stars%3A%3E1&s=stars&type=Repositories)。
+正因为这样，那些已经存在的第三方库依然使用2个字母作为前缀，你可以参考一些那些[在GitHub上得到很多star的Objective-C的仓库](https://github.com/search?l=Objective-C&q=stars%3A%3E1&s=stars&type=Repositories)。
 
 <table>
     <thead>
