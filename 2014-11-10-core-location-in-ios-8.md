@@ -4,8 +4,8 @@ author: Mike Lazer-Walker
 category: Cocoa
 excerpt: "For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."
 status:
-    swift: 1.2
-    reviewed: June 24, 2015
+    swift: 2.0
+    reviewed: May 4, 2016
 ---
 
 For as long as the iPhone has existed, location services have been front and center. Maps.app was one of the killer features that launched with the original iPhone. The Core Location API has existed in public form since the first public iPhone OS SDK. With each release of iOS, Apple has steadily added new features to the framework, like background location services, geocoding, and iBeacons.
@@ -65,7 +65,7 @@ Since this happens asynchronously, the app can't start using location services i
 If the user has previously given permission to use location services, this delegate method will also be called after the location manager is initialized and has its delegate set with the appropriate authorization status. Which conveniently makes for a single code path for using location services.
 
 ```swift
-func locationManager(manager: CLLocationManager!,
+func locationManager(manager: CLLocationManager,
                      didChangeAuthorizationStatus status: CLAuthorizationStatus)
 {
     if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
@@ -144,7 +144,7 @@ func startUpdatingLocation() {
 
 // MARK: - CLLocationManagerDelegate
 
-func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
         startUpdatingLocation()
     }
@@ -202,7 +202,7 @@ Each `CLVisit` object contains a few basic properties: its average coordinate, a
 Every time a visit is tracked, the `CLLocationManagerDelegate` might be informed twice: once while the user has just arrived to a new place, and again when they leave it. You can figure out which is which by checking the `departureDate` property; a departure time of `NSDate.distantFuture()` means that the user is still there.
 
 ```swift
-func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
+func locationManager(manager: CLLocationManager, didVisit visit: CLVisit!) {
     if visit.departureDate.isEqualToDate(NSDate.distantFuture()) {
         // User has arrived, but not left, the location
     } else {
