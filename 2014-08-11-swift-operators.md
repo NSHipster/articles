@@ -177,8 +177,6 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
         <tr><td><tt>&amp;=</tt></td><td>Bitwise AND and assign</td></tr>
         <tr><td><tt>^=</tt></td><td>Bitwise XOR and assign</td></tr>
         <tr><td><tt>|=</tt></td><td>Bitwise OR and assign</td></tr>
-        <tr><td><tt>&amp;&amp;=</tt></td><td>Logical AND and assign</td></tr>
-        <tr><td><tt>||=</tt></td><td>Logical OR and assign</td></tr>
     </tbody>
 </table>
 
