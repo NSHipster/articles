@@ -70,7 +70,7 @@ NSCalendarUnitTimeZone
 
 ## Relative Date Calculations
 
-`NSDateComponents` objects can be used to do relative date calculations. To determining the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
+`NSDateComponents` objects can be used to do relative date calculations. To determine the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
 ~~~{swift}
 let calendar = NSCalendar.currentCalendar()
