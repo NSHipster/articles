@@ -16,7 +16,7 @@ In Swift, `Equatable` is a fundamental type, from which `Comparable` and `Hashab
 
 ## Equatable
 
-Values of the `Equatable` type can be evaluated for equality and inequality. Declaring a type as equatable bestows several useful abilities, notably the ability values of that type to be found in a containing `Array`.
+Values of the `Equatable` type can be evaluated for equality and inequality. Declaring a type as equatable bestows several useful abilities, notably the ability for values of that type to be found in a containing `Array`.
 
 For a type to be `Equatable`, there must exist an implementation of the `==` operator function, which accepts a matching type:
 
