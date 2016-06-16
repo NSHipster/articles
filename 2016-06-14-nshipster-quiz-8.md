@@ -26,7 +26,7 @@ Now it's time for you to play along with the home edition—sharpen your pencil 
 Round 1: General Knowledge
 --------------------------
 
-1. In the WWDC keynote, Apple introduced the new <strike>OS X</strike>, er... macOS Sierra. The actual Sierra mountain range is home to the highest peak in the continental US. What is the name of that mountain?
+1. In the WWDC keynote, Apple introduced the new <strike>OS X</strike>, er... macOS Sierra. The actual Sierra mountain range is home to the highest peak in the contiguous US. What is the name of that mountain?
 2. The Sierra were one focal point of a mass migration to California. What San Francisco sports team has ties to the Sierra during that period in history?
 3. Another highlight of the keynote was when Bozoma Saint John introduced the new Apple Music and got the crowd singing along to "Rapper's Delight"—who recorded the song, and in what year? (2 points)
 4. Which version of iPhoto first introduced “Faces and Places?”
