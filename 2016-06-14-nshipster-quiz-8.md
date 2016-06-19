@@ -9,7 +9,7 @@ status:
 
 This year's WWDC edition of the NSHipster Pub Quiz was held on June 14th, once again testing the assembled developers with questions both random and obscure. We're enormously grateful to [Realm](https://realm.io), who hosted the quiz for the second year in a row, with delicious food and drink and enough tables to seat nearly two hundred contestants.
 
-Competition was as fierce as always. Laughs and groans were heard. And after the points were tallied, team "Hey Siri" won the evening and the mustache medallions with a score of 31 out of a possible 43 points. A hearty congratulations to [Alek Åström](@MisterAlek), [Cezary Wojcik](@cezary_wojcik), [Kyle Sherman](@drumnkyle), [Marcus Brissman](@mbrissman), [Marius Rackwitz](@mrackwitz), [Melissa Huang](@meowlissa10), [Nevyn Bengtsson](@nevyn), and [Rob Stevenson](@zerogeek)!
+Competition was as fierce as always. Laughs and groans were heard. And after the points were tallied, team "Hey Siri" won the evening and the mustache medallions with a score of 31 out of a possible 43 points. A hearty congratulations to [Alek Åström](https://twitter.com/@MisterAlek), [Cezary Wojcik](https://twitter.com/@cezary_wojcik), [Kyle Sherman](https://twitter.com/@drumnkyle), [Marcus Brissman](https://twitter.com/@mbrissman), [Marius Rackwitz](https://twitter.com/@mrackwitz), [Melissa Huang](@https://twitter.com/meowlissa10), [Nevyn Bengtsson](https://twitter.com/@nevyn), and [Rob Stevenson](https://twitter.com/@zerogeek)!
 
 Now it's time for you to play along with the home edition—sharpen your pencil and give it your best!
 
