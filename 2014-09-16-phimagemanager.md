@@ -52,8 +52,11 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
     cell.tag = Int(manager.requestImageForAsset(asset,
         targetSize: CGSize(width: 100.0, height: 100.0),
         contentMode: .AspectFill,
-        options: nil) { (result, _) in
-            cell.imageView?.image = result
+        options: nil) { (result, info) in
+            guard let info = info else { return }
+            if info[PHImageCancelledKey] == nil {
+                cell.imageView?.image = result
+            }
     })
 
     return cell
