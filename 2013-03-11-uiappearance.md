@@ -105,7 +105,7 @@ One major downside to `UIAppearance`'s proxy approach is that it's difficult to 
 
 <ins>As of iOS 7, UIAppearance now returns <a href="http://nshipster.com/instancetype/"><tt>instancetype</tt></a>, which allows for code completion to work as expected. Huzzah!</ins>
 
-<ins>在 iOS 7 上, UIAppearance 现在返回的是 <a href="http://nshipster.com/instancetype/"><tt>instancetype</tt></a>，使得代码补全可以正常工作了。 万岁！</ins>
+<ins>在 iOS 7 上, UIAppearance 现在返回的是 <a href="http://nshipster.cn/instancetype/"><tt>instancetype</tt></a>，使得代码补全可以正常工作了。 万岁！</ins>
 
 In order to find out what methods work with `UIAppearance`, you have to [look at the headers](http://stackoverflow.com/questions/9424112/what-properties-can-i-set-via-an-uiappearance-proxy):
 
