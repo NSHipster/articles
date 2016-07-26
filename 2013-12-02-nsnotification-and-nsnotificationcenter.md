@@ -258,4 +258,4 @@ As it were, thinking about notifications in your own life can do wonders for imp
 
 ...but don't take that advice too far and use it to justify life-streaming, or anything. Seriously, stop taking pictures, and just eat your damn food, _amiright_?
 
-...但是不要过分采用这个建议并且把它用作创建自己生活直播流的理由，或者任何东西的理由。说真的，别再拍照片了，赶紧吃你的饭吧，_我说的在理吗_？
+...但是不要过分采用这个建议并且把它作为直播自己生活的理由，或者任何东西的理由。说真的，别再拍照片了，赶紧吃你的饭吧，_我说的在理吧_？
