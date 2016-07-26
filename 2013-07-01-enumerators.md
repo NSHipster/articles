@@ -131,7 +131,7 @@ Apple recommends that you use `NSFastEnumeration` `for/in`-style enumeration for
 
 But of course, before `NSFastEnumeration` (circa OS X Leopard / iOS 2.0), there was the venerable `NSEnumerator`.
 
-当然在 `NSFastEnumeration` 出现之前（大约是 circa OS X Leopard / iOS 2.0 时期），还有一位值得尊敬的先烈 `NSEnumerator`。
+当然在 `NSFastEnumeration` 出现之前（大约是 OS X Leopard / iOS 2.0 时期），还有一位值得尊敬的先烈 `NSEnumerator`。
 
 For the uninitiated, `NSEnumerator` is an abstract class that implements two methods:
 
@@ -233,7 +233,7 @@ typedef NSUInteger NSEnumerationOptions;
 
 Again, fast enumeration is almost certain to be much faster than block enumeration, but these options may be useful if you're resigned to using blocks.
 
-再重申一次，快速遍历几乎可以肯定要比 block 遍历快很多，不过如果你被迫要使用 blocks 的话这些方法会很有用。
+再重申一次，快速遍历几乎可以肯定要比 block 遍历快很多，不过如果你被迫要使用 blocks 的话这些选项可能会有用。
 
 ---
 
