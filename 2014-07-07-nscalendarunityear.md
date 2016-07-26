@@ -129,7 +129,7 @@ After full Emoji support (`let 🐶🐮`), custom operators are perhaps the shin
 > 
 > `语法哥`： _摇了摇头_
 > 
-> `灰胡子`：这货到底是什么意思？这是一坨翔在<abbr title="↓↘︎→P">放大招</abbr>，还是要跟开瓶器一刀两断？
+> `灰胡子`：这货到底是什么意思？这是一坨翔在<abbr title="↓↘︎→P">放大招</abbr>，还是要被开瓶器教做人 ？
 > 
 > `语法哥`：的确，如果这不算是哲学难题，我不知道还有什么是了。
 > 
