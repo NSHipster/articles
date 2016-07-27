@@ -3,7 +3,7 @@ title: Method Swizzling
 author: Mattt Thompson
 category: Objective-C
 translator: Daniel Hu
-excerpt: "Method swizzling is the process of changing the implementation of an existing selector. It's a technique made possible by the fact that method invocations in Objective-C can be changed at runtime, by changing how selectors are mapped to underlying functions in a class's dispatch table."
+excerpt: "Method swizzling 用来改变已存在的 selector 映射的方法实现。Method swizzling 通过在运行时修改类的消息分发列表中 selector 与实现的映射使得在运行时修改方法的调用成为可能。"
 status:
     swift: n/a
     reviewed: January 28, 2015
