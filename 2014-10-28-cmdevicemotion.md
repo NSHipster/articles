@@ -130,7 +130,7 @@ if manager.deviceMotionAvailable {
     manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
         [weak self] (data: CMDeviceMotion?, error: NSError?) {
         if let gravity = data?.gravity {
-            let rotation = atan2(data.gravity.x, data.gravity.y) - M_PI
+            let rotation = atan2(gravity.x, gravity.y) - M_PI
             self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
         }
     }
