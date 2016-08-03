@@ -3,22 +3,15 @@ title: NSCalendarUnitYear
 author: Mattt Thompson
 translator: Chester Liu
 category: Swift
-excerpt: "NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."
 excerpt: "NSHipster.com 已经走过了两个年头。每周我们都会发表一篇新文章，探讨 Objective-C 或者 Cocoa 当中一些不为人知的话题（除了几周例外）。我们用蛋糕来庆祝一下。"
 status:
     swift: 2.0
     reviewed: September 9, 2015
 ---
 
-NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](http://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.
-
 从两年前 [一篇关于 NSIndexSet 的小文章](http://nshipster.cn/nsindexset/) 发布到现在，NSHipster.com 已经走过了两个年头。每周我们都会发表一篇新文章，探讨 Objective-C 或者 Cocoa 当中一些不为人知的话题（除了几周例外），这些文章的读者覆盖超过 180 个国家，人数高达数百万。
 
-> This is actually the 101st article, which means that [by television industry standards](http://en.wikipedia.org/wiki/100_episodes), this site is now suitable for broadcast syndication. (Coming soon to TBS!)
-
 > 这篇文章实际上是我们的第 101 篇文章，意味着 [按照电视工业的标准](http://en.wikipedia.org/wiki/100_episodes)，这个站点已经可以在电视上广播了。（湖南卫视我们来了！）
-
-Let's celebrate with some cake:
 
 我们用蛋糕来庆祝一下：
 
@@ -33,8 +26,6 @@ Let's celebrate with some cake:
         c0-2.5,2-4.5,4.5-4.5l0,0c2.5,0,4.5,2,4.5,4.5V47.5z"/>
 </svg>
 
-Cute, right? Let's see what this looks like in code:
-
 很可爱吧？让我们看看它在代码里面是什么样子：
 
 ~~~{swift}
@@ -47,11 +38,7 @@ cakePath.addLineToPoint(CGPointMake(6.5, 95))
 ...
 ~~~
 
-Wait, hold up. What is this, Objective-C? Manipulating `UIBezierPath`s isn't exactly ground-breaking stuff, but with a few dozen more lines to go, we can make this a bit easier for ourselves.
-
 等等，这是什么，Objective-C？操作 `UIBezierPath`，不是什么突破性质的黑科技，不过通过一些代码，我们可以让这件事变得简单一些。
-
-How about we put some syntactic icing on this cake with some [custom operators](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-XID_28)?
 
 通过 [自定义操作符](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-XID_28)，我们来在这个蛋糕上加入一些语法“糖”，怎么样？
 
@@ -81,47 +68,19 @@ func +~ (left: UIBezierPath, right: ((CGFloat, CGFloat), (CGFloat, CGFloat), (CG
 }
 ~~~
 
-> Get it? `--->` replaces `moveToPoint`, while `+-` replaces `addLineToPoint`, and `+~` replaces `addCurveToPoint`. This declaration also does away with all of the redundant calls to `CGPointMake`, opting instead for simple coordinate tuples.
-
 > 看到了吗？ `--->` 替代了 `moveToPoint`，`+-` 替代了 `addLineToPoint`，`+~` 替代了 `addCurveToPoint`。这个声明同时还去掉了对于 `CGPointMake` 的冗余调用，转而使用简单的坐标元组。
-
-Swift offers a great deal of flexibility in how a programmer structures their code. One feature that exemplifies this mantra of minimal constraints is the ability to add custom prefix, infix, and postfix operators. Swift's syntax limits custom operators to be one or more of any of the following characters (provided an operator does not conflict with a reserved symbols, such as the `?` or `!` used for optional values):
 
 Swift 对于开发者组织代码这个方面，提供了非常大的灵活性。这种“最小约束”思想的代表特性之一，就是可以添加自定义的前缀，中缀和后缀操作符。 Swift 语法约束自定义操作符由下面这些字符当中的一个或者多个组成（在操作符不和保留字符冲突的情况下，例如用于 optional 值的 `?` 和 `!`）
 
 `/ = - + * % < > ! & | ^ . ~.`
 
-Custom operators offer a powerful tool for cutting through cruft, redundancy, unnecessary repetition, and so on and so forth, et cetera. Combine them with other language features like patterns or chaining to craft DSLs perfectly suited to the task at hand.
-
 自定义操作符是一个强大的工具，可以用来精简逻辑，减少冗余和不必要的重复，等等等等。和诸如模式匹配和链式语法这些语言特性结合起来，可以用于创建完美适用于当前问题的 DSL。
-
-Just... you know, don't let this power go to your head.
 
 只是...你懂得，不要让这种力量冲昏头脑。
 
-After full Emoji support (`let 🐶🐮`), custom operators are perhaps the shiniest new feature for anyone coming from Objective-C. And like any shiny new feature, it is destined to provide the most snark fodder for the "get off my lawn" set.
-
 在加入完整的 Emoji 支持之后（`let 🐶🐮`），对于从 Objective-C 转过来的开发者来说，自定义操作符差不多是最闪亮的新特性了。和其他的闪亮新特性一样，它注定要毁掉一些人的三观。
 
-### A Dramatization of the Perils of Shiny Swift Features
-
 ### Swift 崭新特性的危害——戏剧化展示
-
-> `SCENE: SAN FRANCISCO, THE YEAR IS 2017`
->
-> `GREYBEARD:` So I inherited an old Swift codebase today, and I found this line of code—I swear to `$DEITY`—it just reads `😾 |--~~> 💩`.
->
-> `BROGRAMMER`: _shakes head_
->
-> `GREYBEARD`: What the hell am I supposed to make of that? Is, like, the piece of poo throwing a <abbr title="↓↘︎→P">Hadouken</abbr>, or is it about to get the business end of a corkscrew?
->
-> `BROGRAMMER`: Truly, a philosophical quandary if ever there was one.
->
-> `GREYBEARD`: Anyway, turns out, that statement just reloads nearby restaurants.
->
-> `BROGRAMMER:` Dude, AFNetworking got weird with its 4.0 release.
->
-> `GREYBEARD:` Indeed.
 
 > `场景：旧金山，2017年`
 > 
@@ -139,11 +98,7 @@ After full Emoji support (`let 🐶🐮`), custom operators are perhaps the shin
 > 
 > `灰胡子`：是啊。
 
-The moral of that cautionary tale: **use custom operators and emoji sparingly**.
-
 这个寓言告诉我们一个道理：**有节制地使用自定义操作符和 emoji**。
-
-(Or whatever, the very next code sample totally ignores that advice)
 
 （或者管他呢，下面的示例代码完全忽略了这个建议）
 
@@ -215,20 +170,12 @@ UIColor.blackColor().setStroke()
 📍.stroke()
 ~~~
 
-I'm as amazed as anyone that this actually compiles.
-
 我和你一样感到惊讶，这东西居然能过编译。
-
-Everything is terrible.
 
 太差劲了。
 
 * * *
 
-Anyway, Happy 2nd Birthday, NSHipster!
-
 无论如何，NSHipster，两周年快乐！
-
-Thank you for helping to make these last couple years the insanely great experience it's been. I'll do my part to keep things up for years to come.
 
 谢谢你们，在你们的帮助下，过去这几年的经历对我来说简直美好的难以置信。接下来的日子，我会做好本职工作，继续我们的航程。
