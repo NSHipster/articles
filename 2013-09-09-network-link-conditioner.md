@@ -18,7 +18,7 @@ This week on NSHipster, we'll be talking about the [Network Link Conditioner](ht
 
 ## Installation
 
-Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" package. This can be downloaded from the [Apple Developer Downloads](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools) page.
+Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" package. This can be downloaded from the [Apple Developer Downloads](http://adcdownload.apple.com/Developer_Tools/Hardware_IO_Tools_for_Xcode_7.3/Hardware_IO_Tools_for_Xcode_7.3.dmg) page.
 
 ![Download]({{ site.asseturl }}/network-link-conditioner-download.png)
 
