@@ -87,7 +87,7 @@ double averageSalary = totalSalary / [employees count];
 
 - `@count`: 返回一个值为集合中对象总数的`NSNumber`对象。
 - `@sum`: 首先把集合中的每个对象都转换为`double`类型，然后计算其总，最后返回一个值为这个总和的`NSNumber`对象。
-- `@avg`: Takes the `double` value of each object in the collection, and returns the average value as an `NSNumber`.
+- `@avg`: 把集合中的每个对象都转换为`double`类型，返回一个值为平均值的`NSNumber`对象。
 - `@max`: 使用`compare:`方法来确定最大值。所以为了让其正常工作，集合中所有的对象都必须支持和另一个对象的比较。
 - `@min`: 和`@max`一样，但是返回的是集合中的最小值。
 
