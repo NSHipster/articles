@@ -30,7 +30,7 @@ BOOL fileExists = [fileManager fileExistsAtPath:filePath];
 
 ~~~
 
-## 列出文件里面的所有目录
+## 列出目录里面的所有文件
 
 ~~~{objective-c}
 
