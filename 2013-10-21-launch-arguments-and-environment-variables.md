@@ -99,7 +99,7 @@ According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/glo
 
 While you're waiting for the first batch of translations to come back, or are merely curious to see how badly your UI breaks under linguistic pressure, specify the following launch argument:
 
-当你在等待第一批翻译工作完成的时候，或者你只是想看看多语言环下 UI 到底能被破坏成什么样子，指定下面这个启动选项：
+当你在等待第一批翻译工作完成的时候，或者你只是想看看多语言环境下 UI 到底能被破坏成什么样子，指定下面这个启动选项：
 
 ~~~
 -NSDoubleLocalizedStrings YES
@@ -151,7 +151,7 @@ Of all of the system frameworks, Core Data may be the most in need of debugging.
 
 Most Core Data stacks use SQLite as a persistent store, so if your app is anything like the majority, you'll appreciate being able to watch SQL statements and statistics fly by as Core Data works its magic.
 
-大部分 Core Data 技术栈使用 SQLite 作为持续存储层，如果你的应用课大部分应用都类似的话，你可以在 Core Data 工作的时候到观察 SQL 语句和统计信息.
+大部分 Core Data 技术栈使用 SQLite 作为持续存储层，如果你的应用和大部分应用都类似的话，你可以在 Core Data 工作的时候到观察 SQL 语句和统计信息.
 
 Set the following launch argument:
 
