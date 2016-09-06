@@ -133,6 +133,6 @@ Method swizzling 修改了类的消息分发列表使得已经存在的 selector
 
 * * * 
 
-[associated objects](http://nshipster.com/associated-objects/) 的链接， method swizzling 是 Objective-C 拥有的强大特性，但请谨慎使用。
+[associated objects](http://nshipster.cn/associated-objects/) 的链接， method swizzling 是 Objective-C 拥有的强大特性，但请谨慎使用。
 
 
