@@ -88,7 +88,7 @@ Method swizzling 用于改变一个已经存在的 selector 的实现。这项�
 
 ##+load vs +initialize
 
-**swizzling应该只在+load中完成**
+**swizzling 应该只在 +load 中完成。**
 在 Objective-C 的运行时中，每个类有两个方法都会自动调用。+load 是在一个类被初始装载时调用，+initialize 是在应用第一次调用该类的类方法或实例方法前调用的。两个方法都是可选的，并且只有在方法被实现的情况下才会被调用。
 
 ##dispatch_once
@@ -103,7 +103,7 @@ Method swizzling 用于改变一个已经存在的 selector 的实现。这项�
 下面是苹果 [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation)中的描述：
 > - Selector（`typedef struct objc_selector *SEL`）:在运行时 Selectors 用来代表一个方法的名字。Selector 是一个在运行时被注册（或映射）的C类型字符串。Selector由编译器产生并且在当类被加载进内存时由运行时自动进行名字和实现的映射。
 > - Method（`typedef struct objc_method *Method`）:方法是一个不透明的用来代表一个方法的定义的类型。
-> - Implementation（`typedef id (*IMP)(id, SEL,...)`）:这个数据类型指向一个方法的实现的最开始的地方。该方法为当前CPU架构使用标准的C方法调用来实现。该方法的第一个参数指向调用方法的自身（即内存中类的实例对象，若是调用类方法，该指针则是指向元类对象metaclass）。第二个参数是这个方法的名字selector，该方法的真正参数紧随其后。
+> - Implementation（`typedef id (*IMP)(id, SEL,...)`）:这个数据类型指向一个方法的实现的最开始的地方。该方法为当前CPU架构使用标准的C方法调用来实现。该方法的第一个参数指向调用方法的自身（即内存中类的实例对象，若是调用类方法，该指针则是指向元类对象 metaclass ）。第二个参数是这个方法的名字 selector，该方法的真正参数紧随其后。
 
 理解 selector, method, implementation 这三个概念之间关系的最好方式是：在运行时，类（Class）维护了一个消息分发列表来解决消息的正确发送。每一个消息列表的入口是一个方法（Method），这个方法映射了一对键值对，其中键值是这个方法的名字 selector（SEL），值是指向这个方法实现的函数指针 implementation（IMP）。
 Method swizzling 修改了类的消息分发列表使得已经存在的 selector 映射了另一个实现 implementation，同时重命名了原生方法的实现为一个新的 selector。
