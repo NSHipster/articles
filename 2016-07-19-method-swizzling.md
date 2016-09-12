@@ -88,12 +88,12 @@ Method swizzling 用于改变一个已经存在的 selector 的实现。这项�
 
 ##+load vs +initialize
 
-**swizzling应该只在+load中完成。**
+**swizzling应该只在+load中完成**
 在 Objective-C 的运行时中，每个类有两个方法都会自动调用。+load 是在一个类被初始装载时调用，+initialize 是在应用第一次调用该类的类方法或实例方法前调用的。两个方法都是可选的，并且只有在方法被实现的情况下才会被调用。
 
 ##dispatch_once
 
-** swizzling 应该只在 dispatch_once 中完成**
+**swizzling 应该只在 dispatch_once 中完成。**
 
 由于 swizzling 改变了全局的状态，所以我们需要确保每个预防措施在运行时都是可用的。原子操作就是这样一个用于确保代码只会被执行一次的预防措施，就算是在不同的线程中也能确保代码只执行一次。Grand Central Dispatch 的 dispatch_once 满足了所需要的需求，并且应该被当做使用 swizzling 的初始化单例方法的标准。
 
@@ -111,7 +111,8 @@ Method swizzling 修改了类的消息分发列表使得已经存在的 selector
 ## 调用 _cmd
 
 下面代码在正常情况下会出现循环：
-~~~{objective-c}
+
+~~~ {objective-c}
 - (void)xxx_viewWillAppear:(BOOL)animated {
     [self xxx_viewWillAppear:animated];
     NSLog(@"viewWillAppear: %@", NSStringFromClass([self class]));
