@@ -5,6 +5,7 @@ translator: Chester Liu
 category: Swift
 tags: swift
 excerpt: "Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven't noticed."
+excerpt: "协议是 Swift 当中泛型实现的基础，然而 Swift 中却缺少内建的提供方法默认实现的机制。不过仍然有一种办法可以解决这个问题，这个办法之前你可能没有留意到。"
 status:
     swift: 1.2
 ---
@@ -49,7 +50,7 @@ The one major shortcoming of protocols, both in Swift and Objective-C, is the la
 
 ...but that's not the end of the story. Swift is a fair bit more [Aspect-Oriented](http://en.wikipedia.org/wiki/Aspect-oriented_programming) than it initially lets on.
 
-...不过故事到这里还没有结束。Swift 和它诞生时相比，更加有了一些 [面向切面](http://en.wikipedia.org/wiki/Aspect-oriented_programming) 的特征。
+...不过故事到这里还没有结束。Swift 和它诞生时相比，多了一些 [面向切面](http://en.wikipedia.org/wiki/Aspect-oriented_programming) 的特征。
 
 Consider the `Equatable` protocol, used throughout the standard library:
 
@@ -208,7 +209,7 @@ Because of the constraint on the element of the sequence generator being `Equata
 
 Relegating behavior like `contains`, `advance`, or `partition` to top-level functions does a  disservice to the standard library. Not only does it hide functionality from method autocompletion, but it fragments the API across a Object-Oriented and Functional paradigms.
 
-把 `contains`，`advance` 和 `partition` 这些方法降级成顶层函数对标准库造成了损害。这样做不仅仅使得方法自动补全功能失效，同时还使得 API 出现了横跨面向对象和函数式编程两种范式的分裂现象。
+把 `contains`，`advance` 和 `partition` 这些方法降级成顶层函数会损害标准库 。这样做不仅仅使得方法自动补全功能失效，同时还使得 API 出现了横跨面向对象和函数式编程两种范式的分裂现象。
 
 Although it's unlikely that this will be resolved in time for 1.0 (and there are certainly more pressing matters), there are a number of ways this could be resolved:
 
