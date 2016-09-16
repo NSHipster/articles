@@ -5,7 +5,6 @@ translator: Chester Liu
 category: Cocoa
 tags: nshipster
 excerpt: "UIAppearance 允许我们对视图和控件的样式在整个应用范围内进行统一的定义。"
-
 status:
     swift: 2.0
     reviewed: September 8, 2015
