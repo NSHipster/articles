@@ -233,4 +233,4 @@ And `__attribute__` isn't just for the compiler either: The next person to see t
 
 Because in the end, the love you take is equal to the love you make.
 
-因为到最后，你收获的与你付出的是相等的。
+因为最终，你收获的与你付出的总是相等的（译者注：原文 the love you take is equal to the love you make，源自 Beatles 的作品 The End）。
