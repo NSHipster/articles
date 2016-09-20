@@ -223,6 +223,8 @@ id proxy = [NSConnection rootProxyForConnectionWithRegisteredName:@"server" host
 
 ## AppleEvents & AppleScript
 
+AppleEvents 是经典的麦金塔操作系统中最重要的遗产。AppleEvents 在 System 7 中被引入，其允许 AppleScript 或者叫做 Program Linking 的特性
+
 ~~~{Applescript}
 tell application "Safari"
   set the URL of the front document to "http://nshipster.com"
