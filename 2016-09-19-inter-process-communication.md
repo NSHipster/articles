@@ -208,5 +208,198 @@ NSConnection *connection = [[NSConnection alloc] init];
 [connection registerName:@"server"];
 ~~~
 
+~~~{objective-c}
+id proxy = [NSConnection rootProxyForConnectionWithRegisteredName:@"server" host:nil];
+[proxy setProtocolForProxy:@protocol(Protocol)];
+~~~
+
+- `in`: Argument is used as input, but not referenced later
+- `out`: Argument is used to return a value by reference
+- `inout`: Argument is used as input and returned by reference
+- `const`: Argument is constant
+- `oneway`: Return without blocking for result
+- `bycopy`: Return a copy of the object
+- `byref`: Return a proxy of the object
+
+## AppleEvents & AppleScript
+
+~~~{Applescript}
+tell application "Safari"
+  set the URL of the front document to "http://nshipster.com"
+end tell
+~~~
+
+### Cocoa Scripting Bridge
+
+~~~
+$ sdef /Applications/Safari.app | sdp -fh --basename Safari
+~~~
+
+~~~{objective-c}
+#import "Safari.h"
+
+SafariApplication *safari = [SBApplication applicationWithBundleIdentifier:@"com.apple.Safari"];
+
+for (SafariWindow *window in safari.windows) {
+    if (window.visible) {
+        window.currentTab.URL = [NSURL URLWithString:@"http://nshipster.com"];
+        break;
+    }
+}
+~~~
+
+## Pasteboard
+
+剪贴板是 OS X 和 iOS 上最直观的进程间通信方式。用户在 mach 端口上进行的两个应用间的文本，图片，文档的复制粘贴操作是通过 `com.apple.pboard` 服务进程完成的。
+
+在 OS X 上使用 `NSPasteboard` 来完成复制粘贴操作，而 iOS 上使用 `UIPasteboard`。这两个类基本一样，但是如同两个平台上的其他类，iOS 相对 OS X 来说总是提供更简洁更现代化的接口。
+
+编程实现复制粘贴功能和在应用程序用户界面中点击 `编辑 > 拷贝` 一样简单：
+
+~~~{objective-c}
+NSImage *image;
+
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+[pasteboard clearContents];
+[pasteboard writeObjects:@[image]];
+~~~
+
+相比复制，粘贴要复杂些，其需要遍历整个粘贴板上的内容：
+
+~~~{objective-c}
+NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
+
+if ([pasteboard canReadObjectForClasses:@[[NSImage class]] options:nil]) {
+    NSArray *contents = [pasteboard readObjectsForClasses:@[[NSImage class]] options: nil];
+    NSImage *image = [contents firstObject];
+}
+~~~
+
+## XPC
+
+~~~{bash}
+$ find /Applications -name \*.xpc
+~~~
+
+~~~{objective-c}
+static void connection_handler(xpc_connection_t peer) {
+    xpc_connection_set_event_handler(peer, ^(xpc_object_t event) {
+        peer_event_handler(peer, event);
+    });
+
+    xpc_connection_resume(peer);
+}
+
+int main(int argc, const char *argv[]) {
+   xpc_main(connection_handler);
+   exit(EXIT_FAILURE);
+}
+~~~
+
+~~~{objective-c}
+xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
+xpc_connection_set_event_handler(c, ^(xpc_object_t event) {
+    // ...
+});
+xpc_connection_resume(c);
+~~~
+
+~~~{objective-c}
+xpc_dictionary_t message = xpc_dictionary_create(NULL, NULL, 0);
+xpc_dictionary_set_uint64(message, "foo", 1);
+xpc_connection_send_message(c, message);
+xpc_release(message)
+~~~
+
+- Data
+- Boolean
+- Double
+- String
+- Signed Integer
+- Unsigned Integer
+- Date
+- UUID
+- Array
+- Dictionary
+- Null
+
+~~~{objective-c}
+void *buffer;
+size_t length;
+dispatch_data_t ddata =
+    dispatch_data_create(buffer,
+                         length,
+                         DISPATCH_TARGET_QUEUE_DEFAULT,
+                         DISPATCH_DATA_DESTRUCTOR_MUNMAP);
+
+xpc_object_t xdata = xpc_data_create_with_dispatch_data(ddata);
+~~~
+
+~~~{objective-c}
+dispatch_queue_t queue;
+xpc_connection_send_message_with_reply(c, message, queue,
+    ^(xpc_object_t reply)
+{
+      if (xpc_get_type(event) == XPC_TYPE_DICTIONARY) {
+         // ...
+      }
+});
+~~~
+
+### Registering Services
+
+~~~{xml}
+<key>LaunchEvents</key>
+<dict>
+  <key>com.apple.iokit.matching</key>
+  <dict>
+      <key>com.example.device-attach</key>
+      <dict>
+          <key>idProduct</key>
+          <integer>2794</integer>
+          <key>idVendor</key>
+          <integer>725</integer>
+          <key>IOProviderClass</key>
+          <string>IOUSBDevice</string>
+          <key>IOMatchLaunchStream</key>
+          <true/>
+          <key>ProcessType</key>
+          <string>Adaptive</string>
+      </dict>
+  </dict>
+</dict>
+~~~
+
+#### Process Types and Contention Behavior
+
+| Process Type | Contention Behavior                               |
+|--------------|---------------------------------------------------|
+| Standard     | Default value                                     |
+| Adaptive     | Contend with apps when doing work on their behalf |
+| Background   | Never contend with apps                           |
+| Interactive  | Always contend with apps                          |
+
+~~~{objective-c}
+xpc_object_t criteria = xpc_dictionary_create(NULL, NULL, 0);
+xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_INTERVAL, 5 * 60);
+xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_GRACE_PERIOD, 10 * 60);
+
+xpc_activity_register("com.example.app.activity",
+                      criteria,
+                      ^(xpc_activity_t activity)
+{
+    // Process Data
+
+    xpc_activity_set_state(activity, XPC_ACTIVITY_STATE_CONTINUE);
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        // Update UI
+
+        xpc_activity_set_state(activity, XPC_ACTIVITY_STATE_DONE);
+    });
+});
+~~~
+
+
 
 
