@@ -223,7 +223,13 @@ id proxy = [NSConnection rootProxyForConnectionWithRegisteredName:@"server" host
 
 ## AppleEvents & AppleScript
 
-AppleEvents 是经典的麦金塔操作系统中最重要的遗产。AppleEvents 在 System 7 中被引入，其允许 AppleScript 或者叫做 Program Linking 的特性
+AppleEvents 是经典的麦金塔操作系统中最重要的遗产。AppleEvents 在 System 7 中被引入，其允许在本地使用 AppleScript 或者远程使用叫 Program Linking 的特性来控制应用。到现在，使用 Cocoa Scripting Bridge 的 AppleScript 仍然是 OS X 上与应用交互最直接的方式。
+
+AppleEvents 和 AppleScript 很容易成为最奇怪的技术之一。
+
+AppleScript 使用更自然的语法，这对于没有非编程人员更容易接受。尽管 AppleScript 在易阅读方面取得了成功，但其书写起来却十分痛苦。
+
+为了更好的理解其语法很自然的表达方式，下面给出一个在窗口活跃界面中使用 Safari 打开 URL 的例子：
 
 ~~~{Applescript}
 tell application "Safari"
@@ -231,11 +237,21 @@ tell application "Safari"
 end tell
 ~~~
 
+AppleScript 自然的语法很多时候却成为了一种负担。英语和其他人类语言一样，通常在表达中会存在很多冗余。语言中的冗余对于人类来讲很容易接受，但对于计算机来说却是很困难的一件事。
+
+幸好 Scripting Bridge 为 Cocoa 应用程序提供了较好的编程接口。
+
 ### Cocoa Scripting Bridge
+
+为了使用 Scripting Bridge 和应用程序交互，首先需要生成一个编程接口：
 
 ~~~
 $ sdef /Applications/Safari.app | sdp -fh --basename Safari
 ~~~
+
+`sdef` 为应用生成了脚本定义。这些脚本文件通过管道(译注：管道是类 Unix 系统中的一种进程间通信的方式)发送到 `sdp` 然后被转换为 C 头文件。转换后的头文件被添加导入到项目中，这样项目就获得了与该脚本对应的应用的交互接口。
+
+下面用 Cocoa Scripting Bridge 重写了上面的例子：
 
 ~~~{objective-c}
 #import "Safari.h"
@@ -249,6 +265,8 @@ for (SafariWindow *window in safari.windows) {
     }
 }
 ~~~
+
+这比 AppleScript 稍微复杂些，但却更容易集成到现有的代码中。
 
 ## Pasteboard
 
@@ -278,6 +296,8 @@ if ([pasteboard canReadObjectForClasses:@[[NSImage class]] options:nil]) {
 ~~~
 
 ## XPC
+
+SDKs 中的 XPC 是进程间通信的中最先进的。其架构目的是为了避免进程长时间运行，自适应可用的系统资源，延迟对象的初始化。
 
 ~~~{bash}
 $ find /Applications -name \*.xpc
