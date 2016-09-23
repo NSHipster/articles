@@ -297,11 +297,25 @@ if ([pasteboard canReadObjectForClasses:@[[NSImage class]] options:nil]) {
 
 ## XPC
 
-SDKs 中的 XPC 是进程间通信的中最先进的。其架构目的是为了避免进程长时间运行，自适应可用的系统资源，延迟对象的初始化。
+SDKs 中的 XPC 是进程间通信的中最先进的。其架构目的是为了避免进程长时间运行，自适应可用的系统资源，延迟对象的初始化。把 XPC 集成到应用中可以为进程间通信提供很好的错误隔离。
+
+XPC 可以做为 `NSTask` 的替换方案。
+
+XPC 在2011年引入系统中为 OS X 带来了沙盒机制，为 iOS 带来了远程视图控制机制和应用扩展。其已被广泛应用在了系统框架和系统应用中：
 
 ~~~{bash}
 $ find /Applications -name \*.xpc
 ~~~
+
+通过对集成了 XPC 服务应用的统计，你可以对何时在自己的应用中集成 XPC 有更好的理解。例如应用中常用的图片视频转换服务，系统函数调用，web 服务和第三方的验证服务这些情况下都可以集成 XPC.
+
+XPC 负责对进程间通信和系统服务的生命周期进行管理。注册服务，开启服务，和其他服务进行通信都是由 `launchd` (译注：可看做 daemon 守护进程)进行管理。XPC 服务可以按需启动或在崩溃后重新启动服务也可以在闲置时关闭该服务。因此，为了允许在执行过程中可以随时终止服务，服务应该被设计为无状态形式。
+
+由于 iOS 和 OS X 采用新的安全策略，默认情况下 XPC 服务是在及其严格的环境中运行：无文件系统访问权限，无网络访问权限，无 root 权限。应用所具有的访问权限都需要加入一个白名单文件中。
+
+可以通过 `libxpc` 的 C 接口或者 `NSXPCConnection` 的 Objective-C 接口使用 XPC 服务。XPC 服务可以在应用的 bundle 或者使用 launchd 在后台中执行。
+
+下面给出设置回调方法然后调用 `xpc_main` 接受 XPC 连接的例子：
 
 ~~~{objective-c}
 static void connection_handler(xpc_connection_t peer) {
@@ -318,6 +332,8 @@ int main(int argc, const char *argv[]) {
 }
 ~~~
 
+当消息通过 XPC 服务发送后，该消息在运行时被自动分发到操作队列中进行管理。当远端的连接建立后，该消息从消息队列中弹出并发送至远端。
+
 ~~~{objective-c}
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
 xpc_connection_set_event_handler(c, ^(xpc_object_t event) {
@@ -333,6 +349,8 @@ xpc_connection_send_message(c, message);
 xpc_release(message)
 ~~~
 
+XPC 对象有以下的操作优先级：
+
 - Data
 - Boolean
 - Double
@@ -344,6 +362,8 @@ xpc_release(message)
 - Array
 - Dictionary
 - Null
+
+XPC 提供很简便的方式来转换 `dispatch_data_t` 类型的数据：
 
 ~~~{objective-c}
 void *buffer;
@@ -370,6 +390,8 @@ xpc_connection_send_message_with_reply(c, message, queue,
 
 ### Registering Services
 
+XPC 也可以配置为监听到 IOKit 事件，BSD(译注：一种 Unix 发型版本) 通知或者 CFDistributedNotifications 时自动启动，并注册为 launchd 任务 (译注：开机启动的常驻系统服务)。这些功能可咋系统服务文件 ` launchd.plist` 进行配置：
+
 ~~~{xml}
 <key>LaunchEvents</key>
 <dict>
@@ -392,6 +414,8 @@ xpc_connection_send_message_with_reply(c, message, queue,
 </dict>
 ~~~
 
+最近 `launchd.plist` 文件中新增了一个描述启动代理目的的键 `ProcessType`。基于设定的键值，操作系统可以自适应的使用的 CPU 和 I/O 宽带。
+
 #### Process Types and Contention Behavior
 
 | Process Type | Contention Behavior                               |
@@ -400,6 +424,8 @@ xpc_connection_send_message_with_reply(c, message, queue,
 | Adaptive     | Contend with apps when doing work on their behalf |
 | Background   | Never contend with apps                           |
 | Interactive  | Always contend with apps                          |
+
+为了注册一个每 5 分钟运行一次的服务,需要在 `xpc_activity_register` 进行如下设置：
 
 ~~~{objective-c}
 xpc_object_t criteria = xpc_dictionary_create(NULL, NULL, 0);
