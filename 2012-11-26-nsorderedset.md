@@ -19,7 +19,7 @@ So why is `NSOrderedSet` a subclass of `NSObject` and not `NSSet` or even `NSArr
 
 _Mutable / Immutable Class Clusters_
 
-[Class Clusters](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/CocoaFundamentals/CocoaObjects/CocoaObjects.html%23//apple_ref/doc/uid/TP40002974-CH4-SW34) are a design pattern at the heart of the Foundation framework; the essence of Objective-C's simplicity in everyday use.
+[Class Clusters](https://developer.apple.com/library/content/documentation/General/Conceptual/DevPedia-CocoaCore/ClassCluster.html) are a design pattern at the heart of the Foundation framework; the essence of Objective-C's simplicity in everyday use.
 
 But class clusters offer simplicity at the expense of extensibility, which becomes especially tricky when it comes to mutable / immutable class pairs like `NSSet` / `NSMutableSet`.
 
