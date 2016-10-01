@@ -14,11 +14,13 @@ And so we invest in reaching beyond our own operational model of the world. We t
 
 There is, though, one critical factor that app developers often miss the first time around, and that is **network condition**, or more specifically the latency and bandwidth of an Internet connection. For something so essential to a user's experience with a product, it's unfortunate that most developers take an ad-hoc approach to field testing different kinds of environments, if at all.
 
-This week on NSHipster, we'll be talking about the [Network Link Conditioner](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools), a utility that allows Mac and iOS devices to accurately and consistently simulate adverse networking environments.
+This week on NSHipster, we'll be talking about the [Network Link Conditioner](https://developer.apple.com/download/more/?q=Additional%20Tools), a utility that allows Mac and iOS devices to accurately and consistently simulate adverse networking environments.
 
 ## Installation
 
-Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" package. This can be downloaded from the [Apple Developer Downloads](https://developer.apple.com/downloads/index.action?q=Hardware%20IO%20Tools) page.
+Network Link Conditioner can be found in [Apple Developer Downloads](https://developer.apple.com/download/more/) page.
+
+It's part of the ["Additional Tools for XCode"](https://developer.apple.com/download/more/?q=Additional%20Tools) package for XCode 8 and ["Hardware IO Tools for Xcode"](https://developer.apple.com/download/more/?q=Hardware%20IO%20Tools) package for older versions of XCode.
 
 ![Download]({{ site.asseturl }}/network-link-conditioner-download.png)
 
