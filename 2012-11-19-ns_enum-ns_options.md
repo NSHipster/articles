@@ -101,7 +101,7 @@ This approach combines the best of all of the aforementioned approaches, and eve
 
 ## `NS_OPTIONS`
 
-`enum` can also be used to define a [bitmask][1]. Using a convenient property of binary math, a single integer value can encode a combination of values all at once using the bitwise `OR` (`|`), and decoded with bitwise `AND` (`&`). Each subsequent value, rather than automatically being incremented by 1 from 0, are manually given a value with a bit offset: `1 << 0`, `1 << 1`, `1 << 2`, and so on. If you imagine the binary representation of a number, like `10110` for 22, each bit can be though to represent a single boolean. In UIKit, for example, `UIViewAutoresizing` is a bitmask that can represent any combination of flexible top, bottom, left, and right margins, or width and height.
+`enum` can also be used to define a [bitmask][1]. Using a convenient property of binary math, a single integer value can encode a combination of values all at once using the bitwise `OR` (`|`), and decoded with bitwise `AND` (`&`). Each subsequent value, rather than automatically being incremented by 1 from 0, are manually given a value with a bit offset: `1 << 0`, `1 << 1`, `1 << 2`, and so on. If you imagine the binary representation of a number, like `10110` for 22, each bit can be thought to represent a single boolean. In UIKit, for example, `UIViewAutoresizing` is a bitmask that can represent any combination of flexible top, bottom, left, and right margins, or width and height.
 
 Rather than `NS_ENUM`, bitmasks should now use the `NS_OPTIONS` macro.
 

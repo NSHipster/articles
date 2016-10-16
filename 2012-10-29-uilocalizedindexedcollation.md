@@ -37,7 +37,7 @@ Coming to our rescue is `UILocalizedIndexedCollation`.
 
 `UILocalizedIndexedCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexedCollation +currentCollation`
 
-The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which are can be read from the `sectionIndexTitles` property.
+The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which can be read from the `sectionIndexTitles` property.
 
 To give you a better idea of how section index titles vary between locales:
 

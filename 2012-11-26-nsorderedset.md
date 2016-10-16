@@ -123,6 +123,6 @@ Although it is perfectly suited to that one particular use case in Core Data, `N
 
 ---
 
-So, as a general rule: **`NSOrderedSet` is useful for intermediary and internal representations, but you probably shouldn't introduce it as a method parameters unless it's particularly well-suited to the semantics of the data model.**
+So, as a general rule: **`NSOrderedSet` is useful for intermediary and internal representations, but you probably shouldn't introduce it as a method parameter unless it's particularly well-suited to the semantics of the data model.**
 
 If nothing else, `NSOrderedSet` illuminates some of the fascinating implications of Foundation's use of the class cluster design pattern. In doing so, it allows us better understand the trade-off between simplicity and extensibility as we make these choices in our own application designs.
