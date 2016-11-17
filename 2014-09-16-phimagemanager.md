@@ -53,7 +53,9 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
         targetSize: CGSize(width: 100.0, height: 100.0),
         contentMode: .AspectFill,
         options: nil) { (result, _) in
-            cell.imageView?.image = result
+            if let destinationCell = tableView.cellForRowAtIndexPath(indexPath) {
+                destinationCell.imageView?.image = result
+            }
     })
 
     return cell
@@ -90,7 +92,10 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
                                  contentMode:PHImageContentModeAspectFill
                                      options:nil
                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                   cell.imageView.image = result;
+                                     UITableViewCell *destCell = [tableView cellForRowAt:indexPath];
+                                     if (destCell) {
+                                          destCell.imageView.image = result;
+                                     }
                                }];
 
     return cell;
