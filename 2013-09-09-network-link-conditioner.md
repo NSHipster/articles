@@ -22,7 +22,7 @@ Network Link Conditioner can be found in the "Hardware IO Tools for Xcode" packa
 
 ![Download]({{ site.asseturl }}/network-link-conditioner-download.png)
 
-Search for "Hardware IO Tools for Xcode", and select the appropriate release of the package.
+Search for "Hardware IO Tools for Xcode", and select the appropriate release of the package. (For Xcode 8, search for "Additional Tools for Xcode")
 
 ![Package]({{ site.asseturl }}/network-link-conditioner-dmg.png)
 
