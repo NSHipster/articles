@@ -18,17 +18,9 @@ This week on NSHipster, we'll be talking about the [Network Link Conditioner](ht
 
 ## Installation
 
-Network Link Conditioner can be found in [Apple Developer Downloads](https://developer.apple.com/download/more/) page.
+Network Link Conditioner can be downloaded from Apple's developer portal, as part of the ["Additional Tools for Xcode"](https://developer.apple.com/download/more/?q=Additional%20Tools) package for Xcode 8 or the ["Hardware IO Tools for Xcode"](https://developer.apple.com/download/more/?q=Hardware%20IO%20Tools) package for older versions of Xcode.
 
-It's part of the ["Additional Tools for XCode"](https://developer.apple.com/download/more/?q=Additional%20Tools) package for XCode 8 and ["Hardware IO Tools for Xcode"](https://developer.apple.com/download/more/?q=Hardware%20IO%20Tools) package for older versions of XCode.
-
-![Download]({{ site.asseturl }}/network-link-conditioner-download.png)
-
-Search for "Hardware IO Tools for Xcode", and select the appropriate release of the package.
-
-![Package]({{ site.asseturl }}/network-link-conditioner-dmg.png)
-
-Once the download has finished, open the DMG and double-click "Network Link Condition.prefPane" to install.
+After downloading the appropriate package for your version of Xcode, open the DMG and double-click "Network Link Conditioner.prefPane" to install.
 
 ![System Preferences]({{ site.asseturl }}/network-link-conditioner-install.png)
 

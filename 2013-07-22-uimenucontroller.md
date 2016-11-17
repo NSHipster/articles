@@ -84,18 +84,16 @@ override func viewDidLoad() {
 // MARK: - UIGestureRecognizer
 
 func handleLongPressGesture(recognizer: UIGestureRecognizer) {
-        guard case .Recognized = recognizer.state else { return }
+    guard recognizer.state == .Recognized else { return }
         
-        if
-            let recognizerView = recognizer.view,
-            let recognizerSuperView = recognizerView.superview
-        where
-            recognizerView.becomeFirstResponder()
-	{
-		let menuController = UIMenuController.sharedMenuController()
-		menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
-		menuController.setMenuVisible(true, animated:true)
-	}
+    if let recognizerView = recognizer.view,
+        let recognizerSuperView = recognizerView.superview
+        where recognizerView.becomeFirstResponder()
+    {
+        let menuController = UIMenuController.sharedMenuController()
+        menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
+        menuController.setMenuVisible(true, animated:true)
+    }
 }
 ~~~
 ~~~{objective-c}
