@@ -40,8 +40,8 @@ Round 1: General Knowledge
     ```
 7. Write the Swift 3 code to execute an asynchronous “Hello, world!” using GCD.
 8. Swift went open source in November and the pace of community contributions has been amazing to see. Within 100, how many pull requests (open, closed, or merged) has the Swift project received on GitHub?
-9. Swift was released to the public just over two years ago, but was clearly under long before that at Apple. What were the month and year of the first commit to the Swift repository?
-10. Who was the second contributor to Swift? When did they begin?
+9. Swift was released to the public just over two years ago, but was clearly under development long before that at Apple. What were the month and year of the first commit to the Swift repository?
+10. After Chris Lattner, who was the second contributor to Swift? When was their first commit?
 
 Round 2: Name That Framework
 ----------------------------
@@ -245,6 +245,7 @@ Round 1: General Knowledge
 4. iPhoto ’09
 5. `NSExpression`
 6. One of: 
+
     ```swift
     // 1
     replacingCharacters(in: NSRange, with: String)
@@ -255,6 +256,7 @@ Round 1: General Knowledge
             with replacement: String) -> String
     ```
 7. One of:
+
     ```swift
     // 1
     let queue = DispatchQueue(label: "quiz")
@@ -267,7 +269,7 @@ Round 1: General Knowledge
         print("Hello, world!") 
     }
     ```
-8. 3,012 (correct if between 2,912 and 3,112)
+8. 3,012 as of June 14th, 2016 (correct if between 2,912 and 3,112)—[check here](https://github.com/apple/swift/pulls) for the current stats 
 9. July 2010 (1 point if year, 2 if both)
 10. Doug Gregor, July 2011 (2 points)
 
