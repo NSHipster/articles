@@ -102,7 +102,7 @@ typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
 
 `enum` 也可以被定义为[按位掩码（bitmask）][1]。用简单的`OR` (`|`)和`AND` (`&`)数学运算即可实现对一个整型值的编码。每一个值不是自动被赋予从0开始依次累加1的值，而是手动被赋予一个带有一个bit偏移量的值：类似`1 << 0`、 `1 << 1`、 `1 << 2`等。如果你能够心算出每个数字的二进制表示法，例如：`10110` 代表 22，每一位都可以被认为是一个单独的布尔值。例如在UIKit中， `UIViewAutoresizing` 就是一个可以表示任何flexible top、bottom、 left 或 right margins、width、height组合的位掩码。
 
-不像 `NS_ENUM` ，位掩码用 `NS_OPTIONS` 宏。
+位掩码用 `NS_OPTIONS` 宏，而不是 `NS_ENUM`。
 
 语法和 `NS_ENUM` 完全相同，但这个宏提示编译器值是如何通过位掩码 `|` 组合在一起的。同样的，注意值的区间不要超过所使用类型的最大容纳范围。
 
