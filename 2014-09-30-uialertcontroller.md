@@ -187,11 +187,13 @@ iOS 5 added the `alertViewStyle` property to `UIAlertView`, which exposed much s
 In iOS 8, `UIAlertController` can add text fields with the `addTextFieldWithConfigurationHandler` method:
 
 ```swift
-let loginAction = UIAlertAction(title: "Login", style: .Default) { (_) in
-    let loginTextField = alertController.textFields![0] as UITextField
-    let passwordTextField = alertController.textFields![1] as UITextField
-
-    login(loginTextField.text, passwordTextField.text)
+let loginAction = UIAlertAction(title: "Login", style: .Default) { [weak alertController] _ in
+    if let alertController = alertController {
+        let loginTextField = alertController.textFields![0] as UITextField
+        let passwordTextField = alertController.textFields![1] as UITextField
+    
+        login(loginTextField.text, passwordTextField.text)
+    }
 }
 loginAction.enabled = false
 
