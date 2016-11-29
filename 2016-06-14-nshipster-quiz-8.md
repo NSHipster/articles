@@ -270,7 +270,7 @@ Round 1: General Knowledge
     }
     ```
 8. 3,012 as of June 14th, 2016 (correct if between 2,912 and 3,112)—[check here](https://github.com/apple/swift/pulls) for the current stats 
-9. July 2010 (1 point if year, 2 if both)
+9. July 2010 (1 point if correct year, 2 if both)
 10. Doug Gregor, July 2011 (2 points)
 
 Round 2: Name That Framework
