@@ -5,8 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."
 status:
-    swift: 2.0
-    reviewed: September 8, 2015
+    swift: 3.0
+    reviewed: December 13, 2016
 ---
 
 Machines speak in binary, while humans speak in riddles, half-truths, and omissions.
@@ -27,15 +27,16 @@ You can think of it as a regexp matcher with incredibly complicated expressions 
 
 `NSDataDetector` objects are initialized with a bitmask of types of information to check, and then passed strings to match on. Like `NSRegularExpression`, each match found in a string is represented by a `NSTextCheckingResult`, which has details like character range and match type. However, `NSDataDetector`-specific types may also contain metadata such as address or date components.
 
-~~~{swift}
+```swift
 let string = "123 Main St. / (555) 555-5555"
-let types: NSTextCheckingType = [.Address, .PhoneNumber]
+let types: NSTextCheckingResult.CheckingType = [.address, .phoneNumber]
 let detector = try? NSDataDetector(types: types.rawValue)
-detector?.enumerateMatchesInString(string, options: [], range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
+detector?.enumerateMatches(in: string, range: NSMakeRange(0, string.utf16.count)) {
+    (result, _, _) in
     print(result)
 }
-~~~
-~~~{objective-c}
+```
+```objective-c
 NSError *error = nil;
 NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
                                                         | NSTextCheckingTypePhoneNumber
@@ -47,15 +48,15 @@ NSString *string = @"123 Main St. / (555) 555-5555";
                              range:NSMakeRange(0, [string length])
                         usingBlock:
 ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-  NSLog(@"Match: %@", result);
+    NSLog(@"Match: %@", result);
 }];
-~~~
+```
 
 > When initializing `NSDataDetector`, be sure to specify only the types you're interested in. With each additional type to be checked comes a nontrivial performance cost.
 
 ## Data Detector Match Types
 
-Because of how much `NSTextCheckingResult` is used for, it's not immediately clear which properties are specific to `NSDataDetector`. For your reference, here is a table of the different `NSTextCheckingTypes` for `NSDataDetector` matches, and their associated properties:
+Because of how much `NSTextCheckingResult` is used for, it's not immediately clear which properties are specific to `NSDataDetector`. For your reference, here is a table of the different `NSTextCheckingResult.CheckingType` options for `NSDataDetector` matches, and their associated properties:
 
 <table>
   <thead>
@@ -65,9 +66,8 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
     </tr>
   </thead>
   <tbody>
-
     <tr>
-      <td><tt>NSTextCheckingTypeDate</tt></td>
+      <td><tt>.date</tt> (<tt>NSTextCheckingTypeDate</tt>)</td>
       <td>
         <ul>
           <li><tt>date</tt></li>
@@ -77,7 +77,7 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypeAddress</tt></td>
+      <td><tt>.address</tt> (<tt>NSTextCheckingTypeAddress</tt>)</td>
       <td>
         <ul>
           <li><tt>addressComponents</tt><sup>*</sup></li>
@@ -96,7 +96,7 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypeLink</tt></td>
+      <td><tt>.link</tt> (<tt>NSTextCheckingTypeLink</tt>)</td>
       <td>
         <ul>
           <li><tt>url</tt></li>
@@ -104,7 +104,7 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypePhoneNumber</tt></td>
+      <td><tt>.phoneNumber</tt> (<tt>NSTextCheckingTypePhoneNumber</tt>)</td>
       <td>
         <ul>
           <li><tt>phoneNumber</tt></li>
@@ -112,7 +112,7 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypeTransitInformation</tt></td>
+      <td><tt>.transitInformation</tt> (<tt>NSTextCheckingTypeTransitInformation</tt>)</td>
       <td>
         <ul>
           <li><tt>components</tt><sup>*</sup></li>
@@ -126,7 +126,7 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="2"><sup>*</sup> <tt>NSDictionary</tt> properties have values at defined keys.
+      <td colspan="2"><sup>*</sup> <tt>[String: String]</tt> (<tt>NSDictionary</tt>) properties have values at defined keys.
   </tfoot>
 </table>
 
@@ -134,32 +134,32 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
 
 Somewhat confusingly, iOS also defines `UIDataDetectorTypes`. A bitmask of these values can be set as the `dataDetectorTypes` of a `UITextView` to have detected data automatically linked in the displayed text.
 
-`UIDataDetectorTypes` is distinct from `NSTextCheckingTypes` in that equivalent enum constants (e.g. `UIDataDetectorTypePhoneNumber` and `NSTextCheckingTypePhoneNumber`) do not have the same integer value, and not all values in one are found in the other. Converting from `UIDataDetectorTypes` to `NSTextCheckingTypes` can be accomplished with a function:
+`UIDataDetectorTypes` is distinct from `NSTextCheckingTypes` in that equivalent constants (e.g. `UIDataDetectorTypePhoneNumber` and `NSTextCheckingTypePhoneNumber`) do not have the same integer value, and not all values in one are found in the other. Converting from `UIDataDetectorTypes` to `NSTextCheckingTypes` can be accomplished with a function:
 
-~~~{swift}
-func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
-    var textCheckingType: NSTextCheckingType = []
+```swift
+func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingResult.CheckingType {
+    var textCheckingType: NSTextCheckingResult.CheckingType = []
     
-    if dataDetectorType.contains(.Address) {
-        textCheckingType.insert(.Address)
+    if dataDetectorType.contains(.address) {
+        textCheckingType.insert(.address)
     }
     
-    if dataDetectorType.contains(.CalendarEvent) {
-        textCheckingType.insert(.Date)
+    if dataDetectorType.contains(.calendarEvent) {
+        textCheckingType.insert(.date)
     }
     
-    if dataDetectorType.contains(.Link) {
-        textCheckingType.insert(.Link)
+    if dataDetectorType.contains(.link) {
+        textCheckingType.insert(.link)
     }
     
-    if dataDetectorType.contains(.PhoneNumber) {
-        textCheckingType.insert(.PhoneNumber)
+    if dataDetectorType.contains(.phoneNumber) {
+        textCheckingType.insert(.phoneNumber)
     }
     
     return textCheckingType
 }
-~~~
-~~~{objective-c}
+```
+```objective-c
 static inline NSTextCheckingType NSTextCheckingTypesFromUIDataDetectorTypes(UIDataDetectorTypes dataDetectorType) {
     NSTextCheckingType textCheckingType = 0;
     if (dataDetectorType & UIDataDetectorTypeAddress) {
@@ -180,7 +180,7 @@ static inline NSTextCheckingType NSTextCheckingTypesFromUIDataDetectorTypes(UIDa
 
     return textCheckingType;
 }
-~~~
+```
 
 ---
 
