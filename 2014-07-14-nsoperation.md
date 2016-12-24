@@ -5,8 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."
 status:
-    swift: 2.0
-    reviewed: September 15, 2015
+    swift: 3.0
+    reviewed: December 24, 2016
 ---
 
 In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence.
@@ -67,12 +67,12 @@ All operations may not be equally important. Setting the `queuePriority` propert
 ### NSOperationQueuePriority
 
 ~~~{swift}
-public enum NSOperationQueuePriority : Int {
-    case VeryLow
-    case Low
-    case Normal
-    case High
-    case VeryHigh
+public enum QueuePriority : Int {
+    case veryLow
+    case low
+    case normal
+    case high
+    case veryHigh
 }
 ~~~
 ~~~{objective-c}
@@ -101,12 +101,12 @@ The following enumerated values are used to denote the nature and urgency of an 
 
 ~~~{swift}
 @available(iOS 8.0, OSX 10.10, *)
-public enum NSQualityOfService : Int {    
-    case UserInteractive
-    case UserInitiated
-    case Utility
-    case Background
-    case Default
+public enum QualityOfService : Int {    
+    case userInteractive
+    case userInitiated
+    case utility
+    case background
+    case `default`
 }
 ~~~
 ~~~{objective-c}
@@ -119,18 +119,18 @@ typedef NS_ENUM(NSInteger, NSQualityOfService) {
 } NS_ENUM_AVAILABLE(10_10, 8_0);
 ~~~
 
-- `.UserInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
-- `.UserInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
-- `.Utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
-- `.Background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
-- `.Default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
+- `.userInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
+- `.userInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
+- `.utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
+- `.background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
+- `.default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
 
 ~~~{swift}
-let backgroundOperation = NSOperation()
-backgroundOperation.queuePriority = .Low
-backgroundOperation.qualityOfService = .Background
+let backgroundOperation = Operation()
+backgroundOperation.queuePriority = .low
+backgroundOperation.qualityOfService = .background
 
-let operationQueue = NSOperationQueue.mainQueue()
+let operationQueue = OperationQueue.main
 operationQueue.addOperation(backgroundOperation)
 ~~~
 ~~~{objective-c}
@@ -156,11 +156,11 @@ For example, to describe the process of downloading and resizing an image from a
 Expressed in code:
 
 ~~~{swift}
-let networkingOperation: NSOperation = ...
-let resizingOperation: NSOperation = ...
+let networkingOperation: Operation = ...
+let resizingOperation: Operation = ...
 resizingOperation.addDependency(networkingOperation)
 
-let operationQueue = NSOperationQueue.mainQueue()
+let operationQueue = OperationQueue.main
 operationQueue.addOperations([networkingOperation, resizingOperation], waitUntilFinished: false)
 ~~~
 
@@ -183,12 +183,12 @@ Make sure not to accidentally create a dependency cycle, such that A depends on 
 When an `NSOperation` finishes, it will execute its `completionBlock` exactly once. This provides a really nice way to customize the behavior of an operation when used in a model or view controller.
 
 ~~~{swift}
-let operation = NSOperation()
+let operation = Operation()
 operation.completionBlock = {
     print("Completed")
 }
 
-NSOperationQueue.mainQueue().addOperation(operation)
+OperationQueue.main.addOperation(operation)
 ~~~
 
 ~~~{objective-c}
