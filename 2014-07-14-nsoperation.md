@@ -23,7 +23,7 @@ The secret to making apps snappy is to offload as much unnecessary work to the b
 
 > For situations where it doesn't make sense to build out a custom `NSOperation` subclass, Foundation provides the concrete implementations [`NSBlockOperation`](https://developer.apple.com/library/ios/documentation/cocoa/reference/NSBlockOperation_class/Reference/Reference.html) and [`NSInvocationOperation`](https://developer.apple.com/library/mac/documentation/cocoa/reference/NSInvocationOperation_Class/Reference/Reference.html).
 
-Examples of tasks that lend themselves well to `NSOperation` include [network requests](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.h), image resizing, text processing, or any other repeatable, structured, long-running task that produces associated state or data.
+Examples of tasks that lend themselves well to `NSOperation` include [network requests](https://github.com/AFNetworking/AFNetworking/blob/2.x/AFNetworking/AFURLConnectionOperation.h), image resizing, text processing, or any other repeatable, structured, long-running task that produces associated state or data.
 
 But simply wrapping computation into an object doesn't do much without a little oversight. That's where `NSOperationQueue` comes in:
 
