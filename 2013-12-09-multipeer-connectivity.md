@@ -5,7 +5,8 @@ category: Cocoa
 tags: popular
 excerpt: "As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform."
 status:
-    swift: t.b.c.
+    swift: 3.0
+    reviewed: December 25, 2016
 ---
 
 As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices.
@@ -26,12 +27,18 @@ Advertising makes a service known to other peers, while discovery is the inverse
 
 Each service is identified by a type, which is a short text string of ASCII letters, numbers, and dashes, up to 15 characters in length. By convention, a service name should begin with the app name, followed by a dash and a unique descriptor for that service (think of it as simplified `com.apple.*`-esque reverse-DNS notation):
 
+~~~{swift}
+let XXServiceType = "xx-service"
+~~~
 ~~~{objective-c}
 static NSString * const XXServiceType = @"xx-service";
 ~~~
 
 Peers are uniquely identified by an `MCPeerID` object, which are initialized with a display name. This could be a user-specified nickname, or simply the current device name:
 
+~~~{swift}
+let localPeerID = MCPeerID(displayName: UIDevice.current.name)
+~~~
 ~~~{objective-c}
 MCPeerID *localPeerID = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
 ~~~
@@ -44,6 +51,11 @@ Services are advertised by the `MCNearbyServiceAdvertiser`, which is initialized
 
 > Discovery information is sent as Bonjour `TXT` records encoded according to [RFC 6763](http://tools.ietf.org/html/rfc6763).
 
+~~~{swift}
+let advertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: XXServiceType)
+advertiser.delegate = self
+advertiser.startAdvertisingPeer()
+~~~
 ~~~{objective-c}
 MCNearbyServiceAdvertiser *advertiser =
     [[MCNearbyServiceAdvertiser alloc] initWithPeer:localPeerID
@@ -57,6 +69,30 @@ Events are handled by the advertiser's `delegate`, conforming to the `MCNearbySe
 
 As an example implementation, consider a client that allows the user to choose whether to accept or reject incoming connection requests, with the option to reject and block any subsequent requests from that peer:
 
+~~~{swift}
+//MARK: MCNearbyServiceAdvertiserDelegate
+
+func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+    if self.mutableBlockedPeers.contains(peerID) {
+        invitationHandler(false, nil)
+    }
+    
+    let session = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
+    session.delegate = self
+    
+    let alertController = UIAlertController(title: NSLocalizedString("Received invitation from \(peerID.displayName)", comment: "Received invitation from {Peer}"), message: nil, preferredStyle: .actionSheet)
+    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in invitationHandler(false, nil) }
+    let blockAction = UIAlertAction(title: NSLocalizedString("Block", comment: ""), style: .destructive) { _ in
+        self.mutableBlockedPeers.append(peerID)
+        invitationHandler(true, session)
+    }
+    let acceptAction = UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: .default) { _ in invitationHandler(true, session) }
+    alertController.addAction(cancelAction)
+    alertController.addAction(blockAction)
+    alertController.addAction(acceptAction)
+    self.present(alertController, animated: true, completion: nil)
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MCNearbyServiceAdvertiserDelegate
 
@@ -98,6 +134,10 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
 
 As in the example above, sessions are created by advertisers, and passed to peers when accepting an invitation to connect. An `MCSession` object is initialized with the local peer identifier, as well as `securityIdentity` and `encryptionPreference` parameters.
 
+~~~{swift}
+let session = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
+session.delegate = self
+~~~
 ~~~{objective-c}
 MCSession *session = [[MCSession alloc] initWithPeer:localPeerID
                                     securityIdentity:nil
@@ -121,6 +161,10 @@ The `MCSessionDelegate` protocol will be covered in the section on sending and r
 
 Clients can discover advertised services using `MCNearbyServiceBrowser`, which is initialized with the local peer identifier and the service type, much like for `MCNearbyServiceAdvertiser`.
 
+~~~{swift}
+let browser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: XXServiceType)
+browser.delegate = self
+~~~
 ~~~{objective-c}
 MCNearbyServiceBrowser *browser = [[MCNearbyServiceBrowser alloc] initWithPeer:localPeerID serviceType:XXServiceType];
 browser.delegate = self;
@@ -128,6 +172,13 @@ browser.delegate = self;
 
 There may be many peers advertising a particular service, so as a convenience to the user (and the developer), the `MCBrowserViewController` offers a built-in, standard way to present and connect to advertising peers:
 
+~~~{swift}
+let browserViewController = MCBrowserViewController(browser: browser, session: session)
+browserViewController.delegate = self
+self.present(browserViewController, animated: true) {
+    browser.startBrowsingForPeers()
+}
+~~~
 ~~~{objective-c}
 MCBrowserViewController *browserViewController =
     [[MCBrowserViewController alloc] initWithBrowser:browser
@@ -155,6 +206,17 @@ Once peers are connected to one another, information can be sent between them. T
 
 Messages are sent with `-sendData:toPeers:withMode:error:`:
 
+~~~{swift}
+let message = "Hello, World!"
+let data = message.data(using: .utf8)
+if let data = data {
+    do {
+        try session.send(data, toPeers: peers, with: .reliable)
+    } catch {
+        print("[Error] \(error)")
+    }
+}
+~~~
 ~~~{objective-c}
 NSString *message = @"Hello, World!";
 NSData *data = [message dataUsingEncoding:NSUTF8StringEncoding];
@@ -171,6 +233,14 @@ if (![self.session sendData:data
 
 Messages are received through the `MCSessionDelegate` method `-sessionDidReceiveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
 
+~~~{swift}
+//MARK: MCSessionDelegate
+
+func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+    let message = String(data: data, encoding: .utf8)
+    print("\(message)")
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MCSessionDelegate
 
@@ -187,6 +257,15 @@ Messages are received through the `MCSessionDelegate` method `-sessionDidReceive
 
 Another approach would be to send `NSKeyedArchiver`-encoded objects:
 
+~~~{swift}
+let object = //... Object of class conforming to NSSecureCoding protocol
+let data = NSKeyedArchiver.archivedData(withRootObject: object)
+do {
+    try session.send(data, toPeers: peers, with: .reliable)
+} catch {
+    print("[Error] \(error)")
+}
+~~~
 ~~~{objective-c}
 id <NSSecureCoding> object = // ...;
 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
@@ -199,6 +278,17 @@ if (![self.session sendData:data
 }
 ~~~
 
+~~~{swift}
+//MARK: MCSessionDelegate
+
+func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {        
+    let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
+    unarchiver.requiresSecureCoding = true
+    let object = unarchiver.decodeObject()
+    unarchiver.finishDecoding()
+    print("\(object)")
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MCSessionDelegate
 
@@ -220,15 +310,24 @@ if (![self.session sendData:data
 
 Streams are created with `-startStreamWithName:toPeer:`:
 
+~~~{swift}
+if let outputStream = try? session.startStream(withName: name, toPeer: peer) {
+    outputStream.delegate = self
+    outputStream.schedule(in: .main, forMode: .defaultRunLoopMode)
+    outputStream.open()
+}
+
+// ...
+~~~
 ~~~{objective-c}
 NSOutputStream *outputStream =
     [session startStreamWithName:name
                           toPeer:peer];
 
-stream.delegate = self;
-[stream scheduleInRunLoop:[NSRunLoop mainRunLoop]
+outputStream.delegate = self;
+[outputStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
                 forMode:NSDefaultRunLoopMode];
-[stream open];
+[outputStream open];
 
 // ...
 ~~~
@@ -237,6 +336,15 @@ stream.delegate = self;
 
 Streams are received by the `MCSessionDelegate` with `-session:didReceiveStream:withName:fromPeer:`:
 
+~~~{swift}
+//MARK: MCSessionDelegate
+
+func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+    stream.delegate = self
+    stream.schedule(in: .main, forMode: .defaultRunLoopMode)
+    stream.open()
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MCSessionDelegate
 
@@ -258,6 +366,12 @@ Both the input and output streams must be scheduled and opened before they can b
 
 Resources are sent with `sendResourceAtURL:withName:toPeer:withCompletionHandler:`:
 
+~~~{swift}
+let fileURL = URL(fileURLWithPath: "path/to/resource")
+let progress = session.sendResource(at: fileURL, withName: fileURL.lastPathComponent, toPeer: peer) { error in
+    print("[Error] \(error)")
+}
+~~~
 ~~~{objective-c}
 NSURL *fileURL = [NSURL fileURLWithPath:@"path/to/resource"];
 NSProgress *progress =
@@ -276,6 +390,22 @@ The returned `NSProgress` object can be [Key-Value Observed](http://nshipster.co
 
 Receiving resources happens across two methods in `MCSessionDelegate`: `-session:didStartReceivingResourceWithName:fromPeer:withProgress:` & `-session:didFinishReceivingResourceWithName:fromPeer:atURL:withError:`:
 
+~~~{swift}
+//MARK: MCSessionDelegate
+
+func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+    // ...
+}
+
+func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
+    let destinationURL = URL(fileURLWithPath: "path/to/destination")
+    do {
+        try FileManager.default.moveItem(at: localURL, to: destinationURL)
+    } catch {
+        print("[Error] \(error)")
+    }
+}
+~~~
 ~~~{objective-c}
 #pragma mark - MCSessionDelegate
 
