@@ -75,6 +75,7 @@ As an example implementation, consider a client that allows the user to choose w
 func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
     if self.blockedPeers.contains(peerID) {
         invitationHandler(false, nil)
+        return
     }
     
     let session = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
