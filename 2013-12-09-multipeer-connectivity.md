@@ -73,7 +73,7 @@ As an example implementation, consider a client that allows the user to choose w
 //MARK: MCNearbyServiceAdvertiserDelegate
 
 func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
-    if self.mutableBlockedPeers.contains(peerID) {
+    if self.blockedPeers.contains(peerID) {
         invitationHandler(false, nil)
     }
     
@@ -83,8 +83,8 @@ func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFro
     let alertController = UIAlertController(title: NSLocalizedString("Received invitation from \(peerID.displayName)", comment: "Received invitation from {Peer}"), message: nil, preferredStyle: .actionSheet)
     let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in invitationHandler(false, nil) }
     let blockAction = UIAlertAction(title: NSLocalizedString("Block", comment: ""), style: .destructive) { _ in
-        self.mutableBlockedPeers.append(peerID)
         invitationHandler(true, session)
+        self.blockedPeers.append(peerID)
     }
     let acceptAction = UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: .default) { _ in invitationHandler(true, session) }
     alertController.addAction(cancelAction)
