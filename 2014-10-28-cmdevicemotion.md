@@ -222,7 +222,7 @@ When the quizzer taps the button to begin the quiz, we first configure the inter
 
 ```swift
 // get magnitude of vector via Pythagorean theorem
-func magnitudeFromAttitude(attitude: CMAttitude) -> Double {
+func magnitude(from attitude: CMAttitude) -> Double {
     return sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
 }
 
@@ -264,27 +264,26 @@ if manager.isDeviceMotionAvailable {
         data.attitude.multiply(byInverseOf: initialAttitude)
 
         // calculate magnitude of the change from our initial attitude
-        let magnitude = magnitudeFromAttitude(data.attitude) ?? 0
+        let magnitude = magnitude(from: data.attitude) ?? 0
 
         // show the prompt
-        if !showingPrompt && magnitude > showPromptTrigger {
-            if let promptViewController = self?.storyboard?.instantiateViewController(withIdentifier: "PromptViewController") as? PromptViewController {
-                showingPrompt = true
-
-                promptViewController.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
-                self?.present(promptViewController, animated: true, completion: nil)
-            }
+        if !showingPrompt && magnitude > showPromptTrigger,
+            let promptViewController = self?.storyboard?.instantiateViewController(withIdentifier: "PromptViewController") as? PromptViewController 
+        {
+            showingPrompt = true
+            
+            promptViewController.modalTransitionStyle = .crossDissolve
+            self?.present(promptViewController, animated: true)
         }
 
         // hide the prompt
         if showingPrompt && magnitude < showAnswerTrigger {
             showingPrompt = false
-            self?.dismiss(animated: true, completion: nil)
+            self?.dismiss(animated: true)
         }
     }
 }
 ```
-
 ```objective-c
 FacingViewController * __weak weakSelf = self;
 if (manager.deviceMotionAvailable) {
@@ -356,4 +355,4 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 ----
 
-As a final note, clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.
+A final note: Clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.

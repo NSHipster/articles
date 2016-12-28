@@ -119,8 +119,8 @@ typedef NS_ENUM(NSInteger, NSQualityOfService) {
 } NS_ENUM_AVAILABLE(10_10, 8_0);
 ~~~
 
-- `.userInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
-- `.userInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
+- `.userInteractive`: User-interactive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
+- `.userInitiated`: User-initiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
 - `.utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
 - `.background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
 - `.default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
@@ -145,7 +145,7 @@ backgroundOperation.qualityOfService = NSOperationQualityOfServiceBackground;
 
 Another change in iOS 8 / OS X Yosemite is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
 
-Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
+Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in its queue, or asynchronously.
 
 ## Dependencies
 
@@ -163,7 +163,6 @@ resizingOperation.addDependency(networkingOperation)
 let operationQueue = OperationQueue.main
 operationQueue.addOperations([networkingOperation, resizingOperation], waitUntilFinished: false)
 ~~~
-
 ~~~{objective-c}
 NSOperation *networkingOperation = ...
 NSOperation *resizingOperation = ...
@@ -190,7 +189,6 @@ operation.completionBlock = {
 
 OperationQueue.main.addOperation(operation)
 ~~~
-
 ~~~{objective-c}
 NSOperation *operation = ...;
 operation.completionBlock = ^{

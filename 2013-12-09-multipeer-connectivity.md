@@ -52,7 +52,9 @@ Services are advertised by the `MCNearbyServiceAdvertiser`, which is initialized
 > Discovery information is sent as Bonjour `TXT` records encoded according to [RFC 6763](http://tools.ietf.org/html/rfc6763).
 
 ~~~{swift}
-let advertiser = MCNearbyServiceAdvertiser(peer: localPeerID, discoveryInfo: nil, serviceType: XXServiceType)
+let advertiser = MCNearbyServiceAdvertiser(peer: localPeerID, 
+                                           discoveryInfo: nil, 
+                                           serviceType: XXServiceType)
 advertiser.delegate = self
 advertiser.startAdvertisingPeer()
 ~~~
@@ -72,22 +74,35 @@ As an example implementation, consider a client that allows the user to choose w
 ~~~{swift}
 //MARK: MCNearbyServiceAdvertiserDelegate
 
-func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
+func advertiser(_ advertiser: MCNearbyServiceAdvertiser, 
+                didReceiveInvitationFromPeer peerID: MCPeerID, 
+                withContext context: Data?, 
+                invitationHandler: @escaping (Bool, MCSession?) -> Void) 
+{
     if self.blockedPeers.contains(peerID) {
         invitationHandler(false, nil)
         return
     }
     
-    let session = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
+    let session = MCSession(peer: localPeerID, 
+                            securityIdentity: nil, 
+                            encryptionPreference: .none)
     session.delegate = self
     
-    let alertController = UIAlertController(title: NSLocalizedString("Received invitation from \(peerID.displayName)", comment: "Received invitation from {Peer}"), message: nil, preferredStyle: .actionSheet)
-    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in invitationHandler(false, nil) }
-    let blockAction = UIAlertAction(title: NSLocalizedString("Block", comment: ""), style: .destructive) { _ in
-        self.blockedPeers.append(peerID)
+    let alertController = UIAlertController(title: 
+        NSLocalizedString("Received invitation from \(peerID.displayName)", comment: "Received invitation from {Peer}"), 
+        message: nil, preferredStyle: .actionSheet)
+    let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in 
+        invitationHandler(false, nil) 
+    }
+    let blockAction = UIAlertAction(title: NSLocalizedString("Block", comment: ""), style: .destructive) { [weak self] _ in
+        self?.blockedPeers.append(peerID)
         invitationHandler(false, nil)
     }
-    let acceptAction = UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: .default) { _ in invitationHandler(true, session) }
+    let acceptAction = UIAlertAction(title: NSLocalizedString("Accept", comment: ""), style: .default) { _ in
+        invitationHandler(true, session) 
+    }
+    
     alertController.addAction(cancelAction)
     alertController.addAction(blockAction)
     alertController.addAction(acceptAction)
@@ -136,7 +151,9 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
 As in the example above, sessions are created by advertisers, and passed to peers when accepting an invitation to connect. An `MCSession` object is initialized with the local peer identifier, as well as `securityIdentity` and `encryptionPreference` parameters.
 
 ~~~{swift}
-let session = MCSession(peer: localPeerID, securityIdentity: nil, encryptionPreference: .none)
+let session = MCSession(peer: localPeerID, 
+                        securityIdentity: nil, 
+                        encryptionPreference: .none)
 session.delegate = self
 ~~~
 ~~~{objective-c}
@@ -150,11 +167,11 @@ session.delegate = self;
 
 The `encryptionPreference` parameter specifies whether to encrypt communication between peers. Three possible values are provided by the `MCEncryptionPreference` enum:
 
-- `MCEncryptionOptional`: The session prefers to use encryption, but will accept unencrypted connections.
-- `MCEncryptionRequired`: The session requires encryption.
-- `MCEncryptionNone`: The session should not be encrypted.
+- `MCEncryptionPreference.optional`: The session prefers to use encryption, but will accept unencrypted connections.
+- `MCEncryptionPreference.required`: The session requires encryption.
+- `MCEncryptionPreference.none`: The session should not be encrypted.
 
-> Enabling encryption can significantly reduce transfer rates, so unless your application specifically deals with user-sensitive information, `MCEncryptionNone` is recommended.
+> Enabling encryption can significantly reduce transfer rates, so unless your application specifically deals with user-sensitive information, `.none` is recommended.
 
 The `MCSessionDelegate` protocol will be covered in the section on sending and receiving information.
 
@@ -163,7 +180,8 @@ The `MCSessionDelegate` protocol will be covered in the section on sending and r
 Clients can discover advertised services using `MCNearbyServiceBrowser`, which is initialized with the local peer identifier and the service type, much like for `MCNearbyServiceAdvertiser`.
 
 ~~~{swift}
-let browser = MCNearbyServiceBrowser(peer: localPeerID, serviceType: XXServiceType)
+let browser = MCNearbyServiceBrowser(peer: localPeerID, 
+                                     serviceType: XXServiceType)
 browser.delegate = self
 ~~~
 ~~~{objective-c}
@@ -174,7 +192,8 @@ browser.delegate = self;
 There may be many peers advertising a particular service, so as a convenience to the user (and the developer), the `MCBrowserViewController` offers a built-in, standard way to present and connect to advertising peers:
 
 ~~~{swift}
-let browserViewController = MCBrowserViewController(browser: browser, session: session)
+let browserViewController = MCBrowserViewController(browser: browser, 
+                                                    session: session)
 browserViewController.delegate = self
 self.present(browserViewController, animated: true) {
     browser.startBrowsingForPeers()
@@ -193,7 +212,7 @@ browserViewController.delegate = self;
 }];
 ~~~
 
-When a browser has finished connecting to peers, it calls `-browserViewControllerDidFinish:` on its delegate, to notify the presenting view controller that it should update its UI to accommodate the newly-connected clients.
+When a browser has finished connecting to peers, it calls `browserViewControllerDidFinish(_:)` on its delegate, to notify the presenting view controller that it should update its UI to accommodate the newly-connected clients.
 
 ## Sending & Receiving Information
 
@@ -205,12 +224,11 @@ Once peers are connected to one another, information can be sent between them. T
 
 ### Messages
 
-Messages are sent with `-sendData:toPeers:withMode:error:`:
+Messages are sent with `send(_:toPeers:with:)`:
 
 ~~~{swift}
 let message = "Hello, World!"
-let data = message.data(using: .utf8)
-if let data = data {
+if let data = message.data(using: .utf8) {
     do {
         try session.send(data, toPeers: peers, with: .reliable)
     } catch {
@@ -232,12 +250,15 @@ if (![self.session sendData:data
 
 * * *
 
-Messages are received through the `MCSessionDelegate` method `-sessionDidReceiveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
+Messages are received through the `MCSessionDelegate` method `session(_:didReceive:fromPeer:)`. Here's how one would decode the message sent in the previous code example:
 
 ~~~{swift}
-//MARK: MCSessionDelegate
+// MARK: MCSessionDelegate
 
-func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
+func session(_ session: MCSession, 
+             didReceive data: Data, 
+             fromPeer peerID: MCPeerID) 
+{
     let message = String(data: data, encoding: .utf8)
     print("\(message)")
 }
@@ -279,8 +300,10 @@ if (![self.session sendData:data
 }
 ~~~
 
+The delegate method takes care of unarchiving:
+
 ~~~{swift}
-//MARK: MCSessionDelegate
+// MARK: MCSessionDelegate
 
 func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {        
     let unarchiver = NSKeyedUnarchiver(forReadingWith: data)
@@ -305,11 +328,11 @@ func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPee
 }
 ~~~
 
-> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the [NSHipster article on [NSSecureCoding](http://nshipster.com/nssecurecoding/).
+> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the NSHipster article on [NSSecureCoding](http://nshipster.com/nssecurecoding/).
 
 ### Streams
 
-Streams are created with `-startStreamWithName:toPeer:`:
+Streams are created with `startStream(withName:toPeer:)`:
 
 ~~~{swift}
 if let outputStream = try? session.startStream(withName: name, toPeer: peer) {
@@ -335,12 +358,16 @@ outputStream.delegate = self;
 
 * * *
 
-Streams are received by the `MCSessionDelegate` with `-session:didReceiveStream:withName:fromPeer:`:
+Streams are received by the `MCSessionDelegate` with `session(_:didReceive:withName:fromPeer:`:
 
 ~~~{swift}
 //MARK: MCSessionDelegate
 
-func session(_ session: MCSession, didReceive stream: InputStream, withName streamName: String, fromPeer peerID: MCPeerID) {
+func session(_ session: MCSession, 
+             didReceive stream: InputStream, 
+             withName streamName: String, 
+             fromPeer peerID: MCPeerID) 
+{
     stream.delegate = self
     stream.schedule(in: .main, forMode: .defaultRunLoopMode)
     stream.open()
@@ -365,11 +392,14 @@ Both the input and output streams must be scheduled and opened before they can b
 
 ### Resources
 
-Resources are sent with `sendResourceAtURL:withName:toPeer:withCompletionHandler:`:
+Resources are sent with `sendResource(at:withName:toPeer:withCompletionHandler:)`:
 
 ~~~{swift}
 let fileURL = URL(fileURLWithPath: "path/to/resource")
-let progress = session.sendResource(at: fileURL, withName: fileURL.lastPathComponent, toPeer: peer) { error in
+let progress = session.sendResource(at: fileURL, 
+                                    withName: fileURL.lastPathComponent,
+                                    toPeer: peer) 
+{ error in
     print("[Error] \(error)")
 }
 ~~~
@@ -385,20 +415,29 @@ NSProgress *progress =
 }];
 ~~~
 
-The returned `NSProgress` object can be [Key-Value Observed](http://nshipster.com/key-value-observing/) to monitor progress of the file transfer, as well as provide a cancellation handler, through the `-cancel` method.
+The returned `NSProgress` object can be [Key-Value Observed](http://nshipster.com/key-value-observing/) to monitor progress of the file transfer, as well as provide a cancellation handler, through the `cancel()` method.
 
 * * *
 
-Receiving resources happens across two methods in `MCSessionDelegate`: `-session:didStartReceivingResourceWithName:fromPeer:withProgress:` & `-session:didFinishReceivingResourceWithName:fromPeer:atURL:withError:`:
+Receiving resources happens across two methods in `MCSessionDelegate`: `session(_:didStartReceivingResourceWithName:fromPeer:with:)` and `session(_:didFinishReceivingResourceWithName:fromPeer:at:withError:)`:
 
 ~~~{swift}
-//MARK: MCSessionDelegate
+// MARK: MCSessionDelegate
 
-func session(_ session: MCSession, didStartReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, with progress: Progress) {
+func session(_ session: MCSession, 
+             didStartReceivingResourceWithName resourceName: String, 
+             fromPeer peerID: MCPeerID,
+             with progress: Progress) 
+{
     // ...
 }
 
-func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL, withError error: Error?) {
+func session(_ session: MCSession, 
+             didFinishReceivingResourceWithName resourceName: String,
+             fromPeer peerID: MCPeerID,
+             at localURL: URL,
+             withError error: Error?) 
+{
     let destinationURL = URL(fileURLWithPath: "path/to/destination")
     do {
         try FileManager.default.moveItem(at: localURL, to: destinationURL)
@@ -434,7 +473,7 @@ didFinishReceivingResourceWithName:(NSString *)resourceName
 }
 ~~~
 
-Again, the `NSProgress` parameter in `-session:didStartReceivingResourceWithName:fromPeer:withProgress:` allows the receiving peer to monitor the file transfer progress. In `-session:didFinishReceivingResourceWithName:fromPeer:atURL:withError:`, it is the responsibility of the delegate to move the file at the temporary `localURL` to a permanent location.
+Again, the `NSProgress` parameter in `session(_:didStartReceivingResourceWithName:fromPeer:with:)` allows the receiving peer to monitor the file transfer progress. In `session(_:didFinishReceivingResourceWithName:fromPeer:at:withError:)`, it is the responsibility of the delegate to move the file at the temporary `localURL` to a permanent location.
 
 * * *
 
