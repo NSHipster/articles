@@ -125,12 +125,11 @@ Rather than use the raw gyroscope data that we would get with `startGyroUpdates.
 ```swift
 if manager.isDeviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
-    manager.startDeviceMotionUpdates(to: queue) {
-        [weak self] (data: CMDeviceMotion?, error: Error?) in {
-            if let gravity = data?.gravity {
-                let rotation = atan2(gravity.x, gravity.y) - M_PI
-                self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
-            }
+    manager.startDeviceMotionUpdates(to: OperationQueue.main) {
+        [weak self] (data: CMDeviceMotion?, error: Error?) in 
+        if let gravity = data?.gravity {
+            let rotation = atan2(gravity.x, gravity.y) - M_PI
+            self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
         }
     }
 }
