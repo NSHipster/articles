@@ -150,6 +150,14 @@ Since `@selector` looks through all available selectors in the target, this won'
 }
 ~~~
 
+This workaround does not work when properties include a custom getter override.
+
+~~~{objective-c}
+@property (strong, nonatomic, getter=isFinished) BOOL finished;
+~~~
+
+In this scenario, the property's name (`@"finished"`) must be used to intiate the observation of the `keyPath`. `NSStringFromSelector(@selector(finished))` won't compile because `isFinished` and `setFinished` are the only sythesized selectors and `NSStringFromSelector(@selector(isFinished))` will compile but won't generate KVO updates.
+
 ## Unsubscribing
 
 When an observer is finished listening for changes on an object, it is expected to call `–removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc` (or a similar destruction method).
