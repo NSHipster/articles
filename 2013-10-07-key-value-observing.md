@@ -150,6 +150,8 @@ Since `@selector` looks through all available selectors in the target, this won'
 }
 ~~~
 
+---
+
 This workaround does not work when properties include a custom getter override.
 
 ~~~{objective-c}
