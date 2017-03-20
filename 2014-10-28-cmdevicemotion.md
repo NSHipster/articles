@@ -86,7 +86,7 @@ First, we check to make sure our device makes accelerometer data available, next
 ```swift
 if manager.isAccelerometerAvailable {
     manager.accelerometerUpdateInterval = 0.01
-    manager.startAccelerometerUpdates(to: OperationQueue.main) {
+    manager.startAccelerometerUpdates(to: .main) {
         [weak self] (data: CMAccelerometerData?, error: Error?) in
         if let acceleration = data?.acceleration {
             let rotation = atan2(acceleration.x, acceleration.y) - M_PI
@@ -126,11 +126,10 @@ Rather than use the raw gyroscope data that we would get with `startGyroUpdates.
 if manager.isDeviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
     manager.startDeviceMotionUpdates(to: queue) {
-        [weak self] (data: CMDeviceMotion?, error: Error?) in {
-            if let gravity = data?.gravity {
-                let rotation = atan2(gravity.x, gravity.y) - M_PI
-                self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
-            }
+        [weak self] (data: CMDeviceMotion?, error: Error?) in
+        if let gravity = data?.gravity {
+            let rotation = atan2(gravity.x, gravity.y) - M_PI
+            self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
         }
     }
 }
@@ -161,9 +160,8 @@ Remember that the X-axis runs laterally through the device in our hand, with neg
 ```swift
 if manager.isDeviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.02
-    manager.startDeviceMotionUpdates(to: OperationQueue.main) {
+    manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data: CMDeviceMotion?, error: Error?) in
-
         if let x = data?.userAcceleration.x,
             x < -2.5 {
             self?.navigationController?.popViewController(animated: true)
@@ -255,7 +253,7 @@ Then, in our now familiar call to `startDeviceMotionUpdates`, we calculate the m
 
 ```swift
 if manager.isDeviceMotionAvailable {
-    manager.startDeviceMotionUpdates(to: OperationQueue.main) {
+    manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data: CMDeviceMotion?, error: Error?) in
 
         guard let data = data else { return }
