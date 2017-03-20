@@ -50,7 +50,7 @@ As a keyword, `static` gets used in a lot of different, incompatible ways, so it
 
 ### Static Singletons
 
-A common pattern in Objective-C is the `static` singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
+A common pattern in Objective-C is the `static` singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch_once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
 
 ~~~{objective-c}
 + (instancetype)sharedInstance {
