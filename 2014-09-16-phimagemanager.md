@@ -27,7 +27,7 @@ But first, here's a simple example of how a table view might asynchronously load
 ~~~{swift}
 import Photos
 
-var assets: [PHAsset]
+var assets: [PHAsset] = ... // see below
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
