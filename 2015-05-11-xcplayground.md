@@ -5,7 +5,8 @@ category: Swift
 tags: swift
 excerpt: "Playgrounds aren't a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."
 status:
-    swift: 1.2
+    swift: 3.1
+    reviewed: March 8, 2017
 ---
 
 > Stop right there! Given the topic, wouldn't you rather read this article as a Playground? **<a href="{{ site.asseturl }}/XCPlayground.playground.zip" onclick="ga('send', 'event', 'link', 'click', 'XCPlayground.playground');">Download Now &rarr;</a>**
@@ -17,8 +18,6 @@ Given the association of play with childish exuberance, one could define *play* 
 Playgrounds aren't a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Playgrounds make it truly simple to create a working program—indeed, every new Playground starts with the soon-familiar `"Hello, playground"`. At the same time, Playgrounds hide some of their most powerful features, leaving exploration as the only means to discovering their rapidly advancing capabilities.
 
 This week, we'll take a look past the surface of Playgrounds, giving you tools to make them a powerful part of your development process. Read on for more about Playground sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool.
-
-> **Note:** The digital version of the recently released [*NSHipster: Obscure Topics in Cocoa & Swift*](http://gum.co/nshipster-swift) includes a package of Playgrounds—one for every chapter in the book. Each Playground provides a chance to explore and experiment with the concepts presented therein, including extended examples. 
 
 
 
@@ -42,13 +41,13 @@ No playground is complete without a sandbox to play in, and Swift Playgrounds do
 
 ### Local
 
-The `Resources` folder, embedded in the Playground package alongside `Sources`, is visible in the Project Navigator—simply drag and drop images or data files to use them in your Playground. The contents are then available via the main bundle. For example, we can easily load a JSON file filled with weather data:
+The `Resources` folder, embedded in the Playground package alongside `Sources`, is visible in the Project Navigator—simply drag and drop images or data files to use them in your Playground. The contents are then available via `Bundle.main`. For example, we can easily load a JSON file filled with weather data:
 
 ```swift
-let jsonPath = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("weather.json")
-if let
-   jsonData = NSData(contentsOfFile: jsonPath),
-   json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as? [String: AnyObject] 
+if
+    let jsonURL = Bundle.main.url(forResource: "weather", withExtension: "json"),
+    let jsonData = try? Data(contentsOf: jsonURL),
+    let json = (try? JSONSerialization.jsonObject(with: jsonData)) as? [String: AnyObject]
 {
     // ...
 }
@@ -56,14 +55,17 @@ if let
 
 ### Shared
 
-The contents of a "Shared Playground Data" directory inside your "Documents" folder are available to any Playground you create. Access the shared folder via the `XCPSharedDataDirectoryPath` constant.
+The contents of a "Shared Playground Data" directory inside your "Documents" folder are available to any Playground you create. Access files in the shared folder via the `playgroundSharedDataDirectory` constant.
 
 > To try this out yourself, you'll need to create the directory at "~/Documents/Shared Playground Data". Here we're attempting to load an image named "image.png":
 
 ```swift
-let sharedImagePath = XCPSharedDataDirectoryPath.stringByAppendingPathComponent("image.png")
-if let image = UIImage(contentsOfFile: sharedImagePath) {
-   // ...
+let imageURL = playgroundSharedDataDirectory.appendingPathComponent("image.png")
+if
+    let imageData = try? Data(contentsOf: imageURL),
+    let image = UIImage(data: imageData) 
+{
+    // ...
 }
 ```
 
@@ -72,22 +74,7 @@ if let image = UIImage(contentsOfFile: sharedImagePath) {
 
 A Playground normally shows the results of simple expressions immediately. Arrays, strings, numbers, and more have their values shown in the results pane as they are calculated. But what about values that change over time?
 
-By using the `XCPCaptureValue()` function, we can build a graph of a changing value over a series of iterations. Returning to our weather sample, let's take a look at the hourly temperatures in the data, using `XCPCaptureValue` to display the value of `temperature` in the Assistant Editor's timeline view:
-
-```swift
-import XCPlayground
-
-for forecast in forecasts {
-    if let
-        tempString = forecast["temp"]?["english"] as? String,
-        temperature = tempString.toInt()
-    {
-        XCPCaptureValue("Temperature", temperature)
-    }
-}
-```
-
-Alternatively, choosing **Editor &rarr; Show Result For Current Line** will capture the current line's values and display the chart directly in the flow of the Playground:
+A Playground can show changing values as either a graph or a list. Choose **Editor &rarr; Show Result For Current Line** or click the "Show Result" toggle in the resuls pane to capture the current line's values and display them directly in the flow of the Playground:
 
 ![Result for Current Line]({{ site.asseturl }}/xcplayground-capture.png)
 
@@ -97,18 +84,17 @@ Alternatively, choosing **Editor &rarr; Show Result For Current Line** will capt
 
 Unlike most Swift code that is written as part of an app or framework, Playgrounds are treated as *top-level code.* Top-level code in a Playground is executed instruction-by-instruction in order, from top to bottom. This container-less style of execution provides immediate feedback, but there is one problem: execution halts as soon as it reaches the end of the Playground. Network requests, timers, and long-running background queues are abandoned before they can return to report on success or failure.
 
-To keep execution going long enough to see the results of these kinds of asynchronous operations, the `XCPlayground` module includes a function that extends the length of the process:
+To keep execution going long enough to see the results of these kinds of asynchronous operations, import the `PlaygroundSupport` module and set the `needsIndefiniteExecution` property of the current page to `true`:
 
 ```swift
-import XCPlayground
+import PlaygroundSupport
 
-XCPSetExecutionShouldContinueIndefinitely(continueIndefinitely: true)
+PlaygroundPage.current.needsIndefiniteExecution = true
 
-let url = NSURL(string: "http://httpbin.org/image/png")!
-let task = NSURLSession.sharedSession().dataTaskWithURL(url) {
-    data, _, _ in
+let url = URL(string: "http://httpbin.org/image/png")!
+let task = URLSession.shared.dataTask(with: url) { data, _, _ in
+    guard let data = data else { return }
     let image = UIImage(data: data)
-    // ...
 }
 task.resume()
 ```
@@ -120,7 +106,7 @@ task.resume()
 
 Beyond experimentation, Playgrounds are also powerful for demonstrating tools and frameworks in the Swift language. Special documentation sections can be rendered as rich text, giving clear narration to code that demonstrates a technique or the correct way to use a library.
 
-Unlike [Swift's *other* documentation syntax](/swift-documentation/), Swift Playgrounds use Markdown for richly formatted text. (If you downloaded the Playground for this post, you're reading Markdown right now.) A colon (`:`) added to a single- or multi-line comment marker signifies a rich-text comment:
+Just like [Swift's *other* documentation syntax](/swift-documentation/), Swift Playgrounds use Markdown for richly formatted text. (If you downloaded the Playground for this post, you're reading Markdown right now.) A colon (`:`) added to a single- or multi-line comment marker signifies a rich-text comment:
 
 ```swift
 //: This line will have **bold** and *italic* text.

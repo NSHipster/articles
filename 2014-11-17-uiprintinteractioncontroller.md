@@ -4,7 +4,8 @@ author: Nate Cook
 category: Cocoa
 excerpt: "With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper."
 status:
-    swift: 1.0
+    swift: 3.1
+    reviewed: March 9, 2017
 ---
 
 With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper.
@@ -36,13 +37,13 @@ Before we look at formatting actual content for printing, let's go through the o
 Print job details are set in a `UIPrintInfo` instance. You can use the following properties:
 
 > - `jobName` _`String`_: A name for this print job. The name will be displayed in the Print Center on the device and, for some printers, on the LCD display.
-> - `orientation` _`UIPrintInfoOrientation`_: Either `.Portrait` (the default) or `.Landscape`—this is ignored if what you print has an intrinsic orientation, such as a PDF.
-> - `duplex` _`UIPrintInfoDuplex`_: `.None`, `.ShortEdge`, or `.LongEdge`. The short- and long-edge settings indicate how double-sided pages could be bound, while `.None` suppresses double-sided printing (though not the UI toggle for duplexing, perplexingly).
+> - `orientation` _`UIPrintInfoOrientation`_: Either `.portrait` (the default) or `.landscape`—this is ignored if what you print has an intrinsic orientation, such as a PDF.
+> - `duplex` _`UIPrintInfoDuplex`_: `.none`, `.shortEdge`, or `.longEdge`. The short- and long-edge settings indicate how double-sided pages could be bound, while `.none` suppresses double-sided printing (though not the UI toggle for duplexing, perplexingly).
 > - `outputType` _`UIPrintInfoOutputType`_: Gives UIKit a hint about the type of content you're printing. Can be any of:
->      - `.General` (default): For mixed text and graphics; allows duplexing.
->      - `.Grayscale`: Can be better than `.General` if your content includes black text only.
->      - `.Photo`: For color or black and white images; disables duplexing and favors photo media for the paper type.
->      - `.PhotoGrayscale`: Can be better than `.Photo` for grayscale-only images, depending on the printer.
+>      - `.general` (default): For mixed text and graphics; allows duplexing.
+>      - `.grayscale`: Can be better than `.general` if your content includes black text only.
+>      - `.photo`: For color or black and white images; disables duplexing and favors photo media for the paper type.
+>      - `.photoGrayscale`: Can be better than `.photo` for grayscale-only images, depending on the printer.
 > - `printerID` _`String?`_: An ID for a particular printer—you can retrieve this only *after* the user has selected a printer through the UI and save it to use as a preset for a future print job.
 
 In addition, `UIPrintInfo` provides a `dictionaryRepresentation` property, which can be saved and used to create a new `UIPrintInfo` instance later.
@@ -61,9 +62,9 @@ There are a handful of settings on the `UIPrintInteractionController` that you c
 
 Through four different properties of `UIPrintInteractionController`, you can select the level of control (and complexity) you want for your content.
 
-> 1. `printingItem` _`AnyObject!`_ or `printingItems` _`[AnyObject]!`_: At the most basic level, the controller simply takes content that is already printable (images and PDFs) and sends them to the printer.
-> 2. `printFormatter` _`UIPrintFormatter`_: At the next level, you can use a `UIPrintFormatter` subclass to format content inside your application, then hand the formatter off to the `UIPrintInteractionController`. You have some control over the format, and the printing API largely takes care of the rest.
-> 3. `printPageRenderer` _`UIPrintPageRenderer`_: At the highest level, you can create a custom subclass of `UIPrintPageRenderer`, combining page formatters and your own drawing routines for headers, footers, and page content.
+> 1. `printingItem` _`Any?`_ or `printingItems` _`[Any]?`_: At the most basic level, the controller simply takes content that is already printable (images and PDFs) and sends them to the printer.
+> 2. `printFormatter` _`UIPrintFormatter?`_: At the next level, you can use a `UIPrintFormatter` subclass to format content inside your application, then hand the formatter off to the `UIPrintInteractionController`. You have some control over the format, and the printing API largely takes care of the rest.
+> 3. `printPageRenderer` _`UIPrintPageRenderer?`_: At the highest level, you can create a custom subclass of `UIPrintPageRenderer`, combining page formatters and your own drawing routines for headers, footers, and page content.
 
 Since Thanksgiving (my favorite holiday) is around the corner, to illustrate these properties we'll add printing to different screens of a hypothetical app for Thanksgiving recipes.
 
@@ -75,22 +76,21 @@ Let's walk through a very simple case: showing the UI to print an image when the
 
 ```swift
 @IBAction func print(sender: UIBarButtonItem) {
-    if UIPrintInteractionController.canPrintURL(imageURL) {
+    if UIPrintInteractionController.canPrint(imageURL) {
         let printInfo = UIPrintInfo(dictionary: nil)
         printInfo.jobName = imageURL.lastPathComponent
-        printInfo.outputType = .Photo
+        printInfo.outputType = .photo
 
-        let printController = UIPrintInteractionController.sharedPrintController()!
+        let printController = UIPrintInteractionController.shared
         printController.printInfo = printInfo
         printController.showsNumberOfCopies = false
 
         printController.printingItem = imageURL
 
-        printController.presentAnimated(true, completionHandler: nil)
+        printController.present(animated: true)
     }
 }
 ```
-
 ```objective-c
 - (IBAction)print:(id)sender {
     if ([UIPrintInteractionController canPrintURL:self.imageURL]) {
@@ -112,15 +112,15 @@ Easy as pie! _(Or, in this case, sautéed Swiss chard.)_
 
 ![Print with .printingItem]({{ site.asseturl }}/uiprintinteractioncontroller-image-print.png)
 
-> The `presentAnimated(:completionHandler:)` method is for presenting the printing UI on the **iPhone**. If printing from the **iPad**, use one of the `presentFromBarButtonItem(:animated:completionHandler:)` or
-`presentFromRect(:inView:animated:completionHandler:)` methods instead.
+> The `present(animated:completionHandler:)` method is for presenting the printing UI on the **iPhone**. If printing from the **iPad**, use one of the `present(from:animated:completionHandler:)` or
+`present(from:in:animated:completionHandler:)` methods instead.
 
 ## UIPrintFormatter
 
 The `UIPrintFormatter` class has two subclasses that can be used to format text (`UISimpleTextPrintFormatter` and `UIMarkupTextPrintFormatter`) plus another (`UIViewPrintFormatter`) that can format the content of three views: `UITextView`, `UIWebView`, and `MKMapView`. Print formatters have a few properties that allow you to define the printed area of the page in different ways; the final print area for the formatter will be the smallest rectangle that meets the following criteria:
 
 > - `contentInsets` _`UIEdgeInsets`_: A set of insets from the edges of the page for the entire block of content. The left and right insets are applied on every page, but the top inset is *only* applied on the first page. The bottom inset is ignored.
-> - `perPageContentInsets` _`UIEdgeInsets`_ (iOS 8 only): A set of insets from the edges of the page for *every page* of formatted content.
+> - `perPageContentInsets` _`UIEdgeInsets`_ (iOS 8 & up): A set of insets from the edges of the page for *every page* of formatted content.
 > - `maximumContentWidth` and `maximumContentHeight` _`CGFloat`_: If specified, these can further constrain the width and height of the content area.
 
 > Though not clearly documented by Apple, all of these values are based on 72 points per inch.
@@ -183,13 +183,12 @@ class RecipePrintPageRenderer: UIPrintPageRenderer {
         let formatter = UIMarkupTextPrintFormatter(markupText: recipe.html)
         formatter.perPageContentInsets = UIEdgeInsets(top: POINTS_PER_INCH, left: POINTS_PER_INCH,
             bottom: POINTS_PER_INCH, right: POINTS_PER_INCH * 3.5)
-        addPrintFormatter(formatter, startingAtPageAtIndex: 0)
+        addPrintFormatter(formatter, startingAtPageAt: 0)
     }
 
     // ...
 }
 ```
-
 ```objective-c
 @interface RecipePrintPageRenderer : UIPrintPageRenderer
 @property (nonatomic, strong) NSString *authorName;
@@ -224,24 +223,23 @@ class RecipePrintPageRenderer: UIPrintPageRenderer {
 @end
 ```
 
-> When you use one or more print formatters as part of your custom renderer (as we're doing here), UIKit queries them for the number of pages to print. If you're doing truly custom page layout, implement the `numberOfPages()` method to provide the correct value.
+> When you use one or more print formatters as part of your custom renderer (as we're doing here), UIKit queries them for the number of pages to print. If you're doing truly custom page layout, implement the `numberOfPages` property to provide the correct value.
 
-Next, we override `drawHeaderForPageAtIndex(:inRect:)` to draw our custom header. Unfortunately, those handy per-page content insets on print formatters are gone here, so we first need to inset the `headerRect` parameter to match my margins, then simply draw into the current graphics context. There's a similar `drawFooterForPageAtIndex(:inRect:)` method for drawing the footer.
+Next, we override `drawHeaderForPage(at:in:)` to draw our custom header. Unfortunately, those handy per-page content insets on print formatters are gone here, so we first need to inset the `headerRect` parameter to match my margins, then simply draw into the current graphics context. There's a similar `drawFooterForPage(at:in:)` method for drawing the footer.
 
 ```swift
-override func drawHeaderForPageAtIndex(pageIndex: Int, var inRect headerRect: CGRect) {
-    var headerInsets = UIEdgeInsets(top: CGRectGetMinY(headerRect), left: POINTS_PER_INCH, bottom: CGRectGetMaxY(paperRect) - CGRectGetMaxY(headerRect), right: POINTS_PER_INCH)
-    headerRect = UIEdgeInsetsInsetRect(paperRect, headerInsets)
+override func drawHeaderForPage(at pageIndex: Int, in headerRect: CGRect) {
+    let headerInsets = UIEdgeInsets(top: headerRect.minY, left: POINTS_PER_INCH, bottom: paperRect.maxY - headerRect.maxY, right: POINTS_PER_INCH)
+    let headerRect = UIEdgeInsetsInsetRect(paperRect, headerInsets)
 
     // author name on left
-    authorName.drawAtPointInRect(headerRect, withAttributes: nameAttributes, andAlignment: .LeftCenter)
+    authorName.draw(in: headerRect, withAttributes: nameAttributes, alignment: .leftCenter)
 
     // page number on right
-    let pageNumberString: NSString = "\(pageIndex + 1)"
-    pageNumberString.drawAtPointInRect(headerRect, withAttributes: pageNumberAttributes, andAlignment: .RightCenter)
+    let pageNumberString = "\(pageIndex + 1)"
+    pageNumberString.draw(in: headerRect, withAttributes: pageNumberAttributes, alignment: .rightCenter)
 }
 ```
-
 ```objective-c
 - (void)drawHeaderForPageAtIndex:(NSInteger)index
                           inRect:(CGRect)headerRect
@@ -258,16 +256,17 @@ override func drawHeaderForPageAtIndex(pageIndex: Int, var inRect headerRect: CG
 }
 ```
 
-Lastly, let's provide an implementation of `drawContentForPageAtIndex(:inRect:)`:
+Lastly, let's provide an implementation of `drawContentForPage(at:in:)`:
 
 ```swift
-override func drawContentForPageAtIndex(pageIndex: Int, inRect contentRect: CGRect) {
+override func drawContentForPage(at pageIndex: Int, in contentRect: CGRect) {
     if pageIndex == 0 {
         // only use rightmost two inches of contentRect
         let imagesRectWidth = POINTS_PER_INCH * 2
-        let imagesRectHeight = paperRect.height - POINTS_PER_INCH - (CGRectGetMaxY(paperRect) - CGRectGetMaxY(contentRect))
-        let imagesRect = CGRect(x: CGRectGetMaxX(paperRect) - imagesRectWidth - POINTS_PER_INCH, y: paperRect.origin.y + POINTS_PER_INCH, width: imagesRectWidth, height: imagesRectHeight)
-
+        let imagesRectHeight = paperRect.height - POINTS_PER_INCH - (paperRect.maxY - contentRect.maxY)
+        let imagesRect = CGRect(x: paperRect.maxX - imagesRectWidth - POINTS_PER_INCH, y: paperRect.origin.y + POINTS_PER_INCH, 
+                width: imagesRectWidth, height: imagesRectHeight)
+        
         drawImages(recipe.images, inRect: imagesRect)
     }
 }
@@ -314,12 +313,11 @@ With the tools we've learned above, adding printing capability in a share sheet 
     let printInfo = ...
     let formatter = ...
 
-    let activityItems = [printInfo, formatter, textView.attributedText]
+    let activityItems: [Any] = [printInfo, formatter, textView.attributedText]
     let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
-    presentViewController(activityController, animated: true, completion: nil)
+    present(activityController, animated: true)
 }
 ```
-
 ```objective-c
 - (IBAction)openShareSheet:(id)sender {
     UIPrintInfo *printInfo = ...
@@ -339,7 +337,7 @@ New in iOS 8 is a way to print without any presentation of the printing UI. Inst
 
 ```swift
 let printerPicker = UIPrinterPickerController(initiallySelectedPrinter: savedPrinter)
-printerPicker.presentAnimated(true) {
+printerPicker.present(animated: true) {
     (printerPicker, userDidSelect, error) in
 
     if userDidSelect {
