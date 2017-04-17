@@ -42,17 +42,17 @@ An `NSScanner` instance has two additional read-only properties: `string`, which
 The *raison d'être* of `NSScanner` is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, *all* of which follow the same basic pattern. Each method takes a reference to an output variable as a parameter and returns a boolean value indicating success or failure of the scan:
 
 ````swift
-let whitespaceAndPunctuationSet = NSMutableCharacterSet.whitespaceAndNewlineCharacterSet()
-whitespaceAndPunctuationSet.formUnionWithCharacterSet(NSCharacterSet.punctuationCharacterSet())
+let whitespaceAndPunctuationSet = NSMutableCharacterSet.whitespaceAndNewline()
+whitespaceAndPunctuationSet.formUnion(with: NSCharacterSet.punctuationCharacters)
 
-let stringScanner = NSScanner(string: "John & Paul & Ringo & George.")
-stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet
+let stringScanner = Scanner(string: "John & Paul & Ringo & George.")
+stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet as CharacterSet
 
-// using the latest Swift 1.2 beta 2 syntax:
+// using the latest Swift 3.0 syntax:
 var name: NSString?
-while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name)
+while stringScanner.scanUpToCharacters(from: whitespaceAndPunctuationSet as CharacterSet, into: &name)
 {
-    println(name)
+    print(name)
 }
 // John
 // Paul
@@ -132,12 +132,12 @@ Because it is a part of Cocoa, `NSScanner` has built-in localization support (of
 
 ````swift
 var price = 0.0
-let gasPriceScanner = NSScanner(string: "2.09 per gallon")
+let gasPriceScanner = Scanner(string: "2.09 per gallon")
 gasPriceScanner.scanDouble(&price)
 // 2.09
 
 // use a german locale instead of the default
-let benzinPriceScanner = NSScanner(string: "1,38 pro Liter")
+let benzinPriceScanner = Scanner(string: "1,38 pro Liter")
 benzinPriceScanner.locale = NSLocale(localeIdentifier: "de-DE")
 benzinPriceScanner.scanDouble(&price)
 // 1.38
@@ -170,7 +170,7 @@ Here's an SVG path I happen to have lying around (and a point-offsetting helper 
 var svgPathData = "M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z"
 
 extension CGPoint {
-    func offset(p: CGPoint) -> CGPoint {
+    func offset(_ p: CGPoint) -> CGPoint {
         return CGPoint(x: x + p.x, y: y + p.y)
     }
 }
@@ -189,15 +189,15 @@ We'll define a `bezierPathFromSVGPath` function that will convert a string of pa
 
 ````swift
 func bezierPathFromSVGPath(str: String) -> UIBezierPath {
-    let scanner = NSScanner(string: str)
-    
+    let scanner = Scanner(string: str)
+
     // skip commas and whitespace
-    let skipChars = NSMutableCharacterSet(charactersInString: ",")
-    skipChars.formUnionWithCharacterSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-    scanner.charactersToBeSkipped = skipChars
-    
+    let skipChars = NSMutableCharacterSet(charactersIn: ",")
+    skipChars.formUnion(with: NSCharacterSet.whitespacesAndNewlines)
+    scanner.charactersToBeSkipped = skipChars as CharacterSet
+
     // the resulting bezier path
-    var path = UIBezierPath()
+    let path = UIBezierPath()
 ````
 ````objective-c
 - (UIBezierPath *)bezierPathFromSVGPath:(NSString *)str {
@@ -216,11 +216,11 @@ With the setup out of the way, it's time to start scanning. We start by scanning
 
 ````swift
     // instructions code can be upper- or lower-case
-    let instructionSet = NSCharacterSet(charactersInString: "MCSQTAmcsqta")
+    let instructionSet = NSCharacterSet(charactersIn: "MCSQTAmcsqta")
     var instruction: NSString?
-    
+
     // scan for an instruction code
-    while scanner.scanCharactersFromSet(instructionSet, intoString: &instruction) {
+    while scanner.scanCharacters(from: instructionSet as CharacterSet, into: &instruction) {
 ````
 ````objective-c
     // instructions codes can be upper- or lower-case
@@ -236,22 +236,21 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
 ````swift
         var x = 0.0, y = 0.0
         var points: [CGPoint] = []
-        
+
         // scan for pairs of Double, adding them as CGPoints to the points array
         while scanner.scanDouble(&x) && scanner.scanDouble(&y) {
             points.append(CGPoint(x: x, y: y))
         }
-        
+
         // new point for bezier path
         switch instruction ?? "" {
         case "M":
-            path.moveToPoint(points[0])
+            path.move(to: points[0])
         case "C":
-            path.addCurveToPoint(points[2], controlPoint1: points[0], controlPoint2: points[1])
+            path.addCurve(to: points[2], controlPoint1: points[0], controlPoint2: points[1])
         case "c":
-            path.addCurveToPoint(path.currentPoint.offset(points[2]),
-                    controlPoint1: path.currentPoint.offset(points[0]),
-                    controlPoint2: path.currentPoint.offset(points[1]))
+            path.addCurve(to: path.currentPoint.offset(points[2]), controlPoint1: path.currentPoint.offset(points[0]),
+                                 controlPoint2: path.currentPoint.offset(points[1]))
         default:
             break
         }
