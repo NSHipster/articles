@@ -82,7 +82,7 @@ In order to find out what methods work with `UIAppearance`, you have to [look at
 ```
 $ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/
   Developer/SDKs/iPhoneOS*.sdk/System/Library/Frameworks/UIKit.framework/Headers
-$ grep -H UI_APPEARANCE_SELECTOR ./* | sed 's/ __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0) UI_APPEARANCE_SELECTOR;//'
+$ grep -rH UI_APPEARANCE_SELECTOR ./* | sed 's/ __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_5_0) UI_APPEARANCE_SELECTOR;//'
 ```
 
 `UIAppearance` looks for the `UI_APPEARANCE_SELECTOR` macro in method signatures. Any method with this annotation can be used with the `appearance` proxy.
