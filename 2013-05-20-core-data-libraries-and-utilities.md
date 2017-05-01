@@ -126,6 +126,11 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><a href="https://github.com/rentzsch">Jonathan 'Wolf' Rentzsch</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=rentzsch&repo=mogenerator&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
+    <tr>
+      <td><a href="https://github.com/yepher/CoreDataUtility">Core Data Utility</a></td>
+      <td><a href="https://github.com/yepher">Chris Wilson 'Yepher'</a></td>
+      <td><iframe src="http://ghbtns.com/github-btn.html?user=yepher&repo=CoreDataUtility&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
+    </tr>
   </tbody>
 </table>
 
@@ -233,6 +238,12 @@ We would be remiss to survey the open source Core Data ecosystem without mention
 #### [Mogenerator](https://github.com/rentzsch/mogenerator)
 
 > `mogenerator` is a command-line tool that, given an `.xcdatamodel` file, will generate *two classes per entity*. The first class, `_MyEntity`, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, `MyEntity`, subclasses `_MyEntity`, won't ever be overwritten and is a great place to put your custom logic.
+
+#### [CoreDataUtility](https://github.com/yepher/CoreDataUtility)
+
+> `CoreDataUtility` is an OSX tool that, given an `.mom` file, and the persistence file will present the data visually. `CoreDataUtility` also enables to user to filter the data using a predicate editor.
+
+
 
 ---
 
