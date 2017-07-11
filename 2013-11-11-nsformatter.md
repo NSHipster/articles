@@ -267,13 +267,33 @@ Rather than get caught up in all of this, simply use the most appropriate count 
 
 #### NSByteCountFormatterCountStyle
 
-| `File`    | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
-| `Memory`  | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
+<table>
+    <tbody>
+        <tr>
+            <td><tt>File</tt></td>
+            <td>Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time.</td>
+        </tr>
+        <tr>
+            <td><tt>Memory</tt></td>
+            <td>Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time.</td>
+        </tr>
+    </tbody>
+</table>
 
 In most cases, it is better to use `File` or `Memory`, however decimal or binary byte counts can be explicitly specified with either of the following values:
 
-| `Decimal` | Causes 1000 bytes to be shown as 1 KB. |
-| `Binary`  | Causes 1024 bytes to be shown as 1 KB. |
+<table>
+    <tbody>
+        <tr>
+            <td><tt>Decimal</tt></td>
+            <td>Causes 1000 bytes to be shown as 1 KB.</td>
+        </tr>
+        <tr>
+            <td><tt>Binary</tt></td>
+            <td>Causes 1024 bytes to be shown as 1 KB.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Date & Time Interval Formatters
 
