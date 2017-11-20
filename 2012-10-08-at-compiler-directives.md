@@ -262,6 +262,34 @@ For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) u
 
 Using this clever combination of macros, a developer can develop with `UICollectionView` by including `PSTCollectionView`--without worrying about the deployment target of the final project. As a drop-in replacement, the same code works more-or-less identically on iOS 6 as it does on iOS 4.3.
 
+## Availability
+
+With Xcode 9 Apple decided to port the very useful `#available` construct from Swift to [Objective-C](https://clang.llvm.org/docs/LanguageExtensions.html#objective-c-available).
+
+- `@available`: provides runtime support for checking what operating system an application is running on.
+
+For example:
+~~~{objective-c}
+if (@available(macOS 10.12, *)) {
+    [anObject macOS1012OnlyMethod];
+} else {
+    // Put fallback behavior for old macOS versions (and for non-mac platforms) here.
+}
+~~~
+
+The `@available` directive not only avoids crashes at runtime due to unimplemented system calls but prevents the compiler from generating 'API not available warnings' for code in the true branch of the `if (@available(...))`. Currently supported platforms are:
+
+- `macOS`
+- `macOSApplicationExtension`
+- `iOS`
+- `iOSApplicationExtension`
+- `watchOS`
+- `watchOSApplicationExtension`
+- `tvOS`
+- `tvOSApplicationExtension`
+
+You can list more than one platform, but the * is required for 'future platforms' and means that platforms not explicitly listed will take the true branch, *and* the compiler will emit warnings for unlisted platforms based on the corresponding deployment targets of those platforms.
+
 ---
 
 So to review:
@@ -324,6 +352,10 @@ So to review:
 **Compatibility**
 
 - `@compatibility_alias`
+
+**Availability**
+
+- `@available`
 
 Thus concludes this exhaustive rundown of the many faces of `@`. It's a versatile, power-packed character, that embodies the underlying design and mechanisms of the language.
 
