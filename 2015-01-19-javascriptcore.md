@@ -67,7 +67,7 @@ NSLog(@"Tripled: %d", [tripleNum toInt32]);
 We can easily access any values we've created in our `context` using subscript notation on both `JSContext` and `JSValue` instances. `JSContext` requires a string subscript, while `JSValue` allows either string or integer subscripts for delving down into objects and arrays:
 
 ````swift
-let names = context.objectForKeyedSubscript("names")
+let names = context.objectForKeyedSubscript("names" as NSString)
 let initialName = names?.objectAtIndexedSubscript(0)
 print("The first name: \(initialName?.toString() ?? "none")")
 // The first name: Grace
@@ -153,6 +153,28 @@ NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하세요!')"]);
 ````
 
 > There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, declare it with the `@convention(block)` attribute.
+
+> We also have to use `NSString` as the key value for `forKeyedSubscript:`. It makes our key lookups even more verbose in Swift than the neat subscript syntaxt we have in Objective-C.
+
+> We can make this less painful (with an extension)[https://gist.github.com/jasonm23/53b49dddbd07fa9aafd9a07b6eed6693] to give `JSContext` subscript access to objects via `String` keys.
+
+````swift
+extension JSContext {
+    subscript(_ get: String) -> JSValue! {
+        get {
+            return self.objectForKeyedSubscript(get)
+        }
+        set { fatalError("get: cannot be used to set") }
+    }
+
+    subscript(_ set: String) -> Any! {
+        set {
+            self.setObject(newValue, forKeyedSubscript: set as NSString)
+        }
+        get { fatalError("set: cannot be used to get") }
+    }
+}
+````
 
 #### Memory Management
 
@@ -250,7 +272,7 @@ Before we can use the `Person` class we've created, we need to export it to the 
 
 ````swift
 // export Person class
-context.setObject(Person.self, forKeyedSubscript: "Person")
+context.setObject(Person.self, forKeyedSubscript: "Person" as NSString)
 
 // load Mustache.js
 if let mustacheJSString = String(contentsOfFile:..., encoding:NSUTF8StringEncoding, error:nil) {
