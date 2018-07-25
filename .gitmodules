@@ -1,8 +1,0 @@
-[submodule "nshipster.com/_posts"]
-	path = nshipster.com/_posts
-	url = git@github.com:NSHipster/articles.git
-  ignore = all
-[submodule "nshipster.cn/_posts"]
-	path = nshipster.cn/_posts
-	url = git@github.com:NSHipster/articles.git
-  ignore = all
