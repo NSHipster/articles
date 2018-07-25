@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<h1>Articles</h1>
+
+/images
+{% for post in site.posts %}
+  {% capture currentyear %}{{post.date | date: "%Y"}}{% endcapture %}
+  {% if currentyear != year %}
+    {% unless forloop.first %}</ol></li>{% endunless %}
+    <li>
+      <span class="year">{{ currentyear }}</span>
+      /images
+    {% capture year %}{{currentyear}}{% endcapture %}
+  {% endif %}
+        <li>
+          <span class="title"><a href="{{ post.url }}">{{ post.title }}</a></span>
+          <span><time datetime="{{ post.date | date_to_xmlschema }}" itemprop="datePublished">{{ post.date | ordinalize }}</time></span>
+          {{ post.excerpt | markdownify }}
+        </li>
+{% endfor %}
+</ol>

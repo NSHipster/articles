@@ -1,2 +1,1 @@
-web: bundle exec jekyll serve --config _config.en.yml -w -t --force_polling -P $PORT
-sass: bundle exec sass -l --watch assets/sass:assets/css
+web: bundle exec jekyll serve -P $PORT --limit_posts 1 #--incremental

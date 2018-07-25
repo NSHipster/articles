@@ -1,38 +1,40 @@
 ---
-layout: xml
+layout: null
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:g="http://base.google.com/ns/1.0">
-  <channel>
-    <atom:link href="{{ site.url }}/products.xml" rel="self" type="application/rss+xml"/>
-    <title>{{ site.title }}</title>
-    <description>{{ site.description | strip_html }}</description>
-    <link>{{ site.url }}</link>
-    <language>{{ site.lang }}</language>
-    <lastBuildDate>{{ site.time  | date_to_rfc822 }}</lastBuildDate>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom"
+    xmlns:g="http://base.google.com/ns/1.0">
+    <channel>
+        <atom:link href="{{ site.url }}/products.xml" rel="self" type="application/rss+xml"/>
+        <title>{{ site.title }}</title>
+        <description>{{ site.description | strip_html }}</description>
+        <link>{{ site.url }}</link>
+        <language>{{ site.lang }}</language>
+        <lastBuildDate>{{ site.time  | date_to_rfc822 }}</lastBuildDate>
+        <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     {% for book in site.books %}
-      <item>
-        <title>{{ book.title | xml_escape }}</title>
-        <link>{{ book.book_url }}</link>
-        <description>{{ book.summary | xml_escape }}</description>
-        <g:product_type>{{ book.category | xml_escape }}</g:product_type>
-        <g:google_product_category>{{ book.category | xml_escape }}</g:google_product_category>
-        <g:id>{{ book.name }}</g:id>
-        <g:condition>new</g:condition>
-        <g:price>{{ book.price }} USD</g:price>
-        <g:availability>in stock</g:availability>
-        <g:image_link>{{ book.image }}</g:image_link>
-        <g:brand>NSHipster</g:brand>
-        <g:gtin>{{ book.isbn }}</g:gtin>
-        <g:shipping>
-           <g:country>US</g:country>
-           <g:region>*</g:region>
-           <g:service>Ground</g:service>
-           <g:price>0.00 USD</g:price>
-        </g:shipping>
-      </item>
+        <item>
+            <title>{{ book.title | xml_escape }}</title>
+            <link>{{ book.book_url }}</link>
+            <description>{{ book.summary | xml_escape }}</description>
+            <g:product_type>{{ book.category | xml_escape }}</g:product_type>
+            <g:google_product_category>{{ book.category | xml_escape }}</g:google_product_category>
+            <g:id>{{ book.name }}</g:id>
+            <g:condition>new</g:condition>
+            <g:price>{{ book.price }} USD</g:price>
+            <g:availability>in stock</g:availability>
+            <g:image_link>{{ book.image }}</g:image_link>
+            <g:brand>NSHipster</g:brand>
+            <g:gtin>{{ book.isbn }}</g:gtin>
+            <g:shipping>
+                <g:country>US</g:country>
+                <g:region>*</g:region>
+                <g:service>Ground</g:service>
+                <g:price>0.00 USD</g:price>
+            </g:shipping>
+        </item>
     {% endfor %}
-  </channel>
+    </channel>
 </rss>

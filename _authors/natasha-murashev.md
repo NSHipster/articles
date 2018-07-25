@@ -10,4 +10,10 @@ google: ""
 image: natasha-murashev.jpg
 ---
 
-[Natasha Murashev](https://twitter.com/NatashaTheRobot) is an iOS Engineer at Capital One and secretly a robot. Natasha writes about iOS and Swift on her blog, [NatashaTheRobot.com](http://natashatherobot.com/), and has recently started a [weekly Swift Newsletter](http://swiftnews.curated.co/).
+Natasha (aka [@NatashaTheRobot](https://twitter.com/natashatherobot))
+is an iOS developer by day and a robot by night.
+She organizes the
+[try! Swift Conference](https://www.tryswift.co)
+around the world.
+She's currently living the digital nomad life as her alter identity:
+[@NatashaTheNomad](https://twitter.com/natashathenomad).

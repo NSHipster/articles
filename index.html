@@ -1,5 +1,6 @@
 ---
 title: NSHipster
+permalink: /
 ---
 
 <section id="latest">
@@ -13,12 +14,36 @@ title: NSHipster
 
     <a class="readmore" href="{{ site.posts.first.url }}">Continue Reading</a>
   </article>
+
+  <hr/>
+
+  {% assign latest_revision = site.posts | sort: 'last_revised_on' | last %}
+  {% if latest_revision %}
+    <article>
+      <header>
+        <small>{{ latest_revision.revision_description }}</small>
+        <h1><a href="{{ latest_revision.url }}">{{ latest_revision.title | camel_break }}</a></h1>
+      </header>
+
+      {{ latest_revision.excerpt | markdownify }}
+
+      <a class="readmore" href="{{ latest_revision.url }}">Continue Reading</a>
+    </article>
+  {% endif %}
 </section>
 
-<section id="merchandise">
-  <h1>Merchandise</h1>
+<section id="announcement">
+  {% assign announcement = site.pages | sort: 'date' | last %}
+  <article>
+    <header>
+      <small>Special Announcement</small>
+      <h1><a href="{{ announcement.url }}">{{ announcement.title | camel_break }}</a></h1>
+    </header>
 
-  <a href="http://gumroad.com/nshipster/"><img src="{{ site.asseturl }}/merch.png" alt="NSHipster Merchandise" /></a>
+    {{ announcement.excerpt | markdownify }}
+
+    <a class="readmore" href="{{ announcement.url }}">Continue Reading</a>
+  </article>
 </section>
 
 <section id="recent">
@@ -64,7 +89,9 @@ title: NSHipster
   <ul>
   {% for author in site.authors %}
     <li class="author">
-      <a href="{{ author.url }}"><img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ site.asseturl }}/{{ author.image }}" draggable="false"/></a>
+      <a href="{{ author.url }}">
+      <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{% asset "{{ author.image }}" @path %}" draggable="false"/>
+      </a>
       <a href="{{ author.url }}">{{ author.name }}</a>
     </li>
   {% endfor %}
@@ -88,3 +115,4 @@ title: NSHipster
     </dl>
   {% endfor %}
 </section>
+

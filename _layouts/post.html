@@ -4,7 +4,7 @@ layout: default
 
 {% assign author     = site.authors     | where:"name",page.author     | first %}
 
-<article role="article" itemscope itemtype="http://schema.org/Article">
+<article role="article" itemscope itemtype="https://schema.org/Article">
   <header role="heading">
     <h1 class="title" itemprop="name">
       <a href="{{ page.url }}">{{ page.title | camel_break }}</a>
@@ -12,7 +12,7 @@ layout: default
 
     <h2>
     {% if page.authors %}
-      Written by 
+      Written by
       {% for auth in page.authors %}
           {% if forloop.last %}&{% endif %}
           {% assign author = site.authors | where:"name",auth | first %}
@@ -22,15 +22,29 @@ layout: default
     {% elsif author %}
       Written by <a class="author" href="{{ author.url }}">{{ author.name }}</a> —
     {% endif %}
-    <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+
+    {% if page.last_revised_on %}
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished" hidden aria-hidden="true">{{ page.date | ordinalize }}</time>
+        <time datetime="{{ page.last_revised_on | date_to_xmlschema }}" itemprop="dateModified">{{ page.last_revised_on | ordinalize }}</time>
+    {% else %}
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | ordinalize }}</time>
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="dateModified" hidden aria-hidden="true">{{ page.date | ordinalize }}</time>
+    {% endif %}
+
     {% if page.revisions %}
     (<a href="#revisions">revised</a>)
     {% endif %}
     </h2>
 
+    <link itemprop="image" href="https://nshipster.com/logo.png"/>
+    <meta itemprop="headline" content="{{ page.title }}"/>
+    <div itemprop="publisher" itemscope itemtype="http://schema.org/Organization" hidden aria-hidden="true">
+      <meta itemprop="name" content="NSHipster"/>
+      <meta itemprop="logo" content="https://nshipster.com/logo.png"/>
+    </div>
   </header>
 
-  <div class="content" itemprop="articleBody" data-swiftype-index="true">
+  <div class="content" itemprop="articleBody">
     {{ content }}
   </div>
 
@@ -42,7 +56,7 @@ layout: default
       <p>
       Questions? Corrections?  <a href="https://github.com/NSHipster/articles/issues">Issues</a> and <a href="https://github.com/NSHipster/articles/blob/master/{{ page.path | remove_first:'_posts/' }}">pull requests</a> are always welcome — NSHipster is made better by readers like you.
       </p>
-      
+
       <p>
       {% if page.status.swift and page.status.swift != "t.b.c." and page.status.swift != "n/a" %}
         {% if page.status.reviewed %}
@@ -55,7 +69,7 @@ layout: default
       {% endif %}
       Find status information for all articles on the <a href="/status/">status page</a>.
       </p>
-      
+
       <dl>
       {% for revision in page.revisions %}
         <dt>{{ revision[0] | ordinalize }}</dt>
@@ -76,7 +90,7 @@ layout: default
           <a href="https://www.facebook.com/NSHipster" title="Like NSHipster on Facebook"><i class="icon-facebook" aria-hidden="true"></i></a>
         </li>
         <li class="google-plus">
-          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on G+"><i class="icon-googleplus" aria-hidden="true"></i></a>
+          <a href="https://plus.google.com/+NSHipster" title="Follow NSHipster on Google+"><i class="icon-googleplus" aria-hidden="true"></i></a>
         </li>
         <li class="rss">
           <a href="/feed.xml" title="Subscribe to the NSHipster RSS Feed"><i class="icon-feed" aria-hidden="true"></i></a>
@@ -84,7 +98,7 @@ layout: default
       </ul>
 
       <form action="https://tinyletter.com/NSHipster" method="post" target="popupwindow" onsubmit="window.open('https://tinyletter.com/NSHipster', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-        <label for="tlemail" hidden style="display:none;">Enter Your Email Address</label>
+        <label for="email" hidden style="display:none;">Enter Your Email Address</label>
         <input type="email" name="email" id="tlemail" placeholder="Your Email Address"/>
         <input type="hidden" name="embed" value="1"/>
         <input type="submit" value="Join the Newsletter"/>
@@ -124,13 +138,15 @@ layout: default
       {% if page.category %}
         {% assign category = page.category | downcase %}
         {% assign related = site.categories[category] %}
+        {% comment %} {% assign related = site.related_posts %} {% endcomment %}
       {% endif %}
 
+      {% assign related = related | shuffle %}
+      {% if related %}
       <div id="related">
         <small>Related Articles</small>
 
         <ul>
-          {% assign related = related | shuffle %}
           {% for post in related limit: 4 %}
           {% if page.url != post.url %}
             <li>
@@ -140,6 +156,9 @@ layout: default
           {% endfor %}
         </ul>
       </div>
+      {% endif %}
     </section>
   </footer>
 </article>
+
+{% include json-ld/breadcrumblist.html %}

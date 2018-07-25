@@ -1,7 +1,7 @@
 module Jekyll
   module ShuffleFilter
-    def shuffle(input)
-      input.sort_by{rand}
+    def shuffle(input = [])
+      input.sort_by{rand} rescue input
     end
   end
 end

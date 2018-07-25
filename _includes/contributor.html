@@ -1,15 +1,15 @@
 {% if author %}
-  <div class="contributor" itemprop="author" itemscope itemtype="http://data-vocabulary.org/Person">
+  <div class="contributor" itemprop="author" itemscope itemtype="https://schema.org/Person">
     <small>Written by</small>
 
-    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ site.asseturl }}/{{ author.image }}" draggable="false"/>
+    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{% asset "{{ author.image }}" @path %}" draggable="false"/>
     <div class="details">
       <span itemprop="name"><a href="{{ author.url }}">{{ author.name }}</a></span>
 
       {{ author.content | markdownify }}
 
       {% if author.google %}
-        <a href="https://plus.google.com/{{ author.google }}?rel=author" rel="author"></a>
+        <a href="https://plus.google.com/{{ author.google }}?rel=author" rel="author" hidden aria-hidden="true"></a>
       {% endif %}
     </div>
   </div>

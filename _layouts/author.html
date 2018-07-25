@@ -4,9 +4,9 @@ layout: default
 
 {% assign author = page %}
 
-<article class="author" itemscope itemtype="http://schema.org/Person">
+<article class="author" itemscope itemtype="https://schema.org/Person">
   <header role="heading">
-    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{{ site.asseturl }}/{{ author.image }}" draggable="false"/>
+    <img class="avatar" alt="{{ author.name }}" itemprop="image" src="{% asset "{{ author.image }}" @path %}" draggable="false"/>
     <h1 itemprop="name">{{ author.name }}</h1>
 
     {{ author.content | markdownify }}

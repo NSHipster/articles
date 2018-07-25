@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 600 300" enable-background="new 0 0 600 300" xml:space="preserve">
+<circle fill="none" stroke="#010101" stroke-miterlimit="10" cx="257.9" cy="40.4" r="23.5"/>
+<text transform="matrix(1 0 0 1 246.3535 51.6943)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">+</text>
+<text transform="matrix(1 0 0 1 248.3535 214)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">*</text>
+<text transform="matrix(1 0 0 1 177.1132 119.9746)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">1</text>
+<g>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="198.1" y1="88.1" x2="222.7" y2="63.6"/>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="317.6" y1="86.8" x2="293" y2="62.2"/>
+</g>
+<circle fill="none" stroke="#010101" stroke-miterlimit="10" cx="333.7" cy="115.9" r="23.5"/>
+<text transform="matrix(1 0 0 1 322.1855 125.5723)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="28.5252">%</text>
+<text transform="matrix(1 0 0 1 389.6329 197.5625)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">4</text>
+<g>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="273.9" y1="163.7" x2="298.5" y2="139.1"/>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="393.4" y1="162.4" x2="368.9" y2="137.8"/>
+</g>
+<circle fill="none" stroke="#010101" stroke-miterlimit="10" cx="256.7" cy="192.9" r="23.5"/>
+<g>
+	<text transform="matrix(1 0 0 1 175.9449 272.5625)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">2</text>
+	<text transform="matrix(1 0 0 1 317.6329 272.5625)" fill="#010101" font-family="'MyriadPro-Regular'" font-size="38.6263">3</text>
+</g>
+<g>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="196.9" y1="240.7" x2="221.5" y2="216.1"/>
+	<line fill="none" stroke="#010101" stroke-miterlimit="10" x1="316.4" y1="239.4" x2="291.9" y2="214.8"/>
+</g>
+</svg>

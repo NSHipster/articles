@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+    xmlns:xl="http://www.w3.org/1999/xlink" version="1.1" viewBox="-3 206 565 76" width="565pt" height="76pt">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+        <dc:date>2013-05-06 03:26Z</dc:date>        <!-- Produced by OmniGraffle Professional 5.4.2 --></metadata>
+    <defs>
+        <filter id="Shadow" filterUnits="userSpaceOnUse">
+            <feGaussianBlur in="SourceAlpha" result="blur" stdDeviation="3.488"/>
+            <feOffset in="blur" result="offset" dx="0" dy="4"/>
+            <feFlood flood-color="black" flood-opacity=".75" result="flood"/>
+            <feComposite in="flood" in2="offset" operator="in"/>
+        </filter>
+        <font-face font-family="Helvetica" font-size="14" units-per-em="1000" underline-position="-75.683594" underline-thickness="49.316406" slope="0" x-height="522.94922" cap-height="717.28516" ascent="770.01953" descent="-229.98047" font-weight="500">
+            <font-face-src>
+                <font-face-name name="Helvetica"/>
+            </font-face-src>
+        </font-face>
+        <marker orient="auto" overflow="visible" markerUnits="strokeWidth" id="FilledArrow_Marker" viewBox="-1 -4 10 8" markerWidth="10" markerHeight="8" color="black">
+            <g>
+                <path d="M 8 0 L 0 -3 L 0 3 Z" fill="currentColor" stroke="currentColor" stroke-width="1"/>
+            </g>
+        </marker>
+    </defs>
+    <g stroke="none" stroke-opacity="1" stroke-dasharray="none" fill="none" fill-opacity="1">
+        <title>Canvas 1</title>
+        <g>
+            <title>Layer 1</title>
+            <g>
+                <use xl:href="#id1_Graphic" filter="url(#Shadow)"/>
+                <use xl:href="#id19_Graphic" filter="url(#Shadow)"/>
+                <use xl:href="#id20_Graphic" filter="url(#Shadow)"/>
+                <use xl:href="#id3_Graphic" filter="url(#Shadow)"/>
+            </g>
+            <g id="id1_Graphic">
+                <path d="M 24.25 222 L 97.75 222 C 106.444 222 113.5 230.064 113.5 240 C 113.5 249.936 106.444 258 97.75 258 L 24.25 258 C 15.556 258 8.5 249.936 8.5 240 C 8.5 230.064 15.556 222 24.25 222" fill="white"/>
+                <path d="M 24.25 222 L 97.75 222 C 106.444 222 113.5 230.064 113.5 240 C 113.5 249.936 106.444 258 97.75 258 L 24.25 258 C 15.556 258 8.5 249.936 8.5 240 C 8.5 230.064 15.556 222 24.25 222" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                <text transform="translate(24 231.5)" fill="black">
+                    <tspan font-family="Helvetica" font-size="14" font-weight="500" x="14.820801" y="14" textLength="44.358398">Source</tspan>
+                </text>
+            </g>
+            <g id="id19_Graphic">
+                <rect x="141.5" y="213" width="105" height="54" fill="white"/>
+                <rect x="141.5" y="213" width="105" height="54" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                <text transform="translate(146.5 231.5)" fill="black">
+                    <tspan font-family="Helvetica" font-size="14" font-weight="500" x="31.944824" y="14" textLength="31.110352">Filter</tspan>
+                </text>
+            </g>
+            <g id="id20_Graphic">
+                <rect x="297" y="213" width="105" height="54" fill="white"/>
+                <rect x="297" y="213" width="105" height="54" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                <text transform="translate(302 231.5)" fill="black">
+                    <tspan font-family="Helvetica" font-size="14" font-weight="500" x="31.944824" y="14" textLength="31.110352">Filter</tspan>
+                </text>
+            </g>
+            <g id="id3_Graphic">
+                <path d="M 498 219 L 550.5 240 L 498 261 L 445.5 240 Z" fill="white"/>
+                <path d="M 498 219 L 550.5 240 L 498 261 L 445.5 240 Z" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+                <text transform="translate(464.675 231.08)" fill="black">
+                    <tspan font-family="Helvetica" font-size="14" font-weight="500" x="13.361328" y="14" textLength="42.027344">Output</tspan>
+                </text>
+            </g>
+            <path d="M 113.5 240 L 125.4 240 L 129.6 240 L 131.6 240" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+            <path d="M 246.5 240 L 258.4 240 L 285.1 240 L 287.1 240" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+            <path d="M 402 240 L 413.9 240 L 433.6 240 L 435.6 240" marker-end="url(#FilledArrow_Marker)" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+    </g>
+</svg>

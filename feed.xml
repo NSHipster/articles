@@ -1,32 +1,34 @@
 ---
-layout: rss
+layout: null
 ---
 
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
-    <title>{{ site.title }}</title>
-    <description>{{ site.description | strip_html }}</description>
-    <link>{{ site.url }}</link>
-    <language>{{ site.lang }}</language>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <pubDate>{{ site.posts.first.date | date_to_rfc822 }}</pubDate>
-    <copyright>Released under a Creative Commons BY-NC License</copyright>
-    <webMaster>nate@nshipster.com (Nate Cook)</webMaster>
-    <managingEditor>nate@nshipster.com (Nate Cook)</managingEditor>
+<rss version="2.0"
+    xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml"/>
+        <title>{{ site.title }}</title>
+        <description>{{ site.description | strip_html }}</description>
+        <link>{{ site.url }}</link>
+        <language>{{ site.lang }}</language>
+        <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+        <pubDate>{{ site.posts.first.date | date_to_rfc822 }}</pubDate>
+        <copyright>Released under a Creative Commons BY-NC License</copyright>
+        <webMaster>nate@nshipster.com (Nate Cook)</webMaster>
+        <managingEditor>nate@nshipster.com (Nate Cook)</managingEditor>
     {% for post in site.posts limit: 25 %}
       {% assign author = site.authors | where:"name",post.author | first %}
-      <item>
-        <title>{{ post.title | replace:'<br/>',' ' | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
+        <item>
+            <title>{{ post.title | replace:'                <br/>
+',' ' | xml_escape }}</title>
+            <description>{{ post.content | xml_escape }}</description>
         {% if author %}
-        <author>{{ author.email }} ({{ author.name }})</author>
+            <author>{{ author.email }} ({{ author.name }})</author>
         {% endif %}
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ site.url }}{{ post.url }}</link>
-        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
-      </item>
+            <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+            <link>{{ site.url }}{{ post.url }}</link>
+            <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+        </item>
     {% endfor %}
-  </channel>
+    </channel>
 </rss>
