@@ -1,6 +1,6 @@
 ---
 title: The Death of Cocoa
-author: Mattt Thompson
+author: Mattt
 category: ""
 excerpt: "For many of us, the simplicity, elegance, and performance of Apple's hardware and software working together are the reason why we build on their platforms. And yet, after just a few months of working with Swift, Cocoa has begun to lose its luster."
 status:
@@ -30,7 +30,7 @@ We owe all of our productivity to standard libraries.
 
 When done well, standard libraries not only provide a common implementation of the most useful programming constructs, but they clarify those concepts in a transferable way. It's when a language's standard library diverges from existing (or even internal) convention that [things go south](http://eev.ee/blog/2012/04/09/php-a-fractal-of-bad-design/).
 
-For example, [`NSURLComponents`](http://nshipster.com/nsurl/) conforms to [RFC 3986](http://www.ietf.org/rfc/rfc3986)—a fact made explicit [in the documentation](https://developer.apple.com/library/prerelease/ios/documentation/Foundation/Reference/NSURLComponents_class/index.html). Not only do API consumers osmotically absorb the proper terminology and concepts as a byproduct of usage, but newcomers to the API that are already familiar with RFC 3986 can hit the ground running. (And how much easier it is to write documentation; just "RTFM" with a link to the spec!)
+For example, [`NSURLComponents`](https://nshipster.com/nsurl/) conforms to [RFC 3986](http://www.ietf.org/rfc/rfc3986)—a fact made explicit [in the documentation](https://developer.apple.com/library/prerelease/ios/documentation/Foundation/Reference/NSURLComponents_class/index.html). Not only do API consumers osmotically absorb the proper terminology and concepts as a byproduct of usage, but newcomers to the API that are already familiar with RFC 3986 can hit the ground running. (And how much easier it is to write documentation; just "RTFM" with a link to the spec!)
 
 Standard libraries should implement standards.
 
@@ -42,23 +42,23 @@ Based on this assertion, let's take a look at some specific examples of what Coc
 
 `NSNumber` exists purely as an object wrapper around integer, float, double, and boolean primitives. Without such concerns in Swift, there is no practical role for such a construct.
 
-Swift's standard library has done a remarkable job in structuring its numeric primitives, through a clever combination of [top-level functions and operators](http://nshipster.com/swift-default-protocol-implementations/) and type hierarchies. (And bonus points for including [literals for binary, octal, and hexadecimal in addition to decimal](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_487)). For lack of any real complaints about what's currently there, here are some suggestions for what might be added:
+Swift's standard library has done a remarkable job in structuring its numeric primitives, through a clever combination of [top-level functions and operators](https://nshipster.com/swift-default-protocol-implementations/) and type hierarchies. (And bonus points for including [literals for binary, octal, and hexadecimal in addition to decimal](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_487)). For lack of any real complaints about what's currently there, here are some suggestions for what might be added:
 
 - A suitable replacement for `NSDecimalNumber`. Swift `Double`s are [documented as having 64-bit](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/TheBasics.html#//apple_ref/doc/uid/TP40014097-CH5-XID_484), while `NSDecimalNumber` can represent ["any number that can be expressed as `mantissa x 10^exponent` where mantissa is a decimal integer up to 38 digits long, and exponent is an integer from `–128` through `127`"](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/Foundation/Classes/NSDecimalNumber_Class/index.html). In the meantime, [this gist](https://gist.github.com/mattt/1ed12090d7c89f36fd28) provides some of the necessary additions to work with `NSDecimalNumber` in Swift as one would any of the native numeric types.
 - Complex number support, such as what's described in [this gist](https://gist.github.com/mattt/0576b9e4396ab5645aa9).
-- Simple native methods for [generating random numbers](http://nshipster.com/random/). [This gist](https://gist.github.com/mattt/f2ee2eed3570d1a9d644) has some examples of what that might look like.
+- Simple native methods for [generating random numbers](https://nshipster.com/random/). [This gist](https://gist.github.com/mattt/f2ee2eed3570d1a9d644) has some examples of what that might look like.
 - Methods that take advantage of overloading to provide a uniform interface to performing calculations on one or many numbers, such as those in [Surge](https://github.com/mattt/surge).
 - For Playgrounds, a framework with built-in mathematical notation, such as [Euler](https://github.com/mattt/euler), could make for a neat teaching tool.
 
 ### Strings
 
-The peril of strings is that they can encode so many different kinds of information. [As written previously](http://nshipster.com/nslocalizedstring/):
+The peril of strings is that they can encode so many different kinds of information. [As written previously](https://nshipster.com/nslocalizedstring/):
 
 > Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information.
 
 `NSString` is perhaps _too_ versatile, though. Although it handles Unicode like a champ, the entire API is burdened by the conflation of strings as paths. `stringByAppendingPathComponent:` and its ilk are genuinely useful, but this usefulness ultimately stems from a misappropriation of strings as URLs.
 
-Much of this is due to the fact that `@"this"` (a string literal) is much more convenient than `[NSURL URLWithString:@"that"]` (a constructor). However, with [Swift's literal convertibles](http://nshipster.com/swift-literal-convertible/), it can be just as easy to build URL or Path values.
+Much of this is due to the fact that `@"this"` (a string literal) is much more convenient than `[NSURL URLWithString:@"that"]` (a constructor). However, with [Swift's literal convertibles](https://nshipster.com/swift-literal-convertible/), it can be just as easy to build URL or Path values.
 
 One of the truly clever design choices for Swift's `String` is the internal use of encoding-independent Unicode characters, with exposed "views" to specific encodings:
 
@@ -66,7 +66,7 @@ One of the truly clever design choices for Swift's `String` is the internal use 
 > - A collection of UTF-16 code units (accessed with the string’s `utf16` property)
 > - A collection of 21-bit Unicode scalar values, equivalent to the string’s UTF-32 encoding form (accessed with the string's `unicodeScalars` property)
 
-One of the only complaints of Swift `String`s are how much of its functionality is hampered by the way functionality is hidden in top-level functions. Most developers are trained to type `.` and wait for method completion for something like "count"; it's less obvious to consult the top-level `countElements` function. (Again, as described in the [Default Protocol Implementations article](http://nshipster.com/swift-default-protocol-implementations/), this could be solved if either Xcode or Swift itself allowed automatic bridging of explicit and implicit self in functions).
+One of the only complaints of Swift `String`s are how much of its functionality is hampered by the way functionality is hidden in top-level functions. Most developers are trained to type `.` and wait for method completion for something like "count"; it's less obvious to consult the top-level `countElements` function. (Again, as described in the [Default Protocol Implementations article](https://nshipster.com/swift-default-protocol-implementations/), this could be solved if either Xcode or Swift itself allowed automatic bridging of explicit and implicit self in functions).
 
 ### URI, URL, and URN
 
@@ -80,15 +80,15 @@ Building on these strong primitives, it is remarkably easy to create production-
 
 It'd be amazing if the Swift standard library provided canonical implementations of a bunch of these (e.g. Tree, Singly- Doubly-Linked Lists, Queue / Stack). But I'll only make the case for one: Set.
 
-The three big collections in Foundation are `NSArray`, `NSDictionary`, and `NSSet` (and their mutable counterparts). Of these, `Set` is the only one currently missing. As a fundamental data structure, they are applicable to a wide variety of use cases. Specifically for Swift, though, `Set` could resolve one of the more awkward corners of the language—[RawOptionSetType](http://nshipster.com/rawoptionsettype/).
+The three big collections in Foundation are `NSArray`, `NSDictionary`, and `NSSet` (and their mutable counterparts). Of these, `Set` is the only one currently missing. As a fundamental data structure, they are applicable to a wide variety of use cases. Specifically for Swift, though, `Set` could resolve one of the more awkward corners of the language—[RawOptionSetType](https://nshipster.com/rawoptionsettype/).
 
-> For your consideration, [Nate Cook](http://nshipster.com/authors/nate-cook/) has built [a nice, complete implementation of `Set`](http://natecook.com/blog/2014/08/creating-a-set-type-in-swift/).
+> For your consideration, [Nate Cook](https://nshipster.com/authors/nate-cook/) has built [a nice, complete implementation of `Set`](http://natecook.com/blog/2014/08/creating-a-set-type-in-swift/).
 
 ### Dates & Times
 
 The calendaring functionality is some of the oldest and most robust in Cocoa. Whereas with most other languages, date and time programming is cause for fear, one does not get the same sense of dread when working with `NSDate` and `NSCalendar`. However, it suffers from being difficult to use and impossible to extend.
 
-In order to do any calendaring calculations, such as getting the date one month from today, one would use `NSCalendar` and [`NSDateComponents`](http://nshipster.com/nsdatecomponents/). That's the _correct_ way to do it, at least... a majority of developers probably still use `dateWithTimeIntervalSinceNow:` with a constant number of seconds hardcoded. Tragically, it's not enough for an API to do things the right way, it must also be easier than doing it the wrong way.
+In order to do any calendaring calculations, such as getting the date one month from today, one would use `NSCalendar` and [`NSDateComponents`](https://nshipster.com/nsdatecomponents/). That's the _correct_ way to do it, at least... a majority of developers probably still use `dateWithTimeIntervalSinceNow:` with a constant number of seconds hardcoded. Tragically, it's not enough for an API to do things the right way, it must also be easier than doing it the wrong way.
 
 Another shortfall (albeit incredibly minor) of `NSCalendar` is that it doesn't allow for new calendars to be added. For someone doing their darnedest to advocate conversion to the [French Republican Calendar](http://en.wikipedia.org/wiki/French_Republican_Calendar), this is bothersome.
 
@@ -111,7 +111,7 @@ if let JSON = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: 
 }
 ```
 
-```objective-c
+```objc
 NSData *data;
 NSError *error = nil;
 id JSON = [NSJSONSerialization JSONObjectWithData:data
@@ -138,9 +138,9 @@ Regexes are a staple of scripting languages—enough so that they often have a d
 
 ### Errors
 
-Objective-C is rather exceptional in [how it uses error pointers](http://nshipster.com/nserror/) (`NSError **`) to communicate runtime failures rather than `@throw`-ing exceptions. It's a pattern every Cocoa developer should be familiar with:
+Objective-C is rather exceptional in [how it uses error pointers](https://nshipster.com/nserror/) (`NSError **`) to communicate runtime failures rather than `@throw`-ing exceptions. It's a pattern every Cocoa developer should be familiar with:
 
-```objective-c
+```objc
 NSError *error = nil;
 BOOL success = [[NSFileManager defaultManager] moveItemAtPath:@"/path/to/target"
                                                        toPath:@"/path/to/destination"
@@ -218,7 +218,7 @@ But other things, like [converting miles to kilometers](http://reference.wolfram
 
 Indeed, what sets Cocoa apart from most other standard libraries is all of the specific information it encodes in `NSLocale` and `NSCalendar`, but most of this comes from the [Unicode Common Locale Data Repository (CLDR)](http://cldr.unicode.org).
 
-What's to stop a standard library from pulling in other data sources? Why not expose an interface to [libphonenumber](https://github.com/googlei18n/libphonenumber), or expand on what [HealthKit is already doing](http://nshipster.com/nsformatter/#mass,-length,-&-energy-formatters) for fundamental units?
+What's to stop a standard library from pulling in other data sources? Why not expose an interface to [libphonenumber](https://github.com/googlei18n/libphonenumber), or expand on what [HealthKit is already doing](https://nshipster.com/nsformatter/#mass,-length,-&-energy-formatters) for fundamental units?
 
 Incorporating this kind of data in an organized, meaningful way is too much to expect for a third-party framework, and too important to delegate to the free market of open source.
 

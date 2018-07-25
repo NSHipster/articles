@@ -7,7 +7,7 @@ status:
     swift: 1.2
 ---
 
-Strings are a ubiquitous and diverse part of our computing lives. They comprise emails and essays, poems and novels—and indeed, every article on [nshipster.com](http://nshipster.com), the configuration files that shape the site, and the code that builds it.
+Strings are a ubiquitous and diverse part of our computing lives. They comprise emails and essays, poems and novels—and indeed, every article on [nshipster.com](https://nshipster.com), the configuration files that shape the site, and the code that builds it.
 
 Being able to pull apart strings and extract particular bits of data is therefore a powerful skill, one that we use over and over building apps and shaping our tools.  Cocoa provides a powerful set of tools to handle string processing. In particular:
 
@@ -50,7 +50,8 @@ stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet
 
 // using the latest Swift 1.2 beta 2 syntax:
 var name: NSString?
-while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name)
+while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoString: &name), 
+        let name = name
 {
     println(name)
 }
@@ -60,7 +61,7 @@ while stringScanner.scanUpToCharactersFromSet(whitespaceAndPunctuationSet, intoS
 // George
 ````
 
-````objective-c
+````objc
 NSMutableCharacterSet *whitespaceAndPunctuationSet = [NSMutableCharacterSet punctuationCharacterSet];
 [whitespaceAndPunctuationSet formUnionWithCharacterSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 
@@ -143,7 +144,7 @@ benzinPriceScanner.scanDouble(&price)
 // 1.38
 ````
 
-````objective-c
+````objc
 double price;
 NSScanner *gasPriceScanner = [[NSScanner alloc] initWithString:@"2.09 per gallon"];
 [gasPriceScanner scanDouble:&price];
@@ -175,7 +176,7 @@ extension CGPoint {
     }
 }
 ````
-````objective-c
+````objc
 static NSString *const svgPathData = @"M28.2,971.4c-10,0.5-19.1,13.3-28.2,2.1c0,15.1,23.7,30.5,39.8,16.3c16,14.1,39.8-1.3,39.8-16.3c-12.5,15.4-25-14.4-39.8,4.5C35.8,972.7,31.9,971.2,28.2,971.4z";
 
 CGPoint offsetPoint(CGPoint p1, CGPoint p2) {
@@ -199,7 +200,7 @@ func bezierPathFromSVGPath(str: String) -> UIBezierPath {
     // the resulting bezier path
     var path = UIBezierPath()
 ````
-````objective-c
+````objc
 - (UIBezierPath *)bezierPathFromSVGPath:(NSString *)str {
     NSScanner *scanner = [NSScanner scannerWithString:str];
     
@@ -222,7 +223,7 @@ With the setup out of the way, it's time to start scanning. We start by scanning
     // scan for an instruction code
     while scanner.scanCharactersFromSet(instructionSet, intoString: &instruction) {
 ````
-````objective-c
+````objc
     // instructions codes can be upper- or lower-case
     NSCharacterSet *instructionSet = [NSCharacterSet characterSetWithCharactersInString:@"MCSQTAmcsqta"];
     NSString *instruction;
@@ -260,7 +261,7 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
     return path
 }
 ````
-````objective-c
+````objc
         double x, y;
         NSMutableArray *points = [NSMutableArray array];
         
@@ -294,7 +295,7 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
 
 Lo and behold, the result:
 
-![NSMustacheScanner]({{ site.asseturl }}/nsscanner-rendered.gif)
+![NSMustacheScanner]({% asset nsscanner-rendered.gif @path %})
 
 The required flipping, resizing, waxing, and twirling are left as an exercise for the reader.
 

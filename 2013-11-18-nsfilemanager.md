@@ -1,6 +1,6 @@
 ---
 title: NSFileManager
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "File systems are a complex topic, with decades of history, vestigial complexities, and idiosyncrasies, and is well outside the scope of a single article. And since most applications don't often interact with the file system much beyond simple file operations, one can get away with only knowing the basics."
@@ -20,16 +20,16 @@ What follows are some code samples for your copy-pasting pleasure. Use them as a
 
 ### Determining If A File Exists
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 NSString *filePath = [documentsPath stringByAppendingPathComponent:@"file.txt"];
 BOOL fileExists = [fileManager fileExistsAtPath:filePath];
-~~~
+```
 
 ### Listing All Files In A Directory
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
 NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
@@ -41,11 +41,11 @@ NSPredicate *predicate = [NSPredicate predicateWithFormat:@"pathExtension == 'pn
 for (NSURL *fileURL in [contents filteredArrayUsingPredicate:predicate]) {
     // Enumerate each .png file in directory
 }
-~~~
+```
 
 ## Recursively Enumerating Files In A Directory
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
 NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:bundleURL
@@ -79,22 +79,22 @@ for (NSURL *fileURL in enumerator) {
         [mutableFileURLs addObject:fileURL];
     }
 }
-~~~
+```
 
 ### Creating a Directory
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 NSString *imagesPath = [documentsPath stringByAppendingPathComponent:@"images"];
 if (![fileManager fileExistsAtPath:imagesPath]) {
     [fileManager createDirectoryAtPath:imagesPath withIntermediateDirectories:NO attributes:nil error:nil];
 }
-~~~
+```
 
 ### Deleting a File
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 NSString *filePath = [documentsPath stringByAppendingPathComponent:@"image.png"];
@@ -103,11 +103,11 @@ NSError *error = nil;
 if (![fileManager removeItemAtPath:filePath error:&error]) {
     NSLog(@"[Error] %@ (%@)", error, filePath);
 }
-~~~
+```
 
 ### Determining the Creation Date of a File
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 NSString *filePath = [documentsPath stringByAppendingPathComponent:@"Document.pages"];
@@ -117,7 +117,7 @@ if ([fileManager fileExistsAtPath:filePath]) {
     NSDictionary *attributes = [fileManager attributesOfItemAtPath:filePath error:nil];
     creationDate = attributes[NSFileCreationDate];
 }
-~~~
+```
 
 There are a number of file attributes that are made accessible through `NSFileManager`, which can be fetched with `-attributesOfItemAtPath:error:`, and other methods:
 
@@ -162,7 +162,7 @@ If you were wondering when you might `alloc init` your own `NSFileManager` rathe
 
 > If you use a delegate to receive notifications about the status of move, copy, remove, and link operations, you should create a unique instance of the file manager object, assign your delegate to that object, and use that file manager to initiate your operations.
 
-~~~{objective-c}
+```objc
 NSFileManager *fileManager = [[NSFileManager alloc] init];
 fileManager.delegate = delegate;
 
@@ -175,11 +175,11 @@ NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
 for (NSString *filePath in contents) {
     [fileManager removeItemAtPath:filePath error:nil];
 }
-~~~
+```
 
 #### CustomFileManagerDelegate.m
 
-~~~{objective-c}
+```objc
 #pragma mark - NSFileManagerDelegate
 
 - (BOOL)fileManager:(NSFileManager *)fileManager
@@ -187,7 +187,7 @@ shouldRemoveItemAtURL:(NSURL *)URL
 {
     return ![[[URL lastPathComponent] pathExtension] isEqualToString:@"pdf"];
 }
-~~~
+```
 
 ## Ubiquitous Storage
 
@@ -197,7 +197,7 @@ This is another occasion when you'd `alloc init` your own `NSFileManager` rather
 
 ### Moving an Item to Ubiquitous Storage
 
-~~~{objective-c}
+```objc
 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSString *documentsPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
@@ -218,7 +218,7 @@ dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0),
         NSLog(@"[Error] %@ (%@) (%@)", error, fileURL, ubiquitousFileURL);
     }
 });
-~~~
+```
 
 > You can find more information about ubiquitous document storage in Apple's "iCloud File Management" document.
 

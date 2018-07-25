@@ -16,7 +16,7 @@ But here's the thing: the APIs you're already using have been holding out on you
 ```swift
 let calendar = NSCalendar.currentCalendar()
 ```
-```objective-c
+```objc
 NSCalendar *calendar = [NSCalendar currentCalendar];
 ```
 
@@ -30,7 +30,7 @@ Oh, `NSDateComponents`. So practical and flexible, yet so cumbersome when I just
 ```swift
 let hour = calendar.component(.CalendarUnitHour, fromDate: NSDate())
 ```
-```objective-c
+```objc
 NSInteger hour = [calendar component:NSCalendarUnitHour fromDate:[NSDate date]];
 ```
 That's much better. `NSCalendar`, what else can you do?
@@ -84,7 +84,7 @@ let valentines = cal.dateWithEra(1, year: 2015, month: 2, day: 14, hour: 9, minu
 let components = NSDateComponents()
 components.day = 31
 ```
-```objective-c
+```objc
 NSDate *valentines = [calendar dateWithEra:1 year:2015 month:2 day:14 hour:9 minute:0 second:0 nanosecond:0];
     
 NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -97,7 +97,7 @@ Using strict matching will find the next day that matches `31`, skipping into Ma
 calendar.nextDateAfterDate(valentines, matchingComponents: components, options: .MatchStrictly)
 // Mar 31, 2015, 12:00 AM
 ```
-```objective-c
+```objc
 NSDate *date = [calendar nextDateAfterDate:valentines matchingComponents:components options:NSCalendarMatchStrictly];
 // Mar 31, 2015, 12:00 AM
 ```
@@ -108,7 +108,7 @@ Without strict matching, `nextDateAfterDate` will stop when it hits the end of F
 calendar.nextDateAfterDate(valentines, matchingComponents: components, options: .MatchNextTime)
 // Mar 1, 2015, 12:00 AM
 ```
-```objective-c
+```objc
 date = [calendar nextDateAfterDate:valentines matchingComponents:components options:NSCalendarMatchNextTime];
 // Mar 1, 2015, 12:00 AM
 ```
@@ -119,7 +119,7 @@ Similarly, using `.MatchNextTimePreservingSmallerUnits` will pick the next day, 
 calendar.nextDateAfterDate(valentines, matchingComponents: components, options: .MatchNextTimePreservingSmallerUnits)
 // Mar 1, 2015, 9:00 AM
 ```
-```objective-c
+```objc
 date = [calendar nextDateAfterDate:valentines matchingComponents:components options:NSCalendarMatchNextTimePreservingSmallerUnits];
 // Mar 1, 2015, 9:00 AM
 ```
@@ -130,7 +130,7 @@ And finally, using `.MatchPreviousTimePreservingSmallerUnits` will resolve the m
 calendar.nextDateAfterDate(valentines, matchingComponents: components, options: .MatchPreviousTimePreservingSmallerUnits)
 // Feb 28, 2015, 9:00 AM
 ```
-```objective-c
+```objc
 date = [calendar nextDateAfterDate:valentines matchingComponents:components options:NSCalendarMatchPreviousTimePreservingSmallerUnits];
 // Feb 28, 2015, 9:00 AM
 ```
@@ -146,7 +146,7 @@ cal.nextDateAfterDate(valentines, matchingUnit: .CalendarUnitDay, value: 31, opt
 cal.nextDateAfterDate(valentines, matchingHour: 15, minute: 30, second: 0, options: .MatchNextTime)
 // Feb 14, 2015, 3:30 PM
 ```
-```objective-c
+```objc
 // matching a particular calendar unit
 date = [calendar nextDateAfterDate:valentines matchingUnit:NSCalendarUnitDay value:31 options:NSCalendarMatchStrictly];
 // March 31, 2015, 12:00 AM
@@ -183,7 +183,7 @@ cal.enumerateDatesStartingAfterDate(NSDate(), matchingComponents: leapYearCompon
 // 2000-02-29 05:00:00 +0000
 // ...
 ```
-```objective-c
+```objc
 NSDateComponents *leapYearComponents = [[NSDateComponents alloc] init];
 leapYearComponents.month = 2;
 leapYearComponents.day = 29;

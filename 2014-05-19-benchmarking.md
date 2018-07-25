@@ -1,6 +1,6 @@
 ---
 title: Benchmarking
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Abstractions are necessary for doing meaningful work, but they come at a cost. By benchmarking, a programmer can uncover the hidden performance characteristics of their code, and use this information to optimize accordingly."
 status:
@@ -44,14 +44,14 @@ For this example, let's take a look at the performance characteristics of adding
 
 To establish a benchmark, we specify a `count` of objects to add, and the number of `iterations` to run this process.
 
-```objective-c
+```objc
 static size_t const count = 1000;
 static size_t const iterations = 10000;
 ```
 
 Since we're not testing the stack allocation of objects, we declare the object to be added to the array once, outside of the benchmark.
 
-```objective-c
+```objc
 id object = @"🐷";
 ```
 
@@ -63,7 +63,7 @@ Benchmarking is as simple as taking the time before running, and comparing it ag
 
 Putting it all together, here's a simple way to benchmark code in Objective-C:
 
-```objective-c
+```objc
 CFTimeInterval startTime = CACurrentMediaTime();
 {
     for (size_t i = 0; i < iterations; i++) {
@@ -91,7 +91,7 @@ Allow me to introduce you to `dispatch_benchmark`.
 
 `dispatch_benchmark` is part of [`libdispatch`](http://libdispatch.macosforge.org), a.k.a Grand Central Dispatch. Curiously, though, this function is not publicly declared, so you'll have to do that yourself:
 
-```objective-c
+```objc
 extern uint64_t dispatch_benchmark(size_t count, void (^block)(void));
 ```
 
@@ -116,7 +116,7 @@ If you happened to skim all of that, be encouraged to read through that again—
 
 Here's what the previous example looks like if we were to use `dispatch_benchmark` instead:
 
-```objective-c
+```objc
 uint64_t t = dispatch_benchmark(iterations, ^{
     @autoreleasepool {
         NSMutableArray *mutableArray = [NSMutableArray array];
@@ -138,7 +138,7 @@ For this example, let's consider the age-old question of "What difference does p
 
 Let's find out:
 
-```objective-c
+```objc
 uint64_t t_0 = dispatch_benchmark(iterations, ^{
     @autoreleasepool {
         NSMutableArray *mutableArray = [NSMutableArray array];

@@ -1,6 +1,6 @@
 ---
 title: UIMenuController
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population."
@@ -15,7 +15,7 @@ Yet despite its advances, one can't help but feel occasionally... trapped.
 
 All too often, there will be information on the screen that you _just can't access_. Whether its flight information stuck in a table view cell or an unlinked URL, users are forced to solve problems creatively for lack of a provided solution.
 
-In the past, we've mentioned [localization](http://nshipster.com/nslocalizedstring) and [accessibility](http://nshipster.com/uiaccessibility) as two factors that distinguish great apps from the rest of the pack. This week, we'll add another item to that list: **Edit Actions**.
+In the past, we've mentioned [localization](https://nshipster.com/nslocalizedstring) and [accessibility](https://nshipster.com/uiaccessibility) as two factors that distinguish great apps from the rest of the pack. This week, we'll add another item to that list: **Edit Actions**.
 
 ### Copy, Cut, Paste, Delete, Select
 
@@ -23,7 +23,7 @@ iOS 3's killer feature was undoubtedly push notifications, but the ability to co
 
 This may be due to how cumbersome it is to implement. Let's look at a simple implementation, and then dive into some specifics about the APIs. First the label itself:
 
-~~~{swift}
+```swift
 class HipsterLabel : UILabel {
     override func canBecomeFirstResponder() -> Bool {
         return true
@@ -39,8 +39,8 @@ class HipsterLabel : UILabel {
         UIPasteboard.generalPasteboard().string = text
     }    
 }
-~~~
-~~~{objective-c}
+```
+```objc
 // HipsterLabel.h
 @interface HipsterLabel : UILabel
 @end
@@ -65,11 +65,11 @@ class HipsterLabel : UILabel {
 }
 
 @end
-~~~
+```
 
 And with that out of the way, the view controller that uses it:
 
-~~~{swift}
+```swift
 override func viewDidLoad() {
 	super.viewDidLoad()
 	
@@ -84,19 +84,17 @@ override func viewDidLoad() {
 // MARK: - UIGestureRecognizer
 
 func handleLongPressGesture(recognizer: UIGestureRecognizer) {
-    guard recognizer.state == .Recognized else { return }
-        
-    if let recognizerView = recognizer.view,
-        let recognizerSuperView = recognizerView.superview
-        where recognizerView.becomeFirstResponder()
-    {
-        let menuController = UIMenuController.sharedMenuController()
-        menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
-        menuController.setMenuVisible(true, animated:true)
-    }
+	if let recognizerView = recognizer.view,
+		recognizerSuperView = recognizerView.superview
+	{
+		let menuController = UIMenuController.sharedMenuController()
+		menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
+		menuController.setMenuVisible(true, animated:true)
+		recognizerView.becomeFirstResponder()
+	}
 }
-~~~
-~~~{objective-c}
+```
+```objc
 - (void)viewDidLoad {
 	HipsterLabel *label = ...;
 	label.userInteractionEnabled = YES;
@@ -109,13 +107,14 @@ func handleLongPressGesture(recognizer: UIGestureRecognizer) {
 #pragma mark - UIGestureRecognizer
 
 - (void)handleLongPressGesture:(UIGestureRecognizer *)recognizer  {
-    if (recognizer.state == UIGestureRecognizerStateRecognized && [recognizer.view becomeFirstResponder]) {
+    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+        [recognizer.view becomeFirstResponder];
         UIMenuController *menuController = [UIMenuController sharedMenuController];
         [menuController setTargetRect:recognizer.view.frame inView:recognizer.view.superview];
         [menuController setMenuVisible:YES animated:YES];
     }
 }
-~~~
+```
 
 So, to recap, in order to allow a label's text to be copied, the following must happen:
 

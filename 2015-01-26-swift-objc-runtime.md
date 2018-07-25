@@ -18,26 +18,26 @@ This week we take a new, Swift-focused look at two runtime techniques covered on
 
 ## Associated Objects
 
-Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they're limited in the same way as their Objective-C brethren, categories. Namely, you can't add a *stored property* to an existing class via an extension.
+Swift extensions allow for great flexibility in adding to the functionality of existing Cocoa classes, but they're limited in the same way as their Objective-C brethren, categories. Namely, you can't add a property to an existing class via an extension.
 
-Happily, Objective-C *associated objects* come to the rescue again, by acting as the storage for computed properties. For example, to add a `descriptiveName` property to all the view controllers in a project, we add a computed property using `objc_get/setAssociatedObject()` in the backing `get` and `set` blocks:
+Happily, Objective-C *associated objects* come to the rescue. For example, to add a `descriptiveName` property to all the view controllers in a project, we simply add a computed property using `objc_get/setAssociatedObject()` in the backing `get` and `set` blocks:
 
 ````swift
 extension UIViewController {
     private struct AssociatedKeys {
-        static var descriptiveName = "nsh_DescriptiveName"
+        static var DescriptiveName = "nsh_DescriptiveName"
     }
 
     var descriptiveName: String? {
         get {
-            return objc_getAssociatedObject(self, &AssociatedKeys.descriptiveName) as? String
+            return objc_getAssociatedObject(self, &AssociatedKeys.DescriptiveName) as? String
         }
 
         set {
             if let newValue = newValue {
                 objc_setAssociatedObject(
                     self,
-                    &AssociatedKeys.descriptiveName,
+                    &AssociatedKeys.DescriptiveName,
                     newValue as NSString?,
                     .OBJC_ASSOCIATION_RETAIN_NONATOMIC
                 )
@@ -80,7 +80,7 @@ extension UIViewController {
             if didAddMethod {
                 class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
             } else {
-                method_exchangeImplementations(originalMethod, swizzledMethod)
+                method_exchangeImplementations(originalMethod, swizzledMethod);
             }
         }
     }

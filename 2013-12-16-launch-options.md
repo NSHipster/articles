@@ -1,6 +1,6 @@
 ---
 title: UIApplicationDelegate launchOptions
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "AppDelegate is the dumping ground for functionality in iOS."
 status:
@@ -33,9 +33,9 @@ Numerous as they are, `launchOptions` keys can be more easily understood when or
 
 Apps can launch other apps by passing URLs:
 
-~~~{objective-c}
+```objc
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app://..."]];
-~~~
+```
 
 For example, an `http://` URL would open in Safari, a `mailto://` URL would open in Mail, and a `tel://` URL would open in Phone.
 
@@ -48,7 +48,7 @@ An app can also be launched through URLs with additional system information. Whe
 > - `UIApplicationLaunchOptionsSourceApplicationKey`: Identifies the app that requested the launch of your app. The value of this key is an `NSString` object that represents the bundle ID of the app that made the request
 > - `UIApplicationLaunchOptionsAnnotationKey`: Indicates that custom data was provided by the app that requested the opening of the URL. The value of this key is a property-list object containing the custom data.
 
-~~~{objective-c}
+```objc
 NSURL *fileURL = [[NSBundle mainBundle] URLForResource:@"Document" withExtension:@"pdf"];
 if (fileURL) {
     UIDocumentInteractionController *documentInteractionController = [UIDocumentInteractionController interactionControllerWithURL:fileURL];
@@ -56,11 +56,11 @@ if (fileURL) {
     [documentInteractionController setDelegate:self];
     [documentInteractionController presentPreviewAnimated:YES];
 }
-~~~
+```
 
 ## Responding to Notification
 
-Not to be confused with [`NSNotification`](http://nshipster.com/nsnotification-and-nsnotificationcenter/), apps can be sent remote or local notifications.
+Not to be confused with [`NSNotification`](https://nshipster.com/nsnotification-and-nsnotificationcenter/), apps can be sent remote or local notifications.
 
 ### Remote Notification
 
@@ -68,12 +68,12 @@ Introduced in iOS 3, remote, or "push" notifications are one of the defining fea
 
 To register for remote notifications, `registerForRemoteNotificationTypes:` is called in `application:didFinishLaunchingWithOptions:`.
 
-~~~{objective-c}
+```objc
 [application registerForRemoteNotificationTypes:
 	UIRemoteNotificationTypeBadge |
     UIRemoteNotificationTypeSound |
 	UIRemoteNotificationTypeAlert];
-~~~
+```
 
 ...which, if successful, calls  `-application:didRegisterForRemoteNotificationsWithDeviceToken:`. Once the device has been successfully registered, it can receive push notifications at any time.
 
@@ -86,7 +86,7 @@ If an app receives a notification while in the foreground, its delegate will cal
 
 Since this introduces two separate code paths for notification handling, a common approach is to have `application:didFinishLaunchingWithOptions:` manually call `application:didReceiveRemoteNotification:`:
 
-~~~{objective-c}
+```objc
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -96,7 +96,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [self application:application didReceiveRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
     }
 }
-~~~
+```
 
 ### Local Notification
 
@@ -112,7 +112,7 @@ A local notification populates the launch options on `UIApplicationLaunchOptions
 
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
-~~~{objective-c}
+```objc
 // .h
 @import AVFoundation;
 
@@ -148,7 +148,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification
         AudioServicesDisposeSystemSoundID(self.localNotificationSound);
     }
 }
-~~~
+```
 
 ## Location Event
 
@@ -160,7 +160,7 @@ But fear not! With iOS region monitoring, your app can be launched on location e
 
 Here's an example of how an app might go about monitoring for significant location change to determine launch behavior:
 
-~~~{objective-c}
+```objc
 // .h
 @import CoreLocation;
 
@@ -190,7 +190,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [self.locationManager startUpdatingLocation];
     }
 }
-~~~
+```
 
 ## Newsstand
 
@@ -204,10 +204,10 @@ Newsstand can launch when newly-downloaded assets are available.
 
 This is how you register:
 
-~~~{objective-c}
+```objc
 [application registerForRemoteNotificationTypes:
 	UIRemoteNotificationTypeNewsstandContentAvailability];
-~~~
+```
 
 And this is the key to look out for in `launchOptions`:
 
@@ -224,7 +224,7 @@ If an app launches, instantiates a `CBCentralManager` or `CBPeripheralManager` w
 > - `UIApplicationLaunchOptionsBluetoothCentralsKey`: Indicates that the app previously had one or more `CBCentralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a central manager object.
 > - `UIApplicationLaunchOptionsBluetoothPeripheralsKey`:  Indicates that the app previously had one or more `CBPeripheralManager` objects and was relaunched by the Bluetooth system to continue actions associated with those objects. The value of this key is an `NSArray` object containing one or more `NSString` objects. Each string in the array represents the restoration identifier for a peripheral manager object.
 
-~~~{objective-c}
+```objc
 // .h
 @import CoreBluetooth;
 
@@ -241,7 +241,7 @@ if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
     NSDictionary *scanOptions = @{CBCentralManagerScanOptionAllowDuplicatesKey:@YES};
     [self.centralManager scanForPeripheralsWithServices:services options:scanOptions];
 }
-~~~
+```
 
 * * *
 

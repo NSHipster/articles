@@ -1,6 +1,6 @@
 ---
 title: C Storage Classes
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 tags: nshipster
 excerpt: "In C, the scope and lifetime of a variable or function within a program is determined by its storage class. Understanding these storage classes allows us to decipher common incantations found throughout Objective-C"
@@ -50,9 +50,9 @@ As a keyword, `static` gets used in a lot of different, incompatible ways, so it
 
 ### Static Singletons
 
-A common pattern in Objective-C is the `static` singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch_once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
+A common pattern in Objective-C is the `static` singleton, wherein a statically-declared variable is initialized and returned in either a function or class method. `dispatch once` is used to guarantee that the variable is initialized _exactly_ once in a thread-safe manner:
 
-~~~{objective-c}
+```objc
 + (instancetype)sharedInstance {
   static id _sharedInstance = nil;
   static dispatch_once_t onceToken;
@@ -62,7 +62,7 @@ A common pattern in Objective-C is the `static` singleton, wherein a statically-
 
   return _sharedInstance;
 }
-~~~
+```
 
 The singleton pattern is useful for creating objects that are shared across the entire application, such as an HTTP client or a notification manager, or objects that may be expensive to create, such as formatters.
 
@@ -80,15 +80,15 @@ The pattern is to declare an `extern` `NSString * const` in a public header, and
 
 #### AppDelegate.h
 
-~~~{objective-c}
+```objc
 extern NSString * const kAppErrorDomain;
-~~~
+```
 
 #### AppDelegate.m
 
-~~~{objective-c}
+```objc
 NSString * const kAppErrorDomain = @"com.example.yourapp.error";
-~~~
+```
 
 It doesn't particularly matter what the value of the string is, so long as it's unique. Using a string constant establishes a strict contract, that the constant variable is used instead of the string's literal value itself.
 
@@ -100,7 +100,7 @@ The pattern follows the same as in the previous example:
 
 #### TransactionStateMachine.h
 
-~~~{objective-c}
+```objc
 typedef NS_ENUM(NSUInteger, TransactionState) {
     TransactionOpened,
     TransactionPending,
@@ -108,11 +108,11 @@ typedef NS_ENUM(NSUInteger, TransactionState) {
 };
 
 extern NSString * NSStringFromTransactionState(TransactionState state);
-~~~
+```
 
 #### TransactionStateMachine.m
 
-~~~{objective-c}
+```objc
 NSString * NSStringFromTransactionState(TransactionState state) {
   switch (state) {
     case TransactionOpened:
@@ -125,7 +125,7 @@ NSString * NSStringFromTransactionState(TransactionState state) {
       return nil;
   }
 }
-~~~
+```
 
 ---
 

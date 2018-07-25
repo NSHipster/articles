@@ -1,6 +1,6 @@
 ---
 title: UICollectionView
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out."
 status:
@@ -28,19 +28,19 @@ In another departure from the old-school table view way of doing things, the pro
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
-~~~{swift}
+```swift
 let identifier = "Cell"
 var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
 if cell == nil {
     cell = UITableViewCell(...)
 }
-~~~
-~~~{objective-c}
+```
+```objc
 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
 if (!cell) {
   cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
 }
-~~~
+```
 
 `UICollectionView` thankfully does away with this. `-dequeueReusableCellWithReuseIdentifier:forIndexPath:` is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a `UICollectionReusableView` subclass for a particular reuse identifier, and everything will work automatically.
 

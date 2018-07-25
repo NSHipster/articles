@@ -1,6 +1,6 @@
 ---
 title: CFStringTransform
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
@@ -112,31 +112,31 @@ One of the more practical applications for string transformation is to normalize
 
 For example, let's say you want to build a searchable index of movies on the device, which includes greetings from around the world:
 
-~~~{swift}
+```swift
 var mutableString = NSMutableString(string: "Hello! こんにちは! สวัสดี! مرحبا! 您好!") as CFMutableStringRef
-~~~
+```
 
 - First, apply the `kCFStringTransformToLatin` transform to transliterate all non-English text into a Latin alphabetic representation.
 
-~~~{swift}
+```swift
 CFStringTransform(mutableString, nil, kCFStringTransformToLatin, Boolean(0))
-~~~
+```
 
 > Hello! こんにちは! สวัสดี! مرحبا! 您好! →
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
 - Next, apply the `kCFStringTransformStripCombiningMarks` transform to remove any diacritics or accents.
 
-~~~{swift}
+```swift
 CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, Boolean(0))
-~~~
+```
 
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →
 > Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
 - Finally, downcase the text with `CFStringLowercase`, and split the text into tokens with [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to use as an index for the text.
 
-~~~{swift}
+```swift
 let tokenizer = CFStringTokenizerCreate(nil, mutableString, CFRangeMake(0, CFStringGetLength(mutableString)), 0, CFLocaleCopyCurrent())
 
 var mutableTokens: [String] = []
@@ -147,7 +147,7 @@ do {
     let token = CFStringCreateWithSubstring(nil, mutableString, range) as NSString
     mutableTokens.append(token)
 } while type != .None
-~~~
+```
 
 > (hello, kon'nichiha, swasdi, mrhba, nin, hao)
 

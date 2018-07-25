@@ -1,14 +1,14 @@
 ---
 title: "XCTestCase /<br/>XCTestExpectation /<br/> measureBlock()"
-author: Mattt Thompson
+author: Mattt
 category: Xcode
 excerpt: "This week, we'll take a look at `XCTest`, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: `XCTestExpectation` and performance tests."
 revisions:
     "2015-04-07": Added note about location of call to `fulfill()`; new Objective-C examples
 hiddenlang: ""
 status:
-    swift: 3.1
-    reviewed: March 6, 2017
+    swift: 1.2
+    reviewed: June 25, 2015
 ---
 
 Although iOS 8 and Swift has garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
@@ -44,7 +44,7 @@ class Tests: XCTestCase {
     }
 }
 ```
-```objective-c
+```objc
 @interface Tests : XCTestCase
 
 @property NSCalendar *calendar;
@@ -70,17 +70,17 @@ class Tests: XCTestCase {
 These methods are useful for creating objects common to all of the tests for a test case:
 
 ```swift
-var calendar: Calendar?
-var locale: Locale?
+var calendar: NSCalendar?
+var locale: NSLocale?
 
 override func setUp() {
     super.setUp()
 
-    calendar = Calendar(identifier: .gregorian)
-    locale = Locale(identifier: "en_US")
+    calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
+    locale = NSLocale(localeIdentifier: "en_US")
 }
 ```
-```objective-c
+```objc
 - (void)setUp {
     [super setUp];
     
@@ -92,8 +92,8 @@ override func setUp() {
 > Since `XCTestCase` is not intended to be initialized directly from within a test case definition, shared properties initialized in `setUp` are declared as optional `var`s in Swift. As such, it's often much simpler to forgo `setUp` and assign default values instead:
 
 ```swift
-var calendar = Calendar(identifier: .gregorian)
-var locale = Locale(identifier: "en_US")
+var calendar: NSCalendar = NSCalendar(identifier: NSGregorianCalendar)
+var locale: NSLocale = NSLocale(localeIdentifier: "en_US")
 ```
 
 ### Functional Testing
@@ -107,7 +107,7 @@ func testOnePlusOneEqualsTwo() {
     XCTAssertEqual(1 + 1, 2, "one plus one should equal two")
 }
 ```
-```objective-c
+```objc
 - (void)testOnePlusOneEqualsTwo {
     XCTAssertEqual(1 + 1, 2, "one plus one should equal two");
 }
@@ -122,9 +122,9 @@ func testOnePlusOneEqualsTwo() {
 To be entirely reductionist, all of the `XCTest` assertions come down to a single, base assertion:
 
 ```swift
-XCTAssert(expression, message)
+XCTAssert(expression, format...)
 ```
-```objective-c
+```objc
 XCTAssert(expression, format...);
 ```
 
@@ -137,10 +137,10 @@ Although a developer could get away with only using `XCTAssert`, the following h
 For `Bool` values, or simple boolean expressions, use `XCTAssertTrue` & `XCTAssertFalse`:
 
 ```swift
-XCTAssertTrue(expression, message)
-XCTAssertFalse(expression, message)
+XCTAssertTrue(expression, format...)
+XCTAssertFalse(expression, format...)
 ```
-```objective-c
+```objc
 XCTAssertTrue(expression, format...);
 XCTAssertFalse(expression, format...);
 ```
@@ -152,10 +152,10 @@ XCTAssertFalse(expression, format...);
 When testing whether two values are equal, use `XCTAssert[Not]Equal` for scalar values and `XCTAssert[Not]EqualObjects` for objects:
 
 ```swift
-XCTAssertEqual(expression1, expression2, message)
-XCTAssertNotEqual(expression1, expression2, message)
+XCTAssertEqual(expression1, expression2, format...)
+XCTAssertNotEqual(expression1, expression2, format...)
 ```
-```objective-c
+```objc
 XCTAssertEqual(expression1, expression2, format...);
 XCTAssertNotEqual(expression1, expression2, format...);
 
@@ -168,10 +168,10 @@ XCTAssertNotEqualObjects(expression1, expression2, format...);
 When specifically testing whether two `Double`, `Float`, or other floating-point values are equal, use `XCTAssert[Not]EqualWithAccuracy`, to account for any issues with [floating point accuracy](http://en.wikipedia.org/wiki/Floating_point#Representable_numbers.2C_conversion_and_rounding):
 
 ```swift
-XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, message)
-XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, message)
+XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, format...)
+XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, format...)
 ```
-```objective-c
+```objc
 XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, format...);
 XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, format...);
 ```
@@ -183,10 +183,10 @@ XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, format...);
 Use `XCTAssert[Not]Nil` to assert the existence (or non-existence) of a given value:
 
 ```swift
-XCTAssertNil(expression, message)
-XCTAssertNotNil(expression, message)
+XCTAssertNil(expression, format...)
+XCTAssertNotNil(expression, format...)
 ```
-```objective-c
+```objc
 XCTAssertNil(expression, format...);
 XCTAssertNotNil(expression, format...);
 ```
@@ -196,9 +196,9 @@ XCTAssertNotNil(expression, format...);
 Finally, the `XCTFail` assertion will always fail:
 
 ```swift
-XCTFail(message)
+XCTFail(format...)
 ```
-```objective-c
+```objc
 XCTFail(format...);
 ```
 
@@ -206,22 +206,22 @@ XCTFail(format...);
 
 ### Performance Testing
 
-New in Xcode 6 is the ability to [benchmark the performance of code](http://nshipster.com/benchmarking/):
+New in Xcode 6 is the ability to [benchmark the performance of code](https://nshipster.com/benchmarking/):
 
 ```swift
 func testDateFormatterPerformance() {
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateStyle = .long
-    dateFormatter.timeStyle = .short
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateStyle = .LongStyle
+    dateFormatter.timeStyle = .ShortStyle
 
-    let date = Date()
-    
-    measure {
-        let string = dateFormatter.string(from: date)
+    let date = NSDate()
+
+    measureBlock() {
+        let string = dateFormatter.stringFromDate(date)
     }
 }
 ```
-```objective-c
+```objc
 - (void)testDateFormatterPerformance {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.dateStyle = NSDateFormatterLongStyle;
@@ -235,7 +235,7 @@ func testDateFormatterPerformance() {
 }
 ```
 
-The measured block is executed ten times and the test output shows the average execution time as well as individual run times and standard deviation:
+The test output shows the average execution time for the measured block as well as individual run times and standard deviation:
 
 ```
 Test Case '-[_Tests testDateFormatterPerformance]' started.
@@ -243,29 +243,29 @@ Test Case '-[_Tests testDateFormatterPerformance]' started.
 Test Case '-[_Tests testDateFormatterPerformance]' passed (0.274 seconds).
 ```
 
-Performance tests help establish a per-device baseline of performance for hot code paths and will fail if execution time becomes significantly slower. Sprinkle them into your test cases to ensure that significant algorithms and procedures remain performant as time goes on.
+Performance tests help establish a baseline of performance for hot code paths. Sprinkle them into your test cases to ensure that significant algorithms and procedures remain performant as time goes on.
 
 ## XCTestExpectation
 
 Perhaps the most exciting feature added in Xcode 6 is built-in support for asynchronous testing, with the `XCTestExpectation` class. Now, tests can wait for a specified length of time for certain conditions to be satisfied, without resorting to complicated GCD incantations.
 
-To make a test asynchronous, first create an expectation with `expectation(description:)`:
+To make a test asynchronous, first create an expectation with `expectationWithDescription`:
 
 ```swift
-let expect = expectation(description: "...")
+let expectation = expectationWithDescription("...")
 ```
-```objective-c
+```objc
 XCTestExpectation *expectation = [self expectationWithDescription:@"..."];
 ```
 
-Then, at the bottom of the method, add the `waitForExpectations(timeout:handler:)` method, specifying a timeout, and optionally a handler to execute when either the conditions of your test are met or the timeout is reached (a timeout is automatically treated as a failed test):
+Then, at the bottom of the method, add the `waitForExpectationsWithTimeout` method, specifying a timeout, and optionally a handler to execute when either the conditions of your test are met or the timeout is reached (a timeout is automatically treated as a failed test):
 
 ```swift
-waitForExpectations(timeout: 10) { error in
+waitForExpectationsWithTimeout(10) { error in
     // ...
 }
 ```
-```objective-c
+```objc
 [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
     // ...
 }];
@@ -274,43 +274,43 @@ waitForExpectations(timeout: 10) { error in
 Now, the only remaining step is to `fulfill` that `expecation` in the relevant callback of the asynchronous method being tested:
 
 ```swift
-expect.fulfill()
+expectation.fulfill()
 ```
-```objective-c
+```objc
 [expectation fulfill];
 ```
 
-> Always call `fulfill()` at the end of the asynchronous callback—fulfilling the expectation earlier can set up a race condition where the run loop may exit before completing the test. If the test has more than one expectation, it will not pass unless each expectation executes `fulfill()` within the timeout specified in `waitForExpectations(timeout:)`.
+> Always call `fulfill()` at the end of the asynchronous callback—fulfilling the expectation earlier can set up a race condition where the run loop may exit before completing the test. If the test has more than one expectation, it will not pass unless each expectation executes `fulfill()` within the timeout specified in `waitForExpectationsWithTimeout()`.
 
 Here's an example of how the response of an asynchronous networking request can be tested with the new `XCTestExpectation` APIs:
 
 ```swift
 func testAsynchronousURLConnection() {
-    let url = URL(string: "http://nshipster.com/")!
-    let urlExpectation = expectation(description: "GET \(url)")
-    
-    let session = URLSession.shared
-    let task = session.dataTask(with: url) { (data, response, error) in
+    let URL = NSURL(string: "https://nshipster.com/")!
+    let expectation = expectationWithDescription("GET \(URL)")
+
+    let session = NSURLSession.sharedSession()
+    let task = session.dataTaskWithURL(URL) { data, response, error in
         XCTAssertNotNil(data, "data should not be nil")
         XCTAssertNil(error, "error should be nil")
         
-        if let response = response as? HTTPURLResponse,
-            let responseURL = response.url,
-            let mimeType = response.mimeType
+        if let HTTPResponse = response as? NSHTTPURLResponse,
+            responseURL = HTTPResponse.URL,
+            MIMEType = HTTPResponse.MIMEType
         {
-            XCTAssertEqual(responseURL.absoluteString, url.absoluteString, "HTTP response URL should be equal to original URL")
-            XCTAssertEqual(response.statusCode, 200, "HTTP response status code should be 200")
-            XCTAssertEqual(mimeType, "text/html", "HTTP response content type should be text/html")
+            XCTAssertEqual(responseURL.absoluteString, URL.absoluteString, "HTTP response URL should be equal to original URL")
+            XCTAssertEqual(HTTPResponse.statusCode, 200, "HTTP response status code should be 200")
+            XCTAssertEqual(MIMEType, "text/html", "HTTP response content type should be text/html")
         } else {
             XCTFail("Response was not NSHTTPURLResponse")
         }
-        
-        urlExpectation.fulfill()
+
+        expectation.fulfill()
     }
-    
+
     task.resume()
-    
-    waitForExpectations(timeout: task.originalRequest!.timeoutInterval) { error in
+
+    waitForExpectationsWithTimeout(task.originalRequest!.timeoutInterval) { error in
         if let error = error {
             print("Error: \(error.localizedDescription)")
         }
@@ -318,9 +318,9 @@ func testAsynchronousURLConnection() {
     }
 }
 ```
-```objective-c
+```objc
 - (void)testAsynchronousURLConnection {
-    NSURL *URL = [NSURL URLWithString:@"http://nshipster.com/"];
+    NSURL *URL = [NSURL URLWithString:@"https://nshipster.com/"];
     NSString *description = [NSString stringWithFormat:@"GET %@", URL];
     XCTestExpectation *expectation = [self expectationWithDescription:description];
     
@@ -360,38 +360,34 @@ With first-class support for asynchronous testing, Xcode 6 seems to have fulfill
 
 Mocking can be a useful technique for isolating and controlling behavior in systems that, for reasons of complexity, non-determinism, or performance constraints, do not usually lend themselves to testing. Examples include simulating specific networking interactions, intensive database queries, or inducing states that might emerge under a particular race condition.
 
-There are a couple of [open source libraries](http://nshipster.com/unit-testing/#open-source-libraries) for creating mock objects and [stubbing](http://en.wikipedia.org/wiki/Test_stub) method calls, but these libraries largely rely on Objective-C runtime manipulation, something that is not currently possible with Swift.
+There are a couple of [open source libraries](https://nshipster.com/unit-testing/#open-source-libraries) for creating mock objects and [stubbing](http://en.wikipedia.org/wiki/Test_stub) method calls, but these libraries largely rely on Objective-C runtime manipulation, something that is not currently possible with Swift.
 
 However, this may not actually be necessary in Swift, due to its less-constrained syntax.
 
-In Swift, classes can be declared within the definition of a function, allowing for mock objects to be extremely self-contained. Just declare a mock inner class, and then `override` any necessary methods:
+In Swift, classes can be declared within the definition of a function, allowing for mock objects to be extremely self-contained. Just declare a mock inner-class, `override` and necessary methods:
 
 ```swift
 func testFetchRequestWithMockedManagedObjectContext() {
     class MockNSManagedObjectContext: NSManagedObjectContext {
-        override func fetch(_ request: NSFetchRequest<NSFetchRequestResult>) throws -> [Any] {
+        override func executeFetchRequest(request: NSFetchRequest!, error: AutoreleasingUnsafePointer<NSError?>) -> [AnyObject]! {
             return [["name": "Johnny Appleseed", "email": "johnny@apple.com"]]
         }
     }
-    
+
     let mockContext = MockNSManagedObjectContext()
-    let fetchRequest = NSFetchRequest<NSDictionary>(entityName: "User")
+    let fetchRequest = NSFetchRequest(entityName: "User")
     fetchRequest.predicate = NSPredicate(format: "email ENDSWITH[cd] %@", "@apple.com")
-    fetchRequest.resultType = .dictionaryResultType
-    
-    do {
-        let results = try mockContext.fetch(fetchRequest)
-        XCTAssertEqual(results.count, 1, "fetch request should only return 1 result")
-        guard let result = results.first as? [String: String] else {
-            XCTFail("fetch request returned wrong type")
-            return
-        }
-        
-        XCTAssertEqual(result["name"], "Johnny Appleseed", "name should be Johnny Appleseed")
-        XCTAssertEqual(result["email"], "johnny@apple.com", "email should be johnny@apple.com")
-    } catch {
-        XCTFail("fetch request should not throw")
-    }
+    fetchRequest.resultType = .DictionaryResultType
+
+    var error: NSError?
+    let results = mockContext.executeFetchRequest(fetchRequest, error: &error)
+
+    XCTAssertNil(error, "error should be nil")
+    XCTAssertEqual(results.count, 1, "fetch request should only return 1 result")
+
+    let result = results[0] as [String: String]
+    XCTAssertEqual(result["name"] as String, "Johnny Appleseed", "name should be Johnny Appleseed")
+    XCTAssertEqual(result["email"] as String, "johnny@apple.com", "email should be johnny@apple.com")
 }
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: "NSHipster Quiz #6"
-author: Mattt Thompson
+author: Mattt
 category: Trivia
 excerpt: "Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?"
 status:

@@ -1,6 +1,6 @@
 ---
 title: Extended File Attributes
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Amidst revelations of widespread spying by the NSA, the concept of metadata has taken an unexpected role in the national conversation about government surveillance. What is it? And how much does it reveal about us and our daily habits? These are questions that the American people are asking, and they deserve an answer."
 status:
@@ -19,7 +19,7 @@ However, on OS X and iOS, additional metadata can be stored in [**extended file 
 
 What kind of information, you ask? Invoke the `ls` command in the terminal and pass the `@` option to see what information hides in plain sight.
 
-~~~
+```
 $ ls -l@
 -rw-r--r--@ 1 mattt  staff  12292 Oct 19 05:59 .DS_Store
 	com.apple.FinderInfo	   32
@@ -29,7 +29,7 @@ $ ls -l@
 -rw-r--r--@ 1 mattt  staff   1438 Dec 18 14:31 Podfile
 	com.macromates.selectionRange	     4
 	com.macromates.visibleIndex	     1
-~~~
+```
 
 - Finder stores 32 bytes of information in `.DS_Store`, though for reasons that aren't entirely clear.
 - Xcode takes 15 bytes to denote the TextEncoding to use for a particular file.
@@ -37,16 +37,16 @@ $ ls -l@
 
 The extended attributes API, declared in `<sys/xattr.h>`, has functions for getting, setting, listing, and removing attributes:
 
-~~~{objective-c}
+```objc
 ssize_t getxattr(const char *path, const char *name, void *value, size_t size, u_int32_t position, int options);
 int setxattr(const char *path, const char *name, void *value, size_t size, u_int32_t position, int options);
 ssize_t listxattr(const char *path, char *namebuf, size_t size, int options);
 int removexattr(const char *path, const char *name, int options);
-~~~
+```
 
 To show these in action, consider the use of extended attributes to associate an [HTTP Etag](http://en.wikipedia.org/wiki/HTTP_ETag) with a file:
 
-~~~{objective-c}
+```objc
 NSHTTPURLResponse *response = ...;
 NSURL *fileURL = ...;
 
@@ -54,11 +54,11 @@ const char *filePath = [fileURL fileSystemRepresentation];
 const char *name = "com.Example.Etag";
 const char *value = [[response allHeaderFields][@"Etag"] UTF8String];
 int result = setxattr(filePath, name, value, strlen(value), 0, 0);
-~~~
+```
 
 As another example, previous to iOS 5.0.1, EAs were the designated way to denote that a particular file should not be synchronized with iCloud (as of iOS 5.1, `NSURL -setResourceValue:forKey:error:` is used, which sets the `com.apple.metadata:com_apple_backup_excludeItem` EA instead):
 
-~~~{objective-c}
+```objc
 #include <sys/xattr.h>
 
 if (!&NSURLIsExcludedFromBackupKey) {
@@ -74,7 +74,7 @@ if (!&NSURLIsExcludedFromBackupKey) {
                    forKey:NSURLIsExcludedFromBackupKey
                     error:&error];
 }
-~~~
+```
 
 Lest extended attributes veer dangerously close to "being a hammer that makes everything look like a nail", let it be made clear: **extended attributes should not be used for critical data**. Not all volume formats support extended attributes, so copying between, say, HFS+ and FAT32 may result in a loss of information. Also consider that nothing is stopping any application from deleting or overwriting extended attributes at any time.
 

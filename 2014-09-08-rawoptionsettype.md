@@ -1,6 +1,6 @@
 ---
 title: RawOptionSetType
-author: Mattt Thompson
+author: Mattt
 category: Swift
 tags: swift
 excerpt: "Swift enumerations are a marked improvement over the `NS_ENUM` macro in Objective-C. Unfortunately, `NS_OPTIONS` does not compare as favorably."
@@ -8,33 +8,33 @@ status:
     swift: 1.2
 ---
 
-In Objective-C, [`NS_ENUM` & `NS_OPTIONS`](http://nshipster.com/ns_enum-ns_options/) are used to annotate C `enum`s in such a way that sets clear expectations for both the compiler and developer. Since being introduced to Objective-C with Xcode 4.5, these macros have become a standard convention in system frameworks, and a best practice within the community.
+In Objective-C, [`NS_ENUM` & `NS_OPTIONS`](https://nshipster.com/ns_enum-ns_options/) are used to annotate C `enum`s in such a way that sets clear expectations for both the compiler and developer. Since being introduced to Objective-C with Xcode 4.5, these macros have become a standard convention in system frameworks, and a best practice within the community.
 
 In Swift, enumerations are codified as a first-class language construct as fundamental as a `struct` or `class`, and include a number of features that make them even more expressive, like raw types and associated values. They're so perfectly-suited to encapsulating closed sets of fixed values, that developers would do well to actively seek out opportunities to use them.
 
 When interacting with frameworks like Foundation in Swift, all of those `NS_ENUM` declarations are automatically converted into an `enum`—often improving on the original Objective-C declaration by eliminating naming redundancies:
 
-~~~{swift}
+```swift
 enum UITableViewCellStyle : Int {
     case Default
     case Value1
     case Value2
     case Subtitle
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 typedef NS_ENUM(NSInteger, UITableViewCellStyle) {
    UITableViewCellStyleDefault,
    UITableViewCellStyleValue1,
    UITableViewCellStyleValue2,
    UITableViewCellStyleSubtitle
 };
-~~~
+```
 
 Unfortunately, for `NS_OPTIONS`, the Swift equivalent is arguably worse:
 
-~~~{swift}
+```swift
 struct UIViewAutoresizing : RawOptionSetType {
     init(_ value: UInt)
     var value: UInt
@@ -46,9 +46,9 @@ struct UIViewAutoresizing : RawOptionSetType {
     static var FlexibleHeight: UIViewAutoresizing { get }
     static var FlexibleBottomMargin: UIViewAutoresizing { get }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
    UIViewAutoresizingNone                 = 0,
    UIViewAutoresizingFlexibleLeftMargin   = 1 << 0,
@@ -58,7 +58,7 @@ typedef NS_OPTIONS(NSUInteger, UIViewAutoresizing) {
    UIViewAutoresizingFlexibleHeight       = 1 << 4,
    UIViewAutoresizingFlexibleBottomMargin = 1 << 5
 };
-~~~
+```
 
 * * *
 
@@ -68,7 +68,7 @@ Why does this suck so much? Well, the same integer bitmasking tricks in C don't 
 
 Compared to the syntactically concise `enum` declaration, `RawOptionsSetType` is awkward and cumbersome, requiring over a dozen lines of boilerplate for computed properties:
 
-~~~{swift}
+```swift
 struct Toppings : RawOptionSetType, BooleanType {
     private var value: UInt = 0
 
@@ -119,7 +119,7 @@ struct Toppings : RawOptionSetType, BooleanType {
     static var GreenPepper: Toppings    { return self(0b0100) }
     static var Pineapple: Toppings      { return self(0b1000) }
 }
-~~~
+```
 
 > As of Xcode 6 Beta 6, `RawOptionSetType` no longer conforms to `BooleanType`, which is required for performing bitwise checks.
 
@@ -127,7 +127,7 @@ One nice thing about doing this in Swift is its built-in binary integer literal 
 
 Taken into a larger example for context:
 
-~~~{swift}
+```swift
 struct Pizza {
     enum Style {
         case Neopolitan, Sicilian, NewHaven, DeepDish
@@ -147,11 +147,11 @@ struct Pizza {
 }
 
 let dinner = Pizza(inchesInDiameter: 12, style: .Neopolitan, toppings: .Pepperoni | .GreenPepper)
-~~~
+```
 
 A value membership check can be performed with the `&` operator, just like with unsigned integers in C:
 
-~~~{swift}
+```swift
 extension Pizza {
     var isVegetarian: Bool {
         return toppings & Toppings.Pepperoni ? false : true
@@ -159,15 +159,15 @@ extension Pizza {
 }
 
 dinner.isVegetarian // false
-~~~
+```
 
 * * *
 
 In all fairness, it may be too early to really appreciate what role option types will have in the new language. It could very well be that Swift's other constructs, like tuples or pattern matching—or indeed, even `enum`s—make options little more than a vestige of the past.
 
-Either way, if you're looking to implement an `NS_OPTIONS` equivalent in your code base, here's an [Xcode snippet](http://nshipster.com/xcode-snippets/)-friendly example of how to go about it:
+Either way, if you're looking to implement an `NS_OPTIONS` equivalent in your code base, here's an [Xcode snippet](https://nshipster.com/xcode-snippets/)-friendly example of how to go about it:
 
-~~~{swift}
+```swift
 struct <# Options #> : RawOptionSetType, BooleanType {
     let rawValue: UInt
     init(nilLiteral: ()) { self.value = 0 }
@@ -181,4 +181,4 @@ struct <# Options #> : RawOptionSetType, BooleanType {
     static var <# Option #>: <# Options #>     { return self(0b0001) }
     // ...
 }
-~~~
+```

@@ -1,6 +1,6 @@
 ---
 title: AFNetworking 2.0
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 excerpt: "AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
 status:
@@ -26,7 +26,7 @@ Started in May 2011 as a humble extension of an [Apple code sample](https://deve
 
 `NSURLConnection` is the backbone of the Foundation URL Loading system. An `NSURLConnection` loads an `NSURLRequest` object asynchronously, calling methods on its delegates as the `NSURLResponse` / `NSHTTPURLResponse` and its associated `NSData` is sent to and loaded from the server; the delegate may also implement behavior for handling an `NSURLAuthenticationChallenge`, a redirect responses, or determine how the associated `NSCachedURLResponse` is stored to the shared `NSURLCache`.
 
-[`NSOperation`](http://nshipster.com/nsoperation) is an abstract class that models a single unit of computation, with useful constructs like state, priority, dependencies, and cancellation.
+[`NSOperation`](https://nshipster.com/nsoperation) is an abstract class that models a single unit of computation, with useful constructs like state, priority, dependencies, and cancellation.
 
 The first major breakthrough of AFNetworking was combining the two. `AFURLConnectionOperation`, an `NSOperation` subclass conforms to `NSURLConnectionDelegate` methods, and tracks the state of the request from start to finish, while storing intermediary state, such as request, response, and response data.
 
@@ -99,7 +99,7 @@ Another piece of functionality now decoupled from `AFHTTPClient` is network reac
 
 - `AFEventSource` - An Objective-C implementation of the [`EventSource` DOM API](http://en.wikipedia.org/wiki/Server-sent_events). A persistent HTTP connection is opened to a host, which streams events to the event source, to be dispatched to listeners. Messages streamed to the event source formatted as [JSON Patch](http://tools.ietf.org/html/rfc6902) documents are translated into arrays of `AFJSONPatchOperation` objects. These patch operations can be applied to the persistent data set fetched from the server.
 
-~~~{objective-c}
+```objc
 NSURL *URL = [NSURL URLWithString:@"http://example.com"];
 AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:URL];
 [manager GET:@"/resources" parameters:nil success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -117,7 +117,7 @@ AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:UR
         }
     } error:nil];
 } failure:nil];
-~~~
+```
 
 #### UIKit Extensions
 
@@ -138,9 +138,9 @@ Thus concludes our whirlwind tour of AFNetworking 2.0. New features for the next
 
 You can start playing around with AFNetworking 2.0 by putting the following in your [`Podfile`](http://cocoapods.org):
 
-~~~{ruby}
+```{ruby}
 platform :ios, '7.0'
 pod "AFNetworking", "2.5.0"
-~~~
+```
 
 For anyone coming over to AFNetworking from the current 1.x release, you may find [the AFNetworking 2.0 Migration Guide](https://github.com/AFNetworking/AFNetworking/wiki/AFNetworking-2.0-Migration-Guide) especially useful.

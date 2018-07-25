@@ -1,6 +1,6 @@
 ---
 title: AVSpeechSynthesizer
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Though we're a long way off from Hal or Her, we should never forget about the billions of other people out there for us to talk to."
 status:
@@ -18,7 +18,7 @@ It is fitting that the development of computational linguistics should coincide 
 
 And while automatic text translation has reached an acceptable level for everyday communication, there is still a divide when we venture out into unfamiliar places. There is still much work to be done in order to augment our ability to communicate with one another in person.
 
-* * *
+---
 
 Introduced in iOS 7, `AVSpeechSynthesizer` produces synthesized speech from a given `AVSpeechUtterance`. Each utterance can adjust its rate of speech and pitch, and be configured to use any one of the available `AVSpeechSynthesisVoice`s:
 
@@ -33,14 +33,14 @@ let synthesizer = AVSpeechSynthesizer()
 synthesizer.speakUtterance(utterance)
 ```
 
-~~~{objective-c}
+```{objective-c}
 NSString *string = @"Hello, World!";
 AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:string];
 utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
 
 AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
 [synthesizer speakUtterance:utterance];
-~~~
+```
 
 When speaking, a synthesizer can either be paused immediately or on the next word boundary, which makes for a less jarring user experience.
 
@@ -48,9 +48,9 @@ When speaking, a synthesizer can either be paused immediately or on the next wor
 synthesizer.pauseSpeakingAtBoundary(.Word)
 ```
 
-~~~{objective-c}
+```{objective-c}
 [synthesizer pauseSpeakingAtBoundary:AVSpeechBoundaryWord];
-~~~
+```
 
 ## Supported Languages
 
@@ -116,7 +116,7 @@ func speechSynthesizer(synthesizer: AVSpeechSynthesizer, didFinishSpeechUtteranc
 }
 ```
 
-~~~{objective-c}
+```objc
 #pragma mark - AVSpeechSynthesizerDelegate
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)synthesizer
@@ -134,13 +134,13 @@ willSpeakRangeOfSpeechString:(NSRange)characterRange
 {
     self.utteranceLabel.attributedText = [[NSAttributedString alloc] initWithString:self.utteranceString];
 }
-~~~
+```
 
-![AVSpeechSynthesizer Example]({{ site.asseturl }}/avspeechsynthesizer-example.gif)
+![AVSpeechSynthesizer Example]({% asset avspeechsynthesizer-example.gif @path %})
 
 See [this example app](https://github.com/mattt/AVSpeechSynthesizer-Example) for a demonstration of live text-highlighting for all of the supported languages.
 
-* * *
+---
 
 Anyone who travels to an unfamiliar place returns with a profound understanding of what it means to communicate. It's totally different from how one is taught a language in High School: instead of genders and cases, it's about emotions and patience and clinging onto every shred of understanding. One is astounded by the extent to which two humans can communicate with hand gestures and facial expressions. One is also humbled by how frustrating it can be when pantomiming breaks down.
 

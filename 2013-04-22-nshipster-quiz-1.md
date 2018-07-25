@@ -1,6 +1,6 @@
 ---
 title: "NSHipster Quiz #1"
-author: Mattt Thompson
+author: Mattt
 category: Trivia
 excerpt: "Test your knowledge of general programming knowledge, Cocoa APIs, and Apple trivia in this first-ever NSHipster Quiz. How NSHip are you?"
 status:
@@ -60,43 +60,43 @@ Round 3: Picture Round
 
 - 1. What is this?
 
-![Question 1]({{ site.asseturl }}/quiz-1/question-1.jpg)
+![Question 1]({% asset quiz-1/question-1.jpg @path %})
 
 - 2. What is this?
 
-![Question 2]({{ site.asseturl }}/quiz-1/question-2.jpg)
+![Question 2]({% asset quiz-1/question-2.jpg @path %})
 
 - 3. What is this?
 
-![Question 3]({{ site.asseturl }}/quiz-1/question-3.jpg)
+![Question 3]({% asset quiz-1/question-3.jpg @path %})
 
 - 4. What is this?
 
-![Question 4]({{ site.asseturl }}/quiz-1/question-4.jpg)
+![Question 4]({% asset quiz-1/question-4.jpg @path %})
 
 - 5. WTF is this?
 
-![Question 5]({{ site.asseturl }}/quiz-1/question-5.jpg)
+![Question 5]({% asset quiz-1/question-5.jpg @path %})
 
 - 6. Who is this?
 
-![Question 6]({{ site.asseturl }}/quiz-1/question-6.jpg)
+![Question 6]({% asset quiz-1/question-6.jpg @path %})
 
 - 7. Who is this?
 
-![Question 7]({{ site.asseturl }}/quiz-1/question-7.jpg)
+![Question 7]({% asset quiz-1/question-7.jpg @path %})
 
 - 8. Who is this?
 
-![Question 8]({{ site.asseturl }}/quiz-1/question-8.jpg)
+![Question 8]({% asset quiz-1/question-8.jpg @path %})
 
 - 9. Who is this?
 
-![Question 9]({{ site.asseturl }}/quiz-1/question-9.jpg)
+![Question 9]({% asset quiz-1/question-9.jpg @path %})
 
 - 10. In this photo, Bill Gates & Steve Jobs are being interviewed at the D5 conference in 2007 by a man and a woman just off-screen to the left. Who are they? (One point for each person)
 
-![Question 10]({{ site.asseturl }}/quiz-1/question-10.jpg)
+![Question 10]({% asset quiz-1/question-10.jpg @path %})
 
 
 Round 4: Name That Framework!
@@ -128,10 +128,10 @@ Round 1: General Knowledge
 3. [`isReady`, `isExecuting`, `isFinished`, `isCancelled`](http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html%23//apple_ref/doc/uid/TP40004591-RH2-DontLinkElementID_1)
 4. [    textLabel detailTextLabel   ](http://developer.apple.com/library/ios/DOCUMENTATION/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value2.jpg)
 5. [`UITableViewDelegate`](http://developer.apple.com/library/ios/documentation/uikit/reference/UITableViewDelegate_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006942-CH3-SW25)
-6. [`signed char`](http://nshipster.com/bool/)
+6. [`signed char`](https://nshipster.com/bool/)
 7. [Midnight UTC, 1 January 1970](http://en.wikipedia.org/wiki/Unix_epoch)
 8. [4.6.2 (4H1003)](http://en.wikipedia.org/wiki/Xcode)
-9. [NSIndexSet](http://nshipster.com/nsindexset/)
+9. [NSIndexSet](https://nshipster.com/nsindexset/)
 10. [16](http://en.wikipedia.org/wiki/IPhone_%281st_generation%29)
 
 Round 2: APIs

@@ -1,6 +1,6 @@
 ---
 title: Swift Literal Convertibles
-author: Mattt Thompson
+author: Mattt
 category: Swift
 tags: swift
 excerpt: "Last week, we wrote about overloading and creating custom operators in Swift, a language feature that is as powerful as it is controversial. By all accounts, this week's issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles."
@@ -8,7 +8,7 @@ status:
     swift: 1.2
 ---
 
-Last week, we wrote about [overloading and creating custom operators](http://nshipster.com/swift-operators/) in Swift, a language feature that is as powerful as it is controversial.
+Last week, we wrote about [overloading and creating custom operators](https://nshipster.com/swift-operators/) in Swift, a language feature that is as powerful as it is controversial.
 
 By all accounts, this week's issue threatens to be equally polarizing, as it covers a feature of Swift that is pervasive, yet invisible: literal convertibles.
 
@@ -89,7 +89,7 @@ Although the implementation of `init(nilLiteral: ())` is private, the end result
 
 Swift literal convertibles can be used to provide convenient shorthand initializers for custom objects.
 
-Recall our [`Regex`](http://nshipster.com/swift-operators/) example from last week:
+Recall our [`Regex`](https://nshipster.com/swift-operators/) example from last week:
 
 ```swift
 struct Regex {
@@ -148,7 +148,7 @@ regex.match(string) // true
 "foo".match(string) // true
 ```
 
-Combined with the [custom operator `=~`](http://nshipster.com/swift-operators), this can be made even more idiomatic:
+Combined with the [custom operator `=~`](https://nshipster.com/swift-operators), this can be made even more idiomatic:
 
 ```swift
 "foo bar baz" =~ "foo" // true
@@ -260,7 +260,7 @@ extension NSURL: StringLiteralConvertible {
 One neat feature of literal convertibles is that the type inference works even without a variable declaration:
 
 ```swift
-"http://nshipster.com/".host // nshipster.com
+"https://nshipster.com/".host // nshipster.com
 ```
 
 * * *

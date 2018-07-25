@@ -1,6 +1,6 @@
 ---
 title: Unit Testing
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality."
 status:
@@ -29,7 +29,7 @@ It's a simple enough premise: write code to construct environments that exercise
 
 Unit Tests were added into a separate testing target in the Xcode Project. Each test file defines an `SenTestCase` subclass, which implements a series of methods beginning with the word `test`. C `assert`-style macros are used to fail tests if the specified condition is not met. Each test is run in sequence, independently of one another, with the results logged afterwards:
 
-~~~{objective-c}
+```objc
 #import <SenTestingKit/SenTestingKit.h>
 #import "Person.h"
 
@@ -43,7 +43,7 @@ Unit Tests were added into a separate testing target in the Xcode Project. Each 
    person.lastName = @"Picasso";
    STAssertEqualObjects([person fullName], @"Pablo Picasso", nil);
 }
-~~~
+```
 
 The SenTestingKit assertions are about what you'd expect, offering bread-and-butter equality, existence, and truth checks:
 
@@ -165,7 +165,7 @@ All of the configuration for setup is defined in `.travis.yml`:
 
 #### .travis.yml
 
-~~~
+```
 language: objective-c
 before_install:
   - brew update
@@ -173,7 +173,7 @@ before_install:
   - cd Tests && pod install && cd $TRAVIS_BUILD_DIR
   - mkdir -p "Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes" && cp Tests/Schemes/*.xcscheme "Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes/"
 script: rake test
-~~~
+```
 
 Full documentation for the Travis configuration file [can be found on Travis-CI.org](http://about.travis-ci.org/docs/user/build-configuration/).
 

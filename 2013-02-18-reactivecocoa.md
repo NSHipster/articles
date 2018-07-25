@@ -1,6 +1,6 @@
 ---
 title: ReactiveCocoa
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 excerpt: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
 status:
@@ -41,7 +41,7 @@ To illustrate the difference between the conventional, imperative paradigm of Ob
 
 ### Conventional
 
-~~~{objective-c}
+```objc
 - (BOOL)isFormValid {
     return [self.usernameField.text length] > 0 &&
             [self.emailField.text length] > 0 &&
@@ -59,7 +59,7 @@ replacementString:(NSString *)string
 
     return YES;
 }
-~~~
+```
 
 In the conventional example, logic is fragmented across different methods in the view controller, with calls to `self.createButton.enabled = [self isFormValid];` interspersed throughout delegate methods and view lifecycle callbacks.
 
@@ -67,7 +67,7 @@ Compare this with equivalent code using ReactiveCocoa:
 
 ### ReactiveCocoa
 
-~~~{objective-c}
+```objc
 RACSignal *formValid = [RACSignal
   combineLatest:@[
     self.username.rac_textSignal,
@@ -80,7 +80,7 @@ RACSignal *formValid = [RACSignal
   }];
 
 RAC(self.createButton.enabled) = formValid;
-~~~
+```
 
 Here, all of the logic for validating form input is contained in a single chain of logic and responsibility. Each time any of the text fields is updated, their inputs are reduced into a single boolean value, which automatically enables / disables the create button.
 
@@ -122,7 +122,7 @@ a sequence is used. Just like Cocoa collections, sequences cannot contain `nil`.
 >
 > `RACSequence` allows any Cocoa collection to be manipulated in a uniform and declarative way.
 
-~~~{objective-c}
+```objc
 RACSequence *normalizedLongWords = [[words.rac_sequence
     filter:^ BOOL (NSString *word) {
         return [word length] >= 10;
@@ -130,7 +130,7 @@ RACSequence *normalizedLongWords = [[words.rac_sequence
     map:^(NSString *word) {
         return [word lowercaseString];
     }];
-~~~
+```
 
 ## Precedents in Cocoa
 

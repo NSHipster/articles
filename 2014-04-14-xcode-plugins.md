@@ -1,6 +1,6 @@
 ---
 title: Xcode Plugins
-author: Mattt Thompson
+author: Mattt
 category: Xcode
 tags: popular
 excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
@@ -12,7 +12,7 @@ Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikiped
 
 No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & OS X software, _is itself a closed ecosystem_.
 
-Indeed, significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](http://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
+Indeed, significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](https://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
 
 Xcode has had a plugin architecture going back to when Interface Builder was its own separate app. However, this system was relatively obscure, undocumented, and not widely used by third parties. Despite this, developers like [Delisa Mason](https://twitter.com/kattrali) and [Marin Usalj](https://twitter.com/_supermarin) have done incredible work creating a stable and vibrant ecosystem of third-party Xcode extensions.
 
@@ -39,13 +39,13 @@ Finding it _too easy_ to quit Xcode? Try [XVim](https://github.com/JugglerShu/XV
 
 ### SublimeText
 
-![SCXcodeMiniMap]({{ site.asseturl }}/scxcodeminimap.png)
+![SCXcodeMiniMap]({% asset scxcodeminimap.png @path %})
 
 Do you miss having a code minimap along the right gutter of your editor to put things into perspective? Install  [SCXcodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap) and never again miss the tree nodes for the forest.
 
 ### Atom
 
-![Show in GitHub]({{ site.asseturl }}/showingithub.png)
+![Show in GitHub]({% asset showingithub.png @path %})
 
 Looking to be more in tune with GitHub? Add the [Show in GitHub / BitBucket](https://github.com/larsxschneider/ShowInGitHub) plugin to open to the selected lines of a file online.
 
@@ -55,19 +55,19 @@ Rather than waiting with crossed fingers and clenched teeth each June, as Apple 
 
 ### Add Line Breaks to Issue Navigator
 
-![BBUFullIssueNavigator]({{ site.asseturl }}/bbufullissuenavigator.png)
+![BBUFullIssueNavigator]({% asset bbufullissuenavigator.png @path %})
 
 An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by surprise ellipses when compiler warnings were just starting to get interesting, with  [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
 
 ### Dismiss Debugging Console When Typing
 
-![BBUDebuggerTuckAway]({{ site.asseturl }}/bbudebuggertuckaway.gif)
+![BBUDebuggerTuckAway]({% asset bbudebuggertuckaway.gif @path %})
 
 Another annoyance going back to Xcode 4 is how the debugging console seems to always get in the way. No more, with [BBUDebuggerTuckAway](https://github.com/neonichu/BBUDebuggerTuckAway). As soon as you start typing in the editor, the debugging window will get out of your way.
 
 ### Add ANSI Color Support to Debugging Console
 
-![XcodeColors]({{ site.asseturl }}/xcodecolors.png)
+![XcodeColors]({% asset xcodecolors.png @path %})
 
 `ncurses` enthusiasts will no doubt be excited by the [XcodeColors](https://github.com/robbiehanson/XcodeColors) plugin, which adds support for ANSI colors to appear in the debugging console.
 
@@ -85,19 +85,19 @@ Not being the most verbose language in existence, Objective-C can use all the he
 
 ### Autocomplete `switch` Statements
 
-![SCXcodeSwitchExpander]({{ site.asseturl }}/scxcodeswitchexpander.gif)
+![SCXcodeSwitchExpander]({% asset scxcodeswitchexpander.gif @path %})
 
-Fact: `switch` statements and [`NS_ENUM`](http://nshipster.com/ns_enum-ns_options/) go together like <a href="http://www.thaitable.com/thai/recipe/mango-on-sticky-rice" rel="nofollow">mango and sweet sticky rice</a>. The only way it could be improved would be with [SCXcodeSwitchExpander](https://github.com/stefanceriu/SCXcodeSwitchExpander) with automagically fills out a `case` statement for each value in the enumeration.
+Fact: `switch` statements and [`NS_ENUM`](https://nshipster.com/ns_enum-ns_options/) go together like <a href="http://www.thaitable.com/thai/recipe/mango-on-sticky-rice" rel="nofollow">mango and sweet sticky rice</a>. The only way it could be improved would be with [SCXcodeSwitchExpander](https://github.com/stefanceriu/SCXcodeSwitchExpander) with automagically fills out a `case` statement for each value in the enumeration.
 
 ### Autocomplete Documentation
 
-![VVDocumenter]({{ site.asseturl }}/vvdocumenter.gif)
+![VVDocumenter]({% asset vvdocumenter.gif @path %})
 
-[Documentation](http://nshipster.com/documentation/) adds a great deal of value to a code base, but it's a tough habit to cultivate. The [VVDocumenter-Xcode](https://github.com/onevcat/VVDocumenter-Xcode) plugin does a great deal to reduce the amount of work necessary to add [appledoc](http://gentlebytes.com/appledoc/)-compatible header documentation. Install it and wrap your code in a loving lexical embrace.
+[Documentation](https://nshipster.com/documentation/) adds a great deal of value to a code base, but it's a tough habit to cultivate. The [VVDocumenter-Xcode](https://github.com/onevcat/VVDocumenter-Xcode) plugin does a great deal to reduce the amount of work necessary to add [appledoc](http://gentlebytes.com/appledoc/)-compatible header documentation. Install it and wrap your code in a loving lexical embrace.
 
 ## Formatting Xcode
 
-["Code organization is a matter of hygiene"](http://nshipster.com/pragma/), so you owe it to yourself and your team to keep whitespace consistent in your code base. Make it easier on yourself by automating the process with these plugins.
+["Code organization is a matter of hygiene"](https://nshipster.com/pragma/), so you owe it to yourself and your team to keep whitespace consistent in your code base. Make it easier on yourself by automating the process with these plugins.
 
 ### Code Formatting with ClangFormat
 
@@ -105,7 +105,7 @@ Fact: `switch` statements and [`NS_ENUM`](http://nshipster.com/ns_enum-ns_option
 
 ### Statement Alignment
 
-![XAlign]({{ site.asseturl }}/xalign.gif)
+![XAlign]({% asset xalign.gif @path %})
 
 Fancy yourself a code designer, automated formatters be damned? [XAlign](https://github.com/qfish/XAlign) automatically aligns assignments _just so_, to appease your most egregious OCD tendencies.
 
@@ -115,7 +115,7 @@ In a similar vein to what [Bret Victor writes about Learnable Programming](http:
 
 ### Inspect `NSColor` / `UIColor` Instances
 
-![ColorSense]({{ site.asseturl }}/colorsense.png)
+![ColorSense]({% asset colorsense.png @path %})
 
 Telling what a color is from its RGB values alone is a hard-won skill, so faced with an `NSColor` or `UIColor` value, we have little recourse to know what it'll look like until the code is built and run. Enter [ColorSense for Xcode](https://github.com/omz/ColorSense-for-Xcode)
 
@@ -125,13 +125,13 @@ Quoth the README:
 
 ### Autocomplete Images from Project Bundle
 
-![KSImageNamed]({{ site.asseturl }}/ksimagenamed.gif)
+![KSImageNamed]({% asset ksimagenamed.gif @path %})
 
 Similar to the ColorSense plugin, [KSImageNamed](https://github.com/ksuther/KSImageNamed-Xcode) will preview and autocomplete images in `[UIImage imageNamed:]` declarations.
 
 ### Semantics Highlighting
 
-![Polychromatic]({{ site.asseturl }}/polychromatic.png)
+![Polychromatic]({% asset polychromatic.png @path %})
 
 Any editor worth its salt is expected to have some form of syntax highlighting. But [this recent post by Evan Brooks](https://medium.com/p/3a6db2743a1e) presents the idea of _semantic_ highlighting in editors. The idea is that each variable within a scope would be assigned a particular color, which would be consistent across references. This way, one could easily tell the difference between two instance variables in the same method.
 
@@ -139,11 +139,11 @@ Any editor worth its salt is expected to have some form of syntax highlighting. 
 
 ### Localization
 
-![Lin]({{ site.asseturl }}/lin-1.png)
+![Lin]({% asset lin-1.png @path %})
 
-![Lin]({{ site.asseturl }}/lin-2.png)
+![Lin]({% asset lin-2.png @path %})
 
-It's no secret that NSHipster has [a soft spot for localization](http://nshipster.com/nslocalizedstring/). For this reason, this publication is emphatic in its recommendation of [Lin](https://github.com/questbeat/Lin-Xcode5), a clever Xcode plugin that brings the localization editor to your code.
+It's no secret that NSHipster has [a soft spot for localization](https://nshipster.com/nslocalizedstring/). For this reason, this publication is emphatic in its recommendation of [Lin](https://github.com/questbeat/Lin-Xcode5), a clever Xcode plugin that brings the localization editor to your code.
 
 
 * * *

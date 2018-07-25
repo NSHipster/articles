@@ -1,15 +1,15 @@
 ---
 title: Associated Objects
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Associated Objects is a feature of the Objective-C 2.0 runtime, which allows objects to associate arbitrary values for keys at runtime. It's dark juju, to be handled with as much caution as any other function from objc/runtime.h"
 status:
     swift: n/a
 ---
 
-~~~{objective-c}
+```objc
 #import <objc/runtime.h>
-~~~
+```
 
 Objective-C developers are conditioned to be wary of whatever follows this ominous incantation. And for good reason: messing with the Objective-C runtime changes the very fabric of reality for all of the code that runs on it.
 
@@ -29,15 +29,15 @@ Why is this useful? It allows developers to **add custom properties to existing 
 
 #### NSObject+AssociatedObject.h
 
-~~~{objective-c}
+```objc
 @interface NSObject (AssociatedObject)
 @property (nonatomic, strong) id associatedObject;
 @end
-~~~
+```
 
 #### NSObject+AssociatedObject.m
 
-~~~{objective-c}
+```objc
 @implementation NSObject (AssociatedObject)
 @dynamic associatedObject;
 
@@ -48,15 +48,15 @@ Why is this useful? It allows developers to **add custom properties to existing 
 - (id)associatedObject {
     return objc_getAssociatedObject(self, @selector(associatedObject));
 }
-~~~
+```
 
 It is often recommended that they key be a `static char`—or better yet, the pointer to one. Basically, an arbitrary value that is guaranteed to be constant, unique, and scoped for use within getters and setters:
 
-~~~{objective-c}
+```objc
 static char kAssociatedObjectKey;
 
 objc_getAssociatedObject(self, &kAssociatedObjectKey);
-~~~
+```
 
 However, a much simpler solution exists: just use a selector.
 
@@ -148,7 +148,7 @@ One may be tempted to call `objc_removeAssociatedObjects()` at some point in the
 
 - **Adding private variables to facilitate implementation details**. When extending the behavior of a built-in class, it may be necessary to keep track of additional state. This is the _textbook_ use case for associated objects. For example, AFNetworking uses associated objects on its `UIImageView` category to [store a request operation object](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.m#L57-L63), used to asynchronously fetch a remote image at a particular URL.
 - **Adding public properties to configure category behavior.** Sometimes, it makes more sense to make category behavior more flexible with a property, than in a method parameter. In these situations, a public-facing property is an acceptable situation to use associated objects. To go back to the previous example of AFNetworking, its category on `UIImageView`, [its `imageResponseSerializer`](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.h#L60-L65) allows image views to optionally apply a filter, or otherwise change the rendering of a remote image before it is set and cached to disk.
-- **Creating an associated observer for KVO**. When using [KVO](http://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
+- **Creating an associated observer for KVO**. When using [KVO](https://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
 
 ## Anti-Patterns
 
@@ -159,7 +159,7 @@ One may be tempted to call `objc_removeAssociatedObjects()` at some point in the
     - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.
     - [Gesture Recognizers](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html) for any situations when target-action doesn't suffice.
     - [Delegation](https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html) when behavior can be delegated to another object.
-    - [NSNotification & NSNotificationCenter](http://nshipster.com/nsnotification-and-nsnotificationcenter/) for communicating events across a system in a loosely-coupled way.
+    - [NSNotification & NSNotificationCenter](https://nshipster.com/nsnotification-and-nsnotificationcenter/) for communicating events across a system in a loosely-coupled way.
 
 * * *
 

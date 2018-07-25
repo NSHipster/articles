@@ -1,6 +1,6 @@
 ---
 title: Documentation
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "There's an adage among Cocoa developers that Objective-C's verbosity lends its code to being effectively self-documenting. Between longMethodNamesWithNamedParameters: and the explicit typing of those parameters, Objective-C methods don't leave much to the imagination."
 status:
@@ -45,7 +45,7 @@ Each method should similarly begin with a concise description of its functionali
 
 Properties are often described in a single sentence, and should include what its default value is.
 
-Related properties and methods should be grouped by an `@name` declaration, which functions similarly to a [`#pragma mark`](http://nshipster.com/pragma/), and can be used with the triple-slash (`///`) comment variant.
+Related properties and methods should be grouped by an `@name` declaration, which functions similarly to a [`#pragma mark`](https://nshipster.com/pragma/), and can be used with the triple-slash (`///`) comment variant.
 
 Try reading other documentation before writing some yourself, in order to get a sense of the correct tone and style. When in doubt about terminology or verbiage, follow the lead of the closest thing you can find from Apple's official docs.
 

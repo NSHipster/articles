@@ -1,6 +1,6 @@
 ---
 title: Swift System Version Checking
-author: Mattt Thompson
+author: Mattt
 category: Swift
 tags: swift
 excerpt: "C uses preprocessor directives capable of unspeakable evil. Swift has a safe subset of preprocessor directives. So how do we check system version for API compatibility?"
@@ -20,37 +20,37 @@ Swift certainly draws inspiration from Haskell, Rust, Python, D, and other moder
 
 In Objective-C, checking for the availability of an API was accomplished through a combination of C preprocessor directives, conditionals on `class`, `respondsToSelector:`, and `instancesRespondToSelector:`:
 
-~~~{objective-c}
+```objc
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 if ([NSURLSession class] &&
     [NSURLSessionConfiguration respondsToSelector:@selector(backgroundSessionConfigurationWithIdentifier:)]) {
     // ...
 }
 #endif
-~~~
+```
 
 However, as noted previously, Swift's compiler directives are [extremely constrained](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithCAPIs.html#//apple_ref/doc/uid/TP40014216-CH8-XID_20), allowing only for compiler flags and conditional compilation against specific operating systems and architectures:
 
-~~~{swift}
+```swift
 #if DEBUG
      println("OTHER_SWIFT_FLAGS = -D DEBUG")
 #endif
-~~~
+```
 
 | Function | Valid Arguments                    |
 |----------|------------------------------------|
 | `os()`   | `OSX`, `iOS`                      |
 | `arch()` | `x86_64`, `arm`, `arm64`, `i386`   |
 
-~~~{swift}
+```swift
 #if os(iOS)
     var image: UIImage?
 #elseif os(OSX)
     var image: NSImage?
 #endif
-~~~
+```
 
-Unfortunately, `os()` does not offer any insight into the specific version of OS X or iOS, which means that checks must be made at runtime. And with Swift's less-forgiving [treatment of `nil`](http://nshipster.com/nil/), checking for constants Objective-C-style results in a crash.
+Unfortunately, `os()` does not offer any insight into the specific version of OS X or iOS, which means that checks must be made at runtime. And with Swift's less-forgiving [treatment of `nil`](https://nshipster.com/nil/), checking for constants Objective-C-style results in a crash.
 
 So how do you check the system version in Swift to determine API availability? Read on to find out.
 
@@ -66,17 +66,17 @@ Anticipating the need for a Swift-friendly API for determining API version at ru
 
 For a simple check, like "is this app running on iOS 9?", `isOperatingSystemAtLeastVersion` is the most straightforward approach.
 
-~~~{swift}
+```swift
 if NSProcessInfo().isOperatingSystemAtLeastVersion(NSOperatingSystemVersion(majorVersion: 9, minorVersion: 0, patchVersion: 0)) {
     println("iOS >= 9.0.0")
 }
-~~~
+```
 
 ### operatingSystemVersion
 
 For more involved version comparison, the `operatingSystemVersion` can be inspected directly. Combine this with Swift pattern matching and `switch` statements for syntactic concision:
 
-~~~{swift}
+```swift
 let os = NSProcessInfo().operatingSystemVersion
 switch (os.majorVersion, os.minorVersion, os.patchVersion) {
 case (8, 0, _):
@@ -89,7 +89,7 @@ default:
     // this code will have already crashed on iOS 7, so >= iOS 10.0
     println("iOS >= 10.0.0")
 }
-~~~
+```
 
 ## UIDevice systemVersion
 
@@ -97,14 +97,14 @@ Ironically, the new `NSProcessInfo` APIs aren't especially useful at the time of
 
 As an alternative, one can use the `systemVersion` property `UIDevice`:
 
-~~~{swift}
+```swift
 switch UIDevice.currentDevice().systemVersion.compare("8.0.0", options: NSStringCompareOptions.NumericSearch) {
 case .OrderedSame, .OrderedDescending:
     println("iOS >= 8.0")
 case .OrderedAscending:
     println("iOS < 8.0")
 }
-~~~
+```
 
 > Use `NSStringCompareOptions.NumericSearch` when comparing version number strings to ensure that, for example, `"2.5" < "2.10"`.
 
@@ -116,11 +116,11 @@ Another approach to determining API availability is to check framework version n
 
 This is a dead-end for iOS, but OS X can pretty reliably check against the version of AppKit, with `NSAppKitVersionNumber`:
 
-~~~{swift}
+```swift
 if rint(NSAppKitVersionNumber) > NSAppKitVersionNumber10_9 {
     println("OS X >= 10.10")
 }
-~~~
+```
 
 > Apple uses `rint` in sample code to round off version numbers for `NSAppKitVersionNumber` comparison.
 

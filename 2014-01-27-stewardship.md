@@ -1,6 +1,6 @@
 ---
 title: Stewardship
-author: Mattt Thompson
+author: Mattt
 category: ""
 tags: nshipster
 excerpt: "Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project."
@@ -60,30 +60,30 @@ CocoaPods is the de facto dependency manager for integrating third party code in
 
 #### NSHipsterKit.podspec
 
-~~~{ruby}
+```{ruby}
 Pod::Spec.new do |s|
   s.name     = 'NSHipsterKit'
   s.version  = '1.0.0'
   s.license  = 'MIT'
   s.summary  = "A pretty obscure library.
                 You've probably never heard of it."
-  s.homepage = 'http://nshipster.com'
-  s.authors  = { 'Mattt Thompson' =>
+  s.homepage = 'https://nshipster.com'
+  s.authors  = { 'Mattt' =>
                  'mattt@nshipster.com' }
   s.social_media_url = "https://twitter.com/mattt"
   s.source   = { :git => 'https://github.com/nshipster/NSHipsterKit.git', :tag => '1.0.0' }
   s.source_files = 'NSHipsterKit'
 end
-~~~
+```
 
 Once the `.podspec` has been submitted to the CocoaPods specs repository, a consumer would be able to add it to their own project with a Podfile:
 
 #### Podfile
 
-~~~{ruby}
+```{ruby}
 platform :ios, '7.0'
 pod 'NSHipsterKit', '~> 1.0'
-~~~
+```
 
 ## Maintaining
 
@@ -107,7 +107,7 @@ Deviating from these conventions as an author is disrespectful to anyone using t
 
 ### Answering Questions
 
-One of our greatest flaws as humans is our relative inability to comprehend not knowing  or understanding something that we ourselves do. This makes it extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
+One of our greatest flaws as humans is our relative inability to comprehend not knowing or understanding something that we ourselves do. This makes it extremely difficult to diagnose (and at times empathize with) misunderstandings that someone else might be having.
 
 There's also a slight sadistic tendency for developers to lord knowledge over anyone who doesn't know as much as they do. We had to figure it out for ourselves (uphill both ways, in the snow) so why shouldn't they have to as well?
 
@@ -138,7 +138,7 @@ In any case, there will come a time when the lights need to be turned off, and i
 
 The alternative is to become a liability, an attractive nuisance... a mockery of what once was a respectable code base.
 
-* * *
+---
 
 Creating is one of the most fulfilling experiences in life, and it's something that's only improved by sharing with others. As software developers, we have a unique opportunity to be unbounded by physical limitations to help one another.
 

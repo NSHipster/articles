@@ -1,6 +1,6 @@
 ---
 title: NSAssertionHandler
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Programming incorporates numerous disciplines of human reasoning, from high-level discourse and semantics—the story we tell each other to explain how a system works—to the mathematical and philosophical machinery that underpins everything."
 status:
@@ -53,14 +53,14 @@ And while Foundation assertion macros are extremely useful in their own right—
 
 ### LoggingAssertionHandler.h
 
-~~~{objective-c}
+```objc
 @interface LoggingAssertionHandler : NSAssertionHandler
 @end
-~~~
+```
 
 ### LoggingAssertionHandler.m
 
-~~~{objective-c}
+```objc
 @implementation LoggingAssertionHandler
 
 - (void)handleFailureInMethod:(SEL)selector
@@ -81,7 +81,7 @@ And while Foundation assertion macros are extremely useful in their own right—
 }
 
 @end
-~~~
+```
 
 Each thread has the option of specifying an assertion handler. To have the `NSAssertionHandler` subclass start handling failed assertions, set it as the value for the `NSAssertionHandlerKey` key in the thread's `threadDictionary`.
 
@@ -90,7 +90,7 @@ didFinishLaunchingWithOptions:`.
 
 ### AppDelegate.m
 
-~~~{objective-c}
+```objc
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -101,7 +101,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 
   return YES;
 }
-~~~
+```
 
 ---
 

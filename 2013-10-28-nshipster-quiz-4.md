@@ -1,6 +1,6 @@
 ---
 title: "NSHipster Quiz #4"
-author: Mattt Thompson
+author: Mattt
 category: Trivia
 excerpt: "The fourth and final quiz of the year. Do you have what it takes to be the `NSArray -firstObject` among your peers?"
 status:
@@ -53,25 +53,25 @@ With the fluff out of the way, it's now time to dive into some hardcore Cocoa fu
 9. Name the 4 Classes that conform to `<NSLocking>` (1 pt. each)
 10. What is the name of the method called by the following code:
 
-~~~{objective-c}
+```objc
 array[1] = @"foo";
-~~~
+```
 
 Round 3: Picture Round - Indie Devs
 -----------------------------------
 
 Following another tradition of the NSHipster quiz is everybody's favorite: the Picture Round! This time, the theme is indie developers. Earn up to 3 points for each set of pictures by naming the **founder**, the **name of the company** they're known for, and the **name of their flagship app** represented by the icon.
 
-1. ![Question 1]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-1.png)
-2. ![Question 2]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-2.png)
-3. ![Question 3]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-3.png)
-4. ![Question 4]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-4.png)
-5. ![Question 5]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-5.png)
-6. ![Question 6]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-6.png)
-7. ![Question 7]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-7.png)
-8. ![Question 8]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-8.png)
-9. ![Question 9]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-9.png)
-10. ![Question 10]({{ site.asseturl }}/quiz-4/nshipster-quiz-4-question-10.png)
+1. ![Question 1]({% asset quiz-4/nshipster-quiz-4-question-1.png @path %})
+2. ![Question 2]({% asset quiz-4/nshipster-quiz-4-question-2.png @path %})
+3. ![Question 3]({% asset quiz-4/nshipster-quiz-4-question-3.png @path %})
+4. ![Question 4]({% asset quiz-4/nshipster-quiz-4-question-4.png @path %})
+5. ![Question 5]({% asset quiz-4/nshipster-quiz-4-question-5.png @path %})
+6. ![Question 6]({% asset quiz-4/nshipster-quiz-4-question-6.png @path %})
+7. ![Question 7]({% asset quiz-4/nshipster-quiz-4-question-7.png @path %})
+8. ![Question 8]({% asset quiz-4/nshipster-quiz-4-question-8.png @path %})
+9. ![Question 9]({% asset quiz-4/nshipster-quiz-4-question-9.png @path %})
+10. ![Question 10]({% asset quiz-4/nshipster-quiz-4-question-10.png @path %})
 
 Round 4: NSAnagram
 ------------------

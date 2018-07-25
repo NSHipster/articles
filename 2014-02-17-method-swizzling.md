@@ -1,6 +1,6 @@
 ---
 title: Method Swizzling
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Method swizzling is the process of changing the implementation of an existing selector. It's a technique made possible by the fact that method invocations in Objective-C can be changed at runtime, by changing how selectors are mapped to underlying functions in a class's dispatch table."
 status:
@@ -20,7 +20,7 @@ status:
 > With all your power ... What would you do?<br/>
 > <cite><strong>The Flaming Lips</strong>, <em><a href="http://en.wikipedia.org/wiki/The_Yeah_Yeah_Yeah_Song_(With_All_Your_Power)">"The Yeah Yeah Yeah Song (With All Your Power)"</a></em></cite>
 
-In last week's article about [associated objects](http://nshipster.com/associated-objects/), we began to explore the dark arts of the Objective-C runtime. This week, we venture further, to discuss what is perhaps the most contentious of runtime hackery techniques: method swizzling.
+In last week's article about [associated objects](https://nshipster.com/associated-objects/), we began to explore the dark arts of the Objective-C runtime. This week, we venture further, to discuss what is perhaps the most contentious of runtime hackery techniques: method swizzling.
 
 * * *
 
@@ -32,7 +32,7 @@ Each view controller could add tracking code to its own implementation of `viewD
 
 Fortunately, there is another way: **method swizzling** from a category. Here's how to do it:
 
-~~~{objective-c}
+```objc
 #import <objc/runtime.h>
 
 @implementation UIViewController (Tracking)
@@ -79,7 +79,7 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 }
 
 @end
-~~~
+```
 
 > In computer science, [pointer swizzling](http://en.wikipedia.org/wiki/Pointer_swizzling) is the conversion of references based on name or position to direct pointer references.  While the origins of Objective-C's usage of the term are not entirely known, it's understandable why it was co-opted, since method swizzling involves changing the reference of a function pointer by its selector.
 
@@ -101,7 +101,7 @@ Because method swizzling affects global state, it is important to minimize the p
 
 **Swizzling should always be done in a `dispatch_once`.**
 
-Again, because swizzling changes global state, we need to take every precaution available to us in the runtime. Atomicity is one such precaution, as is a guarantee that code will be executed exactly once, even across different threads. Grand Central Dispatch's `dispatch_once` provides both of these desirable behaviors, and should be considered as much a standard practice for swizzling as they are for [initializing singletons](http://nshipster.com/c-storage-classes/).
+Again, because swizzling changes global state, we need to take every precaution available to us in the runtime. Atomicity is one such precaution, as is a guarantee that code will be executed exactly once, even across different threads. Grand Central Dispatch's `dispatch_once` provides both of these desirable behaviors, and should be considered as much a standard practice for swizzling as they are for [initializing singletons](https://nshipster.com/c-storage-classes/).
 
 ## Selectors, Methods, & Implementations
 
@@ -121,12 +121,12 @@ To swizzle a method is to change a class's dispatch table in order to resolve me
 
 It may appear that the following code will result in an infinite loop:
 
-~~~{objective-c}
+```objc
 - (void)xxx_viewWillAppear:(BOOL)animated {
     [self xxx_viewWillAppear:animated];
     NSLog(@"viewWillAppear: %@", NSStringFromClass([self class]));
 }
-~~~
+```
 
 Surprisingly, it won't. In the process of swizzling, `xxx_viewWillAppear:` has been reassigned to the original implementation of `UIViewController -viewWillAppear:`. It's good programmer instinct for calling a method on `self` in its own implementation to raise a red flag, but in this case, it makes sense if we remember what's _really_ going on. However, if we were to call `viewWillAppear:` in this method, it _would_ cause an infinite loop, since the implementation of this method will be swizzled to the `viewWillAppear:` selector at runtime.
 
@@ -145,4 +145,4 @@ Swizzling is widely considered a voodoo technique, prone to unpredictable behavi
 
 * * *
 
-Like [associated objects](http://nshipster.com/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.
+Like [associated objects](https://nshipster.com/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.

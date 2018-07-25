@@ -1,6 +1,6 @@
 ---
 title: "Core Data Libraries & Utilities"
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 excerpt: "We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."
 status:
@@ -12,7 +12,7 @@ So let's say that, having determined your particular needs and compared all of t
 
 Nothing wrong with that! Core Data is a great choice for apps that model, persist, and query large object graphs.
 
-Sure it's complicated, cumbersome, and yes, at times, a real [pain in the ass](http://nshipster.com/nscoding#figure-2)—but gosh darn it, some of the best and most popular apps ever built use Core Data. And if it's good enough for them, it's probably good enough for you, too.
+Sure it's complicated, cumbersome, and yes, at times, a real [pain in the ass](https://nshipster.com/nscoding#figure-2)—but gosh darn it, some of the best and most popular apps ever built use Core Data. And if it's good enough for them, it's probably good enough for you, too.
 
 ...but that's not to say that Core Data can't be improved.
 
@@ -70,11 +70,6 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=RestKit&repo=RestKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
-      <td><a href="https://github.com/AFNetworking/AFIncrementalStore">AFIncrementalStore</a></td>
-      <td><a href="https://github.com/mattt">Mattt Thompson</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=AFNetworking&repo=AFIncrementalStore&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
-    </tr>
-    <tr>
       <td><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></td>
       <td><a href="https://github.com/cnstoll">Conrad Stoll</a></td>
       <td><iframe src="http://ghbtns.com/github-btn.html?user=mutualmobile&repo=MMRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
@@ -113,7 +108,6 @@ This week on NSHipster: a guided tour of the best open source libraries for work
       <td><iframe src="http://ghbtns.com/github-btn.html?user=lhunath&repo=UbiquityStoreManager&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
-
 
   <thead>
     <tr>
@@ -162,13 +156,13 @@ Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](htt
 
 Here's a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query). Seriously, people _love_ LINQ.
 
-For the uninitiated, LINQ is like [SQL](http://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](http://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](http://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
+For the uninitiated, LINQ is like [SQL](http://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](https://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](https://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
 
-~~~
+```
 from c in SomeCollection
   where c.SomeProperty < 10
   select new {c.SomeProperty, c.OtherProperty};
-~~~
+```
 
 #### [ios-queryable](https://github.com/martydill/ios-queryable)
 
@@ -176,7 +170,7 @@ from c in SomeCollection
 
 ### Inspired by [ReactiveCocoa](https://github.com/ReactiveCocoa)
 
-ReactiveCocoa, which itself [brings the functional reactive paradigm to Objective-C](http://nshipster.com/reactivecocoa/), is now being used to bring some functional sanity and order to Core Data. This is still uncharted territory, but the initial results are indeed promising.
+ReactiveCocoa, which itself [brings the functional reactive paradigm to Objective-C](https://nshipster.com/reactivecocoa/), is now being used to bring some functional sanity and order to Core Data. This is still uncharted territory, but the initial results are indeed promising.
 
 #### [ReactiveCoreData](https://github.com/apparentsoft/ReactiveCoreData)
 
@@ -232,11 +226,10 @@ We would be remiss to survey the open source Core Data ecosystem without mention
 
 #### [Mogenerator](https://github.com/rentzsch/mogenerator)
 
-> `mogenerator` is a command-line tool that, given an `.xcdatamodel` file, will generate *two classes per entity*. The first class, `_MyEntity`, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, `MyEntity`, subclasses `_MyEntity`, won't ever be overwritten and is a great place to put your custom logic.
+> `mogenerator` is a command-line tool that, given an `.xcdatamodel` file, will generate _two classes per entity_. The first class, `_MyEntity`, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, `MyEntity`, subclasses `_MyEntity`, won't ever be overwritten and is a great place to put your custom logic.
 
 ---
 
 Remember: there is no silver bullet. There is no one-size-fits-all solution. Just as Core Data may only be advisable in particular circumstances, so too are the aforementioned Core Data libraries.
 
 Dividing the ecosystem up into broad categories is informative if only to help identify the relative strengths and trade-offs of each library. Only you can determine (yes, sometimes through trial and error) which solution is the best for you.
-

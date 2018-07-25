@@ -1,6 +1,6 @@
 ---
 title: Search Kit
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."
 status:
@@ -66,14 +66,14 @@ an index is finished being used, like many other C APIs, the index is closed.
 
 When starting a new in-memory index, use an empty `NSMutableData` instance as the data store:
 
-~~~{swift}
+```swift
 let mutableData = NSMutableData()
 let index = SKIndexCreateWithMutableData(mutableData, nil, SKIndexType(kSKIndexInverted.rawValue), nil).takeRetainedValue()
-~~~
-~~~{objective-c}
+```
+```objc
 NSMutableData *mutableData = [NSMutableData data];
 SKIndexRef index = SKIndexCreateWithMutableData((__bridge CFMutableDataRef)mutableData, NULL, kSKIndexInverted, NULL);
-~~~
+```
 
 ### Adding Documents to an Index
 
@@ -83,53 +83,53 @@ Each `SKDocumentRef` is associated with a URI.
 
 For documents on the file system, the URI is simply the location of the file on disk:
 
-~~~{swift}
+```swift
 let fileURL = NSURL(fileURLWithPath: "/path/to/document")
 let document = SKDocumentCreateWithURL(fileURL).takeRetainedValue()
-~~~
-~~~{objective-c}
+```
+```objc
 NSURL *fileURL = [NSURL fileURLWithPath:@"/path/to/document"];
 SKDocumentRef document = SKDocumentCreateWithURL((__bridge CFURLRef)fileURL);
-~~~
+```
 
 For Core Data managed objects, the `NSManagedObjectID -URIRepresentation` can be used:
 
-~~~{swift}
+```swift
 let objectURL = objectID.URIRepresentation()
 let document = SKDocumentCreateWithURL(objectURL).takeRetainedValue()
-~~~
-~~~{objective-c}
+```
+```objc
 NSURL *objectURL = [objectID URIRepresentation];
 SKDocumentRef document = SKDocumentCreateWithURL((__bridge CFURLRef)objectURL);
-~~~
+```
 
 > For any other kinds of data, it would be up to the developer to define a URI representation.
 
 When adding the contents of a `SKDocumentRef` to an `SKIndexRef`, the text can either be specified manually:
 
-~~~{swift}
+```swift
 let string = "Lorem ipsum dolar sit amet"
 SKIndexAddDocumentWithText(index, document, string, true)
-~~~
-~~~{objective-c}
+```
+```objc
 NSString *string = @"Lorem ipsum dolar sit amet";
 SKIndexAddDocumentWithText(index, document, (__bridge CFStringRef)string, true);
-~~~
+```
 
 ...or collected automatically from a file:
 
-~~~{swift}
+```swift
 let mimeTypeHint = "text/rtf"
 SKIndexAddDocument(index, document, mimeTypeHint, true)
-~~~
-~~~{objective-c}
+```
+```objc
 NSString *mimeTypeHint = @"text/rtf";
 SKIndexAddDocument(index, document, (__bridge CFStringRef)mimeTypeHint, true);
-~~~
+```
 
 To change the way a file-based document's contents are processed, properties can be defined when creating the index:
 
-~~~{swift}
+```swift
 let stopwords: Set = ["all", "and", "its", "it's", "the"]
 
 let properties: [NSObject: AnyObject] = [
@@ -141,8 +141,8 @@ let properties: [NSObject: AnyObject] = [
 ]
 
 let index = SKIndexCreateWithURL(url, nil, SKIndexType(kSKIndexInverted.rawValue), properties).takeRetainedValue()
-~~~
-~~~{objective-c}
+```
+```objc
 NSSet *stopwords = [NSSet setWithObjects:@"all", @"and", @"its", @"it's", @"the", nil];
 
 NSDictionary *properties = @{
@@ -154,7 +154,7 @@ NSDictionary *properties = @{
 };
 
 SKIndexRef index = SKIndexCreateWithURL((CFURLRef)url, NULL, kSKIndexInverted, (CFDictionaryRef)properties);
-~~~
+```
 
 After adding to or modifying an index's documents, you'll need to commit the changes to the backing store via `SKIndexFlush()` to make your changes available to a search.
 
@@ -163,16 +163,16 @@ After adding to or modifying an index's documents, you'll need to commit the cha
 
 `SKSearchRef` is the data type constructed to perform a search on an `SKIndexRef`. It contains a reference to the index, a query string, and a set of options:
 
-~~~{swift}
+```swift
 let query = "kind of blue"
 let options = SKSearchOptions(kSKSearchOptionDefault)
 let search = SKSearchCreate(index, query, options).takeRetainedValue()
-~~~
-~~~{objective-c}
+```
+```objc
 NSString *query = @"kind of blue";
 SKSearchOptions options = kSKSearchOptionDefault;
 SKSearchRef search = SKSearchCreate(index, (CFStringRef)query, options);
-~~~
+```
 
 `SKSearchOptions` is a bitmask with the following possible values:
 
@@ -189,7 +189,7 @@ These options can be specified individually as well:
 
 Just creating an `SKSearchRef` kicks off the asynchronous search; results can be accessed with one or more calls to `SKSearchFindMatches`, which returns a batch of results at a time until you've seen all the matching documents. Iterating through the range of found matches provides access to the document URL and relevance score (if calculated):
 
-~~~{swift}
+```swift
 let limit = ...                // Maximum number of results
 let time: NSTimeInterval = ... // Maximum time to get results, in seconds
 
@@ -210,8 +210,8 @@ let results: [NSURL] = zip(urls[0 ..< foundCount], scores).flatMap({
     print("- \(url): \(score)")
     return url
 })
-~~~
-~~~{objective-c}
+```
+```objc
 NSUInteger limit = ...; // Maximum number of results
 NSTimeInterval time = ...; // Maximum time to get results, in seconds
 SKDocumentID documentIDs[limit];
@@ -235,7 +235,7 @@ NSMutableArray *mutableResults = [NSMutableArray array];
 
     CFRelease(url);
 }];
-~~~
+```
 
 > For more examples of Search Kit in action, be sure to check out [Indragie Karunaratne's](https://github.com/indragiek) project, [SNRSearchIndex](https://github.com/indragiek/SNRSearchIndex).
 

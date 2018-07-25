@@ -1,6 +1,6 @@
 ---
 title: NSLocalizedString
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Strings are perhaps the most versatile data type in computing. They're passed around as symbols, used to encode numeric values, associate values to keys, represent resource paths, store linguistic content, and format information. Having a strong handle on user-facing strings is essential to making a great user experience."
@@ -14,7 +14,7 @@ In Foundation, there is a convenient macro for denoting strings as user-facing: 
 
 `NSLocalizedString` provides string localization in "compile-once / run everywhere" fashion, replacing all localized strings with their respective translation according to the string tables of the user settings. But even if you're not going to localize your app to any other markets, `NSLocalizedString` does wonders with respect to copy writing & editing.
 
-> For more information about Localization (l10n) and Internationalization (i18n) [see the NSHipster article about NSLocale](http://nshipster.com/nslocale/).
+> For more information about Localization (l10n) and Internationalization (i18n) [see the NSHipster article about NSLocale](https://nshipster.com/nslocale/).
 
 ---
 
@@ -22,23 +22,23 @@ In Foundation, there is a convenient macro for denoting strings as user-facing: 
 
 In practice, the `key` is often just the base translation string to be used, while `comment` is usually `nil`, unless there is an ambiguous context:
 
-~~~{objective-c}
+```objc
 textField.placeholder = NSLocalizedString(@"Username", nil);
-~~~
+```
 
 `NSLocalizedString` can also be used as a format string in `NSString +stringWithFormat:`. In these cases, it's important to use the `comment` argument to provide enough context to be properly translated.
 
-~~~{objective-c}
+```objc
 self.title = [NSString stringWithFormat:NSLocalizedString(@"%@'s Profile", @"{User First Name}'s Profile"), user.name];
 
 label.text = [NSString stringWithFormat:NSLocalizedString(@"Showing %lu of %lu items", @"Showing {number} of {total number} items"), [page count], [items count]];
-~~~
+```
 
 ## `NSLocalizedString` & Co.
 
 There are four varieties of `NSLocalizedString`, with increasing levels of control (and obscurity):
 
-~~~{objective-c}
+```objc
 NSString * NSLocalizedString(
   NSString *key,
   NSString *comment
@@ -64,7 +64,7 @@ NSString * NSLocalizedStringWithDefaultValue(
   NSString *value,
   NSString *comment
 )
-~~~
+```
 
 99% of the time, `NSLocalizedString` will suffice. If you're working in a library or shared component, `NSLocalizedStringFromTable` should be used instead.
 
@@ -74,12 +74,12 @@ At runtime, `NSLocalizedString` determines the preferred language, and finds a c
 
 Here's what that looks like:
 
-~~~
+```
 /* No comment provided by engineer. */
 "Username"="nom d'utilisateur";
 /* {User First Name}'s Profile */
 "%@'s Profile"="profil de %1$@";
-~~~
+```
 
 `Localizable.strings` files are initially generated with `genstrings`.
 

@@ -1,6 +1,6 @@
 ---
 title: UIAccessibility
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Accessibility, like internationalization, is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is all about getting developers excited about this kind of stuff."
@@ -9,13 +9,14 @@ status:
 ---
 
 > We all want to help one another, human beings are like that.
+>
 > - [Charlie Chaplin](http://en.wikiquote.org/wiki/Charlie_Chaplin)
 
 You know what I wish everyone would copy from Apple? Their assistive technologies.
 
 iPhones and iPads--magical as they are--become downright _life-changing_ for individuals with disabilities and their families because of Apple's commitment to accessibility. Look no further than the [WWDC 2012 Introduction Video](http://www.youtube.com/watch?v=MbP_pxR5cMk), which opens with Per Busch, a blind man who walks the woods of Kassel, Germany with the aid of [Ariadne GPS](http://www.ariadnegps.eu). It's a lovely reminder of the kind of impact our work can have on others.
 
-Accessibility, like [internationalization](http://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started:
+Accessibility, like [internationalization](https://nshipster.com/nslocale/), is one of those topics that's difficult to get developers excited about. But as you know, NSHipster is _all about_ getting developers excited about this kind of stuff. Let's get started:
 
 ---
 
@@ -43,7 +44,7 @@ Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will po
 
 Don't Panic--unlike setting your device to another language, there's no real risk of not being able to figure out how to turn VoiceOver off.
 
-![VoiceOver Settings]({{ site.asseturl }}/uiaccessibility-voiceover.png)
+![VoiceOver Settings]({% asset uiaccessibility-voiceover.png @path %})
 
 Using the device in VoiceOver mode is a bit different than you're used to:
 
@@ -71,17 +72,17 @@ Accessibility labels and hints tell VoiceOver what to say when selecting user in
 The [Accessibility Programming Guide](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html) provides the following guidelines for labels and hints:
 
 > ### Guidelines for Creating Labels
-> If you provide a custom control or view, or if you display a custom icon in a standard control or view, you need to provide a label that:
 >
+> If you provide a custom control or view, or if you display a custom icon in a standard control or view, you need to provide a label that:
+
 - **Very briefly describes the element.** Ideally, the label consists of a single word, such as Add, Play, Delete, Search, Favorites, or Volume.
 - **Does not include the type of the control or view.** The type information is contained in the traits attribute of the element and should never be repeated in the label.
 - **Begins with a capitalized word.** This helps VoiceOver read the label with the appropriate inflection.
 - **Does not end with a period.** The label is not a sentence and therefore should not end with a period.
 - **Is localized.** Be sure to make your application available to as wide an audience as possible by localizing all strings, including accessibility attribute strings. In general, VoiceOver speaks in the language that the user specifies in International settings.
->
-> ### Guidelines for Creating Hints
-> The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.
->
+  > ### Guidelines for Creating Hints
+  >
+  > The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.
 - **Very briefly describes the results.** Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element.
 - **Begins with a verb and omits the subject.** Be sure to use the third-person singular declarative form of a verb, such as “Plays,” and not the imperative, such as “Play.” You want to avoid using the imperative, because using it can make the hint sound like a command.
 - **Begins with a capitalized word and ends with a period.** Even though a hint is a phrase, not a sentence, ending the hint with a period helps VoiceOver speak it with the appropriate inflection.

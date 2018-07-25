@@ -1,6 +1,6 @@
 ---
 title: Xcode Snippets
-author: Mattt Thompson
+author: Mattt
 category: Xcode
 excerpt: "iOS development all but requires the use of Xcode. And if we're resigned to use an IDE in our development workflow, we might as well make the most of it, right? So this week on NSHipster, we're going to talk about one of the more powerful yet underused features of Xcode: Code Snippets"
 status:
@@ -21,21 +21,21 @@ From `@interface` declarations to `if (!self) return nil;` incantations, there i
 
 To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half the Utilities panel, there will be a horizontal divider with 4 icons.
 
-![Utilities Divider]({{ site.asseturl }}/xcode-snippet-utilities-divider.png)
+![Utilities Divider]({% asset xcode-snippet-utilities-divider.png @path %})
 
 Click the `{ }` icon to show the Code Snippets Library.
 
-![Utilities Panel]({{ site.asseturl }}/xcode-snippet-utilties-panel.png)
+![Utilities Panel]({% asset xcode-snippet-utilties-panel.png @path %})
 
 There are two ways to insert a snippet into your code:
 
 You can drag and drop from the code snippets library into your editor:
 
-![Drag-and-Drop]({{ site.asseturl }}/xcode-snippet-drag-and-drop.gif)
+![Drag-and-Drop]({% asset xcode-snippet-drag-and-drop.gif @path %})
 
 ...or for snippets that include a text completion shortcut, you can start typing that:
 
-![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-text-completion-shortcut.gif)
+![Text Completion Shortcut]({% asset xcode-snippet-text-completion-shortcut.gif @path %})
 
 To get a sense of what you can do with snippets, here's an overview of the ones built-in to Xcode:
 
@@ -46,7 +46,7 @@ To get a sense of what you can do with snippets, here's an overview of the ones 
 - Objective-C declarations for `@interface` (including for class extensions and categories), `@implementation`, `@protocol`
 - Objective-C boilerplate for KVO, including the relatively obscure `keyPathsForValuesAffecting<Key>`, used for [registering dependent keys](https://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Conceptual/KeyValueObserving/Articles/KVODependentKeys.html)
 - Objective-C boilerplate for Core Data fetches, property accessors, and property validation
-- Objective-C idioms for enumerating [`NSIndexSet`](http://nshipster.com/nsindexset/)
+- Objective-C idioms for enumerating [`NSIndexSet`](https://nshipster.com/nsindexset/)
 - Objective-C incantation for `init`, `initWithCoder:` and `initWithFrame:` method implementations
 - Objective-C `@try` / `@catch` / `@finally` and `@autorelease` blocks
 - GCD idioms for `dispatch_once` and `dispatch_after`
@@ -57,11 +57,11 @@ Of course, what really makes snippets such a powerful feature is the ability to 
 
 The process of creating a snippet is actually pretty unintuitive and difficult to explain. It uses an obscure OS X system feature that allows users to create a "Text Clipping" by dragging and dropping selected text. Much easier to just show it in action:
 
-![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-create.gif)
+![Text Completion Shortcut]({% asset xcode-snippet-create.gif @path %})
 
 After being added to the code snippet library, a user-defined snippet can be edited by double-clicking its listing:
 
-![Text Completion Shortcut]({{ site.asseturl }}/xcode-snippet-editor.png)
+![Text Completion Shortcut]({% asset xcode-snippet-editor.png @path %})
 
 Each snippet has the following fields:
 
@@ -87,7 +87,7 @@ Each snippet has the following fields:
 
 Something you may have noticed in using other Xcode snippets are placeholder tokens:
 
-![Placeholder Token]({{ site.asseturl }}/xcode-snippet-token.png)
+![Placeholder Token]({% asset xcode-snippet-token.png @path %})
 
 In Xcode, placeholder tokens are delimited by `<#` and `#>`, with the placeholder text in the middle. Go ahead—try typing that into Xcode, and watch as the text between the octothorp tags magically transforms right in front of your eyes.
 

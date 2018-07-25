@@ -1,6 +1,6 @@
 ---
 title: AddressBookUI
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
 status:
@@ -28,17 +28,17 @@ The first argument for the function is a dictionary containing the address compo
 
 > `kABPersonAddressCountryCodeKey` is an especially important attribute, as it determines which locale used to format the address string. If you are unsure of the country code, or one isn't provided with your particular data set, `NSLocale` may be able to help you out:
 
-~~~{swift}
+```swift
 let countryCode: String = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCountryCode) as String
-~~~
+```
 
-~~~{objective-c}
+```objc
 [mutableAddressComponents setValue:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] objectForKey:NSLocaleCountryCode] forKey:(__bridge NSString *)kABPersonAddressCountryCodeKey];
-~~~
+```
 
 The second argument is a boolean flag, `addCountryName`. When `YES`, the name of the country corresponding to the specified country code will be automatically appended to the address. This should only used when the country code is known.
 
-~~~{swift}
+```swift
 let addressComponents = [
     kABPersonAddressStreetKey: "70 NW Couch Street",
     kABPersonAddressCityKey: "Portland",
@@ -48,33 +48,33 @@ let addressComponents = [
 ]
 
 ABCreateStringWithAddressDictionary(addressComponents, true)
-~~~
+```
 
-~~~
+```
 70 NW Couch Street
 Portland‎ OR‎ 97209
 United States
-~~~
+```
 
-Nowhere else in all of the other frameworks is this functionality provided. It's not part of [`NSLocale`](http://nshipster.com/nslocale/), or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it's surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.
+Nowhere else in all of the other frameworks is this functionality provided. It's not part of [`NSLocale`](https://nshipster.com/nslocale/), or even Map Kit or Core Location. For all of the care and attention to detail that Apple puts into localization, it's surprising that such an important task is relegated to the corners of an obscure, somewhat-unrelated framework.
 
 > Unfortunately, Address Book UI is not available in OS X, and it would appear that there's no equivalent function provided on this platform.
 
 For you see, address formats vary greatly across different regions. For example, addresses in the United States take the form:
 
-~~~
+```
 Street Address
 City State ZIP
 Country
-~~~
+```
 
 Whereas addresses in Japan follow a different convention:
 
-~~~
+```
 Postal Code
 Prefecture Municipality
 Street Address
 Country
-~~~
+```
 
 This is at least as jarring a difference in localization as [swapping periods for commas the radix point](http://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system), so make sure to use this function anytime you're displaying an address from its components.

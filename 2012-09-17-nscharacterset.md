@@ -1,6 +1,6 @@
 ---
 title: NSCharacterSet
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Foundation boasts one of the best, most complete implementations of strings around. But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: NSCharacterSet."
 status:
@@ -8,7 +8,7 @@ status:
     reviewed: September 9, 2015
 ---
 
-As mentioned [previously](http://nshipster.com/cfstringtransform/), Foundation boasts one of the best, most complete implementations of strings around.
+As mentioned [previously](https://nshipster.com/cfstringtransform/), Foundation boasts one of the best, most complete implementations of strings around.
 
 But a string implementation is only as good as the programmer who wields it. So this week, we're going to explore some common uses--and misuses--of an important part of the Foundation string ecosystem: `NSCharacterSet`.
 
@@ -36,7 +36,7 @@ But a string implementation is only as good as the programmer who wields it. So 
 
 Contrary to what its name might suggest, `NSCharacterSet` has _nothing_ to do with `NSSet`.
 
-However, `NSCharacterSet` _does_ have quite a bit in common with `NSIndexSet`, conceptually if not also in its underlying implementation. `NSIndexSet`, covered [previously](http://nshipster.com/nsindexset/), represents a sorted collection of unique unsigned integers. Unicode characters are likewise unique unsigned integers that roughly correspond to some orthographic representation. Thus, a character set like `NSCharacterSet +lowercaseCharacterSet` is analogous to the `NSIndexSet` of the integers 97 to 122.
+However, `NSCharacterSet` _does_ have quite a bit in common with `NSIndexSet`, conceptually if not also in its underlying implementation. `NSIndexSet`, covered [previously](https://nshipster.com/nsindexset/), represents a sorted collection of unique unsigned integers. Unicode characters are likewise unique unsigned integers that roughly correspond to some orthographic representation. Thus, a character set like `NSCharacterSet +lowercaseCharacterSet` is analogous to the `NSIndexSet` of the integers 97 to 122.
 
 Now that we're comfortable with the basic concepts of `NSCharacterSet`, let's see some of those patterns and anti-patterns:
 
@@ -50,15 +50,15 @@ It's important to note that this method _only_ strips the _first_ and _last_ con
 
 So let's say you do want to get rid of excessive inter-word spacing for that string you just stripped of whitespace. Here's a really easy way to do that:
 
-~~~{swift}
+```swift
 var string = "  Lorem    ipsum dolar   sit  amet. "
 
 let components = string.componentsSeparatedByCharactersInSet(NSCharacterSet.whitespaceCharacterSet()).filter { !$0.isEmpty }
 
 string = components.joinWithSeparator(" ")
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSString *string = @"Lorem    ipsum dolar   sit  amet.";
 string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -66,7 +66,7 @@ NSArray *components = [string componentsSeparatedByCharactersInSet:[NSCharacterS
 components = [components filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self <> ''"]];
 
 string = [components componentsJoinedByString:@" "];
-~~~
+```
 
 First, trim the string of leading and trailing whitespace. Next, use `NSString -componentsSeparatedByCharactersInSet:` to split on the remaining whitespace to create an `NSArray`. Next, filter out the blank string components with an `NSPredicate`. Finally, use `NSArray -componentsJoinedByString:` to re-join the components with a single space. Note that this only works for languages like English that delimit words with whitespace.
 
@@ -109,15 +109,15 @@ This is all to say: use `CFStringTokenizer` (or `enumerateSubstringsInRange:opti
 
 For example, let's say you have a string that parses opening hours in the following form:
 
-~~~
+```
 Mon-Thurs:  8:00 - 18:00
 Fri:        7:00 - 17:00
 Sat-Sun:    10:00 - 15:00
-~~~
+```
 
 You might `enumerateLinesUsingBlock:` and parse with an `NSScanner` like so:
 
-~~~{swift}
+```swift
 let skippedCharacters = NSMutableCharacterSet.punctuationCharacterSet()
 skippedCharacters.formUnionWithCharacterSet(NSCharacterSet.whitespaceCharacterSet())
 
@@ -139,9 +139,9 @@ hours.enumerateLines { (line, _) in
     scanner.scanInteger(&endHour)
     scanner.scanInteger(&endMinute)
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCharacterSet];
 [skippedCharacters formUnionWithCharacterSet:[NSCharacterSet whitespaceCharacterSet]];
 
@@ -160,7 +160,7 @@ NSMutableCharacterSet *skippedCharacters = [NSMutableCharacterSet punctuationCha
     [scanner scanInteger:&endHour];
     [scanner scanInteger:&endMinute];
 }];
-~~~
+```
 
 We first construct an `NSMutableCharacterSet` from the union of whitespace and punctuation characters. Telling `NSScanner` to skip these characters greatly reduces the logic necessary to parse values from the string.
 

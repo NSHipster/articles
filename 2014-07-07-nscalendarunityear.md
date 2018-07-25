@@ -1,6 +1,6 @@
 ---
 title: NSCalendarUnitYear
-author: Mattt Thompson
+author: Mattt
 category: Swift
 excerpt: "NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."
 status:
@@ -8,7 +8,7 @@ status:
     reviewed: September 9, 2015
 ---
 
-NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](http://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.
+NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](https://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.
 
 > This is actually the 101st article, which means that [by television industry standards](http://en.wikipedia.org/wiki/100_episodes), this site is now suitable for broadcast syndication. (Coming soon to TBS!)
 
@@ -27,7 +27,7 @@ Let's celebrate with some cake:
 
 Cute, right? Let's see what this looks like in code:
 
-~~~{swift}
+```swift
 var cakePath = UIBezierPath()
 cakePath.moveToPoint(CGPointMake(31.5, 32.5))
 cakePath.addCurveToPoint(CGPointMake(6.5, 66.1), controlPoint1: CGPointMake(31.5, 32.5), controlPoint2: CGPointMake(6.9, 46.3))
@@ -35,13 +35,13 @@ cakePath.addCurveToPoint(CGPointMake(6.5, 66.5), controlPoint1: CGPointMake(6.5,
 cakePath.addLineToPoint(CGPointMake(6.5, 95))
 
 ...
-~~~
+```
 
 Wait, hold up. What is this, Objective-C? Manipulating `UIBezierPath`s isn't exactly ground-breaking stuff, but with a few dozen more lines to go, we can make this a bit easier for ourselves.
 
 How about we put some syntactic icing on this cake with some [custom operators](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/AdvancedOperators.html#//apple_ref/doc/uid/TP40014097-CH27-XID_28)?
 
-~~~{swift}
+```swift
 infix operator ---> { associativity left }
 func ---> (left: UIBezierPath, right: (CGFloat, CGFloat)) -> UIBezierPath {
     let (x, y) = right
@@ -65,7 +65,7 @@ func +~ (left: UIBezierPath, right: ((CGFloat, CGFloat), (CGFloat, CGFloat), (CG
 
     return left
 }
-~~~
+```
 
 > Get it? `--->` replaces `moveToPoint`, while `+-` replaces `addLineToPoint`, and `+~` replaces `addCurveToPoint`. This declaration also does away with all of the redundant calls to `CGPointMake`, opting instead for simple coordinate tuples.
 
@@ -102,7 +102,7 @@ The moral of that cautionary tale: **use custom operators and emoji sparingly**.
 
 (Or whatever, the very next code sample totally ignores that advice)
 
-~~~{swift}
+```swift
 // Happy 2nd Birthday, NSHipster
 // 😗💨🎂✨2️⃣
 
@@ -168,7 +168,7 @@ UIColor.whiteColor().setFill()
 UIColor.blackColor().setStroke()
 📍.fill()
 📍.stroke()
-~~~
+```
 
 I'm as amazed as anyone that this actually compiles.
 

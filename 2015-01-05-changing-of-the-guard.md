@@ -1,6 +1,6 @@
 ---
 title: "Changing of the Guard"
-author: Mattt Thompson
+author: Mattt
 category: ""
 excerpt: "An important site announcement."
 status:
