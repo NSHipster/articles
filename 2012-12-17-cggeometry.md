@@ -128,7 +128,7 @@ These functions provide a shorthand way to calculate interesting dimensional val
 These six functions return the minimum, middle, or maximum `x` or `y` value for a rectangle, taking the form:
 
 ```swift
-func CGRectGet[Min|Mid|Max][X|Y](rect: CGRect) -> CGPoint
+func CGRectGet[Min|Mid|Max][X|Y](rect: CGRect) -> CGFloat
 ```
 ```objc
 CGFloat CGRectGet[Min|Mid|Max][X|Y] (
