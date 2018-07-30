@@ -180,7 +180,8 @@ If the thought of working with a string-based format
 without a proper abstraction gives you the heebie-jeebies,
 you're not alone.
 
-Here's one way to encapsulate Password Rules in a Swift API:
+Here's one way to encapsulate Password Rules in a Swift API
+([also available as a Swift package](https://github.com/NSHipster/PasswordRules)):
 
 ```swift
 enum PasswordRule {
