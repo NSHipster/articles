@@ -49,7 +49,7 @@ do little more than annoy the people these policies try to protect.
 > check out the latest
 > [Digital Identity Guidelines](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf)
 > from
-> <acronym title="National Institute of Standards and Technology">NIST</acronym>
+> <abbr title="National Institute of Standards and Technology">NIST</abbr>
 > (published June 2017).
 
 The good news is that more companies and organizations
@@ -73,7 +73,7 @@ in Safari, iOS 12, and macOS Mojave.
 WebKit engineer Daniel Bates submitted
 [this proposal](https://github.com/whatwg/html/issues/3518)
 for consideration to the
-<acronym title="Web Hypertext Application Technology Working Group">WHATWG</acronym>
+<abbr title="Web Hypertext Application Technology Working Group">WHATWG</abbr>
 on March 1st.
 On June 6th,
 the WebKit team

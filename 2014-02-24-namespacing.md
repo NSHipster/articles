@@ -15,9 +15,9 @@ Like a parent faced with the task of explaining the concept of death or the non-
 
 > Why, Jimmy, `NS` stands for `NeXTSTEP` (well, actually, `NeXTSTEP/Sun`, but we'll cover that with "the birds & the bees" talk), and it's used to...
 
-...but by the time the words have left your mouth, you can already sense the disappointment in their face. Their innocence has been lost, and with an audible *sigh* of resignation, they start to ask uncomfortable questions about [@](https://nshipster.com/at-compiler-directives/)
+...but by the time the words have left your mouth, you can already sense the disappointment in their face. Their innocence has been lost, and with an audible _sigh_ of resignation, they start to ask uncomfortable questions about [@](https://nshipster.com/at-compiler-directives/)
 
-* * *
+---
 
 Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language's lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics.
 
@@ -212,7 +212,7 @@ The one case where method prefixing (or suffixing) is absolutely necessary is wh
 
 With all of the recent talk about replacing / reinventing / reimagining Objective-C, it's almost taken as a given that namespacing would be an obvious feature. But what does that actually get us?
 
-**Aesthetics?** Aside from IETF members and military personnel, nobody likes the visual aesthetic of <acronym title="CAPITAL LETTER ACRONYMS">CLA</acronym>s. But would `::`, `/`, or an extra `.` really make matters better? Do we _really_ want to start calling `NSArray` "Foundation Array"? (And what would I do with NSHipster.com ?!)
+**Aesthetics?** Aside from IETF members and military personnel, nobody likes the visual aesthetic of <abbr title="CAPITAL LETTER ACRONYMS">CLA</abbr>s. But would `::`, `/`, or an extra `.` really make matters better? Do we _really_ want to start calling `NSArray` "Foundation Array"? (And what would I do with NSHipster.com ?!)
 
 **Semantics?** Start to look closely at any other language, and how they actually use namespaces, and you'll realize that namespaces don't magically solve all matters of ambiguity. If anything, the additional context makes things worse.
 
