@@ -1,6 +1,9 @@
 ---
 title: guard & defer
 author: Mattt & Nate Cook
+authors:
+    - Nate Cook
+    - Mattt
 category: Swift
 excerpt: >
     Swift 2.0 introduced two new control statements
