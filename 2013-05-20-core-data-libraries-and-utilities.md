@@ -34,27 +34,22 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/magicalpanda/MagicalRecord">Magical Record</a></td>
       <td><a href="https://github.com/casademora">Saul Mora</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=magicalpanda&repo=MagicalRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/supermarin/ObjectiveRecord">Objective-Record</a></td>
       <td><a href="https://github.com/supermarin">Marin Usalj</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=supermarin&repo=ObjectiveRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/soffes/SSDataKit">SSDataKit</a></td>
       <td><a href="https://github.com/soffes">Sam Soffes</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=soffes&repo=SSDataKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/martydill/ios-queryable">ios-queryable</a></td>
       <td><a href="https://github.com/martydill">Marty Dill</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=martydill&repo=ios-queryable&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/apparentsoft/ReactiveCoreData">ReactiveCoreData</a></td>
       <td><a href="https://github.com/apparentsoft">Jacob Gorban</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=apparentsoft&repo=ReactiveCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -67,27 +62,22 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/RestKit/RestKit">RestKit</a></td>
       <td><a href="https://github.com/blakewatters">Blake Watters</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=RestKit&repo=RestKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></td>
       <td><a href="https://github.com/cnstoll">Conrad Stoll</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=mutualmobile&repo=MMRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/OliverLetterer/SLRESTfulCoreData">SLRESTfulCoreData</a></td>
       <td><a href="https://github.com/OliverLetterer">Oliver Letterer</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=OliverLetterer&repo=SLRESTfulCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/gonzalezreal/Overcoat">Overcoat</a></td>
       <td><a href="https://github.com/gonzalezreal">Guillermo Gonzalez</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/Mantle/Mantle">Mantle</a></td>
       <td><a href="https://github.com/Mantle">Mantle</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=Mantle&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -100,12 +90,10 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/nothirst/TICoreDataSync">TICoreDataSync</a></td>
       <td><a href="https://github.com/timisted">Tim Isted</a>, <a href="https://github.com/MrRooni">Michael Fey</a>, <a href="https://github.com/kevinhoctor">Kevin Hoctor</a>, <a href="https://github.com/chbeer">Christian Beer</a>, <a href="https://github.com/tonyarnold">Tony Arnold</a>, and <a href="https://github.com/dannygreg">Danny Greg</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=nothirst&repo=TICoreDataSync&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/lhunath/UbiquityStoreManager">UbiquityStoreManager</a></td>
       <td><a href="https://github.com/lhunath">Maarten Billemont</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=lhunath&repo=UbiquityStoreManager&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -118,7 +106,6 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/rentzsch/mogenerator">mogenerator</a></td>
       <td><a href="https://github.com/rentzsch">Jonathan 'Wolf' Rentzsch</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=rentzsch&repo=mogenerator&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 </table>

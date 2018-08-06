@@ -82,12 +82,10 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/erikdoe/ocmock">OCMock</a></td>
       <td><a href="https://github.com/erikdoe">Erik Doernenburg</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=erikdoe&repo=ocmock&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/jonreid/OCMockito">OCMockito</a></td>
       <td><a href="https://github.com/jonreid">Jon Reid</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=jonreid&repo=OCMockito&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -98,12 +96,10 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/specta/expecta">Expecta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=expecta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/hamcrest/OCHamcrest">OCHamcrest</a></td>
       <td><a href="https://github.com/jonreid">Jon Reid</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=hamcrest&repo=OCHamcrest&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -114,17 +110,14 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/specta/specta">Specta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=specta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/kiwi-bdd/Kiwi">Kiwi</a></td>
       <td><a href="https://github.com/allending">Allen Ding</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=kiwi-bdd&repo=Kiwi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/pivotal/cedar">Cedar</a></td>
       <td><a href="https://github.com/pivotal">Pivotal Labs</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=pivotal&repo=cedar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -135,7 +128,6 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/gh-unit/gh-unit/">GHUnit</a></td>
       <td><a href="https://github.com/gabriel">Gabriel Handford</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=gh-unit&repo=gh-unit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 </table>
