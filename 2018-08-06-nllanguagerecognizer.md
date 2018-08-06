@@ -99,8 +99,7 @@ or joined the Latin club in high school,
 you may be familiar with some fun examples of
 _polylingual homonymy_ between dialectic Latin and modern Italian.
 
-For example, the following sentence has a different meaning
-depending on the language you read it in:
+For example, consider the readings of the following sentence:
 
 > CANE NERO MAGNA BELLA PERSICA!
 
@@ -175,9 +174,10 @@ languageRecognizer.languageHints = [.danish: 0.25, .norwegian: 0.75]
 | Danish (`da`)           | 30%                     |
 | Norwegian Bokmål (`nb`) | 70%                     |
 
----
+<br/>
 
-So what can you do if you know the (likely) language of a string?
+So what can you do once you know the language of a string?
+
 Here are a couple of use cases for your consideration:
 
 ## Checking Misspelled Words
