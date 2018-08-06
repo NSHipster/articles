@@ -11,7 +11,7 @@ There's an adage among Cocoa developers that Objective-C's verbosity lends its c
 
 But even self-documenting code can be improved with documentation, and just a small amount of effort can yield significant benefit to others.
 
-**Listen**—I know programmers don't like to be told what to do, and prescriptive arguments of "thou shalt" and "thou shalt not" have the [rhetorical impact of a trombone](http://www.youtube.com/watch?v=ss2hULhXf04), so I'll cut to the chase:
+**Listen**—I know programmers don't like to be told what to do, and prescriptive arguments of "thou shalt" and "thou shalt not" have the [rhetorical impact of a trombone](https://www.youtube.com/watch?v=ss2hULhXf04), so I'll cut to the chase:
 
 Do you like Apple's documentation? Don't you want that [for your own libraries?](http://cocoadocs.org/docsets/AFNetworking/1.3.1/Classes/AFHTTPClient.html) Follow just a few simple conventions, and your code can get the documentation it deserves.
 

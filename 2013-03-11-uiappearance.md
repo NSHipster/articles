@@ -42,6 +42,7 @@ Appearance can be customized for all instances, or scoped to particular view hie
 ```swift
 UINavigationBar.appearance().tintColor = myColor
 ```
+
 ```objc
 [[UINavigationBar appearance] setTintColor:myColor];
 ```
@@ -58,6 +59,7 @@ UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self])
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIPopoverController.self])
 				.tintColor = myNavBarColor
 ```
+
 ```objc
 [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
        setTintColor:myNavBarColor];
@@ -105,7 +107,7 @@ Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.
 
 ---
 
-Cocoa developers have a long history of obsessing about visual aesthetics, and have often gone to extreme ends to achieve their desired effects. Recall the [Delicious Generation](https://en.wikipedia.org/wiki/Delicious_Generation) of Mac developers, and applications like [Disco](http://discoapp.com), which went so far as to [emit virtual smoke when burning a disc](http://www.youtube.com/watch?v=8Dwi47XOqwI).
+Cocoa developers have a long history of obsessing about visual aesthetics, and have often gone to extreme ends to achieve their desired effects. Recall the [Delicious Generation](https://en.wikipedia.org/wiki/Delicious_Generation) of Mac developers, and applications like [Disco](http://discoapp.com), which went so far as to [emit virtual smoke when burning a disc](https://www.youtube.com/watch?v=8Dwi47XOqwI).
 
 This spirit of dedication to making things look good is alive and well in iOS. As a community and as an ecosystem, we have relentlessly pushed the envelope in terms of what users should expect from their apps. And though this makes our jobs more challenging, it makes the experience of developing for iOS all the more enjoyable.
 

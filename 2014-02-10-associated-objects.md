@@ -13,11 +13,11 @@ status:
 
 Objective-C developers are conditioned to be wary of whatever follows this ominous incantation. And for good reason: messing with the Objective-C runtime changes the very fabric of reality for all of the code that runs on it.
 
-In the right hands, the functions of `<objc/runtime.h>` have the potential to add powerful new behavior to an application or framework, in ways that would otherwise not be possible. In the wrong hands, it drains the proverbial [sanity meter](https://en.wikipedia.org/wiki/Eternal_Darkness:_Sanity's_Requiem#Sanity_effects) of the code, and everything it may interact with (with [terrifying side-effects](http://www.youtube.com/watch?v=RSXcajQnasc#t=0m30s)).
+In the right hands, the functions of `<objc/runtime.h>` have the potential to add powerful new behavior to an application or framework, in ways that would otherwise not be possible. In the wrong hands, it drains the proverbial [sanity meter](https://en.wikipedia.org/wiki/Eternal_Darkness:_Sanity's_Requiem#Sanity_effects) of the code, and everything it may interact with (with [terrifying side-effects](https://www.youtube.com/watch?v=RSXcajQnasc#t=0m30s)).
 
 Therefore, it is with great trepidation that we consider this [Faustian bargain](https://en.wikipedia.org/wiki/Deal_with_the_Devil), and look at one of the subjects most-often requested by NSHipster readers: associated objects.
 
-* * *
+---
 
 Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in OS X Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
 
@@ -142,7 +142,7 @@ Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zero `w
 
 One may be tempted to call `objc_removeAssociatedObjects()` at some point in their foray into associated objects. However, [as described in the documentation](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_removeAssociatedObjects), it's unlikely that you would have an occasion to invoke it yourself:
 
->The main purpose of this function is to make it easy to return an object to a "pristine state”. You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.
+> The main purpose of this function is to make it easy to return an object to a "pristine state”. You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.
 
 ## Patterns
 
@@ -155,13 +155,13 @@ One may be tempted to call `objc_removeAssociatedObjects()` at some point in the
 - **Storing an associated object, when the value is not needed**. A common pattern for views is to create a convenience method that populates fields and attributes based on a model object or compound value. If that value does not need to be recalled later, it is acceptable, and indeed preferable, not to associate with that object.
 - **Storing an associated object, when the value can be inferred.** For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can retrieved by calling `cellForRowAtIndexPath:`.
 - **Using associated objects instead of X**, where X is any one the following:
-    - [Subclassing](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) for when inheritance is a more reasonable fit than composition.
-    - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.
-    - [Gesture Recognizers](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html) for any situations when target-action doesn't suffice.
-    - [Delegation](https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html) when behavior can be delegated to another object.
-    - [NSNotification & NSNotificationCenter](https://nshipster.com/nsnotification-and-nsnotificationcenter/) for communicating events across a system in a loosely-coupled way.
+  - [Subclassing](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) for when inheritance is a more reasonable fit than composition.
+  - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.
+  - [Gesture Recognizers](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html) for any situations when target-action doesn't suffice.
+  - [Delegation](https://developer.apple.com/library/ios/documentation/general/conceptual/DevPedia-CocoaCore/Delegation.html) when behavior can be delegated to another object.
+  - [NSNotification & NSNotificationCenter](https://nshipster.com/nsnotification-and-nsnotificationcenter/) for communicating events across a system in a loosely-coupled way.
 
-* * *
+---
 
 Associated objects should be seen as a method of last resort, rather than a solution in search of a problem (and really, categories themselves really shouldn't be at the top of the toolchain to begin with).
 

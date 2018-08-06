@@ -94,9 +94,9 @@ Round 4: Anagrammable
 *For timing, listen to these three songs play back to back:* 
 
 <div>
-<iframe width="560" height="24" src="http://www.youtube.com/embed/e-ORhEE9VVg?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="http://www.youtube.com/embed/nfWlot6h_JM?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="http://www.youtube.com/embed/4m1EFMoRFvY?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/e-ORhEE9VVg?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/nfWlot6h_JM?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/4m1EFMoRFvY?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
 </div>
 
 1. Be Loud!
