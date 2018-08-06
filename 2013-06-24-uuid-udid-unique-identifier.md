@@ -41,7 +41,7 @@ However, for advertising networks, which require a consistent identifier across 
 
 > iOS 6 introduces the Advertising Identifier, a non-permanent, non-personal, device identifier, that advertising networks will use to give you more control over advertisers’ ability to use tracking methods. If you choose to limit ad tracking, advertising networks using the Advertising Identifier may no longer gather information to serve you targeted ads. In the future all advertising networks will be required to use the Advertising Identifier. However, until advertising networks transition to using the Advertising Identifier you may still receive targeted ads from other networks.
 
-As the sole component of the [Ad Support framework](http://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html#//apple_ref/doc/uid/TP40012658), `ASIdentifierManager`'s modus operandi is clear: provide a way for ad networks to track users between different applications in a way that doesn't compromise privacy.
+As the sole component of the [Ad Support framework](https://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html#//apple_ref/doc/uid/TP40012658), `ASIdentifierManager`'s modus operandi is clear: provide a way for ad networks to track users between different applications in a way that doesn't compromise privacy.
 
 Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found at **Settings > General > About > Advertising**:
 
@@ -70,7 +70,7 @@ CFUUIDRef uuid = CFUUIDCreate(NULL);
 NSString *UUID = CFUUIDCreateString(NULL, uuid);
 ```
 
-For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
+For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](https://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
 
 ```swift
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {

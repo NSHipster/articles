@@ -24,7 +24,7 @@ And yet, `NSIncrementalStore` is arguably the most important thing to come out o
 
 For those of you not as well-versed in Core Data, here's some background:
 
-[Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) is Apple's framework for object relational mapping. It's used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that's because it solves complex problems, covering a decades-worth of one-offs and edge cases.
+[Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) is Apple's framework for object relational mapping. It's used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that's because it solves complex problems, covering a decades-worth of one-offs and edge cases.
 
 This is all to say that Core Data is something you should probably use in your application.
 

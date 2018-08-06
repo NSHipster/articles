@@ -69,7 +69,7 @@ Accessibility labels and hints tell VoiceOver what to say when selecting user in
 - **`accessibilityLabel`** identifies a user interface element. Every accessible view and control _must_ supply a label.
 - **`accessibilityHint`** describes the results of interacting with a user interface element. A hint should be supplied _only_ if the result of an interaction is not obvious from the element's label.
 
-The [Accessibility Programming Guide](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html) provides the following guidelines for labels and hints:
+The [Accessibility Programming Guide](https://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Making_Application_Accessible/Making_Application_Accessible.html) provides the following guidelines for labels and hints:
 
 > ### Guidelines for Creating Labels
 >
@@ -134,6 +134,6 @@ Want to know a quick way to improve the accessibility of your table views? Try s
 
 Apple has done a great service to humanity in making accessibility a first-class citizen in its hardware and software. You're missing out on some of the best engineering, design, and technical writing that Apple has ever done if you ignore `UIAccessibility`.
 
-Do yourself a favor and read the _excellent_ [Accessibility Programming Guide for iOS](http://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html). It only takes an hour or two to get the hang of everything.
+Do yourself a favor and read the _excellent_ [Accessibility Programming Guide for iOS](https://developer.apple.com/library/ios/#documentation/UserExperience/Conceptual/iPhoneAccessibility/Introduction/Introduction.html). It only takes an hour or two to get the hang of everything.
 
 Who knows? You may end up changing someone's life because of it.

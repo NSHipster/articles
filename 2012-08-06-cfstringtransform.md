@@ -15,7 +15,7 @@ There are two indicators that tell you everything you need to know about how nic
 
 `NSString` is the crown jewel of Foundation. In an age where other languages _still_ struggle to handle Unicode correctly, `NSString` is especially impressive. Not content to _just work_ with whatever is thrown at it, `NSString` can parse strings into linguistic tags, determine the dominant language of the content, and convert between every string encoding imaginable. It's unfairly good.
 
-But as powerful as `NSString` / `NSMutableString` are, one would be remiss not to mention their [toll-free bridged](http://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html) cousin, `CFMutableString`—or more specifically, `CFStringTransform`.
+But as powerful as `NSString` / `NSMutableString` are, one would be remiss not to mention their [toll-free bridged](https://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html) cousin, `CFMutableString`—or more specifically, `CFStringTransform`.
 
 As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation. The function takes the following arguments, and returns a `Boolean` for whether or not the transform was successful:
 

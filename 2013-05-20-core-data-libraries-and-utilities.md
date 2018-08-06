@@ -8,7 +8,7 @@ status:
     reviewed: August 12, 2015
 ---
 
-So let's say that, having determined your particular needs and compared all of the alternatives, you've chosen [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) for your next app.
+So let's say that, having determined your particular needs and compared all of the alternatives, you've chosen [Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) for your next app.
 
 Nothing wrong with that! Core Data is a great choice for apps that model, persist, and query large object graphs.
 
@@ -186,7 +186,7 @@ Fortunately, there are a wealth of open-source libraries that can help alleviate
 
 #### [RestKit](https://github.com/RestKit/RestKit)
 
-> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
+> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
 
 #### [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore)
 

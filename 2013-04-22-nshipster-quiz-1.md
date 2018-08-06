@@ -125,9 +125,9 @@ Round 1: General Knowledge
 
 1. [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP)
 2. [4000](http://www.macrumors.com/2013/03/04/steve-jobs-4000-latte-prank-order-lives-on-at-san-francisco-starbucks/)
-3. [`isReady`, `isExecuting`, `isFinished`, `isCancelled`](http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html%23//apple_ref/doc/uid/TP40004591-RH2-DontLinkElementID_1)
-4. [    textLabel detailTextLabel   ](http://developer.apple.com/library/ios/DOCUMENTATION/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value2.jpg)
-5. [`UITableViewDelegate`](http://developer.apple.com/library/ios/documentation/uikit/reference/UITableViewDelegate_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006942-CH3-SW25)
+3. [`isReady`, `isExecuting`, `isFinished`, `isCancelled`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html%23//apple_ref/doc/uid/TP40004591-RH2-DontLinkElementID_1)
+4. [    textLabel detailTextLabel   ](https://developer.apple.com/library/ios/DOCUMENTATION/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value2.jpg)
+5. [`UITableViewDelegate`](https://developer.apple.com/library/ios/documentation/uikit/reference/UITableViewDelegate_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006942-CH3-SW25)
 6. [`signed char`](https://nshipster.com/bool/)
 7. [Midnight UTC, 1 January 1970](https://en.wikipedia.org/wiki/Unix_epoch)
 8. [4.6.2 (4H1003)](https://en.wikipedia.org/wiki/Xcode)
@@ -165,15 +165,15 @@ Round 3: Picture Round
 Round 4: Name That Framework!
 -----------------------------
 
-1. [App Kit](http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ApplicationKit/ObjC_classic/_index.html)
+1. [App Kit](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ApplicationKit/ObjC_classic/_index.html)
 2. [AV Foundation](https://developer.apple.com/library/mac/#documentation/AVFoundation/Reference/AVFoundationFramework/_index.html)
-3. [Publication Subscription](http://developer.apple.com/library/mac/#documentation/InternetWeb/Reference/PubSubReference/_index.html#//apple_ref/doc/uid/TP40004649)
-4. [Core Location](http://developer.apple.com/library/ios/#documentation/CoreLocation/Reference/CoreLocation_Framework/_index.html)
-5. [Core Data](http://developer.apple.com/library/ios/#documentation/cocoa/Reference/CoreData_ObjC/_index.html)
+3. [Publication Subscription](https://developer.apple.com/library/mac/#documentation/InternetWeb/Reference/PubSubReference/_index.html#//apple_ref/doc/uid/TP40004649)
+4. [Core Location](https://developer.apple.com/library/ios/#documentation/CoreLocation/Reference/CoreLocation_Framework/_index.html)
+5. [Core Data](https://developer.apple.com/library/ios/#documentation/cocoa/Reference/CoreData_ObjC/_index.html)
 6. [Search Kit](https://developer.apple.com/library/mac/#documentation/UserExperience/Reference/SearchKit/Reference/reference.html)
-7. [Address Book](http://developer.apple.com/library/ios/#documentation/AddressBook/Reference/AddressBook_iPhoneOS_Framework/_index.html)
-8. [GLKit](http://developer.apple.com/library/mac/#documentation/GLkit/Reference/GLKit_Collection/_index.html)
-9. [Core Bluetooth](http://developer.apple.com/library/ios/#documentation/CoreBluetooth/Reference/CoreBluetooth_Framework/_index.html)
+7. [Address Book](https://developer.apple.com/library/ios/#documentation/AddressBook/Reference/AddressBook_iPhoneOS_Framework/_index.html)
+8. [GLKit](https://developer.apple.com/library/mac/#documentation/GLkit/Reference/GLKit_Collection/_index.html)
+9. [Core Bluetooth](https://developer.apple.com/library/ios/#documentation/CoreBluetooth/Reference/CoreBluetooth_Framework/_index.html)
 10. [Core Image](https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/CoreImaging/ci_intro/ci_intro.html)
 
 * * *

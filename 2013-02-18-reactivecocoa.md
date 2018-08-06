@@ -138,7 +138,7 @@ Capturing and responding to changes has a long tradition in Cocoa, and ReactiveC
 
 ### RAC vs. KVO
 
-[Key-Value Observing](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html) is at the heart of all magic in Cocoa—indeed, it is used extensively by ReactiveCocoa to react to property changes. However, KVO is neither pleasant nor easy to use: its API is overwrought with unused parameters and sorely lacking a blocks-based interface.
+[Key-Value Observing](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/KeyValueObserving/KeyValueObserving.html) is at the heart of all magic in Cocoa—indeed, it is used extensively by ReactiveCocoa to react to property changes. However, KVO is neither pleasant nor easy to use: its API is overwrought with unused parameters and sorely lacking a blocks-based interface.
 
 ### RAC vs. Bindings
 

@@ -166,15 +166,15 @@ Round 3: Picture Round
 Round 4: Name That Framework!
 -----------------------------
 
-1. [Core Telephony](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html)
-2. [Core Motion](http://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
-3. [Ad Support](http://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html)
-4. [Social](http://developer.apple.com/library/ios/#documentation/Social/Reference/Social_Framework/_index.html%23//apple_ref/doc/uid/TP40012233)
+1. [Core Telephony](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html)
+2. [Core Motion](https://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
+3. [Ad Support](https://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html)
+4. [Social](https://developer.apple.com/library/ios/#documentation/Social/Reference/Social_Framework/_index.html%23//apple_ref/doc/uid/TP40012233)
 5. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html)
-6. [EventKit](http://developer.apple.com/library/ios/#documentation/EventKit/Reference/EventKitFrameworkRef/_index.html)
-7. [Game Kit](http://developer.apple.com/library/ios/#documentation/GameKit/Reference/GameKit_Collection/_index.html)
+6. [EventKit](https://developer.apple.com/library/ios/#documentation/EventKit/Reference/EventKitFrameworkRef/_index.html)
+7. [Game Kit](https://developer.apple.com/library/ios/#documentation/GameKit/Reference/GameKit_Collection/_index.html)
 8. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html)
-9. [Core Data](http://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html)
+9. [Core Data](https://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html)
 10. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html) or [Core Foundation](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CoreFoundation_Collection/_index.html) (2 points if you got both)
 
 * * *
