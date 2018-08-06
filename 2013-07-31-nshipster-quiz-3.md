@@ -131,10 +131,10 @@ Round 1: General Knowledge
 3. [iPhone 5C](http://www.latimes.com/business/technology/la-fi-tn-the-iphone-5c-apple-color-plasticspotify-20130730,0,1720605.story)
 4. [Aaron Sorkin](http://tech.fortune.cnn.com/2012/11/16/apple-sorkin-jobs-movie/)
 5. [The Netherlands](http://appleinsider.com/articles/13/07/02/dutch-steve-jobs-schools-to-use-apples-ipad-for-entire-education-experience)
-6. [Douglas Engelbart](http://en.wikipedia.org/wiki/Douglas_Engelbart)
+6. [Douglas Engelbart](https://en.wikipedia.org/wiki/Douglas_Engelbart)
 7. [HopStop.com](http://www.macworld.com/article/2044904/apple-finds-its-way-to-hopstop-acquisition.html)
-8. [Number of Stations (468)](http://en.wikipedia.org/wiki/New_York_City_Subway)
-9. [Jane Jacobs](http://en.wikipedia.org/wiki/The_Death_and_Life_of_Great_American_Cities)
+8. [Number of Stations (468)](https://en.wikipedia.org/wiki/New_York_City_Subway)
+9. [Jane Jacobs](https://en.wikipedia.org/wiki/The_Death_and_Life_of_Great_American_Cities)
 10. [HBO Go, WatchESPN, Sky News, Qello, & CrunchyRoll](http://www.apple.com/pr/library/2013/06/19HBO-GO-WatchESPN-Come-to-Apple-TV.html)
 
 Round 2: Public, Private, or Fake?

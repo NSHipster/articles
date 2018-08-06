@@ -89,7 +89,7 @@ First introduced in [NSHipster Quiz #4](https://nshipster.com/nshipster-quiz-4/)
 
 ## Round 2: Core Potpourri
 
-1.  [decibels (dB)](http://en.wikipedia.org/wiki/Received_signal_strength_indication)
+1.  [decibels (dB)](https://en.wikipedia.org/wiki/Received_signal_strength_indication)
 2.  [`public.jpeg`](https://developer.apple.com/library/ios/documentation/miscellaneous/Reference/UTIRef/Articles/System-DeclaredUniformTypeIdentifiers.html)
 3.  [`SecTrustEvaluate`](https://developer.apple.com/library/mac/documentation/security/Reference/certifkeytrustservices/Reference/reference.html)
 4.  [`UIReferenceLibraryViewController`](https://nshipster.com/dictionary-services/)

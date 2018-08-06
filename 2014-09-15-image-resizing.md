@@ -129,7 +129,7 @@ Given a `CGImageSource` and set of options, `CGImageSourceCreateThumbnailAtIndex
 
 ### Lanczos Resampling with Core Image
 
-Core Image provides a built-in [Lanczos resampling](http://en.wikipedia.org/wiki/Lanczos_resampling) functionality with the `CILanczosScaleTransform` filter. Although arguably a higher-level API than UIKit, the pervasive use of key-value coding in Core Image makes it unwieldy.
+Core Image provides a built-in [Lanczos resampling](https://en.wikipedia.org/wiki/Lanczos_resampling) functionality with the `CILanczosScaleTransform` filter. Although arguably a higher-level API than UIKit, the pervasive use of key-value coding in Core Image makes it unwieldy.
 
 That said, at least the pattern is consistent. The process of creating a transform filter, configuring it, and rendering an output image is just like any other Core Image workflow:
 

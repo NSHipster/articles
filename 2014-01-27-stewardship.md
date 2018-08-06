@@ -8,7 +8,7 @@ status:
     swift: n/a
 ---
 
-Open Source communities function within what economists describe as a [Gift Economy](http://en.wikipedia.org/wiki/Gift_economy). Rather than paying one another for goods or services through barter or currency, everyone shares freely with one another, and gains [social currency](http://en.wikipedia.org/wiki/Whuffie) based on their generosity. It's similar to how friends tend to take turns inviting one another over for dinner or a party.
+Open Source communities function within what economists describe as a [Gift Economy](https://en.wikipedia.org/wiki/Gift_economy). Rather than paying one another for goods or services through barter or currency, everyone shares freely with one another, and gains [social currency](https://en.wikipedia.org/wiki/Whuffie) based on their generosity. It's similar to how friends tend to take turns inviting one another over for dinner or a party.
 
 With the negligible cost of distributing software over the Internet, developers are able to participate with millions of others around the world. And as a result, we have been able to collaboratively build amazing software.
 

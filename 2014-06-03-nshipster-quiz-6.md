@@ -87,13 +87,13 @@ Round 1: General Knowledge
 1. "Hey Siri"
 2. [Threes](http://asherv.com/threes/)
 3. [DuckDuckGo](https://duckduckgo.com)
-4. [Jimmy Iovine](http://en.wikipedia.org/wiki/Jimmy_Iovine)
-5. [Power Macintosh G3 (Blue & White)](http://en.wikipedia.org/wiki/Power_Macintosh_G3_%28Blue_%26_White%29)
-6. [Hetch Hetchy](http://en.wikipedia.org/wiki/Hetch_Hetchy)
-7. [John Muir](http://en.wikipedia.org/wiki/John_Muir)
-8. [Dylan](http://en.wikipedia.org/wiki/Dylan_(programming_language))
-9. [Insects](http://en.wikipedia.org/wiki/Swift#Feeding)
-10. [Jizz](http://en.wikipedia.org/wiki/Jizz_%28birding%29)
+4. [Jimmy Iovine](https://en.wikipedia.org/wiki/Jimmy_Iovine)
+5. [Power Macintosh G3 (Blue & White)](https://en.wikipedia.org/wiki/Power_Macintosh_G3_%28Blue_%26_White%29)
+6. [Hetch Hetchy](https://en.wikipedia.org/wiki/Hetch_Hetchy)
+7. [John Muir](https://en.wikipedia.org/wiki/John_Muir)
+8. [Dylan](https://en.wikipedia.org/wiki/Dylan_(programming_language))
+9. [Insects](https://en.wikipedia.org/wiki/Swift#Feeding)
+10. [Jizz](https://en.wikipedia.org/wiki/Jizz_%28birding%29)
 
 Round 2: So You Think You Can Swift?
 ------------------------------------

@@ -11,7 +11,7 @@ status:
 
 Machines speak in binary, while humans speak in riddles, half-truths, and omissions.
 
-And until humanity embraces [RDF](http://en.wikipedia.org/wiki/Resource_Description_Framework) for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about.
+And until humanity embraces [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework) for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about.
 
 Because in the basic interactions of our daily lives—meeting people, making plans, finding information online—there is immense value in automatically converting from implicit human language to explicit structured data, so that it can be easily added to our calendars, address books, maps, and reminders.
 

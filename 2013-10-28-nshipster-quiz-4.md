@@ -9,7 +9,7 @@ status:
 
 The fourth and final NSHipster pub quiz of the year was held in the beautiful city of Amsterdam on October 22nd, with help from the good folks at [Appsterdam](http://appsterdam.rs), [The Big Nerd Ranch](http://www.bignerdranch.com/), and [Heroku](http://www.heroku.com).
 
-The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Dúran](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](https://twitter.com/Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](http://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
+The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Dúran](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](https://twitter.com/Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](https://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
 
 As always, you can play along at home or at work with your colleagues. Here are the rules:
 

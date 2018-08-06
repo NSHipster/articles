@@ -15,7 +15,7 @@ Yet, no matter how burdened one's personal ToDo list becomes, it pales in compar
 
 Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances.
 
-The secret to making apps snappy is to offload as much unnecessary work to the background as possible, and in this respect, the modern Cocoa developer has two options: [Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch) and [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). This article will primarily focus on the latter, though it's important to note that the two are quite complementary (more on that later).
+The secret to making apps snappy is to offload as much unnecessary work to the background as possible, and in this respect, the modern Cocoa developer has two options: [Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) and [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). This article will primarily focus on the latter, though it's important to note that the two are quite complementary (more on that later).
 
 * * *
 
@@ -29,7 +29,7 @@ But simply wrapping computation into an object doesn't do much without a little 
 
 ## NSOperationQueue
 
-`NSOperationQueue` regulates the concurrent execution of operations. It acts as a priority queue, such that operations are executed in a roughly [First-In-First-Out](http://en.wikipedia.org/wiki/FIFO) manner, with higher-priority (`NSOperation.queuePriority`) ones getting to jump ahead of lower-priority ones. `NSOperationQueue` can also limit the maximum number of concurrent operations to be executed at any given moment, using the `maxConcurrentOperationCount` property.
+`NSOperationQueue` regulates the concurrent execution of operations. It acts as a priority queue, such that operations are executed in a roughly [First-In-First-Out](https://en.wikipedia.org/wiki/FIFO) manner, with higher-priority (`NSOperation.queuePriority`) ones getting to jump ahead of lower-priority ones. `NSOperationQueue` can also limit the maximum number of concurrent operations to be executed at any given moment, using the `maxConcurrentOperationCount` property.
 
 > NSOperationQueue itself is backed by a Grand Central Dispatch queue, though that's a private implementation detail.
 

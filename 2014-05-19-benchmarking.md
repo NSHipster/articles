@@ -33,7 +33,7 @@ The Scientific Method outlines a series of steps to logically deduce answers for
 
 In the case of programming, there are generally two kinds of questions to be asked:
 
-- **What are the _absolute_ performance characteristics of this code?** Is the procedure bound by _computation_ or _memory_? What is the [limiting behavior](http://en.wikipedia.org/wiki/Big_O_notation) across different sample sizes?
+- **What are the _absolute_ performance characteristics of this code?** Is the procedure bound by _computation_ or _memory_? What is the [limiting behavior](https://en.wikipedia.org/wiki/Big_O_notation) across different sample sizes?
 - **What are the _relative_ performance characteristics of this code, as compared to its alternatives?** Which is faster, methodA or methodB?
 
 Because the underlying factors of everything from the operating system down to the metal itself are extremely variable, performance should be measured across a large number of trials. For most applications, something on the order of 10<sup>5</sup> to 10<sup>8</sup> samples should be acceptable.

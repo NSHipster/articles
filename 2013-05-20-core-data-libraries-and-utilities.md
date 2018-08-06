@@ -139,7 +139,7 @@ There are a number of open source libraries that collectively identify and corre
 
 It should be no surprise that programmers, having learned how to do things a certain way, will bring those ideas and conventions to other technologies. For the large influx of Ruby developers coming over to iOS, that familiar paradigm was [Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html).
 
-Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](http://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](http://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
+Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](https://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](https://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
 
 #### [Magical Record](https://github.com/magicalpanda/MagicalRecord)
 
@@ -152,11 +152,11 @@ Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](htt
 > And yeah, no AppDelegate code.
 > It's fully tested with [Kiwi](https://github.com/kiwi-bdd/Kiwi).
 
-### Inspired by [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query)
+### Inspired by [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query)
 
-Here's a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query). Seriously, people _love_ LINQ.
+Here's a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query). Seriously, people _love_ LINQ.
 
-For the uninitiated, LINQ is like [SQL](http://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](https://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](https://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
+For the uninitiated, LINQ is like [SQL](https://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](https://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](https://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
 
 ```
 from c in SomeCollection

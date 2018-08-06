@@ -22,7 +22,7 @@ let float = 6.02
 let string = "Hello"
 ```
 
-Literals are so ingrained in a developer's mental model of programming that most of us don't actively consider what the compiler is actually doing (thereby remaining blissfully unaware of neat tricks like [string interning](http://en.wikipedia.org/wiki/String_interning)).
+Literals are so ingrained in a developer's mental model of programming that most of us don't actively consider what the compiler is actually doing (thereby remaining blissfully unaware of neat tricks like [string interning](https://en.wikipedia.org/wiki/String_interning)).
 
 Having a shorthand for these essential building blocks makes code easier to both read and write.
 

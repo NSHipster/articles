@@ -149,7 +149,7 @@ This makes sense to spell out, since that's what most people are thinking about 
 
 However, as it turns out, it _is_ actually possible, with a little help from our friend, `objc/runtime`.
 
-[Guy English](https://twitter.com/gte) has a [pretty amazing post](http://kickingbear.com/blog/archives/9) wherein he [swizzles `valueForKeyPath:`](https://gist.github.com/4196641#file_kb_collection_extensions.m) to parse a custom-defined [DSL](http://en.wikipedia.org/wiki/Domain-specific_language), which extends the existing offerings to interesting effect:
+[Guy English](https://twitter.com/gte) has a [pretty amazing post](http://kickingbear.com/blog/archives/9) wherein he [swizzles `valueForKeyPath:`](https://gist.github.com/4196641#file_kb_collection_extensions.m) to parse a custom-defined [DSL](https://en.wikipedia.org/wiki/Domain-specific_language), which extends the existing offerings to interesting effect:
 
 ```objc
 NSArray *names = [allEmployees valueForKeyPath: @"[collect].{daysOff<10}.name"];

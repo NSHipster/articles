@@ -21,7 +21,7 @@ Just as privacy and piracy have phonetic and conceptual similarities, device ide
 
 - **UUID _(Universally Unique Identifier)_**: A sequence of 128 bits that can guarantee uniqueness across space and time, defined by [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt).
 - **GUID _(Globally Unique Identifier)_**: Microsoft's implementation of the UUID specification; often used interchangeably with UUID.
-- **UDID _(Unique Device Identifier)_**: A sequence of 40 hexadecimal characters that uniquely identify an iOS device (the device's [Social Security Number](https://en.wikipedia.org/wiki/Social_Security_number), if you will). This value can be [retrieved through iTunes](http://whatsmyudid.com), or found using `UIDevice -uniqueIdentifier`. Derived from hardware details like [MAC address](http://en.wikipedia.org/wiki/MAC_address).
+- **UDID _(Unique Device Identifier)_**: A sequence of 40 hexadecimal characters that uniquely identify an iOS device (the device's [Social Security Number](https://en.wikipedia.org/wiki/Social_Security_number), if you will). This value can be [retrieved through iTunes](http://whatsmyudid.com), or found using `UIDevice -uniqueIdentifier`. Derived from hardware details like [MAC address](https://en.wikipedia.org/wiki/MAC_address).
 
 Incidentally, all of the suggested replacements for `UIDevice -uniqueIdentifier` listed in its deprecation notes return UUID, whether created automatically with `UIDevice -identifierForVendor` & `ASIdentifierManager -advertisingIdentifier` or manually with `NSUUID` (or `CFUUIDCreate`).
 

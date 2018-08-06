@@ -26,9 +26,9 @@ The underlying mechanism for generics are protocols. A Swift protocol, like an O
 
 > Within the Object-Oriented paradigm, types are often conflated with class identity. **When programming in Swift, though, think about polymorphism through _protocols_ first, before resorting to inheritance.**
 
-The one major shortcoming of protocols, both in Swift and Objective-C, is the lack of a built-in way to provide default implementations for methods, as one might accomplish in other languages with [mixins](http://en.wikipedia.org/wiki/Mixin) or [traits](http://en.wikipedia.org/wiki/Trait_%28computer_programming%29).
+The one major shortcoming of protocols, both in Swift and Objective-C, is the lack of a built-in way to provide default implementations for methods, as one might accomplish in other languages with [mixins](https://en.wikipedia.org/wiki/Mixin) or [traits](https://en.wikipedia.org/wiki/Trait_%28computer_programming%29).
 
-...but that's not the end of the story. Swift is a fair bit more [Aspect-Oriented](http://en.wikipedia.org/wiki/Aspect-oriented_programming) than it initially lets on.
+...but that's not the end of the story. Swift is a fair bit more [Aspect-Oriented](https://en.wikipedia.org/wiki/Aspect-oriented_programming) than it initially lets on.
 
 Consider the `Equatable` protocol, used throughout the standard library:
 

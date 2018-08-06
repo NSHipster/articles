@@ -16,9 +16,9 @@ What changed? The discovery of `MKGeodesicPolyline`, which is the subject of thi
 
 * * *
 
-[`MKGeodesicPolyline`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html) was introduced to the Map Kit framework in iOS 7. As its name implies, it creates a [geodesic](http://en.wikipedia.org/wiki/Geodesic)—essentially a straight line over a curved surface.
+[`MKGeodesicPolyline`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKGeodesicPolyline_class/Reference/Reference.html) was introduced to the Map Kit framework in iOS 7. As its name implies, it creates a [geodesic](https://en.wikipedia.org/wiki/Geodesic)—essentially a straight line over a curved surface.
 
-On the surface of a <del><a href="http://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="http://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="http://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](http://en.wikipedia.org/wiki/Great-circle_distance).
+On the surface of a <del><a href="https://en.wikipedia.org/wiki/Sphere">sphere</a></del> <del><ins><a href="https://en.wikipedia.org/wiki/Oblate_spheroid">oblate spheroid</a></ins></del> <ins><a href="https://en.wikipedia.org/wiki/Geoid">geoid</a></ins>, the shortest distance between two points appears as an arc on a flat projection. Over large distances, this takes a [pronounced, circular shape](https://en.wikipedia.org/wiki/Great-circle_distance).
 
 An `MKGeodesicPolyline` is created with an array of 2 `MKMapPoint`s or `CLLocationCoordinate2D`s:
 
@@ -104,7 +104,7 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
 
 ![MKGeodesicPolyline on an MKMapView compared to MKDirections Polyline]({% asset mkgeodesicpolyline-with-directions.jpg @path %})
 
-[As the crow flies](http://en.wikipedia.org/wiki/As_the_crow_flies), it's 3,983 km.<br/>
+[As the crow flies](https://en.wikipedia.org/wiki/As_the_crow_flies), it's 3,983 km.<br/>
 As the wolf runs, it's 4,559 km—nearly 15% longer.<br/>
 …and that's just distance; taking into account average travel speed, the total time is ~5 hours by air and 40+ hours by land.
 

@@ -12,9 +12,9 @@ Though we're a long way off from [_Hal_](https://www.youtube.com/watch?v=ARJ8cAG
 
 Of the thousands of languages in existence, an individual is fortunate to gain a command of just two within their lifetime. And yet, over several millennia of human co-existence, civilization has managed to make things work, more or less, through an ad-hoc network of interpreters, translators, scholars, and children raised in the mixed linguistic traditions of their parents. We've seen that mutual understanding fosters peace, and that conversely, mutual unintelligibility destabilizes human relations.
 
-It is fitting that the development of computational linguistics should coincide with the emergence of the international community we have today. Working towards mutual understanding, intergovernmental organizations like the United Nations and European Union have produced a substantial corpora of [parallel texts](http://en.wikipedia.org/wiki/Parallel_text), which form the foundation of modern language translation technologies.
+It is fitting that the development of computational linguistics should coincide with the emergence of the international community we have today. Working towards mutual understanding, intergovernmental organizations like the United Nations and European Union have produced a substantial corpora of [parallel texts](https://en.wikipedia.org/wiki/Parallel_text), which form the foundation of modern language translation technologies.
 
-> Another related linguistic development is the [Esperanto](http://en.wikipedia.org/wiki/Esperanto) language, created by L. L. Zamenhof in an effort to promote harmony between people of different countries.
+> Another related linguistic development is the [Esperanto](https://en.wikipedia.org/wiki/Esperanto) language, created by L. L. Zamenhof in an effort to promote harmony between people of different countries.
 
 And while automatic text translation has reached an acceptable level for everyday communication, there is still a divide when we venture out into unfamiliar places. There is still much work to be done in order to augment our ability to communicate with one another in person.
 
@@ -90,7 +90,7 @@ As of iOS 8.1, `[AVSpeechSynthesisVoice speechVoices]` the following languages a
 - Thai (`th-TH`)
 - Turkish (`tr-TR`)
 
-`NSLocale` and `NSLinguisticTagger` both use ISO 681 codes to identify languages. `AVSpeechSynthesisVoice`, however, takes an [IETF Language Tag](http://en.wikipedia.org/wiki/IETF_language_tag), as specified [BCP 47 Document Series](http://tools.ietf.org/html/bcp47). If an utterance string and voice aren't in the same language, speech synthesis will fail.
+`NSLocale` and `NSLinguisticTagger` both use ISO 681 codes to identify languages. `AVSpeechSynthesisVoice`, however, takes an [IETF Language Tag](https://en.wikipedia.org/wiki/IETF_language_tag), as specified [BCP 47 Document Series](http://tools.ietf.org/html/bcp47). If an utterance string and voice aren't in the same language, speech synthesis will fail.
 
 > [This gist](https://gist.github.com/mattt/9892187) shows how to detect an ISO 681 language code from an arbitrary string, and convert that to an IETF language tag.
 

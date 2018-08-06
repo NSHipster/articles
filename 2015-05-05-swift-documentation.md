@@ -35,7 +35,7 @@ Since the early 00's,
 [Headerdoc](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html#//apple_ref/doc/uid/TP40001215-CH345-SW1)
 has been Apple's preferred documentation standard.
 Starting off as little more than a Perl script that parsed trumped-up
-[Javadoc](http://en.wikipedia.org/wiki/Javadoc) comments,
+[Javadoc](https://en.wikipedia.org/wiki/Javadoc) comments,
 Headerdoc would eventually be the engine behind
 Apple's developer documentation online and in Xcode.
 

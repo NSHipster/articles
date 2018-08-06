@@ -13,7 +13,7 @@ UITableView starts to become unwieldy once it gets to a few hundred rows. If use
 
 So, what are your options?
 
-Well, you could organize your data into a hierarchy, which could dramatically reduce the number of rows displayed on each screen in fashion, based on its [branching factor](http://en.wikipedia.org/wiki/Branching_factor).
+Well, you could organize your data into a hierarchy, which could dramatically reduce the number of rows displayed on each screen in fashion, based on its [branching factor](https://en.wikipedia.org/wiki/Branching_factor).
 
 You could also add a `UISearchBar` to the top of your table view, allowing the user to filter on keywords to get exactly what they're looking for (or--perhaps more importantly--determine that what they seek doesn't exist in the first place).
 

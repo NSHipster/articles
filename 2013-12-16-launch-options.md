@@ -21,7 +21,7 @@ This week, all will be revealed in this NSHipster tell-all about the least under
 
 Every app begins with `UIApplicationDelegate -application:didFinishLaunchingWithOptions:` (or more accurately, `-application:willFinishLaunchingWithOptions:`, when implemented). It is called by the application to notify its delegate that the launch process is finishing, and nearly ready to run.
 
-An app launches when its icon is tapped on [Springboard](http://en.wikipedia.org/wiki/SpringBoard), but there are several other occasions in which an app can be launched. For example, an app registered for a custom URL scheme, such as `twitter://`, could be launched as a result of opening a URL. An app could also be launched in response to a push notification, or a significant change in device location.
+An app launches when its icon is tapped on [Springboard](https://en.wikipedia.org/wiki/SpringBoard), but there are several other occasions in which an app can be launched. For example, an app registered for a custom URL scheme, such as `twitter://`, could be launched as a result of opening a URL. An app could also be launched in response to a push notification, or a significant change in device location.
 
 Determining why and how an app launched is the responsibility of the `launchOptions` parameter. Like a `userInfo` dictionary, `-application:didFinishLaunchingWithOptions:` can get information for particular named keys in `launchOptions`.
 

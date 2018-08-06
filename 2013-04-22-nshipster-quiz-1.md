@@ -123,16 +123,16 @@ For each question, a list of three classes from the same framework have been lis
 Round 1: General Knowledge
 --------------------------
 
-1. [NeXTSTEP](http://en.wikipedia.org/wiki/NeXTSTEP)
+1. [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP)
 2. [4000](http://www.macrumors.com/2013/03/04/steve-jobs-4000-latte-prank-order-lives-on-at-san-francisco-starbucks/)
 3. [`isReady`, `isExecuting`, `isFinished`, `isCancelled`](http://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html%23//apple_ref/doc/uid/TP40004591-RH2-DontLinkElementID_1)
 4. [    textLabel detailTextLabel   ](http://developer.apple.com/library/ios/DOCUMENTATION/UserExperience/Conceptual/TableView_iPhone/Art/tvcellstyle_value2.jpg)
 5. [`UITableViewDelegate`](http://developer.apple.com/library/ios/documentation/uikit/reference/UITableViewDelegate_Protocol/Reference/Reference.html#//apple_ref/doc/uid/TP40006942-CH3-SW25)
 6. [`signed char`](https://nshipster.com/bool/)
-7. [Midnight UTC, 1 January 1970](http://en.wikipedia.org/wiki/Unix_epoch)
-8. [4.6.2 (4H1003)](http://en.wikipedia.org/wiki/Xcode)
+7. [Midnight UTC, 1 January 1970](https://en.wikipedia.org/wiki/Unix_epoch)
+8. [4.6.2 (4H1003)](https://en.wikipedia.org/wiki/Xcode)
 9. [NSIndexSet](https://nshipster.com/nsindexset/)
-10. [16](http://en.wikipedia.org/wiki/IPhone_%281st_generation%29)
+10. [16](https://en.wikipedia.org/wiki/IPhone_%281st_generation%29)
 
 Round 2: APIs
 -------------
@@ -151,15 +151,15 @@ Round 2: APIs
 Round 3: Picture Round
 ----------------------
 
-1. [Apple I](http://en.wikipedia.org/wiki/Apple_I)
-2. [Apple eMac](http://en.wikipedia.org/wiki/EMac)
-3. [Apple Bandai Pippin](http://en.wikipedia.org/wiki/Apple_Bandai_Pippin)
-4. [Apple QuickTake](http://en.wikipedia.org/wiki/Apple_QuickTake)
+1. [Apple I](https://en.wikipedia.org/wiki/Apple_I)
+2. [Apple eMac](https://en.wikipedia.org/wiki/EMac)
+3. [Apple Bandai Pippin](https://en.wikipedia.org/wiki/Apple_Bandai_Pippin)
+4. [Apple QuickTake](https://en.wikipedia.org/wiki/Apple_QuickTake)
 5. [New Proposed Apple Campus / "Mothership"](http://www.cultofmac.com/108782/apples-magnificent-mothership-campus-gets-new-renders-and-more-details-report/)
-6. [Sir Jonathan "Jony" Ive](http://en.wikipedia.org/wiki/Jonathan_Ive)
-7. [Scott Forstall](http://en.wikipedia.org/wiki/Scott_Forstall)
-8. [Bob Mansfield](http://en.wikipedia.org/wiki/Bob_Mansfield)
-9. [Susan Kare](http://en.wikipedia.org/wiki/Susan_kare)
+6. [Sir Jonathan "Jony" Ive](https://en.wikipedia.org/wiki/Jonathan_Ive)
+7. [Scott Forstall](https://en.wikipedia.org/wiki/Scott_Forstall)
+8. [Bob Mansfield](https://en.wikipedia.org/wiki/Bob_Mansfield)
+9. [Susan Kare](https://en.wikipedia.org/wiki/Susan_kare)
 10. [Kara Swisher & Walt Mossberg ](http://allthingsd.com/20071224/best-of-2007-video-d5-interview-with-bill-gates-and-steve-jobs/)
 
 Round 4: Name That Framework!

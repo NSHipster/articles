@@ -10,7 +10,7 @@ status:
 
 `NSDateComponents` serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with `NSCalendar`, `NSDateComponents` becomes a remarkably convenient interchange format for calendar calculations.
 
-Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them. Very often, this will differ wildly from what many of us may be used to with the [Gregorian Calendar](http://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](http://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](http://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
+Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them. Very often, this will differ wildly from what many of us may be used to with the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](https://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](https://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
 
 ## Extracting Components From Dates
 
@@ -28,7 +28,7 @@ NSDate *date = [NSDate date];
 [calendar components:(NSCalendarUnitDay | NSCalendarUnitMonth) fromDate:date];
 ```
 
-The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
+The `components` parameter is a [bitmask](https://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
 
 ```swift
 NSCalendarUnit.Era

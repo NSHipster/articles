@@ -38,7 +38,7 @@ As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation. T
 
 With the notable exception of English (and its delightful spelling inconsistencies), writing systems generally encode speech sounds into a consistent written representation. European languages generally use the Latin alphabet (with a few added diacritics), Russian uses Cyrillic, Japanese uses Hiragana & Katakana, and Thai, Korean, & Arabic each have their own scripts.
 
-Although each language has a particular inventory of sounds, some of which other languages may lack, the overlap across all of the major writing systems is remarkably high—enough so that one can rather effectively [transliterate](http://en.wikipedia.org/wiki/Transliteration) (not to be confused with [translation](http://en.wikipedia.org/wiki/Translation)) from one script to another.
+Although each language has a particular inventory of sounds, some of which other languages may lack, the overlap across all of the major writing systems is remarkably high—enough so that one can rather effectively [transliterate](https://en.wikipedia.org/wiki/Transliteration) (not to be confused with [translation](https://en.wikipedia.org/wiki/Translation)) from one script to another.
 
 `CFStringTransform` can transliterate back and forth between Latin and Arabic, Cyrillic, Greek, Korean (Hangul), Hebrew, Japanese (Hiragana & Katakana), Mandarin Chinese, and Thai.
 

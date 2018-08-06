@@ -258,9 +258,9 @@ NSLog(@"%@", [formatter stringFromByteCount:byteCount]);
 
 One might think that dealing with bytes in code (which is, you know, _a medium of bytes_) would be a piece of cake, but in reality, even determining how many bytes are in a kilobyte remains a contentious and confusing matter. ([Obligatory XKCD link](http://xkcd.com/394/))
 
-In [SI](http://en.wikipedia.org/wiki/International_System_of_Units), the "kilo" prefix multiplies the base quantity by 1000 (i.e. 1km == 1000 m). However, being based on a binary number system, a more convenient convention has been to make a kilobyte equal to 2<sup>10</sup> bytes instead (i.e. 1KB == 1024 bytes). While the 2% difference is negligible at lower quantities, this confusion has significant implications when, for example, determining how much space is available on a 1TB drive (either 1000GB or 1024 GB).
+In [SI](https://en.wikipedia.org/wiki/International_System_of_Units), the "kilo" prefix multiplies the base quantity by 1000 (i.e. 1km == 1000 m). However, being based on a binary number system, a more convenient convention has been to make a kilobyte equal to 2<sup>10</sup> bytes instead (i.e. 1KB == 1024 bytes). While the 2% difference is negligible at lower quantities, this confusion has significant implications when, for example, determining how much space is available on a 1TB drive (either 1000GB or 1024 GB).
 
-To complicate matters further, this binary prefix was codified into the [Kibibyte](http://en.wikipedia.org/wiki/Kibibyte) standard by the [IEC](http://en.wikipedia.org/wiki/International_Electrotechnical_Commission) in 1998... which is summarily ignored by the [JEDEC](http://en.wikipedia.org/wiki/JEDEC_memory_standards#Unit_prefixes_for_semiconductor_storage_capacity), the trade and engineering standardization organization representing the actual manufacturers of storage media. The result is that one can represent information as either `1kB`, `1KB`, or `1KiB`. ([Another obligatory XKCD link](http://xkcd.com/927/))
+To complicate matters further, this binary prefix was codified into the [Kibibyte](https://en.wikipedia.org/wiki/Kibibyte) standard by the [IEC](https://en.wikipedia.org/wiki/International_Electrotechnical_Commission) in 1998... which is summarily ignored by the [JEDEC](https://en.wikipedia.org/wiki/JEDEC_memory_standards#Unit_prefixes_for_semiconductor_storage_capacity), the trade and engineering standardization organization representing the actual manufacturers of storage media. The result is that one can represent information as either `1kB`, `1KB`, or `1KiB`. ([Another obligatory XKCD link](http://xkcd.com/927/))
 
 Rather than get caught up in all of this, simply use the most appropriate count style for your particular use case:
 
@@ -520,7 +520,7 @@ An article on `NSFormatter` would be remiss without mention of some of the third
 
 ### ISO8601DateFormatter
 
-Created by [Peter Hosey](https://twitter.com/boredzo), [ISO8601DateFormatter](https://github.com/boredzo/iso-8601-date-formatter) has become the de facto way of dealing with [ISO 8601 timestamps](http://en.wikipedia.org/wiki/ISO_8601), used as the interchange format for dates by webservices ([Yet another obligatory XKCD link](http://xkcd.com/1179/)).
+Created by [Peter Hosey](https://twitter.com/boredzo), [ISO8601DateFormatter](https://github.com/boredzo/iso-8601-date-formatter) has become the de facto way of dealing with [ISO 8601 timestamps](https://en.wikipedia.org/wiki/ISO_8601), used as the interchange format for dates by webservices ([Yet another obligatory XKCD link](http://xkcd.com/1179/)).
 
 Although Apple provides [official recommendations on parsing internet dates](https://developer.apple.com/library/ios/qa/qa1480/_index.html), the reality of formatting quirks across makes the suggested `NSDateFormatter`-with-`en_US_POSIX`-locale approach untenable for real-world usage. `ISO8601DateFormatter` offers a simple, robust interface for dealing with timestamps:
 

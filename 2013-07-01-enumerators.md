@@ -32,9 +32,9 @@ for (NSUInteger i = 0; i < [array count]; i++) {
 }
 ```
 
-But as anyone who has used C-style loops knows, this method is prone to [off-by-one errors](http://en.wikipedia.org/wiki/Off-by-one_error)—particularly when used in a non-standard way.
+But as anyone who has used C-style loops knows, this method is prone to [off-by-one errors](https://en.wikipedia.org/wiki/Off-by-one_error)—particularly when used in a non-standard way.
 
-Fortunately, Smalltalk significantly improved this state of affairs with an idea called [list comprehensions](http://en.wikipedia.org/wiki/List_comprehension), which are commonly known today as `for/in` loops.
+Fortunately, Smalltalk significantly improved this state of affairs with an idea called [list comprehensions](https://en.wikipedia.org/wiki/List_comprehension), which are commonly known today as `for/in` loops.
 
 ## List Comprehension (`for/in`)
 

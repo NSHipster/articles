@@ -44,7 +44,7 @@ As open source contributions in Objective-C began to get some traction, the pain
 
 Lacking frameworks, code for iOS could be packaged as a static library, but getting that set up and keeping code and static distributions in sync was an arduous process.
 
-Another approach was to use Git submodules, and include the source directly in the project. But getting everything working, with linked frameworks and build flags configured, was not great either—especially at a time when the body of code was split between [ARC and non-ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting).
+Another approach was to use Git submodules, and include the source directly in the project. But getting everything working, with linked frameworks and build flags configured, was not great either—especially at a time when the body of code was split between [ARC and non-ARC](https://en.wikipedia.org/wiki/Automatic_Reference_Counting).
 
 ### Enter CocoaPods
 

@@ -39,9 +39,9 @@ Finding the answer in a reasonable amount of time requires effort from the start
 
 ### Extract
 
-First, content must be extracted from a [corpus](http://en.wikipedia.org/wiki/Text_corpus). For a text document, this could involve removing any styling, formatting, or other meta-information. For a data record, such as an `NSManagedObject`, this means taking all of the salient fields and combining it into a representation.
+First, content must be extracted from a [corpus](https://en.wikipedia.org/wiki/Text_corpus). For a text document, this could involve removing any styling, formatting, or other meta-information. For a data record, such as an `NSManagedObject`, this means taking all of the salient fields and combining it into a representation.
 
-Once extracted, the content is [tokenized](http://en.wikipedia.org/wiki/Tokenization) for further processing.
+Once extracted, the content is [tokenized](https://en.wikipedia.org/wiki/Tokenization) for further processing.
 
 ### Filter
 
@@ -49,11 +49,11 @@ In order to get the most relevant matches, it's important to filter out common, 
 
 ### Reduce
 
-Along the same lines, words that mean basically the same thing should be reduced down into a common form. Morpheme clusters, such as grammatical conjugations like "computer", "computers", "computed", and "computing", for example, can all be simplified to be just "compute", using a [stemmer](http://en.wikipedia.org/wiki/Stemming). Synonyms, likewise, can be lumped into a common entry using a thesaurus lookup.
+Along the same lines, words that mean basically the same thing should be reduced down into a common form. Morpheme clusters, such as grammatical conjugations like "computer", "computers", "computed", and "computing", for example, can all be simplified to be just "compute", using a [stemmer](https://en.wikipedia.org/wiki/Stemming). Synonyms, likewise, can be lumped into a common entry using a thesaurus lookup.
 
 ### Index
 
-The end result of extracting, filtering, and reducing content into an array of normalized tokens is to form an [inverted index](http://en.wikipedia.org/wiki/Inverted_index), such that each token points to its origin in the index.
+The end result of extracting, filtering, and reducing content into an array of normalized tokens is to form an [inverted index](https://en.wikipedia.org/wiki/Inverted_index), such that each token points to its origin in the index.
 
 After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.
 

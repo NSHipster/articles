@@ -76,9 +76,9 @@ Enabling the Network Link Conditioner
 changes the network environment system-wide
 according to the selected configuration,
 limiting uplink or download
-[bandwidth](http://en.wikipedia.org/wiki/Bandwidth_%28computing%29),
-[latency](http://en.wikipedia.org/wiki/Latency_%28engineering%29%23Communication_latency), and rate of
-[packet loss](http://en.wikipedia.org/wiki/Packet_loss).
+[bandwidth](https://en.wikipedia.org/wiki/Bandwidth_%28computing%29),
+[latency](https://en.wikipedia.org/wiki/Latency_%28engineering%29%23Communication_latency), and rate of
+[packet loss](https://en.wikipedia.org/wiki/Packet_loss).
 
 You can choose from one of the following presets:
 

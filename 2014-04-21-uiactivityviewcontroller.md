@@ -10,11 +10,11 @@ status:
 
 The relationship between code and data has long been a curious one.
 
-Certain programming languages, such as [Lisp](http://en.wikipedia.org/wiki/Lisp_programming_language), [Io](http://en.wikipedia.org/wiki/Io_%28programming_language%29), and [Mathematica](http://en.wikipedia.org/wiki/Mathematica) are  [homoiconic](http://en.wikipedia.org/wiki/Homoiconicity), meaning that their code is represented as a data primitive, which itself can be manipulated in code. Most other languages, including Objective-C, however, create a strict boundary between the two, shying away from `eval()` and other potentially dangerous methods of dynamic instructing loading.
+Certain programming languages, such as [Lisp](https://en.wikipedia.org/wiki/Lisp_programming_language), [Io](https://en.wikipedia.org/wiki/Io_%28programming_language%29), and [Mathematica](https://en.wikipedia.org/wiki/Mathematica) are  [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity), meaning that their code is represented as a data primitive, which itself can be manipulated in code. Most other languages, including Objective-C, however, create a strict boundary between the two, shying away from `eval()` and other potentially dangerous methods of dynamic instructing loading.
 
 This tension between code and data is brought to a whole new level when the data in question is too large or unwieldy to represent as anything but a byte stream. The question of how to encode, decode, and interpret the binary representation of images, documents, and media has been ongoing since the very first operating systems.
 
-The Core Services framework on OS X and Mobile Core Services framework on iOS provide functions that identify and categorize data types by file extension and [MIME type](http://en.wikipedia.org/wiki/Internet_media_type), according to [Universal Type Identifiers](http://en.wikipedia.org/wiki/Uniform_Type_Identifier). UTIs provide an extensible, hierarchical categorization system, which affords the developer great flexibility in handling even the most exotic file types. For example, a Ruby source file (`.rb`) is categorized as Ruby Source Code > Source Code > Text > Content > Data; a QuickTime Movie file (`.mov`) is categorized as Video > Movie > Audiovisual Content > Content > Data.
+The Core Services framework on OS X and Mobile Core Services framework on iOS provide functions that identify and categorize data types by file extension and [MIME type](https://en.wikipedia.org/wiki/Internet_media_type), according to [Universal Type Identifiers](https://en.wikipedia.org/wiki/Uniform_Type_Identifier). UTIs provide an extensible, hierarchical categorization system, which affords the developer great flexibility in handling even the most exotic file types. For example, a Ruby source file (`.rb`) is categorized as Ruby Source Code > Source Code > Text > Content > Data; a QuickTime Movie file (`.mov`) is categorized as Video > Movie > Audiovisual Content > Content > Data.
 
 UTIs have worked reasonably well within the filesystem abstraction of the desktop. However, in a mobile paradigm, where files and directories are hidden from the user, this breaks down quickly. And, what's more, the rise of cloud services and social media has placed greater importance on remote entities over local files. Thus, a tension between UTIs and URLs.
 
@@ -311,7 +311,7 @@ As an example, let's create a custom activity type that takes an image URL and a
     </tr>
 </table>
 
-First, we define a [reverse-DNS identifier](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
+First, we define a [reverse-DNS identifier](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
 
 ```swift
 let HIPMustachifyActivityType = "com.nshipster.activity.Mustachify"

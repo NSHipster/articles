@@ -8,7 +8,7 @@ status:
     swift: n/a
 ---
 
-Apple is nothing if not consistent. From [Pentalobular screws](http://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
+Apple is nothing if not consistent. From [Pentalobular screws](https://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
 
 No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & OS X software, _is itself a closed ecosystem_.
 
@@ -29,7 +29,7 @@ This week on NSHipster: a roundup of some of the most useful and exciting plugin
 ## Making Xcode More Like `X`
 
 Just as New York became a melting pot of cultures from immigrants arriving at
-[Ellis Island](http://en.wikipedia.org/wiki/Ellis_Island), Xcode has welcomed the tired, poor, huddled masses of developers from every platform and language imaginable. Like those first wave Americans, who settled into their respective ethnic neighborhoods to re-establish their traditions in a new land, so too have new iOS developers brought over their preferred workflows and keybindings.
+[Ellis Island](https://en.wikipedia.org/wiki/Ellis_Island), Xcode has welcomed the tired, poor, huddled masses of developers from every platform and language imaginable. Like those first wave Americans, who settled into their respective ethnic neighborhoods to re-establish their traditions in a new land, so too have new iOS developers brought over their preferred workflows and keybindings.
 
 Perhaps you would appreciate a taste of home in the land of Cupertino.
 

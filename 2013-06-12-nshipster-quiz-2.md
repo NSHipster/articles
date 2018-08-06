@@ -123,12 +123,12 @@ For each question, a list of three classes from the same framework have been lis
 Round 1: General Knowledge
 --------------------------
 
-1. [A white-haired German Shepherd named Maverick](http://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
+1. [A white-haired German Shepherd named Maverick](https://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
 2. [`^@`](https://nshipster.com/type-encodings/)
 3. [`genstrings`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html)
 4. `NSArray -firstObject`
 5. [ICU (International Components for Unicode)](http://site.icu-project.org)
-6. [ Tysons Corner, Virginia & Glendale, California](http://en.wikipedia.org/wiki/Apple_Store#History)
+6. [ Tysons Corner, Virginia & Glendale, California](https://en.wikipedia.org/wiki/Apple_Store#History)
 7. [BackRow](https://nshipster.com/backrow/)
 8. [Phil Schiller](http://www.theverge.com/2013/6/13/4423844/cant-innovate-anymore-my-ass-apple)
 9. Pacific Heights, Mission, Nob Hill, Russian Hill, Marina, Presidio
@@ -138,12 +138,12 @@ Round 1: General Knowledge
 Round 2: Before & After
 -----------------------
 
-1. [Cocoa](http://en.wikipedia.org/wiki/Cocoa_%28API%29)
-2. [Sherlock](http://en.wikipedia.org/wiki/Sherlock_%28Software%29)
-3. [Mac OS X 10.2](http://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
-4. [Bonjour](http://en.wikipedia.org/wiki/Bonjour_%28Software%29)
-5. [iTunes](http://en.wikipedia.org/wiki/Itunes#History)
-6. [System 6 / Mac OS 6](http://en.wikipedia.org/wiki/System_6)
+1. [Cocoa](https://en.wikipedia.org/wiki/Cocoa_%28API%29)
+2. [Sherlock](https://en.wikipedia.org/wiki/Sherlock_%28Software%29)
+3. [Mac OS X 10.2](https://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
+4. [Bonjour](https://en.wikipedia.org/wiki/Bonjour_%28Software%29)
+5. [iTunes](https://en.wikipedia.org/wiki/Itunes#History)
+6. [System 6 / Mac OS 6](https://en.wikipedia.org/wiki/System_6)
 7. [Accessibility](http://www.apple.com/accessibility/)
 8. [Pixar](https://en.wikipedia.org/wiki/Pixar)
 9. [1 Infinite Loop](https://en.wikipedia.org/wiki/1_infinite_loop)
@@ -156,12 +156,12 @@ Round 3: Picture Round
 2. 2009
 3. 2012
 4. 2008
-5. [eMate 300](http://en.wikipedia.org/wiki/EMate_300)
-6. [Xserve RAID](http://en.wikipedia.org/wiki/Xserve_RAID)
-7. [iSight](http://en.wikipedia.org/wiki/ISight)
-8. [3rd gen. iPod Shuffle](http://en.wikipedia.org/wiki/Ipod_shuffle#Third_generation)
-9. [Core Audio](http://en.wikipedia.org/wiki/Core_Audio)
-10. ["Federighi"](http://en.wikipedia.org/wiki/Craig_Federighi)
+5. [eMate 300](https://en.wikipedia.org/wiki/EMate_300)
+6. [Xserve RAID](https://en.wikipedia.org/wiki/Xserve_RAID)
+7. [iSight](https://en.wikipedia.org/wiki/ISight)
+8. [3rd gen. iPod Shuffle](https://en.wikipedia.org/wiki/Ipod_shuffle#Third_generation)
+9. [Core Audio](https://en.wikipedia.org/wiki/Core_Audio)
+10. ["Federighi"](https://en.wikipedia.org/wiki/Craig_Federighi)
 
 Round 4: Name That Framework!
 -----------------------------

@@ -17,9 +17,9 @@ As we'll learn in this week's article, though having outgrown their technical ne
 
 Unlike other [two-letter prefixes](https://nshipster.com/namespacing/), `IB` does not refer to a system framework, but rather Interface Builder.
 
-[Interface Builder](http://en.wikipedia.org/wiki/Interface_Builder) can trace its roots to the halcyon days of Objective-C, when it and Project Builder comprised the NeXTSTEP developer tools (circa 1988). Before it was subsumed into Xcode 4, Interface Builder remained remarkably unchanged from its 1.0 release. An iOS developer today would feel right at home on a NeXTSTEP workstation, control-dragging views into outlets.
+[Interface Builder](https://en.wikipedia.org/wiki/Interface_Builder) can trace its roots to the halcyon days of Objective-C, when it and Project Builder comprised the NeXTSTEP developer tools (circa 1988). Before it was subsumed into Xcode 4, Interface Builder remained remarkably unchanged from its 1.0 release. An iOS developer today would feel right at home on a NeXTSTEP workstation, control-dragging views into outlets.
 
-Back when they were separate applications, it was a challenge to keep the object graph represented in a `.nib` document in Interface Builder synchronized with its corresponding `.h` & `.m` files in [Project Builder](http://en.wikipedia.org/wiki/Project_Builder) (what would eventually become Xcode). `IBOutlet` and `IBAction` were used as keywords, to denote what parts of the code should be visible to Interface Builder.
+Back when they were separate applications, it was a challenge to keep the object graph represented in a `.nib` document in Interface Builder synchronized with its corresponding `.h` & `.m` files in [Project Builder](https://en.wikipedia.org/wiki/Project_Builder) (what would eventually become Xcode). `IBOutlet` and `IBAction` were used as keywords, to denote what parts of the code should be visible to Interface Builder.
 
 `IBAction` and `IBOutlet` are, themselves, computationally meaningless, as their macro definitions (in `UINibDeclarations.h`) demonstrate:
 
@@ -121,7 +121,7 @@ The reason why most `IBOutlet` views can get away with `weak` ownership is that 
 #define IBOutletCollection(ClassName) __attribute__((iboutletcollection(ClassName)))
 ```
 
-Unlike `IBAction` or `IBOutlet`, `IBOutletCollection` takes a class name as an argument, which is, incidentally, as close to Apple-sanctioned [generics](http://en.wikipedia.org/wiki/Generic_programming) as one gets in Objective-C.
+Unlike `IBAction` or `IBOutlet`, `IBOutletCollection` takes a class name as an argument, which is, incidentally, as close to Apple-sanctioned [generics](https://en.wikipedia.org/wiki/Generic_programming) as one gets in Objective-C.
 
 As a top-level object, an `IBOutletCollection` `@property` should be declared `strong`, with an `NSArray *` type:
 

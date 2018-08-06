@@ -165,7 +165,7 @@ XCTAssertNotEqualObjects(expression1, expression2, format...);
 
 > `XCTAssert[Not]EqualObjects` is not necessary in Swift, since there is no distinction between scalars and objects.
 
-When specifically testing whether two `Double`, `Float`, or other floating-point values are equal, use `XCTAssert[Not]EqualWithAccuracy`, to account for any issues with [floating point accuracy](http://en.wikipedia.org/wiki/Floating_point#Representable_numbers.2C_conversion_and_rounding):
+When specifically testing whether two `Double`, `Float`, or other floating-point values are equal, use `XCTAssert[Not]EqualWithAccuracy`, to account for any issues with [floating point accuracy](https://en.wikipedia.org/wiki/Floating_point#Representable_numbers.2C_conversion_and_rounding):
 
 ```swift
 XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, format...)
@@ -356,11 +356,11 @@ func testAsynchronousURLConnection() {
 
 ## Mocking in Swift
 
-With first-class support for asynchronous testing, Xcode 6 seems to have fulfilled all of the needs of a modern test-driven developer. Well, perhaps save for one: [mocking](http://en.wikipedia.org/wiki/Mock_object).
+With first-class support for asynchronous testing, Xcode 6 seems to have fulfilled all of the needs of a modern test-driven developer. Well, perhaps save for one: [mocking](https://en.wikipedia.org/wiki/Mock_object).
 
 Mocking can be a useful technique for isolating and controlling behavior in systems that, for reasons of complexity, non-determinism, or performance constraints, do not usually lend themselves to testing. Examples include simulating specific networking interactions, intensive database queries, or inducing states that might emerge under a particular race condition.
 
-There are a couple of [open source libraries](https://nshipster.com/unit-testing/#open-source-libraries) for creating mock objects and [stubbing](http://en.wikipedia.org/wiki/Test_stub) method calls, but these libraries largely rely on Objective-C runtime manipulation, something that is not currently possible with Swift.
+There are a couple of [open source libraries](https://nshipster.com/unit-testing/#open-source-libraries) for creating mock objects and [stubbing](https://en.wikipedia.org/wiki/Test_stub) method calls, but these libraries largely rely on Objective-C runtime manipulation, something that is not currently possible with Swift.
 
 However, this may not actually be necessary in Swift, due to its less-constrained syntax.
 

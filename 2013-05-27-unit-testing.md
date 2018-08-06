@@ -70,7 +70,7 @@ The only chance testing has to remain relevant in high-pressure situations is to
 
 ## Open Source Libraries
 
-There are a myriad of open source libraries that attempt to make testing more palatable by way of syntactic sugar and features like [method stubs](https://en.wikipedia.org/wiki/Method_stub), [mock objects](https://en.wikipedia.org/wiki/Mock_object), and [promises](http://en.wikipedia.org/wiki/Futures_and_promises).
+There are a myriad of open source libraries that attempt to make testing more palatable by way of syntactic sugar and features like [method stubs](https://en.wikipedia.org/wiki/Method_stub), [mock objects](https://en.wikipedia.org/wiki/Mock_object), and [promises](https://en.wikipedia.org/wiki/Futures_and_promises).
 
 Here's a list of some of the most useful open source libraries for unit testing:
 

@@ -52,7 +52,7 @@ Because collection views aren't relegated to any particular structure, the conve
 
 Each cell can have multiple supplementary views associated with it--one for each named "kind". As such, headers and footers are just the beginning of what can be done with supplementary views.
 
-The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. `UITableView` hacks are to [`spacer.gif`](http://en.wikipedia.org/wiki/Spacer_GIF) as `UICollectionView` cells are to [semantic HTML](http://en.wikipedia.org/wiki/Semantic_HTML).
+The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. `UITableView` hacks are to [`spacer.gif`](https://en.wikipedia.org/wiki/Spacer_GIF) as `UICollectionView` cells are to [semantic HTML](https://en.wikipedia.org/wiki/Semantic_HTML).
 
 ### Decoration Views
 
@@ -88,7 +88,7 @@ What's _extremely_ cool is this method here:
 
 - `-layoutAttributesForElementsInRect:`
 
-Using this, you could, for example, fade out items as they approach the edge of the screen. Or, since all of the layout attribute properties are automatically animated, you could create a poor-man's [cover flow](http://en.wikipedia.org/wiki/Cover_Flow) layout in just a couple lines of code with the right set of 3D transforms.
+Using this, you could, for example, fade out items as they approach the edge of the screen. Or, since all of the layout attribute properties are automatically animated, you could create a poor-man's [cover flow](https://en.wikipedia.org/wiki/Cover_Flow) layout in just a couple lines of code with the right set of 3D transforms.
 
 In fact, collection views can even swap out layouts wholesale, allowing views to transition seamlessly between different modes--all without changing the underlying data.
 

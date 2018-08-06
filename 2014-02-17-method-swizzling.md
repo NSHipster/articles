@@ -18,7 +18,7 @@ status:
 > Would you do it?<br/>
 > And so we cannot know ourselves or what we'd really do...<br/>
 > With all your power ... What would you do?<br/>
-> <cite><strong>The Flaming Lips</strong>, <em><a href="http://en.wikipedia.org/wiki/The_Yeah_Yeah_Yeah_Song_(With_All_Your_Power)">"The Yeah Yeah Yeah Song (With All Your Power)"</a></em></cite>
+> <cite><strong>The Flaming Lips</strong>, <em><a href="https://en.wikipedia.org/wiki/The_Yeah_Yeah_Yeah_Song_(With_All_Your_Power)">"The Yeah Yeah Yeah Song (With All Your Power)"</a></em></cite>
 
 In last week's article about [associated objects](https://nshipster.com/associated-objects/), we began to explore the dark arts of the Objective-C runtime. This week, we venture further, to discuss what is perhaps the most contentious of runtime hackery techniques: method swizzling.
 
@@ -81,7 +81,7 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 @end
 ```
 
-> In computer science, [pointer swizzling](http://en.wikipedia.org/wiki/Pointer_swizzling) is the conversion of references based on name or position to direct pointer references.  While the origins of Objective-C's usage of the term are not entirely known, it's understandable why it was co-opted, since method swizzling involves changing the reference of a function pointer by its selector.
+> In computer science, [pointer swizzling](https://en.wikipedia.org/wiki/Pointer_swizzling) is the conversion of references based on name or position to direct pointer references.  While the origins of Objective-C's usage of the term are not entirely known, it's understandable why it was co-opted, since method swizzling involves changing the reference of a function pointer by its selector.
 
 Now, when any instance of `UIViewController`, or one of its subclasses invokes `viewWillAppear:`, a log statement will print out.
 

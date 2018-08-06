@@ -111,4 +111,4 @@ The syntax is exactly the same as `NS_ENUM`, but this macro alerts the compiler 
 
 `NS_ENUM` and `NS_OPTIONS` are handy additions to the Objective-C development experience, and reaffirm the healthy dialectic between its objective and procedural nature. Keep this in mind as you move forward in your own journey to understand the logical tensions that underpin everything around us.
 
-[1]: http://en.wikipedia.org/wiki/Mask_(computing)
+[1]: https://en.wikipedia.org/wiki/Mask_(computing)

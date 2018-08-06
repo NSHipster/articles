@@ -13,9 +13,9 @@ Programming incorporates numerous disciplines of human reasoning, from high-leve
 
 Assertions are a concept borrowed from classical logic. In logic, assertions are statements about propositions within a proof. In programming, assertions denote assumptions the programmer has made about the application at the place where they are declared.
 
-When used in the capacity of preconditions and postconditions, which describe expectations about the state of the code at the beginning and end of execution of a method or function, assertions form a [contract](http://en.wikipedia.org/wiki/Design_by_contract). Assertions can also be used to enforce conditions at run-time, in order to prevent execution when certain preconditions fail.
+When used in the capacity of preconditions and postconditions, which describe expectations about the state of the code at the beginning and end of execution of a method or function, assertions form a [contract](https://en.wikipedia.org/wiki/Design_by_contract). Assertions can also be used to enforce conditions at run-time, in order to prevent execution when certain preconditions fail.
 
-Assertions are similar to [unit testing](http://en.wikipedia.org/wiki/Unit_testing) in that they define expectations about the way code will execute. Unlike unit tests, assertions exist inside the program itself, and are thereby constrained to the context of the program. Because unit tests are fully independent, they have a much greater capacity to isolate and test certain behaviors, using tools like methods stubs and mock objects. Developers should use assertions and unit tests in combination and in reasonable quantity to test and define behavior in an application.
+Assertions are similar to [unit testing](https://en.wikipedia.org/wiki/Unit_testing) in that they define expectations about the way code will execute. Unlike unit tests, assertions exist inside the program itself, and are thereby constrained to the context of the program. Because unit tests are fully independent, they have a much greater capacity to isolate and test certain behaviors, using tools like methods stubs and mock objects. Developers should use assertions and unit tests in combination and in reasonable quantity to test and define behavior in an application.
 
 ## Foundation Assertion Handling
 

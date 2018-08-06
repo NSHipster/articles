@@ -39,7 +39,7 @@ Or, to take an even more complex statement, `1 + 2 * 3 % 4`, the compiler would 
 
 ![1 + 2 * 3 % 4 AST]({% asset swift-operators-one-plus-two-times-three-mod-four.svg @path %})
 
-Operator precedence rules, similar to the ones [you learned in primary school](http://en.wikipedia.org/wiki/Order_of_operations), provide a canonical ordering for any compound statement:
+Operator precedence rules, similar to the ones [you learned in primary school](https://en.wikipedia.org/wiki/Order_of_operations), provide a canonical ordering for any compound statement:
 
 ```
 1 + 2 * 3 % 4
@@ -305,7 +305,7 @@ func <<<T> (inout left: [T], right: T) -> [T] {
 
 An even more controversial and exciting feature is the ability to define custom operators.
 
-Consider the arithmetic operator found in many programming languages, but missing in Swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](http://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
+Consider the arithmetic operator found in many programming languages, but missing in Swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](https://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
 
 To add this operator in Swift, first declare the operator:
 

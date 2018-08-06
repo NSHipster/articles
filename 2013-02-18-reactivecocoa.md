@@ -11,7 +11,7 @@ Languages are living works. They are nudged and challenged and bastardized and m
 
 Objective-C has a remarkable history spanning four acts in as many decades:
 
-**In its 1<sup>st</sup> act**, Objective-C was adopted as the language of NeXT, powering [NeXTSTEP](http://en.wikipedia.org/wiki/NeXTSTEP) and [the world's first web server](http://en.wikipedia.org/wiki/Web_server#History).
+**In its 1<sup>st</sup> act**, Objective-C was adopted as the language of NeXT, powering [NeXTSTEP](https://en.wikipedia.org/wiki/NeXTSTEP) and [the world's first web server](https://en.wikipedia.org/wiki/Web_server#History).
 
 **In its 2<sup>nd</sup> act**, Objective-C positioned itself in the heart Apple's technology stack (after a prolonged turf war with Java) with Apple's acquisition of NeXT.
 
@@ -27,7 +27,7 @@ Breaking from a tradition of covering Apple APIs exclusively, this edition of NS
 
 [ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa) is an open source library that brings Functional Reactive Programming paradigm to Objective-C. It was created by [Josh Abernathy](https://github.com/joshaber) & [Justin Spahr-Summers](https://github.com/jspahrsummers) in the development of [GitHub for Mac](http://mac.github.com). Last week, ReactiveCocoa reached a major milestone with its [1.0 release](https://github.com/ReactiveCocoa/ReactiveCocoa/tree/v1.0.0).
 
-[Functional Reactive Programming](http://en.wikipedia.org/wiki/Functional_reactive_programming) (FRP) is a way of thinking about software in terms of transforming inputs to produce output continuously over time. [Josh Abernathy frames the paradigm thusly](http://blog.maybeapps.com/post/42894317939/input-and-output):
+[Functional Reactive Programming](https://en.wikipedia.org/wiki/Functional_reactive_programming) (FRP) is a way of thinking about software in terms of transforming inputs to produce output continuously over time. [Josh Abernathy frames the paradigm thusly](http://blog.maybeapps.com/post/42894317939/input-and-output):
 
 > Programs take input and produce output. The output is the result of doing something with the input. Input, transform, output, done.
 >
@@ -150,11 +150,11 @@ Although essential to managing the complexity of a OS X application, Bindings' c
 
 Objective-C was built from Smalltalk's ideas on top of C's metal, but its cultural imports go far beyond its original pedigree.
 
-`@protocol` was a rejection of C++'s multiple inheritance, favoring an abstract data type pattern comparable to a Java `Interface`. Objective-C 2.0 introduced `@property / @synthesize`, a contemporary of C#'s `get; set;` shorthand for getter and setter methods (as well as dot syntax, which is still a point of contention for NeXTSTEP hard-liners). Blocks injected some functional programming flavor to the language, which paired nicely with Grand Central Dispatch--a queue-based concurrency API almost certainly influenced by Fortran / C / C++ standard [OpenMP](http://en.wikipedia.org/wiki/OpenMP). Subscripting and object literals, a standard feature in scripting languages like Ruby and Javascript, now finally brought to Objective-C thanks to a Clang language extension.
+`@protocol` was a rejection of C++'s multiple inheritance, favoring an abstract data type pattern comparable to a Java `Interface`. Objective-C 2.0 introduced `@property / @synthesize`, a contemporary of C#'s `get; set;` shorthand for getter and setter methods (as well as dot syntax, which is still a point of contention for NeXTSTEP hard-liners). Blocks injected some functional programming flavor to the language, which paired nicely with Grand Central Dispatch--a queue-based concurrency API almost certainly influenced by Fortran / C / C++ standard [OpenMP](https://en.wikipedia.org/wiki/OpenMP). Subscripting and object literals, a standard feature in scripting languages like Ruby and Javascript, now finally brought to Objective-C thanks to a Clang language extension.
 
-ReactiveCocoa brings a healthy dose of functional and reactive programming influence to Objective-C, and was itself influenced by C#'s [Rx library](http://msdn.microsoft.com/en-us/data/gg577609.aspx), [Clojure](http://en.wikipedia.org/wiki/Clojure), and [Elm][2].
+ReactiveCocoa brings a healthy dose of functional and reactive programming influence to Objective-C, and was itself influenced by C#'s [Rx library](http://msdn.microsoft.com/en-us/data/gg577609.aspx), [Clojure](https://en.wikipedia.org/wiki/Clojure), and [Elm][2].
 
 Good ideas are contagious. ReactiveCocoa is a reminder that good ideas can come from unlikely places, and that a fresh perspective can make all of the difference with familiar problems.
 
-[1]: http://en.wikipedia.org/wiki/State_(computer_science)#Program_state
-[2]: http://en.wikipedia.org/wiki/Elm_(programming_language)
+[1]: https://en.wikipedia.org/wiki/State_(computer_science)#Program_state
+[2]: https://en.wikipedia.org/wiki/Elm_(programming_language)

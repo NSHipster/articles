@@ -112,7 +112,7 @@ A filesystem autopsy reveals some interesting implementation details. In the cas
 - Binary-encoded `KeyText.data`, `KeyText.index`, & `Content.data`
 - CSS for styling entries
 - 1207 images, from A-Frame to Zither.
-- Preference to switch between [US English Diacritical Pronunciation](http://en.wikipedia.org/wiki/Pronunciation_respelling_for_English) and [IPA](http://en.wikipedia.org/wiki/International_Phonetic_Alphabet) (International Phonetic Alphabet)
+- Preference to switch between [US English Diacritical Pronunciation](https://en.wikipedia.org/wiki/Pronunciation_respelling_for_English) and [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) (International Phonetic Alphabet)
 - Manifest & signature for dictionary contents
 
 Normally, proprietary binary encoding would be the end of the road in terms of what one could reasonably do with data, but luckily, Core Services provides APIs to read this information.

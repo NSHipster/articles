@@ -11,7 +11,7 @@ status:
 
 Here's a question: why isn't `NSOrderedSet` a subclass of `NSSet`?
 
-It seems perfectly logical, after all, for `NSOrderedSet`--a class that enforces the same uniqueness constraint of `NSSet`--to be a _subclass_ of `NSSet`. It has the same methods as `NSSet`, with the addition of some `NSArray`-style methods like `objectAtIndex:`. By all accounts, it would seem to perfectly satisfy the requirements of the [Liskov substitution principle](http://en.wikipedia.org/wiki/Liskov_substitution_principle), that:
+It seems perfectly logical, after all, for `NSOrderedSet`--a class that enforces the same uniqueness constraint of `NSSet`--to be a _subclass_ of `NSSet`. It has the same methods as `NSSet`, with the addition of some `NSArray`-style methods like `objectAtIndex:`. By all accounts, it would seem to perfectly satisfy the requirements of the [Liskov substitution principle](https://en.wikipedia.org/wiki/Liskov_substitution_principle), that:
 
 > If `S` is a subtype of `T`, then objects of type `T` in a program may be replaced with objects of type `S` without altering any of the desirable properties of that program.
 
@@ -99,7 +99,7 @@ This is perhaps even worse, as now `NSMutableOrderedSet` couldn't be used as a m
 
 No matter how we approach it, we can't stack a mutable / immutable class pair on top of another existing mutable / immutable class pair. It just won't work in Objective-C.
 
-Rather than subject ourselves to the perils of [multiple inheritance](http://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as it does every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
+Rather than subject ourselves to the perils of [multiple inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as it does every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
 
 - `NSArray : NSObject <NSOrderedCollection>`
 - `NSSet : NSObject <NSUniqueCollection>`

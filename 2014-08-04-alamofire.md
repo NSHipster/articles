@@ -58,7 +58,7 @@ Alamofire.request(.GET, "http://httpbin.org/get")
 
 Even minor syntactic differences can have wide-reaching implications for language conventions.
 
-Chief among the complaints lodged against Objective-C was its use of square brackets for denoting [message passing](http://en.wikipedia.org/wiki/Message_passing). One of the practical implications of `[ ]` syntax is the difficulty in chaining methods together. Even with Xcode autocomplete, `@property` dot syntax, and [key-value coding key-paths](https://nshipster.com/kvc-collection-operators/), it is still rare to see deeply nested invocations.
+Chief among the complaints lodged against Objective-C was its use of square brackets for denoting [message passing](https://en.wikipedia.org/wiki/Message_passing). One of the practical implications of `[ ]` syntax is the difficulty in chaining methods together. Even with Xcode autocomplete, `@property` dot syntax, and [key-value coding key-paths](https://nshipster.com/kvc-collection-operators/), it is still rare to see deeply nested invocations.
 
 > In many ways, the concession of introducing dot syntax for properties in Objective-C 2.0 only served to escalate tensions further, although conventions have started to solidify in recent years.
 

@@ -35,7 +35,7 @@ struct Complex<T: SignedNumberType> {
 }
 ```
 
-Since a [complex number](http://en.wikipedia.org/wiki/Complex_number) is comprised of a real and imaginary component, two complex numbers are equal if and only if their respective real and imaginary components are equal:
+Since a [complex number](https://en.wikipedia.org/wiki/Complex_number) is comprised of a real and imaginary component, two complex numbers are equal if and only if their respective real and imaginary components are equal:
 
 ```swift
 extension Complex: Equatable {}
@@ -222,7 +222,7 @@ protocol Hashable : Equatable {
 }
 ```
 
-Determining the [optimal hashing value](http://en.wikipedia.org/wiki/Perfect_hash_function) is way outside the scope of this article. Fortunately, most values can derive an adequate hash value from an `XOR` of the hash values of its component properties.
+Determining the [optimal hashing value](https://en.wikipedia.org/wiki/Perfect_hash_function) is way outside the scope of this article. Fortunately, most values can derive an adequate hash value from an `XOR` of the hash values of its component properties.
 
 The following built-in Swift types implement `hashValue`:
 
@@ -234,7 +234,7 @@ The following built-in Swift types implement `hashValue`:
 - `UnicodeScalar`
 - `ObjectIdentifier`
 
-Based on this, here's how a struct representing [Binomial Nomenclature in Biological Taxonomy](http://en.wikipedia.org/wiki/Binomial_nomenclature):
+Based on this, here's how a struct representing [Binomial Nomenclature in Biological Taxonomy](https://en.wikipedia.org/wiki/Binomial_nomenclature):
 
 ```swift
 struct Binomen {

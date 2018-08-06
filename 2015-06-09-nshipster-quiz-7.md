@@ -122,11 +122,11 @@ Round 1: General Knowledge
 3. [50 gallon drum of lube](https://twitter.com/indians/status/605946305274191872)
 4. `WKInterface`
 5. ﬀ, ﬁ, ﬂ, ﬃ, ﬄ
-6. [A ransom note, by Susan Kare](http://en.wikipedia.org/wiki/San_Francisco_(1984_typeface))
+6. [A ransom note, by Susan Kare](https://en.wikipedia.org/wiki/San_Francisco_(1984_typeface))
 7. [A Playmobile figure of himself](http://www.newyorker.com/magazine/2015/02/23/shape-things-come)
 8. [A typo in the README.md](https://github.com/ResearchKit/ResearchKit/pull/6)
 9. [ORK: Open Research Kit](https://github.com/ResearchKit/ResearchKit)
-10. [*Fun Home*, based on the memoir by Alison Bechdel](http://en.wikipedia.org/wiki/Fun_Home_(musical))
+10. [*Fun Home*, based on the memoir by Alison Bechdel](https://en.wikipedia.org/wiki/Fun_Home_(musical))
 
 Round 2: Name That Framework
 ----------------------------
@@ -147,7 +147,7 @@ Round 3: Picture Round
 
 1. [Beyonce](http://www.beyonce.com/my-life-828/)
 2. *Parker Lewis Can't Lose*, "Synchronize Swatches"
-3. [ResEdit](http://en.wikipedia.org/wiki/ResEdit)
+3. [ResEdit](https://en.wikipedia.org/wiki/ResEdit)
 5. [Metamorphabet](http://metamorphabet.com)
 4. [Workflow](https://workflow.is)
 6. [Meerkat](http://meerkatapp.co)

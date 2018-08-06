@@ -15,7 +15,7 @@ Acting with a sense of civic and patriotic duty rivaled only by Uncle Sam wallop
 
 For every file on a UNIX filesystem, there is associated metadata. Indeed, having a path, permissions, and timestamp attributes is what makes a file a file, rather than just a blob of data.
 
-However, on OS X and iOS, additional metadata can be stored in [**extended file attributes**](http://en.wikipedia.org/wiki/Extended_file_attributes). Introduced in OS X Tiger, they are perfect for associating small, application-specific data with a file. EAs are stored in the attributes B*-Tree of the HFS+ filesystem, and have a maximum size of 128KB as of OS X Lion & iOS 5.
+However, on OS X and iOS, additional metadata can be stored in [**extended file attributes**](https://en.wikipedia.org/wiki/Extended_file_attributes). Introduced in OS X Tiger, they are perfect for associating small, application-specific data with a file. EAs are stored in the attributes B*-Tree of the HFS+ filesystem, and have a maximum size of 128KB as of OS X Lion & iOS 5.
 
 What kind of information, you ask? Invoke the `ls` command in the terminal and pass the `@` option to see what information hides in plain sight.
 
@@ -44,7 +44,7 @@ ssize_t listxattr(const char *path, char *namebuf, size_t size, int options);
 int removexattr(const char *path, const char *name, int options);
 ```
 
-To show these in action, consider the use of extended attributes to associate an [HTTP Etag](http://en.wikipedia.org/wiki/HTTP_ETag) with a file:
+To show these in action, consider the use of extended attributes to associate an [HTTP Etag](https://en.wikipedia.org/wiki/HTTP_ETag) with a file:
 
 ```objc
 NSHTTPURLResponse *response = ...;

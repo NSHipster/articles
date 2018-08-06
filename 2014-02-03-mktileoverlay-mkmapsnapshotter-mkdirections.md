@@ -20,7 +20,7 @@ This week on NSHipster, we'll introduce `MKTileOverlay`, `MKMapSnapshotter`, and
 
 Don't like the default Apple Maps tiles? [`MKTileOverlay`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKTileOverlay_class/Reference/Reference.html) allows you to seamlessly swap out to another tile set in just a few lines of code.
 
-> Just like [OpenStreetMap](http://www.openstreetmap.org) and [Google Maps](https://maps.google.com), MKTileOverlay uses [spherical mercator projection (EPSG:3857)](http://en.wikipedia.org/wiki/Mercator_projection#The_spherical_model).
+> Just like [OpenStreetMap](http://www.openstreetmap.org) and [Google Maps](https://maps.google.com), MKTileOverlay uses [spherical mercator projection (EPSG:3857)](https://en.wikipedia.org/wiki/Mercator_projection#The_spherical_model).
 
 ### Setting Custom Map View Tile Overlay
 

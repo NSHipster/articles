@@ -10,7 +10,7 @@ status:
 
 NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](https://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.
 
-> This is actually the 101st article, which means that [by television industry standards](http://en.wikipedia.org/wiki/100_episodes), this site is now suitable for broadcast syndication. (Coming soon to TBS!)
+> This is actually the 101st article, which means that [by television industry standards](https://en.wikipedia.org/wiki/100_episodes), this site is now suitable for broadcast syndication. (Coming soon to TBS!)
 
 Let's celebrate with some cake:
 

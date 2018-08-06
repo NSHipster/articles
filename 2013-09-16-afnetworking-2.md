@@ -20,7 +20,7 @@ This week on NSHipster: an exclusive look at the future of AFNetworking.
 
 ## AFNetworking's Big Ideas
 
-Started in May 2011 as a humble extension of an [Apple code sample](https://developer.apple.com/library/ios/samplecode/mvcnetworking/Introduction/Intro.html) from a [doomed location-based social network](http://en.wikipedia.org/wiki/Gowalla), AFNetworking's success was a product of timing more than anything. At a time when [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) was the de facto networking solution, AFNetworking's core ideas caught on among developers looking for a more modern solution.
+Started in May 2011 as a humble extension of an [Apple code sample](https://developer.apple.com/library/ios/samplecode/mvcnetworking/Introduction/Intro.html) from a [doomed location-based social network](https://en.wikipedia.org/wiki/Gowalla), AFNetworking's success was a product of timing more than anything. At a time when [ASIHTTPRequest](https://github.com/pokeb/asi-http-request) was the de facto networking solution, AFNetworking's core ideas caught on among developers looking for a more modern solution.
 
 ### NSURLConnection + NSOperation
 
@@ -87,7 +87,7 @@ One of the breakthroughs of AFNetworking 2.0's new architecture is use of serial
 
 Thanks to the contributions of [Dustin Barker](https://github.com/dstnbrkr), [Oliver Letterer](https://github.com/OliverLetterer), and [Kevin Harwood](https://github.com/kcharwood) and others, AFNetworking comes with built-in support for [SSL pinning](http://blog.lumberlabs.com/2012/04/why-app-developers-should-care-about.html), which is critical for apps that deal with sensitive information.
 
-- `AFSecurityPolicy` - A class that evaluates the server trust of secure connections against its specified pinned certificates or public keys. tl;dr Add your server certificate to your app bundle to help prevent against [man-in-the-middle attacks](http://en.wikipedia.org/wiki/Man-in-the-middle_attack).
+- `AFSecurityPolicy` - A class that evaluates the server trust of secure connections against its specified pinned certificates or public keys. tl;dr Add your server certificate to your app bundle to help prevent against [man-in-the-middle attacks](https://en.wikipedia.org/wiki/Man-in-the-middle_attack).
 
 #### Reachability
 
@@ -97,7 +97,7 @@ Another piece of functionality now decoupled from `AFHTTPClient` is network reac
 
 #### Real-time
 
-- `AFEventSource` - An Objective-C implementation of the [`EventSource` DOM API](http://en.wikipedia.org/wiki/Server-sent_events). A persistent HTTP connection is opened to a host, which streams events to the event source, to be dispatched to listeners. Messages streamed to the event source formatted as [JSON Patch](http://tools.ietf.org/html/rfc6902) documents are translated into arrays of `AFJSONPatchOperation` objects. These patch operations can be applied to the persistent data set fetched from the server.
+- `AFEventSource` - An Objective-C implementation of the [`EventSource` DOM API](https://en.wikipedia.org/wiki/Server-sent_events). A persistent HTTP connection is opened to a host, which streams events to the event source, to be dispatched to listeners. Messages streamed to the event source formatted as [JSON Patch](http://tools.ietf.org/html/rfc6902) documents are translated into arrays of `AFJSONPatchOperation` objects. These patch operations can be applied to the persistent data set fetched from the server.
 
 ```objc
 NSURL *URL = [NSURL URLWithString:@"http://example.com"];

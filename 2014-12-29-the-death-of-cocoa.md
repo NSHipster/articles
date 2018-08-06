@@ -90,7 +90,7 @@ The calendaring functionality is some of the oldest and most robust in Cocoa. Wh
 
 In order to do any calendaring calculations, such as getting the date one month from today, one would use `NSCalendar` and [`NSDateComponents`](https://nshipster.com/nsdatecomponents/). That's the _correct_ way to do it, at least... a majority of developers probably still use `dateWithTimeIntervalSinceNow:` with a constant number of seconds hardcoded. Tragically, it's not enough for an API to do things the right way, it must also be easier than doing it the wrong way.
 
-Another shortfall (albeit incredibly minor) of `NSCalendar` is that it doesn't allow for new calendars to be added. For someone doing their darnedest to advocate conversion to the [French Republican Calendar](http://en.wikipedia.org/wiki/French_Republican_Calendar), this is bothersome.
+Another shortfall (albeit incredibly minor) of `NSCalendar` is that it doesn't allow for new calendars to be added. For someone doing their darnedest to advocate conversion to the [French Republican Calendar](https://en.wikipedia.org/wiki/French_Republican_Calendar), this is bothersome.
 
 Fortunately, all of the new language features of Swift could be used to solve both of these problems in a really elegant way. It'd take some work to implement, but a calendaring system based on generics could really be something. If anyone wants to take me up on that challenge, [here are some ideas](https://gist.github.com/mattt/7edb54f8f4fde4a3783e).
 
@@ -130,7 +130,7 @@ if (!error) {
 > In defense of Apple, I once asked an engineer at a WWDC Lab why it took so long for iOS to support JSON. Their answer made a lot of sense. Paraphrasing:
 >> Apple is a company with a long view of technology. It's _really_ difficult to tell whether a technology like JSON is going to stick, or if it's just another fad. Apple once released a framework for [PubSub](https://developer.apple.com/library/mac/documentation/InternetWeb/Reference/PubSubReference/_index.html), which despite not being widely known or used, still has to be supported for the foreseeable future. Each technology is a gamble of engineering resources.
 
-Data marshaling and serialization are boring tasks, and boring tasks are exactly what a standard library should take care of. Apple knew this when developing Cocoa, which has robust implementations for both text and binary [property lists](http://en.wikipedia.org/wiki/Property_list), which are the lifeblood of iOS and OS X. It may be difficult to anticipate what other interchange formats will be viable in the long term, but providing official support for emerging technologies on a probationary basis would do a lot to improve things for developers.
+Data marshaling and serialization are boring tasks, and boring tasks are exactly what a standard library should take care of. Apple knew this when developing Cocoa, which has robust implementations for both text and binary [property lists](https://en.wikipedia.org/wiki/Property_list), which are the lifeblood of iOS and OS X. It may be difficult to anticipate what other interchange formats will be viable in the long term, but providing official support for emerging technologies on a probationary basis would do a lot to improve things for developers.
 
 ### Regular Expressions
 
@@ -192,7 +192,7 @@ AppKit and UIKit are entire topics unto themselves. It's much more likely that t
 
 Perhaps we're thinking too small about what a standard library can be.
 
-The Wolfram Language has [The Mother of All Demos](https://www.youtube.com/watch?v=_P9HqHVPeik#t=1m02.5s) ([with apologies to Douglas Engelbart](http://en.wikipedia.org/wiki/The_Mother_of_All_Demos)) for a programming language.
+The Wolfram Language has [The Mother of All Demos](https://www.youtube.com/watch?v=_P9HqHVPeik#t=1m02.5s) ([with apologies to Douglas Engelbart](https://en.wikipedia.org/wiki/The_Mother_of_All_Demos)) for a programming language.
 
 > Granted, Wolfram is a parallel universe of computation where nothing else exists, and the language itself is a hot mess.
 

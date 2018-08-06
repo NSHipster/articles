@@ -110,7 +110,7 @@ if (manager.accelerometerAvailable) {
 
 Each packet of `CMAccelerometerData` includes an `x`, `y`, and `z` value—each of these shows the amount of acceleration in Gs (where G is one unit of gravity) for that axis. That is, if your device were stationary and straight up in portrait orientation, it would have acceleration `(0, -1, 0)`; laying flat on its back on the table would be `(0, 0, -1)`; and tilted forty-five degrees to the right would be something like `(0.707, -0.707, 0)`.
 
-We're calculating the rotation by computing the [`arctan2`](http://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
+We're calculating the rotation by computing the [`arctan2`](https://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
 
 ![Rotation with accelerometer]({% asset cmdm-accelerometer.gif @path %})
 
@@ -316,7 +316,7 @@ Having implemented all that, let's take a look at the interaction. As the device
 
 ### Further Reading
 
-I skimmed over the [quaternion](http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation) and [rotation matrix](http://en.wikipedia.org/wiki/Rotation_matrix) components of `CMAttitude` earlier, but they are not without intrigue. The quaternion, in particular, has [an interesting history](http://en.wikipedia.org/wiki/History_of_quaternions), and will bake your noodle if you think about it long enough.
+I skimmed over the [quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation) and [rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix) components of `CMAttitude` earlier, but they are not without intrigue. The quaternion, in particular, has [an interesting history](https://en.wikipedia.org/wiki/History_of_quaternions), and will bake your noodle if you think about it long enough.
 
 
 ## Queueing Up

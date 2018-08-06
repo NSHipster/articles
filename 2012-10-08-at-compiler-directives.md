@@ -8,7 +8,7 @@ status:
     swift: n/a
 ---
 
-Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](http://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
 
 This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixir](http://elixir-lang.org) at a glance.
 
