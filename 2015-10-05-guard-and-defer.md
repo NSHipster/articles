@@ -130,7 +130,7 @@ func readBedtimeStory() throws {
     if let url = Bundle.main.url(forResource: "book",
                                withExtension: "txt")
     {
-        if let data = try Data(contentsOf: url),
+        if let data = try? Data(contentsOf: url),
             let story = String(data: data, encoding: .utf8)
         {
             if story.contains("👹") {
