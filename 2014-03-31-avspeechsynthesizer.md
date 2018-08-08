@@ -171,7 +171,7 @@ mutableAttributedString.setAttributes([pronunciationKey: "tə.ˈme͡ɪ.do͡ʊ"],
 
 let utterance = AVSpeechUtterance(attributedString: mutableAttributedString)
 
-// en-GB pronunciation is /tə.ˈmɑ.to͡ʊ/
+// en-GB pronunciation is /tə.ˈmɑ.to͡ʊ/... but too bad!
 utterance.voice = AVSpeechSynthesisVoice(language: "en-GB")
 
 let synthesizer = AVSpeechSynthesizer()
@@ -193,7 +193,7 @@ and... say it yourself!
 
 {% asset speech-pronunciation-replacement alt="Speech Pronunciation Replacement" %}
 
-## Delegate Methods
+## Hooking Into Speech Events
 
 One of the coolest features of `AVSpeechSynthesizer`
 is how it lets developers hook into speech events.
@@ -213,9 +213,9 @@ var utteranceLabel: UILabel!
 
 // MARK: AVSpeechSynthesizerDelegate
 
-func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
-    willSpeakRangeOfSpeechString characterRange: NSRange,
-    utterance: AVSpeechUtterance)
+override func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+  willSpeakRangeOfSpeechString characterRange: NSRange,
+                                    utterance: AVSpeechUtterance)
 {
     self.utterranceLabel.attributedText =
         attributedString(from: utterance.speechString,
