@@ -5,6 +5,9 @@ category: Cocoa
 excerpt: 
     Though we're a long way off from Hal or Her, 
     we shouldn't forget about the billions of people out there for us to talk to.
+revisions:
+    "2014-03-31": First Publication
+    "2018-08-08": Updated for iOS 12 and macOS Mojave
 status:
     swift: 4.2
     reviewed: August 8, 2018
