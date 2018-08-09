@@ -4,19 +4,19 @@ author: Natasha Murashev
 category: Cocoa
 excerpt: "The introduction of iPhone 6+ brought on a new importance for UISplitViewController. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes."
 status:
-    swift: 2.0
-    reviewed: September 11, 2015
+  swift: 2.0
+  reviewed: September 11, 2015
 ---
 
 The introduction of iPhone 6+ brought on a new importance for `UISplitViewController`. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.
 
 Check out the `UISplitViewController` doing its magic on iPhone 6+:
 
-<video preload="none" src="{% asset SplitViewDemo.mov @path %}" poster="{% asset SplitViewDemo.jpg @path %}" width="640" controls/>
+<video preload="none" src="{% asset SplitViewDemo.mov @path %}" poster="{% asset SplitViewDemo.jpg @path %}" width="640" controls></video>
 
 > Note that the view does not split when the iPhone 6+ is in _Zoomed_ Display mode! (You can change between Standard and Zoomed Display Mode by going to Settings.app → Display & Brightness → View)
 
-<video preload="none" src="{% asset SplitViewZoomedDemo.mov @path %}" poster="{% asset SplitViewZoomedDemo.jpg @path %}" width="640" controls/>
+<video preload="none" src="{% asset SplitViewZoomedDemo.mov @path %}" poster="{% asset SplitViewZoomedDemo.jpg @path %}" width="640" controls></video>
 
 Again, Apple handles the logic for figuring out exactly when to show the split views.
 
@@ -60,7 +60,7 @@ By all accounts, the app would still work just fine. On an iPhone 6+, the only d
 
 It's not a big deal, unless you do want your navigation bar to show a title. This ends up being a deal-breaker on an iPad.
 
-<video preload="none" src="{% asset iPadSplitViewNoNavBar.mov @path %}" poster="{% asset iPadSplitViewNoNavBar.jpg @path %}" width="540" controls/>
+<video preload="none" src="{% asset iPadSplitViewNoNavBar.mov @path %}" poster="{% asset iPadSplitViewNoNavBar.jpg @path %}" width="540" controls></video>
 
 Notice that when the iPad app is first opened up, there is no indication that this is a split view controller at all! To trigger the Master view controller, the user has to magically know to swipe left to right.
 
@@ -96,11 +96,11 @@ override func viewDidLoad() {
 
 Build and Run on the iPad again, and now the user gets a nice indication of how to get at the rest of the app:
 
-<video preload="none" src="{% asset iPadNavBarWithButton.mov @path %}" poster="{% asset iPadNavBarWithButton.jpg @path %}" width="540" controls/>
+<video preload="none" src="{% asset iPadNavBarWithButton.mov @path %}" poster="{% asset iPadNavBarWithButton.jpg @path %}" width="540" controls></video>
 
 `UISplitViewController`'s `displayModeButtonItem` adds a bit of extra-cool usability to the iPhone 6+ in landscape mode, too:
 
-<video preload="none" src="{% asset iPhone6PluseDisplayModeButton.mov @path %}" poster="{% asset iPhone6PluseDisplayModeButton.jpg @path %}" width="640" controls/>
+<video preload="none" src="{% asset iPhone6PluseDisplayModeButton.mov @path %}" poster="{% asset iPhone6PluseDisplayModeButton.jpg @path %}" width="640" controls></video>
 
 By using the `displayModeButtonItem`, you're once again letting Apple figure out what's appropriate for which screen sizes / rotations. Instead of sweating the small (and big) stuff yourself, you can sit back and relax.
 
@@ -176,7 +176,7 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 
 When the user first opens up the app on iPhone 6+ in portrait orientation, `SelectColorViewController` gets displayed as the primary view controller. Once the user selects a color or the app goes into the background, the `SelectColorViewController` gets collapsed again, and the `ColorViewController` is displayed:
 
-<video preload="none" src="{% asset iPhone6PlusPrimaryVCRotation.mov @path %}" poster="{% asset iPhone6PlusPrimaryVCRotation.jpg @path %}" width="640" controls/>
+<video preload="none" src="{% asset iPhone6PlusPrimaryVCRotation.mov @path %}" poster="{% asset iPhone6PlusPrimaryVCRotation.jpg @path %}" width="640" controls></video>
 
 ---
 
