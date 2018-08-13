@@ -2,12 +2,11 @@
 title: Bug Reporting
 author: Mattt
 category: ""
-excerpt:
-    If you've ever been told to "file a Radar" 
-    and wondered what that meant, this week's article has just the fix.
+excerpt: If you've ever been told to "file a Radar"
+  and wondered what that meant, this week's article has just the fix.
 hiddenlang: ""
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 "File a radar."
@@ -138,18 +137,18 @@ you'll invest a good deal of time writing up a detailed summary
 and creating a reproducible test case
 only to have the bug unceremoniously closed as a duplicate.
 
-[OpenRadar](https://openradar.appspot.com), created by
+[Open Radar](https://openradar.appspot.com), created by
 [Tim Burks](https://github.com/timburks),
 is a public database of bugs reported to Apple.
 Over the many years of its existence,
-OpenRadar has become the de facto way
+Open Radar has become the de facto way
 for us to coordinate our bug reports.
 
 {% asset open-radar.png %}
 
 When you file a Radar with apple,
 you're encouraged to also
-[file it with OpenRadar](https://openradar.appspot.com/myradars/add)
+[file it with Open Radar](https://openradar.appspot.com/myradars/add)
 (unless it's something that shouldn't be disclosed publicly).
 Your contribution can help anyone else
 who might have the same problem in the future.
