@@ -35,7 +35,8 @@ heck, even the responses you get from Siri.
 
 When an Apple engineer hears the word "Radar",
 one of the first things that come to mind
-is the iconic purple anteater of Radar.app.
+is Anika the Antbear,
+the iconic purple mascot of Radar.app.
 But more important than the app or even the database itself,
 Radar is a workflow that guides problems from report to verification
 across the entire organization.
