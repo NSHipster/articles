@@ -1,6 +1,6 @@
 ---
 title: "Core Data Libraries & Utilities"
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 excerpt: "We were a bit hard on Core Data last week, so for this issue of NSHipster, we bring you a guided tour of the best open source libraries for working with Core Data. Read on to see how you might make the most from your Core Data experience."
 status:
@@ -8,11 +8,11 @@ status:
     reviewed: August 12, 2015
 ---
 
-So let's say that, having determined your particular needs and compared all of the alternatives, you've chosen [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) for your next app.
+So let's say that, having determined your particular needs and compared all of the alternatives, you've chosen [Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) for your next app.
 
 Nothing wrong with that! Core Data is a great choice for apps that model, persist, and query large object graphs.
 
-Sure it's complicated, cumbersome, and yes, at times, a real [pain in the ass](http://nshipster.com/nscoding#figure-2)—but gosh darn it, some of the best and most popular apps ever built use Core Data. And if it's good enough for them, it's probably good enough for you, too.
+Sure it's complicated, cumbersome, and yes, at times, a real [pain in the ass](https://nshipster.com/nscoding#figure-2)—but gosh darn it, some of the best and most popular apps ever built use Core Data. And if it's good enough for them, it's probably good enough for you, too.
 
 ...but that's not to say that Core Data can't be improved.
 
@@ -34,27 +34,22 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/magicalpanda/MagicalRecord">Magical Record</a></td>
       <td><a href="https://github.com/casademora">Saul Mora</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=magicalpanda&repo=MagicalRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/supermarin/ObjectiveRecord">Objective-Record</a></td>
       <td><a href="https://github.com/supermarin">Marin Usalj</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=supermarin&repo=ObjectiveRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/soffes/SSDataKit">SSDataKit</a></td>
       <td><a href="https://github.com/soffes">Sam Soffes</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=soffes&repo=SSDataKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/martydill/ios-queryable">ios-queryable</a></td>
       <td><a href="https://github.com/martydill">Marty Dill</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=martydill&repo=ios-queryable&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/apparentsoft/ReactiveCoreData">ReactiveCoreData</a></td>
       <td><a href="https://github.com/apparentsoft">Jacob Gorban</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=apparentsoft&repo=ReactiveCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -67,32 +62,22 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/RestKit/RestKit">RestKit</a></td>
       <td><a href="https://github.com/blakewatters">Blake Watters</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=RestKit&repo=RestKit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
-    </tr>
-    <tr>
-      <td><a href="https://github.com/AFNetworking/AFIncrementalStore">AFIncrementalStore</a></td>
-      <td><a href="https://github.com/mattt">Mattt Thompson</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=AFNetworking&repo=AFIncrementalStore&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/mutualmobile/MMRecord">MMRecord</a></td>
       <td><a href="https://github.com/cnstoll">Conrad Stoll</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=mutualmobile&repo=MMRecord&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/OliverLetterer/SLRESTfulCoreData">SLRESTfulCoreData</a></td>
       <td><a href="https://github.com/OliverLetterer">Oliver Letterer</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=OliverLetterer&repo=SLRESTfulCoreData&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/gonzalezreal/Overcoat">Overcoat</a></td>
       <td><a href="https://github.com/gonzalezreal">Guillermo Gonzalez</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=gonzalezreal&repo=Overcoat&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/Mantle/Mantle">Mantle</a></td>
       <td><a href="https://github.com/Mantle">Mantle</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=Mantle&repo=Mantle&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -105,15 +90,12 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/nothirst/TICoreDataSync">TICoreDataSync</a></td>
       <td><a href="https://github.com/timisted">Tim Isted</a>, <a href="https://github.com/MrRooni">Michael Fey</a>, <a href="https://github.com/kevinhoctor">Kevin Hoctor</a>, <a href="https://github.com/chbeer">Christian Beer</a>, <a href="https://github.com/tonyarnold">Tony Arnold</a>, and <a href="https://github.com/dannygreg">Danny Greg</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=nothirst&repo=TICoreDataSync&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/lhunath/UbiquityStoreManager">UbiquityStoreManager</a></td>
       <td><a href="https://github.com/lhunath">Maarten Billemont</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=lhunath&repo=UbiquityStoreManager&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
-
 
   <thead>
     <tr>
@@ -124,7 +106,6 @@ This week on NSHipster: a guided tour of the best open source libraries for work
     <tr>
       <td><a href="https://github.com/rentzsch/mogenerator">mogenerator</a></td>
       <td><a href="https://github.com/rentzsch">Jonathan 'Wolf' Rentzsch</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=rentzsch&repo=mogenerator&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 </table>
@@ -145,7 +126,7 @@ There are a number of open source libraries that collectively identify and corre
 
 It should be no surprise that programmers, having learned how to do things a certain way, will bring those ideas and conventions to other technologies. For the large influx of Ruby developers coming over to iOS, that familiar paradigm was [Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Base.html).
 
-Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](http://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](http://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
+Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](https://en.wikipedia.org/wiki/Object-relational_mapping), but rather an object graph and persistence framework, capable of much more than the [Active Record pattern](https://en.wikipedia.org/wiki/Active_record_pattern) alone is capable of. Using Core Data as an ORM necessarily limits the capabilities of Core Data and muddies its conceptual purity. But for many developers longing for the familiarity of an ORM, this trade-off is a deal at twice the price!
 
 #### [Magical Record](https://github.com/magicalpanda/MagicalRecord)
 
@@ -158,17 +139,17 @@ Contrary to popular belief, Core Data is _not_ an [Object-Relational Mapper](htt
 > And yeah, no AppDelegate code.
 > It's fully tested with [Kiwi](https://github.com/kiwi-bdd/Kiwi).
 
-### Inspired by [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query)
+### Inspired by [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query)
 
-Here's a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about [LINQ](http://en.wikipedia.org/wiki/Language_Integrated_Query). Seriously, people _love_ LINQ.
+Here's a fun game: the next time you meet a developer coming over from the .NET world, set a timer to see how long it takes them to start raving about [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query). Seriously, people _love_ LINQ.
 
-For the uninitiated, LINQ is like [SQL](http://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](http://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](http://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
+For the uninitiated, LINQ is like [SQL](https://en.wikipedia.org/wiki/SQL), but integrated as a language feature. Think `NSPredicate`, [`NSSortDescriptor`](https://nshipster.com/nssortdescriptor/), and [`Key-Value Coding`](https://nshipster.com/kvc-collection-operators/) with a much nicer syntax:
 
-~~~
+```
 from c in SomeCollection
   where c.SomeProperty < 10
   select new {c.SomeProperty, c.OtherProperty};
-~~~
+```
 
 #### [ios-queryable](https://github.com/martydill/ios-queryable)
 
@@ -176,7 +157,7 @@ from c in SomeCollection
 
 ### Inspired by [ReactiveCocoa](https://github.com/ReactiveCocoa)
 
-ReactiveCocoa, which itself [brings the functional reactive paradigm to Objective-C](http://nshipster.com/reactivecocoa/), is now being used to bring some functional sanity and order to Core Data. This is still uncharted territory, but the initial results are indeed promising.
+ReactiveCocoa, which itself [brings the functional reactive paradigm to Objective-C](https://nshipster.com/reactivecocoa/), is now being used to bring some functional sanity and order to Core Data. This is still uncharted territory, but the initial results are indeed promising.
 
 #### [ReactiveCoreData](https://github.com/apparentsoft/ReactiveCoreData)
 
@@ -192,7 +173,7 @@ Fortunately, there are a wealth of open-source libraries that can help alleviate
 
 #### [RestKit](https://github.com/RestKit/RestKit)
 
-> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
+> RestKit is a modern Objective-C framework for implementing RESTful web services clients on iOS and OS X. It provides a powerful [object mapping](https://github.com/RestKit/RestKit/wiki/Object-mapping) engine that seamlessly integrates with [Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) and a simple set of networking primitives for mapping HTTP requests and responses built on top of [AFNetworking](https://github.com/AFNetworking/AFNetworking). It has an elegant, carefully designed set of APIs that make accessing and modeling RESTful resources feel almost magical.
 
 #### [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore)
 
@@ -232,11 +213,10 @@ We would be remiss to survey the open source Core Data ecosystem without mention
 
 #### [Mogenerator](https://github.com/rentzsch/mogenerator)
 
-> `mogenerator` is a command-line tool that, given an `.xcdatamodel` file, will generate *two classes per entity*. The first class, `_MyEntity`, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, `MyEntity`, subclasses `_MyEntity`, won't ever be overwritten and is a great place to put your custom logic.
+> `mogenerator` is a command-line tool that, given an `.xcdatamodel` file, will generate _two classes per entity_. The first class, `_MyEntity`, is intended solely for machine consumption and will be continuously overwritten to stay in sync with your data model. The second class, `MyEntity`, subclasses `_MyEntity`, won't ever be overwritten and is a great place to put your custom logic.
 
 ---
 
 Remember: there is no silver bullet. There is no one-size-fits-all solution. Just as Core Data may only be advisable in particular circumstances, so too are the aforementioned Core Data libraries.
 
 Dividing the ecosystem up into broad categories is informative if only to help identify the relative strengths and trade-offs of each library. Only you can determine (yes, sometimes through trial and error) which solution is the best for you.
-

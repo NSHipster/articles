@@ -15,9 +15,9 @@ First introduced in iOS 3.2 (or should we call it iPhone OS 3.2, given the early
 
 ## Spell Checking
 
-What happens if you mistype a word in iOS? Type "hipstar" into a text field and iOS will offer to autocorrect to "hipster" most of the time. 
+What happens if you mistype a word in iOS? Type "hipstar" into a text field and iOS will offer to autocorrect to "hipster" most of the time.
 
-![Autocorrecting 'hipstar']({{ site.asseturl }}/uitextchecker-hipstar.png)
+{% asset uitextchecker-hipstar.png alt="Autocorrecting 'hipstar'" %}
 
 We can find the same suggested substitution using `UITextChecker`:
 
@@ -27,12 +27,12 @@ import UIKit
 let str = "hipstar"
 let textChecker = UITextChecker()
 let misspelledRange = textChecker.rangeOfMisspelledWordInString(
-        str, range: NSRange(0..<str.utf16.count), 
+        str, range: NSRange(0..<str.utf16.count),
         startingAt: 0, wrap: false, language: "en_US")
 
 if misspelledRange.location != NSNotFound,
     let guesses = textChecker.guessesForWordRange(
-        misspelledRange, inString: str, language: "en_US") as? [String] 
+        misspelledRange, inString: str, language: "en_US") as? [String]
 {
     print("First guess: \(guesses.first)")
     // First guess: hipster
@@ -40,20 +40,21 @@ if misspelledRange.location != NSNotFound,
     print("Not found")
 }
 ```
-```objective-c
+
+```objc
 NSString *str = @"hipstar";
 UITextChecker *textChecker = [[UITextChecker alloc] init];
-NSRange misspelledRange = [textChecker 
-                           rangeOfMisspelledWordInString:str 
-                           range:NSMakeRange(0, [str length]) 
-                           startingAt:0 
-                           wrap:NO 
+NSRange misspelledRange = [textChecker
+                           rangeOfMisspelledWordInString:str
+                           range:NSMakeRange(0, [str length])
+                           startingAt:0
+                           wrap:NO
                            language:@"en_US"];
-                             
+
 NSArray *guesses = [NSArray array];
 if (misspelledRange.location != NSNotFound) {
-    guesses = [textChecker guessesForWordRange:misspelledRange 
-                                      inString:str 
+    guesses = [textChecker guessesForWordRange:misspelledRange
+                                      inString:str
                                       language:@"en_US"];
     NSLog(@"First guess: %@", [guesses firstObject]);
     // First guess: hipster
@@ -79,24 +80,26 @@ Let's assume that you want your users to be able to type `"hipstar"` exactly. Le
 ```swift
 UITextChecker.learnWord(str)
 ```
-```objective-c
+
+```objc
 [UITextChecker learnWord:str];
 ```
 
 `"hipstar"` is now a recognized word for the whole device and won't show up as misspelled in further checks.
 
 ```swift
-let misspelledRange = textChecker.rangeOfMisspelledWordInString(str, 
-        range: NSRange(0..<str.utf16.count), 
+let misspelledRange = textChecker.rangeOfMisspelledWordInString(str,
+        range: NSRange(0..<str.utf16.count),
         startingAt: 0, wrap: false, language: "en_US")
 // misspelledRange.location == NSNotFound
 ```
-```objective-c
-NSRange misspelledRange = [textChecker 
-                           rangeOfMisspelledWordInString:str 
-                           range:NSMakeRange(0, [str length]) 
-                           startingAt:0 
-                           wrap:NO 
+
+```objc
+NSRange misspelledRange = [textChecker
+                           rangeOfMisspelledWordInString:str
+                           range:NSMakeRange(0, [str length])
+                           startingAt:0
+                           wrap:NO
                            language:@"en_US"];
 // misspelledRange.location == NSNotFound
 ```
@@ -110,11 +113,12 @@ There's one more `UITextChecker` API, this time for finding possible completions
 ```swift
 let partial = "hipst"
 let completions = textChecker.completionsForPartialWordRange(
-        NSRange(0..<partial.utf16.count), inString: partial, 
+        NSRange(0..<partial.utf16.count), inString: partial,
         language: "en_US")
 // completions == ["hipster", "hipsters"]
 ```
-```objective-c
+
+```objc
 NSString *partial = @"hipst";
 NSArray *completions = [textChecker
                         completionsForPartialWordRange:NSMakeRange(0, [partial length])
@@ -123,7 +127,7 @@ NSArray *completions = [textChecker
 // completions == ["hipster", "hipsters"]
 ```
 
-`completionsForPartialWordRange` gives you an array of possible words from a group of initial characters. Although the documentation states that the returned array of strings will be sorted by probability, `UITextChecker` only sorts the completions alphabetically. `UITextChecker`'s OS X-based sibling,  `NSSpellChecker`, does behave as it describes.
+`completionsForPartialWordRange` gives you an array of possible words from a group of initial characters. Although the documentation states that the returned array of strings will be sorted by probability, `UITextChecker` only sorts the completions alphabetically. `UITextChecker`'s OS X-based sibling, `NSSpellChecker`, does behave as it describes.
 
 > You won't see any of the custom words you've taught `UITextChecker` show up as possible completions. Why not? Since vocabulary added via `UITextChecker.learnWord(_:)` is global to the device, this prevents your app's words from showing up in another app's autocorrections.
 

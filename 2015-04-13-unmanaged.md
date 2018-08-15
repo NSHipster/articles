@@ -6,8 +6,7 @@ tags: swift
 excerpt: "A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking \"here be dragons.\""
 hiddenlang: ""
 status:
-    swift: 3.1
-    reviewed: March 8, 2017
+    swift: 1.2
 ---
 
 APIs do more than just exposing functionality to developers. They also communicate values about how the API should be used and why. This communication is what makes naming things one of the Hard Parts of computer science; it's what separates the good APIs from the great.
@@ -23,7 +22,7 @@ Back in the Stone Age (aka 2011), reference counting in Objective-C was still a 
 
 The advent of automatic reference counting (ARC) made all of that manual memory management unnecessary. Under ARC, the compiler inserts the `retain`/`release`/`autorelease` calls for you, reducing the cognitive load of applying the rules at every turn. If [this graphic](https://developer.apple.com/library/mac/releasenotes/ObjectiveC/RN-TransitioningToARC/Introduction/Introduction.html) doesn't convince you of the boon of dropping manual memory management, nothing will:
 
-![Memory management before and after ARC]({{ site.asseturl }}/unmanaged-arc.png)
+![Memory management before and after ARC]({% asset unmanaged-arc.png @path %})
 
 Now, in this post-ARC world, all Objective-C and Core Foundation types returned from Objective-C methods are automatically memory managed, leaving Core Foundation types returned from C functions as the lone holdout. For this last category, management of an object's ownership is still done with calls to `CFRetain()` and `CFRelease()` or by bridging to Objective-C objects with one of the `__bridge` functions. 
 
@@ -46,13 +45,13 @@ This occurs in two different ways. For *annotated* APIs, Swift is able to make t
 
 While most CoreFoundation APIs have been annotated, some significant chunks have yet to receive attention. As of this writing, the Address Book framework seems the highest profile of the unannotated APIs, with several functions taking or returning `Unmanaged`-wrapped types.
 
-An `Unmanaged<T>` instance wraps a Core Foundation type `T`, preserving a reference to the underlying object as long as the `Unmanaged` instance itself is in scope. There are two ways to get a Swift-managed value out of an `Unmanaged` instance:
+An `Unmanaged<T>` instance wraps a CoreFoundation type `T`, preserving a reference to the underlying object as long as the `Unmanaged` instance itself is in scope. There are two ways to get a Swift-managed value out of an `Unmanaged` instance:
 
 > - `takeRetainedValue()`: returns a Swift-managed reference to the wrapped instance, decrementing the reference count while doing so—use with the return value of a Create Rule function.
 
 > - `takeUnretainedValue()`: returns a Swift-managed reference to the wrapped instance *without* decrementing the reference count—use with the return value of a Get Rule function.
 
-In practice, you're better off working with `Unmanaged` instances for as brief a time as possible. When you call a function with an unmanaged return value, `take...` the underlying instance immediately and bind *that* to your variable or constant.
+In practice, you're better off not even working with `Unmanaged` instances directly. Instead, `take...` the underlying instance immediately from the function's return value and bind *that*.
 
 Let's take a look at this in practice. Suppose we wish to create an `ABAddressBook` and fetch the name of the user's best friend:
 
@@ -62,18 +61,18 @@ let bestFriendID = ABRecordID(...)
 // Create Rule - retained
 let addressBook: ABAddressBook = ABAddressBookCreateWithOptions(nil, nil).takeRetainedValue()
 
-if 
+if let
     // Get Rule - unretained
-    let bestFriendRecord: ABRecord = ABAddressBookGetPersonWithRecordID(addressBook, bestFriendID)?.takeUnretainedValue(),
+    bestFriendRecord: ABRecord = ABAddressBookGetPersonWithRecordID(addressBook, bestFriendID)?.takeUnretainedValue(),
     // Create Rule (Copy) - retained
-    let name = ABRecordCopyCompositeName(bestFriendRecord)?.takeRetainedValue() as? String
+    name = ABRecordCopyCompositeName(bestFriendRecord)?.takeRetainedValue() as? String
 {
-    print("\(name): BFF!")
+    println("\(name): BFF!")
     // Rhonda Shorsheimer: BFF!
 }
 ```
 
-With Swift's optional bindings, it's a piece of cake to unwrap, take the underlying value, and cast to a Swift type.
+With Swift 1.2's improved optional bindings, it's a piece of cake to unwrap, take the underlying value, and cast to a Swift type.
 
 ## Better Off Without
 
@@ -102,9 +101,7 @@ In our Swift code, just as above, we still need to manage the memory manually. O
 func CreateJoinedString(string1: CFString!, string2: CFString!) -> Unmanaged<CFString>!
 
 // to call:
-let joinedString = CreateJoinedString("First" as CFString,
-                                      "Second" as CFString)
-                                      .takeRetainedValue() as String
+let joinedString = CreateJoinedString("First", "Second").takeRetainedValue() as String
 ```
 
 Since our function follows the naming conventions described in the Create Rule, we can turn on the compiler's implicit bridging to eliminate the `Unmanaged` wrapper. Core Foundation provides two macros—namely, `CF_IMPLICIT_BRIDGING_ENABLED` and `CF_IMPLICIT_BRIDGING_DISABLED`—that turn on and off the Clang `arc_cf_code_audited` attribute:
@@ -126,8 +123,7 @@ Because Swift now handles the memory management for this return value, our code 
 func CreateJoinedString(string1: CFString, string2: CFString) -> CFString
 
 // to call:
-let joinedString = CreateJoinedString("First" as CFString,
-                                      "Second" as CFString) as String
+let joinedString = CreateJoinedString("First", "Second") as String
 ```
 
 Finally, when your function naming *doesn't* comply with the Create/Get Rules, there's an obvious fix: rename your function to comply with the Create/Get Rules. Of course, in practice, that's not always an easy fix, but having an API that communicates clearly and consistently pays dividends beyond just avoiding `Unmanaged`. If renaming isn't an option, there are two other annotations to use: functions that pass ownership to the caller should use `CF_RETURNS_RETAINED`, while those that don't should use `CF_RETURNS_NOT_RETAINED`. For instance, the poorly-named `MakeJoinedString` is shown here with manual annotations:

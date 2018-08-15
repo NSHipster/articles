@@ -1,6 +1,6 @@
 ---
 title: Namespacing
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language's lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics."
 status:
@@ -15,9 +15,9 @@ Like a parent faced with the task of explaining the concept of death or the non-
 
 > Why, Jimmy, `NS` stands for `NeXTSTEP` (well, actually, `NeXTSTEP/Sun`, but we'll cover that with "the birds & the bees" talk), and it's used to...
 
-...but by the time the words have left your mouth, you can already sense the disappointment in their face. Their innocence has been lost, and with an audible *sigh* of resignation, they start to ask uncomfortable questions about [@](http://nshipster.com/at-compiler-directives/)
+...but by the time the words have left your mouth, you can already sense the disappointment in their face. Their innocence has been lost, and with an audible _sigh_ of resignation, they start to ask uncomfortable questions about [@](https://nshipster.com/at-compiler-directives/)
 
-* * *
+---
 
 Namespacing is the preeminent bugbear of Objective-C. A cosmetic quirk with global implications, the language's lack of identifier containers remains a source of prodigious quantities of caremad for armchair language critics.
 
@@ -33,16 +33,16 @@ As noted many times in this publication, Objective-C is built directly on top of
 
 You can see this for yourself—try defining a new static variable with the same name as an existing `@interface`, and the compiler will generate an error:
 
-~~~{objective-c}
+```objc
 @interface XXObject : NSObject
 @end
 
 static char * XXObject;  // Redefinition of "XXObject" as different kind of symbol
-~~~
+```
 
 That said, the Objective-C runtime creates a layer of abstraction on top of the C type system, allowing the following code to compile without even a snicker:
 
-~~~{objective-c}
+```objc
 @protocol Malkovich
 @end
 
@@ -66,7 +66,7 @@ That said, the Objective-C runtime creates a layer of abstraction on top of the 
     return Malkovich;
 }
 @end
-~~~
+```
 
 Within the context of the Objective-C runtime, a program is able to differentiate between a class, a protocol, a category, an instance variable, an instance method, and a class method all having the same name.
 
@@ -144,7 +144,7 @@ Because of this, many established libraries still use 2-letter prefixes. Conside
         </tr>
     </thead>
     <tbody>
-        <tr><td><tt>AF</tt></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> ("<a href="http://en.wikipedia.org/wiki/Gowalla">Alamofire</a>")</td></tr>
+        <tr><td><tt>AF</tt></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> ("<a href="https://en.wikipedia.org/wiki/Gowalla">Alamofire</a>")</td></tr>
         <tr><td><tt>RK</tt></td><td><a href="https://github.com/RestKit/RestKit">RestKit</a></td></tr>
         <tr><td><tt>GPU</tt></td><td><a href="https://github.com/BradLarson/GPUImage">GPUImage</a></td></tr>
         <tr><td><tt>SD</tt></td><td><a href="https://github.com/rs/SDWebImage">SDWebImage</a></td></tr>
@@ -160,7 +160,7 @@ Because of this, many established libraries still use 2-letter prefixes. Conside
 
 Seeing as how [we're already seeing prefix overlap among 3rd-party libraries](https://github.com/AshFurrow/AFTabledCollectionView), make sure that you follow a 3+-letter convention in your own code.
 
-> For especially future-focused library authors, consider using [`@compatibility_alias`](http://nshipster.com/at-compiler-directives/) to provide a seamless migration path for existing users in your next major upgrade.
+> For especially future-focused library authors, consider using [`@compatibility_alias`](https://nshipster.com/at-compiler-directives/) to provide a seamless migration path for existing users in your next major upgrade.
 
 ### Method Prefixes
 
@@ -168,21 +168,21 @@ It's not just classes that are prone to naming collisions: selectors suffer from
 
 Consider the category:
 
-~~~{objective-c}
+```objc
 @interface NSString (PigLatin)
 - (NSString *)pigLatinString;
 @end
-~~~
+```
 
 If `-pigLatinString` were implemented by another category (or added to the `NSString` class in a future version of iOS or OS X), any calls to that method would result in undefined behavior, since no guarantee is made as to the order in which methods are defined by the runtime.
 
 This can be guarded against by prefixing the method name, just like the class name (prefixing the category name isn't a bad idea, either):
 
-~~~{objective-c}
+```objc
 @interface NSString (XXXPigLatin)
 - (NSString *)xxx_pigLatinString;
 @end
-~~~
+```
 
 Apple's recommendation that [all category methods use prefixes](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html#//apple_ref/doc/uid/TP40011210-CH6-SW4) is even less widely known or accepted than its policy on class prefixing.
 
@@ -196,9 +196,9 @@ Just as with constitutional scholarship, there will be strict and loose interpre
 
 #### Swizzling
 
-The one case where method prefixing (or suffixing) is absolutely necessary is when doing method replacement, as discussed in last week's article on [swizzling](http://nshipster.com/method-swizzling/).
+The one case where method prefixing (or suffixing) is absolutely necessary is when doing method replacement, as discussed in last week's article on [swizzling](https://nshipster.com/method-swizzling/).
 
-~~~{objective-c}
+```objc
 @implementation UIViewController (Swizzling)
 
 - (void)xxx_viewDidLoad {
@@ -206,19 +206,19 @@ The one case where method prefixing (or suffixing) is absolutely necessary is wh
 
     // Swizzled implementation
 }
-~~~
+```
 
 ## Do We _Really_ Need Namespaces?
 
 With all of the recent talk about replacing / reinventing / reimagining Objective-C, it's almost taken as a given that namespacing would be an obvious feature. But what does that actually get us?
 
-**Aesthetics?** Aside from IETF members and military personnel, nobody likes the visual aesthetic of <acronym title="CAPITAL LETTER ACRONYMS">CLA</acronym>s. But would `::`, `/`, or an extra `.` really make matters better? Do we _really_ want to start calling `NSArray` "Foundation Array"? (And what would I do with NSHipster.com ?!)
+**Aesthetics?** Aside from IETF members and military personnel, nobody likes the visual aesthetic of <abbr title="CAPITAL LETTER ACRONYMS">CLA</abbr>s. But would `::`, `/`, or an extra `.` really make matters better? Do we _really_ want to start calling `NSArray` "Foundation Array"? (And what would I do with NSHipster.com ?!)
 
 **Semantics?** Start to look closely at any other language, and how they actually use namespaces, and you'll realize that namespaces don't magically solve all matters of ambiguity. If anything, the additional context makes things worse.
 
 Not to create a straw man, but an imagined implementation of Objective-C namespaces probably look a lot like this:
 
-~~~{objective-c}
+```objc
 @namespace XX
     @implementation Object
 
@@ -232,7 +232,7 @@ Not to create a straw man, but an imagined implementation of Objective-C namespa
 
     @end
 @end
-~~~
+```
 
 What we have currently—warts and all—has the notable advantage of non-ambiguity. There is no mistaking `NSString` for anything other than what it is, either by the compiler or when we talk about it as developers. There are no special contextual considerations to consider when reading through code to understand what actors are at play. And best of all: class names are [_exceedingly_ easy to search for](http://lmgtfy.com/?q=NSString).
 

@@ -4,8 +4,8 @@ author: Mike Lazer-Walker
 category: Cocoa
 excerpt: "For as long as the iPhone has existed, location services have been front and center. iOS 8 brings three major sets of changes to the Core Location framework: more granular permissions, indoor positioning, and visit monitoring."
 status:
-    swift: 2.0
-    reviewed: May 4, 2016
+    swift: 1.2
+    reviewed: June 24, 2015
 ---
 
 For as long as the iPhone has existed, location services have been front and center. Maps.app was one of the killer features that launched with the original iPhone. The Core Location API has existed in public form since the first public iPhone OS SDK. With each release of iOS, Apple has steadily added new features to the framework, like background location services, geocoding, and iBeacons.
@@ -65,7 +65,7 @@ Since this happens asynchronously, the app can't start using location services i
 If the user has previously given permission to use location services, this delegate method will also be called after the location manager is initialized and has its delegate set with the appropriate authorization status. Which conveniently makes for a single code path for using location services.
 
 ```swift
-func locationManager(manager: CLLocationManager,
+func locationManager(manager: CLLocationManager!,
                      didChangeAuthorizationStatus status: CLAuthorizationStatus)
 {
     if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
@@ -79,9 +79,9 @@ func locationManager(manager: CLLocationManager,
 
 Another change is required to use location services in iOS 8. In the past, one could optionally include a 'NSLocationUsageDescription' key in `Info.plist`. This value was a plain-text string explaining to the user for what the app was planning to use location services. This has since been split up into two separate keys (`NSLocationWhenInUseUsageDescription` and `NSLocationAlwaysUsageDescription`), and is now mandatory; if you call `requestWhenInUseAuthorization` or `requestAlwaysAuthorization` without the corresponding key, the prompt simply won't be shown to the user.
 
-![Core Location Always Authorization]({{ site.asseturl }}/core-location-always-authorization.png)
+![Core Location Always Authorization]({% asset core-location-always-authorization.png @path %})
 
-![Core Location When In Use Authorization]({{ site.asseturl }}/core-location-when-in-use-authorization.png)
+![Core Location When In Use Authorization]({% asset core-location-when-in-use-authorization.png @path %})
 
 ### Requesting Multiple Permissions
 
@@ -117,11 +117,11 @@ switch CLLocationManager.authorizationStatus() {
 }
 ```
 
-![Core Location Settings Alert]({{ site.asseturl }}/core-location-settings-alert.png)
+![Core Location Settings Alert]({% asset core-location-settings-alert.png @path %})
 
-![Core Location Settings Location Never]({{ site.asseturl }}/core-location-settings-1.png)
+![Core Location Settings Location Never]({% asset core-location-settings-1.png @path %})
 
-![Core Location Settings Location Always]({{ site.asseturl }}/core-location-settings-2.png)
+![Core Location Settings Location Always]({% asset core-location-settings-2.png @path %})
 
 ### Backwards Compatibility
 
@@ -144,7 +144,7 @@ func startUpdatingLocation() {
 
 // MARK: - CLLocationManagerDelegate
 
-func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
     if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
         startUpdatingLocation()
     }
@@ -169,7 +169,7 @@ class CLFloor : NSObject {
 }
 ```
 
-```objective-c
+```objc
 @interface CLFLoor : NSObject
 @property(readonly, nonatomic) NSInteger level
 @end
@@ -202,7 +202,7 @@ Each `CLVisit` object contains a few basic properties: its average coordinate, a
 Every time a visit is tracked, the `CLLocationManagerDelegate` might be informed twice: once while the user has just arrived to a new place, and again when they leave it. You can figure out which is which by checking the `departureDate` property; a departure time of `NSDate.distantFuture()` means that the user is still there.
 
 ```swift
-func locationManager(manager: CLLocationManager, didVisit visit: CLVisit!) {
+func locationManager(manager: CLLocationManager!, didVisit visit: CLVisit!) {
     if visit.departureDate.isEqualToDate(NSDate.distantFuture()) {
         // User has arrived, but not left, the location
     } else {

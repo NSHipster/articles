@@ -1,6 +1,6 @@
 ---
 title: CocoaPods
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 tags: cfhipsterref
 excerpt: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
@@ -8,7 +8,7 @@ status:
     swift: n/a
 ---
 
-<img src="{{ site.asseturl }}/cfhipsterref-illustration-egg-merchant.png" width="139" height="300" alt="Egg Merchant, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
+<img src="{% asset cfhipsterref-illustration-egg-merchant.png @path %}" width="139" height="300" alt="Egg Merchant, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
 
 Civilization is built on infrastructure: roads, bridges, canals, sewers, pipes, wires, fiber. When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. But when such formative structures are absent or ad hoc, it feels as if progress is made _in spite of_ the situation.
 
@@ -44,7 +44,7 @@ As open source contributions in Objective-C began to get some traction, the pain
 
 Lacking frameworks, code for iOS could be packaged as a static library, but getting that set up and keeping code and static distributions in sync was an arduous process.
 
-Another approach was to use Git submodules, and include the source directly in the project. But getting everything working, with linked frameworks and build flags configured, was not great either—especially at a time when the body of code was split between [ARC and non-ARC](http://en.wikipedia.org/wiki/Automatic_Reference_Counting).
+Another approach was to use Git submodules, and include the source directly in the project. But getting everything working, with linked frameworks and build flags configured, was not great either—especially at a time when the body of code was split between [ARC and non-ARC](https://en.wikipedia.org/wiki/Automatic_Reference_Counting).
 
 ### Enter CocoaPods
 
@@ -74,9 +74,9 @@ CocoaPods is installed through RubyGems, the Ruby package manager, which comes w
 
 To install, open Terminal.app and enter the following command:
 
-~~~{bash}
+```{bash}
 $ sudo gem install cocoapods
-~~~
+```
 
 Now you should have the `pod` command available in the terminal.
 
@@ -94,39 +94,39 @@ A `Podfile` is where the dependencies of a project are listed. It is equivalent 
 
 To create a Podfile, `cd` into the directory of your `.xcodeproj` file and enter the command:
 
-~~~{bash}
+```{bash}
 $ pod init
-~~~
+```
 
 #### Podfile
 
-~~~{ruby}
+```{ruby}
 platform :ios, '7.0'
 
 target "AppName" do
 
 end
-~~~
+```
 
 Dependencies can have varying levels of specificity. For most libraries, pegging to a minor or patch version is the safest and easiest way to include them in your project.
 
-~~~{ruby}
+```{ruby}
 pod 'X', '~> 1.1'
-~~~
+```
 
 > CocoaPods follows [Semantic Versioning](http://semver.org) conventions.
 
 To include a library not included in the public specs database, a Git, Mercurial, or SVN repository can be used instead, for which a `commit`, `branch`, or `tag` can be specified.
 
-~~~{ruby}
+```{ruby}
 pod 'Y', :git => 'https://github.com/NSHipster/Y.git', :commit => 'b4dc0ffee'
-~~~
+```
 
 Once all of the dependencies have been specified, they can be installed with:
 
-~~~{bash}
+```{bash}
 $ pod install
-~~~
+```
 
 When this is run, CocoaPods will recursively analyze the dependencies of each project, resolving them into a dependency graph, and serializing into a `Podfile.lock` file.
 
@@ -136,9 +136,9 @@ CocoaPods will create a new Xcode project that creates static library targets fo
 
 Subsequent invocations of `pod install` will add new pods or remove old pods according to the locked dependency graph. To update the individual dependencies of a project to the latest version, do the following:
 
-~~~{bash}
+```{bash}
 $ pod update
-~~~
+```
 
 ### Trying Out a CocoaPod
 
@@ -146,11 +146,11 @@ One great, but lesser-known, feature of CocoaPods is the `try` command, which al
 
 Invoking `$ pod try` with the name of a project in the public specs database opens up any example projects for the library:
 
-~~~{bash}
+```{bash}
 $ pod try Ono
-~~~
+```
 
-![Ono.xcworkspace]({{ site.asseturl }}/cocoapods-try-ono.png)
+![Ono.xcworkspace]({% asset cocoapods-try-ono.png @path %})
 
 ## Creating a CocoaPod
 
@@ -168,35 +168,35 @@ A `.podspec` file is the atomic unit of a CocoaPods dependency. It specifies the
 
 #### NSHipsterKit.podspec
 
-~~~{ruby}
+```{ruby}
 Pod::Spec.new do |s|
   s.name     = 'NSHipsterKit'
   s.version  = '1.0.0'
   s.license  = 'MIT'
   s.summary  = "A pretty obscure library.
                 You've probably never heard of it."
-  s.homepage = 'http://nshipster.com'
-  s.authors  = { 'Mattt Thompson' =>
+  s.homepage = 'https://nshipster.com'
+  s.authors  = { 'Mattt' =>
                  'mattt@nshipster.com' }
   s.social_media_url = "https://twitter.com/mattt"
   s.source   = { :git => 'https://github.com/nshipster/NSHipsterKit.git', :tag => '1.0.0' }
   s.source_files = 'NSHipsterKit'
 end
-~~~
+```
 
 Once published to the public specs database, anyone could add it to their project, specifying their Podfile thusly:
 
 #### Podfile
 
-~~~{ruby}
+```{ruby}
 pod 'NSHipsterKit', '~> 1.0'
-~~~
+```
 
 A `.podspec` file can be useful for organizing internal or private dependencies as well:
 
-~~~{ruby}
+```{ruby}
 pod 'Z', :path => 'path/to/directory/with/podspec'
-~~~
+```
 
 ### Publishing a CocoaPod
 
@@ -208,19 +208,19 @@ The CocoaPods Trunk service solves a lot of this, making the process nicer for e
 
 To get started, you must first register your machine with the Trunk service. This is easy enough, just specify your email address (the one you use for committing library code) along with your name.
 
-~~~{bash}
+```{bash}
 $ pod trunk register mattt@nshipster.com "Mattt Thompson"
-~~~
+```
 
 Now, all it takes to publish your code to CocoaPods is a single command. The same command works for creating a new library or adding a new version to an existing one:
 
-~~~{bash}
+```{bash}
 $ pod trunk push NAME.podspec
-~~~
+```
 
 > Authors of existing CocoaPods can claim their libraries [with a few simple steps](http://blog.cocoapods.org/Claim-Your-Pods/).
 
-***
+---
 
 ## A Look Forward
 
@@ -228,6 +228,6 @@ CocoaPods exemplifies the compounding effect of infrastructure on a community. I
 
 CocoaPods is just one example of the great work being done on Objective-C infrastructure. Other community tools, like [Travis CI](http://blog.travis-ci.com/introducing-mac-ios-rubymotion-testing/), [CocoaDocs](http://cocoadocs.org), and [Nomad](http://nomad-cli.com) have dramatically improved the everyday experience iOS and OS X development for the community.
 
-It can be tempting to be snarky, contrarian, or grumpy about the direction of a community. No matter what, though, let us all try our best to enter into dialogue in good faith, offering constructive criticism where we can. We should help each other to be good [stewards](http://nshipster.com/stewardship/) of what we share, and strive towards [empathy](http://nshipster.com/empathy/) in all our interactions.
+It can be tempting to be snarky, contrarian, or grumpy about the direction of a community. No matter what, though, let us all try our best to enter into dialogue in good faith, offering constructive criticism where we can. We should help each other to be good [stewards](https://nshipster.com/stewardship/) of what we share, and strive towards [empathy](https://nshipster.com/empathy/) in all our interactions.
 
 CocoaPods is a good thing for Objective-C. And it's only getting better.

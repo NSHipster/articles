@@ -1,6 +1,6 @@
 ---
 title: NSDateComponents
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "NSDateComponents serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with NSCalendar, NSDateComponents becomes a remarkably convenient interchange format for calendar calculations."
 status:
@@ -10,27 +10,27 @@ status:
 
 `NSDateComponents` serves an important role in Foundation's date and time APIs. By itself, it's nothing impressive—just a container for information about a date (its month, year, day of month, week of year, or whether that month is a leap month). However, combined with `NSCalendar`, `NSDateComponents` becomes a remarkably convenient interchange format for calendar calculations.
 
-Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them. Very often, this will differ wildly from what many of us may be used to with the [Gregorian Calendar](http://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](http://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](http://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
+Whereas dates represent a particular moment in time, date components depend on which calendar system is being used to represent them. Very often, this will differ wildly from what many of us may be used to with the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar). For example, the [Islamic Calendar](https://en.wikipedia.org/wiki/Islamic_calendar) has 354 or 355 days in a year, whereas the [Buddhist calendar](https://en.wikipedia.org/wiki/Buddhist_calendar) may have 354, 355, 384, or 385 days, depending on the year.
 
 ## Extracting Components From Dates
 
 `NSDateComponents` can be initialized and manipulated manually, but most often, they're extracted from a specified date, using `NSCalendar -components:fromDate:`:
 
-~~~{swift}
+```swift
 let calendar = NSCalendar.currentCalendar()
 let date = NSDate()
 let components = calendar.components([.Month, .Day], fromDate: date)
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 [calendar components:(NSCalendarUnitDay | NSCalendarUnitMonth) fromDate:date];
-~~~
+```
 
-The `components` parameter is a [bitmask](http://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
+The `components` parameter is a [bitmask](https://en.wikipedia.org/wiki/Bitmask) of the date component values to retrieve, with many to choose from:
 
-~~~{swift}
+```swift
 NSCalendarUnit.Era
 NSCalendarUnit.Year
 NSCalendarUnit.Month
@@ -46,9 +46,9 @@ NSCalendarUnit.WeekOfYear
 NSCalendarUnit.YearForWeekOfYear
 NSCalendarUnit.Calendar
 NSCalendarUnit.TimeZone
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSCalendarUnitEra
 NSCalendarUnitYear
 NSCalendarUnitMonth
@@ -64,15 +64,15 @@ NSCalendarUnitWeekOfYear
 NSCalendarUnitYearForWeekOfYear
 NSCalendarUnitCalendar
 NSCalendarUnitTimeZone
-~~~
+```
 
 > Since it would be expensive to compute all of the possible values, specify only the components that will be used in subsequent calculations (joining with `|`, the bitwise `OR` operator).
 
 ## Relative Date Calculations
 
-`NSDateComponents` objects can be used to do relative date calculations. To determine the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
+`NSDateComponents` objects can be used to do relative date calculations. To determining the date yesterday, next week, or 5 hours and 30 minutes from now, use `NSCalendar -dateByAddingComponents:toDate:options:`:
 
-~~~{swift}
+```swift
 let calendar = NSCalendar.currentCalendar()
 let date = NSDate()
 
@@ -81,9 +81,9 @@ components.weekOfYear = 1
 components.hour = 12
 
 print("1 week and 12 hours from now: \(calendar.dateByAddingComponents(components, toDate: date, options: []))")
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSCalendar *calendar = [NSCalendar currentCalendar];
 NSDate *date = [NSDate date];
 
@@ -92,13 +92,13 @@ NSDateComponents *components = [[NSDateComponents alloc] init];
 [components setHour:12];
 
 NSLog(@"1 week and twelve hours from now: %@", [calendar dateByAddingComponents:components toDate:date options:0]);
-~~~
+```
 
 ## Creating Dates from Components
 
 Perhaps the most powerful feature of `NSDateComponents`, however, is the ability to go the opposite direction—creating an `NSDate` object from components. `NSCalendar -dateFromComponents:` is the method used for this purpose:
 
-~~~{swift}
+```swift
 let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)
 
 let components = NSDateComponents()
@@ -110,9 +110,9 @@ components.minute = 20
 components.second = 0
 
 let date = calendar?.dateFromComponents(components)
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSCalendar *calendar = [NSCalendar currentCalendar];
 
 NSDateComponents *components = [[NSDateComponents alloc] init];
@@ -124,7 +124,7 @@ NSDateComponents *components = [[NSDateComponents alloc] init];
 [components setSecond:0];
 
 NSDate *date = [calendar dateFromComponents:components];
-~~~
+```
 
 What's particularly interesting about this approach is that a date can be determined by information other than the normal month/day/year approach. So long as a date can be uniquely determined from the provided information, you'll get a result. For example, specifying the year 2013, and the 316th day of the year would return an `NSDate` for 11/12/2013 at midnight (because no time was specified, all time components default to 0).
 

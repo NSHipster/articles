@@ -1,19 +1,18 @@
 ---
 title: NSSortDescriptor
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?"
 status:
-    swift: 2.2
-    reviewed: April 10, 2016
+    swift: 1.1
 ---
 
 Sorting: it's the mainstay of Computer Science 101 exams and whiteboarding interview questions. But when was the last time you actually needed to know how to implement Quicksort yourself?
 
 When making apps, sorting is just something you can assume to be fast, and utility is a function of convenience and clarity of intention. And when it comes to that, you'd be hard-pressed to find a better implementation than Foundation's `NSSortDescriptor`.
 
-* * *
+---
 
 `NSSortDescriptor` objects are constructed with the following parameters:
 
@@ -28,7 +27,7 @@ Collection classes like `NSArray` and `NSSet` have methods to return sorted arra
 
 To put that into more practical terms, consider a `Person` class with properties for `firstName` & `lastName` of type `NSString *`, and `age`, which is an `NSUInteger`.
 
-~~~{swift}
+```swift
 class Person: NSObject {
     let firstName: String
     let lastName: String
@@ -44,9 +43,9 @@ class Person: NSObject {
         return "\(firstName) \(lastName)"
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -60,12 +59,12 @@ class Person: NSObject {
 }
 
 @end
-~~~
+```
 
 Given the following dataset:
 
 | `firstName` | `lastName` | `age` |
-|-------------|------------|-------|
+| ----------- | ---------- | ----- |
 | Alice       | Smith      | 24    |
 | Bob         | Jones      | 27    |
 | Charlie     | Smith      | 33    |
@@ -73,15 +72,15 @@ Given the following dataset:
 
 Here are some of the different ways they can be sorted by combinations of `NSSortDescriptor`:
 
-~~~{swift}
+```swift
 let alice = Person(firstName: "Alice", lastName: "Smith", age: 24)
 let bob = Person(firstName: "Bob", lastName: "Jones", age: 27)
 let charlie = Person(firstName: "Charlie", lastName: "Smith", age: 33)
 let quentin = Person(firstName: "Quentin", lastName: "Alberts", age: 31)
 let people = [alice, bob, charlie, quentin]
 
-let firstNameSortDescriptor = NSSortDescriptor(key: "firstName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
-let lastNameSortDescriptor = NSSortDescriptor(key: "lastName", ascending: true, selector: #selector(NSString.localizedStandardCompare(_:)))
+let firstNameSortDescriptor = NSSortDescriptor(key: "firstName", ascending: true, selector: "localizedStandardCompare:")
+let lastNameSortDescriptor = NSSortDescriptor(key: "lastName", ascending: true, selector: "localizedStandardCompare:")
 let ageSortDescriptor = NSSortDescriptor(key: "age", ascending: false)
 
 let sortedByAge = (people as NSArray).sortedArrayUsingDescriptors([ageSortDescriptor])
@@ -92,9 +91,9 @@ let sortedByFirstName = (people as NSArray).sortedArrayUsingDescriptors([firstNa
 
 let sortedByLastNameFirstName = (people as NSArray).sortedArrayUsingDescriptors([lastNameSortDescriptor, firstNameSortDescriptor])
 // "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSArray *firstNames = @[ @"Alice", @"Bob", @"Charlie", @"Quentin" ];
 NSArray *lastNames = @[ @"Smith", @"Jones", @"Smith", @"Alberts" ];
 NSArray *ages = @[ @24, @27, @33, @31 ];
@@ -127,9 +126,9 @@ NSLog(@"By first name: %@", [people sortedArrayUsingDescriptors:@[firstNameSortD
 
 NSLog(@"By last name, first name: %@", [people sortedArrayUsingDescriptors:@[lastNameSortDescriptor, firstNameSortDescriptor]]);
 // "Quentin Alberts", "Bob Jones", "Alice Smith", "Charlie Smith"
-~~~
+```
 
-* * *
+---
 
 `NSSortDescriptor` can be found throughout Foundation and other system frameworks, playing an especially prominent role in Core Data. Anytime your own classes need to define sort ordering, follow the convention of specifying a `sortDescriptors` parameter as appropriate.
 

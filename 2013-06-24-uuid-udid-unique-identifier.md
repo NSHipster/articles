@@ -1,6 +1,6 @@
 ---
 title: "NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifierForVendor"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Until recently, it was trivial to uniquely identify devices between application launches, and even across applications: a simple call to UIDevice -uniqueIdentifier, and you were all set."
 status:
@@ -21,7 +21,7 @@ Just as privacy and piracy have phonetic and conceptual similarities, device ide
 
 - **UUID _(Universally Unique Identifier)_**: A sequence of 128 bits that can guarantee uniqueness across space and time, defined by [RFC 4122](http://www.ietf.org/rfc/rfc4122.txt).
 - **GUID _(Globally Unique Identifier)_**: Microsoft's implementation of the UUID specification; often used interchangeably with UUID.
-- **UDID _(Unique Device Identifier)_**: A sequence of 40 hexadecimal characters that uniquely identify an iOS device (the device's [Social Security Number](https://en.wikipedia.org/wiki/Social_Security_number), if you will). This value can be [retrieved through iTunes](http://whatsmyudid.com), or found using `UIDevice -uniqueIdentifier`. Derived from hardware details like [MAC address](http://en.wikipedia.org/wiki/MAC_address).
+- **UDID _(Unique Device Identifier)_**: A sequence of 40 hexadecimal characters that uniquely identify an iOS device (the device's [Social Security Number](https://en.wikipedia.org/wiki/Social_Security_number), if you will). This value can be [retrieved through iTunes](http://whatsmyudid.com), or found using `UIDevice -uniqueIdentifier`. Derived from hardware details like [MAC address](https://en.wikipedia.org/wiki/MAC_address).
 
 Incidentally, all of the suggested replacements for `UIDevice -uniqueIdentifier` listed in its deprecation notes return UUID, whether created automatically with `UIDevice -identifierForVendor` & `ASIdentifierManager -advertisingIdentifier` or manually with `NSUUID` (or `CFUUIDCreate`).
 
@@ -41,38 +41,38 @@ However, for advertising networks, which require a consistent identifier across 
 
 > iOS 6 introduces the Advertising Identifier, a non-permanent, non-personal, device identifier, that advertising networks will use to give you more control over advertisers’ ability to use tracking methods. If you choose to limit ad tracking, advertising networks using the Advertising Identifier may no longer gather information to serve you targeted ads. In the future all advertising networks will be required to use the Advertising Identifier. However, until advertising networks transition to using the Advertising Identifier you may still receive targeted ads from other networks.
 
-As the sole component of the [Ad Support framework](http://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html#//apple_ref/doc/uid/TP40012658), `ASIdentifierManager`'s modus operandi is clear: provide a way for ad networks to track users between different applications in a way that doesn't compromise privacy.
+As the sole component of the [Ad Support framework](https://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html#//apple_ref/doc/uid/TP40012658), `ASIdentifierManager`'s modus operandi is clear: provide a way for ad networks to track users between different applications in a way that doesn't compromise privacy.
 
 Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found at **Settings > General > About > Advertising**:
 
-![Limit Ad Tracking]({{ site.asseturl }}/ad-support-limit-ad-tracking.png)
+![Limit Ad Tracking]({% asset ad-support-limit-ad-tracking.png @path %})
 
 ## NSUUID & CFUUIDRef
 
 `NSUUID` was added to Foundation in iOS 6 as a way to easily create UUIDs. How easy?
 
-~~~{swift}
-let UUID = NSUUID().UUIDString
-~~~
+```swift
+let UUID = NSUUID.UUID().UUIDString
+```
 
-~~~{objective-c}
+```objc
 NSString *UUID = [[NSUUID UUID] UUIDString];
-~~~
+```
 
 If your app targets iOS 5 or earlier, however, you have to settle for Core Foundation functions on `CFUUIDRef`:
 
-~~~{swift}
+```swift
 let UUID = CFUUIDCreateString(nil, CFUUIDCreate(nil))
-~~~
+```
 
-~~~{objective-c}
+```objc
 CFUUIDRef uuid = CFUUIDCreate(NULL);
 NSString *UUID = CFUUIDCreateString(NULL, uuid);
-~~~
+```
 
-For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](http://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
+For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](https://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
 
-~~~{swift}
+```swift
     func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
@@ -85,9 +85,9 @@ For apps building against a base SDK without the vendor or advertising identifie
 
     return true
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -101,7 +101,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
 }
-~~~
+```
 
 This way, a UUID will be generated once when the app is launched for the first time, and then stored in `NSUserDefaults` to be retrieved on each subsequent app launch. Unlike advertising or vendor identifiers, these identifiers would not be shared across other apps, but for most intents and purposes, this is works just fine.
 

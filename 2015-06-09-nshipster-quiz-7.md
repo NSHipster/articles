@@ -56,34 +56,34 @@ Round 3: Picture Round
 ----------------------
 
 1. Who is shown here sporting this unannounced gold link bracelet Apple Watch shortly before launch?
-![Picture 1]({{ site.asseturl }}/quiz-7/nshipster-quiz7-1.jpg)
+![Picture 1]({% asset quiz-7/nshipster-quiz7-1.jpg @path %})
 
 2. What TV show featured these watches? For a bonus point, what was the related catchphrase?
-![Picture 2]({{ site.asseturl }}/quiz-7/nshipster-quiz7-2.jpg)
+![Picture 2]({% asset quiz-7/nshipster-quiz7-2.jpg @path %})
 
 3. Hailing from the same era, what development tool is this?
-![Picture 3]({{ site.asseturl }}/quiz-7/nshipster-quiz7-3.png)
+![Picture 3]({% asset quiz-7/nshipster-quiz7-3.png @path %})
 
 4. What Apple Design Award-winning app is this?
-![Picture 4]({{ site.asseturl }}/quiz-7/nshipster-quiz7-4.png)
+![Picture 4]({% asset quiz-7/nshipster-quiz7-4.png @path %})
 
 5. What Apple Design Award-winning app is this?
-![Picture 5]({{ site.asseturl }}/quiz-7/nshipster-quiz7-5.png)
+![Picture 5]({% asset quiz-7/nshipster-quiz7-5.png @path %})
 
 6. What app is this?
-![Picture 6]({{ site.asseturl }}/quiz-7/nshipster-quiz7-6.png)
+![Picture 6]({% asset quiz-7/nshipster-quiz7-6.png @path %})
 
 7. What app is this?
-![Picture 7]({{ site.asseturl }}/quiz-7/nshipster-quiz7-7.png)
+![Picture 7]({% asset quiz-7/nshipster-quiz7-7.png @path %})
 
 8. Who is this?
-![Picture 8]({{ site.asseturl }}/quiz-7/nshipster-quiz7-8.png)
+![Picture 8]({% asset quiz-7/nshipster-quiz7-8.png @path %})
 
 9. Who is this?
-![Picture 9]({{ site.asseturl }}/quiz-7/nshipster-quiz7-9.png)
+![Picture 9]({% asset quiz-7/nshipster-quiz7-9.png @path %})
 
 10. What are the Unicode names for these Emoji?
-![Picture 10]({{ site.asseturl }}/quiz-7/nshipster-quiz7-10.png)
+![Picture 10]({% asset quiz-7/nshipster-quiz7-10.png @path %})
 
 
 Round 4: Anagrammable
@@ -94,9 +94,9 @@ Round 4: Anagrammable
 *For timing, listen to these three songs play back to back:* 
 
 <div>
-<iframe width="560" height="24" src="http://www.youtube.com/embed/e-ORhEE9VVg?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="http://www.youtube.com/embed/nfWlot6h_JM?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="http://www.youtube.com/embed/4m1EFMoRFvY?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/e-ORhEE9VVg?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/nfWlot6h_JM?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe width="560" height="24" src="https://www.youtube.com/embed/4m1EFMoRFvY?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
 </div>
 
 1. Be Loud!
@@ -122,11 +122,11 @@ Round 1: General Knowledge
 3. [50 gallon drum of lube](https://twitter.com/indians/status/605946305274191872)
 4. `WKInterface`
 5. ﬀ, ﬁ, ﬂ, ﬃ, ﬄ
-6. [A ransom note, by Susan Kare](http://en.wikipedia.org/wiki/San_Francisco_(1984_typeface))
+6. [A ransom note, by Susan Kare](https://en.wikipedia.org/wiki/San_Francisco_(1984_typeface))
 7. [A Playmobile figure of himself](http://www.newyorker.com/magazine/2015/02/23/shape-things-come)
 8. [A typo in the README.md](https://github.com/ResearchKit/ResearchKit/pull/6)
 9. [ORK: Open Research Kit](https://github.com/ResearchKit/ResearchKit)
-10. [*Fun Home*, based on the memoir by Alison Bechdel](http://en.wikipedia.org/wiki/Fun_Home_(musical))
+10. [*Fun Home*, based on the memoir by Alison Bechdel](https://en.wikipedia.org/wiki/Fun_Home_(musical))
 
 Round 2: Name That Framework
 ----------------------------
@@ -147,7 +147,7 @@ Round 3: Picture Round
 
 1. [Beyonce](http://www.beyonce.com/my-life-828/)
 2. *Parker Lewis Can't Lose*, "Synchronize Swatches"
-3. [ResEdit](http://en.wikipedia.org/wiki/ResEdit)
+3. [ResEdit](https://en.wikipedia.org/wiki/ResEdit)
 5. [Metamorphabet](http://metamorphabet.com)
 4. [Workflow](https://workflow.is)
 6. [Meerkat](http://meerkatapp.co)

@@ -1,6 +1,6 @@
 ---
 title: "UIReferenceLibraryViewController /<br/>DCSDictionaryRef/<br/>/usr/share/dict/words"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: cfhipsterref
 excerpt: "Though widely usurped of their 'go-to reference' status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."
@@ -8,7 +8,7 @@ status:
     swift: t.b.c.
 ---
 
-<img src="{{ site.asseturl }}/cfhipsterref-illustration-librarian.png" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
+<img src="{% asset cfhipsterref-illustration-librarian.png @path %}" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
 
 This week's article is about dictionaries. Not the `NSDictionary` / `CFDictionaryRef` we encounter everyday, but those distant lexicographic vestiges of school days past.
 
@@ -22,7 +22,7 @@ Though widely usurped of their "go-to reference" status by the Internet, diction
 
 Nearly all Unix distributions include a small collection newline-delimited list of words. On OS X, these can be found at `/usr/share/dict`:
 
-~~~bash
+```bash
 $ ls /usr/share/dict
     README
     connectives
@@ -30,18 +30,18 @@ $ ls /usr/share/dict
     web2
     web2a
     words@ -> web2
-~~~
+```
 
 Symlinked to `words` is the `web2` word list, which, though not exhaustive, is still a sizable corpus:
 
-~~~bash
+```bash
 $ wc /usr/share/dict/words
     235886  235886 2493109
-~~~
+```
 
 Skimming with `head` shows what fun lies herein. Such excitement is rarely so palpable as it is among words beginning with "a":
 
-~~~bash
+```bash
 $ head /usr/share/dict/words
     A
     a
@@ -53,7 +53,7 @@ $ head /usr/share/dict/words
     aardvark
     aardwolf
     Aaron
-~~~
+```
 
 These giant, system-provided text files make it easy to `grep` crossword puzzle clues, generate mnemonic pass phrases, and seed databases, but from a user perspective, `/usr/share/dict`'s monolingualism and lack of associated meaning make it less than useful for everyday use.
 
@@ -66,7 +66,7 @@ OS X builds upon this with its own system dictionaries. Never one to disappoint,
 The OS X analog to `/usr/share/dict` can be found in `/Library/Dictionaries`.
 A quick peek into the shared system dictionaries demonstrates one immediate improvement over Unix, by acknowledging the existence of languages other than English:
 
-~~~bash
+```bash
 $ ls /Library/Dictionaries/
 
     Apple Dictionary.dictionary/
@@ -85,13 +85,13 @@ $ ls /Library/Dictionaries/
     Sanseido The WISDOM English-Japanese Japanese-English Dictionary.dictionary/
     Simplified Chinese - English.dictionary/
     The Standard Dictionary of Contemporary Chinese.dictionary/
-~~~
+```
 
 OS X ships with dictionaries in Chinese, English, French, Dutch, Italian, Japanese, Korean, as well as an English thesaurus and a special dictionary for Apple-specific terminology.
 
 Diving deeper into the rabbit hole, we peruse the `.dictionary` bundles to see them for what they really are:
 
-~~~bash
+```bash
 $ ls "/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents"
 
     Body.data
@@ -105,14 +105,14 @@ $ ls "/Library/Dictionaries/New Oxford American Dictionary.dictionary/Contents"
     Resources/
     _CodeSignature/
     version.plist
-~~~
+```
 
 A filesystem autopsy reveals some interesting implementation details. In the case of the New Oxford American Dictionary in particular, contents include:
 
 - Binary-encoded `KeyText.data`, `KeyText.index`, & `Content.data`
 - CSS for styling entries
 - 1207 images, from A-Frame to Zither.
-- Preference to switch between [US English Diacritical Pronunciation](http://en.wikipedia.org/wiki/Pronunciation_respelling_for_English) and [IPA](http://en.wikipedia.org/wiki/International_Phonetic_Alphabet) (International Phonetic Alphabet)
+- Preference to switch between [US English Diacritical Pronunciation](https://en.wikipedia.org/wiki/Pronunciation_respelling_for_English) and [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) (International Phonetic Alphabet)
 - Manifest & signature for dictionary contents
 
 Normally, proprietary binary encoding would be the end of the road in terms of what one could reasonably do with data, but luckily, Core Services provides APIs to read this information.
@@ -121,13 +121,13 @@ Normally, proprietary binary encoding would be the end of the road in terms of w
 
 To get the definition of a word on OS X, one can use the `DCSCopyTextDefinition` function, found in the Core Services framework:
 
-~~~{objective-c}
+```objc
 #import <CoreServices/CoreServices.h>
 
 NSString *word = @"apple";
 NSString *definition = (__bridge_transfer NSString *)DCSCopyTextDefinition(NULL, (__bridge CFStringRef)word, CFRangeMake(0, [word length]));
 NSLog(@"%@", definition);
-~~~
+```
 
 Wait, where did all of those great dictionaries go?
 
@@ -141,7 +141,7 @@ Well, they all disappeared into that first `NULL` argument. One might expect to 
 
 Now, there's nothing programmers love to hate to love more than the practice of exploiting loopholes to side-step Apple platform restrictions. Behold: an entirely error-prone approach to getting, say, thesaurus results instead of the first definition available in the standard dictionary:
 
-~~~{objective-c}
+```objc
 NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
 NSMutableDictionary *dictionaryPreferences = [[userDefaults persistentDomainForName:@"com.apple.DictionaryServices"] mutableCopy];
 NSArray *activeDictionaries = [dictionaryPreferences objectForKey:@"DCSActiveDictionaries"];
@@ -154,7 +154,7 @@ dictionaryPreferences[@"DCSActiveDictionaries"] = @[@"/Library/Dictionaries/Oxfo
 }
 dictionaryPreferences[@"DCSActiveDictionaries"] = activeDictionaries;
 [userDefaults setPersistentDomain:dictionaryPreferences forName:@"com.apple.DictionaryServices"];
-~~~
+```
 
 "But this is OS X, a platform whose manifest destiny cannot be contained by meager sandboxing attempts from Cupertino!", you cry. "Isn't there a more civilized approach? Like, say, private APIs?"
 
@@ -164,7 +164,7 @@ Why yes, yes there are.
 
 Not publicly exposed, but still available through Core Services are a number of functions that cut closer to the dictionary services functionality that we crave:
 
-~~~{objective-c}
+```objc
 extern CFArrayRef DCSCopyAvailableDictionaries();
 extern CFStringRef DCSDictionaryGetName(DCSDictionaryRef dictionary);
 extern CFStringRef DCSDictionaryGetShortName(DCSDictionaryRef dictionary);
@@ -182,13 +182,13 @@ extern CFStringRef DCSRecordGetRawHeadword(CFTypeRef record);
 extern CFStringRef DCSRecordGetString(CFTypeRef record);
 extern CFStringRef DCSRecordGetTitle(CFTypeRef record);
 extern DCSDictionaryRef DCSRecordGetSubDictionary(CFTypeRef record);
-~~~
+```
 
 Private as they are, these functions aren't about to start documenting themselves, so let's take a look at how they're used:
 
 #### Getting Available Dictionaries
 
-~~~{objective-c}
+```objc
 NSMapTable *availableDictionariesKeyedByName =
     [NSMapTable mapTableWithKeyOptions:NSPointerFunctionsCopyIn
                           valueOptions:NSPointerFunctionsObjectPointerPersonality];
@@ -197,13 +197,13 @@ for (id dictionary in (__bridge_transfer NSArray *)DCSCopyAvailableDictionaries(
     NSString *name = (__bridge NSString *)DCSDictionaryGetName((__bridge DCSDictionaryRef)dictionary);
     [availableDictionariesKeyedByName setObject:dictionary forKey:name];
 }
-~~~
+```
 
 #### Getting Definition for Word
 
 With instances of the elusive `DCSDictionaryRef` type available at our disposal, we can now see what all of the fuss is about with that first argument in `DCSCopyTextDefinition`:
 
-~~~{objective-c}
+```objc
 NSString *word = @"apple";
 
 for (NSString *name in availableDictionariesKeyedByName) {
@@ -230,11 +230,11 @@ for (NSString *name in availableDictionariesKeyedByName) {
         }
     }
 }
-~~~
+```
 
 Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
 
-![Entry for "apple" in Dictionary.app]({{ site.asseturl }}/dictionary.png)
+![Entry for "apple" in Dictionary.app]({% asset dictionary.png @path %})
 
 > For any fellow linguistics nerds or markup curious folks out there, here's [the HTML of the entry for the word "apple"](https://gist.github.com/mattt/9453538).
 
@@ -250,30 +250,30 @@ iOS development is a decidedly more by-the-books affair, so attempting to revers
 
 Simply initialize with the desired term:
 
-~~~{objective-c}
+```objc
 UIReferenceLibraryViewController *referenceLibraryViewController =
     [[UIReferenceLibraryViewController alloc] initWithTerm:@"apple"];
 [viewController presentViewController:referenceLibraryViewController
                              animated:YES
                            completion:nil];
-~~~
+```
 
-![Presenting a UIReferenceLibraryViewController]({{ site.asseturl }}/uireferencelibraryviewcontroller-1.png)
+![Presenting a UIReferenceLibraryViewController]({% asset uireferencelibraryviewcontroller-1.png @path %})
 
 This is the same behavior that one might encounter by tapping the "Define" `UIMenuItem` on a highlighted word in a `UITextView`.
 
 > Tapping on "Manage" brings up a view to download additional dictionaries.
 
-![Presenting a UIReferenceLibraryViewController]({{ site.asseturl }}/uireferencelibraryviewcontroller-2.png)
+![Presenting a UIReferenceLibraryViewController]({% asset uireferencelibraryviewcontroller-2.png @path %})
 
 `UIReferenceLibraryViewController` also provides the class method `dictionaryHasDefinitionForTerm:`. A developer would do well to call this before presenting a dictionary view controller that will inevitably have nothing to display.
 
-~~~{objective-c}
+```objc
 [UIReferenceLibraryViewController dictionaryHasDefinitionForTerm:@"apple"];
-~~~
+```
 
 > In both cases, it appears that `UIReferenceLibraryViewController` will do its best to normalize the search term, so stripping whitespace or changing to lowercase should not be necessary.
 
 * * *
 
-From Unix word lists to their evolved `.dictionary` bundles on OS X (and presumably iOS), words are as essential to application programming as mathematical constants and the "Sosumi" alert noise. Consider how the aforementioned APIs can be integrated into your own app, or used to create a kind of app you hadn't previously considered. There are a [wealth](http://nshipster.com/nslocalizedstring/) [of](http://nshipster.com/nslinguistictagger/) [linguistic](http://nshipster.com/search-kit/) [technologies](http://nshipster.com/uilocalizedindexedcollation/) baked into Apple's platforms, so take advantage of them.
+From Unix word lists to their evolved `.dictionary` bundles on OS X (and presumably iOS), words are as essential to application programming as mathematical constants and the "Sosumi" alert noise. Consider how the aforementioned APIs can be integrated into your own app, or used to create a kind of app you hadn't previously considered. There are a [wealth](https://nshipster.com/nslocalizedstring/) [of](https://nshipster.com/nslinguistictagger/) [linguistic](https://nshipster.com/search-kit/) [technologies](https://nshipster.com/uilocalizedindexedcollation/) baked into Apple's platforms, so take advantage of them.

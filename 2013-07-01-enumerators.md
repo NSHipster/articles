@@ -1,6 +1,6 @@
 ---
 title: "NSFastEnumeration / NSEnumerator"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Enumeration is where computation gets interesting. It's one thing to encode logic that's executed once, but applying it across a collection—that's what makes programming so powerful."
 status:
@@ -25,26 +25,26 @@ This article will cover all of the different ways collections are enumerated in 
 
 `for` and `while` loops are the "classic" method of iterating over a collection. Anyone who's taken Computer Science 101 has written code like this before:
 
-~~~{objective-c}
+```objc
 for (NSUInteger i = 0; i < [array count]; i++) {
   id object = array[i];
   NSLog(@"%@", object)
 }
-~~~
+```
 
-But as anyone who has used C-style loops knows, this method is prone to [off-by-one errors](http://en.wikipedia.org/wiki/Off-by-one_error)—particularly when used in a non-standard way.
+But as anyone who has used C-style loops knows, this method is prone to [off-by-one errors](https://en.wikipedia.org/wiki/Off-by-one_error)—particularly when used in a non-standard way.
 
-Fortunately, Smalltalk significantly improved this state of affairs with an idea called [list comprehensions](http://en.wikipedia.org/wiki/List_comprehension), which are commonly known today as `for/in` loops.
+Fortunately, Smalltalk significantly improved this state of affairs with an idea called [list comprehensions](https://en.wikipedia.org/wiki/List_comprehension), which are commonly known today as `for/in` loops.
 
 ## List Comprehension (`for/in`)
 
 By using a higher level of abstraction, declaring the intention of iterating through all elements of a collection, not only are we less prone to error, but there's a lot less to type:
 
-~~~{objective-c}
+```objc
 for (id object in array) {
     NSLog(@"%@", object);
 }
-~~~
+```
 
 In Cocoa, comprehensions are available to any class that implements the `NSFastEnumeration` protocol, including `NSArray`, `NSSet`, and `NSDictionary`.
 
@@ -52,11 +52,11 @@ In Cocoa, comprehensions are available to any class that implements the `NSFastE
 
 `NSFastEnumeration` contains a single method:
 
-~~~{objective-c}
+```objc
 - (NSUInteger)countByEnumeratingWithState:(NSFastEnumerationState *)state
                                   objects:(id *)stackbuf
                                     count:(NSUInteger)len
-~~~
+```
 
 > - `state`: Context information that is used in the enumeration to, in addition to other possibilities, ensure that the collection has not been mutated.
 > - `stackbuf`: A C array of objects over which the sender is to iterate.
@@ -66,14 +66,14 @@ One single, _deceptively complicated_ method. There's that `stackbuf` out pointe
 
 ### `NSFastEnumerationState`
 
-~~~{objective-c}
+```objc
 typedef struct {
       unsigned long state;
       id *itemsPtr;
       unsigned long *mutationsPtr;
       unsigned long extra[5];
 } NSFastEnumerationState;
-~~~
+```
 
 > - `state`: Arbitrary state information used by the iterator. Typically this is set to 0 at the beginning of the iteration.
 > - `itemsPtr`: A C array of objects.
@@ -94,30 +94,30 @@ But of course, before `NSFastEnumeration` (circa OS X Leopard / iOS 2.0), there 
 
 For the uninitiated, `NSEnumerator` is an abstract class that implements two methods:
 
-~~~{objective-c}
+```objc
 - (id)nextObject
 - (NSArray *)allObjects
-~~~
+```
 
 `nextObject` returns the next object in the collection, or `nil` if unavailable. `allObjects` returns all of the remaining objects, if any. `NSEnumerator`s can only go forward, and only in single increments.
 
 To enumerate through all elements in a collection, one would use `NSEnumerator` thusly:
 
-~~~{objective-c}
+```objc
 id object = nil;
 NSEnumerator *enumerator = ...;
 while ((object = [enumerator nextObject])) {
     NSLog(@"%@", object);
 }
-~~~
+```
 
 ...or because `NSEnumerator` itself conforms to `<NSFastEnumeration>` in an attempt to stay hip to the way kids do things these days:
 
-~~~{objective-c}
+```objc
 for (id object in enumerator) {
     NSLog(@"%@", object);
 }
-~~~
+```
 
 If you're looking for a convenient way to add fast enumeration to your own non-collection-class-backed objects, `NSEnumerator` is likely a much more palatable option than getting your hands messy with `NSFastEnumeration`'s implementation details.
 
@@ -131,11 +131,11 @@ Some quick points of interest about `NSEnumeration`:
 
 Finally, with the introduction of blocks in OS X Snow Leopard / iOS 4, came a new block-based way to enumerate collections:
 
-~~~{objective-c}
+```objc
 [array enumerateObjectsUsingBlock:^(id object, NSUInteger idx, BOOL *stop) {
     NSLog(@"%@", object);
 }];
-~~~
+```
 
 Collection classes like `NSArray`, `NSSet`, `NSDictionary`, and `NSIndexSet` include a similar set of block enumeration methods.
 
@@ -145,20 +145,20 @@ Unless you actually need the numerical index while iterating, it's almost always
 
 One last thing to be aware of are the expanded method variants with an `options` parameter:
 
-~~~{objective-c}
+```objc
 - (void)enumerateObjectsWithOptions:(NSEnumerationOptions)opts
                          usingBlock:(void (^)(id obj, NSUInteger idx, BOOL *stop))block
-~~~
+```
 
 ### `NSEnumerationOptions`
 
-~~~{objective-c}
+```objc
 enum {
    NSEnumerationConcurrent = (1UL << 0),
    NSEnumerationReverse = (1UL << 1),
 };
 typedef NSUInteger NSEnumerationOptions;
-~~~
+```
 
 > - `NSEnumerationConcurrent`: Specifies that the Block enumeration should be concurrent. The order of invocation is nondeterministic and undefined; this flag is a hint and may be ignored by the implementation under some circumstances; the code of the Block must be safe against concurrent invocation.
 > - `NSEnumerationReverse`: Specifies that the enumeration should be performed in reverse. This option is available for `NSArray` and `NSIndexSet` classes; its behavior is undefined for `NSDictionary` and `NSSet` classes, or when combined with the `NSEnumerationConcurrent` flag.

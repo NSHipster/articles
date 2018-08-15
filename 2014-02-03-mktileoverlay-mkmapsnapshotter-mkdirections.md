@@ -1,6 +1,6 @@
 ---
 title: "MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
 status:
@@ -20,19 +20,19 @@ This week on NSHipster, we'll introduce `MKTileOverlay`, `MKMapSnapshotter`, and
 
 Don't like the default Apple Maps tiles? [`MKTileOverlay`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKTileOverlay_class/Reference/Reference.html) allows you to seamlessly swap out to another tile set in just a few lines of code.
 
-> Just like [OpenStreetMap](http://www.openstreetmap.org) and [Google Maps](https://maps.google.com), MKTileOverlay uses [spherical mercator projection (EPSG:3857)](http://en.wikipedia.org/wiki/Mercator_projection#The_spherical_model).
+> Just like [OpenStreetMap](http://www.openstreetmap.org) and [Google Maps](https://maps.google.com), MKTileOverlay uses [spherical mercator projection (EPSG:3857)](https://en.wikipedia.org/wiki/Mercator_projection#The_spherical_model).
 
 ### Setting Custom Map View Tile Overlay
 
-~~~{swift}
+```swift
 let template = "http://tile.openstreetmap.org/{z}/{x}/{y}.png"
 
 let overlay = MKTileOverlay(URLTemplate: template)
 overlay.canReplaceMapContent = true
 
 mapView.addOverlay(overlay, level: .AboveLabels)
-~~~
-~~~{objective-c}
+```
+```objc
 static NSString * const template = @"http://tile.openstreetmap.org/{z}/{x}/{y}.png";
 
 MKTileOverlay *overlay = [[MKTileOverlay alloc] initWithURLTemplate:template];
@@ -40,7 +40,7 @@ overlay.canReplaceMapContent = YES;
 
 [self.mapView addOverlay:overlay
                    level:MKOverlayLevelAboveLabels];
-~~~
+```
 
 MKTileOverlay is initialized with a URL template string, with the `x` & `y` tile coordinates within the specified zoom level. [MapBox has a great explanation for this scheme is used to generate tiles](https://www.mapbox.com/developers/guide/):
 
@@ -71,7 +71,7 @@ After setting `canReplaceMapContent` to `YES`, the overlay is added to the `MKMa
 
 In the map view's delegate, `mapView:rendererForOverlay:` is implemented simply to return a new `MKTileOverlayRenderer` instance when called for the `MKTileOverlay` overlay.
 
-~~~{swift}
+```swift
 // MARK: MKMapViewDelegate
 
 func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
@@ -81,8 +81,8 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
     
     return MKTileOverlayRenderer(tileOverlay: tileOverlay)
 }
-~~~
-~~~{objective-c}
+```
+```objc
 #pragma mark - MKMapViewDelegate
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView
@@ -94,7 +94,7 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
 
     return nil;
 }
-~~~
+```
 
 > Speaking of [MapBox](https://www.mapbox.com), [Justin R. Miller](https://github.com/incanus) maintains [MBXMapKit](https://www.mapbox.com/mbxmapkit/), a MapBox-enabled drop-in replacement for `MKMapView`. It's the easiest way to get up-and-running with this world-class mapping service, and highly recommended for anyone looking to make an impact with maps in their next release.
 
@@ -102,7 +102,7 @@ func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOve
 
 If you need to accommodate a different tile coordinate scheme with your server, or want to add in-memory or offline caching, this can be done by subclassing `MKTileOverlay` and overriding `-URLForTilePath:` and `-loadTileAtPath:result:`:
 
-~~~{swift}
+```swift
 class MKHipsterTileOverlay : MKTileOverlay {
     let cache = NSCache()
     let operationQueue = NSOperationQueue()
@@ -128,8 +128,8 @@ class MKHipsterTileOverlay : MKTileOverlay {
         }
     }
 }
-~~~
-~~~{objective-c}
+```
+```objc
 @interface XXTileOverlay : MKTileOverlay
 @property NSCache *cache;
 @property NSOperationQueue *operationQueue;
@@ -160,7 +160,7 @@ class MKHipsterTileOverlay : MKTileOverlay {
 }
 
 @end
-~~~
+```
 
 ## MKMapSnapshotter
 
@@ -170,7 +170,7 @@ Another addition to iOS 7 was [`MKMapSnapshotter`](https://developer.apple.com/l
 
 ### Creating a Map View Snapshot
 
-~~~{swift}
+```swift
 let options = MKMapSnapshotOptions()
 options.region = mapView.region
 options.size = mapView.frame.size
@@ -188,8 +188,8 @@ snapshotter.startWithCompletionHandler { snapshot, error in
     let data = UIImagePNGRepresentation(snapshot.image)
     data?.writeToURL(fileURL, atomically: true)
 }
-~~~
-~~~{objective-c}
+```
+```objc
 MKMapSnapshotOptions *options = [[MKMapSnapshotOptions alloc] init];
 options.region = self.mapView.region;
 options.size = self.mapView.frame.size;
@@ -208,7 +208,7 @@ MKMapSnapshotter *snapshotter = [[MKMapSnapshotter alloc] initWithOptions:option
     NSData *data = UIImagePNGRepresentation(image);
     [data writeToURL:fileURL atomically:YES];
 }];
-~~~
+```
 
 First, an `MKMapSnapshotOptions` object is created, which is used to specify the region, size, scale, and [camera](https://developer.apple.com/library/mac/documentation/MapKit/Reference/MKMapCamera_class/Reference/Reference.html) used to render the map image.
 
@@ -220,7 +220,7 @@ However, this only draws the map for the specified region; annotations are rende
 
 Including annotations—or indeed, any additional information to the map snapshot—can be done by dropping down into Core Graphics:
 
-~~~{swift}
+```swift
 snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { snapshot, error in
     guard let snapshot = snapshot else {
         print("Snapshot error: \(error)")
@@ -249,8 +249,8 @@ snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEF
     let data = UIImagePNGRepresentation(compositeImage)
     data?.writeToURL(fileURL, atomically: true)
 }
-~~~
-~~~{objective-c}
+```
+```objc
 [snapshotter startWithQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
               completionHandler:^(MKMapSnapshot *snapshot, NSError *error) {
       if (error) {
@@ -283,13 +283,13 @@ snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEF
       }
       UIGraphicsEndImageContext();
 }];
-~~~
+```
 
 ## MKDirections
 
 The final iOS 7 addition to MapKit that we'll discuss is [`MKDirections`](https://developer.apple.com/library/mac/documentation/MapKit/Reference/MKDirections_class/Reference/Reference.html).
 
-> `MKDirections`' spiritual predecessor (of sorts), [`MKLocalSearch`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html) was discussed in [a previous NSHipster article](http://nshipster.com/mklocalsearch/)
+> `MKDirections`' spiritual predecessor (of sorts), [`MKLocalSearch`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html) was discussed in [a previous NSHipster article](https://nshipster.com/mklocalsearch/)
 
 As its name implies, `MKDirections` fetches routes between two waypoints. A `MKDirectionsRequest` object is initialized with a `source` and `destination`, and is then passed into an `MKDirections` object, which can calculate several possible routes and estimated travel times.
 
@@ -299,7 +299,7 @@ Building on the previous example, here is how `MKDirections` might be used to cr
 
 ### Getting Snapshots for each Step of Directions on a Map View
 
-~~~{swift}
+```swift
 let request = MKDirectionsRequest()
 request.source = MKMapItem.mapItemForCurrentLocation()
 request.destination = MKMapItem(...)
@@ -390,8 +390,8 @@ func stepImagesFromDirectionsResponse(response: MKDirectionsResponse, completion
         }
     }
 }
-~~~
-~~~{objective-c}
+```
+```objc
 NSMutableArray *mutableStepImages = [NSMutableArray array];
 
 MKDirectionsRequest *request = [[MKDirectionsRequest alloc] init];
@@ -448,7 +448,7 @@ MKDirections *directions = [[MKDirections alloc] initWithRequest:request];
         }];
     }
 }];
-~~~
+```
 
 * * *
 

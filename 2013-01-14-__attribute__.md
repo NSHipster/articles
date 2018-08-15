@@ -1,6 +1,6 @@
 ---
 title: "__attribute__"
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 tags: nshipster
 excerpt: "A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you."
@@ -14,7 +14,7 @@ A recurring theme of this publication has been the importance of a healthy relat
 
 The syntax for this keyword is `__attribute__` followed by two sets of parentheses (the double parentheses makes it easy to "macro out", especially with multiple attributes). Inside the parentheses is a comma-delimited list of attributes. `__attribute__` directives are placed after function, variable, and type declarations.
 
-~~~{objective-c}
+```objc
 // Return the square of a number
 int square(int n) __attribute__((const));
 
@@ -25,9 +25,9 @@ void f(void)
 // Send printf-like message to stderr and exit
 extern void die(const char *format, ...)
   __attribute__((noreturn, format(printf, 1, 2)));
-~~~
+```
 
-If this is starting to remind you of ISO C's [`#pragma`](http://nshipster.com/pragma), you're not alone.
+If this is starting to remind you of ISO C's [`#pragma`](https://nshipster.com/pragma), you're not alone.
 
 In fact, when `__attribute__` was first introduced to GCC, it was faced with some resistance by some who suggested that `#pragma` be used exclusively for the same purposes.
 
@@ -53,11 +53,11 @@ GCC
 
 > The `format` attribute specifies that a function takes `printf`, `scanf`, `strftime` or `strfmon` style arguments which should be type-checked against a format string.
 
-~~~{objective-c}
+```objc
 extern int
 my_printf (void *my_object, const char *my_format, ...)
   __attribute__((format(printf, 2, 3)));
-~~~
+```
 
 Objective-C programmers can also use the `__NSString__` format to enforce the same rules as format strings in `NSString +stringWithFormat:` and `NSLog()`.
 
@@ -65,11 +65,11 @@ Objective-C programmers can also use the `__NSString__` format to enforce the sa
 
 > The `nonnull` attribute specifies that some function parameters should be non-null pointers.
 
-~~~{objective-c}
+```objc
 extern void *
 my_memcpy (void *dest, const void *src, size_t len)
   __attribute__((nonnull (1, 2)));
-~~~
+```
 
 Using `nonnull` encodes expectations about values into an explicit contract, which can help catch any `NULL` pointer bugs lurking in any calling code. Remember: compile-time errors ≫ run-time errors.
 
@@ -85,9 +85,9 @@ For example, AFNetworking [uses the `noreturn` attribute for its network request
 
 > The `const` attribute specifies that a function does not examine any values except their arguments, and have no effects except the return value. Note that a function that has pointer arguments and examines the data pointed to must not be declared const. Likewise, a function that calls a non-`const` function usually must not be `const`. It does not make sense for a `const` function to return `void`.
 
-~~~{objective-c}
+```objc
 int square(int n) __attribute__((const));
-~~~
+```
 
 `pure` and `const` are both attributes that invoke a functional programming paradigm in order to allow for significant performance optimizations. `const` can be thought as a stricter form of `pure` since it doesn't depend on global values or pointers.
 
@@ -110,9 +110,9 @@ To check the availability of a particular attribute, you can use the `__has_attr
 
 > Clang introduces the availability attribute, which can be placed on declarations to describe the lifecycle of that declaration relative to operating system versions. Consider the function declaration for a hypothetical function f:
 
-~~~{objective-c}
+```objc
 void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,obsoleted=10.7)));
-~~~
+```
 
 > The `availability` attribute states that `f` was introduced in OS X Tiger, deprecated in OS X Snow Leopard, and obsoleted in OS X Lion.
 
@@ -137,12 +137,12 @@ Supported Platforms:
 
 > Clang provides support for C++ function overloading in C. Function overloading in C is introduced using the `overloadable` attribute. For example, one might provide several overloaded versions of a `tgsin` function that invokes the appropriate standard function computing the `sine` of a value with `float`, `double`, or `long double` precision:
 
-~~~{objective-c}
+```objc
 #include <math.h>
 float __attribute__((overloadable)) tgsin(float x) { return sinf(x); }
 double __attribute__((overloadable)) tgsin(double x) { return sin(x); }
 long double __attribute__((overloadable)) tgsin(long double x) { return sinl(x); }
-~~~
+```
 
 Note that `overloadable` only works for functions. You can overload method declarations to some extent by using generic return and parameter types, like `id` and `void *`.
 

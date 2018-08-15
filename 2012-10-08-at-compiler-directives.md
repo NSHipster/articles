@@ -1,6 +1,6 @@
 ---
 title: "@"
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 tags: nshipster
 excerpt: "If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and `@`'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
@@ -8,7 +8,7 @@ status:
     swift: n/a
 ---
 
-Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](http://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
 
 This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixir](http://elixir-lang.org) at a glance.
 
@@ -18,7 +18,7 @@ Perl, with all of its short variable names with special characters, reads like [
 
 Lisp, whose profusion of parentheses is best captured by [that old joke](http://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) about the Russians in the 1980's proving that they had stolen the source code of some SDI missile interceptor code by showing the last page:
 
-~~~ lisp
+``` lisp
                 )))
               ) )
             ))) ) ))
@@ -29,7 +29,7 @@ Lisp, whose profusion of parentheses is best captured by [that old joke](http://
     )))) ))
   )))
 )
-~~~
+```
 
 So if we were to go code-watching for the elusive Objective-C species, what would we look for? That's right:
 
@@ -56,16 +56,16 @@ Categories allow you to extend the behavior of existing classes by adding new cl
 
 #### MyObject+CategoryName.h
 
-~~~{objective-c}
+```objc
 @interface MyObject (CategoryName)
   - (void)foo;
   - (BOOL)barWithBaz:(NSInteger)baz;
 @end
-~~~
+```
 
 #### MyObject+CategoryName.m
 
-~~~{objective-c}
+```objc
 @implementation MyObject (CategoryName)
   - (void)foo {
     // ...
@@ -75,7 +75,7 @@ Categories allow you to extend the behavior of existing classes by adding new cl
     return YES;
   }
 @end
-~~~
+```
 
 Categories are particularly useful for convenience methods on standard framework classes (just don't go overboard with your utility functions).
 
@@ -83,7 +83,7 @@ Categories are particularly useful for convenience methods on standard framework
 
 Extensions look like categories, but omit the category name. These are typically declared before an `@implementation` to specify a private interface, and even override properties declared in the interface:
 
-~~~{objective-c}
+```objc
 @interface MyObject ()
 @property (readwrite, nonatomic, strong) NSString *name;
 - (void)doSomething;
@@ -95,7 +95,7 @@ Extensions look like categories, but omit the category name. These are typically
 // ...
 
 @end
-~~~
+```
 
 ### Properties
 
@@ -128,7 +128,7 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
 - `@protected`: instance variable is only accessible to its class and derived classes
 - `@private`: instance variable is only accessible to its class
 
-~~~{objective-c}
+```objc
 @interface Person : NSObject {
   @public
   NSString *name;
@@ -137,7 +137,7 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
   @private
   int salary;
 }
-~~~
+```
 
 ## Protocols
 
@@ -157,13 +157,13 @@ You can further tailor a protocol by specifying methods as required or optional.
 
 The syntax for `@required` and `@optional` follows that of the visibility macros:
 
-~~~{objective-c}
+```objc
 @protocol CustomControlDelegate
   - (void)control:(CustomControl *)control didSucceedWithResult:(id)result;
 @optional
   - (void)control:(CustomControl *)control didFailWithError:(NSError *)error;
 @end
-~~~
+```
 
 ## Exception Handling
 
@@ -171,7 +171,7 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
 
 `@` directives are used for the traditional convention of `try/catch/finally` blocks:
 
-~~~{objective-c}
+```objc
 @try{
   // attempt to execute the following statements
   [self getValue:&value error:&error];
@@ -186,7 +186,7 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
   // always execute this at the end of either the @try or @catch block
   [self cleanup];
 }
-~~~
+```
 
 ## Literals
 
@@ -218,14 +218,14 @@ Did you know that all Objective-C classes and objects are just glorified `struct
 
 For most of us, at least most of the time, coming into this knowledge is but an academic exercise. But for anyone venturing into low-level optimizations, this is simply the jumping-off point.
 
-- `@encode()`: Returns the [type encoding](http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at:`.
+- `@encode()`: Returns the [type encoding](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at:`.
 - `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
 
-~~~{objective-c}
+```objc
 struct {
   @defs(NSObject)
 }
-~~~
+```
 
 > Ed. As pointed out by readers [@secboffin](http://twitter.com/secboffin) & [@ameaijou](http://twitter.com/ameaijou), `@defs` is unavailable in the modern Objective-C runtime.
 
@@ -242,9 +242,9 @@ In case all of the previous directives were old hat for you, there's a strong li
 
 - `@compatibility_alias`: Allows existing classes to be aliased by a different name.
 
-For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improve the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](http://nshipster.com/uicollectionview/):
+For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improve the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](https://nshipster.com/uicollectionview/):
 
-~~~{objective-c}
+```objc
 // Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
 // http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
@@ -258,7 +258,7 @@ For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) u
 @protocol UICollectionViewDataSource <PSTCollectionViewDataSource> @end
 @protocol UICollectionViewDelegate <PSTCollectionViewDelegate> @end
 #endif
-~~~
+```
 
 Using this clever combination of macros, a developer can develop with `UICollectionView` by including `PSTCollectionView`--without worrying about the deployment target of the final project. As a drop-in replacement, the same code works more-or-less identically on iOS 6 as it does on iOS 4.3.
 

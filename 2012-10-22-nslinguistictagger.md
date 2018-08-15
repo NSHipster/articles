@@ -1,6 +1,6 @@
 ---
 title: NSLinguisticTagger
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."
@@ -9,7 +9,7 @@ status:
     reviewed: September 8, 2015
 ---
 
-`NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](http://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](http://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](http://en.wikipedia.org/wiki/Writing_system) used in the string.
+`NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](https://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](https://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](https://en.wikipedia.org/wiki/Writing_system) used in the string.
 
 For most of us, this is far more power than we know what to do with. But perhaps this is just for lack sufficient opportunity to try. After all, almost every application deals with natural language in one way or another--perhaps `NSLinguisticTagger` could add a new level of polish, or enable brand new features entirely.
 
@@ -23,7 +23,7 @@ Consider a typical question we might ask Siri:
 
 Computers are a long ways off from "understanding" this question literally, but with a few simple tricks, we can do a reasonable job understanding the _intention_ of the question:
 
-~~~{swift}
+```swift
 let question = "What is the weather in San Francisco?"
 let options: NSLinguisticTaggerOptions = [.OmitWhitespace, .OmitPunctuation, .JoinNames]
 let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
@@ -33,8 +33,8 @@ tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), schem
     let token = (question as NSString).substringWithRange(tokenRange)
     println("\(token): \(tag)")
 }
-~~~
-~~~{objective-c}
+```
+```objc
 NSString *question = @"What is the weather in San Francisco?";
 NSLinguisticTaggerOptions options = NSLinguisticTaggerOmitWhitespace | NSLinguisticTaggerOmitPunctuation | NSLinguisticTaggerJoinNames;
 NSLinguisticTagger *tagger = [[NSLinguisticTagger alloc] initWithTagSchemes: [NSLinguisticTagger availableTagSchemesForLanguage:@"en"] options:options];
@@ -43,7 +43,7 @@ tagger.string = question;
     NSString *token = [question substringWithRange:tokenRange];
     NSLog(@"%@: %@", token, tag);
 }];
-~~~
+```
 
 This code would print the following:
 
@@ -56,7 +56,7 @@ This code would print the following:
 
 If we filter on nouns, verbs, and place name, we get `[is, weather, San Francisco]`.
 
-Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](http://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can conclude that a reasonable course of action would be to make an API request to determine the current weather conditions in San Francisco.
+Just based on this alone, or perhaps in conjunction with something like the [Latent Semantic Mapping](https://developer.apple.com/library/mac/#documentation/LatentSemanticMapping/Reference/LatentSemanticMapping_header_reference/Reference/reference.html) framework, we can conclude that a reasonable course of action would be to make an API request to determine the current weather conditions in San Francisco.
 
 ## Tagging Schemes
 

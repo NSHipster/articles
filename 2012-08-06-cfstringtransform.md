@@ -1,6 +1,6 @@
 ---
 title: CFStringTransform
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSString is the crown jewel of Foundation. But as powerful as it is, one would be remiss not to mention its toll-free bridged cousin, CFMutableString—or more specifically, CFStringTransform."
@@ -15,7 +15,7 @@ There are two indicators that tell you everything you need to know about how nic
 
 `NSString` is the crown jewel of Foundation. In an age where other languages _still_ struggle to handle Unicode correctly, `NSString` is especially impressive. Not content to _just work_ with whatever is thrown at it, `NSString` can parse strings into linguistic tags, determine the dominant language of the content, and convert between every string encoding imaginable. It's unfairly good.
 
-But as powerful as `NSString` / `NSMutableString` are, one would be remiss not to mention their [toll-free bridged](http://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html) cousin, `CFMutableString`—or more specifically, `CFStringTransform`.
+But as powerful as `NSString` / `NSMutableString` are, one would be remiss not to mention their [toll-free bridged](https://developer.apple.com/library/ios/#documentation/CoreFoundation/Conceptual/CFDesignConcepts/Articles/tollFreeBridgedTypes.html) cousin, `CFMutableString`—or more specifically, `CFStringTransform`.
 
 As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation. The function takes the following arguments, and returns a `Boolean` for whether or not the transform was successful:
 
@@ -38,7 +38,7 @@ As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation. T
 
 With the notable exception of English (and its delightful spelling inconsistencies), writing systems generally encode speech sounds into a consistent written representation. European languages generally use the Latin alphabet (with a few added diacritics), Russian uses Cyrillic, Japanese uses Hiragana & Katakana, and Thai, Korean, & Arabic each have their own scripts.
 
-Although each language has a particular inventory of sounds, some of which other languages may lack, the overlap across all of the major writing systems is remarkably high—enough so that one can rather effectively [transliterate](http://en.wikipedia.org/wiki/Transliteration) (not to be confused with [translation](http://en.wikipedia.org/wiki/Translation)) from one script to another.
+Although each language has a particular inventory of sounds, some of which other languages may lack, the overlap across all of the major writing systems is remarkably high—enough so that one can rather effectively [transliterate](https://en.wikipedia.org/wiki/Transliteration) (not to be confused with [translation](https://en.wikipedia.org/wiki/Translation)) from one script to another.
 
 `CFStringTransform` can transliterate back and forth between Latin and Arabic, Cyrillic, Greek, Korean (Hangul), Hebrew, Japanese (Hiragana & Katakana), Mandarin Chinese, and Thai.
 
@@ -112,31 +112,31 @@ One of the more practical applications for string transformation is to normalize
 
 For example, let's say you want to build a searchable index of movies on the device, which includes greetings from around the world:
 
-~~~{swift}
+```swift
 var mutableString = NSMutableString(string: "Hello! こんにちは! สวัสดี! مرحبا! 您好!") as CFMutableStringRef
-~~~
+```
 
 - First, apply the `kCFStringTransformToLatin` transform to transliterate all non-English text into a Latin alphabetic representation.
 
-~~~{swift}
+```swift
 CFStringTransform(mutableString, nil, kCFStringTransformToLatin, Boolean(0))
-~~~
+```
 
 > Hello! こんにちは! สวัสดี! مرحبا! 您好! →
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo!
 
 - Next, apply the `kCFStringTransformStripCombiningMarks` transform to remove any diacritics or accents.
 
-~~~{swift}
+```swift
 CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, Boolean(0))
-~~~
+```
 
 > Hello! kon'nichiha! s̄wạs̄dī! mrḥbạ! nín hǎo! →
 > Hello! kon'nichiha! swasdi! mrhba! nin hao!
 
 - Finally, downcase the text with `CFStringLowercase`, and split the text into tokens with [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to use as an index for the text.
 
-~~~{swift}
+```swift
 let tokenizer = CFStringTokenizerCreate(nil, mutableString, CFRangeMake(0, CFStringGetLength(mutableString)), 0, CFLocaleCopyCurrent())
 
 var mutableTokens: [String] = []
@@ -147,7 +147,7 @@ do {
     let token = CFStringCreateWithSubstring(nil, mutableString, range) as NSString
     mutableTokens.append(token)
 } while type != .None
-~~~
+```
 
 > (hello, kon'nichiha, swasdi, mrhba, nin, hao)
 

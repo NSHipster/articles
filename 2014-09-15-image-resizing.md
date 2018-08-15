@@ -1,6 +1,6 @@
 ---
 title: Image Resizing Techniques
-author: Mattt Thompson
+author: Mattt
 category: ""
 excerpt: "Since time immemorial, iOS developers have been perplexed by a singular question: 'How do you resize an image?'. This article endeavors to provide a clear answer to this eternal question."
 status:
@@ -26,7 +26,7 @@ imageView.contentMode = .ScaleAspectFit
 imageView.image = image
 ```
 
-* * *
+---
 
 ## Determining Scaled Size
 
@@ -120,7 +120,7 @@ if let imageSource = CGImageSourceCreateWithURL(self.URL, nil) {
         kCGImageSourceThumbnailMaxPixelSize: max(size.width, size.height) / 2.0,
         kCGImageSourceCreateThumbnailFromImageAlways: true
     ]
-    
+
     let scaledImage = CGImageSourceCreateThumbnailAtIndex(imageSource, 0, options).flatMap { UIImage(CGImage: $0) }
 }
 ```
@@ -129,7 +129,7 @@ Given a `CGImageSource` and set of options, `CGImageSourceCreateThumbnailAtIndex
 
 ### Lanczos Resampling with Core Image
 
-Core Image provides a built-in [Lanczos resampling](http://en.wikipedia.org/wiki/Lanczos_resampling) functionality with the `CILanczosScaleTransform` filter. Although arguably a higher-level API than UIKit, the pervasive use of key-value coding in Core Image makes it unwieldy.
+Core Image provides a built-in [Lanczos resampling](https://en.wikipedia.org/wiki/Lanczos_resampling) functionality with the `CILanczosScaleTransform` filter. Although arguably a higher-level API than UIKit, the pervasive use of key-value coding in Core Image makes it unwieldy.
 
 That said, at least the pattern is consistent. The process of creating a transform filter, configuring it, and rendering an output image is just like any other Core Image workflow:
 
@@ -150,7 +150,6 @@ let scaledImage = UIImage(CGImage: self.context.createCGImage(outputImage, fromR
 
 Creating a `CIContext` is an expensive operation, so a cached context should always be used for repeated resizing. A `CIContext` can be created using either the GPU or the CPU (much slower) for rendering—use the `kCIContextUseSoftwareRenderer` key in the options dictionary to specify which.
 
-
 ### `vImage` in Accelerate
 
 The [Accelerate framework](https://developer.apple.com/library/prerelease/ios/documentation/Accelerate/Reference/AccelerateFWRef/index.html#//apple_ref/doc/uid/TP40009465) includes a suite of `vImage` image-processing functions, with a [set of functions](https://developer.apple.com/library/prerelease/ios/documentation/Performance/Reference/vImage_geometric/index.html#//apple_ref/doc/uid/TP40005490-CH212-145717) that scale an image buffer. These lower-level APIs promise high performance with low power consumption, but at the cost of managing the buffers yourself. The following is a Swift version of a method [suggested by Nyx0uf on GitHub](https://gist.github.com/Nyx0uf/217d97f81f4889f4445a):
@@ -159,8 +158,8 @@ The [Accelerate framework](https://developer.apple.com/library/prerelease/ios/do
 let cgImage = UIImage(contentsOfFile: self.URL.absoluteString!).CGImage
 
 // create a source buffer
-var format = vImage_CGImageFormat(bitsPerComponent: 8, bitsPerPixel: 32, colorSpace: nil, 
-    bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.First.rawValue), 
+var format = vImage_CGImageFormat(bitsPerComponent: 8, bitsPerPixel: 32, colorSpace: nil,
+    bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.First.rawValue),
     version: 0, decode: nil, renderingIntent: CGColorRenderingIntent.RenderingIntentDefault)
 var sourceBuffer = vImage_Buffer()
 defer {
@@ -169,7 +168,7 @@ defer {
 
 var error = vImageBuffer_InitWithCGImage(&sourceBuffer, &format, nil, cgImage, numericCast(kvImageNoFlags))
 guard error == kvImageNoError else { return nil }
-    
+
 // create a destination buffer
 let scale = UIScreen.mainScreen().scale
 let destWidth = Int(image.size.width * 0.5 * scale)
@@ -185,7 +184,7 @@ var destBuffer = vImage_Buffer(data: destData, height: vImagePixelCount(destHeig
 // scale the image
 error = vImageScale_ARGB8888(&sourceBuffer, &destBuffer, nil, numericCast(kvImageHighQualityResampling))
 guard error == kvImageNoError else { return nil }
-    
+
 // create a CGImage from vImage_Buffer
 let destCGImage = vImageCreateCGImageFromBuffer(&destBuffer, &format, nil, nil, numericCast(kvImageNoFlags), &error)?.takeRetainedValue()
 guard error == kvImageNoError else { return nil }
@@ -196,38 +195,37 @@ let scaledImage = destCGImage.flatMap { UIImage(CGImage: $0, scale: 0.0, orienta
 
 The Accelerate APIs used here clearly operate at a lower-level than the other resizing methods. To use this method, you first create a source buffer from your CGImage using a `vImage_CGImageFormat` with `vImageBuffer_InitWithCGImage()`. The destination buffer is allocated at the desired image resolution, then `vImageScale_ARGB8888` does the actual work of resizing the image. Managing your own buffers when operating on images larger than your app's memory limit is left as an exercise for the reader.
 
-
 ---
 
 ## Performance Benchmarks
 
 So how do these various approaches stack up to one another?
 
-Here are the results of a set of [performance benchmarks](http://nshipster.com/benchmarking/) done on an iPhone 6 running iOS 8.4, via [this project](https://github.com/natecook1000/Image-Resizing):
+Here are the results of a set of [performance benchmarks](https://nshipster.com/benchmarking/) done on an iPhone 6 running iOS 8.4, via [this project](https://github.com/natecook1000/Image-Resizing):
 
 ### JPEG
 
 Loading, scaling, and displaying a large, high-resolution (12000 ⨉ 12000 px 20 MB JPEG) source image from [NASA Visible Earth](http://visibleearth.nasa.gov/view.php?id=78314) at 1/10<sup>th</sup> the size:
 
-| Operation                          | Time _(sec)_ | σ    |
-|------------------------------------|--------------|------|
-| `UIKit`                            | 0.612        | 14%  |
-| `Core Graphics` <sup>1</sup>       | 0.266        | 3%   |
-| `Image I/O`                        | 0.255        | 2%   |
-| `Core Image` <sup>2</sup>          | 3.703        | 33%  |
-| `vImage` <sup>3</sup>              | --           | --   |
+| Operation                    | Time _(sec)_ | σ   |
+| ---------------------------- | ------------ | --- |
+| `UIKit`                      | 0.612        | 14% |
+| `Core Graphics` <sup>1</sup> | 0.266        | 3%  |
+| `Image I/O`                  | 0.255        | 2%  |
+| `Core Image` <sup>2</sup>    | 3.703        | 33% |
+| `vImage` <sup>3</sup>        | --           | --  |
 
 ### PNG
 
 Loading, scaling, and displaying a reasonably large (1024 ⨉ 1024 px 1MB PNG) rendering of the [Postgres.app](http://postgresapp.com) Icon at 1/10<sup>th</sup> the size:
 
-| Operation                          | Time _(sec)_ | σ    |
-|------------------------------------|--------------|------|
-| `UIKit`                            | 0.044        | 30%  |
-| `Core Graphics` <sup>4</sup>       | 0.036        | 10%  |
-| `Image I/O`                        | 0.038        | 11%  |
-| `Core Image` <sup>5</sup>          | 0.053        | 68%  |
-| `vImage`                           | 0.050        | 25%  |
+| Operation                    | Time _(sec)_ | σ   |
+| ---------------------------- | ------------ | --- |
+| `UIKit`                      | 0.044        | 30% |
+| `Core Graphics` <sup>4</sup> | 0.036        | 10% |
+| `Image I/O`                  | 0.038        | 11% |
+| `Core Image` <sup>5</sup>    | 0.053        | 68% |
+| `vImage`                     | 0.050        | 25% |
 
 <sup>1, 4</sup> Results were consistent across different values of `CGInterpolationQuality`, with negligible differences in performance benchmarks.
 
@@ -243,4 +241,3 @@ Loading, scaling, and displaying a reasonably large (1024 ⨉ 1024 px 1MB PNG) r
 - If image quality is a consideration, consider using **`CGBitmapContextCreate`** in combination with **`CGContextSetInterpolationQuality`**.
 - When scaling images with the intent purpose of displaying thumbnails, **`CGImageSourceCreateThumbnailAtIndex`** offers a compelling solution for both rendering and caching.
 - Unless you're already working with **`vImage`**, the extra work to use the low-level Accelerate framework for resizing doesn't pay off.
-

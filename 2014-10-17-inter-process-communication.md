@@ -1,6 +1,6 @@
 ---
 title: Inter-Process Communication
-author: Mattt Thompson
+author: Mattt
 category: ""
 tags: cfhipsterref
 excerpt: "In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS & NeXTSTEP. Objective-C as the combination of Smalltalk's OOP paradigm and C. iCloud as the byproduct of MobileMe and actual clouds (presumably)."
@@ -8,7 +8,7 @@ status:
     swift: t.b.c.
 ---
 
-<img src="{{ site.asseturl }}/cfhipsterref-illustration-postman.png" width="151" height="300" alt="IPC Postman, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
+<img src="{% asset cfhipsterref-illustration-postman.png @path %}" width="151" height="300" alt="IPC Postman, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
 
 In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS & NeXTSTEP. Objective-C as the combination of Smalltalk's OOP paradigm and C. iCloud as the byproduct of MobileMe and _actual_ clouds (presumably).
 
@@ -33,7 +33,7 @@ Mach ports are light-weight and powerful, but poorly documented
 
 Sending a message over a given Mach port comes down to a single `mach_msg_send` call, but it takes a bit of configuration in order to build the message to be sent:
 
-~~~{objective-c}
+```objc
 natural_t data;
 mach_port_t port;
 
@@ -64,11 +64,11 @@ mach_msg_return_t error = mach_msg_send(&message.header);
 if (error == MACH_MSG_SUCCESS) {
     // ...
 }
-~~~
+```
 
 Things are a little easier on the receiving end, since the message only needs to be declared, not initialized:
 
-~~~{objective-c}
+```objc
 mach_port_t port;
 
 struct {
@@ -84,13 +84,13 @@ if (error == MACH_MSG_SUCCESS) {
     natural_t data = message.type.pad1;
     // ...
 }
-~~~
+```
 
 Fortunately, higher-level APIs for Mach ports are provided by Core Foundation and Foundation. `CFMachPort` / `NSMachPort` are wrappers on top of the kernel APIs that can be used as a runloop source, while `CFMessagePort` / `NSMessagePort` facilitate synchronous communication between two ports.
 
 `CFMessagePort` is actually quite nice for simple one-to-one communication. In just a few lines of code, a local named port can be attached as a runloop source to have a callback run each time a message is received:
 
-~~~{objective-c}
+```objc
 static CFDataRef Callback(CFMessagePortRef port,
                           SInt32 messageID,
                           CFDataRef data,
@@ -112,11 +112,11 @@ CFRunLoopSourceRef runLoopSource =
 CFRunLoopAddSource(CFRunLoopGetCurrent(),
                    runLoopSource,
                    kCFRunLoopCommonModes);
-~~~
+```
 
 Sending data is straightforward as well. Just specify the remote port, the message payload, and timeouts for sending and receiving. `CFMessagePortSendRequest` takes care of the rest:
 
-~~~{objective-c}
+```objc
 CFDataRef data;
 SInt32 messageID = 0x1111; // Arbitrary
 CFTimeInterval timeout = 10.0;
@@ -136,7 +136,7 @@ SInt32 status =
 if (status == kCFMessagePortSuccess) {
     // ...
 }
-~~~
+```
 
 ##  Distributed Notifications
 
@@ -148,7 +148,7 @@ Each application manages its own `NSNotificationCenter` instance for infra-appli
 
 To listen for notifications, add an observer to the distributed notification center by specifying the notification name to listen for, and a function pointer to execute each time a notification is received:
 
-~~~{objective-c}
+```objc
 static void Callback(CFNotificationCenterRef center,
                      void *observer,
                      CFStringRef name,
@@ -170,11 +170,11 @@ CFNotificationCenterAddObserver(distributedCenter,
                                 CFSTR("notification.identifier"),
                                 NULL,
                                 behavior);
-~~~
+```
 
 Sending a distributed notification is even simpler; just post the identifier, object, and user info:
 
-~~~{objective-c}
+```objc
 void *object;
 CFDictionaryRef userInfo;
 
@@ -186,7 +186,7 @@ CFNotificationCenterPostNotification(distributedCenter,
                                      object,
                                      userInfo,
                                      true);
-~~~
+```
 
 Of all of the ways to link up two applications, distributed notifications are by far the easiest. It wouldn't be a great idea to use them to send large payloads, but for simple tasks like synchronizing preferences or triggering a data fetch, distributed notifications are perfect.
 
@@ -196,7 +196,7 @@ Distributed Objects (DO) is a remote messaging feature of Cocoa that had its hey
 
 Vending an object with DO is just a matter of setting up an `NSConnection` and registering it with a particular name:
 
-~~~{objective-c}
+```objc
 @protocol Protocol;
 
 id <Protocol> vendedObject;
@@ -204,14 +204,14 @@ id <Protocol> vendedObject;
 NSConnection *connection = [[NSConnection alloc] init];
 [connection setRootObject:vendedObject];
 [connection registerName:@"server"];
-~~~
+```
 
 Another application would then create a connection registered for that same registered name, and immediately get an atomic proxy that functioned as if it were that original object:
 
-~~~{objective-c}
+```objc
 id proxy = [NSConnection rootProxyForConnectionWithRegisteredName:@"server" host:nil];
 [proxy setProtocolForProxy:@protocol(Protocol)];
-~~~
+```
 
 Any time a distributed object proxy is messaged, a Remote Procedure Call (RPC) would be made over the `NSConnection` to evaluate the message against the vended object and return the result back to the proxy.
 
@@ -241,11 +241,11 @@ AppleScript uses a natural language syntax, intended to be more accessible to no
 
 To get a better sense of the nature of the beast, here's how to tell Safari to open a URL in the active tab in the frontmost window:
 
-~~~{Applescript}
+```{Applescript}
 tell application "Safari"
-  set the URL of the front document to "http://nshipster.com"
+  set the URL of the front document to "https://nshipster.com"
 end tell
-~~~
+```
 
 In many ways, AppleScript's natural language syntax is more of a liability than an asset. English, much like any other spoken language, has a great deal of redundancy and ambiguity built into normal constructions. While this is perfectly acceptable for humans, computers have a tough time resolving all of this.
 
@@ -257,26 +257,26 @@ Fortunately, the Scripting Bridge provides a proper programming interface for Co
 
 In order to interact with an application through the Scripting Bridge, a programming interface must first be generated:
 
-~~~
+```
 $ sdef /Applications/Safari.app | sdp -fh --basename Safari
-~~~
+```
 
 `sdef` generates scripting definition files for an application. These files can then be piped into `sdp` to be converted into another format—in this case, a C header. The resulting `.h` file can then be added and `#import`-ed into a project to get a first-class object interface to that application.
 
 Here's the same example as before, expressed using the Cocoa Scripting Bridge:
 
-~~~{objective-c}
+```objc
 #import "Safari.h"
 
 SafariApplication *safari = [SBApplication applicationWithBundleIdentifier:@"com.apple.Safari"];
 
 for (SafariWindow *window in safari.windows) {
     if (window.visible) {
-        window.currentTab.URL = [NSURL URLWithString:@"http://nshipster.com"];
+        window.currentTab.URL = [NSURL URLWithString:@"https://nshipster.com"];
         break;
     }
 }
-~~~
+```
 
 It's a bit more verbose than AppleScript, but this is much easier to integrate into an existing codebase. It's also a lot clearer to understand how this same code could be adapted to slightly different behavior (though that could just be the effect of being more familiar with Objective-C).
 
@@ -290,24 +290,24 @@ On OS X there's `NSPasteboard`, and on iOS there's `UIPasteboard`. They're prett
 
 Programmatically writing to the Pasteboard is nearly as simple as invoking `Edit > Copy` in a GUI application:
 
-~~~{objective-c}
+```objc
 NSImage *image;
 
 NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
 [pasteboard clearContents];
 [pasteboard writeObjects:@[image]];
-~~~
+```
 
 The reciprocal paste action is a bit more involved, requiring an iteration over the Pasteboard contents:
 
-~~~{objective-c}
+```objc
 NSPasteboard *pasteboard = [NSPasteboard generalPasteboard];
 
 if ([pasteboard canReadObjectForClasses:@[[NSImage class]] options:nil]) {
     NSArray *contents = [pasteboard readObjectsForClasses:@[[NSImage class]] options: nil];
     NSImage *image = [contents firstObject];
 }
-~~~
+```
 
 What makes Pasteboard especially compelling as a mechanism for transferring data is the notion of simultaneously providing multiple representations of content copied onto a pasteboard. For example, a selection of text may be copied as both rich text (RTF) and plain text (TXT), allowing, for example, a WYSIWYG editor to preserve style information by grabbing the rich text representation, and a code editor to use just the plain text representation.
 
@@ -323,9 +323,9 @@ It's a replacement for `NSTask`, and a whole lot more.
 
 Introduced in 2011, XPC has provided the infrastructure for the App Sandbox on OS X, Remote View Controllers on iOS, and App Extensions on both. It is also widely used by system frameworks and first-party applications:
 
-~~~{bash}
+```{bash}
 $ find /Applications -name \*.xpc
-~~~
+```
 
 By surveying the inventory of XPC services in the wild, one can get a much better understanding of opportunities to use XPC in their own application. Common themes in applications emerge, like services for image and video conversion, system calls, webservice integration, and 3rd party authentication.
 
@@ -339,7 +339,7 @@ XPC services either reside within an application bundle or are advertised to run
 
 Services call `xpc_main` with an event handler to receive new XPC connections:
 
-~~~{objective-c}
+```objc
 static void connection_handler(xpc_connection_t peer) {
     xpc_connection_set_event_handler(peer, ^(xpc_object_t event) {
         peer_event_handler(peer, event);
@@ -352,28 +352,28 @@ int main(int argc, const char *argv[]) {
    xpc_main(connection_handler);
    exit(EXIT_FAILURE);
 }
-~~~
+```
 
 Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer.  :
 
-~~~{objective-c}
+```objc
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
 xpc_connection_set_event_handler(c, ^(xpc_object_t event) {
     // ...
 });
 xpc_connection_resume(c);
-~~~
+```
 
 When a message is sent over an XPC connection, it is automatically dispatched onto a queue managed by the runtime. As soon as the connection is opened on the remote end, messages are dequeued and sent.
 
 Each message is a dictionary, with string keys and strongly-typed values:
 
-~~~{objective-c}
+```objc
 xpc_dictionary_t message = xpc_dictionary_create(NULL, NULL, 0);
 xpc_dictionary_set_uint64(message, "foo", 1);
 xpc_connection_send_message(c, message);
 xpc_release(message)
-~~~
+```
 
 XPC objects operate on the following primitive types:
 
@@ -391,7 +391,7 @@ XPC objects operate on the following primitive types:
 
 XPC offers a convenient way to convert from the `dispatch_data_t` data type, which simplifies the workflow from GCD to XPC:
 
-~~~{objective-c}
+```objc
 void *buffer;
 size_t length;
 dispatch_data_t ddata =
@@ -401,9 +401,9 @@ dispatch_data_t ddata =
                          DISPATCH_DATA_DESTRUCTOR_MUNMAP);
 
 xpc_object_t xdata = xpc_data_create_with_dispatch_data(ddata);
-~~~
+```
 
-~~~{objective-c}
+```objc
 dispatch_queue_t queue;
 xpc_connection_send_message_with_reply(c, message, queue,
     ^(xpc_object_t reply)
@@ -412,7 +412,7 @@ xpc_connection_send_message_with_reply(c, message, queue,
          // ...
       }
 });
-~~~
+```
 
 ###  Registering Services
 
@@ -420,7 +420,7 @@ XPC can also be registered as launchd jobs, configured to automatically start on
 
 .launchd.plist
 
-~~~{xml}
+```{xml}
 <key>LaunchEvents</key>
 <dict>
   <key>com.apple.iokit.matching</key>
@@ -440,7 +440,7 @@ XPC can also be registered as launchd jobs, configured to automatically start on
       </dict>
   </dict>
 </dict>
-~~~
+```
 
 A recent addition to `launchd` property lists is the `ProcessType` key, which describe at a high level the intended purpose of the launch agent. Based on the prescribed contention behavior, the operating system will automatically throttle CPU and I/O bandwidth accordingly.
 
@@ -455,7 +455,7 @@ A recent addition to `launchd` property lists is the `ProcessType` key, which de
 
 To register a service to run approximately every 5 minutes (allowing a grace period for system resources to become more available before scheduling at a more aggressive priority), a set of criteria is passed into `xpc_activity_register`:
 
-~~~{objective-c}
+```objc
 xpc_object_t criteria = xpc_dictionary_create(NULL, NULL, 0);
 xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_INTERVAL, 5 * 60);
 xpc_dictionary_set_int64(criteria, XPC_ACTIVITY_GRACE_PERIOD, 10 * 60);
@@ -474,4 +474,4 @@ xpc_activity_register("com.example.app.activity",
         xpc_activity_set_state(activity, XPC_ACTIVITY_STATE_DONE);
     });
 });
-~~~
+```

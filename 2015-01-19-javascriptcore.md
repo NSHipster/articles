@@ -4,8 +4,8 @@ author: Nate Cook
 category: "Cocoa"
 excerpt: "Introduced with OS X Mavericks and iOS 7, the JavaScriptCore framework puts an Objective-C wrapper around WebKit's JavaScript engine, providing easy, fast, and safe access to the world's most prevalent language. Love it or hate it, JavaScript's ubiquity has led to an explosion of developers, tools, and resources along with ultra-fast virtual machines like the one built into OS X and iOS."
 status:
-    swift: 3.1
-    reviewed: March 19, 2017
+    swift: 2.0
+    reviewed: November 9, 2015
 ---
 
 An updated ranking of programming language popularity is [out this week](http://redmonk.com/sogrady/category/programming-languages/), showing Swift leaping upward through the ranks from 68th to 22nd, while Objective-C holds a strong lead up ahead at #10. Both, however, are blown away by the only other language allowed to run natively on iOS: the current champion, JavaScript.
@@ -22,13 +22,13 @@ So come, lay aside bitter debates about dynamism and type safety, and join me fo
 `JSContext` is an environment for running JavaScript code. A `JSContext` instance represents the global object in the environment—if you've written JavaScript that runs in a browser, `JSContext` is analogous to `window`. After creating a `JSContext`, it's easy to run JavaScript code that creates variables, does calculations, or even defines functions:
 
 ````swift
-let context = JSContext()!
+let context = JSContext()
 context.evaluateScript("var num = 5 + 5")
 context.evaluateScript("var names = ['Grace', 'Ada', 'Margaret']")
 context.evaluateScript("var triple = function(value) { return value * 3 }")
-let tripleNum = context.evaluateScript("triple(num)")
+let tripleNum: JSValue = context.evaluateScript("triple(num)")
 ````
-````objective-c
+````objc
 JSContext *context = [[JSContext alloc] init];
 [context evaluateScript:@"var num = 5 + 5"];
 [context evaluateScript:@"var names = ['Grace', 'Ada', 'Margaret']"];
@@ -45,18 +45,18 @@ As that last line shows, any value that comes *out* of a `JSContext` is wrapped 
 | string          | `toString`                         | `NSString`          | `String!`                           
 | boolean         | `toBool`                           | `BOOL`              | `Bool`                         
 | number          | `toNumber`<br>`toDouble`<br>`toInt32`<br>`toUInt32` | `NSNumber`<br>`double`<br>`int32_t`<br>`uint32_t` | `NSNumber!`<br>`Double`<br>`Int32`<br>`UInt32`
-| Date            | `toDate`                           | `NSDate`            | `Date!`                        
-| Array           | `toArray`                          | `NSArray`           | `[Any]!`                   
-| Object          | `toDictionary`                     | `NSDictionary`      | `[AnyHashable : Any]!`
-| Object          | `toObject`<br>`toObjectOfClass:`   | *custom type*       | *custom type* `as Any!`
+| Date            | `toDate`                           | `NSDate`            | `NSDate!`                        
+| Array           | `toArray`                          | `NSArray`           | `[AnyObject]!`                   
+| Object          | `toDictionary`                     | `NSDictionary`      | `[NSObject : AnyObject]!`
+| Object          | `toObject`<br>`toObjectOfClass:`   | *custom type*       | *custom type*
 
 To retrieve the value of `tripleNum` from the above example, simply use the appropriate method:
 
 ````swift
-print("Tripled: \(tripleNum!.toInt32())")
+print("Tripled: \(tripleNum.toInt32())")
 // Tripled: 30
 ````
-````objective-c
+````objc
 NSLog(@"Tripled: %d", [tripleNum toInt32]);
 // Tripled: 30
 ````
@@ -68,11 +68,11 @@ We can easily access any values we've created in our `context` using subscript n
 
 ````swift
 let names = context.objectForKeyedSubscript("names")
-let initialName = names?.objectAtIndexedSubscript(0)
-print("The first name: \(initialName?.toString() ?? "none")")
+let initialName = names.objectAtIndexedSubscript(0)
+print("The first name: \(initialName.toString())")
 // The first name: Grace
 ````
-````objective-c
+````objc
 JSValue *names = context[@"names"];
 JSValue *initialName = names[0];
 NSLog(@"The first name: %@", [initialName toString]);
@@ -91,7 +91,7 @@ let tripleFunction = context.objectForKeyedSubscript("triple")
 let result = tripleFunction.callWithArguments([5])
 print("Five tripled: \(result.toInt32())")
 ````
-````objective-c
+````objc
 JSValue *tripleFunction = context[@"triple"];
 JSValue *result = [tripleFunction callWithArguments:@[@5] ];
 NSLog(@"Five tripled: %d", [result toInt32]);
@@ -104,13 +104,13 @@ NSLog(@"Five tripled: %d", [result toInt32]);
 
 ````swift
 context.exceptionHandler = { context, exception in
-    print("JS Error: \(exception?.description ?? "unknown error")")
+    print("JS Error: \(exception)")
 }
 
 context.evaluateScript("function multiply(value1, value2) { return value1 * value2 ")
 // JS Error: SyntaxError: Unexpected end of script
 ````
-````objective-c
+````objc
 context.exceptionHandler = ^(JSContext *context, JSValue *exception) {
    NSLog(@"JS Error: %@", exception);
 };
@@ -132,16 +132,16 @@ There are two main ways of giving a `JSContext` access to our native client code
 When an Objective-C block is assigned to an identifier in a `JSContext`, JavaScriptCore automatically wraps the block in a JavaScript function. This makes it simple to use Foundation and Cocoa classes from within JavaScript—again, all the bridging happens for you. Witness the full power of Foundation string transformations, now accessible to JavaScript:
 
 ````swift
-let simplifyString: @convention(block) (String) -> String = { input in
-    let result = input.applyingTransform(.toLatin, reverse: false)
-    return result?.applyingTransform(.stripCombiningMarks, reverse: false) ?? ""
+let simplifyString: @convention(block) String -> String = { input in
+    let result = input.stringByApplyingTransform(NSStringTransformToLatin, reverse: false)
+    return result?.stringByApplyingTransform(NSStringTransformStripCombiningMarks, reverse: false) ?? ""
 }
-context.setObject(simplifyString, forKeyedSubscript: "simplifyString" as NSString)
+context.setObject(unsafeBitCast(simplifyString, AnyObject.self), forKeyedSubscript: "simplifyString")
 
 print(context.evaluateScript("simplifyString('안녕하새요!')"))
 // annyeonghasaeyo!
 ````
-````objective-c
+````objc
 context[@"simplifyString"] = ^(NSString *input) {
    NSMutableString *mutableString = [input mutableCopy];
    CFStringTransform((__bridge CFMutableStringRef)mutableString, NULL, kCFStringTransformToLatin, NO);
@@ -149,10 +149,10 @@ context[@"simplifyString"] = ^(NSString *input) {
    return mutableString;
 };
 
-NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하세요!')"]);
+NSLog(@"%@", [context evaluateScript:@"simplifyString('안녕하새요!')"]);
 ````
 
-> There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, declare it with the `@convention(block)` attribute.
+> There's another speedbump for Swift here—note that this only works for *Objective-C blocks*, not Swift closures. To use a Swift closure in a `JSContext`, it needs to be (a) declared with the `@convention(block)` attribute, and (b) cast to `AnyObject` using Swift's knuckle-whitening `unsafeBitCast()` function.
 
 #### Memory Management
 
@@ -208,7 +208,7 @@ Our `Person` class implements the `PersonJSExports` protocol, which specifies wh
     }
 }
 ````
-````objective-c
+````objc
 // in Person.h -----------------
 @class Person;
 
@@ -257,7 +257,7 @@ if let mustacheJSString = String(contentsOfFile:..., encoding:NSUTF8StringEncodi
     context.evaluateScript(mustacheJSString)
 }
 ````
-````objective-c
+````objc
 // export Person class
 context[@"Person"] = [Person class];
 
@@ -301,20 +301,20 @@ All that remains is to load the JSON data, call into the `JSContext` to parse th
 
 ````swift
 // get JSON string
-let peopleJSON = try? String(contentsOfFile: ..., encoding: .utf8)
+let peopleJSON = try! String(contentsOfFile: ..., encoding: NSUTF8StringEncoding)
 
 // get load function
-let load = context.objectForKeyedSubscript("loadPeopleFromJSON")!
+let load = context.objectForKeyedSubscript("loadPeopleFromJSON")
 // call with JSON and convert to an Array
-if let people = load.call(withArguments: [peopleJSON]).toArray() as? [Person] {
+if let people = load.callWithArguments([peopleJSON]).toArray() as? [Person] {
     
     // get rendering function and create template
-    let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")!
+    let mustacheRender = context.objectForKeyedSubscript("Mustache").objectForKeyedSubscript("render")
     let template = "{% raw %}{{getFullName}}, born {{birthYear}}{% endraw %}"
-    
+
     // loop through people and render Person object as string
     for person in people {
-        print(mustacheRender.call(withArguments: [template, person]))
+        print(mustacheRender.callWithArguments([template, person]))
     }
 }
 
@@ -323,7 +323,7 @@ if let people = load.call(withArguments: [peopleJSON]).toArray() as? [Person] {
 // Ada Lovelace, born 1815
 // Margaret Hamilton, born 1936
 ````
-````objective-c
+````objc
 // get JSON string
 NSString *peopleJSON = [NSString stringWithContentsOfFile:... encoding:NSUTF8StringEncoding error:nil];
     

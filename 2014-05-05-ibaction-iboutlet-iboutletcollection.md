@@ -1,13 +1,13 @@
 ---
 title: "IBAction / IBOutlet / IBOutletCollection"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. For developers just starting with Cocoa & Cocoa Touch, the IBAction, IBOutlet, and IBOutletCollection macros are particularly bewildering examples of this phenomenon"
 status:
     swift: t.b.c.
 ---
 
-In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. In the case of Objective-C, [`#pragma` directives](http://nshipster.com/pragma/), [method type encodings](http://nshipster.com/type-encodings/), and all but the most essential [storage classes](http://nshipster.com/c-storage-classes/) have been rendered essentially meaningless, as the compiler becomes increasingly sophisticated. Discarded and disregarded during the compilation phase, they nonetheless remain useful to the development process as a whole, insofar as what they can tell other developers about the code itself.
+In programming, what often begins as a necessary instruction eventually becomes a vestigial cue for humans. In the case of Objective-C, [`#pragma` directives](https://nshipster.com/pragma/), [method type encodings](https://nshipster.com/type-encodings/), and all but the most essential [storage classes](https://nshipster.com/c-storage-classes/) have been rendered essentially meaningless, as the compiler becomes increasingly sophisticated. Discarded and disregarded during the compilation phase, they nonetheless remain useful to the development process as a whole, insofar as what they can tell other developers about the code itself.
 
 For developers just starting with Cocoa & Cocoa Touch, the `IBAction`, `IBOutlet`, and `IBOutletCollection` macros are particularly bewildering examples of this phenomenon. With their raison d'être obscured by decades of change, confusion by anyone without sufficient context is completely understandable.
 
@@ -15,25 +15,25 @@ As we'll learn in this week's article, though having outgrown their technical ne
 
 * * *
 
-Unlike other [two-letter prefixes](http://nshipster.com/namespacing/), `IB` does not refer to a system framework, but rather Interface Builder.
+Unlike other [two-letter prefixes](https://nshipster.com/namespacing/), `IB` does not refer to a system framework, but rather Interface Builder.
 
-[Interface Builder](http://en.wikipedia.org/wiki/Interface_Builder) can trace its roots to the halcyon days of Objective-C, when it and Project Builder comprised the NeXTSTEP developer tools (circa 1988). Before it was subsumed into Xcode 4, Interface Builder remained remarkably unchanged from its 1.0 release. An iOS developer today would feel right at home on a NeXTSTEP workstation, control-dragging views into outlets.
+[Interface Builder](https://en.wikipedia.org/wiki/Interface_Builder) can trace its roots to the halcyon days of Objective-C, when it and Project Builder comprised the NeXTSTEP developer tools (circa 1988). Before it was subsumed into Xcode 4, Interface Builder remained remarkably unchanged from its 1.0 release. An iOS developer today would feel right at home on a NeXTSTEP workstation, control-dragging views into outlets.
 
-Back when they were separate applications, it was a challenge to keep the object graph represented in a `.nib` document in Interface Builder synchronized with its corresponding `.h` & `.m` files in [Project Builder](http://en.wikipedia.org/wiki/Project_Builder) (what would eventually become Xcode). `IBOutlet` and `IBAction` were used as keywords, to denote what parts of the code should be visible to Interface Builder.
+Back when they were separate applications, it was a challenge to keep the object graph represented in a `.nib` document in Interface Builder synchronized with its corresponding `.h` & `.m` files in [Project Builder](https://en.wikipedia.org/wiki/Project_Builder) (what would eventually become Xcode). `IBOutlet` and `IBAction` were used as keywords, to denote what parts of the code should be visible to Interface Builder.
 
 `IBAction` and `IBOutlet` are, themselves, computationally meaningless, as their macro definitions (in `UINibDeclarations.h`) demonstrate:
 
-~~~{objective-c}
+```objc
 #define IBAction void
 #define IBOutlet
-~~~
+```
 
-> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're actually defined by [__attribute__](http://nshipster.com/__attribute__/)-backed attributes:
+> Well actually, there's more than meets the eye. Scrying the [Clang source code](https://llvm.org/svn/llvm-project/cfe/trunk/test/SemaObjC/iboutlet.m), we see that they're actually defined by [__attribute__](https://nshipster.com/__attribute__/)-backed attributes:
 
-~~~{objective-c}
+```objc
 #define IBOutlet __attribute__((iboutlet))
 #define IBAction __attribute__((ibaction))
-~~~
+```
 
 ## IBAction
 
@@ -52,7 +52,7 @@ Thanks to strong, and often compiler-enforced conventions, naming is especially 
 
 For example:
 
-~~~{objective-c}
+```objc
 // YES
 - (IBAction)refresh:(id)sender;
 
@@ -63,7 +63,7 @@ For example:
 - (IBAction)peformSomeAction;
 
 - (IBAction)didTapButton:(id)sender;
-~~~
+```
 
 ## IBOutlet
 
@@ -75,7 +75,7 @@ An `IBOutlet` connection is usually established between a view or control and it
 
 As with anything in modern Objective-C, **properties are preferred to direct ivar access**. The same is true of `IBOutlet`s:
 
-~~~{objective-c}
+```objc
 // YES
 @interface GallantViewController : UIViewController
 @property (nonatomic, weak) IBOutlet UISwitch *switch;
@@ -86,7 +86,7 @@ As with anything in modern Objective-C, **properties are preferred to direct iva
     IBOutlet UISwitch *_switch
 }
 @end
-~~~
+```
 
 Since properties are the conventional way to expose and access members of a class, both externally and internally, they are preferred in this case as well, if only for consistency.
 
@@ -111,36 +111,36 @@ The reason why most `IBOutlet` views can get away with `weak` ownership is that 
 
 `IBOutletCollection` is `#define`'d in `UINibDeclarations.h` as:
 
-~~~{objective-c}
+```objc
 #define IBOutletCollection(ClassName)
-~~~
+```
 
 …which is defined in a much more satisfying way, again, [in the Clang source code](http://opensource.apple.com/source/clang/clang-318.0.45/src/tools/clang/test/SemaObjC/iboutletcollection-attr.m):
 
-~~~{objective-c}
+```objc
 #define IBOutletCollection(ClassName) __attribute__((iboutletcollection(ClassName)))
-~~~
+```
 
-Unlike `IBAction` or `IBOutlet`, `IBOutletCollection` takes a class name as an argument, which is, incidentally, as close to Apple-sanctioned [generics](http://en.wikipedia.org/wiki/Generic_programming) as one gets in Objective-C.
+Unlike `IBAction` or `IBOutlet`, `IBOutletCollection` takes a class name as an argument, which is, incidentally, as close to Apple-sanctioned [generics](https://en.wikipedia.org/wiki/Generic_programming) as one gets in Objective-C.
 
 As a top-level object, an `IBOutletCollection` `@property` should be declared `strong`, with an `NSArray *` type:
 
-~~~{objective-c}
+```objc
 @property (nonatomic, strong) IBOutletCollection(UIButton) NSArray *buttons;
-~~~
+```
 
 There are two rather curious things to note about an `IBOutletCollection` array:
 
 - **Its order is not necessarily guaranteed**. The order of an outlet collection appears to be roughly the order in which their connections are established in Interface Builder. However, there are numerous reports of that order changing across versions of Xcode, or as a natural consequence of version control. Nonetheless, having code rely on a fixed order is strongly discouraged.
 - **No matter what type is declared for the property, an `IBOutletCollection` is always an `NSArray`**. In fact, any type can be declared: `NSSet *`, `id <NSFastEnumeration>`—heck, even `UIColor *` (depending on your error flags)! No matter what you put, an `IBOutletCollection` will always be stored as an `NSArray`, so you might as well have that type match up in your declaration to avoid compiler warnings.
 
-With the advent of Objective-C [object literals](http://nshipster.com/at-compiler-directives/), `IBOutletCollection` has fallen slightly out of favor—at least for the common use case of convenience accessors, as in:
+With the advent of Objective-C [object literals](https://nshipster.com/at-compiler-directives/), `IBOutletCollection` has fallen slightly out of favor—at least for the common use case of convenience accessors, as in:
 
-~~~{objective-c}
+```objc
 for (UILabel *label in labels) {
     label.font = [UIFont systemFontOfSize:14];
 }
-~~~
+```
 
 Since declaring a collection of outlets is now as easy as comma-delimiting them within `@[]`, it may make just as much sense to do that as create a distinct collection.
 
