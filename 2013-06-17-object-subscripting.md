@@ -1,6 +1,6 @@
 ---
 title: Object Subscripting
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace."
 status:
@@ -19,17 +19,17 @@ Clang 3.1 added three features to Objective-C whose aesthetic & cosmetic impact 
 
 In a single Xcode release, Objective-C went from this:
 
-~~~{objective-c}
+```objc
 NSDictionary *dictionary = [NSDictionary dictionaryWithObject:[NSNumber numberWithInteger:42] forKey:@"foo"];
 id value = [dictionary objectForKey:@"foo"];
-~~~
+```
 
 ...to this:
 
-~~~{objective-c}
+```objc
 NSDictionary *dictionary = @{@"foo": @42};
 id value = dictionary[@"foo"];
-~~~
+```
 
 Concision is the essence of clarity.
 
@@ -49,10 +49,10 @@ Over time, scripting languages began to take greater liberties with this familia
 
 With Clang 3.1, everything has come full-circle: what began as a C operator and co-opted by scripting languages, has now been rolled back into Objective-C. And like the aforementioned scripting languages of yore, the `[]` subscripting operator in Objective-C has been similarly overloaded to handle both integer-indexed and object-keyed accessors.
 
-~~~{objective-c}
+```objc
 dictionary[@"foo"] = @42;
 array[0] = @"bar"
-~~~
+```
 
 > If Objective-C is a superset of C, how can Object Subscripting overload the `[]` C operator? The modern Objective-C runtime prohibits pointer arithmetic on objects, making this semantic pivot possible.
 
@@ -62,10 +62,10 @@ Where this really becomes interesting is when you extend your own classes with s
 
 To add custom-indexed subscripting support to your class, simply declare and implement the following methods:
 
-~~~{objective-c}
+```objc
 - (id)objectAtIndexedSubscript:(*IndexType*)idx;
 - (void)setObject:(id)obj atIndexedSubscript:(*IndexType*)idx;
-~~~
+```
 
 `*IndexType*` can be any integral type, such as `char`, `int`, or `NSUInteger`, as used by `NSArray`.
 
@@ -73,10 +73,10 @@ To add custom-indexed subscripting support to your class, simply declare and imp
 
 Similarly, custom-keyed subscripting can be added to your class by declaring and implementing these methods:
 
-~~~{objective-c}
+```objc
 - (id)objectForKeyedSubscript:(*KeyType*)key;
 - (void)setObject:(id)obj forKeyedSubscript:(*KeyType*)key;
-~~~
+```
 
 `*KeyType*` can be any Objective-C object pointer type.
 
@@ -86,25 +86,25 @@ Similarly, custom-keyed subscripting can be added to your class by declaring and
 
 The whole point in describing all of this is to encourage unconventional thinking about this whole language feature. At the moment, a majority of custom subscripting in classes is used as a convenience accessor to a private collection class. But there's nothing to stop you from, for instance, doing this:
 
-~~~{objective-c}
+```objc
 routes[@"GET /users/:id"] = ^(NSNumber *userID){
   // ...
 }
-~~~
+```
 
 ...or this:
 
-~~~{objective-c}
+```objc
 id piece = chessBoard[@"E1"];
-~~~
+```
 
 ...or this:
 
-~~~{objective-c}
+```objc
 NSArray *results = managedObjectContext[@"Product WHERE stock > 20"];
-~~~
+```
 
-Because of how flexible and concise subscripting is, it is extremely well-purposed for creating [DSL](http://en.wikipedia.org/wiki/Domain-specific_language)s. When defining custom subscripting methods on your own class, there are no restrictions on how they are implemented. You can use this syntax to provide a shorthand for defining application routes, search queries, compound property accessors, or plain-old KVO.
+Because of how flexible and concise subscripting is, it is extremely well-purposed for creating [DSL](https://en.wikipedia.org/wiki/Domain-specific_language)s. When defining custom subscripting methods on your own class, there are no restrictions on how they are implemented. You can use this syntax to provide a shorthand for defining application routes, search queries, compound property accessors, or plain-old KVO.
 
 ---
 

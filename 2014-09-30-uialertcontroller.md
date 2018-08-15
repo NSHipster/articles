@@ -1,6 +1,6 @@
 ---
 title: UIAlertController
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Did you know that `UIAlertView` and `UIActionSheet` (as well as their respective delegate protocols) are deprecated in iOS 8? It's true."
 status:
@@ -43,7 +43,7 @@ Rather than specifying all of an alert's buttons in an initializer, instances of
 
 ### A Standard Alert
 
-![A Standard Alert]({{ site.asseturl }}/uialertcontroller-alert-defautl-style.png)
+![A Standard Alert]({% asset uialertcontroller-alert-defautl-style.png @path %})
 
 #### The Old Way: UIAlertView
 
@@ -66,12 +66,12 @@ func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
 ```swift
 let alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
 
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action in
+let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
     // ...
 }
 alertController.addAction(cancelAction)
 
-let OKAction = UIAlertAction(title: "OK", style: .Default) { action in
+let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
     // ...
 }
 alertController.addAction(OKAction)
@@ -83,9 +83,9 @@ self.presentViewController(alertController, animated: true) {
 
 ### A Standard Action Sheet
 
-![A Standard Action Sheet]({{ site.asseturl }}/uialertcontroller-action-sheet-automatic-style.png)
+![A Standard Action Sheet]({% asset uialertcontroller-action-sheet-automatic-style.png @path %})
 
-#### The Old Way: UIActionSheet
+#### UIActionSheet
 
 ```swift
 let actionSheet = UIActionSheet(title: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: "Destroy", otherButtonTitles: "OK")
@@ -101,22 +101,22 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
 }
 ```
 
-#### The New Way: UIAlertController
+#### UIAlertController
 
 ```swift
 let alertController = UIAlertController(title: nil, message: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", preferredStyle: .ActionSheet)
 
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action in
+let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
     // ...
 }
 alertController.addAction(cancelAction)
 
-let OKAction = UIAlertAction(title: "OK", style: .Default) { action in
+let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
     // ...
 }
 alertController.addAction(OKAction)
 
-let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { action in
+let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (action) in
     println(action)
 }
 alertController.addAction(destroyAction)
@@ -132,7 +132,7 @@ self.presentViewController(alertController, animated: true) {
 
 ### Alert with Destructive Button
 
-![Alert with Destructive Button]({{ site.asseturl }}/uialertcontroller-alert-cancel-destroy.png)
+![Alert with Destructive Button]({% asset uialertcontroller-alert-cancel-destroy.png @path %})
 
 The type of an action is specified by `UIAlertActionStyle`, which has three values:
 
@@ -145,12 +145,12 @@ So, to add a destructive action to a modal alert, just add a `UIAlertAction` wit
 ```swift
 let alertController = UIAlertController(title: "Title", message: "Message", preferredStyle: .Alert)
 
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { action in
+let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
     println(action)
 }
 alertController.addAction(cancelAction)
 
-let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { action in
+let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (action) in
     println(action)
 }
 alertController.addAction(destroyAction)
@@ -162,15 +162,15 @@ self.presentViewController(alertController, animated: true) {
 
 ### Alert with >2 Buttons
 
-![Alert with More Than 2 Buttons]({{ site.asseturl }}/uialertcontroller-alert-one-two-three-cancel.png)
+![Alert with More Than 2 Buttons]({% asset uialertcontroller-alert-one-two-three-cancel.png @path %})
 
 With one or two actions, buttons in an alert are stacked horizontally. Any more than that, though, and it takes on a display characteristic closer to an action sheet:
 
 ```swift
-let oneAction = UIAlertAction(title: "One", style: .Default) { _ in }
-let twoAction = UIAlertAction(title: "Two", style: .Default) { _ in }
-let threeAction = UIAlertAction(title: "Three", style: .Default) { _ in }
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { _ in }
+let oneAction = UIAlertAction(title: "One", style: .Default) { (_) in }
+let twoAction = UIAlertAction(title: "Two", style: .Default) { (_) in }
+let threeAction = UIAlertAction(title: "Three", style: .Default) { (_) in }
+let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
 
 alertController.addAction(oneAction)
 alertController.addAction(twoAction)
@@ -180,35 +180,33 @@ alertController.addAction(cancelAction)
 
 ### Creating a Login Form
 
-![Creating a Login Form]({{ site.asseturl }}/uialertcontroller-alert-username-password-login-forgot-password-cancel.png)
+![Creating a Login Form]({% asset uialertcontroller-alert-username-password-login-forgot-password-cancel.png @path %})
 
 iOS 5 added the `alertViewStyle` property to `UIAlertView`, which exposed much sought-after private APIs that allowed login and password fields to be displayed in an alert, as seen in several built-in system apps.
 
 In iOS 8, `UIAlertController` can add text fields with the `addTextFieldWithConfigurationHandler` method:
 
 ```swift
-let loginAction = UIAlertAction(title: "Login", style: .Default) { [weak alertController] _ in
-    if let alertController = alertController {
-        let loginTextField = alertController.textFields![0] as UITextField
-        let passwordTextField = alertController.textFields![1] as UITextField
-    
-        login(loginTextField.text, passwordTextField.text)
-    }
+let loginAction = UIAlertAction(title: "Login", style: .Default) { (_) in
+    let loginTextField = alertController.textFields![0] as UITextField
+    let passwordTextField = alertController.textFields![1] as UITextField
+
+    login(loginTextField.text, passwordTextField.text)
 }
 loginAction.enabled = false
 
-let forgotPasswordAction = UIAlertAction(title: "Forgot Password", style: .Destructive) { _ in }
-let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { _ in }
+let forgotPasswordAction = UIAlertAction(title: "Forgot Password", style: .Destructive) { (_) in }
+let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
 
-alertController.addTextFieldWithConfigurationHandler { textField in
+alertController.addTextFieldWithConfigurationHandler { (textField) in
     textField.placeholder = "Login"
 
-    NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { notification in
+    NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: textField, queue: NSOperationQueue.mainQueue()) { (notification) in
         loginAction.enabled = textField.text != ""
     }
 }
 
-alertController.addTextFieldWithConfigurationHandler { textField in
+alertController.addTextFieldWithConfigurationHandler { (textField) in
     textField.placeholder = "Password"
     textField.secureTextEntry = true
 }
@@ -220,22 +218,22 @@ alertController.addAction(cancelAction)
 
 ### Creating a Sign Up Form
 
-![Creating a Sign Up Form]({{ site.asseturl }}/uialertcontroller-alert-sign-up.png)
+![Creating a Sign Up Form]({% asset uialertcontroller-alert-sign-up.png @path %})
 
 `UIAlertController` goes even further to allow any number of text fields, each with the ability to be configured and customized as necessary. This makes it possible to create a fully-functional signup form in a single modal alert:
 
 ```swift
-alertController.addTextFieldWithConfigurationHandler { textField in
+alertController.addTextFieldWithConfigurationHandler { (textField) in
     textField.placeholder = "Email"
     textField.keyboardType = .EmailAddress
 }
 
-alertController.addTextFieldWithConfigurationHandler { textField in
+alertController.addTextFieldWithConfigurationHandler { (textField) in
     textField.placeholder = "Password"
     textField.secureTextEntry = true
 }
 
-alertController.addTextFieldWithConfigurationHandler { textField in
+alertController.addTextFieldWithConfigurationHandler { (textField) in
     textField.placeholder = "Password Confirmation"
     textField.secureTextEntry = true
 }

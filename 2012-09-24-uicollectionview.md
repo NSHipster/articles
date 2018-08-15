@@ -1,6 +1,6 @@
 ---
 title: UICollectionView
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "UICollectionView single-handedly changes the way we will design and develop iOS apps from here on out. This is not to say that collection views are in any way unknown or obscure. But being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out."
 status:
@@ -28,19 +28,19 @@ In another departure from the old-school table view way of doing things, the pro
 
 In `-tableView:cellForRowAtIndexPath:`, a developer had to invoke the familiar incantation:
 
-~~~{swift}
+```swift
 let identifier = "Cell"
 var cell = tableView.dequeueReusableCellWithIdentifier(identifier)
 if cell == nil {
     cell = UITableViewCell(...)
 }
-~~~
-~~~{objective-c}
+```
+```objc
 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:...];
 if (!cell) {
   cell = [[UITableViewCell alloc] initWithStyle:... reuseIdentifier:...];
 }
-~~~
+```
 
 `UICollectionView` thankfully does away with this. `-dequeueReusableCellWithReuseIdentifier:forIndexPath:` is guaranteed to return a valid object, by creating a new cell if there are no cells to reuse. Simply register a `UICollectionReusableView` subclass for a particular reuse identifier, and everything will work automatically.
 
@@ -52,7 +52,7 @@ Because collection views aren't relegated to any particular structure, the conve
 
 Each cell can have multiple supplementary views associated with it--one for each named "kind". As such, headers and footers are just the beginning of what can be done with supplementary views.
 
-The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. `UITableView` hacks are to [`spacer.gif`](http://en.wikipedia.org/wiki/Spacer_GIF) as `UICollectionView` cells are to [semantic HTML](http://en.wikipedia.org/wiki/Semantic_HTML).
+The whole point is that with supplementary views, even the most complex layout can be accomplished without compromising the semantic integrity of cells. `UITableView` hacks are to [`spacer.gif`](https://en.wikipedia.org/wiki/Spacer_GIF) as `UICollectionView` cells are to [semantic HTML](https://en.wikipedia.org/wiki/Semantic_HTML).
 
 ### Decoration Views
 
@@ -88,7 +88,7 @@ What's _extremely_ cool is this method here:
 
 - `-layoutAttributesForElementsInRect:`
 
-Using this, you could, for example, fade out items as they approach the edge of the screen. Or, since all of the layout attribute properties are automatically animated, you could create a poor-man's [cover flow](http://en.wikipedia.org/wiki/Cover_Flow) layout in just a couple lines of code with the right set of 3D transforms.
+Using this, you could, for example, fade out items as they approach the edge of the screen. Or, since all of the layout attribute properties are automatically animated, you could create a poor-man's [cover flow](https://en.wikipedia.org/wiki/Cover_Flow) layout in just a couple lines of code with the right set of 3D transforms.
 
 In fact, collection views can even swap out layouts wholesale, allowing views to transition seamlessly between different modes--all without changing the underlying data.
 

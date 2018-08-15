@@ -1,6 +1,6 @@
 ---
 title: UILocalizedIndexedCollation
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."
@@ -9,17 +9,17 @@ status:
     reviewed: September 8, 2015
 ---
 
-UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a [cat playing Fruit Ninja](http://www.youtube.com/watch?v=CdEBgZ5Y46U) in order to get at what they want... you may want to rethink your UI approach.
+UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a [cat playing Fruit Ninja](https://www.youtube.com/watch?v=CdEBgZ5Y46U) in order to get at what they want... you may want to rethink your UI approach.
 
 So, what are your options?
 
-Well, you could organize your data into a hierarchy, which could dramatically reduce the number of rows displayed on each screen in fashion, based on its [branching factor](http://en.wikipedia.org/wiki/Branching_factor).
+Well, you could organize your data into a hierarchy, which could dramatically reduce the number of rows displayed on each screen in fashion, based on its [branching factor](https://en.wikipedia.org/wiki/Branching_factor).
 
 You could also add a `UISearchBar` to the top of your table view, allowing the user to filter on keywords to get exactly what they're looking for (or--perhaps more importantly--determine that what they seek doesn't exist in the first place).
 
 There is also a third approach, which is generally under-utilized in iOS applications: **section index titles**. These are the vertically flowing letters found along the right side of table views in your Address Book contacts list or Music library:
 
-![Section Index Titles Example]({{ site.asseturl }}/uilocalizedindexedcollation-example.png)
+![Section Index Titles Example]({% asset uilocalizedindexedcollation-example.png @path %})
 
 As the user scrolls their finger down the list, the table view jumps to the corresponding section. Even the most tiresome table view is rendered significantly more usable as a result.
 
@@ -37,19 +37,19 @@ Coming to our rescue is `UILocalizedIndexedCollation`.
 
 `UILocalizedIndexedCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexedCollation +currentCollation`
 
-The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which can be read from the `sectionIndexTitles` property.
+The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which are can be read from the `sectionIndexTitles` property.
 
 To give you a better idea of how section index titles vary between locales:
 
 > In order to see these for yourself, you'll need to explicitly add the desired locales to your Project Localizations list.
 
-| Locale     | Section Index Titles |
-|------------|----------------------|
-| en_US      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #` |
-| ja_JP      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #` |
-| sv_SE      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #` |
-| ko_KO      | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #` |
-| AR_sa      | A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, # |
+| Locale | Section Index Titles                                                                                                                                                |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| en_US  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #`                                                                                   |
+| ja_JP  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #`                                           |
+| sv_SE  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #`                                                                          |
+| ko_KO  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #`                           |
+| AR_sa  | A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, # |
 
 Aren't you glad you don't have to do this yourself?
 
@@ -61,7 +61,7 @@ Finally, the table view should implement `-tableView:sectionForSectionIndexTitle
 
 All told, here's what a typical table view data source implementation looks like:
 
-~~~{swift}
+```swift
 class ObjectTableViewController: UITableViewController {
     let collation = UILocalizedIndexedCollation.currentCollation()
     var sections: [[AnyObject]] = []
@@ -94,9 +94,9 @@ class ObjectTableViewController: UITableViewController {
         return collation.sectionForSectionIndexTitleAtIndex(index)
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 - (void)setObjects:(NSArray *)objects {
     SEL selector = @selector(localizedTitle);
     NSInteger index, sectionTitlesCount = [[[UILocalizedIndexedCollation currentCollation] sectionTitles] count];
@@ -137,7 +137,7 @@ sectionForSectionIndexTitle:(NSString *)title
 {
     return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
-~~~
+```
 
 ## UITableViewIndexSearch
 
@@ -152,4 +152,3 @@ So remember, NSHipsters one and all: if you see an excessively long table view, 
 ...which is to say, refactor your content with some combination of hierarchies, a search bar, and section indexes. And when implementing section index titles, take advantage of `UILocalizedIndexedCollation`.
 
 Together, we can put an end to scroll view-induced repetitive stress injuries, and spend more time enjoying the finer things in life, like watching videos of pets playing with iPads.
-

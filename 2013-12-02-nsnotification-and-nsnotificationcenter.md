@@ -1,6 +1,6 @@
 ---
 title: "NSNotification &<br/>NSNotificationCenter"
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: popular
 excerpt: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
@@ -59,7 +59,7 @@ This is as true of humans as it is within a computer process. In Cocoa, there ar
     </tbody>
 </table>
 
-We've discussed the importance of how events are communicated in APIs previously in our [article on Key-Value Observing](http://nshipster.com/key-value-observing/). This week, we'll expand our look at the available options, with `NSNotificationCenter` & `NSNotification`.
+We've discussed the importance of how events are communicated in APIs previously in our [article on Key-Value Observing](https://nshipster.com/key-value-observing/). This week, we'll expand our look at the available options, with `NSNotificationCenter` & `NSNotification`.
 
 * * *
 
@@ -85,13 +85,13 @@ The `name` and `object` parameters of both methods are used to decide whether th
 
 > <sup>*</sup>See for yourself! An ordinary iOS app fires dozens of notifications just in the first second of being launched—many that you've probably never heard of before, nor will ever have to think about again.
 
-~~~{swift}
+```swift
 let center = NSNotificationCenter.defaultCenter()
 center.addObserverForName(nil, object: nil, queue: nil) { notification in
     print("\(notification.name): \(notification.userInfo ?? [:])")
 }
-~~~
-~~~{objective-c}
+```
+```objc
 NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 [center addObserverForName:nil
                     object:nil
@@ -100,7 +100,7 @@ NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 {
      NSLog(@"%@", notification.name);
 }];
-~~~
+```
 
 ### Removing Observers
 
@@ -118,7 +118,7 @@ Notification names are generally defined as string constants. Like any string co
 
 Keys for `userInfo` should likewise be defined as string constants. It's important to clearly document the expected kinds of values for each key, since the compiler can't enforce constraints on dictionaries the same way it can for an object. 
 
-~~~{swift}
+```swift
 class FooController : UIViewController {
     enum Notifications {
         static let FooDidBar    = "XXFooDidBarNotification"
@@ -127,14 +127,14 @@ class FooController : UIViewController {
 
     // ...
 }
-~~~
-~~~{objective-c}
+```
+```objc
 // Foo.h
 extern NSString * const XXFooDidBarNotification;
 
 // Foo.m
 NSString * const XXFooDidBarNotification = @"XXFooDidBarNotification";
-~~~
+```
 
 Notifications are posted with `–postNotificationName:object:userInfo:` or its convenience method `–postNotificationName:object:`, which passes `nil` for `userInfo`. `–postNotification:` is also available, but it's generally preferable to have the notification object creation handled by the method itself.
 
@@ -144,25 +144,25 @@ Since notification dispatch happens on the posting thread, it may be necessary t
 
 ## KVO != NSNotificationCenter
 
-Something that often slips up developers is how similar the method signatures for [Key-Value Observing](http://nshipster.com/key-value-observing/) are to those of `NSNotificationCenter`:
+Something that often slips up developers is how similar the method signatures for [Key-Value Observing](https://nshipster.com/key-value-observing/) are to those of `NSNotificationCenter`:
 
 #### Key-Value Observing
 
-~~~{swift}
+```swift
 func addObserver(observer: NSObject, forKeyPath keyPath: String, 
     options: NSKeyValueObservingOptions, 
     context: UnsafeMutablePointer<Void>)
-~~~
-~~~{objective-c}
+```
+```objc
 - (void)addObserver:(NSObject *)observer
          forKeyPath:(NSString *)keyPath
             options:(NSKeyValueObservingOptions)options
             context:(void *)context
-~~~
+```
 
 #### NSNotificationCenter
 
-~~~{swift}
+```swift
 func addObserver(observer: AnyObject, 
     selector aSelector: Selector,
     name aName: String?, 
@@ -172,8 +172,8 @@ func addObserverForName(name: String?,
     object obj: AnyObject?,
     queue: NSOperationQueue?, 
     usingBlock block: (NSNotification) -> Void) -> NSObjectProtocol
-~~~
-~~~{objective-c}
+```
+```objc
 - (void)addObserver:(id)notificationObserver
            selector:(SEL)notificationSelector
                name:(NSString *)notificationName
@@ -183,7 +183,7 @@ func addObserverForName(name: String?,
                   object:(id)obj
                    queue:(NSOperationQueue *)queue
               usingBlock:(void (^)(NSNotification *))block
-~~~
+```
 
 **Key-Value Observing adds observers for keypaths, while NSNotificationCenter adds observers for notifications.** Keep this distinction clear in your mind, and proceed to use both APIs confidently.
 

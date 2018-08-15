@@ -1,6 +1,6 @@
 ---
 title: NSValueTransformer
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Of all the Foundation classes, NSValueTransformer is perhaps the one that fared the worst in the shift from OS X to iOS. But you know what? It's ripe for a comeback. With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application."
@@ -25,7 +25,7 @@ But you know what? `NSValueTransformer` is ripe for a comeback. With a little bi
 
 A typical implementation would look something like this:
 
-~~~{swift}
+```swift
 class ClassNameTransformer: NSValueTransformer {
 
     override class func transformedValueClass() -> AnyClass {
@@ -41,9 +41,9 @@ class ClassNameTransformer: NSValueTransformer {
 		return NSStringFromClass(type)
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @interface ClassNameTransformer: NSValueTransformer {}
 @end
 
@@ -62,11 +62,11 @@ class ClassNameTransformer: NSValueTransformer {
     return (value == nil) ? nil : NSStringFromClass([value class]);
 }
 @end
-~~~
+```
 
 `NSValueTransformer` is rarely initialized directly. Instead, it follows a pattern familiar to fans of `NSPersistentStore` or `NSURLProtocol`, where a class is registered, and instances are created from a manager--except in this case, you register the _instance_ to act as a singleton (with a particular name):
 
-~~~{swift}
+```swift
 let ClassNameTransformerName = "ClassNameTransformer"
 
 // Set the value transformer
@@ -74,9 +74,9 @@ NSValueTransformer.setValueTransformer(ClassNameTransformer(), forName: ClassNam
 
 // Get the value transformer
 let valueTransformer = NSValueTransformer(forName: ClassNameTransformerName)
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSString * const ClassNameTransformerName = @"ClassNameTransformer";
 
 // Set the value transformer
@@ -84,7 +84,7 @@ NSString * const ClassNameTransformerName = @"ClassNameTransformer";
 
 // Get the value transformer
 NSValueTransformer *valueTransformer = [NSValueTransformer valueTransformerForName:ClassNameTransformerName];
-~~~
+```
 
 Typically, the singleton instance would be registered in the `+initialize` method of the value transformer subclass, so it could be used without further setup.
 
@@ -94,7 +94,7 @@ In this age of blocks, we want--nay, _demand_--a way to declare functionality in
 
 Nothing [a little metaprogramming](https://github.com/mattt/TransformerKit/blob/master/TransformerKit/NSValueTransformer%2BTransformerKit.m#L36) can't fix. Behold:
 
-~~~{swift}
+```swift
 let TKCapitalizedStringTransformerName = "TKCapitalizedStringTransformerName"
 
 NSValueTransformer.registerValueTransformerWithName(TKCapitalizedStringTransformerName,
@@ -102,8 +102,8 @@ NSValueTransformer.registerValueTransformerWithName(TKCapitalizedStringTransform
         guard let str = obj as? String else { return nil }
 		return str.capitalizedString
 }
-~~~
-~~~{objective-c}
+```
+```objc
 NSString * const TKCapitalizedStringTransformerName = @"TKCapitalizedStringTransformerName";
 
 [NSValueTransformer registerValueTransformerWithName:TKCapitalizedStringTransformerName
@@ -111,7 +111,7 @@ NSString * const TKCapitalizedStringTransformerName = @"TKCapitalizedStringTrans
 returningTransformedValueWithBlock:^id(id value) {
   return [value capitalizedString];
 }];
-~~~
+```
 
 Not to break the 4th wall or anything, but in the middle of writing this article, I was compelled to see what could be done to improve the experience of `NSValueTransformer`. What I came up with was [TransformerKit](https://github.com/mattt/TransformerKit).
 

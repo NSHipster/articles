@@ -1,6 +1,6 @@
 ---
 title: Clang Diagnostics
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang."
 status:
@@ -17,13 +17,13 @@ Clang is the C / Objective-C front-end to the LLVM compiler. It has a deep under
 
 That amazing readout you get when you "Build & Analyze" (`⌘⇧B`) is a function of the softer, more contemplative side of Clang: its code diagnostics.
 
-In our article about [`#pragma`](http://nshipster.com/pragma/), we quipped:
+In our article about [`#pragma`](https://nshipster.com/pragma/), we quipped:
 
 > Pro tip: Try setting the `-Weverything` flag and checking the "Treat Warnings as Errors" box your build settings. This turns on Hard Mode in Xcode.
 
 Now, we stand by this advice, and encourage other developers to step up their game and treat build warnings more seriously. However, there are some situations in which you and Clang reach an impasse. For example, consider the following `switch` statement:
 
-~~~{objective-c}
+```objc
 switch (style) {
     case UITableViewCellStyleDefault:
     case UITableViewCellStyleValue1:
@@ -33,13 +33,13 @@ switch (style) {
     default:
         return;
 }
-~~~
+```
 
 When certain flags are enabled, Clang will complain that the "default label in switch which covers all enumeration values". However, if we _know_ that, zooming out into a larger context, `style` is (for better or worse) derived from an external representation (e.g. JSON resource) that allows for unconstrained `NSInteger` values, the `default` case is a necessary safeguard. The only way to insist on this inevitability is to use `#pragma` to ignore a warning flag temporarily:
 
 > `push` & `pop` are used to save and restore the compiler state, similar to Core Graphics or OpenGL contexts.
 
-~~~{objective-c}
+```objc
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wcovered-switch-default"
 switch (style) {
@@ -52,16 +52,16 @@ switch (style) {
         return;
 }
 #pragma clang diagnostic pop
-~~~
+```
 
 > Again, and this cannot be stressed enough, Clang is right at least 99% of the time. Actually fixing an analyzer warning is _strongly_ preferred to ignoring it. Use `#pragma clang diagnostic ignored` as a method of last resort.
 
 This week, as a public service, we've compiled a (mostly) comprehensive list of Clang warning strings and their associated flags, which can be found here:
 
-**[F\*\*\*ingClangWarnings.com](http://fuckingclangwarnings.com)**
+**[ClangWarnings.com](https://clangwarnings.com)**
 
 You can also find the compiler and analyzer flags for any warning you might encounter by `^`-Clicking the corresponding entry in the Xcode Issue Navigator and selecting "Reveal in Log". (If this option is disabled, try building the project again).
 
-* * *
+---
 
-Corrections? Additions? Open a [Pull Request](https://github.com/mattt/fuckingclangwarnings.com/pulls) to submit your change. Any help would be greatly appreciated.
+Corrections? Additions? Open a [Pull Request](https://github.com/NSHipster/clangwarnings.com/pulls) to submit your change. Any help would be greatly appreciated.

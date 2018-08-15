@@ -1,6 +1,6 @@
 ---
 title: NSIncrementalStore
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
 status:
@@ -24,7 +24,7 @@ And yet, `NSIncrementalStore` is arguably the most important thing to come out o
 
 For those of you not as well-versed in Core Data, here's some background:
 
-[Core Data](http://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) is Apple's framework for object relational mapping. It's used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that's because it solves complex problems, covering a decades-worth of one-offs and edge cases.
+[Core Data](https://developer.apple.com/library/mac/#documentation/cocoa/Conceptual/CoreData/cdProgrammingGuide.html) is Apple's framework for object relational mapping. It's used in at least half of all of the first-party apps on Mac and iOS, as well as thousands of other third-party apps. Core Data is complex, but that's because it solves complex problems, covering a decades-worth of one-offs and edge cases.
 
 This is all to say that Core Data is something you should probably use in your application.
 
@@ -40,7 +40,7 @@ With `NSIncrementalStore`, developers now have a sanctioned, reasonable means to
 
 `+initialize` is automatically called the first time a class is loaded, so this is a good place to register with `NSPersistentStoreCoordinator`:
 
-~~~{swift}
+```swift
 class CustomIncrementalStore: NSIncrementalStore {
     override class func initialize() {
         NSPersistentStoreCoordinator.registerStoreClass(self, forStoreType:self.type)
@@ -50,10 +50,9 @@ class CustomIncrementalStore: NSIncrementalStore {
         return NSStringFromClass(self)
     }
 }
-~~~
+```
 
-
-~~~{objective-c}
+```objc
 + (void)initialize {
   [NSPersistentStoreCoordinator registerStoreClass:self forStoreType:[self type]];
 }
@@ -61,13 +60,13 @@ class CustomIncrementalStore: NSIncrementalStore {
 + (NSString *)type {
   return NSStringFromClass(self);
 }
-~~~
+```
 
 ### `-loadMetadata:`
 
 `loadMetadata:` is where the incremental store has a chance to configure itself. There is, however, a bit of Kabuki theater boilerplate that's necessary to get everything set up. Specifically, you need to set a UUID for the store, as well as the store type. Here's what that looks like:
 
-~~~{swift}
+```swift
 override func loadMetadata(error: NSErrorPointer) -> Bool {
     self.metadata = [
         NSStoreUUIDKey: NSProcessInfo().globallyUniqueString,
@@ -76,14 +75,14 @@ override func loadMetadata(error: NSErrorPointer) -> Bool {
 
     return true
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSMutableDictionary *mutableMetadata = [NSMutableDictionary dictionary];
 [mutableMetadata setValue:[[NSProcessInfo processInfo] globallyUniqueString] forKey:NSStoreUUIDKey];
 [mutableMetadata setValue:[[self class] type] forKey:NSStoreTypeKey];
 [self setMetadata:mutableMetadata];
-~~~
+```
 
 ### `-executeRequest:withContext:error:`
 
@@ -135,13 +134,13 @@ Finally, this method is called before `executeRequest:withContext:error:` with a
 
 This usually corresponds with a write to the persistence layer, such as an `INSERT` statement in SQL. If, for example, the row corresponding to the object had an auto-incrementing `id` column, you could generate an objectID with:
 
-~~~{swift}
+```swift
 self.newObjectIDForEntity(entity, referenceObject: rowID)
-~~~
+```
 
-~~~{objective-c}
+```objc
 [self newObjectIDForEntity:entity referenceObject:[NSNumber numberWithUnsignedInteger:rowID]];
-~~~
+```
 
 ## Roll Your Own Core Data Backend
 
@@ -159,6 +158,6 @@ What this means is that you can now write apps that communicate with a webservic
 
 Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.
 
-* * *
+---
 
 Even though `NSIncrementalStore` has been around since iOS 5, we're still a long way from even beginning to realize its full potential. The future is insanely bright, so you best don your aviators, grab an iced latte and start coding something amazing.

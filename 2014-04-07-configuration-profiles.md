@@ -1,6 +1,6 @@
 ---
 title: Configuration Profiles
-author: Mattt Thompson
+author: Mattt
 category: ""
 excerpt: "One of the major criticisms of iOS as a platform is how locked down it is. iOS Configuration Profiles offer an interesting mechanism to work around these restrictions."
 status:
@@ -43,7 +43,7 @@ There are several ways to deploy configuration profiles:
 
 > In addition to deploying configuration profiles, the [Apple Configurator](https://itunes.apple.com/us/app/apple-configurator/id434433123?mt=12) can generate profiles, as an alternative to hand-writing XML yourself.
 
-![iOS Configurator - Generate]({{ site.asseturl }}/ios-configurator-generate.png)
+![iOS Configurator - Generate]({% asset ios-configurator-generate.png @path %})
 
 ## Use Cases
 
@@ -69,7 +69,7 @@ Just as EOF / WOFF / SVG fonts allow typefaces to be distributed over the web, t
 
 ### Enhancing Security
 
-Security has quickly become a killer feature for apps, as discussed in our article about [Multipeer Connectivity](http://nshipster.com/multipeer-connectivity/).
+Security has quickly become a killer feature for apps, as discussed in our article about [Multipeer Connectivity](https://nshipster.com/multipeer-connectivity/).
 
 Perhaps configuration profiles, with the ability to embed certificates and single sign-on credentials, could add another level of security to communication apps.
 

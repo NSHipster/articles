@@ -4,8 +4,7 @@ author: Nate Cook
 category: Cocoa
 excerpt: "Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected."
 status:
-    swift: 3.0
-    reviewed: December 24, 2016
+    swift: 1.0
 ---
 
 Beneath the smooth glass of each shiny iPhone, nestled on a logic board between touch screen controllers and Apple-designed SoCs, the gyroscope and accelerometer sit largely neglected.
@@ -22,7 +21,7 @@ Both accelerometer and gyroscope data are presented in terms of three axes that 
 
 The composited device motion data are presented in a few different ways, each with their own uses, as we'll see below.
 
-![Device X-, Y-, and Z-axes]({{ site.asseturl }}/cmdm-axes.png)
+![Device X-, Y-, and Z-axes]({% asset cmdm-axes.png @path %})
 
 ## CMMotionManager
 
@@ -36,7 +35,7 @@ To keep performance at the highest level, Apple recommends using a single shared
 
 ```swift
 let manager = CMMotionManager()
-if manager.isGyroAvailable {
+if manager.gyroAvailable {
      // ...
 }
 ```
@@ -49,7 +48,7 @@ if manager.isGyroAvailable {
 manager.gyroUpdateInterval = 0.1
 ```
 
-This is a `TimeInterval`, so specify your update time in seconds: lower for smoother responsiveness, higher for less CPU usage.
+This is an `NSTimeInterval`, so specify your update time in seconds: lower for smoother responsiveness, higher for less CPU usage.
 
 #### Starting Updates to "pull" Data
 
@@ -62,7 +61,9 @@ After this call, `manager.gyroData` is accessible at any time with the device's 
 #### Starting Updates to "push" Data
 
 ```swift
-manager.startGyroUpdates(to: queue) { (data, error) in
+let queue = NSOperationQueue.mainQueue
+manager.startGyroUpdatesToQueue(queue) {
+    (data, error) in
     // ...
 }
 ```
@@ -84,19 +85,18 @@ Consider the following code:
 First, we check to make sure our device makes accelerometer data available, next we specify a very high update rate, and then we begin updates to a closure that will rotate a `UIImageView` property:
 
 ```swift
-if manager.isAccelerometerAvailable {
+if manager.accelerometerAvailable {
     manager.accelerometerUpdateInterval = 0.01
-    manager.startAccelerometerUpdates(to: .main) {
-        [weak self] (data: CMAccelerometerData?, error: Error?) in
-        if let acceleration = data?.acceleration {
-            let rotation = atan2(acceleration.x, acceleration.y) - M_PI
-            self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
-        }
+    manager.startAccelerometerUpdatesToQueue(NSOperationQueue.mainQueue()) {
+        [weak self] (data: CMAccelerometerData!, error: NSError!) in
+
+        let rotation = atan2(data.acceleration.x, data.acceleration.y) - M_PI
+        self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
     }
 }
 ```
 
-```objective-c
+```objc
 RotationViewController * __weak weakSelf = self;
 if (manager.accelerometerAvailable) {
     manager.accelerometerUpdateInterval = 0.01f;
@@ -110,9 +110,9 @@ if (manager.accelerometerAvailable) {
 
 Each packet of `CMAccelerometerData` includes an `x`, `y`, and `z` value—each of these shows the amount of acceleration in Gs (where G is one unit of gravity) for that axis. That is, if your device were stationary and straight up in portrait orientation, it would have acceleration `(0, -1, 0)`; laying flat on its back on the table would be `(0, 0, -1)`; and tilted forty-five degrees to the right would be something like `(0.707, -0.707, 0)`.
 
-We're calculating the rotation by computing the [`arctan2`](http://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
+We're calculating the rotation by computing the [`arctan2`](https://en.wikipedia.org/wiki/Atan2) of the `x` and `y` components from the accelerometer data and then using that rotation in a `CGAffineTransform`. Our image should stay right-side up no matter how the phone is turned—here it is in a hypothetical app for the *National Air & Space Museum* (my favorite museum as a kid):
 
-![Rotation with accelerometer]({{ site.asseturl }}/cmdm-accelerometer.gif)
+![Rotation with accelerometer]({% asset cmdm-accelerometer.gif @path %})
 
 The results are not terribly satisfactory—the image movement is jittery, and moving the device in space affects the accelerometer as much as or even more than rotating. These issues *could* be mitigated by sampling multiple readings and averaging them together, but instead let's look at what happens when we involve the gyroscope.
 
@@ -123,19 +123,18 @@ The results are not terribly satisfactory—the image movement is jittery, and m
 Rather than use the raw gyroscope data that we would get with `startGyroUpdates...`, let's get composited gyroscope *and* accelerometer data from the `deviceMotion` data type. Using the gyroscope, Core Motion separates user movement from gravitational acceleration and presents each as its own property of the `CMDeviceMotion` instance that we receive in our handler. The code is very similar to our first example:
 
 ```swift
-if manager.isDeviceMotionAvailable {
+if manager.deviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
-    manager.startDeviceMotionUpdates(to: queue) {
-        [weak self] (data: CMDeviceMotion?, error: Error?) in
-        if let gravity = data?.gravity {
-            let rotation = atan2(gravity.x, gravity.y) - M_PI
-            self?.imageView.transform = CGAffineTransform(rotationAngle: rotation)
-        }
+    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
+        [weak self] (data: CMDeviceMotion!, error: NSError!) in
+
+        let rotation = atan2(data.gravity.x, data.gravity.y) - M_PI
+        self?.imageView.transform = CGAffineTransformMakeRotation(CGFloat(rotation))
     }
 }
 ```
 
-```objective-c
+```objc
 RotationViewController * __weak weakSelf = self;
 if (manager.deviceMotionAvailable) {
     manager.deviceMotionUpdateInterval = 0.01f;
@@ -149,7 +148,7 @@ if (manager.deviceMotionAvailable) {
 
 Much better!
 
-![Rotation with gravity]({{ site.asseturl }}/cmdm-gravity.gif)
+![Rotation with gravity]({% asset cmdm-gravity.gif @path %})
 
 ## UIClunkController
 
@@ -158,19 +157,19 @@ We can also use the other, non-gravity portion of this composited gyro/accelerat
 Remember that the X-axis runs laterally through the device in our hand, with negative values to the left. If we sense a *user* acceleration to the left of more than 2.5 Gs, that will be the cue to pop our view controller from the stack. The implementation is only a couple lines different from our previous example:
 
 ```swift
-if manager.isDeviceMotionAvailable {
+if manager.deviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.02
-    manager.startDeviceMotionUpdates(to: .main) {
-        [weak self] (data: CMDeviceMotion?, error: Error?) in
-        if let x = data?.userAcceleration.x,
-            x < -2.5 {
-            self?.navigationController?.popViewController(animated: true)
+    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
+        [weak self] (data: CMDeviceMotion!, error: NSError!) in
+
+        if data.userAcceleration.x < -2.5 {
+            self?.navigationController?.popViewControllerAnimated(true)
         }
     }
 }
 ```
 
-```objective-c
+```objc
 ClunkViewController * __weak weakSelf = self;
 if (manager.deviceMotionAvailable) {
     manager.deviceMotionUpdateInterval = 0.01f;
@@ -185,7 +184,7 @@ if (manager.deviceMotionAvailable) {
 
 And it works like a charm—tapping the device in a detail view immediately takes us back to the list of exhibits:
 
-![Clunk to go back]({{ site.asseturl }}/cmdm-clunk.gif)
+![Clunk to go back]({% asset cmdm-clunk.gif @path %})
 
 
 
@@ -197,10 +196,10 @@ Better acceleration data isn't the only thing we gain by including gyroscope dat
 
 You can think of a reference frame as the resting orientation of the device from which an attitude is calculated. All four possible reference frames describe the device laying flat on a table, with increasing specificity about the direction it's pointing.
 
-- `CMAttitudeReferenceFrame.xArbitraryZVertical` describes a device laying flat (vertical Z-axis) with an "arbitrary" X-axis. In practice, the X-axis is fixed to the orientation of the device when you *first* start device motion updates.
-- `CMAttitudeReferenceFrame.xArbitraryCorrectedZVertical` is essentially the same but uses the magnetometer to correct possible variation in the gyroscope's measurement over time. Using the magnetometer adds a CPU (and therefore battery) cost.
-- `CMAttitudeReferenceFrame.xMagneticNorthZVertical` describes a device laying flat, with its X-axis (i.e., the right side of the device) pointed toward magnetic north. This setting may require your user to perform that figure-eight motion with their device to calibrate the magnetometer.
-- `CMAttitudeReferenceFrame.xTrueNorthZVertical` is the same as the last, but this adjusts for the magnetic/true north discrepancy and therefore requires location data in addition to the magnetometer.
+- `CMAttitudeReferenceFrameXArbitraryZVertical` describes a device laying flat (vertical Z-axis) with an "arbitrary" X-axis. In practice, the X-axis is fixed to the orientation of the device when you *first* start device motion updates.
+- `CMAttitudeReferenceFrameXArbitraryCorrectedZVertical` is essentially the same but uses the magnetometer to correct possible variation in the gyroscope's measurement over time. Using the magnetometer adds a CPU (and therefore battery) cost.
+- `CMAttitudeReferenceFrameXMagneticNorthZVertical` describes a device laying flat, with its X-axis (i.e., the right side of the device) pointed toward magnetic north. This setting may require your user to perform that figure-eight motion with their device to calibrate the magnetometer.
+- `CMAttitudeReferenceFrameXTrueNorthZVertical` is the same as the last, but this adjusts for the magnetic/true north discrepancy and therefore requires location data in addition to the magnetometer.
 
 For our purposes, the default "arbitrary" reference frame will be fine - you'll see why in a moment.
 
@@ -214,18 +213,18 @@ Of the three attitude representations, Euler angles are the most readily underst
 
 Lastly, let's try using the device's attitude to enable a new interaction for a flash-card app, designed to be used by two study buddies. Instead of manually switching between the prompt and the answer, we'll automatically switch the view as the device turns around, so the quizzer sees the answer while the person being quizzed only sees the prompt.
 
-Figuring out this switch from the reference frame would be tricky. To know which angles to monitor, we would somehow need to take into account the starting orientation of the device and then determine which direction the device is pointing. Instead, we can save a `CMAttitude` instance and use it as the "zero point" for an adjusted set of Euler angles, calling the `multiply(byInverseOf:)` method to translate all future attitude updates.
+Figuring out this switch from the reference frame would be tricky. To know which angles to monitor, we would somehow need to take into account the starting orientation of the device and then determine which direction the device is pointing. Instead, we can save a `CMAttitude` instance and use it as the "zero point" for an adjusted set of Euler angles, calling the `multiplyByInverseOfAttitude()` method to translate all future attitude updates.
 
 When the quizzer taps the button to begin the quiz, we first configure the interaction—note the "pull" of the deviceMotion for `initialAttitude`:
 
 ```swift
 // get magnitude of vector via Pythagorean theorem
-func magnitude(from attitude: CMAttitude) -> Double {
+func magnitudeFromAttitude(attitude: CMAttitude) -> Double {
     return sqrt(pow(attitude.roll, 2) + pow(attitude.yaw, 2) + pow(attitude.pitch, 2))
 }
 
 // initial configuration
-var initialAttitude = manager.deviceMotion!.attitude
+var initialAttitude = manager.deviceMotion.attitude
 var showingPrompt = false
 
 // trigger values - a gap so there isn't a flicker zone
@@ -233,7 +232,7 @@ let showPromptTrigger = 1.0
 let showAnswerTrigger = 0.8
 ```
 
-```objective-c
+```objc
 // --- class method to get magnitude of vector via Pythagorean theorem
 + (double)magnitudeFromAttitude:(CMAttitude *)attitude {
     return sqrt(pow(attitude.roll, 2.0f) + pow(attitude.yaw, 2.0f) + pow(attitude.pitch, 2.0f));
@@ -252,37 +251,36 @@ double showAnswerTrigger = 0.8f;
 Then, in our now familiar call to `startDeviceMotionUpdates`, we calculate the magnitude of the vector described by the three Euler angles and use that as a trigger to show or hide the prompt view:
 
 ```swift
-if manager.isDeviceMotionAvailable {
-    manager.startDeviceMotionUpdates(to: .main) {
-        [weak self] (data: CMDeviceMotion?, error: Error?) in
-
-        guard let data = data else { return }
+if manager.deviceMotionAvailable {
+    manager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
+        [weak self] (data: CMDeviceMotion!, error: NSError!) in
 
         // translate the attitude
-        data.attitude.multiply(byInverseOf: initialAttitude)
+        data.attitude.multiplyByInverseOfAttitude(initialAttitude)
 
         // calculate magnitude of the change from our initial attitude
-        let magnitude = magnitude(from: data.attitude) ?? 0
+        let magnitude = magnitudeFromAttitude(data.attitude) ?? 0
 
         // show the prompt
-        if !showingPrompt && magnitude > showPromptTrigger,
-            let promptViewController = self?.storyboard?.instantiateViewController(withIdentifier: "PromptViewController") as? PromptViewController 
-        {
-            showingPrompt = true
-            
-            promptViewController.modalTransitionStyle = .crossDissolve
-            self?.present(promptViewController, animated: true)
+        if !showingPrompt && magnitude > showPromptTrigger {
+            if let promptViewController = self?.storyboard?.instantiateViewControllerWithIdentifier("PromptViewController") as? PromptViewController {
+                showingPrompt = true
+
+                promptViewController.modalTransitionStyle = UIModalTransitionStyle.CrossDissolve
+                self!.presentViewController(promptViewController, animated: true, completion: nil)
+            }
         }
 
         // hide the prompt
         if showingPrompt && magnitude < showAnswerTrigger {
             showingPrompt = false
-            self?.dismiss(animated: true)
+            self?.dismissViewControllerAnimated(true, completion: nil)
         }
     }
 }
 ```
-```objective-c
+
+```objc
 FacingViewController * __weak weakSelf = self;
 if (manager.deviceMotionAvailable) {
     [manager startDeviceMotionUpdatesToQueue:[NSOperationQueue mainQueue]
@@ -314,31 +312,31 @@ if (manager.deviceMotionAvailable) {
 
 Having implemented all that, let's take a look at the interaction. As the device rotates, the display automatically switches views and the quizee never sees the answer:
 
-![Prompt by turning the device]({{ site.asseturl }}/cmdm-prompt.gif)
+![Prompt by turning the device]({% asset cmdm-prompt.gif @path %})
 
 ### Further Reading
 
-I skimmed over the [quaternion](http://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation) and [rotation matrix](http://en.wikipedia.org/wiki/Rotation_matrix) components of `CMAttitude` earlier, but they are not without intrigue. The quaternion, in particular, has [an interesting history](http://en.wikipedia.org/wiki/History_of_quaternions), and will bake your noodle if you think about it long enough.
+I skimmed over the [quaternion](https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation) and [rotation matrix](https://en.wikipedia.org/wiki/Rotation_matrix) components of `CMAttitude` earlier, but they are not without intrigue. The quaternion, in particular, has [an interesting history](https://en.wikipedia.org/wiki/History_of_quaternions), and will bake your noodle if you think about it long enough.
 
 
 ## Queueing Up
 
-To keep the code examples readable, we've been sending all our `CoreMotionManager` updates to the main queue. As a best practice, it would be better to have these updates on their own queue so they can't slow down user interaction, but then we'll need to get back on the main queue to update user interface elements. [`NSOperationQueue`](http://nshipster.com/nsoperation/) makes this easy with its `addOperationWithBlock` method:
+To keep the code examples readable, we've been sending all our `CoreMotionManager` updates to the main queue. As a best practice, it would be better to have these updates on their own queue so they can't slow down user interaction, but then we'll need to get back on the main queue to update user interface elements. [`NSOperationQueue`](https://nshipster.com/nsoperation/) makes this easy with its `addOperationWithBlock` method:
 
 ```swift
-let queue = OperationQueue()
-manager.startDeviceMotionUpdates(to: queue) {
-    [weak self] (data: CMDeviceMotion?, error: Error?) in
+let queue = NSOperationQueue()
+manager.startDeviceMotionUpdatesToQueue(queue) {
+    [weak self] (data: CMDeviceMotion!, error: NSError!) in
 
     // motion processing here
 
-    OperationQueue.main.addOperation {
+    NSOperationQueue.mainQueue().addOperationWithBlock {
         // update UI here
     }
 }
 ```
 
-```objective-c
+```objc
 NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 [manager startDeviceMotionUpdatesToQueue:queue
                              withHandler:
@@ -353,4 +351,4 @@ NSOperationQueue *queue = [[NSOperationQueue alloc] init];
 
 ----
 
-A final note: Clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.
+As a final note, clearly not all interactions made possible by Core Motion are good ones. Navigation through motion can be fun but also hard to discover or easy to accidentally trigger; purposeless animations can make it harder to focus on the task at hand. Prudent developers will skip over gimmicks that distract and find ways to use device motion that enrich their apps and delight their users.

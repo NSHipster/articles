@@ -1,6 +1,6 @@
 ---
 title: NSPredicate
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster, popular
 excerpt: "NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."
@@ -11,7 +11,7 @@ status:
 
 `NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.
 
-It's easier to show `NSPredicate` in use, rather than talk about it in the abstract, so we're going to revisit the example data set used in the [`NSSortDescriptor` article](http://nshipster.com/nssortdescriptor/):
+It's easier to show `NSPredicate` in use, rather than talk about it in the abstract, so we're going to revisit the example data set used in the [`NSSortDescriptor` article](https://nshipster.com/nssortdescriptor/):
 
 | `firstName` | `lastName` | `age` |
 |-------------|------------|-------|
@@ -20,7 +20,7 @@ It's easier to show `NSPredicate` in use, rather than talk about it in the abstr
 | Charlie     | Smith      | 33    |
 | Quentin     | Alberts    | 31    |
 
-~~~{swift}
+```swift
 class Person: NSObject {
     let firstName: String
     let lastName: String
@@ -55,9 +55,9 @@ let thirtiesPredicate = NSPredicate(format: "age >= 30")
 
 (people as NSArray).filteredArrayUsingPredicate(thirtiesPredicate)
 // ["Charlie Smith", "Quentin Alberts"]
-~~~
+```
 
-~~~{objective-c}
+```objc
 @interface Person : NSObject
 @property NSString *firstName;
 @property NSString *lastName;
@@ -99,7 +99,7 @@ NSLog(@"Smiths: %@", [people filteredArrayUsingPredicate:smithPredicate]);
 
 // ["Charlie Smith", "Quentin Alberts"]
 NSLog(@"30's: %@", [people filteredArrayUsingPredicate:thirtiesPredicate]);
-~~~
+```
 
 ## Using `NSPredicate` with Collections
 
@@ -122,35 +122,35 @@ Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUs
 > - `%@` is a var arg substitution for an object value—often a string, number, or date.
 > - `%K` is a var arg substitution for a key path.
 
-~~~{swift}
+```swift
 let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
 
 (people as NSArray).filteredArrayUsingPredicate(ageIs33Predicate)
 // ["Charlie Smith"]
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSPredicate *ageIs33Predicate = [NSPredicate predicateWithFormat:@"%K = %@", @"age", @33];
 
 // ["Charlie Smith"]
 NSLog(@"Age 33: %@", [people filteredArrayUsingPredicate:ageIs33Predicate]);
-~~~
+```
 
 > - `$VARIABLE_NAME` is a value that can be substituted with `NSPredicate -predicateWithSubstitutionVariables:`.
 
-~~~{swift}
+```swift
 let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
 
 (people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
 // ["Alice Smith", "Quentin Alberts"]
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSPredicate *namesBeginningWithLetterPredicate = [NSPredicate predicateWithFormat:@"(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)"];
 
 // ["Alice Smith", "Quentin Alberts"]
 NSLog(@"'A' Names: %@", [people filteredArrayUsingPredicate:[namesBeginningWithLetterPredicate predicateWithSubstitutionVariables:@{@"letter": @"A"}]]);
-~~~
+```
 
 ### Basic Comparisons
 
@@ -205,34 +205,34 @@ We saw that `AND` & `OR` can be used in predicate format strings to create compo
 
 For example, the following predicates are equivalent:
 
-~~~{swift}
+```swift
 NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(format: "age > 25"), NSPredicate(format: "firstName = %@", "Quentin")])
 
 NSPredicate(format: "(age > 25) AND (firstName = %@)", "Quentin")
-~~~
+```
 
-~~~{objective-c}
+```objc
 [NSCompoundPredicate andPredicateWithSubpredicates:@[[NSPredicate predicateWithFormat:@"age > 25"], [NSPredicate predicateWithFormat:@"firstName = %@", @"Quentin"]]];
 
 [NSPredicate predicateWithFormat:@"(age > 25) AND (firstName = %@)", @"Quentin"];
-~~~
+```
 
 While the syntax string literal is certainly easier to type, there are occasions where you may need to combine existing predicates. In these cases, `NSCompoundPredicate -andPredicateWithSubpredicates:` & `-orPredicateWithSubpredicates:` is the way to go.
 
 ## `NSComparisonPredicate`
 
-Similarly, if after reading [last week's article](http://nshipster.com/nsexpression/) you now find yourself with more `NSExpression` objects than you know what to do with, `NSComparisonPredicate` can help you out.
+Similarly, if after reading [last week's article](https://nshipster.com/nsexpression/) you now find yourself with more `NSExpression` objects than you know what to do with, `NSComparisonPredicate` can help you out.
 
 Like `NSCompoundPredicate`, `NSComparisonPredicate` constructs an `NSPredicate` from subcomponents—in this case, `NSExpression`s on the left and right hand sides.
 Analyzing its class constructor provides a glimpse into the way `NSPredicate` format strings are parsed:
 
-~~~{objective-c}
+```objc
 + (NSPredicate *)predicateWithLeftExpression:(NSExpression *)lhs
                              rightExpression:(NSExpression *)rhs
                                     modifier:(NSComparisonPredicateModifier)modifier
                                         type:(NSPredicateOperatorType)type
                                      options:(NSUInteger)options
-~~~
+```
 
 #### Parameters
 
@@ -244,7 +244,7 @@ Analyzing its class constructor provides a glimpse into the way `NSPredicate` fo
 
 ### `NSComparisonPredicate` Types
 
-~~~{swift}
+```swift
 public enum NSPredicateOperatorType : UInt {
     case LessThanPredicateOperatorType
     case LessThanOrEqualToPredicateOperatorType
@@ -261,9 +261,9 @@ public enum NSPredicateOperatorType : UInt {
     case ContainsPredicateOperatorType
     case BetweenPredicateOperatorType
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 enum {
    NSLessThanPredicateOperatorType = 0,
    NSLessThanOrEqualToPredicateOperatorType,
@@ -282,7 +282,7 @@ enum {
 };
 
 typedef NSUInteger NSPredicateOperatorType;
-~~~
+```
 
 ### `NSComparisonPredicate` Options
 
@@ -295,23 +295,23 @@ typedef NSUInteger NSPredicateOperatorType;
 
 Finally, if you just can't be bothered to learn the `NSPredicate` format syntax, you can go through the motions with `NSPredicate +predicateWithBlock:`.
 
-~~~{swift}
+```swift
 let shortNamePredicate = NSPredicate { (evaluatedObject, _) in
     return (evaluatedObject as! Person).firstName.utf16.count <= 5
 }
 
 (people as NSArray).filteredArrayUsingPredicate(shortNamePredicate)
 // ["Alice Smith", "Bob Jones"]
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSPredicate *shortNamePredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
             return [[evaluatedObject firstName] length] <= 5;
         }];
 
 // ["Alice Smith", "Bob Jones"]
 NSLog(@"Short Names: %@", [people filteredArrayUsingPredicate:shortNamePredicate]);
-~~~
+```
 
 ...Alright, that whole dig on `predicateWithBlock:` as being the lazy way out wasn't _entirely_ charitable.
 

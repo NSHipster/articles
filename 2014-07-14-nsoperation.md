@@ -1,12 +1,12 @@
 ---
 title: NSOperation
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence. Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances."
 status:
-    swift: 3.0
-    reviewed: December 24, 2016
+    swift: 2.0
+    reviewed: September 15, 2015
 ---
 
 In life, there's always work to be done. Every day brings with it a steady stream of tasks and chores to fill the working hours of our existence.
@@ -15,7 +15,7 @@ Yet, no matter how burdened one's personal ToDo list becomes, it pales in compar
 
 Productivity is, as in life as it is in programming, a matter of scheduling and prioritizing and multi-tasking work in order to keep up appearances.
 
-The secret to making apps snappy is to offload as much unnecessary work to the background as possible, and in this respect, the modern Cocoa developer has two options: [Grand Central Dispatch](http://en.wikipedia.org/wiki/Grand_Central_Dispatch) and [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). This article will primarily focus on the latter, though it's important to note that the two are quite complementary (more on that later).
+The secret to making apps snappy is to offload as much unnecessary work to the background as possible, and in this respect, the modern Cocoa developer has two options: [Grand Central Dispatch](https://en.wikipedia.org/wiki/Grand_Central_Dispatch) and [`NSOperation`](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/NSOperation_class/Reference/Reference.html). This article will primarily focus on the latter, though it's important to note that the two are quite complementary (more on that later).
 
 * * *
 
@@ -23,13 +23,13 @@ The secret to making apps snappy is to offload as much unnecessary work to the b
 
 > For situations where it doesn't make sense to build out a custom `NSOperation` subclass, Foundation provides the concrete implementations [`NSBlockOperation`](https://developer.apple.com/library/ios/documentation/cocoa/reference/NSBlockOperation_class/Reference/Reference.html) and [`NSInvocationOperation`](https://developer.apple.com/library/mac/documentation/cocoa/reference/NSInvocationOperation_Class/Reference/Reference.html).
 
-Examples of tasks that lend themselves well to `NSOperation` include [network requests](https://github.com/AFNetworking/AFNetworking/blob/2.x/AFNetworking/AFURLConnectionOperation.h), image resizing, text processing, or any other repeatable, structured, long-running task that produces associated state or data.
+Examples of tasks that lend themselves well to `NSOperation` include [network requests](https://github.com/AFNetworking/AFNetworking/blob/master/AFNetworking/AFURLConnectionOperation.h), image resizing, text processing, or any other repeatable, structured, long-running task that produces associated state or data.
 
 But simply wrapping computation into an object doesn't do much without a little oversight. That's where `NSOperationQueue` comes in:
 
 ## NSOperationQueue
 
-`NSOperationQueue` regulates the concurrent execution of operations. It acts as a priority queue, such that operations are executed in a roughly [First-In-First-Out](http://en.wikipedia.org/wiki/FIFO) manner, with higher-priority (`NSOperation.queuePriority`) ones getting to jump ahead of lower-priority ones. `NSOperationQueue` can also limit the maximum number of concurrent operations to be executed at any given moment, using the `maxConcurrentOperationCount` property.
+`NSOperationQueue` regulates the concurrent execution of operations. It acts as a priority queue, such that operations are executed in a roughly [First-In-First-Out](https://en.wikipedia.org/wiki/FIFO) manner, with higher-priority (`NSOperation.queuePriority`) ones getting to jump ahead of lower-priority ones. `NSOperationQueue` can also limit the maximum number of concurrent operations to be executed at any given moment, using the `maxConcurrentOperationCount` property.
 
 > NSOperationQueue itself is backed by a Grand Central Dispatch queue, though that's a private implementation detail.
 
@@ -66,16 +66,16 @@ All operations may not be equally important. Setting the `queuePriority` propert
 
 ### NSOperationQueuePriority
 
-~~~{swift}
-public enum QueuePriority : Int {
-    case veryLow
-    case low
-    case normal
-    case high
-    case veryHigh
+```swift
+public enum NSOperationQueuePriority : Int {
+    case VeryLow
+    case Low
+    case Normal
+    case High
+    case VeryHigh
 }
-~~~
-~~~{objective-c}
+```
+```objc
 typedef NS_ENUM(NSInteger, NSOperationQueuePriority) {
     NSOperationQueuePriorityVeryLow = -8L,
     NSOperationQueuePriorityLow = -4L,
@@ -83,7 +83,7 @@ typedef NS_ENUM(NSInteger, NSOperationQueuePriority) {
     NSOperationQueuePriorityHigh = 4,
     NSOperationQueuePriorityVeryHigh = 8
 };
-~~~
+```
 
 ## Quality of Service
 
@@ -99,17 +99,17 @@ The following enumerated values are used to denote the nature and urgency of an 
 
 ### NSQualityOfService
 
-~~~{swift}
+```swift
 @available(iOS 8.0, OSX 10.10, *)
-public enum QualityOfService : Int {    
-    case userInteractive
-    case userInitiated
-    case utility
-    case background
-    case `default`
+public enum NSQualityOfService : Int {    
+    case UserInteractive
+    case UserInitiated
+    case Utility
+    case Background
+    case Default
 }
-~~~
-~~~{objective-c}
+```
+```objc
 typedef NS_ENUM(NSInteger, NSQualityOfService) {
     NSQualityOfServiceUserInteractive = 0x21,    
     NSQualityOfServiceUserInitiated = 0x19,    
@@ -117,35 +117,35 @@ typedef NS_ENUM(NSInteger, NSQualityOfService) {
     NSQualityOfServiceBackground = 0x09,
     NSQualityOfServiceDefault = -1
 } NS_ENUM_AVAILABLE(10_10, 8_0);
-~~~
+```
 
-- `.userInteractive`: User-interactive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
-- `.userInitiated`: User-initiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
-- `.utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
-- `.background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
-- `.default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
+- `.UserInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
+- `.UserInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
+- `.Utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
+- `.Background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
+- `.Default`: Default QoS indicates the absence of QoS information.  Whenever possible QoS information will be inferred from other sources.  If such inference is not possible, a QoS between UserInitiated and Utility will be used.
 
-~~~{swift}
-let backgroundOperation = Operation()
-backgroundOperation.queuePriority = .low
-backgroundOperation.qualityOfService = .background
+```swift
+let backgroundOperation = NSOperation()
+backgroundOperation.queuePriority = .Low
+backgroundOperation.qualityOfService = .Background
 
-let operationQueue = OperationQueue.main
+let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperation(backgroundOperation)
-~~~
-~~~{objective-c}
+```
+```objc
 NSOperation *backgroundOperation = [[NSOperation alloc] init];
 backgroundOperation.queuePriority = NSOperationQueuePriorityLow;
 backgroundOperation.qualityOfService = NSOperationQualityOfServiceBackground;
 
 [[NSOperationQueue mainQueue] addOperation:backgroundOperation];
-~~~
+```
 
 ## Asynchronous Operations
 
 Another change in iOS 8 / OS X Yosemite is the deprecation of the `concurrent` property in favor of the new `asynchronous` property.
 
-Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in its queue, or asynchronously.
+Originally, the `concurrent` property was used to distinguish between operations that performed all of their work in a single `main` method, and those that managed their own state while executing asynchronously. This property was also used to determine whether `NSOperationQueue` would execute a method in a separate thread. After `NSOperationQueue` was changed to run on an internal dispatch queue rather than manage threads directly, this aspect of the property was ignored. The new `asynchronous` property clears away the semantic cobwebs of `concurrent`, and is now the sole determination of whether an `NSOperation` should execute synchronously in `main`, or asynchronously.
 
 ## Dependencies
 
@@ -155,15 +155,16 @@ For example, to describe the process of downloading and resizing an image from a
 
 Expressed in code:
 
-~~~{swift}
-let networkingOperation: Operation = ...
-let resizingOperation: Operation = ...
+```swift
+let networkingOperation: NSOperation = ...
+let resizingOperation: NSOperation = ...
 resizingOperation.addDependency(networkingOperation)
 
-let operationQueue = OperationQueue.main
+let operationQueue = NSOperationQueue.mainQueue()
 operationQueue.addOperations([networkingOperation, resizingOperation], waitUntilFinished: false)
-~~~
-~~~{objective-c}
+```
+
+```objc
 NSOperation *networkingOperation = ...
 NSOperation *resizingOperation = ...
 [resizingOperation addDependency:networkingOperation];
@@ -171,7 +172,7 @@ NSOperation *resizingOperation = ...
 NSOperationQueue *operationQueue = [NSOperationQueue mainQueue];
 [operationQueue addOperation:networkingOperation];
 [operationQueue addOperation:resizingOperation];
-~~~
+```
 
 An operation will not be started until all of its dependencies return `true` for `finished`.
 
@@ -181,22 +182,23 @@ Make sure not to accidentally create a dependency cycle, such that A depends on 
 
 When an `NSOperation` finishes, it will execute its `completionBlock` exactly once. This provides a really nice way to customize the behavior of an operation when used in a model or view controller.
 
-~~~{swift}
-let operation = Operation()
+```swift
+let operation = NSOperation()
 operation.completionBlock = {
     print("Completed")
 }
 
-OperationQueue.main.addOperation(operation)
-~~~
-~~~{objective-c}
+NSOperationQueue.mainQueue().addOperation(operation)
+```
+
+```objc
 NSOperation *operation = ...;
 operation.completionBlock = ^{
     NSLog("Completed");
 };
 
 [[NSOperationQueue mainQueue] addOperation:operation];
-~~~
+```
 
 For example, you could set a completion block on a network operation to do something with the response data from the server once it's finished loading.
 

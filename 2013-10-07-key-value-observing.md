@@ -1,6 +1,6 @@
 ---
 title: Key-Value Observing
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tag: nshipster, popular
 excerpt: "Ask anyone who's been around the NSBlock a few times: Key-Value Observing has the _worst_ API in all of Cocoa. It's awkward, verbose, and confusing. And worst of all, its terrible API belies one of the most compelling features of the framework."
@@ -32,16 +32,16 @@ The main value proposition of KVO is rather compelling: any object can subscribe
 
 ## Subscribing
 
-Objects can have observers added for a particular key path, which, as described in [the KVC operators article](http://nshipster.com/kvc-collection-operators/), are dot-separated keys that specify a sequence of properties. Most of the time with KVO, these are just the top-level properties on the object.
+Objects can have observers added for a particular key path, which, as described in [the KVC operators article](https://nshipster.com/kvc-collection-operators/), are dot-separated keys that specify a sequence of properties. Most of the time with KVO, these are just the top-level properties on the object.
 
 The method used to add an observer is `–addObserver:forKeyPath:options:context:`:
 
-~~~{objective-c}
+```objc
 - (void)addObserver:(NSObject *)observer
          forKeyPath:(NSString *)keyPath
             options:(NSKeyValueObservingOptions)options
             context:(void *)context
-~~~
+```
 
 > - `observer`:  The object to register for KVO notifications. The observer must implement the key-value observing method observeValueForKeyPath:ofObject:change:context:.
 > - `keyPath`: The key path, relative to the receiver, of the property to observe. This value must not be `nil`.
@@ -73,18 +73,18 @@ Another aspect of KVO that lends to its ugliness is the fact that there is no wa
 
 Instead, all changes for observers are funneled through a single method—`-observeValueForKeyPath:ofObject:change:context:`:
 
-~~~{objective-c}
+```objc
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context
-~~~
+```
 
 Those parameters are the same as what were specified in `–addObserver:forKeyPath:options:context:`, with the exception of `change`, which are populated from whichever `NSKeyValueObservingOptions` `options` were used.
 
 A typical implementation of this method looks something like this:
 
-~~~{objective-c}
+```objc
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -94,7 +94,7 @@ A typical implementation of this method looks something like this:
     // ...
   }
 }
-~~~
+```
 
 Depending on how many kinds of objects are being observed by a single class, this method may also introduce `-isKindOfObject:` or `-respondsToSelector:` in order to definitively identify the kind of event being passed. However, the safest method is to do an equality check to `context`—especially when dealing with subclasses whose parents observe the same keypath.
 
@@ -102,13 +102,13 @@ Depending on how many kinds of objects are being observed by a single class, thi
 
 What makes a good `context` value? Here's a suggestion:
 
-~~~{objective-c}
+```objc
 static void * XXContext = &XXContext;
-~~~
+```
 
 It's that simple: a static value that stores its own pointer. It means nothing on its own, which makes it rather perfect for `<NSKeyValueObserving>`:
 
-~~~{objective-c}
+```objc
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -120,7 +120,7 @@ It's that simple: a static value that stores its own pointer. It means nothing o
       }
   }
 }
-~~~
+```
 
 ### Better Key Paths
 
@@ -128,13 +128,13 @@ Passing strings as key paths is strictly worse than using properties directly, a
 
 A clever workaround to this is to use `NSStringFromSelector` and a `@selector` literal value:
 
-~~~{objective-c}
+```objc
 NSStringFromSelector(@selector(isFinished))
-~~~
+```
 
 Since `@selector` looks through all available selectors in the target, this won't prevent all mistakes, but it will catch most of them—including breaking changes made by Xcode automatic refactoring.
 
-~~~{objective-c}
+```objc
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -148,17 +148,7 @@ Since `@selector` looks through all available selectors in the target, this won'
         // ...
     }
 }
-~~~
-
----
-
-This workaround does not work when properties include a custom getter override.
-
-~~~{objective-c}
-@property (strong, nonatomic, getter=isFinished) BOOL finished;
-~~~
-
-In this scenario, the property's name (`@"finished"`) must be used to intiate the observation of the `keyPath`. `NSStringFromSelector(@selector(finished))` won't compile because `isFinished` and `setFinished` are the only sythesized selectors and `NSStringFromSelector(@selector(isFinished))` will compile but won't generate KVO updates.
+```
 
 ## Unsubscribing
 
@@ -170,7 +160,7 @@ Perhaps the most pronounced annoyance with KVO is how it gets you at the end. If
 
 Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled `@catch`:
 
-~~~{objective-c}
+```objc
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
@@ -185,7 +175,7 @@ Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled
         }
     }
 }
-~~~
+```
 
 Granted, _not_ handling a caught exception, as in this example, is waving the `[UIColor whiteColor]` flag of surrender. Therefore, one should only really use this technique when faced with intermittent crashes which cannot be remedied by normal book-keeping (whether due to race conditions or undocumented behavior from a superclass).
 
@@ -199,11 +189,11 @@ But what about compound or derived values? Let's say you have an object with a `
 
 Well, you can implement the method `keyPathsForValuesAffectingAddress` (or its less magical catch-all, `+keyPathsForValuesAffectingValueForKey:`):
 
-~~~{objective-c}
+```objc
 + (NSSet *)keyPathsForValuesAffectingAddress {
     return [NSSet setWithObjects:NSStringFromSelector(@selector(streetAddress)), NSStringFromSelector(@selector(locality)), NSStringFromSelector(@selector(region)), NSStringFromSelector(@selector(postalCode)), nil];
 }
-~~~
+```
 
 ---
 

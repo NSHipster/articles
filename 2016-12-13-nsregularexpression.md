@@ -8,7 +8,7 @@ status:
 hiddenlang: "ruby,swift"
 ---
 
-> "Some people, when confronted with a problem, think 'I know, I'll use `NSRegularExpression`.' Now they have three problems."   
+> "Some people, when confronted with a problem, think 'I know, I'll use `NSRegularExpression`.' Now they have three problems."
 
 Regular expressions fill a controversial role in the programming world. Some find them impenetrably incomprehensible, thick with symbols and adornments, more akin to a practical joke than part of a reasonable code base. Others rely on their brevity and their power, wondering how anyone could possibly get along without such a versatile tool in their arsenal.
 
@@ -38,14 +38,14 @@ let links = matches.map { result -> String in
     let hrefRange = result.rangeAt(1)
     let start = String.UTF16Index(hrefRange.location)
     let end = String.UTF16Index(hrefRange.location + hrefRange.length)
-    
+
     return String(htmlSource.utf16[start..<end])!
 }
 print(links)
 // ["https://twitter.com/NSHipster", "https://github.com/NSHipster/articles"]
 ```
 
-The prosecution rests. 
+The prosecution rests.
 
 This article won't get into the ins and outs of regular expressions themselves (you may need to learn about wildcards, backreferences, lookaheads and the rest elsewhere), but read on to learn about `NSRegularExpression`, `NSTextCheckingResult`, and a particularly sticky point when bringing it all together in Swift.
 
@@ -58,25 +58,26 @@ The simplest way to use regular expressions in Cocoa is to skip `NSRegularExpres
 ```swift
 let source = "For NSSet and NSDictionary, the breaking..."
 
-// Matches anything that looks like a Cocoa type: 
+// Matches anything that looks like a Cocoa type:
 // UIButton, NSCharacterSet, NSURLSession, etc.
 let typePattern = "[A-Z]{3,}[A-Za-z0-9]+"
 
-if let typeRange = source.range(of: typePattern, 
+if let typeRange = source.range(of: typePattern,
                                 options: .regularExpression) {
     print("First type: \(source[typeRange])")
     // First type: NSSet
 }
 ```
-```objective-c
+
+```objc
 NSString *source = @"For NSSet and NSDictionary, the breaking...";
 
-// Matches anything that looks like a Cocoa type: 
+// Matches anything that looks like a Cocoa type:
 // UIButton, NSCharacterSet, NSURLSession, etc.
 NSString *typePattern = @"[A-Z]{3,}[A-Za-z0-9]+";
 NSRange typeRange = [source rangeOfString:typePattern
                                   options:NSRegularExpressionSearch];
-    
+
 if (typeRange.location != NSNotFound) {
     NSLog(@"First type: %@", [source substringWithRange:typeRange]);
     // First type: NSSet
@@ -91,9 +92,10 @@ let markedUpSource = source.replacingOccurrences(of: typePattern,
 print(markedUpSource)
 // "For `NSSet` and `NSDictionary`, the breaking...""
 ```
-```objective-c
-NSString *markedUpSource = 
-    [source stringByReplacingOccurrencesOfString:typePattern 
+
+```objc
+NSString *markedUpSource =
+    [source stringByReplacingOccurrencesOfString:typePattern
                                       withString:@"`$0`"
                                          options:NSRegularExpressionSearch
                                            range:NSMakeRange(0, source.length)];
@@ -105,28 +107,28 @@ This approach to regular expressions can even handle subgroup references in the 
 
 ```swift
 let ourcesay = source.replacingOccurrences(
-    of: "([bcdfghjklmnpqrstvwxyz]*)([a-z]+)", 
-    with: "$2$1ay", 
+    of: "([bcdfghjklmnpqrstvwxyz]*)([a-z]+)",
+    with: "$2$1ay",
     options: [.regularExpression, .caseInsensitive])
 print(ourcesay)
 // "orFay etNSSay anday ictionaryNSDay, ethay eakingbray..."
 ```
-```objective-c
-NSString *ourcesay = 
+
+```objc
+NSString *ourcesay =
     [source stringByReplacingOccurrencesOfString:@"([bcdfghjklmnpqrstvwxyz]*)([a-z]+)"
                                       withString:@"$2$1ay"
                                          options:NSRegularExpressionSearch | NSCaseInsensitiveSearch
-                                           range:NSMakeRange(0, source.length)];                                                                
+                                           range:NSMakeRange(0, source.length)];
 NSLog(@"%@", ourcesay);
 // "orFay etNSSay anday ictionaryNSDay, ethay eakingbray..."
 ```
 
 These two methods will suffice for many places you might want to use regular expressions, but for heavier lifting, we'll need to work with `NSRegularExpression` itself. First, though, let's sort out a minor complication when using this class from Swift.
 
-
 ## `NSRange` and Swift
 
-Swift provides a more comprehensive, more complex interface to a string's characters and substrings than does Foundation's `NSString`. The Swift standard library provides [four different views](https://developer.apple.com/swift/blog/?id=30) into a string's data, giving you quick access to the elements of a string as characters, Unicode scalar values, or UTF-8 or UTF-16 code units. 
+Swift provides a more comprehensive, more complex interface to a string's characters and substrings than does Foundation's `NSString`. The Swift standard library provides [four different views](https://developer.apple.com/swift/blog/?id=30) into a string's data, giving you quick access to the elements of a string as characters, Unicode scalar values, or UTF-8 or UTF-16 code units.
 
 How does this relate to `NSRegularExpression`? Well, many `NSRegularExpression` methods use `NSRange`s, as do the `NSTextCheckingResult` instances that store a match's data. `NSRange`, in turn, uses integers for its location and length, while none of `String`'s views use integers as an index:
 
@@ -160,27 +162,27 @@ extension String {
         return NSRange(location: 0, length: utf16.count)
     }
 
-    /// Returns a substring with the given `NSRange`, 
+    /// Returns a substring with the given `NSRange`,
     /// or `nil` if the range can't be converted.
     func substring(with nsrange: NSRange) -> String? {
-        guard let range = nsrange.toRange() 
+        guard let range = nsrange.toRange()
             else { return nil }
         let start = UTF16Index(range.lowerBound)
         let end = UTF16Index(range.upperBound)
         return String(utf16[start..<end])
     }
-        
+
     /// Returns a range equivalent to the given `NSRange`,
     /// or `nil` if the range can't be converted.
     func range(from nsrange: NSRange) -> Range<Index>? {
         guard let range = nsrange.toRange() else { return nil }
         let utf16Start = UTF16Index(range.lowerBound)
         let utf16End = UTF16Index(range.upperBound)
-        
+
         guard let start = Index(utf16Start, within: self),
             let end = Index(utf16End, within: self)
             else { return nil }
-        
+
         return start..<end
     }
 }
@@ -190,7 +192,7 @@ We'll put these to use in the next section, where we'll finally see `NSRegularEx
 
 ## `NSRegularExpression` & `NSTextCheckingResult`
 
-If you're doing more than just searching for the first match or replacing all the matches in your string, you'll need to build an `NSRegularExpression` to do your work. Let's build a miniature text formatter that can handle \*bold\* and \_italic\_ text. 
+If you're doing more than just searching for the first match or replacing all the matches in your string, you'll need to build an `NSRegularExpression` to do your work. Let's build a miniature text formatter that can handle \*bold\* and \_italic\_ text.
 
 Pass a pattern and, optionally, some options to create a new instance. `miniPattern` looks for an asterisk or an underscore to start a formatted sequence, one or more characters to format, and finally a matching character to end the formatted sequence. The initial character and the string to format are both captured:
 
@@ -199,10 +201,11 @@ let miniPattern = "([*_])(.+?)\\1"
 let miniFormatter = try! NSRegularExpression(pattern: miniPattern, options: .dotMatchesLineSeparators)
 // the initializer throws an error if the pattern is invalid
 ```
-```objective-c
-NSString *miniPattern = @"([*_])(.+?)\\1";    
+
+```objc
+NSString *miniPattern = @"([*_])(.+?)\\1";
 NSError *error = nil;
-NSRegularExpression *miniFormatter = [NSRegularExpression 
+NSRegularExpression *miniFormatter = [NSRegularExpression
                                       regularExpressionWithPattern:miniPattern
                                       options:NSRegularExpressionDotMatchesLineSeparators
                                       error:&error];
@@ -215,7 +218,8 @@ let text = "MiniFormatter handles *bold* and _italic_ text."
 let matches = miniFormatter.matches(in: text, options: [], range: text.nsrange)
 // matches.count == 2
 ```
-```objective-c
+
+```objc
 NSString *text = @"MiniFormatter handles *bold* and _italic_ text.";
 NSArray<NSTextCheckingResult *> *matches = [miniFormatter matchesInString:text
                                             options:kNilOptions
@@ -243,11 +247,12 @@ for match in matches {
 // Make bold: 'bold'
 // Make italic: 'italic'
 ```
-```objective-c
+
+```objc
 for (NSTextCheckingResult *match in matches) {
     NSString *delimiter = [text substringWithRange:[match rangeAtIndex:1]];
     NSString *stringToFormat = [text substringWithRange:[match rangeAtIndex:2]];
-    
+
     if ([delimiter isEqualToString:@"*"]) {
         NSLog(@"Make bold: '%@'", stringToFormat);
     } else if ([delimiter isEqualToString:@"_"]) {
@@ -273,14 +278,15 @@ for match in matches.reversed() {
     default: break Format
     }
     let matchRange = formattedText.range(from: match.range)!    // see above
-    let replacement = miniFormatter.replacementString(for: match, 
+    let replacement = miniFormatter.replacementString(for: match,
                             in: formattedText, offset: 0, template: template)
     formattedText.replaceSubrange(matchRange, with: replacement)
 }
 // 'formattedText' is now:
 // "MiniFormatter handles <strong>bold</strong> and <em>italic</em> text."
 ```
-```objective-c
+
+```objc
 NSMutableString *formattedText = [NSMutableString stringWithString:text];
 for (NSTextCheckingResult *match in [matches reverseObjectEnumerator]) {
     NSString *delimiter = [text substringWithRange:[match rangeAtIndex:1]];
@@ -313,7 +319,7 @@ Pass one or more of these as `options` when creating a regular expression.
 - `.ignoreMetacharacters`: The opposite of the `.regularExpression` option in `String.range(of:options:)`—this essentially turns the regular expression into a plain text search, ignoring any regular expression metacharacters and operators.
 - `.dotMatchesLineSeparators`: Allows the `.` metacharacter to match line breaks as well as other characters. Equivalent to the `s` flag.
 - `.anchorsMatchLines`: Allows the `^` and `$` metacharacters (beginning and end) to match the beginnings and ends of lines instead of just the beginning and end of the entire input string. Equivalent to the `m` flag.
-- `.useUnixLineSeparators`, `.useUnicodeWordBoundaries`: These last two opt into more specific line and word boundary handling: UNIX line separators 
+- `.useUnixLineSeparators`, `.useUnicodeWordBoundaries`: These last two opt into more specific line and word boundary handling: UNIX line separators
 
 ##### `NSRegularExpression.MatchingOptions`
 
@@ -323,7 +329,6 @@ Pass one or more of these as `options` to any matching method on an `NSRegularEx
 - `.withTransparentBounds`: Allows the regex to look past the search range for lookahead, lookbehind, and word boundaries (though not for actual matching characters).
 - `.withoutAnchoringBounds`: Makes the `^` and `$` metacharacters match only the beginning and end of the string, not the beginning and end of the search range.
 - `.reportCompletion`, `.reportProgress`: These only have an effect when passed to the method detailed in the next section. Each option tells `NSRegularExpression` to call the enumeration block additional times, when searching is complete or as progress is being made on long-running matches, respectively.
-
 
 ## Partial Matching
 
@@ -345,17 +350,18 @@ nameRegex.enumerateMatches(in: bookString, range: bookString.nsrange) {
     let name = nameRegex.replacementString(for: result,
                     in: bookString, offset: 0, template: "$1 $2")
     names.insert(name)
-    
+
     // stop once we've found six unique names
     stopPointer.pointee = ObjCBool(names.count == 6)
 }
-// names.sorted(): 
-// ["Adelaïda Ivanovna", "Alexey Fyodorovitch", "Dmitri Fyodorovitch", 
+// names.sorted():
+// ["Adelaïda Ivanovna", "Alexey Fyodorovitch", "Dmitri Fyodorovitch",
 //  "Fyodor Pavlovitch", "Pyotr Alexandrovitch", "Sofya Ivanovna"]
 ```
-```objective-c
+
+```objc
 NSString *namePattern = @"([A-Z]\\S+)\\s+([A-Z]\\S+(vitch|vna))";
-NSRegularExpression *nameRegex = [NSRegularExpression 
+NSRegularExpression *nameRegex = [NSRegularExpression
                                   regularExpressionWithPattern:namePattern
                                   options:kNilOptions
                                   error:&error];
@@ -363,19 +369,19 @@ NSRegularExpression *nameRegex = [NSRegularExpression
 NSString *bookString = ...
 NSMutableSet *names = [NSMutableSet set];
 
-[nameRegex enumerateMatchesInString:bookString 
+[nameRegex enumerateMatchesInString:bookString
                             options:kNilOptions
                               range:NSMakeRange(0, [bookString length])
                          usingBlock:
 ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
     if (result == nil) return;
-     
+
     NSString *name = [nameRegex replacementStringForResult:result
                                                    inString:bookString
                                                      offset:0
                                                    template:@"$1 $2"];
     [names addObject:name];
-     
+
     // stop once we've found six unique names
     *stop = (names.count == 6);
 }];
@@ -386,4 +392,3 @@ With this approach we only need to look at the first 45 matches, instead of near
 ---
 
 Once you get to know it, `NSRegularExpression` can be a truly useful tool. In fact, you may have used it already to find dates, addresses, or phone numbers in user-entered text—[`NSDataDetector`](/nsdatadetector/) is an `NSRegularExpression` subclass with patterns baked in to identify useful info. Indeed, as we've come to expect of text handling throughout Foundation, `NSRegularExpression` is thorough, robust, and has surprising depth beneath its tricky interface.
-

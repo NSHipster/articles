@@ -1,6 +1,6 @@
 ---
 title: Swift Operators
-author: Mattt Thompson
+author: Mattt
 category: Swift
 tags: swift
 excerpt: "Operators in Swift are among the most interesting and indeed controversial features of this new language."
@@ -15,34 +15,31 @@ Statements are what do the work of a program. They are the very execution of an 
 
 If we were to take apart a statement—say `1 + 2`—decomposing it into its constituent parts, we would find an operator and operands:
 
-|          1          |          +          |          2          |
-|:-------------------:|:-------------------:|:-------------------:|
-|     left operand    |       operator      |     right operand   |
+|      1       |    +     |       2       |
+| :----------: | :------: | :-----------: |
+| left operand | operator | right operand |
 
 Although expressions are flat, the compiler will construct a tree representation, or AST:
 
-![1 + 2 AST]({{ site.asseturl }}/swift-operators-one-plus-two.svg)
-
+![1 + 2 AST]({% asset swift-operators-one-plus-two.svg @path %})
 
 Compound statements, like `1 + 2 + 3`
 
-|       (1 + 2)       |          +          |          3          |
-|:-------------------:|:-------------------:|:-------------------:|
-|     left operand    |       operator      |     right operand   |
+|   (1 + 2)    |    +     |       3       |
+| :----------: | :------: | :-----------: |
+| left operand | operator | right operand |
 
-
-![1 + 2 + 3 AST]({{ site.asseturl }}/swift-operators-one-plus-two-plus-three.svg)
+![1 + 2 + 3 AST]({% asset swift-operators-one-plus-two-plus-three.svg @path %})
 
 Or, to take an even more complex statement, `1 + 2 * 3 % 4`, the compiler would use operator precedence to resolve the expression into a single statement:
 
-|          1          |          +          |       ((2 * 3) % 4)       |
-|:-------------------:|:-------------------:|:-------------------------:|
-|     left operand    |       operator      |      right operand        |
+|      1       |    +     | ((2 \* 3) % 4) |
+| :----------: | :------: | :------------: |
+| left operand | operator | right operand  |
 
+![1 + 2 * 3 % 4 AST]({% asset swift-operators-one-plus-two-times-three-mod-four.svg @path %})
 
-![1 + 2 * 3 % 4 AST]({{ site.asseturl }}/swift-operators-one-plus-two-times-three-mod-four.svg)
-
-Operator precedence rules, similar to the ones [you learned in primary school](http://en.wikipedia.org/wiki/Order_of_operations), provide a canonical ordering for any compound statement:
+Operator precedence rules, similar to the ones [you learned in primary school](https://en.wikipedia.org/wiki/Order_of_operations), provide a canonical ordering for any compound statement:
 
 ```
 1 + 2 * 3 % 4
@@ -53,7 +50,7 @@ Operator precedence rules, similar to the ones [you learned in primary school](h
 
 However, consider the statement `5 - 2 + 3`. Addition and subtraction have the same operator precedence, but evaluating the subtraction first `(5 - 2) + 3` yields 6, whereas evaluating subtraction after addition, `5 - (2 + 3)`, yields `0`. In code, arithmetic operators are left-associative, meaning that the left hand side will evaluate first (`(5 - 2) + 3`).
 
-Operators can be unary and ternary as well. The `!` prefix operator negates a logical value of the operand. The `?:` ternary operator collapses an `if-else` expression, by evaluating the statement to the left of the `?` in order to either execute the statement left of the `:` (statement is `true`) or right of `:` (statement is `false`).
+Operators can be unary and ternary as well. The `!` prefix operator negates a logical value of the operand, whereas the `++` postfix operator increments the operand. The `?:` ternary operator collapses an `if-else` expression, by evaluating the statement to the left of the `?` in order to either execute the statement left of the `:` (statement is `true`) or right of `:` (statement is `false`).
 
 ## Swift Operators
 
@@ -61,6 +58,8 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
 
 ### Prefix
 
+- `++`: Increment
+- `--`: Decrement
 - `+`: Unary plus
 - `-`: Unary minus
 - `!`: Logical NOT
@@ -76,7 +75,6 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
         <tr><td><tt>&lt;&lt;</tt></td><td>Bitwise left shift</td></tr>
         <tr><td><tt>&gt;&gt;</tt></td><td>Bitwise right shift</td></tr>
     </tbody>
-
 
     <tr>
         <th colspan="2">Multiplicative <tt>{ associativity left precedence 150 }</tt></th>
@@ -177,8 +175,16 @@ Swift includes a set of operators that should be familiar to C or Objective-C de
         <tr><td><tt>&amp;=</tt></td><td>Bitwise AND and assign</td></tr>
         <tr><td><tt>^=</tt></td><td>Bitwise XOR and assign</td></tr>
         <tr><td><tt>|=</tt></td><td>Bitwise OR and assign</td></tr>
+        <tr><td><tt>&amp;&amp;=</tt></td><td>Logical AND and assign</td></tr>
+        <tr><td><tt>||=</tt></td><td>Logical OR and assign</td></tr>
     </tbody>
+
 </table>
+
+### Postfix
+
+- `++`: Increment
+- `--`: Decrement
 
 ### Member Functions
 
@@ -212,7 +218,7 @@ func * (left: String, right: Int) -> String {
     return result
 }
 
-"a" * 6 
+"a" * 6
 // "aaaaaa"
 ```
 
@@ -275,7 +281,7 @@ Having been limited to basic arithmetic operators across many years and programm
 - Appending to String: `"a" + "b" // "ab"`
 - Appending to Array: `["foo"] + ["bar"] // ["foo", "bar"]`
 
-It makes sense that `+` would work on numbers—that's just math. But think about it: _why should adding two strings together concatenate them_?  `1 + 2` isn't `12` ([except in Javascript](https://www.destroyallsoftware.com/talks/wat)). Is this really intuitive, or is it just familiar.
+It makes sense that `+` would work on numbers—that's just math. But think about it: _why should adding two strings together concatenate them_? `1 + 2` isn't `12` ([except in Javascript](https://www.destroyallsoftware.com/talks/wat)). Is this really intuitive, or is it just familiar.
 
 > PHP uses `.` for string concatenation (which is objectively a terrible idea). Objective-C allows consecutive string literals to be appended with whitespace.
 
@@ -299,7 +305,7 @@ func <<<T> (inout left: [T], right: T) -> [T] {
 
 An even more controversial and exciting feature is the ability to define custom operators.
 
-Consider the arithmetic operator found in many programming languages, but missing in Swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](http://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
+Consider the arithmetic operator found in many programming languages, but missing in Swift is `**`, which raises the left hand number to the power of the right hand number (the `^` symbol, commonly used for superscripts, is already used to perform a [bitwise XOR](https://en.wikipedia.org/wiki/Bitwise_operation#XOR)).
 
 To add this operator in Swift, first declare the operator:
 
@@ -318,7 +324,7 @@ func ** (left: Double, right: Double) -> Double {
     return pow(left, right)
 }
 
-2 ** 3 
+2 ** 3
 // 8
 ```
 
@@ -374,7 +380,7 @@ This is all to say: **a custom operator should only ever be provided as a conven
 
 ### Use of Mathematical Symbols
 
-Custom operators can contain any of the following ASCII characters /, =, -, +, !, *, %, <, >, &, |, ^, or ~, or any of the Unicode characters in the "Math Symbols" character set.
+Custom operators can begin with one of the ASCII characters /, =, -, +, !, \*, %, <, >, &, |, ^, or ~, or any of the Unicode characters in the "Math Symbols" character set.
 
 This makes it possible to take the square root of a number with a single `√` prefix operator (`⌥v`):
 
@@ -384,7 +390,7 @@ prefix func √ (number: Double) -> Double {
     return sqrt(number)
 }
 
-√4 
+√4
 // 2
 ```
 
@@ -412,7 +418,7 @@ prefix func ± (value: Double) -> (Double, Double) {
 
 Custom operators are hard to type, and therefore hard to use. **Exercise restraint when using custom operators with exotic symbols**. After all, code should not be copy-pasted.
 
-* * *
+---
 
 Operators in Swift are among the most interesting and indeed controversial features of this new language.
 
@@ -420,8 +426,7 @@ When overriding or defining new operators in your own code, make sure to follow 
 
 ## Guidelines for Swift Operators
 
-1. Don't create an operator unless its meaning is obvious and undisputed. Seek out any potential conflicts to ensure semantic consistency.
-2. Custom operators should only be provided as a convenience. Complex functionality should always be implemented in a function, preferably one specified as a generic using a custom protocol.
-3. Pay attention to the precedence and associativity of custom operators. Find the closest existing class of operators and use the appropriate precedence value.
-4. If it makes sense, be sure to implement assignment shorthand for a custom operator (e.g. `+=` for `+`).
-
+1.  Don't create an operator unless its meaning is obvious and undisputed. Seek out any potential conflicts to ensure semantic consistency.
+2.  Custom operators should only be provided as a convenience. Complex functionality should always be implemented in a function, preferably one specified as a generic using a custom protocol.
+3.  Pay attention to the precedence and associativity of custom operators. Find the closest existing class of operators and use the appropriate precedence value.
+4.  If it makes sense, be sure to implement assignment shorthand for a custom operator (e.g. `+=` for `+`).

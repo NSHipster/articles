@@ -1,13 +1,13 @@
 ---
 title: "NSHipster Quiz #3"
-author: Mattt Thompson
+author: Mattt
 category: Trivia
 excerpt: "Test your mettle as NSHipster Pub Quiz goes on the road, to New York City!"
 status:
     swift: n/a
 ---
 
-NSHipster Pub Quiz came to New York City on July 30th. Like our [first](http://nshipster.com/nshipster-quiz-1/) and [second](http://nshipster.com/nshipster-quiz-2/) quizzes, questions ranged from random Apple trivia to obscure framework questions—this time, with a particular focus on hardware rumors and questions about iOS [REDACTED].
+NSHipster Pub Quiz came to New York City on July 30th. Like our [first](https://nshipster.com/nshipster-quiz-1/) and [second](https://nshipster.com/nshipster-quiz-2/) quizzes, questions ranged from random Apple trivia to obscure framework questions—this time, with a particular focus on hardware rumors and questions about iOS [REDACTED].
 
 The event was hosted by [Meetup](http://meetup.com), and sponsored by [Heroku](https://heroku.com). Dozens of the best and brightest minds in Objective-C attended the event, with the team "The Forstall Five" ([@mb](https://twitter.com/mb), [@bcapps](https://twitter.com/bcapps), [@ethicalpaul](https://twitter.com/ethicalpaul), [@grantjbutler](https://twitter.com/grantjbutler), and [@conbrolution](https://twitter.com/conbrolution)) taking first place.
 
@@ -62,43 +62,43 @@ With over 1 Million iOS & Mac Apps on the App Store, it's clear that the true se
 
 - 1. What is the name of this iOS game?
 
-![Question 1]({{ site.asseturl }}/quiz-3/question-1.png)
+![Question 1]({% asset quiz-3/question-1.png @path %})
 
 - 2. What is the name of this iOS game?
 
-![Question 2]({{ site.asseturl }}/quiz-3/question-2.png)
+![Question 2]({% asset quiz-3/question-2.png @path %})
 
 - 3. What is the name of this iOS app?
 
-![Question 3]({{ site.asseturl }}/quiz-3/question-3.png)
+![Question 3]({% asset quiz-3/question-3.png @path %})
 
 - 4. What is the name of this popular iOS app?
 
-![Question 4]({{ site.asseturl }}/quiz-3/question-4.png)
+![Question 4]({% asset quiz-3/question-4.png @path %})
 
 - 5. While not on the App Store, jailbreakers will know this icon well. What's its name?
 
-![Question 5]({{ site.asseturl }}/quiz-3/question-5.png)
+![Question 5]({% asset quiz-3/question-5.png @path %})
 
 - 6. Which classic Mac app sports this delightful moving truck?
 
-![Question 6]({{ site.asseturl }}/quiz-3/question-6.png)
+![Question 6]({% asset quiz-3/question-6.png @path %})
 
 - 7. Which indispensible development tool has this incongruous icon?
 
-![Question 7]({{ site.asseturl }}/quiz-3/question-7.png)
+![Question 7]({% asset quiz-3/question-7.png @path %})
 
 - 8. Which app sports this sleek icon?
 
-![Question 8]({{ site.asseturl }}/quiz-3/question-8.png)
+![Question 8]({% asset quiz-3/question-8.png @path %})
 
 - 9. Which app is represented by this delightful mail bag?
 
-![Question 9]({{ site.asseturl }}/quiz-3/question-9.png)
+![Question 9]({% asset quiz-3/question-9.png @path %})
 
 - 10. Which (unfortunately stalled) app has this beautiful icon?
 
-![Question 10]({{ site.asseturl }}/quiz-3/question-10.png)
+![Question 10]({% asset quiz-3/question-10.png @path %})
 
 
 Round 4: [REDACTED]
@@ -131,10 +131,10 @@ Round 1: General Knowledge
 3. [iPhone 5C](http://www.latimes.com/business/technology/la-fi-tn-the-iphone-5c-apple-color-plasticspotify-20130730,0,1720605.story)
 4. [Aaron Sorkin](http://tech.fortune.cnn.com/2012/11/16/apple-sorkin-jobs-movie/)
 5. [The Netherlands](http://appleinsider.com/articles/13/07/02/dutch-steve-jobs-schools-to-use-apples-ipad-for-entire-education-experience)
-6. [Douglas Engelbart](http://en.wikipedia.org/wiki/Douglas_Engelbart)
+6. [Douglas Engelbart](https://en.wikipedia.org/wiki/Douglas_Engelbart)
 7. [HopStop.com](http://www.macworld.com/article/2044904/apple-finds-its-way-to-hopstop-acquisition.html)
-8. [Number of Stations (468)](http://en.wikipedia.org/wiki/New_York_City_Subway)
-9. [Jane Jacobs](http://en.wikipedia.org/wiki/The_Death_and_Life_of_Great_American_Cities)
+8. [Number of Stations (468)](https://en.wikipedia.org/wiki/New_York_City_Subway)
+9. [Jane Jacobs](https://en.wikipedia.org/wiki/The_Death_and_Life_of_Great_American_Cities)
 10. [HBO Go, WatchESPN, Sky News, Qello, & CrunchyRoll](http://www.apple.com/pr/library/2013/06/19HBO-GO-WatchESPN-Come-to-Apple-TV.html)
 
 Round 2: Public, Private, or Fake?

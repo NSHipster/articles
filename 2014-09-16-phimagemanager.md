@@ -1,6 +1,6 @@
 ---
 title: PHImageManager
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "Yesterday's article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you."
 status:
@@ -8,7 +8,7 @@ status:
     reviewed: September 15, 2015
 ---
 
-[Yesterday's article](http://nshipster.com/image-resizing/) described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.
+[Yesterday's article](https://nshipster.com/image-resizing/) described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.
 
 For anyone developing apps that manage photos or videos, meet your new best friend: `PHImageManager`.
 
@@ -24,10 +24,10 @@ A great example of this is `PHImageManager`, which acts as a centralized coordin
 
 But first, here's a simple example of how a table view might asynchronously load cell images with asset thumbnails:
 
-~~~{swift}
+```swift
 import Photos
 
-var assets: [PHAsset] = ... // see below
+var assets: [PHAsset]
 
 func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
@@ -53,16 +53,14 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
         targetSize: CGSize(width: 100.0, height: 100.0),
         contentMode: .AspectFill,
         options: nil) { (result, _) in
-            if let destinationCell = tableView.cellForRowAtIndexPath(indexPath) {
-                destinationCell.imageView?.image = result
-            }
+            cell.imageView?.image = result
     })
 
     return cell
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @import Photos;
 
 @property (nonatomic, strong) NSArray<PHAsset *> *assets;
@@ -92,15 +90,12 @@ func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexP
                                  contentMode:PHImageContentModeAspectFill
                                      options:nil
                                resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-                                     UITableViewCell *destCell = [tableView cellForRowAt:indexPath];
-                                     if (destCell) {
-                                          destCell.imageView.image = result;
-                                     }
+                                   cell.imageView.image = result;
                                }];
 
     return cell;
 }
-~~~
+```
 
 API usage is pretty straightforward: the `defaultManager` asynchronously requests an image for the asset corresponding to the cell at a particular index path, and the cell image view is set whenever the result comes back. The only tricky part is handling cell reuse—(1) before assigning the resulting image to the cell's image view, we call `cellForRowAtIndexPath` to be sure we're working with the right cell, and (2) we use the cell's `tag` to keep track of image requests, in order to cancel any pending requests when a cell is reused.
 
@@ -110,7 +105,7 @@ If there's reasonable assurance that most of a set of assets will be viewed at s
 
 For example, here's how the results of a `PHAsset` fetch operation can be pre-cached in order to optimize image availability:
 
-~~~{swift}
+```swift
 let cachingImageManager = PHCachingImageManager()
 
 let options = PHFetchOptions()
@@ -132,9 +127,9 @@ cachingImageManager.startCachingImagesForAssets(assets,
     contentMode: .AspectFit,
     options: nil
 )
-~~~
+```
 
-~~~{objective-c}
+```objc
 PHCachingImageManager *cachingImageManager = [[PHCachingImageManager alloc] init];
 
 PHFetchOptions *options = [[PHFetchOptions alloc] init];
@@ -155,11 +150,11 @@ NSMutableArray<PHAsset *> *assets = [[NSMutableArray alloc] init];
                                       targetSize:PHImageManagerMaximumSize
                                      contentMode:PHImageContentModeAspectFit
                                          options:nil];
-~~~
+```
 
 Alternatively, Swift `willSet` / `didSet` hooks offer a convenient way to automatically start pre-caching assets as they are loaded:
 
-~~~{swift}
+```swift
 let cachingImageManager = PHCachingImageManager()
 var assets: [PHAsset] = [] {
     willSet {
@@ -174,7 +169,7 @@ var assets: [PHAsset] = [] {
         )
     }
 }
-~~~
+```
 
 ## PHImageRequestOptions
 
@@ -202,7 +197,7 @@ Several of these properties take a specific `enum` type, which are all pretty se
 
 Using `PHImageManager` and `PHImageRequestOptions` to their full capacity allows for rather sophisticated functionality. One could, for example, use successive image requests to crop full-quality assets to any faces detected in the image.
 
-~~~{swift}
+```swift
 let asset: PHAsset
 
 @IBOutlet weak var imageView: UIImageView!
@@ -256,9 +251,9 @@ override func viewDidLoad() {
             }
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @property (nonatomic, strong) PHAsset *asset;
 @property (nonatomic, weak) IBOutlet UIImageView *imageView;
 @property (nonatomic, weak) IBOutlet UIProgressView *progressView;
@@ -314,7 +309,7 @@ override func viewDidLoad() {
                     resultHandler:resultHandler];
 
 }
-~~~
+```
 
 The initial request attempts to get the most readily available representation of an asset to pass into a `CIDetector` for facial recognition. If any features were detected, the final request would be cropped to them, by specifying the `normalizedCropRect` on the final `PHImageRequestOptions`.
 

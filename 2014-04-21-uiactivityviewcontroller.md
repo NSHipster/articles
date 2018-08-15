@@ -1,6 +1,6 @@
 ---
 title: UIActivityViewController
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 excerpt: "The relationship between code and data has long been a curious one."
 status:
@@ -10,11 +10,11 @@ status:
 
 The relationship between code and data has long been a curious one.
 
-Certain programming languages, such as [Lisp](http://en.wikipedia.org/wiki/Lisp_programming_language), [Io](http://en.wikipedia.org/wiki/Io_%28programming_language%29), and [Mathematica](http://en.wikipedia.org/wiki/Mathematica) are  [homoiconic](http://en.wikipedia.org/wiki/Homoiconicity), meaning that their code is represented as a data primitive, which itself can be manipulated in code. Most other languages, including Objective-C, however, create a strict boundary between the two, shying away from `eval()` and other potentially dangerous methods of dynamic instructing loading.
+Certain programming languages, such as [Lisp](https://en.wikipedia.org/wiki/Lisp_programming_language), [Io](https://en.wikipedia.org/wiki/Io_%28programming_language%29), and [Mathematica](https://en.wikipedia.org/wiki/Mathematica) are  [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity), meaning that their code is represented as a data primitive, which itself can be manipulated in code. Most other languages, including Objective-C, however, create a strict boundary between the two, shying away from `eval()` and other potentially dangerous methods of dynamic instructing loading.
 
 This tension between code and data is brought to a whole new level when the data in question is too large or unwieldy to represent as anything but a byte stream. The question of how to encode, decode, and interpret the binary representation of images, documents, and media has been ongoing since the very first operating systems.
 
-The Core Services framework on OS X and Mobile Core Services framework on iOS provide functions that identify and categorize data types by file extension and [MIME type](http://en.wikipedia.org/wiki/Internet_media_type), according to [Universal Type Identifiers](http://en.wikipedia.org/wiki/Uniform_Type_Identifier). UTIs provide an extensible, hierarchical categorization system, which affords the developer great flexibility in handling even the most exotic file types. For example, a Ruby source file (`.rb`) is categorized as Ruby Source Code > Source Code > Text > Content > Data; a QuickTime Movie file (`.mov`) is categorized as Video > Movie > Audiovisual Content > Content > Data.
+The Core Services framework on OS X and Mobile Core Services framework on iOS provide functions that identify and categorize data types by file extension and [MIME type](https://en.wikipedia.org/wiki/Internet_media_type), according to [Universal Type Identifiers](https://en.wikipedia.org/wiki/Uniform_Type_Identifier). UTIs provide an extensible, hierarchical categorization system, which affords the developer great flexibility in handling even the most exotic file types. For example, a Ruby source file (`.rb`) is categorized as Ruby Source Code > Source Code > Text > Content > Data; a QuickTime Movie file (`.mov`) is categorized as Video > Movie > Audiovisual Content > Content > Data.
 
 UTIs have worked reasonably well within the filesystem abstraction of the desktop. However, in a mobile paradigm, where files and directories are hidden from the user, this breaks down quickly. And, what's more, the rise of cloud services and social media has placed greater importance on remote entities over local files. Thus, a tension between UTIs and URLs.
 
@@ -26,7 +26,7 @@ It's clear that we need something else. Could `UIActivityViewController` be the 
 
 Given a collection of actionable data, a `UIActivityViewController` instance is created as follows:
 
-~~~{swift}
+```swift
 let string: String = ...
 let URL: NSURL = ...
 
@@ -34,9 +34,9 @@ let activityViewController = UIActivityViewController(activityItems: [string, UR
 navigationController?.presentViewController(activityViewController, animated: true) {
     // ...
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 NSString *string = ...;
 NSURL *URL = ...;
 
@@ -48,21 +48,21 @@ UIActivityViewController *activityViewController =
                                     completion:^{
   // ...
 }];
-~~~
+```
 
 This would present the following at the bottom of the screen:
 
-![UIActivityViewController]({{ site.asseturl }}/uiactivityviewcontroller.png)
+![UIActivityViewController]({% asset uiactivityviewcontroller.png @path %})
 
 By default, `UIActivityViewController` will show all available services supporting the provided items, but certain activity types can be excluded:
 
-~~~{swift}
+```swift
 activityViewController.excludedActivityTypes = [UIActivityTypePostToFacebook]
-~~~
+```
 
-~~~{objective-c}
+```objc
 activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook];
-~~~
+```
 
 Activity types are divided up into "action" and "share" types:
 
@@ -268,7 +268,7 @@ Any object conforming to `<UIActivityItemSource>`, including the built-in `UIAct
 
 One example of how this could be used is to customize a message, depending on whether it's to be shared on Facebook or Twitter.
 
-~~~{swift}
+```swift
 func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
     if activityType == UIActivityTypePostToFacebook {
         return NSLocalizedString("Like this!", comment: "comment")
@@ -278,9 +278,9 @@ func activityViewController(activityViewController: UIActivityViewController, it
         return nil
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 - (id)activityViewController:(UIActivityViewController *)activityViewController
          itemForActivityType:(NSString *)activityType
 {
@@ -292,7 +292,7 @@ func activityViewController(activityViewController: UIActivityViewController, it
         return nil;
     }
 }
-~~~
+```
 
 ## Creating a Custom UIActivity
 
@@ -302,8 +302,8 @@ As an example, let's create a custom activity type that takes an image URL and a
 
 <table>
     <tr>
-        <td><img alt="Jony Ive Before" src="{{ site.asseturl }}/jony-ive-unstache.png"/></td>
-        <td><img alt="Jony Ive After" src="{{ site.asseturl }}/jony-ive-mustache.png"/></td>
+        <td><img alt="Jony Ive Before" src="{% asset jony-ive-unstache.png @path %}"/></td>
+        <td><img alt="Jony Ive After" src="{% asset jony-ive-mustache.png @path %}"/></td>
     </tr>
     <tr>
         <td>Before</td>
@@ -311,19 +311,19 @@ As an example, let's create a custom activity type that takes an image URL and a
     </tr>
 </table>
 
-First, we define a [reverse-DNS identifier](http://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
+First, we define a [reverse-DNS identifier](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
 
-~~~{swift}
+```swift
 let HIPMustachifyActivityType = "com.nshipster.activity.Mustachify"
-~~~
+```
 
-~~~{objective-c}
+```objc
 static NSString * const HIPMustachifyActivityType = @"com.nshipster.activity.Mustachify";
-~~~
+```
 
 Then specify the category as `UIActivityCategoryAction` and provide a localized title & iOS version appropriate image:
 
-~~~{swift}
+```swift
 // MARK: - UIActivity
 
 override class func activityCategory() -> UIActivityCategory {
@@ -345,9 +345,9 @@ override func activityImage() -> UIImage? {
         return UIImage(named: "MustachifyUIActivity")
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 #pragma mark - UIActivity
 
 + (UIActivityCategory)activityCategory {
@@ -369,11 +369,11 @@ override func activityImage() -> UIImage? {
         return [UIImage imageNamed:@"MustachifyUIActivity"];
     }
 }
-~~~
+```
 
 Next, we create a helper function, `HIPMatchingURLsInActivityItems`, which returns an array of any image URLs of the supported type.
 
-~~~{swift}
+```swift
 func HIPMatchingURLsInActivityItems(activityItems: [AnyObject]) -> [AnyObject] {
     return activityItems.filter {
         if let url = $0 as? NSURL where !url.fileURL {
@@ -384,9 +384,9 @@ func HIPMatchingURLsInActivityItems(activityItems: [AnyObject]) -> [AnyObject] {
         return false
     }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 static NSArray * HIPMatchingURLsInActivityItems(NSArray *activityItems) {
     return [activityItems filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
     ^BOOL(id item, __unused NSDictionary *bindings) {
@@ -399,11 +399,11 @@ static NSArray * HIPMatchingURLsInActivityItems(NSArray *activityItems) {
         return NO;
     }]];
 }
-~~~
+```
 
 This function is then used in `-canPerformWithActivityItems:` and `prepareWithActivityItems:` to get the mustachio'd image URL of the first PNG or JPEG, if any.
 
-~~~{swift}
+```swift
 override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
     return HIPMatchingURLsInActivityItems(activityItems).count > 0
 }
@@ -417,9 +417,9 @@ override func prepareWithActivityItems(activityItems: [AnyObject]) {
 
     // ...
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 - (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
     return [HIPMatchingURLsInActivityItems(activityItems) count] > 0;
 }
@@ -429,17 +429,17 @@ override func prepareWithActivityItems(activityItems: [AnyObject]) {
 
     self.imageURL = [NSURL URLWithString:[NSString stringWithFormat:HIPMustachifyMeURLFormatString, self.mustacheType, [HIPMatchingURLsInActivityItems(activityItems) firstObject]]];
 }
-~~~
+```
 
 Our webservice provides a variety of mustache options, which are defined in an enumeration:
 
-~~~{swift}
+```swift
 enum HIPMustacheType: Int {
     case English, Horseshoe, Imperial, Chevron, Natural, Handlebar
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 typedef NS_ENUM(NSInteger, HIPMustacheType) {
     HIPMustacheTypeEnglish,
     HIPMustacheTypeHorseshoe,
@@ -448,23 +448,23 @@ typedef NS_ENUM(NSInteger, HIPMustacheType) {
     HIPMustacheTypeNatural,
     HIPMustacheTypeHandlebar,
 };
-~~~
+```
 
 Finally, we provide a `UIViewController` to display the image. For this example, a simple `UIWebView` controller suffices.
 
-~~~{swift}
+```swift
 class HIPMustachifyWebViewController: UIViewController, UIWebViewDelegate {
     var webView: UIWebView { get }
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @interface HIPMustachifyWebViewController : UIViewController <UIWebViewDelegate>
 @property (readonly, nonatomic, strong) UIWebView *webView;
 @end
-~~~
+```
 
-~~~{swift}
+```swift
 func activityViewController() -> UIViewController {
     let webViewController = HIPMustachifyWebViewController()
 
@@ -473,9 +473,9 @@ func activityViewController() -> UIViewController {
 
     return webViewController
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 - (UIViewController *)activityViewController {
     HIPMustachifyWebViewController *webViewController = [[HIPMustachifyWebViewController alloc] init];
 
@@ -484,21 +484,21 @@ func activityViewController() -> UIViewController {
 
     return webViewController;
 }
-~~~
+```
 
 To use our brand new mustache activity, we simply pass it in the `UIActivityViewController initializer`:
 
-~~~{swift}
+```swift
 let mustacheActivity = HIPMustachifyActivity()
 let activityViewController = UIActivityViewController(activityItems: [imageURL], applicationActivities: [mustacheActivity])
-~~~
+```
 
-~~~{objective-c}
+```objc
 HIPMustachifyActivity *mustacheActivity = [[HIPMustachifyActivity alloc] init];
 UIActivityViewController *activityViewController =
   [[UIActivityViewController alloc] initWithActivityItems:@[imageURL]
                                     applicationActivities:@[mustacheActivity]];
-~~~
+```
 
 ## Invoking Actions Manually
 
@@ -508,64 +508,64 @@ So for completeness, here's how one might go about performing some of these acti
 
 ### Open URL
 
-~~~{swift}
-if let URL = NSURL(string: "http://nshipster.com") {
+```swift
+if let URL = NSURL(string: "https://nshipster.com") {
     UIApplication.sharedApplication().openURL(URL)
 }
-~~~
+```
 
-~~~{objective-c}
-NSURL *URL = [NSURL URLWithString:@"http://nshipster.com"];
+```objc
+NSURL *URL = [NSURL URLWithString:@"https://nshipster.com"];
 [[UIApplication sharedApplication] openURL:URL];
-~~~
+```
 
 System-supported URL schemes include: `mailto:`, `tel:`, `sms:`, and `maps:`.
 
 ### Add to Safari Reading List
 
-~~~{swift}
+```swift
 import SafariServices
 
-if let URL = NSURL(string: "http://nshipster.com/uiactivityviewcontroller") {
+if let URL = NSURL(string: "https://nshipster.com/uiactivityviewcontroller") {
     let _ = try? SSReadingList.defaultReadingList()?.addReadingListItemWithURL(URL,
         title: "NSHipster",
         previewText: "..."
     )
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @import SafariServices;
 
-NSURL *URL = [NSURL URLWithString:@"http://nshipster.com/uiactivityviewcontroller"];
+NSURL *URL = [NSURL URLWithString:@"https://nshipster.com/uiactivityviewcontroller"];
 [[SSReadingList defaultReadingList] addReadingListItemWithURL:URL
                                                         title:@"NSHipster"
                                                   previewText:@"..."
                                                         error:nil];
-~~~
+```
 
 ### Add to Saved Photos
 
-~~~{swift}
+```swift
 let image: UIImage = ...
 let completionTarget: AnyObject = self
 let completionSelector: Selector = "didWriteToSavedPhotosAlbum"
 let contextInfo: UnsafeMutablePointer<Void> = nil
 
 UIImageWriteToSavedPhotosAlbum(image, completionTarget, completionSelector, contextInfo)
-~~~
+```
 
-~~~{objective-c}
+```objc
 UIImage *image = ...;
 id completionTarget = self;
 SEL completionSelector = @selector(didWriteToSavedPhotosAlbum);
 void *contextInfo = NULL;
 UIImageWriteToSavedPhotosAlbum(image, completionTarget, completionSelector, contextInfo);
-~~~
+```
 
 ### Send SMS
 
-~~~{swift}
+```swift
 import MessageUI
 
 let messageComposeViewController = MFMessageComposeViewController()
@@ -575,9 +575,9 @@ messageComposeViewController.body = "Lorem ipsum dolor sit amet"
 navigationController?.presentViewController(messageComposeViewController, animated: true) {
     // ...
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @import MessageUI;
 
 MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
@@ -587,11 +587,11 @@ messageComposeViewController.body = @"Lorem ipsum dolor sit amet";
 [navigationController presentViewController:messageComposeViewController animated:YES completion:^{
     // ...
 }];
-~~~
+```
 
 ### Send Email
 
-~~~{swift}
+```swift
 import MessageUI
 
 let mailComposeViewController = MFMailComposeViewController()
@@ -602,9 +602,9 @@ mailComposeViewController.setMessageBody("Lorem ipsum dolor sit amet", isHTML: f
 navigationController?.presentViewController(mailComposeViewController, animated: true) {
     // ...
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @import MessageUI;
 
 MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
@@ -616,11 +616,11 @@ mailComposeViewController.mailComposeDelegate = self;
 [navigationController presentViewController:mailComposeViewController animated:YES completion:^{
     // ...
 }];
-~~~
+```
 
 ### Post Tweet
 
-~~~{swift}
+```swift
 import Social
 
 let tweetComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
@@ -628,9 +628,9 @@ tweetComposeViewController.setInitialText("Lorem ipsum dolor sit amet.")
 navigationController?.presentViewController(tweetComposeViewController, animated: true) {
     // ...
 }
-~~~
+```
 
-~~~{objective-c}
+```objc
 @import Social;
 
 SLComposeViewController *tweetComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
@@ -640,7 +640,7 @@ SLComposeViewController *tweetComposeViewController = [SLComposeViewController c
                                       completion:^{
                                           // ...
                                       }];
-~~~
+```
 
 ## IntentKit
 

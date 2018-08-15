@@ -1,6 +1,6 @@
 ---
 title: Type Encodings
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 tags: nshipster
 excerpt: "From number stations and numerology to hieroglyphics and hobo codes, there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities."
@@ -8,15 +8,15 @@ status:
     swift: n/a
 ---
 
-From [number stations](http://en.wikipedia.org/wiki/Numbers_station) and [numerology](http://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](http://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](http://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities.
+From [number stations](https://en.wikipedia.org/wiki/Numbers_station) and [numerology](https://en.wikipedia.org/wiki/Numerology) to [hieroglyphs](https://en.wikipedia.org/wiki/Egyptian_hieroglyphs) and [hobo codes](https://en.wikipedia.org/wiki/Hobo#Hobo_.28sign.29_code), there is something truly fascinating about finding meaning that hides in plain sight. Though hidden messages in and of themselves are rarely useful or particularly interesting, it's the thrill of the hunt that piques our deepest curiosities.
 
 It is in this spirit that we take a look at [Objective-C Type Encodings](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) in this week's edition of NSHipster.
 
 ---
 
-[Last week](http://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive.
+[Last week](https://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive.
 
-`@encode`, one of the [`@` Compiler Directives](http://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the ANSI C `typeof` operator. Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
+`@encode`, one of the [`@` Compiler Directives](https://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the ANSI C `typeof` operator. Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
 
 Here's a rundown of all of the different Objective-C Type Encodings:
 
@@ -108,7 +108,7 @@ Here's a rundown of all of the different Objective-C Type Encodings:
 
 Of course, charts are fine, but experimenting in code is even better:
 
-~~~{objective-c}
+```objc
 NSLog(@"int        : %s", @encode(int));
 NSLog(@"float      : %s", @encode(float));
 NSLog(@"float *    : %s", @encode(float*));
@@ -135,7 +135,7 @@ typedef struct _struct {
     unsigned long long c;
 } Struct;
 NSLog(@"struct     : %s", @encode(typeof(Struct)));
-~~~
+```
 
 Result:
 

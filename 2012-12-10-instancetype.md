@@ -1,6 +1,6 @@
 ---
 title: instancetype
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Objective-C is a rapidly evolving language, in a way that you just don't see in established programming languages. Developments range from the mundane to paradigm-changing, but telling the difference takes practice. Because we're talking about low-level language features, it's difficult to understand what implications they may have higher up with API design."
 status:
@@ -11,7 +11,7 @@ Want to know what's coming next in Objective-C? [Keep your ear to the ground](ht
 
 Objective-C is a rapidly evolving language, in a way that you just don't see in established programming languages. ARC, object literals, subscripting, blocks: in the span of just three years, so much of how we program in Objective-C has been changed (for the better).
 
-All of this innovation is a result of Apple's philosophy of vertical integration. Just as Apple's investment in designing [its own chipsets](http://en.wikipedia.org/wiki/Apple_A4) gave them leverage to compete aggressively with their mobile hardware, so too has their investment in [LLVM](http://llvm.org) allowed their software to keep pace.
+All of this innovation is a result of Apple's philosophy of vertical integration. Just as Apple's investment in designing [its own chipsets](https://en.wikipedia.org/wiki/Apple_A4) gave them leverage to compete aggressively with their mobile hardware, so too has their investment in [LLVM](http://llvm.org) allowed their software to keep pace.
 
 Clang developments range from the mundane to paradigm-changing, but telling the difference takes practice. Because we're talking about low-level language features, it's difficult to understand what implications they may have higher up with API design.
 
@@ -29,11 +29,11 @@ Class constructor methods, although they similarly return `id`, don't get the sa
 
 You can try this out for yourself:
 
-~~~{objective-c}
+```objc
 [[[NSArray alloc] init] mediaPlaybackAllowsAirPlay]; // ❗ "No visible @interface for `NSArray` declares the selector `mediaPlaybackAllowsAirPlay`"
 
 [[NSArray array] mediaPlaybackAllowsAirPlay]; // (No error)
-~~~
+```
 
 Because `alloc` and `init` follow the naming convention for being a related result type, the correct type check against `NSArray` is performed. However, the equivalent class constructor `array` does not follow that convention, and is interpreted as `id`.
 
@@ -45,17 +45,17 @@ This is where the compiler steps in to resolve this timeless edge case to the Ob
 
 `instancetype` is a contextual keyword that can be used as a result type to signal that a method returns a related result type. For example:
 
-~~~{objective-c}
+```objc
 @interface Person
 + (instancetype)personWithName:(NSString *)name;
 @end
-~~~
+```
 
 > `instancetype`, unlike `id`, can only be used as the result type in a method declaration.
 
 With `instancetype`, the compiler will correctly infer that the result of `+personWithName:` is an instance of a `Person`.
 
-Look for class constructors in Foundation to start using `instancetype` in the near future. New APIs, such as [UICollectionViewLayoutAttributes](http://developer.apple.com/library/ios/#documentation/uikit/reference/UICollectionViewLayoutAttributes_class/Reference/Reference.html) are using `instancetype` already.
+Look for class constructors in Foundation to start using `instancetype` in the near future. New APIs, such as [UICollectionViewLayoutAttributes](https://developer.apple.com/library/ios/#documentation/uikit/reference/UICollectionViewLayoutAttributes_class/Reference/Reference.html) are using `instancetype` already.
 
 ## Further Implications
 
@@ -63,9 +63,9 @@ Language features are particularly interesting because, again, it's often unclea
 
 While `instancetype` may seem to be a rather mundane, albeit welcome addition to the compiler, it can be used to some rather clever ends.
 
-[Jonathan Sterling](https://twitter.com/jonsterling) wrote [this quite interesting article](http://www.jonmsterling.com/posts/2012-02-05-typed-collections-with-self-types-in-objective-c.html), detailing how `instancetype` could be used to encode statically-typed collections, without [generics](http://en.wikipedia.org/wiki/Generic_programming):
+[Jonathan Sterling](https://twitter.com/jonsterling) wrote [this quite interesting article](http://www.jonmsterling.com/posts/2012-02-05-typed-collections-with-self-types-in-objective-c.html), detailing how `instancetype` could be used to encode statically-typed collections, without [generics](https://en.wikipedia.org/wiki/Generic_programming):
 
-~~~{objective-c}
+```objc
 NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
 [sites put:[NSURL URLWithString:@"http://www.jonmsterling.com/"]
         at:@"jon"];
@@ -73,7 +73,7 @@ NSURL <MapCollection> *sites = (id)[NSURL mapCollection];
         at:@"nshipster"];
 
 NSURL *jonsSite = [sites at:@"jon"]; // => http://www.jonmsterling.com/
-~~~
+```
 
 Statically-typed collections would make APIs more expressive--no longer would a developer be unsure about what kinds of objects are allowed in a collection parameter.
 
@@ -87,4 +87,4 @@ Know it, love it.
 
 And take it as an example of how paying attention to the low-level details can give you insights into powerful new ways to transform Objective-C.
 
-[1]: http://en.wikipedia.org/wiki/C_Sharp_(programming_language)
+[1]: https://en.wikipedia.org/wiki/C_Sharp_(programming_language)

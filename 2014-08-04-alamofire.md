@@ -1,6 +1,6 @@
 ---
 title: Alamofire
-author: Mattt Thompson
+author: Mattt
 category: Open Source
 excerpt: "Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."
 status:
@@ -9,7 +9,7 @@ status:
 
 Swift has hit a reset button on the iOS developer community. It's really been something to behold for seasoned Objective-C developers.
 
-Literally overnight, conversations shifted from [namespacing](http://nshipster.com/namespacing/) and [swizzling](http://nshipster.com/method-swizzling/) to [generics](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_272) and [type inference](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-XID_487). At a time of the year when Twitter would normally be abuzz with discussion about the latest APIs or speculation about upcoming hardware announcements, the discourse has been dominated by all things Swift.
+Literally overnight, conversations shifted from [namespacing](https://nshipster.com/namespacing/) and [swizzling](https://nshipster.com/method-swizzling/) to [generics](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/Generics.html#//apple_ref/doc/uid/TP40014097-CH26-XID_272) and [type inference](https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/TypeCasting.html#//apple_ref/doc/uid/TP40014097-CH22-XID_487). At a time of the year when Twitter would normally be abuzz with discussion about the latest APIs or speculation about upcoming hardware announcements, the discourse has been dominated by all things Swift.
 
 A new language with new syntax and evolving conventions, Swift has captured the attention and imagination of iOS & OS X developers both old and new.
 
@@ -58,7 +58,7 @@ Alamofire.request(.GET, "http://httpbin.org/get")
 
 Even minor syntactic differences can have wide-reaching implications for language conventions.
 
-Chief among the complaints lodged against Objective-C was its use of square brackets for denoting [message passing](http://en.wikipedia.org/wiki/Message_passing). One of the practical implications of `[ ]` syntax is the difficulty in chaining methods together. Even with Xcode autocomplete, `@property` dot syntax, and [key-value coding key-paths](http://nshipster.com/kvc-collection-operators/), it is still rare to see deeply nested invocations.
+Chief among the complaints lodged against Objective-C was its use of square brackets for denoting [message passing](https://en.wikipedia.org/wiki/Message_passing). One of the practical implications of `[ ]` syntax is the difficulty in chaining methods together. Even with Xcode autocomplete, `@property` dot syntax, and [key-value coding key-paths](https://nshipster.com/kvc-collection-operators/), it is still rare to see deeply nested invocations.
 
 > In many ways, the concession of introducing dot syntax for properties in Objective-C 2.0 only served to escalate tensions further, although conventions have started to solidify in recent years.
 
@@ -225,6 +225,6 @@ There's a lot baked into the < 1000 LOC comprising Alamofire. Any aspiring Swift
 
 > It's also important to note that AFNetworking can be easily used from Swift code, just like any other Objective-C code. Alamofire is a separate project investigating the implications of new language features and conventions on the problem of making HTTP requests.
 
-Alamofire 1.0 is scheduled to coincide with the 1.0 release of Swift... whenever that is. Part of that milestone is [complete documentation](http://nshipster.com/swift-documentation/), and 100% Unit Test Coverage, making use of the new [Xcode 6 testing infrastructure](http://nshipster.com/xctestcase/) & [httpbin](http://httpbin.org) by [Kenneth Reitz](http://www.kennethreitz.org).
+Alamofire 1.0 is scheduled to coincide with the 1.0 release of Swift... whenever that is. Part of that milestone is [complete documentation](https://nshipster.com/swift-documentation/), and 100% Unit Test Coverage, making use of the new [Xcode 6 testing infrastructure](https://nshipster.com/xctestcase/) & [httpbin](http://httpbin.org) by [Kenneth Reitz](http://www.kennethreitz.org).
 
 We're all doing our best to understand how to design, implement, and distribute code in Swift. Alamofire is just one of many exciting new libraries that will guide the development of the language and community in the coming months and years. For anyone interested in being part of this, I welcome your contributions. As the mantra goes: [pull requests welcome](https://github.com/Alamofire/Alamofire/compare/).

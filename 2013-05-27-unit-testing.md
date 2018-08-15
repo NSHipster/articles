@@ -1,6 +1,6 @@
 ---
 title: Unit Testing
-author: Mattt Thompson
+author: Mattt
 category: Objective-C
 excerpt: "Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality."
 status:
@@ -29,7 +29,7 @@ It's a simple enough premise: write code to construct environments that exercise
 
 Unit Tests were added into a separate testing target in the Xcode Project. Each test file defines an `SenTestCase` subclass, which implements a series of methods beginning with the word `test`. C `assert`-style macros are used to fail tests if the specified condition is not met. Each test is run in sequence, independently of one another, with the results logged afterwards:
 
-~~~{objective-c}
+```objc
 #import <SenTestingKit/SenTestingKit.h>
 #import "Person.h"
 
@@ -43,7 +43,7 @@ Unit Tests were added into a separate testing target in the Xcode Project. Each 
    person.lastName = @"Picasso";
    STAssertEqualObjects([person fullName], @"Pablo Picasso", nil);
 }
-~~~
+```
 
 The SenTestingKit assertions are about what you'd expect, offering bread-and-butter equality, existence, and truth checks:
 
@@ -70,7 +70,7 @@ The only chance testing has to remain relevant in high-pressure situations is to
 
 ## Open Source Libraries
 
-There are a myriad of open source libraries that attempt to make testing more palatable by way of syntactic sugar and features like [method stubs](https://en.wikipedia.org/wiki/Method_stub), [mock objects](https://en.wikipedia.org/wiki/Mock_object), and [promises](http://en.wikipedia.org/wiki/Futures_and_promises).
+There are a myriad of open source libraries that attempt to make testing more palatable by way of syntactic sugar and features like [method stubs](https://en.wikipedia.org/wiki/Method_stub), [mock objects](https://en.wikipedia.org/wiki/Mock_object), and [promises](https://en.wikipedia.org/wiki/Futures_and_promises).
 
 Here's a list of some of the most useful open source libraries for unit testing:
 
@@ -82,12 +82,10 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/erikdoe/ocmock">OCMock</a></td>
       <td><a href="https://github.com/erikdoe">Erik Doernenburg</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=erikdoe&repo=ocmock&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/jonreid/OCMockito">OCMockito</a></td>
       <td><a href="https://github.com/jonreid">Jon Reid</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=jonreid&repo=OCMockito&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -98,12 +96,10 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/specta/expecta">Expecta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=expecta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/hamcrest/OCHamcrest">OCHamcrest</a></td>
       <td><a href="https://github.com/jonreid">Jon Reid</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=hamcrest&repo=OCHamcrest&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -114,17 +110,14 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/specta/specta">Specta</a></td>
       <td><a href="https://github.com/petejkim">Peter Jihoon Kim</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=specta&repo=specta&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/kiwi-bdd/Kiwi">Kiwi</a></td>
       <td><a href="https://github.com/allending">Allen Ding</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=kiwi-bdd&repo=Kiwi&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
     <tr>
       <td><a href="https://github.com/pivotal/cedar">Cedar</a></td>
       <td><a href="https://github.com/pivotal">Pivotal Labs</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=pivotal&repo=cedar&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 
@@ -135,7 +128,6 @@ Here's a list of some of the most useful open source libraries for unit testing:
     <tr>
       <td><a href="https://github.com/gh-unit/gh-unit/">GHUnit</a></td>
       <td><a href="https://github.com/gabriel">Gabriel Handford</a></td>
-      <td><iframe src="http://ghbtns.com/github-btn.html?user=gh-unit&repo=gh-unit&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="106" height="20"></iframe></td>
     </tr>
   </tbody>
 </table>
@@ -143,7 +135,6 @@ Here's a list of some of the most useful open source libraries for unit testing:
 ## Automated Testing
 
 Making tests easier to write is one thing, but getting them to run without affecting productivity is quite another.
-
 
 ### Jenkins
 
@@ -165,7 +156,7 @@ All of the configuration for setup is defined in `.travis.yml`:
 
 #### .travis.yml
 
-~~~
+```
 language: objective-c
 before_install:
   - brew update
@@ -173,7 +164,7 @@ before_install:
   - cd Tests && pod install && cd $TRAVIS_BUILD_DIR
   - mkdir -p "Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes" && cp Tests/Schemes/*.xcscheme "Tests/AFNetworking Tests.xcodeproj/xcshareddata/xcschemes/"
 script: rake test
-~~~
+```
 
 Full documentation for the Travis configuration file [can be found on Travis-CI.org](http://about.travis-ci.org/docs/user/build-configuration/).
 

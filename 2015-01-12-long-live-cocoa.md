@@ -16,7 +16,7 @@ Swift is an exciting language for many of us, but it's still brand new. The stab
 * * *
 
 
-Cocoa is an impressively deep API—dig a little below the surface of any common tool and you unearth a trove of functionality. You need look no further for proof than the incredible work [Mattt](http://nshipster.com/authors/mattt-thompson/) has done in these very pages over the last few years, illuminating what we didn't know Cocoa could do. To name just a few:
+Cocoa is an impressively deep API—dig a little below the surface of any common tool and you unearth a trove of functionality. You need look no further for proof than the incredible work [Mattt](https://nshipster.com/authors/mattt-thompson/) has done in these very pages over the last few years, illuminating what we didn't know Cocoa could do. To name just a few:
 
 - The foundations of natural language interfaces with [`NSLinguisticTagger`](/nslinguistictagger/) and [`AVSpeechSynthesizer`](/avspeechsynthesizer/)
 - Simple data persistence with [`NSCoding` and `NSKeyedArchiver`](/nscoding/)
@@ -65,7 +65,7 @@ Upon receiving an `Unmanaged<CFString>!`, you need to follow up with `.takeRetai
 
 Moreover, Swift doesn't just embrace Cocoa APIs, it actively improves them. Take the venerable `CGRect`, for example. As a C struct, it can't contain any instance methods, so all the [tools to manipulate `CGRect`s](/cggeometry/) live in top-level functions. These tools are powerful, but you need to know they exist and how to put them to use. These four lines of code, dividing a `CGRect` into two smaller pieces, might require three trips to the documentation:
 
-````objective-c
+````objc
 CGRect nextRect;
 CGRect remainingRect;
 CGRectDivide(sourceRect, &nextRect, &remainingRect, 250, CGRectMinXEdge);

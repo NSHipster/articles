@@ -1,6 +1,6 @@
 ---
 title: UIAppearance
-author: Mattt Thompson
+author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
@@ -42,7 +42,8 @@ Appearance can be customized for all instances, or scoped to particular view hie
 ```swift
 UINavigationBar.appearance().tintColor = myColor
 ```
-```objective-c
+
+```objc
 [[UINavigationBar appearance] setTintColor:myColor];
 ```
 
@@ -58,7 +59,8 @@ UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self])
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIPopoverController.self])
 				.tintColor = myNavBarColor
 ```
-```objective-c
+
+```objc
 [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class]]]
        setTintColor:myNavBarColor];
 [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UINavigationBar class], [UIPopoverController class]]]
@@ -75,7 +77,7 @@ One major downside to `UIAppearance`'s proxy approach is that it's difficult to 
 
 <del>Because <tt>+appearance</tt> returns an <tt>id</tt>, Xcode can't provide any code-completion information. This is a major source of confusion and frustration with this feature.</del>
 
-<ins>As of iOS 7, UIAppearance now returns <a href="http://nshipster.com/instancetype/"><tt>instancetype</tt></a>, which allows for code completion to work as expected. Huzzah!</ins>
+<ins>As of iOS 7, UIAppearance now returns <a href="https://nshipster.com/instancetype/"><tt>instancetype</tt></a>, which allows for code completion to work as expected. Huzzah!</ins>
 
 In order to find out what methods work with `UIAppearance`, you have to [look at the headers](http://stackoverflow.com/questions/9424112/what-properties-can-i-set-via-an-uiappearance-proxy):
 
@@ -91,7 +93,7 @@ For your convenience, [here is the list of properties as of iOS 7.0](https://gis
 
 ## Implementing `<UIAppearance>` in Custom UIView Subclasses
 
-Much like how [`NSLocalizedString`](http://nshipster.com/nslocalizedstring/) and [`#pragma`](http://nshipster.com/pragma/) are marks of quality in Objective-C code, having custom UI classes conform to `UIAppearance` is not only a best-practice, but it demonstrates a certain level of care being put into its implementation.
+Much like how [`NSLocalizedString`](https://nshipster.com/nslocalizedstring/) and [`#pragma`](https://nshipster.com/pragma/) are marks of quality in Objective-C code, having custom UI classes conform to `UIAppearance` is not only a best-practice, but it demonstrates a certain level of care being put into its implementation.
 
 [Peter Steinberger](https://twitter.com/steipete) has [this great article](http://petersteinberger.com/blog/2013/uiappearance-for-custom-views/), which describes some of the caveats about implementing `UIAppearance` in custom views. It's a must-read for anyone who aspires to greatness in their open source UI components.
 
@@ -105,7 +107,7 @@ Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.
 
 ---
 
-Cocoa developers have a long history of obsessing about visual aesthetics, and have often gone to extreme ends to achieve their desired effects. Recall the [Delicious Generation](http://en.wikipedia.org/wiki/Delicious_Generation) of Mac developers, and applications like [Disco](http://discoapp.com), which went so far as to [emit virtual smoke when burning a disc](http://www.youtube.com/watch?v=8Dwi47XOqwI).
+Cocoa developers have a long history of obsessing about visual aesthetics, and have often gone to extreme ends to achieve their desired effects. Recall the [Delicious Generation](https://en.wikipedia.org/wiki/Delicious_Generation) of Mac developers, and applications like [Disco](http://discoapp.com), which went so far as to [emit virtual smoke when burning a disc](https://www.youtube.com/watch?v=8Dwi47XOqwI).
 
 This spirit of dedication to making things look good is alive and well in iOS. As a community and as an ecosystem, we have relentlessly pushed the envelope in terms of what users should expect from their apps. And though this makes our jobs more challenging, it makes the experience of developing for iOS all the more enjoyable.
 

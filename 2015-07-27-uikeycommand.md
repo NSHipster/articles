@@ -47,7 +47,7 @@ override func canBecomeFirstResponder() -> Bool {
     return true
 }
 ```
-```objective-c
+```objc
 - (BOOL)canBecomeFirstResponder {
     return YES;
 }
@@ -74,7 +74,7 @@ func selectTab(sender: UIKeyCommand) {
     // ...
 }
 ```
-```objective-c
+```objc
 - (NSArray<UIKeyCommand *>*)keyCommands {
     return @[
         [UIKeyCommand keyCommandWithInput:@"1" modifierFlags:UIKeyModifierCommand action:@selector(selectTab:) discoverabilityTitle:@"Types"],
@@ -99,14 +99,14 @@ func selectTab(sender: UIKeyCommand) {
 
 In the Discoverability layover, accessed by holding down the Command key, key commands are listed in the order you specified:
 
-![Discoverability Layover]({{ site.asseturl }}/uikeycommand-discoverability.png)
+![Discoverability Layover]({% asset uikeycommand-discoverability.png @path %})
 
 *Voila!* Secrets, revealed!
 
 
 ### Context Sensitivity
 
-The `keyCommands` property is accessed whenever a key is pressed, making it possible to provide context-sensitive responses depending on the state of your application. While this is similar to the way a menu item and its active/inactive state are configured in OS X, the recommendation for iOS is to omit inactive commands completely—that is, there are no grayed out commands in the Discoverability layover.
+The `keyCommands` property is accessed whenever a key pressed, making it possible to provide context-sensitive responses depending on the state of your application. While this is similar to the way a menu item and its active/inactive state are configured in OS X, the recommendation for iOS is to omit inactive commands completely—that is, there are no grayed out commands in the Discoverability layover.
 
 Here, a set of commands that are available to logged in users of an app are included only when appropriate:
 

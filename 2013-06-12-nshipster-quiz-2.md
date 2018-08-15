@@ -1,13 +1,13 @@
 ---
 title: "NSHipster Quiz #2"
-author: Mattt Thompson
+author: Mattt
 category: Trivia
 excerpt: "Go up against some of the brightest minds in all things Apple at this special WWDC edition of NSHipster Quiz. Sure, you conform to the NSHipster protocol, but do you have what it takes to implement all of the @optional methods? Take the quiz and see for yourself!"
 status:
     swift: n/a
 ---
 
-On June 11th, we organized an NSHipster Pub Quiz for WWDC attendees. Like [our first quiz](http://nshipster.com/nshipster-quiz-1/), questions ranged from random Apple trivia to obscure framework questions. The event was hosted by [New Relic](http://newrelic.com), and sponsored by [Heroku](https://heroku.com) & [Mutual Mobile](http://www.mutualmobile.com). About 100 developers attended the event, with the team "UIResponders" taking top prize.
+On June 11th, we organized an NSHipster Pub Quiz for WWDC attendees. Like [our first quiz](https://nshipster.com/nshipster-quiz-1/), questions ranged from random Apple trivia to obscure framework questions. The event was hosted by [New Relic](http://newrelic.com), and sponsored by [Heroku](https://heroku.com) & [Mutual Mobile](http://www.mutualmobile.com). About 100 developers attended the event, with the team "UIResponders" taking top prize.
 
 For everyone that couldn't make it to the event, here's an opportunity to play along at home. Here are some ground rules:
 
@@ -62,43 +62,43 @@ Round 3: Picture Round
 
 - 1. Which WWDC keynote was this from?
 
-![Question 1]({{ site.asseturl }}/quiz-2/question-1.jpg)
+![Question 1]({% asset quiz-2/question-1.jpg @path %})
 
 - 2. Which WWDC keynote was this from?
 
-![Question 2]({{ site.asseturl }}/quiz-2/question-2.jpg)
+![Question 2]({% asset quiz-2/question-2.jpg @path %})
 
 - 3. Which WWDC keynote was this from?
 
-![Question 3]({{ site.asseturl }}/quiz-2/question-3.jpg)
+![Question 3]({% asset quiz-2/question-3.jpg @path %})
 
 - 4. Which WWDC keynote was this from?
 
-![Question 4]({{ site.asseturl }}/quiz-2/question-4.jpg)
+![Question 4]({% asset quiz-2/question-4.jpg @path %})
 
 - 5. WTF is this?
 
-![Question 5]({{ site.asseturl }}/quiz-2/question-5.jpg)
+![Question 5]({% asset quiz-2/question-5.jpg @path %})
 
 - 6. What is this?
 
-![Question 6]({{ site.asseturl }}/quiz-2/question-6.jpg)
+![Question 6]({% asset quiz-2/question-6.jpg @path %})
 
 - 7. What is this?
 
-![Question 7]({{ site.asseturl }}/quiz-2/question-7.jpg)
+![Question 7]({% asset quiz-2/question-7.jpg @path %})
 
 - 8. What is this? (and which generation?)
 
-![Question 8]({{ site.asseturl }}/quiz-2/question-8.jpg)
+![Question 8]({% asset quiz-2/question-8.jpg @path %})
 
 - 9. Which "Core" framework is represented by this logo?
 
-![Question 9]({{ site.asseturl }}/quiz-2/question-9.jpg)
+![Question 9]({% asset quiz-2/question-9.jpg @path %})
 
 - 10. Everybody loves Craig _/fɛdɹ̩igi/_ (Pictured). How do you spell his last name?
 
-![Question 10]({{ site.asseturl }}/quiz-2/question-10.jpg)
+![Question 10]({% asset quiz-2/question-10.jpg @path %})
 
 Round 4: Name That Framework!
 -----------------------------
@@ -123,13 +123,13 @@ For each question, a list of three classes from the same framework have been lis
 Round 1: General Knowledge
 --------------------------
 
-1. [A white-haired German Shepherd named Maverick](http://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
-2. [`^@`](http://nshipster.com/type-encodings/)
+1. [A white-haired German Shepherd named Maverick](https://en.wikipedia.org/wiki/Mavericks_(location)#History) (anything about a dog gets the point)
+2. [`^@`](https://nshipster.com/type-encodings/)
 3. [`genstrings`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html)
 4. `NSArray -firstObject`
 5. [ICU (International Components for Unicode)](http://site.icu-project.org)
-6. [ Tysons Corner, Virginia & Glendale, California](http://en.wikipedia.org/wiki/Apple_Store#History)
-7. [BackRow](http://nshipster.com/backrow/)
+6. [ Tysons Corner, Virginia & Glendale, California](https://en.wikipedia.org/wiki/Apple_Store#History)
+7. [BackRow](https://nshipster.com/backrow/)
 8. [Phil Schiller](http://www.theverge.com/2013/6/13/4423844/cant-innovate-anymore-my-ass-apple)
 9. Pacific Heights, Mission, Nob Hill, Russian Hill, Marina, Presidio
 10. ["So let's raise the bar / And our cups to the stars"](http://rock.rapgenius.com/Daft-punk-get-lucky-lyrics)
@@ -138,12 +138,12 @@ Round 1: General Knowledge
 Round 2: Before & After
 -----------------------
 
-1. [Cocoa](http://en.wikipedia.org/wiki/Cocoa_%28API%29)
-2. [Sherlock](http://en.wikipedia.org/wiki/Sherlock_%28Software%29)
-3. [Mac OS X 10.2](http://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
-4. [Bonjour](http://en.wikipedia.org/wiki/Bonjour_%28Software%29)
-5. [iTunes](http://en.wikipedia.org/wiki/Itunes#History)
-6. [System 6 / Mac OS 6](http://en.wikipedia.org/wiki/System_6)
+1. [Cocoa](https://en.wikipedia.org/wiki/Cocoa_%28API%29)
+2. [Sherlock](https://en.wikipedia.org/wiki/Sherlock_%28Software%29)
+3. [Mac OS X 10.2](https://en.wikipedia.org/wiki/Mac_OS_X_v10.2)
+4. [Bonjour](https://en.wikipedia.org/wiki/Bonjour_%28Software%29)
+5. [iTunes](https://en.wikipedia.org/wiki/Itunes#History)
+6. [System 6 / Mac OS 6](https://en.wikipedia.org/wiki/System_6)
 7. [Accessibility](http://www.apple.com/accessibility/)
 8. [Pixar](https://en.wikipedia.org/wiki/Pixar)
 9. [1 Infinite Loop](https://en.wikipedia.org/wiki/1_infinite_loop)
@@ -156,25 +156,25 @@ Round 3: Picture Round
 2. 2009
 3. 2012
 4. 2008
-5. [eMate 300](http://en.wikipedia.org/wiki/EMate_300)
-6. [Xserve RAID](http://en.wikipedia.org/wiki/Xserve_RAID)
-7. [iSight](http://en.wikipedia.org/wiki/ISight)
-8. [3rd gen. iPod Shuffle](http://en.wikipedia.org/wiki/Ipod_shuffle#Third_generation)
-9. [Core Audio](http://en.wikipedia.org/wiki/Core_Audio)
-10. ["Federighi"](http://en.wikipedia.org/wiki/Craig_Federighi)
+5. [eMate 300](https://en.wikipedia.org/wiki/EMate_300)
+6. [Xserve RAID](https://en.wikipedia.org/wiki/Xserve_RAID)
+7. [iSight](https://en.wikipedia.org/wiki/ISight)
+8. [3rd gen. iPod Shuffle](https://en.wikipedia.org/wiki/Ipod_shuffle#Third_generation)
+9. [Core Audio](https://en.wikipedia.org/wiki/Core_Audio)
+10. ["Federighi"](https://en.wikipedia.org/wiki/Craig_Federighi)
 
 Round 4: Name That Framework!
 -----------------------------
 
-1. [Core Telephony](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html)
-2. [Core Motion](http://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
-3. [Ad Support](http://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html)
-4. [Social](http://developer.apple.com/library/ios/#documentation/Social/Reference/Social_Framework/_index.html%23//apple_ref/doc/uid/TP40012233)
+1. [Core Telephony](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Reference/CoreTelephonyFrameworkReference/_index.html)
+2. [Core Motion](https://developer.apple.com/library/ios/#documentation/CoreMotion/Reference/CoreMotion_Reference/_index.html)
+3. [Ad Support](https://developer.apple.com/library/ios/#documentation/DeviceInformation/Reference/AdSupport_Framework/_index.html)
+4. [Social](https://developer.apple.com/library/ios/#documentation/Social/Reference/Social_Framework/_index.html%23//apple_ref/doc/uid/TP40012233)
 5. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html)
-6. [EventKit](http://developer.apple.com/library/ios/#documentation/EventKit/Reference/EventKitFrameworkRef/_index.html)
-7. [Game Kit](http://developer.apple.com/library/ios/#documentation/GameKit/Reference/GameKit_Collection/_index.html)
+6. [EventKit](https://developer.apple.com/library/ios/#documentation/EventKit/Reference/EventKitFrameworkRef/_index.html)
+7. [Game Kit](https://developer.apple.com/library/ios/#documentation/GameKit/Reference/GameKit_Collection/_index.html)
 8. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html)
-9. [Core Data](http://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html)
+9. [Core Data](https://developer.apple.com/library/ios/#documentation/Cocoa/Reference/CoreData_ObjC/_index.html)
 10. [Foundation](https://developer.apple.com/library/mac/#documentation/cocoa/reference/foundation/ObjC_classic/_index.html) or [Core Foundation](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CoreFoundation_Collection/_index.html) (2 points if you got both)
 
 * * *
