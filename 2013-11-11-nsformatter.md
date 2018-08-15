@@ -5,11 +5,11 @@ category: Cocoa
 tags: nshipster, popular
 excerpt: "Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful."
 revisions:
-    "2014-06-30": Converted examples to Swift; added iOS 8 & OS X Yosemite formatter classes.
-    "2015-02-17": Converted remaining examples to Swift; reintroduced Objective-C examples; added Objective-C examples for new formatter classes.
+  "2014-06-30": Converted examples to Swift; added iOS 8 & OS X Yosemite formatter classes.
+  "2015-02-17": Converted remaining examples to Swift; reintroduced Objective-C examples; added Objective-C examples for new formatter classes.
 status:
-    swift: 2.0
-    reviewed: September 8, 2015
+  swift: 2.0
+  reviewed: September 8, 2015
 ---
 
 Conversion is the tireless errand of software development. Most programming tasks boil down to some variation of transforming data into something more useful.
@@ -18,7 +18,7 @@ In the case of user-facing software, converting data into human-readable form is
 
 All of this is to say that sending `-description` to an object just isn't going to cut it in most circumstances. Even `+stringWithFormat:` is going to ultimately disappoint. No, the real tool for this job is `NSFormatter`.
 
-* * *
+---
 
 `NSFormatter` is an abstract class for transforming data into a textual representation. It can also interpret valid textual representations back into data.
 
@@ -26,17 +26,17 @@ Its origins trace back to `NSCell`, which is used to display information and acc
 
 Foundation provides a number of concrete subclasses for `NSFormatter` (in addition to a single `NSFormatter` subclass provided in the MapKit framework):
 
-| Class                        | Availability                   |
-|------------------------------|--------------------------------|
-| `NSNumberFormatter`          | iOS 2.0 / OS X Cheetah         |
-| `NSDateFormatter`            | iOS 2.0 / OS X Cheetah         |
-| `NSByteCountFormatter`       | iOS 6.0 / OS X Mountain Lion   |
-| `NSDateComponentsFormatter`  | iOS 8.0 / OS X Yosemite        |
-| `NSDateIntervalFormatter`    | iOS 8.0 / OS X Yosemite        |
-| `NSEnergyFormatter`          | iOS 8.0 / OS X Yosemite        |
-| `NSMassFormatter`            | iOS 8.0 / OS X Yosemite        |
-| `NSLengthFormatter`          | iOS 8.0 / OS X Yosemite        |
-| `MKDistanceFormatter`        | iOS 7.0 / OS X Mavericks       |
+| Class                       | Availability                 |
+| --------------------------- | ---------------------------- |
+| `NSNumberFormatter`         | iOS 2.0 / OS X Cheetah       |
+| `NSDateFormatter`           | iOS 2.0 / OS X Cheetah       |
+| `NSByteCountFormatter`      | iOS 6.0 / OS X Mountain Lion |
+| `NSDateComponentsFormatter` | iOS 8.0 / OS X Yosemite      |
+| `NSDateIntervalFormatter`   | iOS 8.0 / OS X Yosemite      |
+| `NSEnergyFormatter`         | iOS 8.0 / OS X Yosemite      |
+| `NSMassFormatter`           | iOS 8.0 / OS X Yosemite      |
+| `NSLengthFormatter`         | iOS 8.0 / OS X Yosemite      |
+| `MKDistanceFormatter`       | iOS 7.0 / OS X Mavericks     |
 
 As some of the oldest members of the Foundation framework, `NSNumberFormatter` and `NSDateFormatter` are astonishingly well-suited to their respective domains, in that way only decade-old software can. This tradition of excellence is carried by the most recent incarnations as well.
 
@@ -56,14 +56,14 @@ To illustrate the differences between each style, here is how the number `12345.
 
 #### `NSNumberFormatterStyle`
 
-| Formatter Style    | Output                                                              |
-|--------------------|---------------------------------------------------------------------|
-| `NoStyle`          | 12346                                                               |
-| `DecimalStyle`     | 12345.6789                                                          |
-| `CurrencyStyle`    | $12345.68                                                           |
-| `PercentStyle`     | 1234567%                                                            |
-| `ScientificStyle`  | 1.23456789E4                                                        |
-| `SpellOutStyle`    | twelve thousand three hundred forty-five point six seven eight nine |
+| Formatter Style   | Output                                                              |
+| ----------------- | ------------------------------------------------------------------- |
+| `NoStyle`         | 12346                                                               |
+| `DecimalStyle`    | 12345.6789                                                          |
+| `CurrencyStyle`   | $12345.68                                                           |
+| `PercentStyle`    | 1234567%                                                            |
+| `ScientificStyle` | 1.23456789E4                                                        |
+| `SpellOutStyle`   | twelve thousand three hundred forty-five point six seven eight nine |
 
 ### Locale Awareness
 
@@ -89,11 +89,11 @@ for (NSString *identifier in @[@"en_US", @"fr_FR", @"ja_JP"]) {
 }
 ```
 
-| Locale  | Formatted Number    |
-|---------|---------------------|
-| `en_US` | $1,234.57           |
-| `fr_FR` | 1 234,57 €           |
-| `ja_JP` | ￥1,235              |
+| Locale  | Formatted Number |
+| ------- | ---------------- |
+| `en_US` | $1,234.57        |
+| `fr_FR` | 1 234,57 €       |
+| `ja_JP` | ￥ 1,235         |
 
 > All of those settings can be overridden on an individual basis, but for most apps, the best strategy would be deferring to the locale's default settings.
 
@@ -222,6 +222,7 @@ let byteCount = 8475891734
 let string = formatter.stringFromByteCount(Int64(byteCount))
 // 8.48 GB
 ```
+
 ```objc
 NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
 long long byteCount = 8475891734;
@@ -242,6 +243,7 @@ formatter.allowsNonnumericFormatting = false
 formatter.stringFromByteCount(Int64(byteCount))
 // 0 bytes
 ```
+
 ```objc
 NSByteCountFormatter *formatter = [[NSByteCountFormatter alloc] init];
 long long byteCount = 0;
@@ -297,6 +299,7 @@ components.hour = 2
 let string = formatter.stringFromDateComponents(components)
 // 1 day, 2 hours
 ```
+
 ```objc
 NSDateComponentsFormatter *formatter = [[NSDateComponentsFormatter alloc] init];
 formatter.unitsStyle = NSDateComponentsFormatterUnitsStyleFull;
@@ -311,13 +314,13 @@ NSLog(@"%@", [formatter stringFromDateComponents:components]);
 
 #### `NSDateComponentsFormatterUnitsStyle`
 
-| Unit Style      | Example                                                           |
-|-----------------|-------------------------------------------------------------------|
-| `Positional`    | "1:10"                                                            |
-| `Abbreviated`   | "1h 10m"                                                          |
-| `Short`         | "1hr 10min"                                                       |
-| `Full`          | "1 hour, 10 minutes"                                              |
-| `SpellOut`      | "One hour, ten minutes"                                           |
+| Unit Style    | Example                 |
+| ------------- | ----------------------- |
+| `Positional`  | "1:10"                  |
+| `Abbreviated` | "1h 10m"                |
+| `Short`       | "1hr 10min"             |
+| `Full`        | "1 hour, 10 minutes"    |
+| `SpellOut`    | "One hour, ten minutes" |
 
 ### NSDateIntervalFormatter
 
@@ -334,6 +337,7 @@ let toDate = fromDate.dateByAddingTimeInterval(10000)
 let string = formatter.stringFromDate(fromDate, toDate: toDate)
 // 5:49 - 8:36 PM
 ```
+
 ```objc
 NSDateIntervalFormatter *formatter = [[NSDateIntervalFormatter alloc] init];
 formatter.dateStyle = NSDateIntervalFormatterNoStyle;
@@ -348,13 +352,13 @@ NSLog(@"%@", [formatter stringFromDate:fromDate toDate:toDate]);
 
 #### `NSDateIntervalFormatterStyle`
 
-| Formatter Style     | Time Output                         | Date Output                   |
-|---------------------|-------------------------------------|-------------------------------|
-| `NoStyle`           |                                     |                               |
-| `ShortStyle`        | 5:51 AM - 7:37 PM                   | 6/30/14 - 7/11/14             |
-| `MediumStyle`       | 5:51:49 AM - 7:38:29 PM             | Jun 30, 2014 - Jul 11, 2014   |
-| `LongStyle`         | 6:02:54 AM GMT-8 - 7:49:34 PM GMT-8 | June 30, 2014 - July 11, 2014 |
-| `FullStyle`         | 6:03:28 PM Pacific Standard Time - 7:50:08 PM Pacific Standard Time | Monday, June 30, 2014 - Friday, July 11, 2014 |
+| Formatter Style | Time Output                                                         | Date Output                                   |
+| --------------- | ------------------------------------------------------------------- | --------------------------------------------- |
+| `NoStyle`       |                                                                     |                                               |
+| `ShortStyle`    | 5:51 AM - 7:37 PM                                                   | 6/30/14 - 7/11/14                             |
+| `MediumStyle`   | 5:51:49 AM - 7:38:29 PM                                             | Jun 30, 2014 - Jul 11, 2014                   |
+| `LongStyle`     | 6:02:54 AM GMT-8 - 7:49:34 PM GMT-8                                 | June 30, 2014 - July 11, 2014                 |
+| `FullStyle`     | 6:03:28 PM Pacific Standard Time - 7:50:08 PM Pacific Standard Time | Monday, June 30, 2014 - Friday, July 11, 2014 |
 
 `NSDateIntervalFormatter` and `NSDateComponentsFormatter` are useful for displaying regular and pre-defined ranges of times such as the such as the opening hours of a business, or frequency or duration of calendar events.
 
@@ -375,6 +379,7 @@ let massFormatter = NSMassFormatter()
 let kilograms = 60.0
 print(massFormatter.stringFromKilograms(kilograms)) // "132 lb"
 ```
+
 ```objc
 NSMassFormatter *massFormatter = [[NSMassFormatter alloc] init];
 double kilograms = 60;
@@ -390,6 +395,7 @@ let lengthFormatter = NSLengthFormatter()
 let meters = 5_000.0
 print(lengthFormatter.stringFromMeters(meters)) // "3.107 mi"
 ```
+
 ```objc
 NSLengthFormatter *lengthFormatter = [[NSLengthFormatter alloc] init];
 double meters = 5000;
@@ -407,6 +413,7 @@ energyFormatter.forFoodEnergyUse = true
 let joules = 10_000.0
 print(energyFormatter.stringFromJoules(joules)) // "2.39 Cal"
 ```
+
 ```objc
 NSEnergyFormatter *energyFormatter = [[NSEnergyFormatter alloc] init];
 energyFormatter.forFoodEnergyUse = YES;
@@ -426,7 +433,7 @@ Therefore, it's strongly recommended that formatters be created once, and re-use
 If it's just a single method using a particular formatter, a static instance is a good strategy:
 
 ```swift
-// a nested struct can have a static property, 
+// a nested struct can have a static property,
 // created only the first time it's encountered.
 func fooWithNumber(number: NSNumber) {
     struct NumberFormatter {
@@ -436,14 +443,14 @@ func fooWithNumber(number: NSNumber) {
             return formatter
         }()
     }
-    
+
     let string = NumberFormatter.formatter.stringFromNumber(number)
     // ...
 }
 ```
 
 ```objc
-// dispatch_once guarantees that the specified block is called 
+// dispatch_once guarantees that the specified block is called
 // only the first time it's encountered.
 - (void)fooWithNumber:(NSNumber *)number {
     static NSNumberFormatter *_numberFormatter = nil;
@@ -506,17 +513,17 @@ Another addition to formatters in iOS 8 & OS X Yosemite is the idea of formatter
 
 A `context` property is available for `NSDateFormatter`, `NSNumberFormatter`, `NSDateComponentsFormatter`, and `NSByteCountFormatter`, with the following values:
 
-| Formatting Context      | Output          |
-|-------------------------|-----------------|
-| `Standalone`            | "About 2 hours" |
-| `ListItem`              | "About 2 hours" |
-| `BeginningOfSentence`   | "About 2 hours" |
-| `MiddleOfSentence`      | "about 2 hours" |
-| `Dynamic`               | _(Depends)_     |
+| Formatting Context    | Output          |
+| --------------------- | --------------- |
+| `Standalone`          | "About 2 hours" |
+| `ListItem`            | "About 2 hours" |
+| `BeginningOfSentence` | "About 2 hours" |
+| `MiddleOfSentence`    | "about 2 hours" |
+| `Dynamic`             | _(Depends)_     |
 
 In cases where localizations may change the position of formatted information within a string, the `Dynamic` value will automatically change depending on where it appears in the text.
 
-- - -
+---
 
 ## Third Party Formatters
 
@@ -555,6 +562,7 @@ let country = "United Kingdom"
 let string = formatter.stringFromAddressWithStreet(street: street, locality: locality, region: region, postalCode: postalCode, country: country)
 // 221b Baker St / Paddington / Greater London / NW1 6XE / United Kingdom
 ```
+
 ```objc
 TTTAddressFormatter *formatter = [[TTTAddressFormatter alloc] init];
 [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_GB"]];
@@ -580,6 +588,7 @@ let array = ["Russel", "Spinoza", "Rawls"]
 let string = formatter.stringFromArray(array)
 // "Russell, Spinoza & Rawls"
 ```
+
 ```objc
 TTTArrayFormatter *formatter = [[TTTArrayFormatter alloc] init];
 formatter.usesAbbreviatedConjunction = YES; // Use '&' instead of 'and'
@@ -598,6 +607,7 @@ let color = UIColor.orangeColor()
 let hex = formatter.hexadecimalStringFromColor(color);
 // #ffa500
 ```
+
 ```objc
 TTTColorFormatter *formatter = [[TTTColorFormatter alloc] init];
 UIColor *color = [UIColor orangeColor];
@@ -618,6 +628,7 @@ let austin = CLLocation(latitude: 30.2669444, longitude: -97.7427778)
 let string = formatter.stringFromDistanceAndBearingFromLocation(pittsburgh, toLocation: austin)
 // "1,218 miles SW"
 ```
+
 ```objc
 TTTLocationFormatter *formatter = [[TTTLocationFormatter alloc] init];
 formatter.numberFormatter.maximumSignificantDigits = 4;
@@ -639,6 +650,7 @@ formatter.grammaticalGender = TTTOrdinalNumberFormatterMaleGender
 let string = NSString(format: NSLocalizedString("You came in %@ place", comment: ""), formatter.stringFromNumber(2))
 // "Vous êtes arrivé à la 2e place!"
 ```
+
 ```objc
 TTTOrdinalNumberFormatter *formatter = [[TTTOrdinalNumberFormatter alloc] init];
 [formatter setLocale:[NSLocale localeWithLocaleIdentifier:@"fr_FR"]];
@@ -657,6 +669,7 @@ request.addValue("text/html", forHTTPHeaderField: "Accept")
 let command = TTTURLRequestFormatter.cURLCommandFromURLRequest(request)
 // curl -X GET "https://nshipster.com/" -H "Accept: text/html"
 ```
+
 ```objc
 NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.example.com/"]];
 [request setHTTPMethod:@"GET"];
@@ -665,7 +678,7 @@ NSLog(@"%@", [TTTURLRequestFormatter cURLCommandFromURLRequest:request]);
 // curl -X GET "https://nshipster.com/" -H "Accept: text/html"
 ```
 
-* * *
+---
 
 If your app deals in numbers or dates (or time intervals or bytes or distance or length or energy or mass), `NSFormatter` is indispensable. Actually, if your app doesn't… then what _does_ it do, exactly?
 
