@@ -266,11 +266,15 @@ Rather than get caught up in all of this, simply use the most appropriate count 
 
 #### NSByteCountFormatterCountStyle
 
-| `File`    | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
-| `Memory`  | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
+| Style    | Effect                                                                                                                                                                        |
+| -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `File`   | Specifies display of file byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time.   |
+| `Memory` | Specifies display of memory byte counts. The actual behavior for this is platform-specific; on OS X Mountain Lion, this uses the binary style, but that may change over time. |
 
 In most cases, it is better to use `File` or `Memory`, however decimal or binary byte counts can be explicitly specified with either of the following values:
 
+| Style     | Effect                                 |
+| --------- | -------------------------------------- |
 | `Decimal` | Causes 1000 bytes to be shown as 1 KB. |
 | `Binary`  | Causes 1024 bytes to be shown as 1 KB. |
 
