@@ -77,7 +77,7 @@ like `fatalError(_:file:line:)`.
 Any new optional bindings created in a `guard` statement's condition
 are available for the rest of the function or block.
 
-Compare how optional binding words with a `guard-let` statement
+Compare how optional binding works with a `guard-let` statement
 to an `if-let` statement:
 
 ```swift
