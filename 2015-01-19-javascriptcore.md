@@ -184,7 +184,7 @@ Our `Person` class implements the `PersonJSExports` protocol, which specifies wh
     func getFullName() -> String
 
     /// create and return a new Person instance with `firstName` and `lastName`
-    static func createWithFirstName(firstName: String, lastName: String) -> Person
+    static func createWith(firstName: String, lastName: String) -> Person
 }
 
 // Custom class must inherit from `NSObject`
@@ -199,7 +199,7 @@ Our `Person` class implements the `PersonJSExports` protocol, which specifies wh
         self.lastName = lastName
     }
 
-    class func createWithFirstName(firstName: String, lastName: String) -> Person {
+    class func createWith(firstName: String, lastName: String) -> Person {
         return Person(firstName: firstName, lastName: lastName)
     }
 
