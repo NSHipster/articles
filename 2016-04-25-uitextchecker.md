@@ -4,7 +4,7 @@ author: Croath Liu
 category: Cocoa
 excerpt: "Make no mistake, a tiny keyboard on a slab of glass doesn't always lend itself to perfect typing. Whether for accuracy or hilarity, anyone typing on an iOS device notices when autocorrect steps in to help out. You might not know, however, that UIKit includes a class to help you with your user's typing inside your app."
 status:
-    swift: 2.2
+  swift: 4.2
 ---
 
 Make no mistake, a tiny keyboard on a slab of glass doesn't always lend itself to perfect typing. Whether for accuracy or hilarity, anyone typing on an iOS device notices when autocorrect steps in to help out. You might not know, however, that UIKit includes a class to help you with your user's typing inside your app.
@@ -26,16 +26,19 @@ import UIKit
 
 let str = "hipstar"
 let textChecker = UITextChecker()
-let misspelledRange = textChecker.rangeOfMisspelledWordInString(
-        str, range: NSRange(0..<str.utf16.count),
-        startingAt: 0, wrap: false, language: "en_US")
+let misspelledRange =
+    textChecker.rangeOfMisspelledWord(in: str,
+                                      range: NSRange(0..<str.utf16.count),
+                                      startingAt: 0,
+                                      wrap: false,
+                                      language: "en_US")
 
 if misspelledRange.location != NSNotFound,
-    let guesses = textChecker.guessesForWordRange(
-        misspelledRange, inString: str, language: "en_US") as? [String]
+    let firstGuess = textChecker.guesses(forWordRange: misspelledRange,
+                                         in: str,
+                                         language: "en_US")?.first
 {
-    print("First guess: \(guesses.first)")
-    // First guess: hipster
+    print("First guess: \(firstGuess)") // First guess: hipster
 } else {
     print("Not found")
 }
@@ -88,10 +91,13 @@ UITextChecker.learnWord(str)
 `"hipstar"` is now a recognized word for the whole device and won't show up as misspelled in further checks.
 
 ```swift
-let misspelledRange = textChecker.rangeOfMisspelledWordInString(str,
-        range: NSRange(0..<str.utf16.count),
-        startingAt: 0, wrap: false, language: "en_US")
-// misspelledRange.location == NSNotFound
+let misspelledRange =
+    textChecker.rangeOfMisspelledWord(in: str,
+                                      range: NSRange(0..<str.utf16.count),
+                                      startingAt: 0,
+                                      wrap: false,
+                                      language: "en_US")
+misspelledRange.location == NSNotFound // true
 ```
 
 ```objc
@@ -112,10 +118,12 @@ There's one more `UITextChecker` API, this time for finding possible completions
 
 ```swift
 let partial = "hipst"
-let completions = textChecker.completionsForPartialWordRange(
-        NSRange(0..<partial.utf16.count), inString: partial,
-        language: "en_US")
-// completions == ["hipster", "hipsters"]
+let completions = textChecker.completions(
+                    forPartialWordRange: NSRange(0..<partial.utf16.count),
+                    in: partial,
+                    language: "en_US"
+                  )
+completions == ["hipster", "hipsters", "hipster's"] // true
 ```
 
 ```objc
