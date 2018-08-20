@@ -67,9 +67,6 @@ with blocks of code to be executed when a property is set.
 The `willSet` observer runs before the new value is stored
 and the `didSet` observer runs after.
 And they run regardless of whether the old value is equal to the new value.
-A major caveat is that observers don't run
-when you set a property in an initializer
-(however you _can_ force this behavior, but more on that later).
 
 ```swift
 struct S {
@@ -102,6 +99,16 @@ s.stored = "second"
 - <samp>didSet was called</samp>
 - <samp>stored is now equal to second</samp>
 - <samp>stored was previously set to first</samp>
+
+> An important caveat is that observers don't run
+> when you set a property in an initializer.
+> As of Swift 4.2,
+> you can work around that by wrapping the setter call in a `defer` block,
+> but that's
+> [a bug that will soon be fixed](https://twitter.com/jckarter/status/926459181661536256),
+> so you shouldn't depend on this behavior.
+
+---
 
 Swift property observers have been part of the language
 from the very beginning.
@@ -290,21 +297,7 @@ _Pretty cool, right?_
 You could even cascade this behavior across multiple observed properties a la
 [that one scene from _Mousehunt_](https://www.youtube.com/watch?v=TVAhhVrpkwM).
 
-One major shortcoming of this approach is that property observers
-aren't called during initialization...
-at least not normally.
-But you can force a property's observer to run
-by wrapping it in a [`defer`](https://nshipster.com/guard-and-defer) statement:
-
-```swift
-init(track: Track) {
-    super.init()
-
-    defer { self.track = track }
-}
-```
-
-Another limitation of property observers
+One significant limitation of property observers
 is that they don't trigger for any internal state changes.
 For example,
 if we were to call `self.track.title = "All Star"` from our view controller,
