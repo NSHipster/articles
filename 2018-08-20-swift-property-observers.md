@@ -297,18 +297,6 @@ _Pretty cool, right?_
 You could even cascade this behavior across multiple observed properties a la
 [that one scene from _Mousehunt_](https://www.youtube.com/watch?v=TVAhhVrpkwM).
 
-One significant limitation of property observers
-is that they don't trigger for any internal state changes.
-For example,
-if we were to call `self.track.title = "All Star"` from our view controller,
-there wouldn't be any noticeable changes.
-
-If you want to support something like this,
-you can use <abbr title="Key-Value Observing">KVO</abbr>
-or your favorite
-[functional reactive library](https://github.com/search?l=Swift&q=reactive&type=Repositories)
-instead.
-
 ---
 
 As a general rule,
