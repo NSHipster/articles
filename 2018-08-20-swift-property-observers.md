@@ -78,6 +78,7 @@ struct S {
         }
 
         didSet {
+            print("didSet was called")
             print("stored is now equal to \(self.stored)")
             print("stored was previously set to \(oldValue)")
         }
