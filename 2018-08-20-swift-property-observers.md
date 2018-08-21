@@ -275,9 +275,13 @@ class TrackViewController: UIViewController {
         }
 
         didSet {
-            self.title = self.track.title
+            guard let track = self.track else {
+                return
+            }
 
-            let item = AVPlayerItem(url: self.track.audioURL)
+            self.title = track.title
+
+            let item = AVPlayerItem(url: track.audioURL)
             self.player = AVPlayer(playerItem: item)
             self.player?.play()
         }
