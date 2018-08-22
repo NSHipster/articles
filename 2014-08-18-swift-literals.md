@@ -112,11 +112,11 @@ let dictionary: [String: [Int]] = [
 In addition to the standard literals listed above,
 there are a few additional literal types for code in Playgrounds:
 
-| Name  | Default Inferred Type  | Examples                                             |
-| ----- | ---------------------- | ---------------------------------------------------- |
-| Color | `NSColor` / `UIColor`³ | `#colorLiteral(red: 1, green: 0, blue: 1, alpha: 1)` |
-| Image | `NSImage` / `UIImage`³ | `#imageLiteral(resourceName: "icon")`                |
-| File  | `URL`                  | `#fileLiteral(resourceName: "articles.json")`        |
+| Name  | Default Inferred Type | Examples                                             |
+| ----- | --------------------- | ---------------------------------------------------- |
+| Color | `NSColor` / `UIColor` | `#colorLiteral(red: 1, green: 0, blue: 1, alpha: 1)` |
+| Image | `NSImage` / `UIImage` | `#imageLiteral(resourceName: "icon")`                |
+| File  | `URL`                 | `#fileLiteral(resourceName: "articles.json")`        |
 
 In Xcode or Swift Playgrounds on the iPad,
 these octothorpe-prefixed literal expressions
@@ -402,6 +402,7 @@ We can understand "untranslatable" words like
 ["Saudade"](https://en.wikipedia.org/wiki/Saudade) in Portuguese,
 ["Han"](https://en.wikipedia.org/wiki/Han_%28cultural%29) in Korean, or
 ["Weltschmerz"](https://en.wikipedia.org/wiki/Weltschmerz) in German.
+
 We're all human.
 We all understand pain.
 
