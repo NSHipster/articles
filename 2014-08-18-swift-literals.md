@@ -141,7 +141,7 @@ you're presented with a color picker or file selector.
 
 Most programming languages have literals for
 Boolean values, numbers, and strings,
-and many often have literals for arrays, dictionaries, and regular expressions.
+and many have literals for arrays, dictionaries, and regular expressions.
 
 Literals are so ingrained in a developer's mental model of programming
 that most of us don't actively consider what the compiler is actually doing.
