@@ -217,7 +217,7 @@ struct NormalizedText {
 
     static let maximumLength = 32
 
-    var value: String
+    private(set) var value: String
 
     init(_ string: String) throws {
         if string.isEmpty {
