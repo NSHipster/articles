@@ -15,7 +15,7 @@ status:
   reviewed: August 29, 2018
 ---
 
-Text is nothing without context.
+Text means nothing without context.
 
 What gives weight to our words
 is their relation to one another,
