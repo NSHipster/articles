@@ -28,7 +28,6 @@ whose meaning depends on the surrounding text,
 or <dfn>deictic</dfn> expressions,
 whose meaning is dependent on who the speaker is,
 where they are, and when they said it.
-
 Now consider how difficult it would be
 for a computer to make sense of an utterance like
 _"I'll be home in 5 minutes"_?
@@ -228,7 +227,7 @@ by passing `NSTextCheckingAllTypes` to its initializer.
 The rest is a matter of switching over each `resultType`
 and extracting their respective details:
 
-```
+```swift
 let detector = try NSDataDetector(types: NSTextCheckingAllTypes)
 let range = NSRange(string.startIndex..<string.endIndex, in: string)
 detector.enumerateMatches(in: string,
