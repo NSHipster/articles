@@ -3,59 +3,139 @@ title: NSDataDetector
 author: Mattt
 category: Cocoa
 tags: nshipster
-excerpt: "Until humanity embraces RDF for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about. Fortunately for Cocoa developers, there's NSDataDetector."
+excerpt: >-
+  Until humanity embraces RDF for our daily interactions, 
+  computers will have to work overtime 
+  to figure out what the heck we're all talking about.
+revisions:
+  "2013-06-02": First Publication
+  "2018-08-29": Updated for Swift 4.2
 status:
-    swift: 2.0
-    reviewed: September 8, 2015
+  swift: 4.2
+  reviewed: August 29, 2018
 ---
 
-Machines speak in binary, while humans speak in riddles, half-truths, and omissions.
+Text is nothing without context.
 
-And until humanity embraces [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework) for all of their daily interactions, a large chunk of artificial intelligence is going to go into figuring out what the heck we're all talking about.
+What gives weight to our words
+is their relation to one another,
+to ourselves,
+and to our location space-time.
 
-Because in the basic interactions of our daily lives—meeting people, making plans, finding information online—there is immense value in automatically converting from implicit human language to explicit structured data, so that it can be easily added to our calendars, address books, maps, and reminders.
+Consider
+<dfn>endophoric</dfn> expressions
+whose meaning depends on the surrounding text,
+or <dfn>deictic</dfn> expressions,
+whose meaning is dependent on who the speaker is,
+where they are, and when they said it.
 
-Fortunately for Cocoa developers, there's an easy solution: `NSDataDetector`.
+Now consider how difficult it would be
+for a computer to make sense of an utterance like
+_"I'll be home in 5 minutes"_?
+(And that's to say nothing of the challenges of
+ambiguity and variation
+in representations of dates, addresses, and other information.)
+
+For better or worse,
+that's how we communicate.
+And until humanity embraces
+[RDF](https://www.w3.org/RDF/)
+for our daily interactions,
+computers will have to work overtime
+to figure out what the heck we're all talking about.
 
 ---
 
-`NSDataDetector` is a subclass of [`NSRegularExpression`](https://developer.apple.com/library/mac/#documentation/Foundation/Reference/NSRegularExpression_Class/Reference/Reference.html), but instead of matching on an ICU pattern, it detects semi-structured information: dates, addresses, links, phone numbers and transit information.
+There's immense value in transforming natural language
+into structured data that's compatible with our
+calendars, address books, maps, and reminders.
+Manual data entry, however, amounts to drudgery,
+and is the last thing you want to force on users.
 
-It does all of this with frightening accuracy. `NSDataDetector` will match flight numbers, address snippets, oddly formatted digits, and even relative deictic expressions like "next Saturday at 5".
+On other platforms,
+you might delegate this task to a web service
+or hack something together that works well enough.
+Fortunately for us Cocoa developers,
+Foundation us covered with `NSDataDetector`.
 
-You can think of it as a regexp matcher with incredibly complicated expressions that can extract information from natural language (though its actual implementation details may be somewhat more complicated than that).
+You can use `NSDataDetector` to extract
+dates, links, phone numbers, addresses, and transit information
+from natural language text.
 
-`NSDataDetector` objects are initialized with a bitmask of types of information to check, and then passed strings to match on. Like `NSRegularExpression`, each match found in a string is represented by a `NSTextCheckingResult`, which has details like character range and match type. However, `NSDataDetector`-specific types may also contain metadata such as address or date components.
+First, create a detector,
+by specifying the result types that you're interested in.
+Then call the `enumerateMatches(in:options:range:using:)` method,
+passing the text to be processed.
+The provided closure is executed once for each result.
 
 ```swift
-let string = "123 Main St. / (555) 555-5555"
-let types: NSTextCheckingType = [.Address, .PhoneNumber]
-let detector = try? NSDataDetector(types: types.rawValue)
-detector?.enumerateMatchesInString(string, options: [], range: NSMakeRange(0, (string as NSString).length)) { (result, flags, _) in
+let string = "123 Main St. / (555) 555-1234"
+
+let types: NSTextCheckingResult.CheckingType = [.phoneNumber, .address]
+let detector = try NSDataDetector(types: types.rawValue)
+detector.enumerateMatches(in: string,
+                          options: [],
+                          range: range) { (result, _, _) in
     print(result)
 }
 ```
-```objc
-NSError *error = nil;
-NSDataDetector *detector = [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress
-                                                        | NSTextCheckingTypePhoneNumber
-                                                           error:&error];
 
-NSString *string = @"123 Main St. / (555) 555-5555";
+```objc
+NSString *string = @"123 Main St. / (555) 555-1234";
+
+NSError *error = nil;
+NSDataDetector *detector =
+    [NSDataDetector dataDetectorWithTypes:NSTextCheckingTypeAddress |
+                                          NSTextCheckingTypePhoneNumber
+                                    error:&error];
+
 [detector enumerateMatchesInString:string
                            options:kNilOptions
                              range:NSMakeRange(0, [string length])
                         usingBlock:
 ^(NSTextCheckingResult *result, NSMatchingFlags flags, BOOL *stop) {
-  NSLog(@"Match: %@", result);
+  NSLog(@"%@", result);
 }];
 ```
 
-> When initializing `NSDataDetector`, be sure to specify only the types you're interested in. With each additional type to be checked comes a nontrivial performance cost.
+As you might expect,
+running this code produces two results:
+the address "123 Main St."
+and the phone number "(555) 555-1234".
 
-## Data Detector Match Types
+> When initializing `NSDataDetector`,
+> specify only the types you're interested in
+> because any unused types will only slow you down.
 
-Because of how much `NSTextCheckingResult` is used for, it's not immediately clear which properties are specific to `NSDataDetector`. For your reference, here is a table of the different `NSTextCheckingTypes` for `NSDataDetector` matches, and their associated properties:
+## Discerning Information from Results
+
+`NSDataDetector` produces `NSTextCheckingResult` objects.
+
+On the one hand,
+this makes sense
+because `NSDataDetector` is actually a subclass of `NSRegularExpression`.
+On the other hand,
+there's not much overlap between a pattern match and detected data
+other than the range and type.
+So what you get is an API that's polluted
+and offers no strong guarantees about what information is present
+under which circumstances.
+
+> To make matters worse,
+> `NSTextCheckingResult` is also used by `NSSpellServer`.
+> _Gross._
+
+To get information about data detector results,
+you need to first check its `resultType`;
+depending on that,
+you might access information directly through properties,
+(in the case of links, phone numbers, and dates),
+or indirectly by keyed values on the `components` property
+(for addresses and transit information).
+
+Here's a rundown of the various
+`NSDataDetector` result types
+and their associated properties:
 
 <table>
   <thead>
@@ -65,125 +145,202 @@ Because of how much `NSTextCheckingResult` is used for, it's not immediately cle
     </tr>
   </thead>
   <tbody>
-
     <tr>
-      <td><tt>NSTextCheckingTypeDate</tt></td>
+      <td><tt>.link</tt></td>
       <td>
         <ul>
-          <li><tt>date</tt></li>
-          <li><tt>duration</tt></li>
-          <li><tt>timeZone</tt></li>
+          <li><tt>.url</tt></li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypeAddress</tt></td>
+      <td><tt>.phoneNumber</tt></td>
       <td>
         <ul>
-          <li><tt>addressComponents</tt><sup>*</sup></li>
+          <li><tt>.phoneNumber</tt></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>.date</tt></td>
+      <td>
+        <ul>
+          <li><tt>.date</tt></li>
+          <li><tt>.duration</tt></li>
+          <li><tt>.timeZone</tt></li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td><tt>.address</tt></td>
+      <td>
+        <ul>
+          <li><tt>.components</tt></li>
           <ul>
-            <li><tt>NSTextCheckingNameKey</tt></li>
-            <li><tt>NSTextCheckingJobTitleKey</tt></li>
-            <li><tt>NSTextCheckingOrganizationKey</tt></li>
-            <li><tt>NSTextCheckingStreetKey</tt></li>
-            <li><tt>NSTextCheckingCityKey</tt></li>
-            <li><tt>NSTextCheckingStateKey</tt></li>
-            <li><tt>NSTextCheckingZIPKey</tt></li>
-            <li><tt>NSTextCheckingCountryKey</tt></li>
-            <li><tt>NSTextCheckingPhoneKey</tt></li>
+            <li><tt>.name</tt></li>
+            <li><tt>.jobTitle</tt></li>
+            <li><tt>.organization</tt></li>
+            <li><tt>.street</tt></li>
+            <li><tt>.city</tt></li>
+            <li><tt>.state</tt></li>
+            <li><tt>.zip</tt></li>
+            <li><tt>.country</tt></li>
+            <li><tt>.phone</tt></li>
           </ul>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>NSTextCheckingTypeLink</tt></td>
+      <td><tt>.transitInformation</tt></td>
       <td>
         <ul>
-          <li><tt>url</tt></li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><tt>NSTextCheckingTypePhoneNumber</tt></td>
-      <td>
-        <ul>
-          <li><tt>phoneNumber</tt></li>
-        </ul>
-      </td>
-    </tr>
-    <tr>
-      <td><tt>NSTextCheckingTypeTransitInformation</tt></td>
-      <td>
-        <ul>
-          <li><tt>components</tt><sup>*</sup></li>
+          <li><tt>.components</tt></li>
           <ul>
-            <li><tt>NSTextCheckingAirlineKey</tt></li>
-            <li><tt>NSTextCheckingFlightKey</tt></li>
+            <li><tt>.airline</tt></li>
+            <li><tt>.flight</tt></li>
           </ul>
         </ul>
       </td>
     </tr>
   </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="2"><sup>*</sup> <tt>NSDictionary</tt> properties have values at defined keys.
-  </tfoot>
 </table>
 
-## Data Detection on iOS
+## Data Detector Data Points
 
-Somewhat confusingly, iOS also defines `UIDataDetectorTypes`. A bitmask of these values can be set as the `dataDetectorTypes` of a `UITextView` to have detected data automatically linked in the displayed text.
+Let's put `NSDataDetector` through its paces.
+That way, we'll not only have a complete example of how to use it
+to its full capacity
+but see what it's actually capable of.
 
-`UIDataDetectorTypes` is distinct from `NSTextCheckingTypes` in that equivalent enum constants (e.g. `UIDataDetectorTypePhoneNumber` and `NSTextCheckingTypePhoneNumber`) do not have the same integer value, and not all values in one are found in the other. Converting from `UIDataDetectorTypes` to `NSTextCheckingTypes` can be accomplished with a function:
+The following text contains one of each of the type of data
+that `NSDataDetector` should be able to detect:
 
 ```swift
-func NSTextCheckingTypesFromUIDataDetectorTypes(dataDetectorType: UIDataDetectorTypes) -> NSTextCheckingType {
-    var textCheckingType: NSTextCheckingType = []
-    
-    if dataDetectorType.contains(.Address) {
-        textCheckingType.insert(.Address)
+let string = """
+   My flight (AA10) is scheduled for tomorrow night from 9 PM PST to 5 AM EST.
+   I'll be staying at The Plaza Hotel, 768 5th Ave, New York, NY 10019.
+   You can reach me at 555-555-1234 or me@example.com
+"""
+```
+
+We can have `NSDataDetector` check for everything
+by passing `NSTextCheckingAllTypes` to its initializer.
+The rest is a matter of switching over each `resultType`
+and extracting their respective details:
+
+```
+let detector = try NSDataDetector(types: NSTextCheckingAllTypes)
+let range = NSRange(string.startIndex..<string.endIndex, in: string)
+detector.enumerateMatches(in: string,
+                          options: [],
+                          range: range) { (match, flags, _) in
+    guard let match = match else {
+        return
     }
-    
-    if dataDetectorType.contains(.CalendarEvent) {
-        textCheckingType.insert(.Date)
+
+    switch match.resultType {
+    case .date:
+        let date = match.date
+        let timeZone = match.timeZone
+        let duration = match.duration
+        print(date, timeZone, duration)
+    case .address:
+        if let components = match.components {
+            let name = components[.name]
+            let jobTitle = components[.jobTitle]
+            let organization = components[.organization]
+            let street = components[.street]
+            let locality = components[.city]
+            let region = components[.state]
+            let postalCode = components[.zip]
+            let country = components[.country]
+            let phoneNumber = components[.phone]
+            print(name, jobTitle, organization, street, locality, region, postalCode, country, phoneNumber)
+        }
+    case .link:
+        let url = match.url
+        print(url)
+    case .phoneNumber:
+        let phoneNumber = match.phoneNumber
+        print(phoneNumber)
+    case .transitInformation:
+        if let components = match.components {
+            let airline = components[.airline]
+            let flight = components[.flight]
+            print(airline, flight)
+        }
+    default:
+        return
     }
-    
-    if dataDetectorType.contains(.Link) {
-        textCheckingType.insert(.Link)
-    }
-    
-    if dataDetectorType.contains(.PhoneNumber) {
-        textCheckingType.insert(.PhoneNumber)
-    }
-    
-    return textCheckingType
 }
 ```
-```objc
-static inline NSTextCheckingType NSTextCheckingTypesFromUIDataDetectorTypes(UIDataDetectorTypes dataDetectorType) {
-    NSTextCheckingType textCheckingType = 0;
-    if (dataDetectorType & UIDataDetectorTypeAddress) {
-        textCheckingType |= NSTextCheckingTypeAddress;
-    }
 
-    if (dataDetectorType & UIDataDetectorTypeCalendarEvent) {
-        textCheckingType |= NSTextCheckingTypeDate;
-    }
+When we run this code,
+we see that `NSDataDetector` is able to identify each of the types.
 
-    if (dataDetectorType & UIDataDetectorTypeLink) {
-        textCheckingType |= NSTextCheckingTypeLink;
-    }
+| Type                | Output                                                                     |
+| ------------------- | -------------------------------------------------------------------------- |
+| Date                | "2018-08-31 04:00:00 +0000", "America/Los_Angeles", 18000.0                |
+| Address             | `nil`, `nil`, `nil` "768 5th Ave", "New York", "NY", "10019", `nil`, `nil` |
+| Link                | "mailto:me@example.com"                                                    |
+| Phone Number        | "555-555-1234"                                                             |
+| Transit Information | `nil`, "10"                                                                |
 
-    if (dataDetectorType & UIDataDetectorTypePhoneNumber) {
-        textCheckingType |= NSTextCheckingTypePhoneNumber;
-    }
+Impressively,
+the date result correctly calculates the 6-hour duration of the flight,
+accommodating for the time zone change.
+However, some information is missing,
+like the name of The Plaza Hotel in the address,
+and the airline in the transit information.
 
-    return textCheckingType;
-}
-```
+> Even after trying a handful of different representations
+> ("American Airlines 10", "AA 10", "AA #10", "American Airlines (AA) #10")
+> and airlines
+> ("Delta 1226", "DL 1226")
+> I still wasn't able to find an example that populated the `airline` property.
+> If anyone knows what's up, [@ us](https://twitter.com/NSHipster/).
+
+## Detect (Rough) Edges
+
+Useful as `NSDataDetector` is,
+it's not a particularly _nice_ API to use.
+
+With all of the charms of its parent class,
+[`NSRegularExpression`](https://nshipster.com/nsregularexpression/),
+the same, cumbersome initialization pattern of
+[NSLinguisticTagger](https://nshipster.com/nltagger/),
+and an
+[incomplete Swift interface](https://developer.apple.com/documentation/foundation/nstextcheckingtypes),
+`NSDataDetector` has an interface that only a mother could love.
+
+But that's only the API itself.
+
+In a broader context,
+you might be surprised to learn that a nearly identical API can be found
+in the `dataDetectorTypes` properties of `UITextView` and `WKWebView`.
+_Nearly_ identical.
+
+`UIDataDetectorTypes` and `WKDataDetectorTypes` are distinct from
+and incompatible with `NSTextCheckingTypes`,
+which is inconvenient but not super conspicuous.
+But what's utterly inexplicable is that these APIs
+can detect [shipment tracking numbers](https://developer.apple.com/documentation/uikit/uidatadetectortypes/1648142-shipmenttrackingnumber)
+and [lookup suggestions](https://developer.apple.com/documentation/uikit/uidatadetectortypes/1648141-lookupsuggestion),
+neither of which are supported by `NSDataDetector`.
+It's hard to imagine why shipment tracking numbers wouldn't be supported,
+which leads one to believe that it's an oversight.
 
 ---
 
-Do I detect some disbelief of how easy it is to translate between natural language and structured data? This should not be surprising, given how [insanely](https://nshipster.com/cfstringtransform/) [great](https://nshipster.com/nslinguistictagger/) Cocoa's linguistic APIs are.
+Humans have an innate ability to derive meaning from language.
+We can stitch together linguistic, situational and cultural information
+into a coherent interpretation at a subconscious level.
+Ironically, it's difficult to put this process into words ---
+or code as the case may be.
+Computers aren't hard-wired for understanding like we are.
 
-Don't make your users re-enter information by hand just because of a programming oversight. Take advantage of `NSDataDetector` in your app to unlock the structured information already hiding in plain sight.
+Despite its shortcomings,
+`NSDataDetector` can prove invaluable for certain use cases.
+Until something better comes along,
+take advantage of it in your app
+to unlock the structured information hiding in plain sight.
