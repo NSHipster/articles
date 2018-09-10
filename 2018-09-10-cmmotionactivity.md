@@ -99,7 +99,8 @@ This coincided with the release of iOS 7 and the Core Motion APIs.
 ## Feature Drivers
 
 Possibly the most well-known use of motion activities is
-"Do Not Disturb While Driving", added in iOS 11.
+["Do Not Disturb While Driving"](https://support.apple.com/en-us/HT208090),
+added in iOS 11.
 Automotive detection got much better with the introduction of this feature.
 
 > At low speeds, it's hard to distinguish automobile travel from other means
