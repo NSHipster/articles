@@ -17,7 +17,7 @@ sensory information from their visual, proprioceptive, and vestibular systems.
 Of these,
 the primary determination is made by the vestibular system,
 comprising the
-<dfn>semicircular canals<dfn>,
+<dfn>semicircular canals</dfn>,
 which sense changes in rotation,
 and the <dfn>otoliths</dfn>,
 which are sensitive to horizontal and vertical forces.
