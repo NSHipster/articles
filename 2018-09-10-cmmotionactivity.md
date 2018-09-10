@@ -224,7 +224,7 @@ if currentLocation.intersects(waterRegion) {
 ```
 
 However, location data should only be consulted if absolutely necessary ---
-and when you do, it should be done as sparingly as possible,
+and when you do, it should be done sparingly,
 such as by monitoring for only significant location changes.
 Reason being,
 location data requires turning on the GPS and/or cellular radio,
