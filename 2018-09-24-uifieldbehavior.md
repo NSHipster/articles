@@ -207,23 +207,26 @@ the spring is "let go" and gives us that nice little push that we're after.
 > to calculate how much force should be applied to the objects within the field.
 
 To take care of the avatar settling into each corner,
-we can create a loop that does something like this:
+we can do something clever like this:
 
 ```swift
-let topLeftCornerField = UIFieldBehavior.springField()
+for vertical in [\UIEdgeInsets.left,
+                 \UIEdgeInsets.right]
+{
+    for horizontal in [\UIEdgeInsets.top,
+                       \UIEdgeInsets.bottom]
+    {
+        let springField = UIFieldBehavior.springField()
+        springField.position =
+            CGPoint(x: layoutMargins[keyPath: horizontal],
+                    y: layoutMargins[keyPath: vertical])
+        springField.region =
+            UIRegion(size: view.bounds.size.applying(scale))
 
-// Top left corner
-topLeftCornerField.position =
-    CGPoint(x: layoutMargins.left,
-            y: layoutMargins.top)
-topLeftCornerField.region =
-    UIRegion(size: CGSize(width: bounds.size.width / 2,
-                          height: bounds.size.height / 2))
-
-animator.addBehavior(topLeftCornerField)
-topLeftCornerField.addItem(facetimeAvatar)
-
-// Continue to create a spring field for each corner...
+        animator.addBehavior(springField)
+        springField.addItem(facetimeAvatar)
+    }
+}
 ```
 
 ```objective-c
@@ -286,7 +289,7 @@ it appears as though each corner has a spring effect attached to it.
 Running and using our fledgling app, however,
 reveals that it's not enough to complete the effect we're seeking.
 
-{% asset uidynamicanimator-debug.png %}
+{% asset uidynamicanimator-debug.jpg %}
 
 ## Aggregating Behaviors
 
@@ -419,7 +422,7 @@ self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 By aggregating several behaviors to work as one,
 we can now bask in our work:
 
-{% asset uifieldbehavior-demo.gif %}
+<video preload="none" src="{% asset uifieldbehavior-demo.mp4 @path %}" poster="{% asset uifieldbehavior-demo.png @path %}" width="320" controls></video>
 
 If you want to stray from the FaceTime "sticky" corners,
 you are in an ideal position to do so.
