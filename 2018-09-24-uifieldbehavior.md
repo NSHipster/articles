@@ -156,9 +156,13 @@ self.drag = [UIFieldBehavior dragField];
 [self.animator addBehavior:self.drag];
 ```
 
-> Take care to keep a strong reference to you `UIKitDynamicAnimator` object.
-> You don't typically need to do this for behaviors
-> because the animator takes ownership to a behavior once it's added.
+{% warning do %}
+
+Take care to keep a strong reference to you `UIKitDynamicAnimator` object.
+You don't typically need to do this for behaviors
+because the animator takes ownership to a behavior once it's added.
+
+{% endwarning %}
 
 For a _bona fide_ example of `UIFieldBehavior`,
 let's take a look at how FaceTime leverages it
@@ -202,9 +206,13 @@ to the edge of its corner.
 When the avatar enters any of the corners,
 the spring is "let go" and gives us that nice little push that we're after.
 
-> The spring field is created by replicating
-> [Hooke's Law](https://phys.org/news/2015-02-law.html)
-> to calculate how much force should be applied to the objects within the field.
+{% note do %}
+
+The spring field is created by replicating
+[Hooke's Law](https://phys.org/news/2015-02-law.html)
+to calculate how much force should be applied to the objects within the field.
+
+{% endnote %}
 
 To take care of the avatar settling into each corner,
 we can do something clever like this:

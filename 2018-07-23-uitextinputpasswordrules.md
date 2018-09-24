@@ -2,13 +2,12 @@
 title: "Password Rules / UITextInputPasswordRules"
 author: Mattt
 category: "Cocoa"
-excerpt: 
-    Unless it's the title of a hacker movie from the 90's
-    or the solution to an escape room puzzle,
-    a password should be utterly devoid of meaning.
+excerpt: Unless it's the title of a hacker movie from the 90's
+  or the solution to an escape room puzzle,
+  a password should be utterly devoid of meaning.
 hiddenlang: ""
 status:
-    swift: "4.2"
+  swift: "4.2"
 ---
 
 It's no wonder why hipsters obsess over artisanal _this_ and handcrafted _that_.
@@ -42,15 +41,19 @@ periodic password expiration,
 or arcane character requirements
 do little more than annoy the people these policies try to protect.
 
-> But don't take my word for it ---
-> I'm not a security expert.
->
-> Instead,
-> check out the latest
-> [Digital Identity Guidelines](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf)
-> from
-> <abbr title="National Institute of Standards and Technology">NIST</abbr>
-> (published June 2017).
+{% warning do %}
+
+But don't take my word for it ---
+I'm not a security expert.
+
+Instead,
+check out the latest
+[Digital Identity Guidelines](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-63b.pdf)
+from
+<abbr title="National Institute of Standards and Technology">NIST</abbr>
+(published June 2017).
+
+{% endwarning %}
 
 The good news is that more companies and organizations
 are starting to pay attention to security best practices.
@@ -168,11 +171,15 @@ to an `<input>` element with `type="password"`:
 <input type="password" passwordrules="required: upper; required: lower; required: special; max-consecutive: 3;"/>
 ```
 
-> If unspecified,
-> the default password rule is
-> `allowed: ascii-printable`.
-> Though if your form has a password confirmation field,
-> it will automatically follow the rules from the preceding field.
+{% note do %}
+
+If unspecified,
+the default password rule is
+`allowed: ascii-printable`.
+Though if your form has a password confirmation field,
+it will automatically follow the rules from the preceding field.
+
+{% endnote %}
 
 ## Generating Password Rules in Swift
 

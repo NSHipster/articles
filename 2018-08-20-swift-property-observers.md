@@ -101,13 +101,17 @@ s.stored = "second"
 - <samp>stored is now equal to second</samp>
 - <samp>stored was previously set to first</samp>
 
-> An important caveat is that observers don't run
-> when you set a property in an initializer.
-> As of Swift 4.2,
-> you can work around that by wrapping the setter call in a `defer` block,
-> but that's
-> [a bug that will soon be fixed](https://twitter.com/jckarter/status/926459181661536256),
-> so you shouldn't depend on this behavior.
+{% warning do %}
+
+An important caveat is that observers don't run
+when you set a property in an initializer.
+As of Swift 4.2,
+you can work around that by wrapping the setter call in a `defer` block,
+but that's
+[a bug that will soon be fixed](https://twitter.com/jckarter/status/926459181661536256),
+so you shouldn't depend on this behavior.
+
+{% endwarning %}
 
 ---
 

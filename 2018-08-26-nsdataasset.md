@@ -103,9 +103,13 @@ and select "New Data Set"
 Doing this creates a new subdirectory of `Assets.xcassets`
 with the `.dataset` extension.
 
-> By default,
-> the Finder treats both of these bundles as directories,
-> which makes it easy to inspect and modify their contents as needed.
+{% note do %}
+
+By default,
+the Finder treats both of these bundles as directories,
+which makes it easy to inspect and modify their contents as needed.
+
+{% endnote %}
 
 ### Step 2. Add a Data File
 
@@ -302,8 +306,12 @@ extension NSDataAsset {
 }
 ```
 
-> You might also consider managing large data asset files in version control
-> using [Git Large File Storage (LFS)](https://git-lfs.github.com).
+{% note do %}
+
+You might also consider managing large data asset files in version control
+using [Git Large File Storage (LFS)](https://git-lfs.github.com).
+
+{% endnote %}
 
 ---
 

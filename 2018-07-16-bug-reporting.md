@@ -49,11 +49,15 @@ from the number alone.
 (At the time of writing,
 new Radars have 8-digit IDs starting with 4.)
 
-> Radar.app uses the `rdar://` custom URL scheme.
-> If an Apple employee clicks a [rdar://xxxxxxxx](rdar://30000000) link
-> with an ID, it'll open directly to that Radar.
-> Otherwise, clicking this link pops up a dialog box with the message
-> "There is no application set to open the URL rdar://xxxxxxxx."
+{% note do %}
+
+Radar.app uses the `rdar://` custom URL scheme.
+If an Apple employee clicks a [rdar://xxxxxxxx](rdar://30000000) link
+with an ID, it'll open directly to that Radar.
+Otherwise, clicking this link pops up a dialog box with the message
+"There is no application set to open the URL rdar://xxxxxxxx."
+
+{% endnote %}
 
 ## Reporting Bugs as External Developers
 
@@ -230,8 +234,12 @@ hostility will make an engineer less likely to address your concern.
 Remember that there's a person on the other end of your bug report.
 Practice [empathy](https://nshipster.com/empathy/).
 
-> Peter Steinberger has more great advice on the subject
-> [in this blog post](https://pspdfkit.com/blog/2016/writing-good-bug-reports/).
+{% note do %}
+
+Peter Steinberger has more great advice on the subject
+[in this blog post](https://pspdfkit.com/blog/2016/writing-good-bug-reports/).
+
+{% endnote %}
 
 ## How to Signal Boost Bug Reports
 

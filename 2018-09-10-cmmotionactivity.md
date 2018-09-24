@@ -103,12 +103,16 @@ Possibly the most well-known use of motion activities is
 added in iOS 11.
 Automotive detection got much better with the introduction of this feature.
 
-> At low speeds, it's hard to distinguish automobile travel from other means
-> using accelerometer data alone.
-> Although we can only speculate as to how this works,
-> it's possible that the iPhone uses magnetometer data from the device compass.
-> Because cars and other vehicles are often enclosed in metal,
-> electromagnetic flux is reduced.
+{% note do %}
+
+At low speeds, it's hard to distinguish automobile travel from other means
+using accelerometer data alone.
+Although we can only speculate as to how this works,
+it's possible that the iPhone uses magnetometer data from the device compass.
+Because cars and other vehicles are often enclosed in metal,
+electromagnetic flux is reduced.
+
+{% endnote %}
 
 Beyond safety concerns,
 some apps might change their behavior
