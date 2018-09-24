@@ -320,7 +320,7 @@ Ideally, we'd want it to behave like it would in real life,
 with gravity and friction acting to slow down its momentum.
 
 For such occasions,
-`UIDynamicItemBeavior` is ideal.
+`UIDynamicItemBehavior` is ideal.
 It lets us attach physical properties to what would otherwise be mere
 abstract view instances interacting with a physics engine.
 Though UIKit does provide default values for each of these properties
@@ -356,7 +356,7 @@ to ensure you can continuing tweaking things until they feel right.
 
 Further, it also includes out-of-the-box support
 for attaching linear or angular velocity to an object.
-This serves as the perfect bookend to our journey with `UIDynamicItemBeavior`,
+This serves as the perfect bookend to our journey with `UIDynamicItemBehavior`,
 as we probably want to give our FaceTime avatar a friendly nudge
 at the end of the gesture recognizer
 to send it off to its nearest corner,
