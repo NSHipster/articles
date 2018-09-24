@@ -98,7 +98,7 @@ without much more than a factory method:
 let drag = UIFieldBehavior.dragField()
 ```
 
-```objective-c
+```objc
 UIFieldBehavior *drag = [UIFieldBehavior dragField];
 ```
 
@@ -111,7 +111,7 @@ drag.position = view.center
 drag.region = UIRegion(size: bounds.size)
 ```
 
-```objective-c
+```objc
 drag.position = self.view.center;
 drag.region = [[UIRegion alloc] initWithSize:self.view.bounds.size];
 ```
@@ -144,7 +144,7 @@ drag.addItem(anotherView)
 animator.addBehavior(drag)
 ```
 
-```objective-c
+```objc
 @property (strong, nonatomic, nonnull) UIDynamicAnimator *animator;
 @property (strong, nonatomic, nonnull) UIFieldBehavior *drag;
 
@@ -229,7 +229,7 @@ for vertical in [\UIEdgeInsets.left,
 }
 ```
 
-```objective-c
+```objc
 UIFieldBehavior *topLeftCornerField = [UIFieldBehavior springField];
 
 // Top left corner
@@ -258,7 +258,7 @@ This API isn't exposed publicly,
 but you can unlock its potential through a category
 or using key-value coding:
 
-```objective-c
+```objc
 @import UIKit;
 
 #if DEBUG
@@ -275,7 +275,7 @@ or
 ````swift
 animator.setValue(true, forKey: "debugEnabled")
 ```~
-```objective-c
+```objc
 [self.animator setValue:@1 forKey:@"debugEnabled"];
 ````
 
@@ -340,7 +340,7 @@ avatarPhysicalProperties.resistance = 8
 avatarPhysicalProperties.density = 0.02
 ```
 
-```objective-c
+```objc
 UIDynamicItemBehavior *avatarPhysicalProperties = [[UIDynamicItemBehavior alloc] initWithItems:@[self.facetimeAvatar]];
 avatarPhysicalProperties.allowsRotation = NO;
 avatarPhysicalProperties.resistance = 8;
@@ -368,7 +368,7 @@ let velocity = panGesture.velocity(in: view)
 facetimeAvatarBehavior.addLinearVelocity(velocity, for: facetimeAvatar)
 ```
 
-```objective-c
+```objc
 // Inside a switch for a gesture recognizer...
 case UIGestureRecognizerStateCancelled:
 case UIGestureRecognizerStateEnded:
@@ -399,7 +399,7 @@ let parentViewBoundsCollision = UICollisionBehavior(items: [facetimeAvatar])
 parentViewBoundsCollision.translatesReferenceBoundsIntoBoundary = true
 ```
 
-```objective-c
+```objc
 UICollisionBehavior *parentViewBoundsCollision = [[UICollisionBehavior alloc] initWithItems:@[self.facetimeAvatar]];
 parentViewBoundsCollision.translatesReferenceBoundsIntoBoundary = YES;
 ```
@@ -415,7 +415,7 @@ lazy var animator:UIDynamicAnimator = {
 }()
 ```
 
-```objective-c
+```objc
 self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 ```
 
@@ -423,6 +423,8 @@ By aggregating several behaviors to work as one,
 we can now bask in our work:
 
 <video preload="none" src="{% asset uifieldbehavior-demo.mp4 @path %}" poster="{% asset uifieldbehavior-demo.png @path %}" width="320" controls></video>
+
+<br/>
 
 If you want to stray from the FaceTime "sticky" corners,
 you are in an ideal position to do so.
@@ -435,7 +437,7 @@ or constantly have the avatar rotate around a given point.
 iOS has largely parted ways with skeuomorphism,
 and user experience has come a long way as a result.
 We no longer necessarily require
-[green felt]({% asset game-center-felt.png @path %})
+[green felt]({% asset game-center-felt.jpg @path %})
 to know that Game Center represents games and how we can manage them.
 
 Instead, UIKit Dynamics introduces an entirely new way
