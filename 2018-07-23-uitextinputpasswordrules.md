@@ -171,7 +171,7 @@ to an `<input>` element with `type="password"`:
 <input type="password" passwordrules="required: upper; required: lower; required: special; max-consecutive: 3;"/>
 ```
 
-{% note do %}
+{% info do %}
 
 If unspecified,
 the default password rule is
@@ -179,7 +179,7 @@ the default password rule is
 Though if your form has a password confirmation field,
 it will automatically follow the rules from the preceding field.
 
-{% endnote %}
+{% endinfo %}
 
 ## Generating Password Rules in Swift
 

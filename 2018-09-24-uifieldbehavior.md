@@ -206,13 +206,13 @@ to the edge of its corner.
 When the avatar enters any of the corners,
 the spring is "let go" and gives us that nice little push that we're after.
 
-{% note do %}
+{% info do %}
 
 The spring field is created by replicating
 [Hooke's Law](https://phys.org/news/2015-02-law.html)
 to calculate how much force should be applied to the objects within the field.
 
-{% endnote %}
+{% endinfo %}
 
 To take care of the avatar settling into each corner,
 we can do something clever like this:

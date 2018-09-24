@@ -137,14 +137,14 @@ languageRecognizer.processString(string)
 recognizer.dominantLanguage // da (!)
 ```
 
-{% note do %}
+{% info do %}
 
 The [Universal Declaration of Human Rights](http://www.un.org/en/universal-declaration-human-rights/),
 is the among the most widely-translated documents in the world,
 with translations in over 500 different languages.
 For this reason, it's often used for natural language tasks.
 
-{% endnote %}
+{% endinfo %}
 
 Danish and Norwegian Bokmål are very similar languages to begin with,
 so it's unsurprising that `NLLanguageRecognizer` guessed incorrectly.
