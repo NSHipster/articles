@@ -74,7 +74,7 @@ which our good friends in Cupertino used to build the
 <abbr title="picture-in-picture">PiP</abbr> functionality
 seen in FaceTime calls.
 
-{% asset facetimeiOS.png alt="FaceTime" title="Image: Apple Inc. All Rights reserved." %}
+{% asset facetime-picture-in-picture.png alt="FaceTime" title="Image: Apple Inc. All Rights reserved." %}
 
 ## Understanding Field Behaviors
 
@@ -286,7 +286,7 @@ it appears as though each corner has a spring effect attached to it.
 Running and using our fledgling app, however,
 reveals that it's not enough to complete the effect we're seeking.
 
-{% asset debug.png %}
+{% asset uidynamicanimator-debug.png %}
 
 ## Aggregating Behaviors
 
@@ -419,7 +419,7 @@ self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 By aggregating several behaviors to work as one,
 we can now bask in our work:
 
-{% asset demo.gif %}
+{% asset uifieldbehavior-demo.gif %}
 
 If you want to stray from the FaceTime "sticky" corners,
 you are in an ideal position to do so.
@@ -432,7 +432,7 @@ or constantly have the avatar rotate around a given point.
 iOS has largely parted ways with skeuomorphism,
 and user experience has come a long way as a result.
 We no longer necessarily require
-[green felt]({% asset felt.png @path %})
+[green felt]({% asset game-center-felt.png @path %})
 to know that Game Center represents games and how we can manage them.
 
 Instead, UIKit Dynamics introduces an entirely new way
