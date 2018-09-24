@@ -272,12 +272,13 @@ or using key-value coding:
 
 or
 
-````swift
+```swift
 animator.setValue(true, forKey: "debugEnabled")
-```~
+```
+
 ```objc
 [self.animator setValue:@1 forKey:@"debugEnabled"];
-````
+```
 
 Although creating a category involves a bit more legwork, it's the safer option.
 The slippery slope of key-value coding can rear its exception-laden head
