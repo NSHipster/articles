@@ -218,6 +218,8 @@ To take care of the avatar settling into each corner,
 we can do something clever like this:
 
 ```swift
+let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
 for vertical in [\UIEdgeInsets.left,
                  \UIEdgeInsets.right]
 {
