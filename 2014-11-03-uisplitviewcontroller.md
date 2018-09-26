@@ -2,75 +2,157 @@
 title: UISplitViewController
 author: Natasha Murashev
 category: Cocoa
-excerpt: "The introduction of iPhone 6+ brought on a new importance for UISplitViewController. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes."
+excerpt: >
+  Although user interface idioms have made way
+  for the broader concept of size classes,
+  `UISplitViewController` remains a workhorse API for writing   Universal apps.
+revisions:
+  "2014-11-03": First Publication
+  "2018-09-26": Updated for iOS 12 and Swift 4.2
 status:
-  swift: 2.0
-  reviewed: September 11, 2015
+  swift: 4.2
+  reviewed: September 26, 2018
 ---
 
-The introduction of iPhone 6+ brought on a new importance for `UISplitViewController`. With just a few little tweaks, an app can now become Universal, with Apple handling most of the UI logic for all the different screen sizes.
+In the beginning, there was the iPhone.
+And it was good.
 
-Check out the `UISplitViewController` doing its magic on iPhone 6+:
+Some years later, the iPad was introduced.
+And with some adaptations, an iOS app could be made Universal
+to accommodate both the iPhone and iPad in a single bundle.
 
-<video preload="none" src="{% asset SplitViewDemo.mov @path %}" poster="{% asset SplitViewDemo.jpg @path %}" width="640" controls></video>
+For a while,
+the split between the two was the _split_ itself ---
+namely `UISplitViewController`.
+Given a classic master-detail view controller paradigm,
+an iPhone would display each on separate screens,
+whereas an iPad would display both side-by-side.
 
-> Note that the view does not split when the iPhone 6+ is in _Zoomed_ Display mode! (You can change between Standard and Zoomed Display Mode by going to Settings.app → Display & Brightness → View)
+But over time, the iPhone grew in size
+and the distinction between phone and tablet began to blur.
+Starting with the iPhone 6+,
+apps running in landscape mode on the phone
+had enough screen real estate to act like they were on a tablet.
 
-<video preload="none" src="{% asset SplitViewZoomedDemo.mov @path %}" poster="{% asset SplitViewZoomedDemo.jpg @path %}" width="640" controls></video>
+Although user interface idioms have made way
+for the broader concept of size classes,
+`UISplitViewController` remains a workhorse API for writing Universal apps.
+This week, let's take a closer look at how we can use it
+to adapt our UI to a variety of screen sizes.
 
-Again, Apple handles the logic for figuring out exactly when to show the split views.
+---
 
-## The Storyboard Layout
+Let's start with an example of `UISplitViewController`
+working its magic on a large iPhone:
 
-Here is an overview of what a storyboard layout looks like with a split view controller:
+<video preload="none" poster="{% asset split-view-demo.jpg @path %}" width="640" controls>
+    <source src="{% asset split-view-demo.mov @path %}" type="video/quicktime"/>
+</video>
 
-![UISplitViewController Storyboard Layout]({% asset uisplitviewcontroller-storyboard-layout.png @path %})
+However, the view doesn't split when the iPhone is in _Zoomed_ Display mode.
 
-Let's get into more detail:
+<video preload="none" poster="{% asset split-view-zoomed-demo.jpg @path %}" width="640" controls>
+    <source src="{% asset split-view-zoomed-demo.mov @path %}" type="video/quicktime"/>
+</video>
+
+{% info do %}
+
+You can change between Standard and Zoomed Display Mode in Settings
+by going to General → Accessibility → Zoom,
+enabling the Zoom option
+and selecting Full Screen Zoom for Zoom Region.
+
+{% endinfo %}
+
+This is one instance of how split views automatically determine when to show split views.
+
+## Split View Controller, from Start to Finish
+
+The best way to understand how to use `UISplitViewController` works
+is to show a complete example.
+The source code for the example project in this post
+[can be found here](https://github.com/NSHipster/UISplitViewControllerDemo).
+
+### The Storyboard Layout
+
+Here's an overview of what a storyboard layout looks like with a split view controller:
+
+{% asset uisplitviewcontroller-storyboard-layout.png alt="UISplitViewController Storyboard Layout" %}
+
+In order to _master_ this concept,
+let's dive into more _detail_.
 
 ### Master / Detail
 
-The first step to using a `UISplitViewController` is dragging it onto the storyboard. Next, specify which view controller is the **Master** and which one is the **Detail**.
+The first step to using a `UISplitViewController`
+is dragging it onto the storyboard.
+The next step is to specify which view controller is the <dfn>master</dfn>
+and which one is the <dfn>detail</dfn>.
 
-![UISplitViewController Master-Detail Storyboard ]({% asset uisplitviewcontroller-master-detail-storyboard.png @path %})
+{% asset uisplitviewcontroller-master-detail-storyboard.png alt="UISplitViewController Master-Detail Storyboard" %}
 
-Do this by selecting the appropriate Relationship Segue:
+You can do this by selecting the appropriate Relationship Segue:
 
-![UISplitViewController Relationship Segue]({% asset uisplitviewcontroller-relationship-segue.png @path %})
+{% asset uisplitviewcontroller-relationship-segue.png alt="UISplitViewController Relationship Segue" %}
 
-The master view controller is usually the navigation controller containing the list view (a `UITableView` in most cases). The detail view controller is the Navigation Controller for the view corresponding to what shows up when the user taps on the list item.
+The master view controller is typically the navigation controller
+that contains the list view (a `UITableView` in most cases);
+the detail view controller is the navigation controller
+that contains the view that shows up when the user taps on the list item.
 
 ### Show Detail
 
-There is one last part to making the split view controller work: specifying the "Show Detail" segue:
+There's one last part to making the split view controller work:
+specifying the "Show Detail" segue.
 
-![UISplitViewController Show Detail Segue]({% asset uisplitviewcontroller-show-detail-segue.png @path %})
+{% asset uisplitviewcontroller-show-detail-segue.png alt="UISplitViewController Show Detail Segue" %}
 
-In the example below, when the user taps on a cell in the `SelectColorTableViewController`, they'll be shown a navigation controller with the `ColorViewController` at its root.
+In the example below,
+when the user taps on a cell in the `ColorsViewController`,
+they're shown a navigation controller with the `ColorViewController` at its root.
 
 ### Double Navigation Controllers‽
 
-At this point, you might be wondering why both the Master and the Detail view controllers have to be navigation controllers—especially since there is a "Show Detail" segue from a table view (which is part of the navigation stack) to the Detail view controller. What if the Detail View Controller didn't start with a Navigation Controller?
+At this point,
+you might be wondering:
+_Why do the master and detail view controllers
+have to be navigation controllers ---
+especially when there's already a "Show Detail" segue?_.
 
-![UISplitViewController No Detail Navigation Controller]({% asset uisplitviewcontroller-no-detail-navigation-controller.png @path %})
+Well, let's see what happens
+when the detail view controller
+doesn't have a navigation controller at its root:
 
-By all accounts, the app would still work just fine. On an iPhone 6+, the only difference is the lack of a navigation toolbar when the phone is in landscape mode:
+{% asset uisplitviewcontroller-no-detail-navigation-controller.png alt="UISplitViewController No Detail Navigation Controller" %}
 
-![]({% asset uisplitviewcontroller-no-navigation-bar.png @path %})
+By all accounts,
+the app would still work just fine.
+On a large iPhone,
+the only difference is the lack of a navigation bar
+when the phone is in landscape mode:
 
-It's not a big deal, unless you do want your navigation bar to show a title. This ends up being a deal-breaker on an iPad.
+{% asset uisplitviewcontroller-no-navigation-bar.png alt="UISplitViewController No Navigation Bar" %})
 
-<video preload="none" src="{% asset iPadSplitViewNoNavBar.mov @path %}" poster="{% asset iPadSplitViewNoNavBar.jpg @path %}" width="540" controls></video>
+It's not a big deal unless want your navigation bar to show a title.
+But this is a deal-breaker on an iPad:
 
-Notice that when the iPad app is first opened up, there is no indication that this is a split view controller at all! To trigger the Master view controller, the user has to magically know to swipe left to right.
+<video preload="none" poster="{% asset ipad-split-view-no-navigation-bar.jpg @path %}" width="540" controls>
+    <source src="{% asset ipad-split-view-no-navigation-bar.mov @path %}" type="video/quicktime"/>
+</video>
 
-Even when the navigation controller is in place, the UI is not that much better at first glance (although seeing a title is definitely an improvement):
+Notice that when the iPad app first launches,
+there's no indication that there's a split view controller at all!
+To trigger the master view controller,
+the user has to magically know to swipe left-to-right.
 
-![UISplitViewController iPad Navigation Bar No Button]({% asset uisplitviewcontroller-ipad-navigation-bar-no-button.png @path %})
+### Adding a Display Mode Button
 
-### `displayModeButtonItem`
-
-The simplest way to fix this issue would be to somehow indicate that there is more to the app than what's currently on-screen. Luckily, the UISplitViewController has a **displayModeButtonItem**, which can be added to the navigation bar:
+To resolve this issue,
+we're looking for some way to indicate that there's more to the app
+than what's currently on-screen.
+Luckily, `UISplitViewController` has a `displayModeButtonItem` navigation item,
+which can be added to the navigation bar
+to give us the visual indicator we seek:
 
 ```swift
 override func viewDidLoad() {
@@ -78,7 +160,8 @@ override func viewDidLoad() {
 
     // ...
 
-    navigationItem.leftBarButtonItem = splitViewController?.displayModeButtonItem()
+    navigationItem.leftBarButtonItem =
+        splitViewController?.displayModeButtonItem
     navigationItem.leftItemsSupplementBackButton = true
 }
 ```
@@ -89,49 +172,70 @@ override func viewDidLoad() {
 
     // ...
 
-    self.navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+    self.navigationItem.leftBarButtonItem =
+        self.splitViewController.displayModeButtonItem;
     self.navigationItem.leftItemsSupplementBackButton = YES;
 }
 ```
 
-Build and Run on the iPad again, and now the user gets a nice indication of how to get at the rest of the app:
+_Build and Run_ on the iPad again,
+and now you get a nice indication of how access the rest of the app:
 
-<video preload="none" src="{% asset iPadNavBarWithButton.mov @path %}" poster="{% asset iPadNavBarWithButton.jpg @path %}" width="540" controls></video>
+<video preload="none" poster="{% asset ipad-navigation-bar-with-button.jpg @path %}" width="540" controls>
+    <source src="{% asset ipad-navigation-bar-with-button.mov @path %}" type="video/quicktime"/>
+</video>
 
-`UISplitViewController`'s `displayModeButtonItem` adds a bit of extra-cool usability to the iPhone 6+ in landscape mode, too:
+The `displayModeButtonItem` property lends some nice usability
+to apps running on large iPhones in landscape mode, too:
 
-<video preload="none" src="{% asset iPhone6PluseDisplayModeButton.mov @path %}" poster="{% asset iPhone6PluseDisplayModeButton.jpg @path %}" width="640" controls></video>
+<video preload="none" poster="{% asset iphone-displayModeButtonItem.jpg @path %}" width="640" controls>
+    <source src="{% asset iphone-displayModeButtonItem.mov @path %}" type="video/quicktime"/>
+</video>
 
-By using the `displayModeButtonItem`, you're once again letting Apple figure out what's appropriate for which screen sizes / rotations. Instead of sweating the small (and big) stuff yourself, you can sit back and relax.
+By using `displayModeButtonItem`,
+you let iOS figure out what's appropriate
+for the current screen size and orientation.
+Instead of sweating the small (and big) stuff yourself,
+you can sit back and relax. 🍹
 
 ## Collapse Detail View Controller
 
-There is one more optimization we can do for the iPhone 6+ via [`UISplitViewControllerDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISplitViewControllerDelegate_protocol/index.html).
-
-When the user first launches the app, we can make the master view controller fully displayed until the user selects a list item:
+There's one more optimization we can do for the iPhone.
+When the user first launches the app,
+let's make the master view controller display fully
+until the user selects a list item.
+We can do that using
+[`UISplitViewControllerDelegate`](https://developer.apple.com/documentation/uikit/uisplitviewcontrollerdelegate):
 
 ```swift
-class SelectColorTableViewController: UITableViewController, UISplitViewControllerDelegate {
-    private var collapseDetailViewController = true
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        splitViewController?.delegate = self
-    }
+class ColorsViewController: UITableViewController {
+    var collapseDetailViewController: Bool = true
 
     // ...
 
     // MARK: - UITableViewDelegate
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        collapseDetailViewController = false
+    override func tableView(_ tableView: UITableView,
+                            didSelectRowAt indexPath: IndexPath)
+    {
+        self.collapseDetailViewController = false
     }
+}
 
-    // MARK: - UISplitViewControllerDelegate
+class SplitViewDelegate: NSObject, UISplitViewControllerDelegate {
+    // ...
 
-    func splitViewController(splitViewController: UISplitViewController, collapseSecondaryViewController secondaryViewController: UIViewController, ontoPrimaryViewController primaryViewController: UIViewController) -> Bool {
-        return collapseDetailViewController
+    func splitViewController(_ splitViewController: UISplitViewController,
+                             collapseSecondary secondaryViewController: UIViewController,
+                             onto primaryViewController: UIViewController) -> Bool
+    {
+        guard let navigationController = primaryViewController as? UINavigationController,
+            let controller = navigationController.topViewController as? ColorsViewController
+        else {
+            return true
+        }
+
+        return controller.collapseDetailViewController
     }
 }
 ```
@@ -139,15 +243,14 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 ```objc
 // SelectColorTableViewController.h
 
-@interface SelectColorTableViewController : UITableViewController <UISplitViewControllerDelegate>
+@interface SelectColorTableViewController :
+            UITableViewController <UISplitViewControllerDelegate>
 @end
 
 // SelectColorTableViewController.m
 
 @interface SelectColorTableViewController ()
-
 @property (nonatomic) BOOL shouldCollapseDetailViewController;
-
 @end
 
 @implementation SelectColorTableViewController
@@ -155,33 +258,53 @@ class SelectColorTableViewController: UITableViewController, UISplitViewControll
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.shouldCollapseDetailViewController = true;
+    self.shouldCollapseDetailViewController = YES;
     self.splitViewController.delegate = self;
 }
 
 #pragma mark - UITableViewDelegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    self.shouldCollapseDetailViewController = false;
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.shouldCollapseDetailViewController = NO;
 }
 
 #pragma mark - UISplitViewControllerDelegate
 
-- (BOOL)splitViewController:(UISplitViewController *)splitViewController collapseSecondaryViewController:(UIViewController *)secondaryViewController ontoPrimaryViewController:(UIViewController *)primaryViewController {
+- (BOOL)splitViewController:(UISplitViewController *)splitViewController
+collapseSecondaryViewController:(UIViewController *)secondaryViewController
+      ontoPrimaryViewController:(UIViewController *)primaryViewController {
     return self.shouldCollapseDetailViewController;
 }
 
 @end
 ```
 
-When the user first opens up the app on iPhone 6+ in portrait orientation, `SelectColorViewController` gets displayed as the primary view controller. Once the user selects a color or the app goes into the background, the `SelectColorViewController` gets collapsed again, and the `ColorViewController` is displayed:
+Now when the app launches on an iPhone in portrait orientation,
+`ColorsViewController` is in full view.
+Once the user selects a color
+(or the app goes into the background),
+`ColorsViewController` is collapsed again,
+and `ColorViewController` is displayed:
 
-<video preload="none" src="{% asset iPhone6PlusPrimaryVCRotation.mov @path %}" poster="{% asset iPhone6PlusPrimaryVCRotation.jpg @path %}" width="640" controls></video>
+<video preload="none" poster="{% asset iphone-primary-view-controller-rotation.jpg @path %}" width="640" controls>
+    <source src="{% asset iphone-primary-view-controller-rotation.mov @path %}" type="video/quicktime"/>
+</video>
 
 ---
 
-Be sure to check out the [`UISplitViewControllerDelegate`](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UISplitViewControllerDelegate_protocol/index.html) documentation to learn about all the other fancy things you can do with the `UISplitViewController`.
+iOS is always adapting to new capabilities from new hardware.
+When retina screens were introduced,
+developers could no longer assume that 1pt = 1px.
+When larger iPhones were introduced,
+developers could no longer assume a single screen size.
 
-Given the new different device sizes we now have to work with as iOS developers, the UISplitViewController will soon be our new best friend!
+Today, we're responsible for accommodating several generations
+or iPhones and iPads, as well as external displays
+and various accessibility features.
+This would be a nightmare if it weren't for the powerful and thoughtful APIs
+provided in iOS.
 
-> You can get the complete source code for the project used in this post [on GitHub](https://github.com/NatashaTheRobot/UISplitViewControllerDemo).
+`UISplitViewController` may not be the newest API on the block
+when it comes to adapting to various interface conditions,
+but it remains a useful tool for quickly creating robust apps.
