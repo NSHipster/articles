@@ -53,7 +53,7 @@ open Finder,
 select "Go > Go to Folder..." (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>G</kbd>),
 and enter "/Library/Desktop Pictures/".
 
-{% go-to-library-desktop-pictures.png %}
+{% asset go-to-library-desktop-pictures.png %}
 
 In this directory,
 you should find a file named "Mojave.heic".
@@ -65,12 +65,12 @@ In Preview,
 the sidebar shows a list of thumbnails numbered 1 through 16,
 each showing a different view of the desert scene.
 
-{% mojave-dynamic-desktop-images.png %}
+{% asset mojave-dynamic-desktop-images.png %}
 
 If we select "Tools > Show Inspector" (<kbd>⌘</kbd><kbd>I</kbd>),
 we get some general information about what we're looking at:
 
-{% mojave-heic-preview-info.png %}
+{% asset mojave-heic-preview-info.png %}
 
 Unfortunately, that's about all Preview gives us
 (at least at the time of writing).
@@ -292,7 +292,7 @@ about halfway between the horizon and directly overhead.
 If track the position of the sun over an entire day,
 we get a sinusoidal shape reminiscent of the Apple Watch "Solar" face.
 
-{% solar-position-watch-faces.jpg %}
+{% asset solar-position-watch-faces.jpg %}
 
 ### Extending Our Understanding of XMP
 
