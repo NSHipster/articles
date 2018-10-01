@@ -306,8 +306,6 @@ Yeah, _that_.
 <abbr title="Extensible Metadata Platform">XMP</abbr>,
 or Extensible Metadata Platform,
 is a standard format for tagging files with metadata.
-
-Fair enough.
 What does XMP look like?
 Brace yourself:
 
@@ -330,7 +328,7 @@ print(xmp)
 </x:xmpmeta>
 ```
 
-Yuck.
+_Yuck._
 
 But it's a good thing that we checked.
 We'll need to honor that `apple_desktop` namespace
