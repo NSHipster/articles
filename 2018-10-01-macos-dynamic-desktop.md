@@ -136,7 +136,7 @@ for tag in tags {
 
 When we run this code, we get two results:
 `hasXMP`, which has a value of `"True"`,
-and `solar`, which has a decidedly less undertandable value:
+and `solar`, which has a decidedly less understandable value:
 
 ```
 YnBsaXN0MDDRAQJSc2mvEBADDBAUGBwgJCgsMDQ4PEFF1AQFBgcICQoLUWlRelFh
@@ -197,7 +197,7 @@ if name == "solar" {
 }
 ```
 
-<samp>
+```
 (
     ap = {
         d = 15;
@@ -217,7 +217,7 @@ if name == "solar" {
         }
     )
 )
-</samp>
+```
 
 _Now we're talking!_
 
