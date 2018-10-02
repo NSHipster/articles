@@ -229,7 +229,7 @@ a dictionary containing integers for the `d` and `l` keys.
 The `si` key corresponds to
 an array of dictionaries with integer and floating-point values.
 Of the nested dictionary keys,
-`i` is the easiest to understand ---
+`i` is the easiest to understand:
 incrementing from 0 to 15,
 they're the index of the image in the sequence.
 It'd be hard to guess `a` and `z` without any additional information,
@@ -244,13 +244,12 @@ are settling into the season of autumn
 and its shorter, colder days,
 whereas those of us in the southern hemisphere
 are gearing up for hotter and longer days.
-
-And it's not just a north/south divide,
-as anyone living the Arctic or Antarctic circle will tell you.
-The duration of a solar day depends where you are on the planet
+The changing of the seasons reminds us that
+the duration of a solar day depends where you are on the planet
 and where the planet is in its orbit around the sun.
 
-The good news is that astronomers can tell you with perfect accuracy
+The good news is that astronomers can tell you ---
+with perfect accuracy ---
 where the sun is in the sky for any location or time.
 The bad news is that
 the necessary calculations are
