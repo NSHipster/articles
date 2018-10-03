@@ -353,7 +353,7 @@ read Swift Evolution proposal
 
 In addition to binary operators that take two operands,
 there are also <dfn>unary</dfn> operators,
-which take a single operator.
+which take a single operand.
 
 #### Prefix Operators
 
