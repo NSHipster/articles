@@ -117,7 +117,7 @@ and precedence level, in descending order:
     </tr>
     <tbody>
         <tr>
-            <td><tt>\*</tt></td>
+            <td><tt>*</tt></td>
             <td>Multiply</td>
         </tr>
         <tr>
@@ -129,7 +129,7 @@ and precedence level, in descending order:
             <td>Remainder</td>
         </tr>
         <tr>
-            <td><tt>&amp;\*</tt></td>
+            <td><tt>&amp;*</tt></td>
             <td>Multiply, ignoring overflow</td>
         </tr>
         <tr>
