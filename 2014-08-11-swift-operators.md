@@ -6,7 +6,7 @@ tags: swift
 excerpt: >-
   Operators are what do the work of a program.
   They are the very execution of an executable;
-  the teleological driver of ever process.
+  the teleological driver of every process.
 revisions:
   "2014-08-11": First Publication
   "2018-10-03": Updated for Swift 4.2
@@ -21,7 +21,7 @@ signifying nothing.
 
 Operators are what do the work of a program.
 They are the very execution of an executable;
-the teleological driver of ever process.
+the teleological driver of every process.
 Operators are a topic of great importance for developers
 and the focus of this week's NSHipster article.
 
