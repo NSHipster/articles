@@ -76,7 +76,7 @@ so `5 - 2 + 3` evaluates to `6`.
 | :----------: | :------: | :-----------: |
 | left operand | operator | right operand |
 
-{% asset swift-operators-one-plus-two-plus-three.svg alt="5 - 2 + 3 AST" %}
+{% asset swift-operators-five-minus-two-plus-three.svg alt="5 - 2 + 3 AST" %}
 
 ## Swift Operators
 
