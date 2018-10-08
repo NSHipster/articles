@@ -211,7 +211,7 @@ We can even take things a step further
 and use `DateIntervalFormatter`
 to provide a nice representation of that time period:
 
-```
+```swift
 let formatter = DateIntervalFormatter()
 formatter.timeStyle = .none
 formatter.dateTemplate = "%Y"
