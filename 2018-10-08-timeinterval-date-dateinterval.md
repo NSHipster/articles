@@ -221,7 +221,7 @@ formatter.string(from: overlap)
 
 _Beautiful._
 You might as well print this code out, frame it, and hang it up next to
-[The Judgement of Paris](https://www.museodelprado.es/en/the-collection/art-work/the-judgement-of-paris/f8b061e1-8248-42ae-81f8-6acb5b1d5a0a).
+[_The Judgement of Paris_](https://www.museodelprado.es/en/the-collection/art-work/the-judgement-of-paris/f8b061e1-8248-42ae-81f8-6acb5b1d5a0a).
 
 ---
 
