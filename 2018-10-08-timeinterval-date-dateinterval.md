@@ -61,7 +61,7 @@ And that's to say nothing of leap seconds,
 which are responsible for such oddities as
 the 61 second minute,
 the 3601 second hour,
-and, of course, the 1209600 second fortnight.
+and, of course, the 1209601 second fortnight.
 
 `TimeInterval` (neé `NSTimeInterval`) is a typealias for `Double`
 that represents duration as a number of seconds.
