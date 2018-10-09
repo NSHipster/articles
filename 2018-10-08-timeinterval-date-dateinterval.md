@@ -63,7 +63,7 @@ the 61 second minute,
 the 3601 second hour,
 and, of course, the 1209601 second fortnight.
 
-`TimeInterval` (neé `NSTimeInterval`) is a typealias for `Double`
+`TimeInterval` (née `NSTimeInterval`) is a typealias for `Double`
 that represents duration as a number of seconds.
 You'll see it as a parameter or return type
 for APIs that deal with a duration of time.
