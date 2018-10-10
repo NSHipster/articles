@@ -160,7 +160,7 @@ calendar.dateInterval(of: .day,
 // 90000 seconds
 ```
 
-_It's {{ site.time | format: '%Y' }}.
+_It's {{ site.time | date: '%Y' }}.
 Don't you think that it's time you stopped hard-coding `secondsInDay = 86400`?_
 
 ## Calculating Intersections of Date Intervals
