@@ -3,7 +3,7 @@ title: DateComponents
 author: Mattt
 category: Cocoa
 excerpt: >-
-  DateComponents` is a useful, but ambiguous type.
+  `DateComponents` is a useful, but ambiguous type.
   Taken in one context,
   date components can be used to represent a specific calendar date.
   But in another context,
