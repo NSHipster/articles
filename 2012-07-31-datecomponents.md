@@ -218,13 +218,6 @@ The `weekOfYear` component
 returns the ISO week number for the date in question.
 For example, October 10th, 2018 occurs on the 41st ISO week.
 
-{% info %}
-
-You can turn on ISO week numbering in Calendar.app on macOS
-in Preferences under the "Advanced".
-
-{% endinfo %}
-
 The `yearForWeekOfYear` component
 is helpful for weeks that span two calendar years.
 For example, New Years Eve this year --- December 31st, 2018 ---
