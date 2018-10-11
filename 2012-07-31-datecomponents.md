@@ -188,7 +188,7 @@ Int(formatter.string(from: Date())) // 4
 
 Weekdays are given integer values starting with
 1 for Sunday
-and ending with 6 for Saturday.
+and ending with 7 for Saturday.
 
 But the first weekday varies across different locales.
 The first weekday in the calendar depends on your current locale.
