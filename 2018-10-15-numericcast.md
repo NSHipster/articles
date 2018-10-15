@@ -266,7 +266,7 @@ random(in: 0..<0x1_0000_0000) // 🧞‍ Fatal error: Not enough bits to represe
 ```
 
 If we [look at the Standard Library implementation](https://github.com/apple/swift/blob/7f7b4f12d3138c5c259547c49c3b41415cd4206e/stdlib/public/core/Integers.swift#L2537-L2560)
-that now lets do `Int.random(in: 0...10)`,
+that now lets us do `Int.random(in: 0...10)`,
 we'll see that it uses clamping, rather than range-checked, conversion.
 And instead of delegating to a convenience function like `arc4random_uniform`,
 it [populates values from a buffer of random bytes](https://github.com/apple/swift/blob/7f7b4f12d3138c5c259547c49c3b41415cd4206e/stdlib/public/core/Random.swift#L156-L177).
