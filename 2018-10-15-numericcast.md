@@ -188,7 +188,7 @@ because the cost of going back and forth between types
 when interacting with other APIs
 outweighs the potential benefit of a more precise type.
 For the same reason,
-it's almost always better to represent even small number,
+it's almost always better to represent even small numbers,
 like [weekday numbers](/datecomponents),
 with an `Int`,
 despite the fact that any possible value would fit into an 8-bit integer
