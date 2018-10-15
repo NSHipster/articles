@@ -57,8 +57,8 @@ For example, a date components object with
 `year` set to `2018`,
 `month` set to `10`, and
 `day` set to `10`
-could represent a period of 2018 years, 10 months, and 3 days
-or the third day of the tenth month in the year 2018:
+could represent a period of 2018 years, 10 months, and 10 days
+or the tenth day of the tenth month in the year 2018:
 
 ```swift
 import Foundation
