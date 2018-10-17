@@ -8,6 +8,9 @@ excerpt: >-
   in the shift from macOS to iOS.
   But you know what? It's ripe for a comeback. 
   With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application.
+revisions:
+  "2012-11-12": First Publication
+  "2018-10-17": Updated for Swift 4.2
 status:
   swift: 4.2
   reviewed: October 17, 2018
