@@ -1,10 +1,10 @@
 ---
-title: NSValueTransformer
+title: ValueTransformer
 author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: >-
-  `NSValueTransformer` is perhaps the one that fared the worst
+  `ValueTransformer` is perhaps the one that fared the worst
   in the shift from macOS to iOS.
   But you know what? It's ripe for a comeback. 
   With a little bit of re-tooling and some recontextualization, this blast from the past could be the next big thing in your application.
@@ -14,13 +14,13 @@ status:
 ---
 
 Of all the Foundation classes,
-`NSValueTransformer` is perhaps the one that fared the worst
+`ValueTransformer` is perhaps the one that fared the worst
 in the shift from macOS to iOS.
 
 Why? Here are two reasons:
 
 First,
-`NSValueTransformer` was used primarily in AppKit with Cocoa bindings.
+`ValueTransformer` was used primarily in AppKit with Cocoa bindings.
 There, they could automatically transform values from one property to another,
 like for negating a boolean or checking whether a value was `nil`,
 without the need of intermediary glue code.
@@ -29,19 +29,19 @@ iOS, of course, doesn't have bindings.
 The second reason has less to do with iOS than the Objective-C runtime itself.
 With the introduction of blocks,
 it got a whole lot easier to pass behavior between objects ---
-significantly easier than, say `NSValueTransformer` or `NSInvocation`.
+significantly easier than, say `ValueTransformer` or `NSInvocation`.
 So even if iOS were to get bindings tomorrow,
-it's unclear whether `NSValueTransformer`
+it's unclear whether `ValueTransformer`
 would play a significant role this time around.
 
 But you know what?
-`NSValueTransformer` might just be ripe for a comeback.
+`ValueTransformer` might just be ripe for a comeback.
 With a little bit of re-tooling and some recontextualization,
 this blast from the past could be the next big thing in your application.
 
 ---
 
-`NSValueTransformer` is an abstract class that transforms one value into another.
+`ValueTransformer` is an abstract class that transforms one value into another.
 A transformation specifies what kinds of input values can be handled
 and whether it supports reversible transformations.
 
@@ -85,7 +85,7 @@ class ClassNameTransformer: ValueTransformer {
 @end
 ```
 
-`NSValueTransformer` is rarely initialized directly.
+`ValueTransformer` is rarely initialized directly.
 Instead, it follows a pattern familiar to fans of
 `NSPersistentStore` or `NSURLProtocol`,
 where a class is registered and instances are created from a manager ---
@@ -118,7 +118,7 @@ A common pattern is to register the singleton instance
 in the `+initialize` method of the value transformer subclass
 so it can be used without additional setup.
 
-Now at this point you probably realize `NSValueTransformer`'s fatal flaw:
+Now at this point you probably realize `ValueTransformer`'s fatal flaw:
 it's super annoying to set up!
 Create a class,
 implement a handful of simple methods,
@@ -162,7 +162,7 @@ What I came up with was
 [TransformerKit](https://github.com/mattt/TransformerKit).
 
 At the core of the library is some Obj-C runtime hackery
-in an `NSValueTransformer` category.
+in an `ValueTransformer` category.
 Also included are some helpful examples,
 like string case transformers
 (i.e. `CamelCase`, `llamaCase`, `snake_case`, and `train-case`).
@@ -172,11 +172,11 @@ like string case transformers
 
 Now with a fresh new look,
 we can start to get a better understanding of
-how we might take advantage of `NSValueTransformer`:
+how we might take advantage of `ValueTransformer`:
 
 ## Making Business Logic More Functional
 
-`NSValueTransformer` objects are a great way to represent
+`ValueTransformer` objects are a great way to represent
 an ordered chain of fixed transformations.
 For instance, an app interfacing with a legacy system
 might transform user input through a succession of string transformations
@@ -195,7 +195,7 @@ and `llamaCase` to `snake_case` when serializing back to the server.
 ## Configuring Functionality
 
 Another advantage over blocks is that
-`NSValueTransformer` subclasses can expose new properties
+`ValueTransformer` subclasses can expose new properties
 that can be used to configure behavior in a particular way.
 Access to properties also provides a clean way to cache or memoize results
 and do any necessary book-keeping along the way.
@@ -203,7 +203,7 @@ and do any necessary book-keeping along the way.
 ## Transforming Your Core Data Stack
 
 Lest we forget,
-`NSValueTransformer` can be used alongside Core Data
+`ValueTransformer` can be used alongside Core Data
 to encode and decode compound data types from blob fields.
 It seems to have fallen out of fashion over the years,
 but serializing simple collections in this way
@@ -213,7 +213,7 @@ use external storage instead)
 
 ---
 
-`NSValueTransformer`,
+`ValueTransformer`,
 far from a vestige of AppKit,
 remains Foundation's purest connection to functional programming:
 input goes in, output comes out.
@@ -221,12 +221,12 @@ input goes in, output comes out.
 While it's true that Objective-C blocks
 and all of the advanced language features in Swift
 are superior examples of the functional programming paradigm.
-`NSValueTransformer` has a special place in Cocoa's history and Xcode's tooling.
+`ValueTransformer` has a special place in Cocoa's history and Xcode's tooling.
 For that reason, object orientation is transformed
 from an embarrassing liability to its greatest asset.
 
 And though it hasn't aged very well on its own,
-a little modernization restores `NSValueTransformer`
+a little modernization restores `ValueTransformer`
 to that highest esteem of NSHipsterdom:
 a solution that we didn't know we needed
 but was there all along.
