@@ -136,7 +136,7 @@ Behold:
 let TKCapitalizedStringTransformerName =
     NSValueTransformerName(rawValue: "TKCapitalizedStringTransformerName")
 
-NSValueTransformer.registerValueTransformerWithName(TKCapitalizedStringTransformerName,
+ValueTransformer.registerValueTransformerWithName(TKCapitalizedStringTransformerName,
     transformedValueClass:NSString.self) { object in
         guard let string = object as? String else { return nil }
         return string.capitalized
