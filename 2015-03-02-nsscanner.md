@@ -4,7 +4,7 @@ author: Nate Cook
 category: "Cocoa"
 excerpt: "Being able to pull apart strings and extract particular bits of data is a powerful skill, one that we use over and over building apps and shaping our tools. Cocoa provides a powerful set of frameworks to handle string processing. This week's article focuses on `NSScanner`, a highly configurable tool designed for extracting substrings and numeric values from loosely demarcated strings."
 status:
-    swift: 1.2
+    swift: 4.2
 ---
 
 Strings are a ubiquitous and diverse part of our computing lives. They comprise emails and essays, poems and novels—and indeed, every article on [nshipster.com](https://nshipster.com), the configuration files that shape the site, and the code that builds it.
@@ -42,17 +42,15 @@ An `NSScanner` instance has two additional read-only properties: `string`, which
 The *raison d'être* of `NSScanner` is to pull substrings and numeric values from a larger string. It has fifteen methods to do this, *all* of which follow the same basic pattern. Each method takes a reference to an output variable as a parameter and returns a boolean value indicating success or failure of the scan:
 
 ````swift
-let whitespaceAndPunctuationSet = NSMutableCharacterSet.whitespaceAndNewline()
-whitespaceAndPunctuationSet.formUnion(with: NSCharacterSet.punctuationCharacters)
+var whitespaceAndPunctuationSet = CharacterSet.whitespacesAndNewlines
+whitespaceAndPunctuationSet.formUnion(.punctuationCharacters)
 
 let stringScanner = Scanner(string: "John & Paul & Ringo & George.")
-stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet as CharacterSet
+stringScanner.charactersToBeSkipped = whitespaceAndPunctuationSet
 
-// using the latest Swift 3.0 syntax:
 var name: NSString?
-while stringScanner.scanUpToCharacters(from: whitespaceAndPunctuationSet as CharacterSet, into: &name)
-{
-    print(name)
+while stringScanner.scanUpToCharacters(from: whitespaceAndPunctuationSet, into: &name) {
+    print(name ?? "")
 }
 // John
 // Paul
@@ -138,7 +136,7 @@ gasPriceScanner.scanDouble(&price)
 
 // use a german locale instead of the default
 let benzinPriceScanner = Scanner(string: "1,38 pro Liter")
-benzinPriceScanner.locale = NSLocale(localeIdentifier: "de-DE")
+benzinPriceScanner.locale = Locale(identifier: "de-DE")
 benzinPriceScanner.scanDouble(&price)
 // 1.38
 ````
@@ -192,9 +190,9 @@ func bezierPathFromSVGPath(str: String) -> UIBezierPath {
     let scanner = Scanner(string: str)
 
     // skip commas and whitespace
-    let skipChars = NSMutableCharacterSet(charactersIn: ",")
-    skipChars.formUnion(with: NSCharacterSet.whitespacesAndNewlines)
-    scanner.charactersToBeSkipped = skipChars as CharacterSet
+    var skipChars = CharacterSet(charactersIn: ",")
+    skipChars.formUnion(.whitespacesAndNewlines)
+    scanner.charactersToBeSkipped = skipChars
 
     // the resulting bezier path
     let path = UIBezierPath()
@@ -216,11 +214,11 @@ With the setup out of the way, it's time to start scanning. We start by scanning
 
 ````swift
     // instructions code can be upper- or lower-case
-    let instructionSet = NSCharacterSet(charactersIn: "MCSQTAmcsqta")
+    let instructionSet = CharacterSet(charactersIn: "MCSQTAmcsqta")
     var instruction: NSString?
 
     // scan for an instruction code
-    while scanner.scanCharacters(from: instructionSet as CharacterSet, into: &instruction) {
+    while scanner.scanCharacters(from: instructionSet, into: &instruction) {
 ````
 ````objc
     // instructions codes can be upper- or lower-case
@@ -243,19 +241,19 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
         }
 
         // new point for bezier path
-        switch instruction ?? "" {
+        switch instruction {
         case "M":
             path.move(to: points[0])
         case "C":
             path.addCurve(to: points[2], controlPoint1: points[0], controlPoint2: points[1])
         case "c":
-            path.addCurve(to: path.currentPoint.offset(points[2]), controlPoint1: path.currentPoint.offset(points[0]),
-                                 controlPoint2: path.currentPoint.offset(points[1]))
+            path.addCurve(to: path.currentPoint.offset(points[2]), controlPoint1: path.currentPoint.offset(points[0]), 
+                                controlPoint2: path.currentPoint.offset(points[1]))
         default:
             break
         }
     }
-    
+
     return path
 }
 ````
