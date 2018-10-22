@@ -179,7 +179,7 @@ and pass that to the compiler.
 but nowadays, there's a much nicer API for working with them
 that's provided by the
 [Swift Package Manager](https://github.com/apple/swift-package-manager) itself.
-In your `Swift.package` file, add the following package dependency,
+In your `Package.swift` file, add the following package dependency,
 and add the `"Utility"` dependency to the appropriate target:
 
 ```swift
