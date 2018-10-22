@@ -398,7 +398,7 @@ Anyway, after a few hours of development,
 I was able to generate reasonable colorized output
 for a wide range of Swift syntactic features:
 
-{% asset swiftsyntaxhightlighter-example-output.png %}
+{% asset swiftsyntaxhightlighter-example-output.png width=500 %}
 
 The project comes with a library and a command line tool.
 Go ahead and [try it out](https://github.com/NSHipster/SwiftSyntaxHighlighter)
