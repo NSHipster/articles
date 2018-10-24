@@ -44,8 +44,9 @@ There are four distinct steps to working with a temporary file:
 
 The first step to creating a temporary file
 is to find a reasonable, out-of-the-way location to which you can write ---
-somewhere inconspicuous that get in the way of the user
-or accidentally get picked up by a system process like
+somewhere inconspicuous that doesn't 
+get in the way of the user
+or get picked up by a system process like
 Spotlight indexing, Time Machine backups, or iCloud sync.
 
 On Unix systems, the `/tmp` directory is the de facto scratch space.
