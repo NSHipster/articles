@@ -9,7 +9,7 @@ excerpt: >-
   (Or if there has, perhaps it was poetically ephemeral itself).
 revisions:
   "2014-03-03": First Publication
-  "2018-10-23": Updated for Swift 4.2
+  "2018-10-24": Updated for Swift 4.2
 status:
   swift: 4.2
 ---
