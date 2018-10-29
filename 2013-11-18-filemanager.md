@@ -87,20 +87,15 @@ Objects on the file system can be identified in a few different ways.
 For example, each of the following represents
 the location of the same text document:
 
-<dl>
-<dt>Path</dt>
-<dd><code>/Users/NSHipster/Documents/article.md</code></dd>
-<dt>File URL</dt>
-<dd><code>file:///Users/NSHipster/Documents/article.md</code></dd>
-<dt>File Reference URL</dt>
-<dd><code>file:///.file/id=1234567.7654321/</code></dd>
-</dl>
+- Path: `/Users/NSHipster/Documents/article.md`
+- File URL: `file:///Users/NSHipster/Documents/article.md`
+- File Reference URL: `file:///.file/id=1234567.7654321/`
 
-- <dfn>Paths</dfn> are slash-delimited (`/`) strings that designate a location
-  in the directory hierarchy
-- <dfn>File URLs</dfn> are URLs with a `file://` scheme in addition to a file path
-- <dfn>File Reference URLs</dfn> identify the location of a file
-  using a unique identifier separate from any directory structure
+<dfn>Paths</dfn> are slash-delimited (`/`) strings that designate a location
+in the directory hierarchy.
+<dfn>File URLs</dfn> are URLs with a `file://` scheme in addition to a file path.
+<dfn>File Reference URLs</dfn> identify the location of a file
+using a unique identifier separate from any directory structure.
 
 Of those,
 you'll mostly deal with the first two,
