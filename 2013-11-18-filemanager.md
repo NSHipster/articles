@@ -227,7 +227,7 @@ NSDate *creationDate = attributes[NSFileCreationDate];
 ```
 
 {% info %}
-File attributes used to be keyed by string constants
+File attributes used to be keyed by string constants,
 which made them hard to discover through autocompletion or documentation.
 Fortunately, it's now easy to
 [see everything that's available](https://developer.apple.com/documentation/foundation/fileattributekey).
