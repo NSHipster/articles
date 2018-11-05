@@ -241,7 +241,7 @@ for code written in any language with a language server implementation.
 ## Language Server Protocol Support in Clang / LLVM
 
 If the _M + N_ diagram from before looks familiar,
-it might be because it's the same architecture used by LLVM.
+it might be because it's the same approach taken by LLVM.
 
 At the core of LLVM is an intermediate representation (IR).
 Supported languages generate IR using a <dfn>compiler frontend</dfn>,
