@@ -225,7 +225,7 @@ The language server then responds with the following message:
 Finally,
 the editor navigates to the file
 (which, in this case, is already open),
-moves the cursor to that range.
+moves the cursor to that range,
 and highlights the token.
 
 The beauty of this approach is that the editor did all of this
