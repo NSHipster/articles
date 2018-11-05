@@ -5,8 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "Why isn't NSOrderedSet a subclass of NSSet? The answer may surprise you."
 status:
-    swift: 2.0
-    reviewed: September 15, 2015
+  swift: 2.0
+  reviewed: September 15, 2015
 ---
 
 Here's a question: why isn't `NSOrderedSet` a subclass of `NSSet`?
@@ -65,7 +65,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
 ```
 
-<img src="{% asset nsorderedset-case-1.svg %}" />
+{% asset nsorderedset-case-1.svg %}"
 
 That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
 
@@ -93,7 +93,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSOrderedSet class]]; // NO (!)
 ```
 
-<img src="{% asset nsorderedset-case-2.svg %}"/>
+{% asset nsorderedset-case-2.svg %}
 
 This is perhaps even worse, as now `NSMutableOrderedSet` couldn't be used as a method parameter expecting an `NSOrderedSet`.
 
