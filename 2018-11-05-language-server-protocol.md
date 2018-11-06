@@ -38,7 +38,7 @@ To understand why,
 this week's article will take a look at
 what problem the Language Server Protocol solves,
 how it works,
-and what it's long-term impacts may be.
+and what its long-term impacts may be.
 
 ---
 
@@ -60,7 +60,7 @@ and little to no support for anything else,
 whereas other editors aimed to be general-purpose
 with at least a modicum of support for many languages.
 (The term <abbr title="Integrated Development Environment">IDE</abbr>
-is often used to describe the former).
+is often used to describe the former.)
 
 Case in point:
 _You'd be stubborn not to use Xcode for app development
@@ -273,7 +273,7 @@ Apple is among the most prominent supporters of the LLVM project ---
 having, among other things,
 employed the project's founder, Chris Lattner, for over a decade.
 Apple's decision to switch from one obscure Clang tool to another
-would seem to an implementation detail (so to speak).
+would seem to be an implementation detail (so to speak).
 
 What makes this announcement quite interesting
 is that Clangd appears to have been created entirely outside of Apple,
