@@ -56,10 +56,10 @@ extension UIView {
 }
 ```
 
-{% note %}
+{% info %}
 The renaming and nesting of imported types
 are the result of a separate mechanism.
-{% endnote %}
+{% endinfo %}
 
 At the time `OptionSet` was introduced (and `RawOptionSetType` before it),
 this was the best encapsulation that the language could provide.
