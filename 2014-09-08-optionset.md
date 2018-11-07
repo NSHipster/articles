@@ -263,7 +263,7 @@ extension Set where Element: Option {
         var rawValue = 0
         for (index, element) in Element.allCases.enumerated() {
             if self.contains(element) {
-                rawValue |= Int(pow(2, Double(index)))
+                rawValue |= (1 << index)
             }
         }
 
