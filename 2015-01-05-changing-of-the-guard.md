@@ -3,7 +3,7 @@ title: "Changing of the Guard"
 author: Mattt
 category: ""
 excerpt: "An important site announcement."
-draft: true
+published: false
 status:
   swift: n/a
 ---
