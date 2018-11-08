@@ -175,7 +175,7 @@ struct Pizza {
 
 let dinner = Pizza(inchesInDiameter: 12,
                    style: .neapolitan,
-                   toppings: [.greenPepper, .pineapple])
+                   toppings: [.greenPeppers, .pineapple])
 ```
 
 Another advantage of `OptionSet` conforming to `SetAlgebra` is that
