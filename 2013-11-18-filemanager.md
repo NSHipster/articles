@@ -146,7 +146,6 @@ let documentsDirectoryURL =
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];
 NSString *filePath = [documentsPath stringByAppendingPathComponent:@"file.txt"];
@@ -182,6 +181,16 @@ let filename = directoryURL.pathComponents.last
 let filename = FileManager.default.displayName(atPath: url.path)
 ```
 
+```objc
+NSString *documentsPath;
+
+// Bad
+NSString *filename = documentsPath.pathComponents.lastObject;
+
+// Good
+NSString *filename = [NSFileManager.defaultManager displayNameAtPath:documentsPath];
+```
+
 {% endinfo %}
 
 ## Determining Whether a File Exists
@@ -197,8 +206,7 @@ let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
 
 ```objc
 NSURL *fileURL;
-NSFileManager *fileManager = [NSFileManager defaultManager];
-BOOL fileExists = [fileManager fileExistsAtPath:[fileURL path]];
+BOOL fileExists = [NSFileManager.defaultManager fileExistsAtPath:[fileURL path]];
 ```
 
 ## Getting Information About a File
@@ -218,7 +226,7 @@ let creationDate = attributes[.creationDate]
 
 ```objc
 NSURL *fileURL;
-NSFileManager *fileManager = [NSFileManager defaultManager];
+NSFileManager *fileManager = NSFileManager.defaultManager;
 
 NSError *error = nil;
 NSDictionary *attributes = [fileManager attributesOfItemAtPath:[fileURL path]
@@ -257,7 +265,7 @@ for file in contents {
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
+NSFileManager *fileManager = NSFileManager.defaultManager;
 NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
 NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
                                includingPropertiesForKeys:@[]
@@ -292,7 +300,7 @@ if let enumerator =
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
+NSFileManager *fileManager = NSFileManager.defaultManager;
 NSURL *bundleURL = [[NSBundle mainBundle] bundleURL];
 NSDirectoryEnumerator *enumerator = [fileManager enumeratorAtURL:bundleURL
                                       includingPropertiesForKeys:@[NSURLNameKey, NSURLIsDirectoryKey]
@@ -341,7 +349,7 @@ try FileManager.default.createDirectory(at: directoryURL,
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
+NSFileManager *fileManager = NSFileManager.defaultManager;
 NSString *documentsPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                          NSUserDomainMask,
@@ -367,7 +375,6 @@ try FileManager.default.removeItem(at: fileURL)
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
 NSString *documentsPath =
     [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                          NSUserDomainMask,
@@ -375,7 +382,7 @@ NSString *documentsPath =
 NSString *filePath = [documentsPath stringByAppendingPathComponent:@"image.png"];
 NSError *error = nil;
 
-if (![fileManager removeItemAtPath:filePath error:&error]) {
+if (![NSFileManager.defaultManager removeItemAtPath:filePath error:&error]) {
     NSLog(@"[Error] %@ (%@)", error, filePath);
 }
 ```
