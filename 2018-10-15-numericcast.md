@@ -21,9 +21,10 @@ it's always jazz for whatever reason.
 But perhaps the closest point of comparison for what we do all day
 comes from Middle Eastern folk tales:
 Open any edition of
-_The Thousand and One Nights_ (أَلْف لَيْلَة وَلَيْلَة‎)
+_The Thousand and One Nights_
+(<span lang="ar">أَلْف لَيْلَة وَلَيْلَة</span>)
 and you'll find descriptions of supernatural beings known as
-<dfn>jinn</dfn>, <dfn>djinn</dfn>, <dfn>genies</dfn>, or 🧞‍.
+<dfn>jinn</dfn>, <dfn>djinn</dfn>, <dfn>genies</dfn>, or 🧞.
 No matter what you call them,
 you're certainly familiar with their habit of granting wishes,
 and the misfortune that inevitably causes.
