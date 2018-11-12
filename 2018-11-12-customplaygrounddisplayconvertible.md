@@ -1,5 +1,5 @@
 ---
-title: PlaygroundLogger / CustomPlaygroundDisplayConvertible
+title: CustomPlaygroundDisplayConvertible
 author: Mattt
 category: Swift
 excerpt: >-
