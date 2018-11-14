@@ -301,8 +301,7 @@ and is subject to change in future releases.
 Alternatively,
 the Playground logger provides for values to be represented structurally ---
 without requiring an implementation of the
-[`CustomReflectable` protocol](https://nshipster.com/mirrortype/)
-_(<sup>\*</sup> update forthcoming)_.
+[`CustomReflectable` protocol](https://nshipster.com/mirror/).
 
 This works if the value is a tuple, an enumeration case,
 or an instance of a class or structure.
