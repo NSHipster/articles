@@ -207,7 +207,7 @@ to have our <del>cake</del> <ins>pizza pie</ins> and eat it too.
 First, declare a new `Option` protocol
 that inherits `RawRepresentable`, `Hashable`, and `CaseIterable`.
 
-```Swift
+```swift
 protocol Option: RawRepresentable, Hashable, CaseIterable {}
 ```
 
