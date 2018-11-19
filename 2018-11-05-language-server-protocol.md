@@ -8,6 +8,9 @@ excerpt: >-
   since releasing the language as open source in 2014.
   It's a big deal for app developers,
   and it's an even bigger deal for Swift developers on other platforms.
+revisions:
+  "2018-11-05": First Publication
+  "2018-11-19": Updated
 status:
   swift: n/a
 ---
@@ -39,6 +42,12 @@ this week's article will take a look at
 what problem the Language Server Protocol solves,
 how it works,
 and what its long-term impacts may be.
+
+{% info %}
+**Update**:
+The sourcekit-lsp project is now
+[live on GitHub](https://github.com/apple/sourcekit-lsp).
+{% endinfo %}
 
 ---
 
@@ -255,9 +264,10 @@ If you're curious to learn more about how Swift code is compiled,
 check out [our article about SwiftSyntax](https://nshipster.com/swiftsyntax/).
 {% endinfo %}
 
-The LLVM compiler frontend used by Swift and C languages
+The LLVM compiler frontend for C languages
 is called [Clang](https://clang.llvm.org).
-And in its recent 5.0.0 release,
+It's also used by Swift for inter-operability with Objective-C.
+In its recent 5.0.0 release,
 Clang added a new tool called
 [Clangd](https://clang.llvm.org/extra/clangd.html),
 LLVM's implementation for the Language Server Protocol.
