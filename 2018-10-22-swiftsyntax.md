@@ -30,7 +30,7 @@ which is described [thusly](https://github.com/apple/swift/blob/master/lib/Synta
 > or indenting and formatting an entire source file based on declarative rules.
 
 At the time of writing,
-SwiftSynax is still in development and subject to API changes.
+SwiftSyntax is still in development and subject to API changes.
 But you can start using it today to work with Swift source code
 in a programmatic way.
 
