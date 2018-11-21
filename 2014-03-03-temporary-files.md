@@ -10,6 +10,7 @@ excerpt: >-
 revisions:
   "2014-03-03": First Publication
   "2018-10-24": Updated for Swift 4.2
+  "2018-11-21": Corrected Use of `url(for:in:appropriateFor:create:)`
 status:
   swift: 4.2
 ---
@@ -35,16 +36,16 @@ and without creating excessive <dfn>memory pressure</dfn> on the system
 
 There are four distinct steps to working with a temporary file:
 
-- Creating a temporary directory in the filesystem
-- Creating a temporary file in that directory with a unique filename
-- Writing data to the temporary file
-- Moving or deleting the temporary file once you're finished with it
+1. Creating a temporary directory in the filesystem
+2. Creating a temporary file in that directory with a unique filename
+3. Writing data to the temporary file
+4. Moving or deleting the temporary file once you're finished with it
 
 ## Creating a Temporary Directory
 
 The first step to creating a temporary file
 is to find a reasonable, out-of-the-way location to which you can write ---
-somewhere inconspicuous that doesn't 
+somewhere inconspicuous that doesn't
 get in the way of the user
 or get picked up by a system process like
 Spotlight indexing, Time Machine backups, or iCloud sync.
@@ -54,24 +55,43 @@ However, today's macOS and iOS apps run in a container
 and don't have access to system directories;
 a hard-coded path like that isn't going to cut it.
 
-Instead, let's ask `FileManager` to point us in the right direction
-using the `uri(for:in:appropriateFor:create:)` method:
+If you don't intend to keep the temporary file around,
+you can use the `NSTemporaryDirectory()` function
+to get a path to a temporary directory for the current user.
 
 ```swift
+let temporaryDirectoryURL = URL(fileURLWithPath: NSTemporaryDirectory(),
+                                    isDirectory: true)
+```
+
+```objc
+NSURL *temporaryDirectoryURL = [NSURL fileURLWithPath: NSTemporaryDirectory()
+                                          isDirectory: YES];
+```
+
+Alternatively,
+if you intend to move your temporary file to a destination URL,
+the preferred (albeit more complicated) approach
+is to call the `FileManager` method `uri(for:in:appropriateFor:create:)`.
+
+```swift
+let destinationURL: URL
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
                                 in: .userDomainMask,
-                                appropriateFor: URL(fileURLWithPath: "/"),
+                                appropriateFor: destinationURL,
                                 create: true)
 ```
 
 ```objc
+NSURL *destinationURL;
+
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
 NSURL *temporaryDirectoryURL =
     [fileManager URLForDirectory:NSItemReplacementDirectory
                         inDomain:NSUserDomainMask
-               appropriateForURL:[NSURL fileURLWithPath:@"/"]
+               appropriateForURL:destinationURL
                           create:YES
                            error:&error];
 ```
@@ -84,23 +104,15 @@ so let's go through each to understand what this method actually does:
 - We pass the user domain mask (`.userDomainMask`)
   to get a directory that's accessible to the user.
 - For the `appropriateForURL` parameter,
-  the only part of the file URL that's considered is the volume;
-  therefore, we can pass `URL(fileURLWithPath: "/")`
-  to specify the current volume.
+  we specify our `destinationURL`,
+  so that the system returns a temporary directory
+  from which a file can be quickly moved to the destination
+  (and not, say across different volumes).
 - Finally, we pass `true` to the `create` parameter
   to save us the additional step of creating it ourselves.
 
 The resulting directory will have a path that looks something like this:
 <samp>file:///var/folders/l3/kyksr35977d8nfl1mhw6l_c00000gn/T/TemporaryItems/(A%20Document%20Being%20Saved%20By%20NSHipster%208)/</samp>
-
-{% warning %}
-
-A previous version of this article
-recommended the use of `NSTemporaryDirectory()`.
-That guidance was incorrect.
-We recommend that you use `FileManager` APIs as described above.
-
-{% endwarning %}
 
 ## Creating a Temporary File
 
@@ -143,10 +155,12 @@ Now that we have an appropriate directory and a unique filename,
 let's put them together to create our temporary file:
 
 ```swift
+let destinationURL: URL
+
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
                                 in: .userDomainMask,
-                                appropriateFor: URL(fileURLWithPath: "/"),
+                                appropriateFor: destinationURL,
                                 create: true)
 
 let temporaryFilename = ProcessInfo().globallyUniqueString
@@ -156,13 +170,14 @@ let temporaryFileURL =
 ```
 
 ```objc
-NSFileManager *fileManager = [NSFileManager defaultManager];
+NSURL *destinationURL;
 
+NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
 NSURL *temporaryDirectoryURL =
     [fileManager URLForDirectory:NSItemReplacementDirectory
                         inDomain:NSUserDomainMask
-               appropriateForURL:[NSURL fileURLWithPath:@"/"]
+               appropriateForURL:destinationURL
                           create:YES
                            error:&error];
 
@@ -292,6 +307,7 @@ NSError *error = nil;
 ```
 
 {% info %}
+
 Or, if you're not entirely settled on that,
 you can use the same approach
 to locate a cache directory where the file can lie low for a while:
@@ -300,7 +316,7 @@ to locate a cache directory where the file can lie low for a while:
 let cacheDirectoryURL =
     try FileManager.default.url(for: .cachesDirectory,
                                 in: .userDomainMask,
-                                appropriateFor: URL(fileURLWithPath: "/"),
+                                appropriateFor: nil,
                                 create: false)
 ```
 
@@ -311,7 +327,7 @@ NSError *error = nil;
 NSURL *cacheDirectoryURL =
         [fileManager URLForDirectory:NSCachesDirectory
                             inDomain:NSUserDomainMask
-                    appropriateForURL:[NSURL fileURLWithPath:@"/"]
+                    appropriateForURL:nil
                                 create:NO
                                 error:&error];
 ```
