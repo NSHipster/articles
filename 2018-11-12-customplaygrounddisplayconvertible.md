@@ -319,6 +319,7 @@ and implement the required `playgroundDescription` computed property.
 For example,
 let's say you're using Playgrounds
 to familiarize yourself with the Contacts framework.
+_(Note: the Contacts framework is unavailable in Swift Playgrounds for iPad)_
 You create a new `CNMutableContact`,
 set the `givenName` and `familyName` properties,
 and provide an array of `CNLabeledValue` values
