@@ -371,15 +371,26 @@ To provide a specialized Playground representation,
 delegate to one of the value types listed in the table above.
 In this case,
 the ContactsUI framework provides a `CNContactViewController` class
-whose `view` property we can use here:
+whose `view` property we can use here
+_(annoyingly, the API is slightly different between iOS and macOS,
+hence the compiler directives)_:
 
 ```swift
+import Contacts
 import ContactsUI
 
 extension CNContact: CustomPlaygroundDisplayConvertible {
     public var playgroundDescription: Any {
-        let viewController = CNContactViewController()
-        viewController.contact = self
+        let viewController: CNContactViewController
+        #if os(macOS)
+            viewController = CNContactViewController()
+            viewController.contact = self
+        #elseif os(iOS)
+            viewController = CNContactViewController(contact: self)
+        #else
+            #warning("ContactsUI unavailable")
+        #endif
+
         return viewController.view
     }
 }
