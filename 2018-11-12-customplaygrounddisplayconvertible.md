@@ -386,7 +386,7 @@ extension CNContact: CustomPlaygroundDisplayConvertible {
             viewController = CNContactViewController()
             viewController.contact = self
         #elseif os(iOS)
-            viewController = CNContactViewController(contact: self)
+            viewController = CNContactViewController(for: self)
         #else
             #warning("ContactsUI unavailable")
         #endif
