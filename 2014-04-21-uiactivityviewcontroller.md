@@ -2,243 +2,141 @@
 title: UIActivityViewController
 author: Mattt
 category: Cocoa
-excerpt: "The relationship between code and data has long been a curious one."
+excerpt: >-
+  iOS provides a unified interface for users to
+  share and perform actions on strings, images, URLs,
+  and other items within an app.
+revisions:
+  "2014-03-31": First Publication
+  "2018-12-05": Updated for iOS 12 and Swift 4.2
 status:
-    swift: 2.0
-    reviewed: September 7, 2015
+  swift: 4.2
+  reviewed: December 5, 2018
 ---
 
-The relationship between code and data has long been a curious one.
+On iOS,
+`UIActivityViewController` provides a unified interface for users to
+share and perform actions on strings, images, URLs,
+and other items within an app.
 
-Certain programming languages, such as [Lisp](https://en.wikipedia.org/wiki/Lisp_programming_language), [Io](https://en.wikipedia.org/wiki/Io_%28programming_language%29), and [Mathematica](https://en.wikipedia.org/wiki/Mathematica) are  [homoiconic](https://en.wikipedia.org/wiki/Homoiconicity), meaning that their code is represented as a data primitive, which itself can be manipulated in code. Most other languages, including Objective-C, however, create a strict boundary between the two, shying away from `eval()` and other potentially dangerous methods of dynamic instructing loading.
-
-This tension between code and data is brought to a whole new level when the data in question is too large or unwieldy to represent as anything but a byte stream. The question of how to encode, decode, and interpret the binary representation of images, documents, and media has been ongoing since the very first operating systems.
-
-The Core Services framework on OS X and Mobile Core Services framework on iOS provide functions that identify and categorize data types by file extension and [MIME type](https://en.wikipedia.org/wiki/Internet_media_type), according to [Universal Type Identifiers](https://en.wikipedia.org/wiki/Uniform_Type_Identifier). UTIs provide an extensible, hierarchical categorization system, which affords the developer great flexibility in handling even the most exotic file types. For example, a Ruby source file (`.rb`) is categorized as Ruby Source Code > Source Code > Text > Content > Data; a QuickTime Movie file (`.mov`) is categorized as Video > Movie > Audiovisual Content > Content > Data.
-
-UTIs have worked reasonably well within the filesystem abstraction of the desktop. However, in a mobile paradigm, where files and directories are hidden from the user, this breaks down quickly. And, what's more, the rise of cloud services and social media has placed greater importance on remote entities over local files. Thus, a tension between UTIs and URLs.
-
-It's clear that we need something else. Could `UIActivityViewController` be the solution we so desperately seek?
-
-* * *
-
-`UIActivityViewController`, introduced in iOS 6, provides a unified services interface for sharing and performing actions on data within an application.
-
-Given a collection of actionable data, a `UIActivityViewController` instance is created as follows:
+You create a `UIActivityViewController`
+by passing in the items you want to share
+and any custom activities you want to support
+(we'll show how to do that later on).
+You then present that view controller as you would any other modal or popover.
 
 ```swift
-let string: String = ...
-let URL: NSURL = ...
+let string = "Hello, world!"
+let url = URL(string: "https://nshipster.com")!
+let image = UIImage(named: "mustache.jpg")
+let pdf = Bundle.main.url(forResource: "Q4 Projections",
+                            withExtension: "pdf")
 
-let activityViewController = UIActivityViewController(activityItems: [string, URL], applicationActivities: nil)
-navigationController?.presentViewController(activityViewController, animated: true) {
+let activityViewController =
+    UIActivityViewController(activityItems: [string, url, image, pdf],
+                             applicationActivities: nil)
+
+present(activityViewController, animated: true) {
     // ...
 }
 ```
 
-```objc
-NSString *string = ...;
-NSURL *URL = ...;
+When you run this code
+the following is presented on the screen:
 
-UIActivityViewController *activityViewController =
-  [[UIActivityViewController alloc] initWithActivityItems:@[string, URL]
-                                    applicationActivities:nil];
-[navigationController presentViewController:activityViewController
-                                      animated:YES
-                                    completion:^{
-  // ...
-}];
-```
+{% asset uiactivityviewcontroller.png alt="UIActivityViewController" %}
 
-This would present the following at the bottom of the screen:
-
-![UIActivityViewController]({% asset uiactivityviewcontroller.png @path %})
-
-By default, `UIActivityViewController` will show all available services supporting the provided items, but certain activity types can be excluded:
+By default,
+`UIActivityViewController` shows all the activities available
+for the items provided,
+but you can exclude certain activity types
+via the `excludedActivityTypes` property.
 
 ```swift
-activityViewController.excludedActivityTypes = [UIActivityTypePostToFacebook]
-```
-
-```objc
-activityViewController.excludedActivityTypes = @[UIActivityTypePostToFacebook];
+activityViewController.excludedActivityTypes = [.postToFacebook]
 ```
 
 Activity types are divided up into "action" and "share" types:
 
+- **Action** (`UIActivityCategoryAction`) activity items
+  take an action on selected content,
+  such as copying text to the pasteboard
+  or printing an image.
+- **Share** (`UIActivityCategoryShare`) activity items
+  share the selected content,
+  such as composing a message containing a URL
+  or posting an image to Twitter.
+
+Each activity type supports certain kinds of items.
+For example,
+you can post a String, URL, and / or image to Twitter,
+but you can't assign a string to be the photo for a contact.
+
+The following tables show the available activity types for each category
+and their supported items:
+
 ### UIActivityCategoryAction
 
-- `UIActivityTypePrint`
-- `UIActivityTypeCopyToPasteboard`
-- `UIActivityTypeAssignToContact`
-- `UIActivityTypeSaveToCameraRoll`
-- `UIActivityTypeAddToReadingList`
-- `UIActivityTypeAirDrop`
-
-### UIActivityCategoryShare
-
-- `UIActivityTypeMessage`
-- `UIActivityTypeMail`
-- `UIActivityTypePostToFacebook`
-- `UIActivityTypePostToTwitter`
-- `UIActivityTypePostToFlickr`
-- `UIActivityTypePostToVimeo`
-- `UIActivityTypePostToTencentWeibo`
-- `UIActivityTypePostToWeibo`
-
-Each activity type supports a number of different data types. For example, a Tweet might be composed of an `NSString`, along with an attached image and/or URL.
-
-### Supported Data Types by Activity Type
-
-<table>
+<table style="table-layout: auto; text-align: center;">
     <thead>
         <tr>
-            <th>Activity Type</th>
+            <th colspan="2" rowspan="2"></th>
+            <th>{% asset uiactivity-icon-string.svg %}</th>
+            <th>{% asset uiactivity-icon-url.svg %}</th>
+            <th>{% asset uiactivity-icon-image.svg %}</th>
+            <th>{% asset uiactivity-icon-file.svg %}</th>
+        </tr>
+        <tr>
             <th>String</th>
-            <th>Attributed String</th>
             <th>URL</th>
-            <th>Data</th>
             <th>Image</th>
-            <th>Asset</th>
-            <th>Other</th>
+            <th>Files</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td>Post To Facebook</td>
+            <th>{% asset uiactivity-airDrop.png width=32 height=32 %}</th>
+            <th><code>airDrop</code></th>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
+            <td>✓</td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-addToReadingList.png width=32 height=32 %}</th>
+            <th><code>addToReadingList</code></th>
             <td></td>
             <td>✓</td>
             <td></td>
             <td></td>
         </tr>
         <tr>
-            <td>Post To Twitter</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
+            <th>{% asset uiactivity-assignToContact.png width=32 height=32 %}</th>
+            <th><code>assignToContact</code></th>
             <td></td>
-            <td>✓</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Post To Weibo</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td></td>
-            <td>✓</td>
-            <td>✓</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Message</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓*</td>
-            <td>✓*</td>
-            <td></td>
-            <td>✓*</td>
-            <td><tt>sms://</tt> <tt>NSURL</tt></td>
-        </tr>
-        <tr>
-            <td>Mail</td>
-            <td>✓+</td>
-            <td>✓+</td>
-            <td>✓+</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Print</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>✓+</td>
-            <td>✓+</td>
-            <td></td>
-            <td><tt>UIPrintPageRenderer</tt>, <tt>UIPrintFormatter</tt>, &amp; <tt>UIPrintInfo</tt></td>
-        </tr>
-        <tr>
-            <td>Copy To Pasteboard</td>
-            <td>✓</td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td><tt>UIColor</tt>, <tt>NSDictionary</tt></td>
-        </tr>
-        <tr>
-            <td>Assign To Contact</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Save To Camera Roll</td>
-            <td></td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Add To Reading List</td>
-            <td></td>
-            <td></td>
-            <td>✓</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Post To Flickr</td>
-            <td></td>
-            <td></td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td>✓</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td>Post To Vimeo</td>
-            <td></td>
-            <td></td>
-            <td>✓</td>
-            <td>✓</td>
             <td></td>
             <td>✓</td>
             <td></td>
         </tr>
         <tr>
-            <td>Post To Tencent Weibo</td>
+            <th>{% asset uiactivity-copyToPasteboard.png width=32 height=32 %}</th>
+            <th><code>copyToPasteboard</code></th>
             <td>✓</td>
             <td>✓</td>
             <td>✓</td>
-            <td></td>
             <td>✓</td>
-            <td>✓</td>
-            <td></td>
         </tr>
         <tr>
-            <td>AirDrop</td>
+            <th>{% asset uiactivity-print.png width=32 height=32 %}</th>
+            <th><code>print</code></th>
+            <td></td>
+            <td></td>
             <td>✓</td>
             <td>✓</td>
-            <td>✓</td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-saveToCameraRoll.png width=32 height=32 %}</th>
+            <th><code>saveToCameraRoll</code></th>
             <td></td>
             <td>✓</td>
             <td>✓</td>
@@ -247,60 +145,121 @@ Each activity type supports a number of different data types. For example, a Twe
     </tbody>
 </table>
 
-## `<UIActivityItemSource>` & `UIActivityItemProvider`
+### UIActivityCategoryShare
 
-Similar to how a [pasteboard item](https://developer.apple.com/library/mac/documentation/cocoa/reference/NSPasteboardItem_Class/Reference/Reference.html) can be used to provide data only when necessary, in order to avoid excessive memory allocation or processing time, activity items can be of a custom type.
+<table style="table-layout: auto; text-align: center;">
+    <thead>
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th>{% asset uiactivity-icon-string.svg %}</th>
+            <th>{% asset uiactivity-icon-url.svg %}</th>
+            <th>{% asset uiactivity-icon-image.svg %}</th>
+            <th>{% asset uiactivity-icon-file.svg %}</th>
+        </tr>
+        <tr>
+            <th>String</th>
+            <th>URL</th>
+            <th>Image</th>
+            <th>Files</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th>{% asset uiactivity-mail.png width=32 height=32 %}</th>
+            <th><code>mail</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-message.png width=32 height=32 %}</th>
+            <th><code>message</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToFacebook.png width=32 height=32 %}</th>
+            <th><code>postToFacebook</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToFlickr.png width=32 height=32 %}</th>
+            <th><code>postToFlickr</code></th>
+            <td></td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToTencentWeibo.png width=32 height=32 %}</th>
+            <th><code>postToTencentWeibo</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToTwitter.png width=32 height=32 %}</th>
+            <th><code>postToTwitter</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToVimeo.png width=32 height=32 %}</th>
+            <th><code>postToVimeo</code></th>
+            <td></td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+        <tr>
+            <th>{% asset uiactivity-postToWeibo.png width=32 height=32 %}</th>
+            <th><code>postToWeibo</code></th>
+            <td>✓</td>
+            <td>✓</td>
+            <td>✓</td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
 
-Any object conforming to `<UIActivityItemSource>`, including the built-in `UIActivityItemProvider` class, can be used to dynamically provide different kinds of data depending on the activity type.
+{% info %}
+`UIActivityViewController` allows users to choose how they share content.
+However, as a developer,
+you can access this functionality directly.
+Here are the corresponding APIs for each of the system-provided activity types:
 
-### `<UIActivityItemSource>`
+| Activity Type                                                                                                                  | Corresponding API                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `addToReadingList`                                                                                                             | [`SSReadingList`](https://developer.apple.com/documentation/safariservices/ssreadinglist/1621226-additem)                             |
+| `assignToContact`                                                                                                              | [`CNContact`](https://developer.apple.com/documentation/contacts/cncontact)                                                           |
+| `copyToPasteboard`                                                                                                             | [`UIPasteboard`](https://developer.apple.com/documentation/uikit/uipasteboard/1829417-setitems)                                       |
+| `print`                                                                                                                        | [`UIPrintInteractionController`](https://developer.apple.com/documentation/uikit/uiprintinteractioncontroller/1618174-printtoprinter) |
+| `saveToCameraRoll`                                                                                                             | [`UIImageWriteToSavedPhotosAlbum`](https://developer.apple.com/documentation/uikit/1619125-uiimagewritetosavedphotosalbum)            |
+| `mail`                                                                                                                         | [`MFMailComposeViewController`](https://developer.apple.com/documentation/messageui/mfmailcomposeviewcontroller)                      |
+| `message`                                                                                                                      | [`MFMessageComposeViewController`](https://developer.apple.com/documentation/messageui/mfmessagecomposeviewcontroller)                |
+| `postToFacebook` <br/> `postToFlickr` <br/> `postToTencentWeibo` <br/> `postToTwitter` <br/> `postToVimeo` <br/> `postToWeibo` | [`SLComposeViewController`](https://developer.apple.com/documentation/social/slcomposeviewcontroller)                                 |
 
-#### Getting the Data Items
-
-- `activityViewControllerPlaceholderItem:`
-- `activityViewController:itemForActivityType:`
-
-#### Providing Information About the Data Items
-
-- `activityViewController:subjectForActivityType:`
-- `activityViewController:dataTypeIdentifierForActivityType:`
-- `activityViewController:thumbnailImageForActivityType:suggestedSize:`
-
-One example of how this could be used is to customize a message, depending on whether it's to be shared on Facebook or Twitter.
-
-```swift
-func activityViewController(activityViewController: UIActivityViewController, itemForActivityType activityType: String) -> AnyObject? {
-    if activityType == UIActivityTypePostToFacebook {
-        return NSLocalizedString("Like this!", comment: "comment")
-    } else if activityType == UIActivityTypePostToTwitter {
-        return NSLocalizedString("Retweet this!", comment: "comment")
-    } else {
-        return nil
-    }
-}
-```
-
-```objc
-- (id)activityViewController:(UIActivityViewController *)activityViewController
-         itemForActivityType:(NSString *)activityType
-{
-    if ([activityType isEqualToString:UIActivityTypePostToFacebook]) {
-        return NSLocalizedString(@"Like this!");
-    } else if ([activityType isEqualToString:UIActivityTypePostToTwitter]) {
-        return NSLocalizedString(@"Retweet this!");
-    } else {
-        return nil;
-    }
-}
-```
+{% endinfo %}
 
 ## Creating a Custom UIActivity
 
-In addition to the aforementioned system-provided activities, its possible to create your own activity.
+In addition to the system-provided activities,
+you can create your own activities.
 
-As an example, let's create a custom activity type that takes an image URL and applies a mustache to it using [mustache.me](http://mustache.me).
+As an example,
+let's create a custom activity
+that takes an image and applies a mustache to it via a web application.
 
-<table>
+<table style="text-align: center;">
     <tr>
         <td><img alt="Jony Ive Before" src="{% asset jony-ive-unstache.png @path %}"/></td>
         <td><img alt="Jony Ive After" src="{% asset jony-ive-mustache.png @path %}"/></td>
@@ -311,355 +270,193 @@ As an example, let's create a custom activity type that takes an image URL and a
     </tr>
 </table>
 
-First, we define a [reverse-DNS identifier](https://en.wikipedia.org/wiki/Reverse_domain_name_notation) for the activity type: 
+### Defining a Custom Activity Type
+
+First,
+define a new activity type constant
+in an extension to `UIActivity.ActivityType`,
+initialized with a
+[reverse-DNS identifier](https://en.wikipedia.org/wiki/Reverse_domain_name_notation).
 
 ```swift
-let HIPMustachifyActivityType = "com.nshipster.activity.Mustachify"
+extension UIActivity.ActivityType {
+    static let mustachify =
+        UIActivity.ActivityType("com.nshipster.mustachify")
+}
 ```
 
-```objc
-static NSString * const HIPMustachifyActivityType = @"com.nshipster.activity.Mustachify";
-```
+### Creating a UIActivity Subclass
 
-Then specify the category as `UIActivityCategoryAction` and provide a localized title & iOS version appropriate image:
+Next,
+create a subclass of `UIActivity`
+and override the default implementations of the
+`activityCategory` type property
+and `activityType`, `activityTitle`, and `activityImage` instance properties.
 
 ```swift
-// MARK: - UIActivity
+class MustachifyActivity: UIActivity {
+    override class var activityCategory: UIActivity.Category {
+        return .action
+    }
 
-override class func activityCategory() -> UIActivityCategory {
-    return .Action
+    override var activityType: UIActivity.ActivityType? {
+        return .mustachify
+    }
+
+    override var activityTitle: String? {
+        return NSLocalizedString("Mustachify", comment: "activity title")
+    }
+
+    override var activityImage: UIImage? {
+        return UIImage(named: "mustachify-icon")
+    }
+
+    // ...
 }
+```
 
-override func activityType() -> String? {
-    return HIPMustachifyActivityType
+### Determining Which Items are Actionable
+
+Activities are responsible for determining
+whether they can act on a given array of items
+by overriding the `canPerform(withActivityItems:)` method.
+
+Our custom activity can work if any of the items is an image,
+which we identify with some fancy pattern matching on a for-in loop:
+
+```swift
+override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
+    for case is UIImage in activityItems {
+        return true
+    }
+
+    return false
 }
+```
 
-override func activityTitle() -> String? {
-    return NSLocalizedString("Mustachify", comment: "comment")
-}
+### Preparing for Action
 
-override func activityImage() -> UIImage? {
-    if #available(iOS 7.0, *) {
-        return UIImage(named: "MustachifyUIActivity7")
-    } else {
-        return UIImage(named: "MustachifyUIActivity")
+Once an activity has determined that it can work with the specified items,
+it uses the `prepare(withActivityItems:)`
+to get ready to perform the activity.
+
+In the case of our custom activity,
+we take the PNG representation of the first image in the array of items
+and stores that in an instance variable:
+
+```swift
+var sourceImageData: Data?
+
+override func prepare(withActivityItems activityItems: [Any]) {
+    for case let image as UIImage in activityItems {
+        self.sourceImageData = image.pngData()
+        return
     }
 }
 ```
 
-```objc
-#pragma mark - UIActivity
+### Performing the Activity
 
-+ (UIActivityCategory)activityCategory {
-    return UIActivityCategoryAction;
-}
+The `perform()` method is the most important part of your activity.
+Because processing can take some time,
+this is an asynchronous method.
+However, for lack of a completion handler,
+you signal that work is done by calling the `activityDidFinish(_:)` method.
 
-- (NSString *)activityType {
-    return HIPMustachifyActivityType;
-}
-
-- (NSString *)activityTitle {
-    return NSLocalizedString(@"Mustachify", nil);
-}
-
-- (UIImage *)activityImage {
-    if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_6_1) {
-        return [UIImage imageNamed:@"MustachifyUIActivity7"];
-    } else {
-        return [UIImage imageNamed:@"MustachifyUIActivity"];
-    }
-}
-```
-
-Next, we create a helper function, `HIPMatchingURLsInActivityItems`, which returns an array of any image URLs of the supported type.
+Our custom activity delegates the mustachification process to a web app
+using a data task sent from the shared `URLSession`.
+If all goes well, the `mustachioedImage` property is set
+and `activityDidFinish(_:)` is called with `true`
+to indicate that the activity finished successfully.
+If an error occurred in the request
+or we can't create an image from the provided data,
+we call `activityDidFinish(_:)` with `false` to indicate failure.
 
 ```swift
-func HIPMatchingURLsInActivityItems(activityItems: [AnyObject]) -> [AnyObject] {
-    return activityItems.filter {
-        if let url = $0 as? NSURL where !url.fileURL {
-            return url.pathExtension?.caseInsensitiveCompare("jpg") == .OrderedSame
-                || url.pathExtension?.caseInsensitiveCompare("png") == .OrderedSame
+var mustachioedImage: UIImage?
+
+override func perform() {
+    let url = URL(string: "https://mustachify.app/")!
+    var request = URLRequest(url: url)
+    request.httpMethod = "POST"
+    request.httpBody = self.sourceImageData
+
+    URLSession.shared.dataTask(with: request) { (data, _, error) in
+        guard error != nil else {
+            self.activityDidFinish(false)
+            return
         }
 
-        return false
+        if let data = data,
+            let image = UIImage(data: data)
+        {
+            self.mustachioedImage = image
+            self.activityDidFinish(true)
+        } else {
+            self.activityDidFinish(false)
+        }
     }
 }
 ```
 
-```objc
-static NSArray * HIPMatchingURLsInActivityItems(NSArray *activityItems) {
-    return [activityItems filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
-    ^BOOL(id item, __unused NSDictionary *bindings) {
-        if ([item isKindOfClass:[NSURL class]] &&
-            ![(NSURL *)item isFileURL]) {
-            return [[(NSURL *)item pathExtension] caseInsensitiveCompare:@"jpg"] == NSOrderedSame ||
-            [[(NSURL *)item pathExtension] caseInsensitiveCompare:@"png"] == NSOrderedSame;
+### Showing the Results
+
+The final step is to provide a view controller
+to be presented with the result of our activity.
+
+The QuickLook framework provides a simple, built-in way to display images,
+so we'll extend our activity to adopt `QLPreviewControllerDataSource`
+and return an instance of ``QLPreviewController`with`self`set as the`dataSource`for our override of the`activityViewController` method.
+
+```swift
+import QuickLook
+
+extension MustachifyActivity: QLPreviewControllerDataSource {
+    override var activityViewController: UIViewController? {
+        guard let image = self.mustachioedImage else {
+            return nil
         }
 
-        return NO;
-    }]];
-}
-```
-
-This function is then used in `-canPerformWithActivityItems:` and `prepareWithActivityItems:` to get the mustachio'd image URL of the first PNG or JPEG, if any.
-
-```swift
-override func canPerformWithActivityItems(activityItems: [AnyObject]) -> Bool {
-    return HIPMatchingURLsInActivityItems(activityItems).count > 0
-}
-
-override func prepareWithActivityItems(activityItems: [AnyObject]) {
-    let HIPMustachifyMeURLFormatString = "http://mustachify.me/%d?src=%@"
-
-    if let firstMatch = HIPMatchingURLsInActivityItems(activityItems).first, mustacheType = self.mustacheType {
-        imageURL = NSURL(string: String(format: HIPMustachifyMeURLFormatString, [mustacheType, firstMatch]))
+        let viewController = QLPreviewController()
+        viewController.dataSource = self
+        return viewController
     }
 
+    // MARK: QLPreviewControllerDataSource
+
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return self.mustachioedImage != nil ? 1 : 0
+    }
+
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        return self.mustachioedImage!
+    }
+}
+```
+
+### Providing a Custom Activity to Users
+
+We can use our brand new mustache activity
+by passing it to the `applicationActivities` parameter
+in the `UIActivityViewController initializer`:
+
+```swift
+let activityViewController =
+    UIActivityViewController(activityItems: [image],
+                             applicationActivities: [Mustachify()])
+
+present(activityViewController, animated: true) {
     // ...
 }
 ```
 
-```objc
-- (BOOL)canPerformWithActivityItems:(NSArray *)activityItems {
-    return [HIPMatchingURLsInActivityItems(activityItems) count] > 0;
-}
+{% asset uiactivityviewcontroller-custom-action.png %}
 
-- (void)prepareWithActivityItems:(NSArray *)activityItems {
-    static NSString * const HIPMustachifyMeURLFormatString = @"http://mustachify.me/%d?src=%@";
+---
 
-    self.imageURL = [NSURL URLWithString:[NSString stringWithFormat:HIPMustachifyMeURLFormatString, self.mustacheType, [HIPMatchingURLsInActivityItems(activityItems) firstObject]]];
-}
-```
+There is a strong argument to be made that
+the long-term viability of iOS as a platform
+depends on sharing mechanisms like `UIActivityViewController`.
 
-Our webservice provides a variety of mustache options, which are defined in an enumeration:
-
-```swift
-enum HIPMustacheType: Int {
-    case English, Horseshoe, Imperial, Chevron, Natural, Handlebar
-}
-```
-
-```objc
-typedef NS_ENUM(NSInteger, HIPMustacheType) {
-    HIPMustacheTypeEnglish,
-    HIPMustacheTypeHorseshoe,
-    HIPMustacheTypeImperial,
-    HIPMustacheTypeChevron,
-    HIPMustacheTypeNatural,
-    HIPMustacheTypeHandlebar,
-};
-```
-
-Finally, we provide a `UIViewController` to display the image. For this example, a simple `UIWebView` controller suffices.
-
-```swift
-class HIPMustachifyWebViewController: UIViewController, UIWebViewDelegate {
-    var webView: UIWebView { get }
-}
-```
-
-```objc
-@interface HIPMustachifyWebViewController : UIViewController <UIWebViewDelegate>
-@property (readonly, nonatomic, strong) UIWebView *webView;
-@end
-```
-
-```swift
-func activityViewController() -> UIViewController {
-    let webViewController = HIPMustachifyWebViewController()
-
-    let request = NSURLRequest(URL: imageURL)
-    webViewController.webView.loadRequest(request)
-
-    return webViewController
-}
-```
-
-```objc
-- (UIViewController *)activityViewController {
-    HIPMustachifyWebViewController *webViewController = [[HIPMustachifyWebViewController alloc] init];
-
-    NSURLRequest *request = [NSURLRequest requestWithURL:self.imageURL];
-    [webViewController.webView loadRequest:request];
-
-    return webViewController;
-}
-```
-
-To use our brand new mustache activity, we simply pass it in the `UIActivityViewController initializer`:
-
-```swift
-let mustacheActivity = HIPMustachifyActivity()
-let activityViewController = UIActivityViewController(activityItems: [imageURL], applicationActivities: [mustacheActivity])
-```
-
-```objc
-HIPMustachifyActivity *mustacheActivity = [[HIPMustachifyActivity alloc] init];
-UIActivityViewController *activityViewController =
-  [[UIActivityViewController alloc] initWithActivityItems:@[imageURL]
-                                    applicationActivities:@[mustacheActivity]];
-```
-
-## Invoking Actions Manually
-
-Now is a good time to be reminded that while `UIActivityViewController` allows users to perform actions of their choosing, sharing can still be invoked manually, when the occasion arises.
-
-So for completeness, here's how one might go about performing some of these actions manually:
-
-### Open URL
-
-```swift
-if let URL = NSURL(string: "https://nshipster.com") {
-    UIApplication.sharedApplication().openURL(URL)
-}
-```
-
-```objc
-NSURL *URL = [NSURL URLWithString:@"https://nshipster.com"];
-[[UIApplication sharedApplication] openURL:URL];
-```
-
-System-supported URL schemes include: `mailto:`, `tel:`, `sms:`, and `maps:`.
-
-### Add to Safari Reading List
-
-```swift
-import SafariServices
-
-if let URL = NSURL(string: "https://nshipster.com/uiactivityviewcontroller") {
-    let _ = try? SSReadingList.defaultReadingList()?.addReadingListItemWithURL(URL,
-        title: "NSHipster",
-        previewText: "..."
-    )
-}
-```
-
-```objc
-@import SafariServices;
-
-NSURL *URL = [NSURL URLWithString:@"https://nshipster.com/uiactivityviewcontroller"];
-[[SSReadingList defaultReadingList] addReadingListItemWithURL:URL
-                                                        title:@"NSHipster"
-                                                  previewText:@"..."
-                                                        error:nil];
-```
-
-### Add to Saved Photos
-
-```swift
-let image: UIImage = ...
-let completionTarget: AnyObject = self
-let completionSelector: Selector = "didWriteToSavedPhotosAlbum"
-let contextInfo: UnsafeMutablePointer<Void> = nil
-
-UIImageWriteToSavedPhotosAlbum(image, completionTarget, completionSelector, contextInfo)
-```
-
-```objc
-UIImage *image = ...;
-id completionTarget = self;
-SEL completionSelector = @selector(didWriteToSavedPhotosAlbum);
-void *contextInfo = NULL;
-UIImageWriteToSavedPhotosAlbum(image, completionTarget, completionSelector, contextInfo);
-```
-
-### Send SMS
-
-```swift
-import MessageUI
-
-let messageComposeViewController = MFMessageComposeViewController()
-messageComposeViewController.messageComposeDelegate = self
-messageComposeViewController.recipients = ["mattt@nshipster•com"]
-messageComposeViewController.body = "Lorem ipsum dolor sit amet"
-navigationController?.presentViewController(messageComposeViewController, animated: true) {
-    // ...
-}
-```
-
-```objc
-@import MessageUI;
-
-MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
-messageComposeViewController.messageComposeDelegate = self;
-messageComposeViewController.recipients = @[@"mattt@nshipster•com"];
-messageComposeViewController.body = @"Lorem ipsum dolor sit amet";
-[navigationController presentViewController:messageComposeViewController animated:YES completion:^{
-    // ...
-}];
-```
-
-### Send Email
-
-```swift
-import MessageUI
-
-let mailComposeViewController = MFMailComposeViewController()
-mailComposeViewController.mailComposeDelegate = self
-mailComposeViewController.setToRecipients(["mattt@nshipster•com"])
-mailComposeViewController.setSubject("Hello")
-mailComposeViewController.setMessageBody("Lorem ipsum dolor sit amet", isHTML: false)
-navigationController?.presentViewController(mailComposeViewController, animated: true) {
-    // ...
-}
-```
-
-```objc
-@import MessageUI;
-
-MFMailComposeViewController *mailComposeViewController = [[MFMailComposeViewController alloc] init];
-mailComposeViewController.mailComposeDelegate = self;
-[mailComposeViewController setToRecipients:@[@"mattt@nshipster•com"]];
-[mailComposeViewController setSubject:@"Hello"];
-[mailComposeViewController setMessageBody:@"Lorem ipsum dolor sit amet"
-                                   isHTML:NO];
-[navigationController presentViewController:mailComposeViewController animated:YES completion:^{
-    // ...
-}];
-```
-
-### Post Tweet
-
-```swift
-import Social
-
-let tweetComposeViewController = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-tweetComposeViewController.setInitialText("Lorem ipsum dolor sit amet.")
-navigationController?.presentViewController(tweetComposeViewController, animated: true) {
-    // ...
-}
-```
-
-```objc
-@import Social;
-
-SLComposeViewController *tweetComposeViewController = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
-[tweetComposeViewController setInitialText:@"Lorem ipsum dolor sit amet."];
-[self.navigationController presentViewController:tweetComposeViewController
-                                        animated:YES
-                                      completion:^{
-                                          // ...
-                                      }];
-```
-
-## IntentKit
-
-While all of this is impressive and useful, there is a particular lacking in the activities paradigm in iOS, when compared to the rich [Intents Model](http://developer.android.com/guide/components/intents-filters.html) found on Android.
-
-On Android, apps can register for different intents, to indicate that they can be used for Maps, or as a Browser, and be selected as the default app for related activities, like getting directions, or bookmarking a URL.
-
-While iOS lacks the extensible infrastructure to support this, a 3rd-party library called [IntentKit](https://github.com/intentkit/IntentKit), by [@lazerwalker](https://github.com/lazerwalker) (of [f*ingblocksyntax.com](http://goshdarnblocksyntax.com) fame), is an interesting example of how we might narrow the gap ourselves.
-
-![IntentKit](https://raw.github.com/intentkit/IntentKit/master/example.gif)
-
-Normally, a developer would have to do a lot of work to first, determine whether a particular app is installed, and how to construct a URL to support a particular activity.
-
-IntentKit consolidates the logic of connecting to the most popular Web, Maps, Mail, Twitter, Facebook, and Google+ clients, in a UI similar to `UIActivityViewController`.
-
-Anyone looking to take their sharing experience to the next level should definitely give this a look.
-
-* * *
-
-There is a strong argument to be made that the longterm viability of iOS as a platform depends on sharing mechanisms like `UIActivityViewController`. As the saying goes, "Information wants to be free". And anything that stands in the way of federation will ultimately lose to something that does not.
-
-The future prospects of public [remote view controller](http://oleb.net/blog/2012/10/remote-view-controllers-in-ios-6/) APIs gives me hope for the future of sharing on iOS. For now, though, we could certainly do much worse than `UIActivityViewController`.
+As the saying goes, _"Information wants to be free."_
+Anything that stands in the way of federation is doomed to fail.
