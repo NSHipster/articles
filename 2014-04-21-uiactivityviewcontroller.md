@@ -404,9 +404,11 @@ override func perform() {
 The final step is to provide a view controller
 to be presented with the result of our activity.
 
-The QuickLook framework provides a simple, built-in way to display images,
-so we'll extend our activity to adopt `QLPreviewControllerDataSource`
-and return an instance of ``QLPreviewController`with`self`set as the`dataSource`for our override of the`activityViewController` method.
+The QuickLook framework provides a simple, built-in way to display images.
+We'll extend our activity to adopt `QLPreviewControllerDataSource`
+and return an instance of `QLPreviewController`,
+with `self` set as the `dataSource`
+for our override of the`activityViewController` method.
 
 ```swift
 import QuickLook
