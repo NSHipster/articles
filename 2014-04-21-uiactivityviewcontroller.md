@@ -382,7 +382,7 @@ override func perform() {
     request.httpBody = self.sourceImageData
 
     URLSession.shared.dataTask(with: request) { (data, _, error) in
-        guard error != nil else {
+        guard error == nil else {
             self.activityDidFinish(false)
             return
         }
