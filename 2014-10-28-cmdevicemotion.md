@@ -231,8 +231,8 @@ if manager.isDeviceMotionActive {
             return
         }
 
-        let rotation = atan2(data.userAcceleration.x,
-                             data.userAcceleration.y) - .pi
+        let rotation = atan2(data.gravity.x,
+                             data.gravity.y) - .pi
         self?.imageView.transform =
             CGAffineTransform(rotationAngle: CGFloat(rotation))
     }
