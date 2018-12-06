@@ -215,7 +215,7 @@ but instead let's look at what happens when we involve the gyroscope.
 Rather than use the raw gyroscope data that we would get
 by calling the `startGyroUpdates...` method,
 let's get composited gyroscope _and_ accelerometer data
-by requesting the unified"device motion" data.
+by requesting the unified "device motion" data.
 Using the gyroscope,
 Core Motion separates user movement from gravitational acceleration
 and presents each as its own property of the `CMDeviceMotion` object.
