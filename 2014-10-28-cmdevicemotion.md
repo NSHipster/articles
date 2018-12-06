@@ -132,7 +132,7 @@ manager.isAccelerometerActive
 
 ```swift
 manager.startAccelerometerUpdates(to: .main) { (data, error) in
-    guard let data = data, error != nil else {
+    guard let data = data, error == nil else {
         return
     }
 
@@ -164,7 +164,7 @@ if manager.isAccelerometerAvailable {
     manager.accelerometerUpdateInterval = 0.01
     manager.startAccelerometerUpdates(to: .main) {
         [weak self] (data, error) in
-        guard let data = data, error != nil else {
+        guard let data = data, error == nil else {
             return
         }
 
@@ -227,7 +227,7 @@ if manager.isDeviceMotionActive {
     manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data, error) in
 
-        guard let data = data, error != nil else {
+        guard let data = data, error == nil else {
             return
         }
 
@@ -264,7 +264,7 @@ if manager.isDeviceMotionActive {
     manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data, error) in
 
-        guard let data = data, error != nil else {
+        guard let data = data, error == nil else {
             return
         }
         if data.userAcceleration.x < -2.5 {
