@@ -220,7 +220,7 @@ The `\N` escape sequence corresponds to the
 ## Things to Do with Character Viewer
 
 Now that you're more familiar with Character Viewer,
-here are some ideas for things to do with it:
+here are some ideas for what to do with it:
 
 ### Add Keyboard Shortcut Characters to Favorites
 
@@ -294,8 +294,9 @@ for some exciting investment opportunities, including
 
 ### Explore the Unicode Code Table
 
-At the bottom of the Customize List... sheet,
+At the bottom of the Customize List sheet,
 you'll find a section titled Code Tables.
+
 Go ahead and check the box next to Unicode.
 
 {% asset character-viewer-unicode-code-chart.png %}
