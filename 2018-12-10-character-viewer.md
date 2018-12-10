@@ -191,7 +191,8 @@ is the name of the character "face with tears of joy".
 
 The Swift standard library doesn't currently provide a way to
 initialize Unicode scalar values or named sequences.
-However, you can use the `String` method `applyingTransform(_:reverse:)`
+However, you can use the `String` method
+[`applyingTransform(_:reverse:)`](https://developer.apple.com/documentation/foundation/nsstring/1407787-applyingtransform)
 provided by the Foundation framework
 to get a character by name:
 
@@ -214,7 +215,7 @@ to get the Unicode names for each character in a string:
 
 {% info %}
 The `\N` escape sequence corresponds to the
-[ICU regular expression`\N{UNICODE CHARACTER NAME}` metacharacter](http://userguide.icu-project.org/strings/regexp#TOC-Regular-Expression-Metacharacters).
+[ICU regular expression metacharacter `\N{UNICODE CHARACTER NAME}`](http://userguide.icu-project.org/strings/regexp#TOC-Regular-Expression-Metacharacters).
 {% endinfo %}
 
 ## Things to Do with Character Viewer
