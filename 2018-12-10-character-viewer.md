@@ -292,6 +292,28 @@ for some exciting investment opportunities, including
 
 {% asset character-viewer-currency-symbols.png %}
 
+### Explore the Unicode Code Table
+
+At the bottom of the Customize List... sheet,
+you'll find a section titled Code Tables.
+Go ahead and check the box next to Unicode.
+
+{% asset character-viewer-unicode-code-chart.png %}
+
+This is arguably the best interface available to you
+for browsing the Unicode Standard.
+No web page comes close to matching the speed and convenience of
+what's available here in the macOS Character Viewer.
+
+The top panel shows a sortable table of
+[Unicode blocks](https://en.wikipedia.org/wiki/Unicode_block),
+with their code point offset, name, and category.
+Clicking on any of these entries
+navigates to the corresponding offset in the bottom panel,
+where characters are displayed in a 16-column grid.
+
+_Brilliant._
+
 ---
 
 Character Viewer is an indispensible tool for working with text on computers ---
