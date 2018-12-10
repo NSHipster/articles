@@ -52,8 +52,7 @@ this opens a panel that looks something like this:
 {% asset character-viewer-collapsed.png %}
 
 You may have discovered this on your own
-and have found this to be a convenient alternative to
-searching for Emoji online.
+and found it to be a convenient alternative to searching for Emoji online.
 
 _But this isn't even its final form!_
 Click the icon on the top right
