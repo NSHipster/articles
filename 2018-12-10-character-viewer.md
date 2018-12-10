@@ -263,7 +263,7 @@ to get its name and number.
 For example,
 have you ever wondered about the  character you get by typing
 <kbd>⌥</kbd><kbd>⇧</kbd><kbd>K</kbd>?
-Like how did Apple get its logo into the Unicode Standard
+Like, how did Apple get its logo into the Unicode Standard
 when that goes against their
 [criteria for encoding symbols](http://www.unicode.org/pending/symbol-guidelines.html)?
 
