@@ -316,7 +316,7 @@ _Brilliant._
 
 ---
 
-Character Viewer is an indispensible tool for working with text on computers ---
+Character Viewer is an indispensable tool for working with text on computers ---
 _a hidden gem in macOS if ever there was one._
 
 But even more than that,
