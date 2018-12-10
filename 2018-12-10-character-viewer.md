@@ -323,12 +323,12 @@ But even more than that,
 Character Viewer offers a look into
 our collective linguistic and cultural heritage
 as encoded into the Unicode Standard.
-Etchings made thousands of years ago, by
+Etchings made thousands of years ago by
 Phoenician merchants and
 Qin dynasty bureaucrats and
 Ancient Egyptian priests and
 Lycian school children ---
-they're preserved here digitally,
+they're all preserved here digitally,
 just waiting to be discovered.
 
 _Seriously, how amazing is that?_
