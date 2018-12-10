@@ -287,7 +287,7 @@ in favor of something more stable and valuable
 
 Look no further than the Currency Symbols category
 for some exciting investment opportunities, including
-[French franc (₣)](https://en.wikipedia.org/wiki/French_franc) and
+[French francs (₣)](https://en.wikipedia.org/wiki/French_franc) and
 [Italian lira (₤)](https://en.wikipedia.org/wiki/Italian_lira).
 
 {% asset character-viewer-currency-symbols.png %}
