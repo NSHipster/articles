@@ -281,9 +281,7 @@ consider asking Character Viewer instead of Safari.
 
 Given the current economic outlook for Bitcoin (₿) and other cryptocurrencies,
 you may be looking to divest your holdings
-in favor of something more stable and valuable
-(sorry, too soon?).
-
+in favor of something more stable and valuable.
 Look no further than the Currency Symbols category
 for some exciting investment opportunities, including
 [French francs (₣)](https://en.wikipedia.org/wiki/French_franc) and
