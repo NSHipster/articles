@@ -16,8 +16,7 @@ to make Americans care about internationalization.
 
 For a time,
 many developers operated under the assumption that
-user-input would be _primarily_ Latin-1-compatible;
-or if not, then Extended Latin, certainly.
+user-input would be _primarily_ Latin-1-compatible.
 Or at least they could feel reasonably assured that
 everything would fall within the Basic Multilingual Plane ---
 fitting comfortably into a single UTF-16 code unit.
