@@ -30,7 +30,7 @@ and wanted to see what you thought:
 <div class="conversation">
 
 <ruby class="boke">
-Is <code>CharacterSet</code> a </code>Set&lt;Character&gt;</code>?
+Is <code>CharacterSet</code> a <code>Set&lt;Character&gt;</code>?
 <rt>
 キャラクターセットではないキャラクターセット？
 </rt>
