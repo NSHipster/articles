@@ -309,3 +309,15 @@ extension CharacterSet {
 
 CharacterSet.emoji.contains("👺") // true
 ```
+
+{% info %}
+Because the Unicode code space is a closed range,
+`CharacterSet` can express the membership of a given scalar value
+using a single bit in a [bit map](https://en.wikipedia.org/wiki/Bit_array),
+rather than using a
+[universal hashing function](https://en.wikipedia.org/wiki/Universal_hashing)
+like a conventional `Set`.
+On top of that, `CharacterSet` does some clever optimizations, like
+allocating on a per-[plane](https://www.unicode.org/glossary/#plane) basis
+and representing sets of contiguous scalar values as ranges, if possible.
+{% endinfo %}
