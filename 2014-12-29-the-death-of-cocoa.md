@@ -3,8 +3,9 @@ title: The Death of Cocoa
 author: Mattt
 category: ""
 excerpt: "For many of us, the simplicity, elegance, and performance of Apple's hardware and software working together are the reason why we build on their platforms. And yet, after just a few months of working with Swift, Cocoa has begun to lose its luster."
+retired: true
 status:
-    swift: 1.0
+  swift: 1.0
 ---
 
 Cocoa is the de facto standard library of Objective-C, containing many of the essential frameworks for working in the language, such as Foundation, AppKit, and Core Data. Cocoa Touch is basically just Cocoa with UIKit substituted for AppKit, and is often used interchangeably with Cocoa to refer to the system frameworks on iOS.
@@ -21,7 +22,7 @@ What if we were to build a new Foundation from the Swift Standard Library? What 
 
 So to close out this historic year for Apple developers, let's take a moment to look forward at the possibilities going forward.
 
-* * *
+---
 
 > If I have seen further it is by standing on the shoulders of giants.
 > <cite>Isaac Newton</cite>
@@ -128,7 +129,8 @@ if (!error) {
 ```
 
 > In defense of Apple, I once asked an engineer at a WWDC Lab why it took so long for iOS to support JSON. Their answer made a lot of sense. Paraphrasing:
->> Apple is a company with a long view of technology. It's _really_ difficult to tell whether a technology like JSON is going to stick, or if it's just another fad. Apple once released a framework for [PubSub](https://developer.apple.com/library/mac/documentation/InternetWeb/Reference/PubSubReference/_index.html), which despite not being widely known or used, still has to be supported for the foreseeable future. Each technology is a gamble of engineering resources.
+>
+> > Apple is a company with a long view of technology. It's _really_ difficult to tell whether a technology like JSON is going to stick, or if it's just another fad. Apple once released a framework for [PubSub](https://developer.apple.com/library/mac/documentation/InternetWeb/Reference/PubSubReference/_index.html), which despite not being widely known or used, still has to be supported for the foreseeable future. Each technology is a gamble of engineering resources.
 
 Data marshaling and serialization are boring tasks, and boring tasks are exactly what a standard library should take care of. Apple knew this when developing Cocoa, which has robust implementations for both text and binary [property lists](https://en.wikipedia.org/wiki/Property_list), which are the lifeblood of iOS and OS X. It may be difficult to anticipate what other interchange formats will be viable in the long term, but providing official support for emerging technologies on a probationary basis would do a lot to improve things for developers.
 
@@ -186,7 +188,7 @@ Patterns like this have emerged from a community eager to improve on existing pa
 
 AppKit and UIKit are entire topics unto themselves. It's much more likely that the two would take further steps to unify than be rewritten or adapted to Swift anytime soon. A much more interesting question is whether Swift will expand beyond the purview of iOS & OS X development, such as for systems or web scripting, and how that would fundamentally change the role of Cocoa as a de facto standard library.
 
-* * *
+---
 
 ## Thinking Further
 
@@ -198,19 +200,19 @@ The Wolfram Language has [The Mother of All Demos](https://www.youtube.com/watch
 
 Here's an overview of the [functionality offered in its standard library](http://reference.wolfram.com/language/):
 
-|  |  |  |  |
-|----------------------------|-------------------------|--------------------------------|--------------------------|
-| 2D / 3D Visualization | Graph Analysis | Data Analytics | Image Processing |
-| Audio Processing | Machine Learning | Equation Solving | Algebraic Computation |
-| Arbitrary Precision | Calculus Computation | Matrix Computation | String Manipulation |
-| Combinatorial Optimization | Computational Geometry | Database Connectivity | Built-In Testing |
-| Device Connectivity | Functional Programming | Natural Language Understanding | Sequence Analysis |
-| Time Series | Geographic Data | Geomapping | Weather Data |
-| Physics & Chemistry Data | Genomic Data | Units & Measures | Control Theory |
-| Reliability Analysis | Parallel Computation | Engineering Data | Financial Data |
-| Financial Computation | Socioeconomic Data | Popular Culture Data | Boolean Computation |
-| Number Theory | Document Generation | Table Formatting | Mathematical Typesetting |
-| Interactive Controls | Interface Building | Form Construction | XML Templating |
+|                            |                        |                                |                          |
+| -------------------------- | ---------------------- | ------------------------------ | ------------------------ |
+| 2D / 3D Visualization      | Graph Analysis         | Data Analytics                 | Image Processing         |
+| Audio Processing           | Machine Learning       | Equation Solving               | Algebraic Computation    |
+| Arbitrary Precision        | Calculus Computation   | Matrix Computation             | String Manipulation      |
+| Combinatorial Optimization | Computational Geometry | Database Connectivity          | Built-In Testing         |
+| Device Connectivity        | Functional Programming | Natural Language Understanding | Sequence Analysis        |
+| Time Series                | Geographic Data        | Geomapping                     | Weather Data             |
+| Physics & Chemistry Data   | Genomic Data           | Units & Measures               | Control Theory           |
+| Reliability Analysis       | Parallel Computation   | Engineering Data               | Financial Data           |
+| Financial Computation      | Socioeconomic Data     | Popular Culture Data           | Boolean Computation      |
+| Number Theory              | Document Generation    | Table Formatting               | Mathematical Typesetting |
+| Interactive Controls       | Interface Building     | Form Construction              | XML Templating           |
 
 Conventional wisdom would suggest that, yes: it is unreasonable for a standard library to encode [the production budget of the movie _Avatar_](http://reference.wolfram.com/language/ref/MovieData.html#Examples), [the max speed of a McDonnell Douglas F/A-18 Hornet](http://reference.wolfram.com/language/ref/AircraftData.html#Example), or [the shape of France](http://reference.wolfram.com/language/ref/CountryData.html#Example). That is information that can be retrieved by querying IMDB, scraping Wikipedia, and importing from a GIS system.
 
@@ -224,7 +226,7 @@ Incorporating this kind of data in an organized, meaningful way is too much to e
 
 > Yes, in many ways, the question of the role of a standard library is the same as the question of what roles the public and private sectors have in society. Third-Party Libertarians, meet Third-Party Librarytarians.
 
-* * *
+---
 
 Swift is compelling not just in terms of what the language itself can do, but what it means to Apple, to iOS & OS X developers, and the developer community at large. There are so many factors in play that questions of technical feasibility cannot be extricated from their social and economic consequences.
 
@@ -235,4 +237,3 @@ What is almost certain, however, is that Cocoa, like Objective-C, is doomed. It'
 **The Swift Standard Library is on a collision course with Cocoa, and if the new language continues to gain momentum, one should expect to see further fracturing and reinvention within the system frameworks.**
 
 For 30 years, these technologies have served us well, and the best we can do to honor their contributions is to learn from their mistakes and make sure that what replaces them are insanely great.
-

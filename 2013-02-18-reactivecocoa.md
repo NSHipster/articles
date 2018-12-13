@@ -3,8 +3,9 @@ title: ReactiveCocoa
 author: Mattt
 category: Open Source
 excerpt: "Breaking from a tradition of covering Apple APIs exclusively, this edition of NSHipster will look at an open source project that exemplifies a brave new era of open source contribution to Objective-C: ReactiveCocoa."
+retired: true
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 Languages are living works. They are nudged and challenged and bastardized and mashed-up in a perpetual cycle of undirected and rapid evolution. Technologies evolve, requirements change, corporate stewards and open source community come and go; obscure dialects are vaulted to prominence on the shoulders of exciting new frameworks, and thrust into a surprising new context after a long period of dormancy.
@@ -98,27 +99,27 @@ Both signals and sequences are kinds of [streams](https://github.com/ReactiveCoc
 
 > Signals send three different types of events to their subscribers:
 >
-> * The **next** event provides a new value from the stream. Unlike Cocoa collections, it is
-   completely valid for a signal to include `nil`.
-> * The **error** event indicates that an error occurred before the signal could
-   finish. The event may include an `NSError` object that indicates what went
-   wrong. Errors must be handled specially – they are not included in the
-   stream's values.
-> * The **completed** event indicates that the signal finished successfully, and
-   that no more values will be added to the stream. Completion must be handled
-   specially – it is not included in the stream of values.
+> - The **next** event provides a new value from the stream. Unlike Cocoa collections, it is
+>   completely valid for a signal to include `nil`.
+> - The **error** event indicates that an error occurred before the signal could
+>   finish. The event may include an `NSError` object that indicates what went
+>   wrong. Errors must be handled specially – they are not included in the
+>   stream's values.
+> - The **completed** event indicates that the signal finished successfully, and
+>   that no more values will be added to the stream. Completion must be handled
+>   specially – it is not included in the stream of values.
 >
 > The lifetime of a signal consists of any number of `next` events, followed by
-one `error` or `completed` event (but not both).
+> one `error` or `completed` event (but not both).
 
 ### `RACSequence`
 
 > - **Simplifying Collection Transformations**: Higher-order functions like `map`, `filter`, `fold/reduce` are sorely missing from `Foundation`.
 
 > Sequences are a kind of collection, similar in purpose to `NSArray`. Unlike
-an array, the values in a sequence are evaluated _lazily_ (i.e., only when they
-are needed) by default, potentially improving performance if only part of
-a sequence is used. Just like Cocoa collections, sequences cannot contain `nil`.
+> an array, the values in a sequence are evaluated _lazily_ (i.e., only when they
+> are needed) by default, potentially improving performance if only part of
+> a sequence is used. Just like Cocoa collections, sequences cannot contain `nil`.
 >
 > `RACSequence` allows any Cocoa collection to be manipulated in a uniform and declarative way.
 

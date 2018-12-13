@@ -3,8 +3,9 @@ title: AFNetworking 2.0
 author: Mattt
 category: Open Source
 excerpt: "AFNetworking is one of the most widely used open source projects for iOS and OS X development. It's about as mainstream as it gets. But have you heard about the sequel?"
+retired: true
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 [AFNetworking](http://afnetworking.com) is one of the most widely used open source projects for iOS and OS X development. It powers thousands of popular and critically acclaimed apps, and serves as the foundation for dozens of other great open source libraries and frameworks. With thousands of stars and forks, and hundreds of contributors, the project is also among the most active and influential in the community.
@@ -52,8 +53,8 @@ With its second major release, AFNetworking aims to reconcile many of the quirks
 
 ### Motivations
 
-- **NSURLSession Compatibility** - `NSURLSession` is a replacement for `NSURLConnection` introduced in iOS 7. `NSURLConnection` isn't deprecated, and likely won't be for some time, but `NSURLSession` is the future of networking in Foundation, and it's a bright future at that, addressing many of the shortcomings of its predecessor. (See WWDC 2013 Session 705 "What’s New in Foundation Networking" for a good overview). Some had initially speculated that `NSURLSession` would obviate the need for AFNetworking; although there is overlap, there is still much that a higher-level abstraction can provide. __AFNetworking 2.0 does just this, embracing and extending `NSURLSession` to pave over some of the rough spots, and maximize its usefulness.__
-- **Modularity** - One of the major criticisms of AFNetworking is how bulky it is. Although its architecture lent itself well to modularity on a class level, its packaging didn't allow for individual features to be selected à la carte. Over time, `AFHTTPClient` in particular became overburdened in its responsibilities (creating requests, serializing query string parameters, determining response parsing behavior, creating and managing operations, monitoring network reachability). __In AFNetworking 2.0, you can pick and choose only the components you need using [CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs).__
+- **NSURLSession Compatibility** - `NSURLSession` is a replacement for `NSURLConnection` introduced in iOS 7. `NSURLConnection` isn't deprecated, and likely won't be for some time, but `NSURLSession` is the future of networking in Foundation, and it's a bright future at that, addressing many of the shortcomings of its predecessor. (See WWDC 2013 Session 705 "What’s New in Foundation Networking" for a good overview). Some had initially speculated that `NSURLSession` would obviate the need for AFNetworking; although there is overlap, there is still much that a higher-level abstraction can provide. **AFNetworking 2.0 does just this, embracing and extending `NSURLSession` to pave over some of the rough spots, and maximize its usefulness.**
+- **Modularity** - One of the major criticisms of AFNetworking is how bulky it is. Although its architecture lent itself well to modularity on a class level, its packaging didn't allow for individual features to be selected à la carte. Over time, `AFHTTPClient` in particular became overburdened in its responsibilities (creating requests, serializing query string parameters, determining response parsing behavior, creating and managing operations, monitoring network reachability). **In AFNetworking 2.0, you can pick and choose only the components you need using [CocoaPods subspecs](https://github.com/CocoaPods/CocoaPods/wiki/The-podspec-format#subspecs).**
 
 ### Meet the Cast
 
@@ -65,7 +66,7 @@ With its second major release, AFNetworking aims to reconcile many of the quirks
 
 #### `NSURLSession` Components _(iOS 7)_
 
-- `AFURLSessionManager` - A class that creates and manages an `NSURLSession` object based on a specified `NSURLSessionConfiguration` object, as well as data, download, and upload tasks for that session, implementing the delegate methods for both the session and its associated tasks. Because of the odd gaps in `NSURLSession`'s API design, __any code working with `NSURLSession` would be improved by `AFURLSessionManager`__.
+- `AFURLSessionManager` - A class that creates and manages an `NSURLSession` object based on a specified `NSURLSessionConfiguration` object, as well as data, download, and upload tasks for that session, implementing the delegate methods for both the session and its associated tasks. Because of the odd gaps in `NSURLSession`'s API design, **any code working with `NSURLSession` would be improved by `AFURLSessionManager`**.
 - `AFHTTPSessionManager` - A subclass of `AFURLSessionManager` that encapsulates the common patterns of communicating with an web service over HTTP, backed by `NSURLSession` by way of `AFURLSessionManager`.
 
 ---
@@ -125,10 +126,10 @@ All of the UIKit categories in AFNetworking 2.0 have been extracted and expanded
 
 - `AFNetworkActivityIndicatorManager`: Automatically start and stop the network activity indicator in the status bar as request operations and tasks begin and finish loading.
 - `UIImageView+AFNetworking`: Adds `imageResponseSerializer` property, which makes it easy to automatically resize or apply a filter to images loaded remotely to an image view. For example, [`AFCoreImageSerializer`](https://github.com/AFNetworking/AFCoreImageSerializer) could be used to apply Core Image filters to the response image before being displayed.
-- `UIButton+AFNetworking` *(New)*: Similar to `UIImageView+AFNetworking`, loads `image` and `backgroundImage` from remote source.
-- `UIActivityIndicatorView+AFNetworking` *(New)*: Automatically start and stop a `UIActivityIndicatorView` according to the state of a specified request operation or session task.
-- `UIProgressView+AFNetworking` *(New)*: Automatically track the upload or download progress of a specified request operation or session task.
-- `UIWebView+AFNetworking` *(New)*: Provides a more sophisticated API for loading URL requests, with support for progress callbacks and content transformation.
+- `UIButton+AFNetworking` _(New)_: Similar to `UIImageView+AFNetworking`, loads `image` and `backgroundImage` from remote source.
+- `UIActivityIndicatorView+AFNetworking` _(New)_: Automatically start and stop a `UIActivityIndicatorView` according to the state of a specified request operation or session task.
+- `UIProgressView+AFNetworking` _(New)_: Automatically track the upload or download progress of a specified request operation or session task.
+- `UIWebView+AFNetworking` _(New)_: Provides a more sophisticated API for loading URL requests, with support for progress callbacks and content transformation.
 
 ---
 

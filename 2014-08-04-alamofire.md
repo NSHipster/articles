@@ -3,8 +3,9 @@ title: Alamofire
 author: Mattt
 category: Open Source
 excerpt: "Although we still have a few months to wait before we can ship apps in Swift, there is already a proliferation of open source projects built with this new language. One such project is Alamofire."
+retired: true
 status:
-    swift: 1.1
+  swift: 1.1
 ---
 
 Swift has hit a reset button on the iOS developer community. It's really been something to behold for seasoned Objective-C developers.
@@ -19,7 +20,7 @@ One such project is [Alamofire](https://github.com/Alamofire/Alamofire). This we
 
 > Full Disclosure: this article, as with the rest of NSHipster, is written by the creator of AFNetworking and Alamofire. While this makes me qualified to write about the technical details and direction of these projects, it certainly doesn't allow for an objective take on their relative merits. So take all of this with a grain of salt.
 
-* * *
+---
 
 [Alamofire](https://github.com/Alamofire/Alamofire) is an HTTP networking library written in Swift. It leverages NSURLSession and the Foundation URL Loading System to provide first-class networking capabilities in a convenient Swift interface.
 
@@ -88,7 +89,7 @@ Closures are deeply integrated into Swift, so much so that if a methods's last a
 
 The chained methods in the previous example show this in action. For typical usage, it's really convenient to omit the syntactic cruft.
 
-### Optional Arguments &  Flexible Method Signatures
+### Optional Arguments & Flexible Method Signatures
 
 When communicating with web APIs, it's common to send parameters with URL queries or HTTP body data:
 
@@ -124,7 +125,6 @@ The parameterized arguments of `ParameterEncoding` cases allows for different JS
 The `encode` method on each `ParameterEncoding` case transforms a request and set of parameters into a new request (with optional error return value).
 
 Given a complex, nested set of parameters, encoding and sending as JSON is recommended:
-
 
 > There are no standards defining the encoding of data structures into URL-encoded query parameters, meaning that parsing behavior can vary between web application implementations. Even worse, there are certain structures that cannot be unambiguously represented by a query string. This is why JSON (or XML or plist) encoding is recommended for anything more complex than key-value, if the web API supports it.
 
@@ -219,7 +219,7 @@ override var data: NSData! {
 
 There's a lot baked into the < 1000 LOC comprising Alamofire. Any aspiring Swift developer or API author would be advised to [peruse through the source code](https://github.com/Alamofire/Alamofire) to get a better sense of what's going on.
 
-* * *
+---
 
 > For anyone wondering where this leaves AFNetworking, don't worry: **AFNetworking is stable and reliable, and isn't going anywhere.** In fact, over the coming months, a great deal of work is going to be put into improving test coverage and documentation for AFNetworking 2 and its first-party extensions.
 
