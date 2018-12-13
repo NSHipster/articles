@@ -249,7 +249,7 @@ using the `inverted` property:
 ```swift
 let disallowed = allowed.inverted
 func validate(_ input: String) -> Bool {
-    return input.rangeOfCharacter(from: disallowed) != nil
+    return input.rangeOfCharacter(from: disallowed) == nil
 }
 ```
 
