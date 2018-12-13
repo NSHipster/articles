@@ -3,9 +3,10 @@ title: NSCalendarUnitYear
 author: Mattt
 category: Swift
 excerpt: "NSHipster.com was launched 2 years ago to the day. Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps). Let's celebrate with some cake."
+retired: true
 status:
-    swift: 2.0
-    reviewed: September 9, 2015
+  swift: 2.0
+  reviewed: September 9, 2015
 ---
 
 NSHipster.com was launched 2 years ago to the day, with [a little article about NSIndexSet](https://nshipster.com/nsindexset/). Each week since has featured a new article on some obscure topic in Objective-C or Cocoa (with only a couple gaps), which have been read by millions of visitors in over 180 different countries.
@@ -16,12 +17,12 @@ Let's celebrate with some cake:
 
 <svg version="1.1" id="birthday-cake" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
      viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" style="width:300px; height: 300px; margin: 1em auto;">
-    <path d="M27.5,32.5c0,0-24.6,13.8-25,33.6c0,0.1,0,0.2,0,0.4V95c0,1.1,0.9,2,2,1.9L88,93.1c1.1-0.1,2.1-0.1,2.2-0.1
+<path d="M27.5,32.5c0,0-24.6,13.8-25,33.6c0,0.1,0,0.2,0,0.4V95c0,1.1,0.9,2,2,1.9L88,93.1c1.1-0.1,2.1-0.1,2.2-0.1
         c0.1,0,0.2-0.9,0.2-2c0,0,0-25.5,0-26.5c0-2-2-3-2-3 M88.5,89.4c0,1-0.9,1.9-2,2L6.5,94.9c-1.1,0-2-0.8-2-1.8c0,0,0-4.7,0-10.1
         l84-3.9C88.5,84.5,88.5,89.4,88.5,89.4z M88.5,76L4.5,80c0-5.8,0-11.3,0-11.8c0-0.9,1-1.1,1-1.1l82-3.6c0,0,1,0,1,0.9
         C88.5,64.9,88.5,70.3,88.5,76z"/>
-    <path d="M41.8,8.4c0,4.1-1.8,5.6-4.1,5.6c-2.3,0-4.1-1.5-4.1-5.6S37.8,1,37.8,1S41.8,4.3,41.8,8.4z"/>
-    <path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M42,47.5c0,2.5-2,4.5-4.5,4.5l0,0c-2.5,0-4.5-2-4.5-4.5V19.8
+<path d="M41.8,8.4c0,4.1-1.8,5.6-4.1,5.6c-2.3,0-4.1-1.5-4.1-5.6S37.8,1,37.8,1S41.8,4.3,41.8,8.4z"/>
+<path fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" d="M42,47.5c0,2.5-2,4.5-4.5,4.5l0,0c-2.5,0-4.5-2-4.5-4.5V19.8
         c0-2.5,2-4.5,4.5-4.5l0,0c2.5,0,4.5,2,4.5,4.5V47.5z"/>
 </svg>
 
@@ -80,7 +81,6 @@ Just... you know, don't let this power go to your head.
 After full Emoji support (`let 🐶🐮`), custom operators are perhaps the shiniest new feature for anyone coming from Objective-C. And like any shiny new feature, it is destined to provide the most snark fodder for the "get off my lawn" set.
 
 ### A Dramatization of the Perils of Shiny Swift Features
-
 
 > `SCENE: SAN FRANCISCO, THE YEAR IS 2017`
 >
@@ -174,7 +174,7 @@ I'm as amazed as anyone that this actually compiles.
 
 Everything is terrible.
 
-* * *
+---
 
 Anyway, Happy 2nd Birthday, NSHipster!
 
