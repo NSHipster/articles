@@ -58,7 +58,7 @@ That's an old reference.
 </ruby>
 
 <ruby class="boke">
-Then what would you call a collection of characters?
+Then what do you call a collection of characters?
 <rt>
 何と呼ばれる文字の集合ですか？
 </rt>
@@ -321,3 +321,28 @@ On top of that, `CharacterSet` does some clever optimizations, like
 allocating on a per-[plane](https://www.unicode.org/glossary/#plane) basis
 and representing sets of contiguous scalar values as ranges, if possible.
 {% endinfo %}
+
+---
+
+Much like our attempt at a Manzai routine at the top of the article,
+some of the meaning behind `CharacterSet` is lost in translation.
+
+`NSCharacterSet` was designed for `NSString`
+at a time when characters were equivalent to 16-bit UCS-2 code units
+and text rarely had occasion to leave the Basic Multilingual Plane.
+But with Swift's modern,
+Unicode-compliant implementations of `String` and `Character`,
+the definition of terms has drifted slightly;
+along with its `NS` prefix,
+`CharacterSet` lost some essential understanding along the way.
+
+Nevertheless,
+`CharacterSet` remains a performant, specialized container type
+for working with collections of scalar values.
+
+<ruby>
+FIN
+<rt>
+おしまい。
+</rt>
+</ruby>
