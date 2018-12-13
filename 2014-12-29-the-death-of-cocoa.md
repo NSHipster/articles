@@ -1,7 +1,7 @@
 ---
 title: The Death of Cocoa
 author: Mattt
-category: ""
+category: Miscellaneous
 excerpt: "For many of us, the simplicity, elegance, and performance of Apple's hardware and software working together are the reason why we build on their platforms. And yet, after just a few months of working with Swift, Cocoa has begun to lose its luster."
 retired: true
 status:

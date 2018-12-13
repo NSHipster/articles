@@ -1,7 +1,7 @@
 ---
 title: "Long Live Cocoa"
 author: Nate Cook
-category: ""
+category: Miscellaneous
 excerpt: "Swift is an exciting language for many of us, but it's still brand new. The stability of Objective-C and the history and strength of Cocoa mean that Swift isn't ready to be the driving force behind a major change, at least not quite yet. Cocoa's depth and the power it affords, along with the way it and Swift go hand in hand, make Cocoa as relevant and as promising as ever."
 retired: true
 status:

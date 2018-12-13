@@ -1,7 +1,7 @@
 ---
 title: macOS Character Viewer
 author: Mattt
-category: ""
+category: Miscellaneous
 excerpt: >-
   Ever see a character and wonder what it was?
   Ever want to insert a character but couldn't figure out how to type it?

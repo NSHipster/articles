@@ -1,7 +1,7 @@
 ---
 title: Bug Reporting
 author: Mattt
-category: ""
+category: Miscellaneous
 excerpt: If you've ever been told to "file a Radar"
   and wondered what that meant, this week's article has just the fix.
 hiddenlang: ""

@@ -1,7 +1,7 @@
 ---
 title: Inter-Process Communication
 author: Mattt
-category: ""
+category: Miscellaneous
 tags: cfhipsterref
 excerpt: "In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS & NeXTSTEP. Objective-C as the combination of Smalltalk's OOP paradigm and C. iCloud as the byproduct of MobileMe and actual clouds (presumably)."
 status:

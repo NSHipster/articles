@@ -1,7 +1,7 @@
 ---
 title: "Changing of the Guard"
 author: Mattt
-category: ""
+category: Miscellaneous
 excerpt: "An important site announcement."
 published: false
 status:

@@ -1,7 +1,7 @@
 ---
 title: macOS Dynamic Desktop
 author: Mattt
-category: ""
+category: Miscellaneous
 excerpt: >
   Dark Mode is one of the most popular additions to macOS ---
   especially among us developer types.
