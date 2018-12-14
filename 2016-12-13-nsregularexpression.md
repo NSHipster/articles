@@ -4,8 +4,7 @@ author: Nate Cook
 category: Cocoa
 excerpt: "Some find regular expressions impenetrably incomprehensible, thick with symbols and adornments, more akin to a practical joke than part of a reasonable code base. Others rely on their brevity and their power, wondering how anyone could possibly get along without such a versatile tool in their arsenal. Happily, on one thing we can all agree: In `NSRegularExpression`, Cocoa has the most long-winded and byzantine regular expression interface you're ever likely to come across."
 status:
-    swift: 3.0
-hiddenlang: "ruby,swift"
+  swift: 3.0
 ---
 
 > "Some people, when confronted with a problem, think 'I know, I'll use `NSRegularExpression`.' Now they have three problems."

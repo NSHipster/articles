@@ -5,7 +5,6 @@ category: "Cocoa"
 excerpt: Unless it's the title of a hacker movie from the 90's
   or the solution to an escape room puzzle,
   a password should be utterly devoid of meaning.
-hiddenlang: ""
 status:
   swift: "4.2"
 ---
@@ -168,7 +167,10 @@ you set the `passwordrules` attribute
 to an `<input>` element with `type="password"`:
 
 ```html
-<input type="password" passwordrules="required: upper; required: lower; required: special; max-consecutive: 3;"/>
+<input
+  type="password"
+  passwordrules="required: upper; required: lower; required: special; max-consecutive: 3;"
+/>
 ```
 
 {% info do %}

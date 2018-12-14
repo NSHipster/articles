@@ -4,18 +4,17 @@ author: Mattt
 category: Xcode
 excerpt: "This week, we'll take a look at `XCTest`, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: `XCTestExpectation` and performance tests."
 revisions:
-    "2015-04-07": Added note about location of call to `fulfill()`; new Objective-C examples
-hiddenlang: ""
+  "2015-04-07": Added note about location of call to `fulfill()`; new Objective-C examples
 status:
-    swift: 1.2
-    reviewed: June 25, 2015
+  swift: 1.2
+  reviewed: June 25, 2015
 ---
 
 Although iOS 8 and Swift has garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
 
 This week, we'll take a look at `XCTest`, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: `XCTestExpectation` and performance tests.
 
-* * *
+---
 
 Most Xcode project templates now support testing out-of-the-box. For example, when a new iOS app is created in Xcode with `⇧⌘N`, the resulting project file will be configured with two top-level groups (in addition to the "Products" group): "AppName" & "AppNameTests". The project's auto-generated scheme enables the shortcut `⌘R` to build and run the executable target, and `⌘U` to build and run the test target.
 
@@ -44,6 +43,7 @@ class Tests: XCTestCase {
     }
 }
 ```
+
 ```objc
 @interface Tests : XCTestCase
 
@@ -80,10 +80,11 @@ override func setUp() {
     locale = NSLocale(localeIdentifier: "en_US")
 }
 ```
+
 ```objc
 - (void)setUp {
     [super setUp];
-    
+
     self.calendar = [NSCalendar calendarWithIdentifier:NSCalendarIdentifierGregorian];
     self.locale = [NSLocale localeWithLocaleIdentifier:@"en_US"];
 }
@@ -107,6 +108,7 @@ func testOnePlusOneEqualsTwo() {
     XCTAssertEqual(1 + 1, 2, "one plus one should equal two")
 }
 ```
+
 ```objc
 - (void)testOnePlusOneEqualsTwo {
     XCTAssertEqual(1 + 1, 2, "one plus one should equal two");
@@ -124,6 +126,7 @@ To be entirely reductionist, all of the `XCTest` assertions come down to a singl
 ```swift
 XCTAssert(expression, format...)
 ```
+
 ```objc
 XCTAssert(expression, format...);
 ```
@@ -140,6 +143,7 @@ For `Bool` values, or simple boolean expressions, use `XCTAssertTrue` & `XCTAsse
 XCTAssertTrue(expression, format...)
 XCTAssertFalse(expression, format...)
 ```
+
 ```objc
 XCTAssertTrue(expression, format...);
 XCTAssertFalse(expression, format...);
@@ -155,6 +159,7 @@ When testing whether two values are equal, use `XCTAssert[Not]Equal` for scalar 
 XCTAssertEqual(expression1, expression2, format...)
 XCTAssertNotEqual(expression1, expression2, format...)
 ```
+
 ```objc
 XCTAssertEqual(expression1, expression2, format...);
 XCTAssertNotEqual(expression1, expression2, format...);
@@ -171,6 +176,7 @@ When specifically testing whether two `Double`, `Float`, or other floating-point
 XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, format...)
 XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, format...)
 ```
+
 ```objc
 XCTAssertEqualWithAccuracy(expression1, expression2, accuracy, format...);
 XCTAssertNotEqualWithAccuracy(expression1, expression2, accuracy, format...);
@@ -186,6 +192,7 @@ Use `XCTAssert[Not]Nil` to assert the existence (or non-existence) of a given va
 XCTAssertNil(expression, format...)
 XCTAssertNotNil(expression, format...)
 ```
+
 ```objc
 XCTAssertNil(expression, format...);
 XCTAssertNotNil(expression, format...);
@@ -198,6 +205,7 @@ Finally, the `XCTFail` assertion will always fail:
 ```swift
 XCTFail(format...)
 ```
+
 ```objc
 XCTFail(format...);
 ```
@@ -221,6 +229,7 @@ func testDateFormatterPerformance() {
     }
 }
 ```
+
 ```objc
 - (void)testDateFormatterPerformance {
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -254,6 +263,7 @@ To make a test asynchronous, first create an expectation with `expectationWithDe
 ```swift
 let expectation = expectationWithDescription("...")
 ```
+
 ```objc
 XCTestExpectation *expectation = [self expectationWithDescription:@"..."];
 ```
@@ -265,6 +275,7 @@ waitForExpectationsWithTimeout(10) { error in
     // ...
 }
 ```
+
 ```objc
 [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
     // ...
@@ -276,6 +287,7 @@ Now, the only remaining step is to `fulfill` that `expecation` in the relevant c
 ```swift
 expectation.fulfill()
 ```
+
 ```objc
 [expectation fulfill];
 ```
@@ -293,7 +305,7 @@ func testAsynchronousURLConnection() {
     let task = session.dataTaskWithURL(URL) { data, response, error in
         XCTAssertNotNil(data, "data should not be nil")
         XCTAssertNil(error, "error should be nil")
-        
+
         if let HTTPResponse = response as? NSHTTPURLResponse,
             responseURL = HTTPResponse.URL,
             MIMEType = HTTPResponse.MIMEType
@@ -318,19 +330,20 @@ func testAsynchronousURLConnection() {
     }
 }
 ```
+
 ```objc
 - (void)testAsynchronousURLConnection {
     NSURL *URL = [NSURL URLWithString:@"https://nshipster.com/"];
     NSString *description = [NSString stringWithFormat:@"GET %@", URL];
     XCTestExpectation *expectation = [self expectationWithDescription:description];
-    
+
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *task = [session dataTaskWithURL:URL
                                         completionHandler:^(NSData *data, NSURLResponse *response, NSError *error)
     {
         XCTAssertNotNil(data, "data should not be nil");
         XCTAssertNil(error, "error should be nil");
-        
+
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
             XCTAssertEqual(httpResponse.statusCode, 200, @"HTTP response status code should be 200");
@@ -339,15 +352,15 @@ func testAsynchronousURLConnection() {
         } else {
             XCTFail(@"Response was not NSHTTPURLResponse");
         }
-        
+
         [expectation fulfill];
     }];
-    
+
     [task resume];
-    
+
     [self waitForExpectationsWithTimeout:task.originalRequest.timeoutInterval handler:^(NSError *error) {
         if (error != nil) {
-            NSLog(@"Error: %@", error.localizedDescription);    
+            NSLog(@"Error: %@", error.localizedDescription);
         }
         [task cancel];
     }];
@@ -391,7 +404,7 @@ func testFetchRequestWithMockedManagedObjectContext() {
 }
 ```
 
-* * *
+---
 
 With Xcode 6, we've finally arrived: **the built-in testing tools are now good enough to use on their own**. That is to say, there are no particularly compelling reasons to use any additional abstractions in order to provide acceptable test coverage for the vast majority apps and libraries. Except in extreme cases that require extensive stubbing, mocking, or other exotic test constructs, XCTest assertions, expectations, and performance measurements should be sufficient.
 

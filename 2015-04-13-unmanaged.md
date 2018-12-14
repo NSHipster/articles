@@ -3,18 +3,16 @@ title: Unmanaged
 author: Nate Cook
 category: Swift
 tags: swift
-excerpt: "A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking \"here be dragons.\""
-hiddenlang: ""
+excerpt: 'A reading of Swift''s standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it''s impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking "here be dragons."'
 status:
-    swift: 1.2
+  swift: 1.2
 ---
 
 APIs do more than just exposing functionality to developers. They also communicate values about how the API should be used and why. This communication is what makes naming things one of the Hard Parts of computer science; it's what separates the good APIs from the great.
 
-A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and    the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking "here be dragons."
+A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking "here be dragons."
 
 Here we take a look at `Unmanaged`, a wrapper for unclearly-memory-managed objects and the hot-potatoesque way of properly handling them. But to start, let's rewind the clock a bit.
-
 
 ## Automatic Reference Counting
 
@@ -24,22 +22,21 @@ The advent of automatic reference counting (ARC) made all of that manual memory 
 
 ![Memory management before and after ARC]({% asset unmanaged-arc.png @path %})
 
-Now, in this post-ARC world, all Objective-C and Core Foundation types returned from Objective-C methods are automatically memory managed, leaving Core Foundation types returned from C functions as the lone holdout. For this last category, management of an object's ownership is still done with calls to `CFRetain()` and `CFRelease()` or by bridging to Objective-C objects with one of the `__bridge` functions. 
+Now, in this post-ARC world, all Objective-C and Core Foundation types returned from Objective-C methods are automatically memory managed, leaving Core Foundation types returned from C functions as the lone holdout. For this last category, management of an object's ownership is still done with calls to `CFRetain()` and `CFRelease()` or by bridging to Objective-C objects with one of the `__bridge` functions.
 
-To help understand whether or not a C function returns objects that are owned by the caller, Apple uses naming conventions defined by the *Create Rule* and the *Get Rule*:
+To help understand whether or not a C function returns objects that are owned by the caller, Apple uses naming conventions defined by the _Create Rule_ and the _Get Rule_:
 
 - The **Create Rule** states that a function with `Create` or `Copy` in its name returns ownerships to the call of the function. That is to say, the caller of a `Create` or `Copy` function will eventually need to call `CFRelease` on the returned object.
 
-- The **Get Rule** isn't so much a rule of its own as it is a catch-all for everything that doesn't follow the Create Rule. A function doesn't have `Create` or `Copy` in its name? It follows the Get rule instead, returning *without* transferring ownership. If you want the returned object to persist, in most cases it's up to you to retain it.
+- The **Get Rule** isn't so much a rule of its own as it is a catch-all for everything that doesn't follow the Create Rule. A function doesn't have `Create` or `Copy` in its name? It follows the Get rule instead, returning _without_ transferring ownership. If you want the returned object to persist, in most cases it's up to you to retain it.
 
 > If you're a belt-and-suspenders-and-elastic-waistband programmer like I am, check the documentation as well. Even when they follow the proper name convention, most APIs also explicitly state which rule they follow, and any exceptions to the common cases.
 
-Wait—this article is about *Swift*. Let's get back on track.
+Wait—this article is about _Swift_. Let's get back on track.
 
-Swift uses ARC exclusively, so there's no room for a call to `CFRelease` or `__bridge_retained`. How does Swift reconcile this "management-by-convention" philosophy with its guarantees of memory safety? 
+Swift uses ARC exclusively, so there's no room for a call to `CFRelease` or `__bridge_retained`. How does Swift reconcile this "management-by-convention" philosophy with its guarantees of memory safety?
 
-This occurs in two different ways. For *annotated* APIs, Swift is able to make the conventions explicit—annotated CoreFoundation APIs are completely memory-managed and provide the same promise of memory safety as do bridged Objective-C or native Swift types. For *unannotated* APIs, however, Swift passes the job to you, the programmer, through the `Unmanaged` type.
-
+This occurs in two different ways. For _annotated_ APIs, Swift is able to make the conventions explicit—annotated CoreFoundation APIs are completely memory-managed and provide the same promise of memory safety as do bridged Objective-C or native Swift types. For _unannotated_ APIs, however, Swift passes the job to you, the programmer, through the `Unmanaged` type.
 
 ## Managing `Unmanaged`
 
@@ -49,9 +46,9 @@ An `Unmanaged<T>` instance wraps a CoreFoundation type `T`, preserving a referen
 
 > - `takeRetainedValue()`: returns a Swift-managed reference to the wrapped instance, decrementing the reference count while doing so—use with the return value of a Create Rule function.
 
-> - `takeUnretainedValue()`: returns a Swift-managed reference to the wrapped instance *without* decrementing the reference count—use with the return value of a Get Rule function.
+> - `takeUnretainedValue()`: returns a Swift-managed reference to the wrapped instance _without_ decrementing the reference count—use with the return value of a Get Rule function.
 
-In practice, you're better off not even working with `Unmanaged` instances directly. Instead, `take...` the underlying instance immediately from the function's return value and bind *that*.
+In practice, you're better off not even working with `Unmanaged` instances directly. Instead, `take...` the underlying instance immediately from the function's return value and bind _that_.
 
 Let's take a look at this in practice. Suppose we wish to create an `ABAddressBook` and fetch the name of the user's best friend:
 
@@ -84,7 +81,7 @@ For example, let's take a function that combines two `CFString` instances and an
 CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2);
 ```
 
-Sure enough, in the implementation you can see that this creates `resultString` with `CFStringCreateMutableCopy` and returns it without a balancing `CFRelease`: 
+Sure enough, in the implementation you can see that this creates `resultString` with `CFStringCreateMutableCopy` and returns it without a balancing `CFRelease`:
 
 ```c
 CFStringRef CreateJoinedString(CFStringRef string1, CFStringRef string2) {
@@ -126,7 +123,7 @@ func CreateJoinedString(string1: CFString, string2: CFString) -> CFString
 let joinedString = CreateJoinedString("First", "Second") as String
 ```
 
-Finally, when your function naming *doesn't* comply with the Create/Get Rules, there's an obvious fix: rename your function to comply with the Create/Get Rules. Of course, in practice, that's not always an easy fix, but having an API that communicates clearly and consistently pays dividends beyond just avoiding `Unmanaged`. If renaming isn't an option, there are two other annotations to use: functions that pass ownership to the caller should use `CF_RETURNS_RETAINED`, while those that don't should use `CF_RETURNS_NOT_RETAINED`. For instance, the poorly-named `MakeJoinedString` is shown here with manual annotations:
+Finally, when your function naming _doesn't_ comply with the Create/Get Rules, there's an obvious fix: rename your function to comply with the Create/Get Rules. Of course, in practice, that's not always an easy fix, but having an API that communicates clearly and consistently pays dividends beyond just avoiding `Unmanaged`. If renaming isn't an option, there are two other annotations to use: functions that pass ownership to the caller should use `CF_RETURNS_RETAINED`, while those that don't should use `CF_RETURNS_NOT_RETAINED`. For instance, the poorly-named `MakeJoinedString` is shown here with manual annotations:
 
 ```c
 CF_RETURNS_RETAINED
@@ -134,7 +131,6 @@ __nonnull CFStringRef MakeJoinedString(__nonnull CFStringRef string1,
                                        __nonnull CFStringRef string2);
 ```
 
-* * *
+---
 
 One gets that feeling that `Unmanaged` is a stopgap measure—that is, a way to use CoreFoundation while the work of annotating the mammoth API is still in progress. As functions are revised to interoperate more cleanly, each successive Xcode release may allow you to strip `takeRetainedValue()` calls from your codebase. Yet until the sun sets on the last `CFUnannotatedFunctionRef`, `Unmanaged` will be there to help you bridge the gap.
-
