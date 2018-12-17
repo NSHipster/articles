@@ -16,8 +16,8 @@ let's stop to consider one of the greatest gifts given to us
 by modern computer systems:
 _the gift of abstraction_.
 
-Consider that billions of people around the world
-use computers and mobile devices on a daily basis.
+Consider those billions of people around the world
+who use computers and mobile devices on a daily basis.
 They do this without having to know anything about
 the millions of CPU transistors and SSD sectors and LCD pixels
 that come together to make that happen.
@@ -37,7 +37,7 @@ _"Now I have an article hook. Ho ho ho."_
 
 Despite being distinct concepts,
 the terms "bundle" and "package" are frequently used interchangeably.
-Part of this is certainly due to their similar names,
+Part of this is undoubtedly due to their similar names,
 but perhaps the main source of confusion is that
 many bundles just so happen to be packages (and vice versa).
 
@@ -62,13 +62,11 @@ here's an analogy that might help you keep things straight:
 
 Think of a _package_ as a _box_ (📦)
 whose contents are sealed away and are considered to exist as a single entity.
-
 Contrast that with _bundles_,
 which are more like _backpacks_ (🎒) ---
 each with special pockets and compartments for carrying whatever you need,
 and coming in different configurations depending on whether
 it's for taking to school, work, or the gym.
-
 If something's _both a bundle and a package_,
 it's like a piece of _luggage_ (🧳):
 sealed like a box
@@ -79,7 +77,7 @@ and organized into compartments like a backpack.
 
 Bundles are primarily for **improving developer experience**
 by providing structure for organizing code and resources.
-This structure not only allows for predictable loading of code and resources,
+This structure not only allows for predictable loading of code and resources
 but allows for system-wide features like localization.
 
 Bundles fall into one of the following three categories,
@@ -121,7 +119,7 @@ to your editor to create an image literal.
 {% endinfo %}
 
 For everything else,
-`Bundle` provides a number of instance methods and properties
+`Bundle` provides several instance methods and properties
 that give the location of standard bundle items,
 with variants returning either a `URL` or a `String` paths:
 
@@ -220,7 +218,7 @@ you can control-click to show a contextual menu
 with actions to perform on a selected item.
 If an item is a package,
 "Show Package Contents" will appear at the top,
-under "Open" and "Open With ▶︎".
+under "Open".
 
 {% asset show-package-contents.png %}
 
