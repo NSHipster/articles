@@ -289,7 +289,7 @@ in the `com.apple.FinderInfo` extended attribute
 (but we haven't had a chance to try it out yet):
 
 ```terminal
-$ xattr -wx com.apple.FinderInfo <#?#> /path/to/package
+$ xattr -wx com.apple.FinderInfo (???) /path/to/package
 ```
 
 {% endinfo %}
