@@ -22,7 +22,7 @@ But perhaps the closest point of comparison for what we do all day
 comes from Middle Eastern folk tales:
 Open any edition of
 _The Thousand and One Nights_
-(<span lang="ar">أَلْف لَيْلَة وَلَيْلَة</span>)
+(<bdi lang="ar">أَلْف لَيْلَة وَلَيْلَة</bdi>)
 and you'll find descriptions of supernatural beings known as
 <dfn>jinn</dfn>, <dfn>djinn</dfn>, <dfn>genies</dfn>, or 🧞.
 No matter what you call them,
