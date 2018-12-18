@@ -277,15 +277,16 @@ directoryIsPackage(xcode) // true
 
 We couldn't find any documentation describing
 how to set the so-called "package bit" for a file,
-but based on our reading of
+but according to
 [CarbonCore/Finder.h](https://opensource.apple.com/source/CarbonHeaders/CarbonHeaders-8A428/Finder.h),
-we believe this can be done by setting the
+this can be accomplished by setting the
 `kHasBundle` (`0x2000`) flag
-in the `com.apple.FinderInfo` extended attribute
-(but we haven't had a chance to try it out yet):
+in the `com.apple.FinderInfo` extended attribute:
 
 ```terminal
-$ xattr -wx com.apple.FinderInfo (???) /path/to/package
+$ xattr -wx com.apple.FinderInfo /path/to/package \
+  00 00 00 00 00 00 00 00 20 00 00 00 00 00 00 00 \
+  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
 ```
 
 {% endinfo %}
