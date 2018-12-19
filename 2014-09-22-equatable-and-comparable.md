@@ -146,7 +146,8 @@ As described in our article about [`Void`](/void/),
 tuples aren't <dfn>nominal types</dfn>,
 so they can't conform to `Equatable`.
 If you wanted to compare two trinomina for equality,
-you'd have to write the conformance code for `Equatable`
+you'd have to write the conformance code for `Equatable`.
+
 _...like some kind of animal_.
 
 ### Conditional Conformance to Equality
