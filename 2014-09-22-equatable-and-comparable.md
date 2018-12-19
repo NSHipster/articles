@@ -296,7 +296,7 @@ have floated around over the years,
 but we haven't seen any real movement in this direction lately.
 {% endinfo %}
 
-## Incomparable Limitations with No Equal
+### Incomparable Limitations with No Equal
 
 Unlike `Equatable`,
 the Swift compiler can't automatically synthesize conformance to `Comparable`.
