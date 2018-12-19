@@ -51,7 +51,7 @@ struct Binomen {
     let species: String
 }
 
-let 🐺 = Binomen(genus: "Canis", species: "lupis")
+let 🐺 = Binomen(genus: "Canis", species: "lupus")
 let 🐻 = Binomen(genus: "Ursus", species: "arctos")
 ```
 
