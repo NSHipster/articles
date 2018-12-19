@@ -278,7 +278,6 @@ extension Binomen: Comparable {
 Implementing the `<` operator
 for types that consider more than one property
 is deceptively hard to get right the first time.
-Be sure to write some test cases to ensure that
 {% endwarning %}
 
 This is _quite_ clever.
