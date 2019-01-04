@@ -9,7 +9,7 @@ status:
 
 iOS is all about networking--whether it's reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.
 
-Because of this, Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i) is something that every iOS developer would do well to buddy up with.
+Because of this, Foundation's [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system) is something that every iOS developer would do well to buddy up with.
 
 When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over `http://`, `https://` or `ftp://`, then `NSURLConnection` and friends are a clear choice. Apple's networking classes cover the essentials for modern Objective-C application development, from URL and cache management to authentication & cookie storage.
 
