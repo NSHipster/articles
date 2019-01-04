@@ -11,9 +11,9 @@ iOS is all about networking--whether it's reading or writing state to and from t
 
 Because of this, Foundation's [URL Loading System](https://developer.apple.com/documentation/foundation/url_loading_system) is something that every iOS developer would do well to buddy up with.
 
-When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over `http://`, `https://` or `ftp://`, then `NSURLConnection` and friends are a clear choice. Apple's networking classes cover the essentials for modern Objective-C application development, from URL and cache management to authentication & cookie storage.
+When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over `http://`, `https://` or `ftp://`, then `NSURLSession` and friends are a clear choice. Apple's networking classes cover the essentials for modern app development, from URL and cache management to authentication & cookie storage.
 
-Although there's a lot to the URL Loading System, it's designed in a way that hides the underlying complexity, with hooks to provide configuration when needed. Any request going through `NSURLConnection` is intercepted by other parts of the system along the way, allowing for things like cached responses being transparently loaded from disk when available.
+Although there's a lot to the URL Loading System, it's designed in a way that hides the underlying complexity, with hooks to provide configuration when needed. Any request going through `NSURLSession` is intercepted by other parts of the system along the way, allowing for things like cached responses being transparently loaded from disk when available.
 
 Which brings us to this week's topic: `NSURLProtocol`.
 
@@ -30,7 +30,7 @@ If you aren't already `mindblown.gif`, here are some examples of what this can b
 - Creating a proxy server for a local data transformation service with a URL request interface
 - Deliberately sending malformed & illegal response data to test the robustness of the application
 - Filtering sensitive information from requests or responses
-- Implementing an `NSURLConnection`-compatible interface to an existing protocol.
+- Implementing an `NSURLSession`-compatible interface to an existing protocol.
 
 Again, it's important to reiterate that the whole point of `NSURLProtocol` is that you can change everything about the loading behavior of your application without doing anything differently with how your application communicates to the network.
 
@@ -64,7 +64,7 @@ This is especially important for subclasses created to interact with protocols t
 
 The most important methods in your subclass are `-startLoading` and `-stopLoading`. What goes into either of these methods is entirely dependent on what your subclass is trying to accomplish, but there is one commonality: communicating with the protocol client.
 
-Each instance of a `NSURLProtocol` subclass has a `client` property, which is the object that is communicating with the URL Loading system. It's not `NSURLConnection`, but the object does conform to a protocol that should look familiar to anyone who has implemented `NSURLConnectionDelegate`
+Each instance of a `NSURLProtocol` subclass has a `client` property, which is the object that is communicating with the URL Loading system. It's not `NSURLSession`, but the object does conform to a protocol that should look familiar to anyone who has implemented a session delegate.
 
 #### `<NSURLProtocolClient>`
 
