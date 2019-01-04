@@ -88,5 +88,3 @@ When a request is loaded, each registered protocol is asked "hey, can you handle
 ---
 
 Like the URL Loading System that contains it, `NSURLProtocol` is incredibly powerful, and can be used in exceedingly clever ways. As a relatively obscure class, we've only just started to mine its potential for how we can use it to make our code cleaner, faster, and more robust.
-
-So go forth and hack! I can't wait to see what y'all come up with!
