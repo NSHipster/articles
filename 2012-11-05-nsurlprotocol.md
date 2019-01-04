@@ -68,14 +68,14 @@ Each instance of a `NSURLProtocol` subclass has a `client` property, which is th
 
 #### `<NSURLProtocolClient>`
 
-* `-URLProtocol:cachedResponseIsValid:`
-* `-URLProtocol:didCancelAuthenticationChallenge:`
-* `-URLProtocol:didFailWithError:`
-* `-URLProtocol:didLoadData:`
-* `-URLProtocol:didReceiveAuthenticationChallenge:`
-* `-URLProtocol:didReceiveResponse:cacheStoragePolicy:`
-* `-URLProtocol:wasRedirectedToRequest:redirectResponse:`
-* `-URLProtocolDidFinishLoading:`
+- `-URLProtocol:cachedResponseIsValid:`
+- `-URLProtocol:didCancelAuthenticationChallenge:`
+- `-URLProtocol:didFailWithError:`
+- `-URLProtocol:didLoadData:`
+- `-URLProtocol:didReceiveAuthenticationChallenge:`
+- `-URLProtocol:didReceiveResponse:cacheStoragePolicy:`
+- `-URLProtocol:wasRedirectedToRequest:redirectResponse:`
+- `-URLProtocolDidFinishLoading:`
 
 In your implementation of `-startLoading` and `-stopLoading`, you will need to send each delegate method to your `client` when appropriate. For something simple, this may mean sending several in rapid succession, but it's important nonetheless.
 
@@ -90,5 +90,3 @@ When a request is loaded, each registered protocol is asked "hey, can you handle
 Like the URL Loading System that contains it, `NSURLProtocol` is incredibly powerful, and can be used in exceedingly clever ways. As a relatively obscure class, we've only just started to mine its potential for how we can use it to make our code cleaner, faster, and more robust.
 
 So go forth and hack! I can't wait to see what y'all come up with!
-
-
