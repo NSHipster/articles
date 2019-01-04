@@ -4,96 +4,14 @@ author: Mattt
 category: Cocoa
 excerpt: "Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 iOS is all about networking--whether it's reading or writing state to and from the server, offloading computation to a distributed system, or loading remote images, audio, and video from the cloud.
 
 Because of this, Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i) is something that every iOS developer would do well to buddy up with.
 
-When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over `http://`, `https://` or `ftp://`, then `NSURLConnection` and friends are a clear choice. Apple's networking classes cover the essentials for modern Objective-C application development, from URL and cache management to authentication & cookie storage:
-
-<figure id="url-loading-system">
-  <figcaption>The URL Loading System</figcaption>
-  <table>
-    <thead>
-      <tr>
-        <td colspan="2"><strong>URL Loading</strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="2">NSURLConnection</td>
-      </tr>
-      <tr>
-        <td>NSURLRequest</td>
-        <td>NSMutableURLRequest</td>
-      </tr>
-      <tr>
-        <td>NSURLResponse</td>
-        <td>NSHTTPURLResponse</td>
-      </tr>
-    </tbody>
-    <thead>
-      <tr>
-        <td colspan="2"><strong>Cache Management</strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="2">NSURLCache</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSCacheURLRequest</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSCachedURLResponse</td>
-      </tr>
-    </tbody>
-    <thead>
-      <tr>
-        <td colspan="2"><strong>Authentication &amp; Credentials</strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="2">NSURLCredential</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSURLCredentialStorage</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSURLAuthenticationChallenge</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSURLProtectionSpace</td>
-      </tr>
-    </tbody>
-    <thead>
-      <tr>
-        <td colspan="2"><strong>Cookie Storage</strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="2">NSHTTPCookie</td>
-      </tr>
-      <tr>
-        <td colspan="2">NSHTTPCookieStorage</td>
-      </tr>
-    </tbody>
-    <thead>
-      <tr>
-        <td colspan="2"><strong>Protocol Support</strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td colspan="2">NSURLProtocol</td>
-      </tr>
-    </tbody>
-  </table>
-</figure>
+When given the choice, applications should adopt the highest-level framework possible for what needs to be done. So, if that task is communicating over `http://`, `https://` or `ftp://`, then `NSURLConnection` and friends are a clear choice. Apple's networking classes cover the essentials for modern Objective-C application development, from URL and cache management to authentication & cookie storage.
 
 Although there's a lot to the URL Loading System, it's designed in a way that hides the underlying complexity, with hooks to provide configuration when needed. Any request going through `NSURLConnection` is intercepted by other parts of the system along the way, allowing for things like cached responses being transparently loaded from disk when available.
 
