@@ -5,7 +5,7 @@ category: Cocoa
 tags: cfhipsterref
 excerpt: "Though widely usurped of their 'go-to reference' status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis."
 status:
-    swift: t.b.c.
+  swift: t.b.c.
 ---
 
 <img src="{% asset cfhipsterref-illustration-librarian.png @path %}" width="173" height="300" alt="Librarian, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
@@ -16,7 +16,7 @@ This week's article is about dictionaries. Not the `NSDictionary` / `CFDictionar
 
 Though widely usurped of their "go-to reference" status by the Internet, dictionaries and word lists serve an important role behind the scenes of functionality ranging from spell check, grammar check, and auto-correct to auto-summarization and semantic analysis. So, for your reference, here's a look at the ways and means by which computers give meaning to the world through words, in Unix, OS X, and iOS.
 
-* * *
+---
 
 ## Unix
 
@@ -59,7 +59,7 @@ These giant, system-provided text files make it easy to `grep` crossword puzzle 
 
 OS X builds upon this with its own system dictionaries. Never one to disappoint, the operating system's penchant for extending Unix functionality through strategically placed bundles and plist files is in full force with how dictionaries are distributed.
 
-* * *
+---
 
 ## OS X
 
@@ -232,7 +232,7 @@ for (NSString *name in availableDictionariesKeyedByName) {
 }
 ```
 
-Most surprising from this experimentation is the ability to access the raw HTML for entries, which  combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
+Most surprising from this experimentation is the ability to access the raw HTML for entries, which combined with a dictionary's bundled CSS, produces the result seen in Dictionary.app.
 
 ![Entry for "apple" in Dictionary.app]({% asset dictionary.png @path %})
 
@@ -240,7 +240,7 @@ Most surprising from this experimentation is the ability to access the raw HTML 
 
 In the process of writing this article, I _accidentally_ created [an Objective-C wrapper](https://github.com/mattt/DictionaryKit) around this forbidden fruit (so forbidden by our favorite fruit company, so don't try submitting this to the App Store).
 
-* * *
+---
 
 ## iOS
 
@@ -274,6 +274,6 @@ This is the same behavior that one might encounter by tapping the "Define" `UIMe
 
 > In both cases, it appears that `UIReferenceLibraryViewController` will do its best to normalize the search term, so stripping whitespace or changing to lowercase should not be necessary.
 
-* * *
+---
 
 From Unix word lists to their evolved `.dictionary` bundles on OS X (and presumably iOS), words are as essential to application programming as mathematical constants and the "Sosumi" alert noise. Consider how the aforementioned APIs can be integrated into your own app, or used to create a kind of app you hadn't previously considered. There are a [wealth](https://nshipster.com/nslocalizedstring/) [of](https://nshipster.com/nslinguistictagger/) [linguistic](https://nshipster.com/search-kit/) [technologies](https://nshipster.com/uilocalizedindexedcollation/) baked into Apple's platforms, so take advantage of them.
