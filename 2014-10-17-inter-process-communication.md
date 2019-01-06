@@ -239,7 +239,7 @@ AppleScript uses a natural language syntax, intended to be more accessible to no
 
 To get a better sense of the nature of the beast, here's how to tell Safari to open a URL in the active tab in the frontmost window:
 
-```{Applescript}
+```applescript
 tell application "Safari"
   set the URL of the front document to "https://nshipster.com"
 end tell
@@ -321,7 +321,7 @@ It's a replacement for `NSTask`, and a whole lot more.
 
 Introduced in 2011, XPC has provided the infrastructure for the App Sandbox on OS X, Remote View Controllers on iOS, and App Extensions on both. It is also widely used by system frameworks and first-party applications:
 
-```{bash}
+```bash
 $ find /Applications -name \*.xpc
 ```
 
@@ -418,7 +418,7 @@ XPC can also be registered as launchd jobs, configured to automatically start on
 
 .launchd.plist
 
-```{xml}
+```xml
 <key>LaunchEvents</key>
 <dict>
   <key>com.apple.iokit.matching</key>

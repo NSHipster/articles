@@ -5,7 +5,7 @@ category: Miscellaneous
 tags: nshipster
 excerpt: "Stewardship is an old word. It evokes the ethic of public service and duty. To be a steward is to embody the responsibilities that come with ownership. It is an act that justifies authority through continued accountability; both the greatest challenge and reward of creating and maintaining a project."
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 Open Source communities function within what economists describe as a [Gift Economy](https://en.wikipedia.org/wiki/Gift_economy). Rather than paying one another for goods or services through barter or currency, everyone shares freely with one another, and gains [social currency](https://en.wikipedia.org/wiki/Whuffie) based on their generosity. It's similar to how friends tend to take turns inviting one another over for dinner or a party.
@@ -60,7 +60,7 @@ CocoaPods is the de facto dependency manager for integrating third party code in
 
 #### NSHipsterKit.podspec
 
-```{ruby}
+```ruby
 Pod::Spec.new do |s|
   s.name     = 'NSHipsterKit'
   s.version  = '1.0.0'
@@ -80,7 +80,7 @@ Once the `.podspec` has been submitted to the CocoaPods specs repository, a cons
 
 #### Podfile
 
-```{ruby}
+```ruby
 platform :ios, '7.0'
 pod 'NSHipsterKit', '~> 1.0'
 ```

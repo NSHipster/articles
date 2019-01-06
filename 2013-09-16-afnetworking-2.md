@@ -139,7 +139,7 @@ Thus concludes our whirlwind tour of AFNetworking 2.0. New features for the next
 
 You can start playing around with AFNetworking 2.0 by putting the following in your [`Podfile`](http://cocoapods.org):
 
-```{ruby}
+```ruby
 platform :ios, '7.0'
 pod "AFNetworking", "2.5.0"
 ```

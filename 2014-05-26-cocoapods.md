@@ -120,7 +120,7 @@ CocoaPods follows [Semantic Versioning](http://semver.org) conventions.
 
 To include a library not included in the public specs database, a Git, Mercurial, or SVN repository can be used instead, for which a `commit`, `branch`, or `tag` can be specified.
 
-```{ruby}
+```ruby
 pod 'Y', :git => 'https://github.com/NSHipster/Y.git', :commit => 'b4dc0ffee'
 ```
 
