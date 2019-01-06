@@ -5,7 +5,7 @@ category: Miscellaneous
 tags: cfhipsterref
 excerpt: "In many ways, the story of Apple has been about fusing together technologies through happy accidents of history to create something better than before: OS X as a hybrid of MacOS & NeXTSTEP. Objective-C as the combination of Smalltalk's OOP paradigm and C. iCloud as the byproduct of MobileMe and actual clouds (presumably)."
 status:
-    swift: t.b.c.
+  swift: t.b.c.
 ---
 
 <img src="{% asset cfhipsterref-illustration-postman.png @path %}" width="151" height="300" alt="IPC Postman, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
@@ -138,7 +138,7 @@ if (status == kCFMessagePortSuccess) {
 }
 ```
 
-##  Distributed Notifications
+## Distributed Notifications
 
 There are many ways for objects to communicate with one another in Cocoa:
 
@@ -190,7 +190,7 @@ CFNotificationCenterPostNotification(distributedCenter,
 
 Of all of the ways to link up two applications, distributed notifications are by far the easiest. It wouldn't be a great idea to use them to send large payloads, but for simple tasks like synchronizing preferences or triggering a data fetch, distributed notifications are perfect.
 
-##  Distributed Objects
+## Distributed Objects
 
 Distributed Objects (DO) is a remote messaging feature of Cocoa that had its heyday back in the mid-90's with NeXT. And though its not widely used any more, the dream of totally frictionless IPC is still unrealized in our modern technology stack.
 
@@ -231,7 +231,7 @@ All that's really left are traces of the annotations used by Distributed Objects
 - `bycopy`: Return a copy of the object
 - `byref`: Return a proxy of the object
 
-##  AppleEvents & AppleScript
+## AppleEvents & AppleScript
 
 AppleEvents are the most enduring legacies of the classic Macintosh operating system. Introduced in System 7, AppleEvents allowed apps to be controlled locally using AppleScript, or remotely using a feature called Program Linking. To this day, AppleScript, using the Cocoa Scripting Bridge, remains the most direct way to programmatically interact with OS X applications.
 
@@ -253,7 +253,7 @@ Even for a seasoned Objective-C developer, it's nearly impossible to write Apple
 
 Fortunately, the Scripting Bridge provides a proper programming interface for Cocoa applications.
 
-###  Cocoa Scripting Bridge
+### Cocoa Scripting Bridge
 
 In order to interact with an application through the Scripting Bridge, a programming interface must first be generated:
 
@@ -282,7 +282,7 @@ It's a bit more verbose than AppleScript, but this is much easier to integrate i
 
 Alas, AppleScript's star appears to be falling, as recent releases of OS X and iWork applications have greatly curtailed their scriptability. At this point, it's unlikely that adding support in your own applications will be worth it.
 
-##  Pasteboard
+## Pasteboard
 
 Pasteboard is the most visible inter-process communication mechanism on OS X and iOS. Whenever a user copies or pastes a piece of text, an image, or a document between applications, an exchange of data from one process to another over mach ports is being mediated by the `com.apple.pboard` service.
 
@@ -315,7 +315,7 @@ These representations can even be provided on an on-demand basis by conforming t
 
 Each representation is identified by a Unique Type Identifier (UTI), a concept discussed in greater detail in the next chapter.
 
-##  XPC
+## XPC
 
 XPC is the state-of-the-art for inter-process communication in the SDKs. Its architectural goals are to avoid long-running process, to adapt to the available resources, and to lazily initialize wherever possible. The motivation to incorporate XPC into an application is not to do things that are otherwise impossible, but to provide better privilege separation and fault isolation for inter-process communication.
 
@@ -354,7 +354,7 @@ int main(int argc, const char *argv[]) {
 }
 ```
 
-Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer.  :
+Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer. :
 
 ```objc
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
@@ -414,7 +414,7 @@ xpc_connection_send_message_with_reply(c, message, queue,
 });
 ```
 
-###  Registering Services
+### Registering Services
 
 XPC can also be registered as launchd jobs, configured to automatically start on matching IOKit events, BSD notifications or CFDistributedNotifications. These criteria are specified in a service's `launchd.plist` file:
 
@@ -447,7 +447,7 @@ A recent addition to `launchd` property lists is the `ProcessType` key, which de
 #### Process Types and Contention Behavior
 
 | Process Type | Contention Behavior                               |
-|--------------|---------------------------------------------------|
+| ------------ | ------------------------------------------------- |
 | Standard     | Default value                                     |
 | Adaptive     | Contend with apps when doing work on their behalf |
 | Background   | Never contend with apps                           |
