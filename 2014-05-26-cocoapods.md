@@ -8,8 +8,6 @@ status:
   swift: n/a
 ---
 
-<img src="{% asset cfhipsterref-illustration-egg-merchant.png @path %}" width="139" height="300" alt="Egg Merchant, illustrated by Conor Heelan" style="float: right; margin-left: 2em; margin-bottom: 2em"/>
-
 Civilization is built on infrastructure: roads, bridges, canals, sewers, pipes, wires, fiber. When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. But when such formative structures are absent or ad hoc, it feels as if progress is made _in spite of_ the situation.
 
 It all has to do with solving the problem of scale.
@@ -21,8 +19,6 @@ In the case of Objective-C, [CocoaPods](http://cocoapods.org) provided a much-ne
 This week on NSHipster, we'll celebrate the launch of CocoaPods 0.33, [an important milestone for the project](http://blog.cocoapods.org/CocoaPods-0.33/), by taking a look back at where we came from, discussing where we are now, and thinking about what's to come.
 
 > The following historical look at the origins of CocoaPods is, admittedly, a bit wordy for this publication. So if you're looking for technical details, feel free to [skip directly to that](#using-cocoapods).
-
----
 
 ## A Look Back
 
