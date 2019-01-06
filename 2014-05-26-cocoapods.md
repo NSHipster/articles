@@ -18,8 +18,6 @@ In the case of Objective-C, [CocoaPods](http://cocoapods.org) provided a much-ne
 
 This week on NSHipster, we'll celebrate the launch of CocoaPods 0.33, [an important milestone for the project](http://blog.cocoapods.org/CocoaPods-0.33/), by taking a look back at where we came from, discussing where we are now, and thinking about what's to come.
 
-> The following historical look at the origins of CocoaPods is, admittedly, a bit wordy for this publication. So if you're looking for technical details, feel free to [skip directly to that](#using-cocoapods).
-
 ## A Look Back
 
 For the first twenty or so years of its existence, Objective-C was not a widely known language. NeXT and later OS X were marginal platforms, with a comparatively small user base and developer community. Like any community, there were local user groups and mailing lists and websites, but open source collaboration was not a widespread phenomenon. Granted, Open Source was only just starting to pick up steam at that time, but there was no contemporary Objective-C equivalent to, for example, CPAN, the Comprehensive Perl Archive Network. Everyone took SDKs from Redwood City and Cupertino as far as they could, (maybe sprinkling in some code salvaged from a forum thread), but ultimately rolling their own solutions to pretty much everything else.
@@ -34,7 +32,9 @@ In those early years of iPhone OS, we started to see the first massively adopted
 
 Of this new wave of developers, those coming from a Ruby background had a significant influence on the code and culture of Objective-C. Ruby, a spiritual successor to Perl, had its own package manager similar to CPAN: [RubyGems](https://rubygems.org).
 
-> Why so much influence from Ruby? Here's my pet theory: Ruby started gaining popular traction because of [Rails](http://rubyonrails.org), which hit 1.0 at the end of 2005. Given that the average duration of a startup gig seems to be about 1½ – 2½ years, the timing works out such that those first and second waves of bored Rails developers itching to jump ship would find a place in the emerging app space.
+{% info %}
+Why so much influence from Ruby? Here's my pet theory: Ruby started gaining popular traction because of [Rails](http://rubyonrails.org), which hit 1.0 at the end of 2005. Given that the average duration of a startup gig seems to be about 1½ – 2½ years, the timing works out such that those first and second waves of bored Rails developers itching to jump ship would find a place in the emerging app space.
+{% endinfo %}
 
 As open source contributions in Objective-C began to get some traction, the pain points of code distribution were starting to become pretty obvious:
 
@@ -54,15 +54,14 @@ Since its initial proof-of-concept, the project has grown to include [14 core te
 
 A significant portion of these prolific contributions from the open source community for Objective-C has been directly enabled and encouraged by increased ownership around tooling. Everyone involved should be commended for their hard work and dedication.
 
-> To break the 4th wall for a moment: Seriously, _thank you_, ladies and gentlemen of CocoaPods. You've done an amazing job. Keep up the good work!
-
----
-
 ## Using CocoaPods
 
 CocoaPods is easy to get started with both as a consumer and a library author. It should only take a few minutes to get set up.
 
-> For the most up-to-date information on how to use CocoaPods, check out the [official guides](http://guides.cocoapods.org).
+{% info %}
+For the most up-to-date information on how to use CocoaPods,
+check out the [official guides](http://guides.cocoapods.org).
+{% endinfo %}
 
 ### Installing CocoaPods
 
@@ -70,13 +69,18 @@ CocoaPods is installed through RubyGems, the Ruby package manager, which comes w
 
 To install, open Terminal.app and enter the following command:
 
-```{bash}
+```terminal
 $ sudo gem install cocoapods
 ```
 
 Now you should have the `pod` command available in the terminal.
 
-> If you're using a Ruby versioning manager, like [rbenv](https://github.com/sstephenson/rbenv), you may need to run a command to re-link a binary shim to the library (e.g. `$ rbenv rehash`).
+{% warning %}
+If you're using a Ruby versioning manager like
+[rbenv](https://github.com/sstephenson/rbenv),
+you may need to run a command to re-link a binary shim to the library
+(e.g. `$ rbenv rehash`).
+{% endwarning %}
 
 ### Managing Dependencies
 
@@ -90,13 +94,13 @@ A `Podfile` is where the dependencies of a project are listed. It is equivalent 
 
 To create a Podfile, `cd` into the directory of your `.xcodeproj` file and enter the command:
 
-```{bash}
+```terminal
 $ pod init
 ```
 
 #### Podfile
 
-```{ruby}
+```ruby
 platform :ios, '7.0'
 
 target "AppName" do
@@ -106,11 +110,13 @@ end
 
 Dependencies can have varying levels of specificity. For most libraries, pegging to a minor or patch version is the safest and easiest way to include them in your project.
 
-```{ruby}
+```ruby
 pod 'X', '~> 1.1'
 ```
 
-> CocoaPods follows [Semantic Versioning](http://semver.org) conventions.
+{% info %}
+CocoaPods follows [Semantic Versioning](http://semver.org) conventions.
+{% endinfo %}
 
 To include a library not included in the public specs database, a Git, Mercurial, or SVN repository can be used instead, for which a `commit`, `branch`, or `tag` can be specified.
 
@@ -120,19 +126,19 @@ pod 'Y', :git => 'https://github.com/NSHipster/Y.git', :commit => 'b4dc0ffee'
 
 Once all of the dependencies have been specified, they can be installed with:
 
-```{bash}
+```terminal
 $ pod install
 ```
 
 When this is run, CocoaPods will recursively analyze the dependencies of each project, resolving them into a dependency graph, and serializing into a `Podfile.lock` file.
 
-> For example, if two libraries require [AFNetworking](http://afnetworking.com), CocoaPods will determine a version that satisfies both requirements, and links them with a common installation of it.
+For example, if two libraries require [AFNetworking](http://afnetworking.com), CocoaPods will determine a version that satisfies both requirements, and links them with a common installation of it.
 
 CocoaPods will create a new Xcode project that creates static library targets for each dependency, and then links them all together into a `libPods.a` target. This static library becomes a dependency for your original application target. An `xcworkspace` file is created, and should be used from that point onward. This allows the original `xcodeproj` file to remain unchanged.
 
 Subsequent invocations of `pod install` will add new pods or remove old pods according to the locked dependency graph. To update the individual dependencies of a project to the latest version, do the following:
 
-```{bash}
+```terminal
 $ pod update
 ```
 
@@ -142,7 +148,7 @@ One great, but lesser-known, feature of CocoaPods is the `try` command, which al
 
 Invoking `$ pod try` with the name of a project in the public specs database opens up any example projects for the library:
 
-```{bash}
+```terminal
 $ pod try Ono
 ```
 
@@ -160,11 +166,14 @@ Remember: **_raising_ the bar for contribution within a software ecosystem _lowe
 
 A `.podspec` file is the atomic unit of a CocoaPods dependency. It specifies the name, version, license, and source files for a library, along with other metadata.
 
-> The [official guide to the Podfile](http://guides.cocoapods.org/using/the-podfile) has some great information and examples.
+{% info %}
+The [official guide to the Podfile](http://guides.cocoapods.org/using/the-podfile)
+has some great information and examples.
+{% endinfo %}
 
 #### NSHipsterKit.podspec
 
-```{ruby}
+```ruby
 Pod::Spec.new do |s|
   s.name     = 'NSHipsterKit'
   s.version  = '1.0.0'
@@ -184,13 +193,13 @@ Once published to the public specs database, anyone could add it to their projec
 
 #### Podfile
 
-```{ruby}
+```ruby
 pod 'NSHipsterKit', '~> 1.0'
 ```
 
 A `.podspec` file can be useful for organizing internal or private dependencies as well:
 
-```{ruby}
+```ruby
 pod 'Z', :path => 'path/to/directory/with/podspec'
 ```
 
@@ -204,21 +213,21 @@ The CocoaPods Trunk service solves a lot of this, making the process nicer for e
 
 To get started, you must first register your machine with the Trunk service. This is easy enough, just specify your email address (the one you use for committing library code) along with your name.
 
-```{bash}
+```terminal
 $ pod trunk register mattt@nshipster.com "Mattt Thompson"
 ```
 
 Now, all it takes to publish your code to CocoaPods is a single command. The same command works for creating a new library or adding a new version to an existing one:
 
-```{bash}
+```terminal
 $ pod trunk push NAME.podspec
 ```
 
-> Authors of existing CocoaPods can claim their libraries [with a few simple steps](http://blog.cocoapods.org/Claim-Your-Pods/).
+{% info %}
+Authors of existing CocoaPods can claim their libraries [with a few simple steps](http://blog.cocoapods.org/Claim-Your-Pods/).
+{% endinfo %}
 
 ---
-
-## A Look Forward
 
 CocoaPods exemplifies the compounding effect of infrastructure on a community. In a few short years, the Objective-C community has turned into something that we can feel proud to be part of.
 
