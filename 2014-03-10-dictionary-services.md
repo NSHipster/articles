@@ -96,7 +96,7 @@ macOS builds upon this with its own system dictionaries.
 Never one to disappoint,
 the operating system's penchant for extending Unix functionality
 by way of strategically placed bundles and plist files
-is in full force here with how dictionaries.
+is in full force here with how dictionaries are distributed.
 
 ## macOS
 
