@@ -25,13 +25,13 @@ It's easier to show `NSPredicate` in use, rather than talk about it in the abstr
     let firstName: String
     let lastName: String
     let age: Int
-    
+
     init(firstName: String, lastName: String, age: Int) {
         self.firstName = firstName
         self.lastName = lastName
         self.age = age
     }
-    
+
     override var description: String {
         return "\(firstName) \(lastName)"
     }
