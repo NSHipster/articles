@@ -21,7 +21,7 @@ It's easier to show `NSPredicate` in use, rather than talk about it in the abstr
 | Quentin     | Alberts    | 31    |
 
 ```swift
-class Person: NSObject {
+@objcMembers  class Person: NSObject {
     let firstName: String
     let lastName: String
     let age: Int
@@ -47,13 +47,13 @@ let bobPredicate = NSPredicate(format: "firstName = 'Bob'")
 let smithPredicate = NSPredicate(format: "lastName = %@", "Smith")
 let thirtiesPredicate = NSPredicate(format: "age >= 30")
 
-(people as NSArray).filteredArrayUsingPredicate(bobPredicate)
+(people as NSArray).filtered(using: bobPredicate)
 // ["Bob Jones"]
 
-(people as NSArray).filteredArrayUsingPredicate(smithPredicate)
+(people as NSArray).filtered(using: smithPredicate)
 // ["Alice Smith", "Charlie Smith"]
 
-(people as NSArray).filteredArrayUsingPredicate(thirtiesPredicate)
+(people as NSArray).filtered(using: thirtiesPredicate)
 // ["Charlie Smith", "Quentin Alberts"]
 ```
 
