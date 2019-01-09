@@ -5,8 +5,8 @@ category: Cocoa
 tags: nshipster, popular
 excerpt: "NSPredicate is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL WHERE clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched."
 status:
-    swift: 2.0
-    reviewed: September 19, 2015
+  swift: 4.2
+  reviewed: January 9, 2019
 ---
 
 `NSPredicate` is a Foundation class that specifies how data should be fetched or filtered. Its query language, which is like a cross between a SQL `WHERE` clause and a regular expression, provides an expressive, natural language interface to define logical conditions on which a collection is searched.
@@ -14,14 +14,14 @@ status:
 It's easier to show `NSPredicate` in use, rather than talk about it in the abstract, so we're going to revisit the example data set used in the [`NSSortDescriptor` article](https://nshipster.com/nssortdescriptor/):
 
 | `firstName` | `lastName` | `age` |
-|-------------|------------|-------|
+| ----------- | ---------- | ----- |
 | Alice       | Smith      | 24    |
 | Bob         | Jones      | 27    |
 | Charlie     | Smith      | 33    |
 | Quentin     | Alberts    | 31    |
 
 ```swift
-@objcMembers  class Person: NSObject {
+@objcMembers class Person: NSObject {
     let firstName: String
     let lastName: String
     let age: Int
@@ -47,13 +47,13 @@ let bobPredicate = NSPredicate(format: "firstName = 'Bob'")
 let smithPredicate = NSPredicate(format: "lastName = %@", "Smith")
 let thirtiesPredicate = NSPredicate(format: "age >= 30")
 
-(people as NSArray).filtered(using: bobPredicate)
+people.filtered(using: bobPredicate)
 // ["Bob Jones"]
 
-(people as NSArray).filtered(using: smithPredicate)
+people.filtered(using: smithPredicate)
 // ["Alice Smith", "Charlie Smith"]
 
-(people as NSArray).filtered(using: thirtiesPredicate)
+people.filtered(using: thirtiesPredicate)
 // ["Charlie Smith", "Quentin Alberts"]
 ```
 
@@ -125,7 +125,7 @@ Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUs
 ```swift
 let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
 
-(people as NSArray).filteredArrayUsingPredicate(ageIs33Predicate)
+people.filtered(using: ageIs33Predicate)
 // ["Charlie Smith"]
 ```
 
@@ -141,7 +141,7 @@ NSLog(@"Age 33: %@", [people filteredArrayUsingPredicate:ageIs33Predicate]);
 ```swift
 let namesBeginningWithLetterPredicate = NSPredicate(format: "(firstName BEGINSWITH[cd] $letter) OR (lastName BEGINSWITH[cd] $letter)")
 
-(people as NSArray).filteredArrayUsingPredicate(namesBeginningWithLetterPredicate.predicateWithSubstitutionVariables(["letter": "A"]))
+people.filtered(using: namesBeginningWithLetterPredicate.withSubstitutionVariables(["letter": "A"]))
 // ["Alice Smith", "Quentin Alberts"]
 ```
 
@@ -170,13 +170,13 @@ NSLog(@"'A' Names: %@", [people filteredArrayUsingPredicate:[namesBeginningWithL
 
 ### String Comparisons
 
-> String comparisons are by default case and diacritic sensitive. You can modify an operator using the key characters c and d within square braces to specify case and diacritic insensitivity respectively, for example firstName BEGINSWITH[cd] $FIRST_NAME.
+> String comparisons are by default case and diacritic sensitive. You can modify an operator using the key characters c and d within square braces to specify case and diacritic insensitivity respectively, for example firstName BEGINSWITH[cd] \$FIRST_NAME.
 
 > - `BEGINSWITH`: The left-hand expression begins with the right-hand expression.
 > - `CONTAINS`: The left-hand expression contains the right-hand expression.
 > - `ENDSWITH`: The left-hand expression ends with the right-hand expression.
 > - `LIKE`: The left hand expression equals the right-hand expression: `?` and `*` are allowed as wildcard characters, where `?` matches 1 character and `*` matches 0 or more characters.
-> - `MATCHES`:  The left hand expression equals the right hand expression using a regex-style comparison according to ICU v3 (for more details see the [ICU User Guide for Regular Expressions](http://userguide.icu-project.org/strings/regexp)).
+> - `MATCHES`: The left hand expression equals the right hand expression using a regex-style comparison according to ICU v3 (for more details see the [ICU User Guide for Regular Expressions](http://userguide.icu-project.org/strings/regexp)).
 
 ### Aggregate Operations
 
@@ -206,7 +206,13 @@ We saw that `AND` & `OR` can be used in predicate format strings to create compo
 For example, the following predicates are equivalent:
 
 ```swift
-NSCompoundPredicate(type: .AndPredicateType, subpredicates: [NSPredicate(format: "age > 25"), NSPredicate(format: "firstName = %@", "Quentin")])
+NSCompoundPredicate(
+    type: .and,
+    subpredicates: [
+        NSPredicate(format: "age > 25"),
+        NSPredicate(format: "firstName = %@", "Quentin")
+    ]
+)
 
 NSPredicate(format: "(age > 25) AND (firstName = %@)", "Quentin")
 ```
@@ -234,6 +240,12 @@ Analyzing its class constructor provides a glimpse into the way `NSPredicate` fo
                                      options:(NSUInteger)options
 ```
 
+```swift
+init(leftExpression lhs: NSExpression,
+    rightExpression rhs: NSExpression,
+customSelector selector: Selector)
+```
+
 #### Parameters
 
 > - `lhs`: The left hand expression.
@@ -245,21 +257,21 @@ Analyzing its class constructor provides a glimpse into the way `NSPredicate` fo
 ### `NSComparisonPredicate` Types
 
 ```swift
-public enum NSPredicateOperatorType : UInt {
-    case LessThanPredicateOperatorType
-    case LessThanOrEqualToPredicateOperatorType
-    case GreaterThanPredicateOperatorType
-    case GreaterThanOrEqualToPredicateOperatorType
-    case EqualToPredicateOperatorType
-    case NotEqualToPredicateOperatorType
-    case MatchesPredicateOperatorType
-    case LikePredicateOperatorType
-    case BeginsWithPredicateOperatorType
-    case EndsWithPredicateOperatorType
-    case InPredicateOperatorType
-    case CustomSelectorPredicateOperatorType
-    case ContainsPredicateOperatorType
-    case BetweenPredicateOperatorType
+enum NSComparisonPredicate.Operator: UInt {
+    case lessThan
+    case lessThanOrEqualTo
+    case greaterThan
+    case greaterThanOrEqualTo
+    case equalTo
+    case notEqualTo
+    case matches
+    case like
+    case beginsWith
+    case endsWith
+    case `in`
+    case customSelector
+    case contains
+    case between
 }
 ```
 
@@ -300,14 +312,14 @@ let shortNamePredicate = NSPredicate { (evaluatedObject, _) in
     return (evaluatedObject as! Person).firstName.utf16.count <= 5
 }
 
-(people as NSArray).filteredArrayUsingPredicate(shortNamePredicate)
+people.filtered(using: shortNamePredicate)
 // ["Alice Smith", "Bob Jones"]
 ```
 
 ```objc
 NSPredicate *shortNamePredicate = [NSPredicate predicateWithBlock:^BOOL(id evaluatedObject, NSDictionary *bindings) {
-            return [[evaluatedObject firstName] length] <= 5;
-        }];
+    return [[evaluatedObject firstName] length] <= 5;
+}];
 
 // ["Alice Smith", "Bob Jones"]
 NSLog(@"Short Names: %@", [people filteredArrayUsingPredicate:shortNamePredicate]);
