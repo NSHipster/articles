@@ -298,10 +298,10 @@ typedef NSUInteger NSPredicateOperatorType;
 
 ### `NSComparisonPredicate` Options
 
-> - `NSCaseInsensitivePredicateOption`: A case-insensitive predicate. You represent this option in a predicate format string using a [c] following a string operation (for example, "NeXT" like[c] "next").
-> - `NSDiacriticInsensitivePredicateOption`: A diacritic-insensitive predicate. You represent this option in a predicate format string using a [d] following a string operation (for example, "naïve" like[d] "naive").
-> - `NSNormalizedPredicateOption`: Indicates that the strings to be compared have been preprocessed. This option supersedes NSCaseInsensitivePredicateOption and NSDiacriticInsensitivePredicateOption, and is intended as a performance optimization option. You represent this option in a predicate format string using a [n] following a string operation (for example, "WXYZlan" matches[n] ".lan").
-> - `NSLocaleSensitivePredicateOption`: Indicates that strings to be compared using `<`, `<=`, `=`, `=>`, `>` should be handled in a locale-aware fashion. You represent this option in a predicate format string using a `[l]` following one of the `<`, `<=`, `=`, `=>`, `>` operators (for example, "straße" >[l] "strasse").
+> - `NSCaseInsensitivePredicateOption`: A case-insensitive predicate. You represent this option in a predicate format string using a [c] following a string operation (for example, `"NeXT" like[c] "next"`).
+> - `NSDiacriticInsensitivePredicateOption`: A diacritic-insensitive predicate. You represent this option in a predicate format string using a [d] following a string operation (for example, `"naïve" like[d] "naive"`).
+> - `NSNormalizedPredicateOption`: Indicates that the strings to be compared have been preprocessed. This option supersedes NSCaseInsensitivePredicateOption and NSDiacriticInsensitivePredicateOption, and is intended as a performance optimization option. You represent this option in a predicate format string using a [n] following a string operation (for example, `"WXYZlan" matches[n] ".lan"`).
+> - `NSLocaleSensitivePredicateOption`: Indicates that strings to be compared using `<`, `<=`, `=`, `=>`, `>` should be handled in a locale-aware fashion. You represent this option in a predicate format string using a `[l]` following one of the `<`, `<=`, `=`, `=>`, `>` operators (for example, `"straße" >[l] "strasse"`).
 
 ## Block Predicates
 
