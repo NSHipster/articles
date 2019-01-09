@@ -41,7 +41,7 @@ let alice = Person(firstName: "Alice", lastName: "Smith", age: 24)
 let bob = Person(firstName: "Bob", lastName: "Jones", age: 27)
 let charlie = Person(firstName: "Charlie", lastName: "Smith", age: 33)
 let quentin = Person(firstName: "Quentin", lastName: "Alberts", age: 31)
-let people = [alice, bob, charlie, quentin]
+let people = [alice, bob, charlie, quentin] as NSArray
 
 let bobPredicate = NSPredicate(format: "firstName = 'Bob'")
 let smithPredicate = NSPredicate(format: "lastName = %@", "Smith")
