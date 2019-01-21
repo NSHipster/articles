@@ -269,7 +269,7 @@ Rather than taking an extra decoding step
 each time you want to post to the site,
 you could create a `TextOutputStream`
 that takes care of that for you automatically
-(in this case, we use an XML escaping function
+(in this case, we use an XML-escaping function
 that we found buried deep in Core Foundation).
 
 ```swift
