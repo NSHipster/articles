@@ -149,7 +149,7 @@ print("👨‍👩‍👧‍👧", to: &logger)
 // 6: 👧 U+1F467    GIRL
 ```
 
-{% note %}
+{% info %}
 
 In Swift 5.0,
 you can access the name of a scalar value by
@@ -182,7 +182,7 @@ extension Unicode.Scalar {
 For more information, see
 [SE-0211: "Add Unicode Properties to Unicode.Scalar"](https://github.com/apple/swift-evolution/blob/master/proposals/0211-unicode-scalar-properties.md).
 
-{% endnote %}
+{% endinfo %}
 
 ## Ideas for Using Custom Text Output Streams
 
