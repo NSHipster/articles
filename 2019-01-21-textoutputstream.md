@@ -263,10 +263,10 @@ let's imagine a situation in which you find yourself
 frequently copy-pasting console output into a form on some website.
 Unfortunately,
 the website has the unhelpful behavior of
-parsing `<` and `>` as if they were HTML tags.
+trying to parse `<` and `>` as if they were HTML.
 
-Rather than taking an extra decoding step
-each time you want to post to the site,
+Rather than taking an extra step to escape the text
+each time you post to the site,
 you could create a `TextOutputStream`
 that takes care of that for you automatically
 (in this case, we use an XML-escaping function
