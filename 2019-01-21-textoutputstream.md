@@ -19,7 +19,7 @@ So it's surprising how few of us are familiar with its other forms.
 For instance,
 did you know that the actual signature of `print` is
 [`print(_:separator:terminator:)`](https://developer.apple.com/documentation/swift/1541053-print)?
-Or that it had a variant
+Or that it had a variant named
 [`print(_:separator:terminator:to:)`](https://developer.apple.com/documentation/swift/1641736-print)?
 
 _Shocking, I know._
