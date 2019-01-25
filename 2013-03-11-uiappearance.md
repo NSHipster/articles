@@ -5,8 +5,8 @@ category: Cocoa
 tags: nshipster
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
 status:
-    swift: 2.0
-    reviewed: September 8, 2015
+  swift: 2.0
+  reviewed: September 8, 2015
 ---
 
 Style vs. Substance.
@@ -96,14 +96,6 @@ For your convenience, [here is the list of properties as of iOS 7.0](https://gis
 Much like how [`NSLocalizedString`](https://nshipster.com/nslocalizedstring/) and [`#pragma`](https://nshipster.com/pragma/) are marks of quality in Objective-C code, having custom UI classes conform to `UIAppearance` is not only a best-practice, but it demonstrates a certain level of care being put into its implementation.
 
 [Peter Steinberger](https://twitter.com/steipete) has [this great article](http://petersteinberger.com/blog/2013/uiappearance-for-custom-views/), which describes some of the caveats about implementing `UIAppearance` in custom views. It's a must-read for anyone who aspires to greatness in their open source UI components.
-
-## Alternatives
-
-Another major shortcoming of `UIAppearance` is that style rules are _imperative_, rather than _declarative_. That is, styling is applied at runtime in code, rather than being interpreted from a list of style rules.
-
-Yes, if there's one idea to steal from web development, it's the separation of content and presentation. Say what you will about CSS, but stylesheets are _amazing_.
-
-Stylesheet enthusiasts on iOS now have some options. [Pixate](http://www.pixate.com) is a commercial framework that uses CSS to style applications. [NUI](https://github.com/tombenner/nui), an open-source project by [Tom Benner](https://github.com/tombenner), does much the same with a CSS/SCSS-like language. Another open source project along the same lines is [UISS](https://github.com/robertwijas/UISS) by [Robert Wijas](https://github.com/robertwijas), which allows `UIAppearance` rules to be read from JSON.
 
 ---
 
