@@ -25,11 +25,6 @@ but we'd be remiss to let our `guard` down.
 Today, I want to talk about one of the most exciting new features in Swift 5:
 an overhaul to how values in string literals are interpolated
 by way of the `ExpressibleByStringInterpolation` protocol.
-A lot of folks are excited by this new feature
-for all of the cool things you can do with it ---
-and rightfully so!
-(We'll talk about those in a moment)
-But I think this goes way beyond the typical fare of
 
 ---
 
