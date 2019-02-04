@@ -137,11 +137,11 @@ extending the default `String` interpolation type
 (`DefaultStringInterpolation`)
 or by creating a new type that conforms to `ExpressibleByStringInterpolation`.
 
-{% note %}
+{% info %}
 For more information,
 see Swift Evolution proposal
 [SE-0228: "Fix ExpressibleByStringInterpolation"](https://github.com/apple/swift-evolution/blob/master/proposals/0228-fix-expressiblebystringinterpolation.md).
-{% endnote %}
+{% endinfo %}
 
 ## Extending Default String Interpolation
 
@@ -315,14 +315,14 @@ that matches the specified parameters.
 In this case,
 both literal and interpolated values are collected into a mutable string.
 
-{% note %}
+{% info %}
 The `StringInterpolationProtocol`,
 requires an initializer, `init(literalCapacity:interpolationCount:)`;
 as an optional optimization,
 the capacity and interpolation counts
 can be used to, for example,
 allocate enough space to hold the resulting string.
-{% endnote %}
+{% endinfo %}
 
 ```swift
 import Foundation
@@ -397,13 +397,13 @@ let markup = XMLEscapedString(stringInterpolation: interpolation)
 
 Reads just like poetry, doesn't it?
 
-{% note %}
+{% info %}
 For a more advanced example of `ExpressibleByStringInterpolation`,
 check out the
 [Unicode Styling playground](https://github.com/Flight-School/Guide-to-Swift-Strings-Sample-Code/tree/master/Chapter%203/Unicode%20Styling.playground)
 included in the sample code for the
 [Flight School Guide to Swift Strings](https://flight.school/books/strings)
-{% endnote %}
+{% endinfo %}
 
 ---
 
