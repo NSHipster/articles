@@ -60,7 +60,7 @@ we'd use `"YYYY"`, as in `"Y"` for year
 
 ```swift
 let formatter = DateFormatter()
-formatter.dateFormat = "YYYY-mm-dd"
+formatter.dateFormat = "YYYY-MM-dd"
 
 formatter.string(from: Date()) // 2019-02-04 (🤨)
 ```
@@ -87,7 +87,7 @@ in the first week of the new year.
 What we _actually_ want is `"yyyy"`.
 
 ```swift
-formatter.dateFormat = "yyyy-mm-dd"
+formatter.dateFormat = "yyyy-MM-dd"
 formatter.string(from: date) // 2019-12-31 (😄)
 ```
 
