@@ -63,7 +63,7 @@ we'd use `"YYYY"`, as in `"Y"` for year
 let formatter = DateFormatter()
 formatter.dateFormat = "YYYY-mm-dd"
 
-formatter.string(from: Date()) // 2019-02-03 (🤨)
+formatter.string(from: Date()) // 2019-02-04 (🤨)
 ```
 
 It sure looks that way,
