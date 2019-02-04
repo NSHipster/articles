@@ -420,7 +420,7 @@ for where it could be used:
   for creating attributed strings for apps
   and terminal output with ANSI control sequences for color and effects,
   or pad unadorned text to match the desired alignment.
-- **Localization**
+- **Localizating**
   Rather than relying on a a script that scans source code
   looking for matches on "NSLocalizedString",
   string interpolation allows us to build tools that leverage the compiler
