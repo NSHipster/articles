@@ -172,7 +172,10 @@ that we'll use to specify which
 ```swift
 import Foundation
 
-#if swift(>=5)
+#if swift(<5)
+#error("Download Xcode 10.2 Beta 2 to see this in action")
+#endif
+
 extension DefaultStringInterpolation {
     mutating func appendInterpolation(_ value: Date,
                                       component: Calendar.Component)
@@ -186,16 +189,13 @@ extension DefaultStringInterpolation {
         )
     }
 }
-#endif
 ```
 
 Now we can interpolate the date for each of the individual components:
 
 ```swift
-#if swift(>=5)
 "\(date, component: .year)-\(date, component: .month)-\(date, component: .day)"
 // "2019-12-31"
-#endif
 ```
 
 It's verbose, yes.
@@ -216,7 +216,6 @@ that take a `formatter` of the corresponding type.
 ```swift
 import Foundation
 
-#if swift(>=5)
 extension DefaultStringInterpolation {
     mutating func appendInterpolation(_ value: Date,
                                       formatter: DateFormatter)
@@ -241,7 +240,6 @@ This allows for a consistent interface to equivalent functionality,
 such as formatting interpolated dates and numbers.
 
 ```swift
-#if swift(>=5)
 let dateFormatter = DateFormatter()
 dateFormatter.dateStyle = .full
 dateFormatter.timeStyle = .none
@@ -253,7 +251,6 @@ numberformatter.numberStyle = .spellOut
 
 "one plus one is \(1 + 1, formatter: numberformatter)"
 // "one plus one is two"
-#endif
 ```
 
 ## Implementing a Custom String Interpolation Type
