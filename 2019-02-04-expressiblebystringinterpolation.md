@@ -158,7 +158,7 @@ let's revisit the previous mixup of `"YYYY"` and `"yyyy"`
 and see how this confusion could be avoided
 with `ExpressibleByStringInterpolation`.
 
-By extending `String`'s default interpolationg type
+By extending `String`'s default interpolation type
 (aptly-named `DefaultStringInterpolation`),
 we can define a new method called `appendingInterpolation`.
 The type of the first, unnamed parameter
