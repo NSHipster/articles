@@ -15,7 +15,7 @@ first and foremost ---
 to be a [safe](https://swift.org/about/#safety) language.
 Numbers and collections are checked for overflow,
 variables are always initialized before first use,
-optionals ensure that non-values are handle correctly,
+optionals ensure that non-values are handled correctly,
 and any potentially unsafe operations are named accordingly.
 
 These language features go a long way to eliminate
