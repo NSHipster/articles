@@ -329,7 +329,7 @@ The only thing making Cluedo a strictly single-player affair
 is that you need some way to test a theory
 without revealing the answer to yourself.
 
-If we wanted to write a program to check that for us
+If we wanted to write a program to check that
 without spoiling anything for us,
 one of the first steps would be to parse a suggestion
 into its component parts:
