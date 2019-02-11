@@ -19,8 +19,8 @@ But cooped up in our home for the afternoon,
 we decided on a classic:
 _[Cluedo](https://en.wikipedia.org/wiki/Cluedo)_.
 
-Me, I'm an avid fan of Cluedo.
-And yes, that's what I'm going to call it.
+Me, I'm an avid fan of Cluedo ---
+and yes, that's what I'm going to call it.
 Because despite being born and raised in the United States,
 where the game is sold and marketed exclusively under the name "Clue",
 I _insist_ on referring to it by its proper name.
