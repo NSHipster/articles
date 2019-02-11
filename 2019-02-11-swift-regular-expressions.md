@@ -386,6 +386,9 @@ let regex = try NSRegularExpression(pattern: pattern, options: [])
 First off,
 declaring the pattern with a multi-line raw string literal
 is a huge win in terms of readability.
+That, in combination with the `x` and `i` flags within those groups,
+allows us to use whitespace to organize our expression
+into something more understandable.
 
 Another nicety is how
 this pattern uses <dfn>named capture groups</dfn>
@@ -393,11 +396,8 @@ this pattern uses <dfn>named capture groups</dfn>
 standard, positional capture groups from the previous example.
 Doing so allows us to access groups by name
 by calling the `range(withName:)` method on the match object.
-By setting the `x` and `i` flags within those groups,
-we can use whitespace to organize our expression
-into something more understandable.
 
-Beyond the outlandish maneuvers,
+Beyond the more outlandish maneuvers,
 we have affordances for regional variations, including
 the spelling of "Miss Scarlet(t)",
 the title of "Mr. / Rev. Green",
