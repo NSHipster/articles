@@ -327,7 +327,7 @@ gosh, wouldn't it be nice if we could play Cluedo solo?
 
 ### Matching Multi-Line Patterns with Named Capture Groups
 
-The only thing making Cluedo a strictly single-player affair
+The only thing making Cluedo a strictly multiplayer affair
 is that you need some way to test a theory
 without revealing the answer to yourself.
 
