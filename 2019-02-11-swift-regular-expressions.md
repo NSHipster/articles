@@ -20,7 +20,7 @@ we decided on a classic:
 _[Cluedo](https://en.wikipedia.org/wiki/Cluedo)_.
 
 Me, I'm an avid fan of Cluedo ---
-and yes, that's what I'm going to call it.
+and _yes_, that's what I'm going to call it.
 Because despite being born and raised in the United States,
 where the game is sold and marketed exclusively under the name "Clue",
 I _insist_ on referring to it by its proper name.
@@ -49,9 +49,11 @@ a <dfn>regular expression</dfn>
 would allow me to relax my exacting standards.
 I could listen for `/Clue(do)?™?/`
 and never miss another invitation.
+
 But who can be bothered to figure out regexes in Swift, anyway?
 
-Sharpen your pencils,
+Well,
+sharpen your pencils,
 gather your detective notes,
 and warm up your 6-sided dice,
 because this week on NSHipster,
@@ -334,7 +336,7 @@ without spoiling anything for us,
 one of the first steps would be to parse a suggestion
 into its component parts:
 **suspect**,
-**location**,
+**location**, and
 **weapon**.
 
 ```swift
@@ -354,25 +356,28 @@ which lets us do some really nice things:
 
 ```swift
 let pattern = #"""
-(?xi:(?<suspect>
+(?xi)
+(?<suspect>
     ((Miss|Ms.) \h Scarlett?) |
-    ((Professor|Prof.) \h Plum)) |
-    (Mrs. \h Peacock) |
-    ((Reverend | Mr.) \h Green) |
     ((Colonel | Col.) \h Mustard) |
-    ((Mrs. \h White) | ((Doctor|Dr.) \h Orchid))
-),\s* in the (?xi:(?<location>
+    ((Reverend | Mr.) \h Green) |
+    (Mrs. \h Peacock) |
+    ((Professor | Prof.) \h Plum) |
+    ((Mrs. \h White) | ((Doctor | Dr.) \h Orchid))
+),?(?-x: in the )
+(?<location>
     Kitchen        | Ballroom | Conservatory |
     Dining \h Room      |       Library      |
     Lounge         | Hall     | Study
-)),\s* with the (?xi:(?<weapon>
+),?(?-x: with the )
+(?<weapon>
       Candlestick
     | Knife
     | (Lead(en)?\h)? Pipe
     | Revolver
     | Rope
     | Wrench
-))
+)
 """#
 
 let regex = try NSRegularExpression(pattern: pattern, options: [])
