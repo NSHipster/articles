@@ -327,7 +327,7 @@ gosh, wouldn't it be nice if we could play Cluedo solo?
 
 The only thing making Cluedo a strictly single-player affair
 is that you need some way to test a theory
-is being able to test suggestions without revealing the answer.
+without revealing the answer to yourself.
 
 If we wanted to write a program to check that for us
 without spoiling anything for us,
