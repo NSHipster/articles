@@ -24,8 +24,7 @@ And yes, that's what I'm going to call it.
 Because despite being born and raised in the United States,
 where the game is sold and marketed exclusively under the name "Clue",
 I _insist_ on referring to it by its proper name.
-_(Otherwise, how would we refer to the
-[1985 film adaptation](https://en.wikipedia.org/wiki/Clue_%28film%29)?)\_
+(Otherwise, how would we refer to the [1985 film adaptation](https://en.wikipedia.org/wiki/Clue_%28film%29)?)
 
 Alas,
 my relentless pedantry often causes me to miss out on invitations to play.
