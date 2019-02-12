@@ -133,9 +133,8 @@ tells us whether or not a match occurred.
 
 The method itself provides default arguments to the
 `options`, `range`, and `locale` parameters;
-by default, it localized, unqualified search
-over the entire string
-according to the current locale.
+by default, it performs a localized, unqualified search
+over the entire string in the current locale.
 
 Within a regular expression,
 the `?` operator matches the preceding character or group zero or one times.
