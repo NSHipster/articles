@@ -219,7 +219,7 @@ the problem of the mysterious murder of Dr. Black.
 """
 
 instructions.replacingOccurrences(
-    of: #"(Dr.|Doctor) Black"#,
+    of: #"(Dr\.|Doctor) Black"#,
     with: "Mr. Boddy",
     options: .regularExpression
 )
@@ -358,12 +358,12 @@ which lets us do some really nice things:
 let pattern = #"""
 (?xi)
 (?<suspect>
-    ((Miss|Ms.) \h Scarlett?) |
-    ((Colonel | Col.) \h Mustard) |
-    ((Reverend | Mr.) \h Green) |
-    (Mrs. \h Peacock) |
-    ((Professor | Prof.) \h Plum) |
-    ((Mrs. \h White) | ((Doctor | Dr.) \h Orchid))
+    ((Miss|Ms\.) \h Scarlett?) |
+    ((Colonel | Col\.) \h Mustard) |
+    ((Reverend | Mr\.) \h Green) |
+    (Mrs\. \h Peacock) |
+    ((Professor | Prof\.) \h Plum) |
+    ((Mrs\. \h White) | ((Doctor | Dr\.) \h Orchid))
 ),?(?-x: in the )
 (?<location>
     Kitchen        | Ballroom | Conservatory |
