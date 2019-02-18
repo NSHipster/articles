@@ -370,3 +370,14 @@ oneTwoThree .+ fourFiveSix // [5, 7, 9]
 ```
 
 ---
+
+As developers,
+we're perhaps less accustomed to considering the wider impact of our decisions.
+Code is invisible and weightless,
+so it's easy to forget that it even exists
+after we ship it.
+
+But in Swift,
+our decisions have impacts beyond what's immediately understood
+so it's important to be considerate about how we exercise our responsibilities
+as stewards of our APIs.
