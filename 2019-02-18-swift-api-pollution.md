@@ -17,10 +17,10 @@ the potential for new functionality comes at no expense
 (other than, say, a modest increase in the size of your app bundle).
 
 Import the `NaturalLanguage` framework,
-and --- _**boom**_ --- your app can
+and _**\*boom\***_ --- your app can
 [determine the language of text](https://nshipster.com/nllanguagerecognizer/);
 import `CoreMotion`,
-and --- _**whoosh**_ --- your app can
+and --- _**\*whoosh\***_ --- your app can
 [respond to changes in device orientation](https://nshipster.com/cmdevicemotion/).
 
 But it'd be surprising if, say,
