@@ -178,7 +178,7 @@ what reason would a developer have to think that their `dump(_:)` method
 could in any way be confused for `dump(_:name:indent:maxDepth:maxItems:)`?
 
 Which leads us to our final example,
-which is perhaps the most confusing at all...
+which is perhaps the most confusing of all...
 
 ### String Interpolation Pollution
 
