@@ -333,7 +333,7 @@ such that module is responsible for a single responsibility.
 
 If it makes sense to do so,
 consider packaging functionality provided by types and methods
-in a separate module from
+in a module that is separate from
 any extensions you provide to built-in types to improve their usability.
 Until it's possible to pick and choose which behavior we want from a module,
 the best option is to give consumers the choice to opt-in to features
