@@ -462,6 +462,8 @@ are passed as arguments to the `render` method
 found in the `Mustache` object declared in `context`
 after evaluating `mustache.js`.
 
+{% raw %}
+
 ```swift
 let template = """
 {{#people}}
@@ -479,6 +481,8 @@ print(result)
 // "Ada Lovelace, born 1815"
 // "Margaret Hamilton, born 1936"
 ```
+
+{% endraw %}
 
 ---
 
