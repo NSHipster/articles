@@ -137,13 +137,13 @@ context.evaluateScript("**INVALID**")
 // Prints "SyntaxError: Unexpected token '**'"
 ```
 
-{% important %}
+{% warning %}
 You can't tell whether a script evaluated successfully
 based on its return value.
 For instance,
 both variable assignment and syntax errors
 produce `undefined` return values.
-{% endimportant %}
+{% endwarning %}
 
 ### Managing Multiple Virtual Machines and Contexts
 
@@ -263,7 +263,7 @@ context.objectForKeyedSubscript("quadruple")?
        .call(withArguments: [3]) // 12
 ```
 
-{% important %}
+{% warning %}
 
 Blocks capture references to variables,
 which can cause strong reference cycles when stored in a `JSContext`.
@@ -272,7 +272,7 @@ make sure not to reference `context` within your closures;
 instead, you can access it by way of the
 `JSContext.currentContext` type property as necessary.
 
-{% endimportant %}
+{% endwarning %}
 
 ## Passing Swift Objects between Swift and JavaScript
 
