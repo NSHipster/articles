@@ -24,9 +24,7 @@ among the languages allowed on iOS, their most popular platform.
 
 Whether you love it or hate it,
 JavaScript has become the most important language for developers today.
-It's been this way for a while,
-and it's hard to imagine that changing anytime soon.
-Despite any efforts we may take to change or replace it
+Yet despite any efforts we may take to change or replace it
 we'd be hard-pressed to deny its usefulness.
 
 This week on NSHipster,
@@ -184,7 +182,7 @@ context.objectForKeyedSubscript("threeTimesFive")?
        .toInt32() // 15
 ```
 
-## Setting Swift Values to JavaScript Context
+## Setting Swift Values on a JavaScript Context
 
 Conversely,
 you can set Swift values as variables in a `JSContext`
