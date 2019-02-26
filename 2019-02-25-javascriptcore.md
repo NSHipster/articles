@@ -475,7 +475,7 @@ print(result)
 
 ---
 
-The JavaScriptCore provides a convenient way to
+The JavaScriptCore framework provides a convenient way to
 leverage the entire JavaScript ecosystem.
 
 Whether you use it to bootstrap new functionality,
