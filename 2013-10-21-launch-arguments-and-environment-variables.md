@@ -45,7 +45,7 @@ Getting localization right is a challenging and time-consuming task in and of it
 
 To simulate German's UI-breaking _götterdämmere Weltanschauung_ of long-compound-words-unbroken-by-breakable-whitespace, there's `NSDoubleLocalizedStrings`.
 
-According to [IBM's Globalization Guidelines](http://www-01.ibm.com/software/globalization/guidelines/a3.html), we can expect translations from English to many European languages to be double or even triple the physical space of the source:
+According to [IBM's Globalization Guidelines _(Archived)_](https://web.archive.org/web/20180704133337/http://www-01.ibm.com/software/globalization/guidelines/a3.html), we can expect translations from English to many European languages to be double or even triple the physical space of the source:
 
 {::nomarkdown}
 
