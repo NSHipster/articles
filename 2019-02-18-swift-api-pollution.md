@@ -17,16 +17,16 @@ the potential for new functionality comes at no expense
 (other than, say, a modest increase in the size of your app bundle).
 
 Import the `NaturalLanguage` framework,
-and _**\*boom\***_ --- your app can
+and _**\*boom\***_ your app can
 [determine the language of text](https://nshipster.com/nllanguagerecognizer/);
 import `CoreMotion`,
-and --- _**\*whoosh\***_ --- your app can
+and _**\*whoosh\***_ your app can
 [respond to changes in device orientation](https://nshipster.com/cmdevicemotion/).
-
 But it'd be surprising if, say,
 the ability to distinguish between French and Japanese
 interfered with your app's ability to tell which way was magnetic north.
-And though this particular example isn't real
+
+Although this particular example isn't real
 (to the relief of Francophones in Hokkaido),
 there are situations in which a Swift dependency
 can change how your app behaves ---
