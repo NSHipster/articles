@@ -50,8 +50,6 @@ result?.toInt32() // 6
 You can cast `JSValue` to a native Swift or Objective-C type
 by calling the corresponding method found in the following table:
 
-A `JSValue` object
-
 | JavaScript Type | `JSValue` method                                    | Objective-C Type                                  | Swift Type                                     |
 | --------------- | --------------------------------------------------- | ------------------------------------------------- | ---------------------------------------------- |
 | string          | `toString`                                          | `NSString`                                        | `String!`                                      |
