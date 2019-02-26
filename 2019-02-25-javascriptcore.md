@@ -15,13 +15,6 @@ status:
   reviewed: February 25, 2019
 ---
 
-According to
-[this ranking of programming language popularity](https://redmonk.com/sogrady/2018/08/10/language-rankings-6-18/),
-Swift and Objective-C are back to back around the 10th position ---
-a solid showing for both languages, all things considered.
-...that is, unless you consider how they're tied for 2nd and 3rd place
-among the languages allowed on iOS, their most popular platform.
-
 Whether you love it or hate it,
 JavaScript has become the most important language for developers today.
 Yet despite any efforts we may take to change or replace it
@@ -31,7 +24,7 @@ This week on NSHipster,
 we'll discuss the JavaScriptCore framework,
 and how you can use it to set aside
 your core beliefs in type safety and type sanity
-and allow JavaScript to do some of the heavy lifting in your apps.
+and let JavaScript do some of the heavy lifting in your apps.
 
 ---
 
