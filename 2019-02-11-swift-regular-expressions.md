@@ -341,7 +341,7 @@ into its component parts:
 ```swift
 let suggestion = """
 I suspect it was Professor Plum, \
-in the Dining Room,              \
+in the Dining Room, \
 with the Candlestick.
 """
 ```
