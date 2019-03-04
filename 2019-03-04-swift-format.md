@@ -166,7 +166,7 @@ which we believe to be baseline requirements for any code formatter.
 The performance benchmarks in this article are, admittedly, not very rigorous.
 But they should provide some indication of general performance characteristics.
 Timings are measured in seconds
-and done on a 2017 MacBook Pro
+and taken on a 2017 MacBook Pro
 with 2.9 GHz Intel Core i7 processor and 16 GB 2133 MHz LPDDR3 memory.
 {% endinfo %}
 
@@ -597,7 +597,7 @@ which is exactly what you'd want from an official code style tool.
 #### Timing
 
 In terms of performance,
-`swift-lint` is currently in the middle of the pack:
+`swift-format` is currently in the middle of the pack:
 not so fast as to feel instantaneous,
 but not so slow as to be an issue.
 
