@@ -125,11 +125,10 @@ we'll take a look at the following four tools:
 
 For brevity,
 this article discusses only some of the Swift formatting tools available.
-Here are some other ones that you may want to check out:
-
-- [Swimat](https://github.com/Jintin/Swimat)
-- [SwiftRewriter](https://github.com/inamiy/SwiftRewriter)
-- [swiftfmt](https://github.com/kishikawakatsumi/swiftfmt)
+Here are some other ones that you may want to check out
+[Swimat](https://github.com/Jintin/Swimat),
+[SwiftRewriter](https://github.com/inamiy/SwiftRewriter), and
+[swiftfmt](https://github.com/kishikawakatsumi/swiftfmt).
 
 {% endinfo %}
 
