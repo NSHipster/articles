@@ -17,7 +17,7 @@ status:
 > It was packed with iOS devs,
 > whispering amongst each other about how
 > they can't wait for Apple to release
-> official style guide and formatter for Swift.
+> an official style guide and formatter for Swift.
 
 Over the past few days,
 the community has been buzzing about
