@@ -125,7 +125,7 @@ we'll take a look at the following four tools:
 
 For brevity,
 this article discusses only some of the Swift formatting tools available.
-Here are some other ones that you may want to check out
+Here are some other ones that you may want to check out: 
 [Swimat](https://github.com/Jintin/Swimat),
 [SwiftRewriter](https://github.com/inamiy/SwiftRewriter), and
 [swiftfmt](https://github.com/kishikawakatsumi/swiftfmt).
@@ -262,7 +262,7 @@ a mainstay of the Swift open source community.
 With over 100 built-in rules,
 SwiftLint can to perform a wide variety of checks on your code ---
 everything from preferring `AnyObject` over `class` for class-only protocols
-to so-called the "Yoda condition rule",
+to the so-called "Yoda condition rule",
 which prescribes variables to be placed on
 the left-hand side of comparison operators
 (that is, `if n == 42` not `if 42 == n`).
@@ -376,7 +376,7 @@ which is why we thought it worthwhile to include it in this round-up.
 To use Prettier and its plugin for Swift,
 you'll have to wade into the murky waters of the Node packaging ecosystem.
 There are a few different approaches to get everything installed
-_(because and of course there are)_,
+_(because of course there are)_,
 but [Yarn](https://yarnpkg.com/en/) is our favorite 😻.
 
 ```terminal
@@ -608,7 +608,7 @@ $ time swift-format Example.swift
 
 ---
 
-Based on our initial investigation (albeit limit),
+Based on our initial investigation (albeit limited),
 `swift-format` appears to offer a reasonable set of formatting conventions.
 Going forward, it will be helpful to create more motivated examples
 to help inform our collective beliefs about the contours
