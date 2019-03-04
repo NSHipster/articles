@@ -114,12 +114,12 @@ of formatting code to match them.
 In order to get a sense of the current state of Swift code formatters,
 we'll take a look at the following four tools:
 
-| Project                    | URL                                         |
-| -------------------------- | ------------------------------------------- |
-| SwiftFormat                | https://github.com/nicklockwood/SwiftFormat |
-| SwiftLint                  | https://github.com/realm/SwiftLint          |
-| Prettier with Swift Plugin | https://github.com/prettier/prettier        |
-| Swift-Format (proposed)    | https://github.com/google/swift/tree/format |
+| Project                    | URL                                           |
+| -------------------------- | --------------------------------------------- |
+| SwiftFormat                | <https://github.com/nicklockwood/SwiftFormat> |
+| SwiftLint                  | <https://github.com/realm/SwiftLint>          |
+| Prettier with Swift Plugin | <https://github.com/prettier/prettier>        |
+| Swift-Format (proposed)    | <https://github.com/google/swift/tree/format> |
 
 {% info %}
 
