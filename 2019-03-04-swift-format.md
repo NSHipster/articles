@@ -260,7 +260,7 @@ Next up is,
 [SwiftLint](https://github.com/realm/SwiftLint),
 a mainstay of the Swift open source community.
 With over 100 built-in rules,
-SwiftLint can to perform a wide variety of checks on your code ---
+SwiftLint can perform a wide variety of checks on your code ---
 everything from preferring `AnyObject` over `class` for class-only protocols
 to the so-called "Yoda condition rule",
 which prescribes variables to be placed on
