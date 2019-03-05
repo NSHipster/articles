@@ -125,7 +125,7 @@ we'll take a look at the following four tools:
 
 For brevity,
 this article discusses only some of the Swift formatting tools available.
-Here are some other ones that you may want to check out: 
+Here are some other ones that you may want to check out:
 [Swimat](https://github.com/Jintin/Swimat),
 [SwiftRewriter](https://github.com/inamiy/SwiftRewriter), and
 [swiftfmt](https://github.com/kishikawakatsumi/swiftfmt).
@@ -553,7 +553,7 @@ $ swift-format Example.swift --configuration .swift-format.json
 #### Example Output
 
 Using its default configuration,
-here's how `swift-lint` formats our example:
+here's how `swift-format` formats our example:
 
 ```swift
 // swift-format version 0.0.1
