@@ -264,8 +264,8 @@ SwiftLint can to perform a wide variety of checks on your code ---
 everything from preferring `AnyObject` over `class` for class-only protocols
 to the so-called "Yoda condition rule",
 which prescribes variables to be placed on
-the left-hand side of comparison operators
-(that is, `if n == 42` not `if 42 == n`).
+the right-hand side of comparison operators
+(that is, `if 42 == n` not `if n == 42`).
 
 As its name implies,
 SwiftLint is not primarily a code formatter;
