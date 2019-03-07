@@ -209,7 +209,7 @@ SwiftFormat has a variety of rules that can be configured
 either individually via command-line options
 or using a configuration file.
 
-#### Example
+#### Example Output
 
 Running the `swiftformat` command on our example
 using the default set of rules produces the following result:
@@ -303,7 +303,7 @@ and the files or directories to correct.
 $ swiftlint autocorrect --format --path Example.swift
 ```
 
-#### Example Formatting
+#### Example Output
 
 Running the previous command on our example
 yields the following:
@@ -336,7 +336,7 @@ if anything, it's merely incidental to providing actionable code diagnostics.
 And taken from the perspective of _"first, do no harm"_,
 it's hard to complain about the results here.
 
-#### Time
+#### Performance
 
 For everything that SwiftLint checks for,
 it's remarkably snappy ---
@@ -458,7 +458,7 @@ This is still very much a work-in-progress
 and isn't suitable for production use yet.
 Also, there's the matter of performance...
 
-#### Timing
+#### Performance
 
 To put it bluntly:
 Prettier is one or two orders of magnitude slower
@@ -598,7 +598,7 @@ and don't much care for the colon placement for the `region` property, either,
 but overall, this is pretty unobjectionable ---
 which is exactly what you'd want from an official code style tool.
 
-#### Timing
+#### Performance
 
 In terms of performance,
 `swift-format` is currently in the middle of the pack:
