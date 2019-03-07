@@ -215,7 +215,7 @@ Running the `swiftformat` command on our example
 using the default set of rules produces the following result:
 
 ```swift
-// swiftformat version 0.39.4
+// swiftformat version 0.39.5
 struct ShippingAddress: Codable {
     var recipient: String
     var streetAddress: String
@@ -230,7 +230,9 @@ struct ShippingAddress: Codable {
         self.locality = locality
         self.region = region; self.postalCode = postalCode
         guard country.count == 2, country == country.uppercased() else { fatalError("invalid country code") }
-        self.country = country } }
+        self.country = country
+    }
+}
 
 let applePark = ShippingAddress(recipient: "Apple, Inc.", streetAddress: "1 Apple Park Way", locality: "Cupertino", region: "CA", postalCode: "95014", country: "US")
 ```
@@ -241,8 +243,10 @@ Each line is indented according to its scope,
 and each declaration has consistent spacing between punctuation.
 Both the semicolon in the property declarations
 and the newline in the initializer parameters are preserved;
-however, the closing curly braces aren't moved to separate lines
-as might be expected.
+<del>however, the closing curly braces aren't moved to separate lines
+as might be expected</del>
+<ins>this is [fixed in 0.39.5](https://twitter.com/nicklockwood/status/1103595525792845825).
+Great work, [Nick](https://github.com/nicklockwood)!</ins>
 
 #### Performance
 
