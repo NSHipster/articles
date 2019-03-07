@@ -133,7 +133,7 @@ Here are some other ones that you may want to check out:
 {% endinfo %}
 
 To establish a basis of comparison,
-we'll use the following code sample to evaluate each tool
+we've contrived the following code sample to evaluate each tool
 (using their default configuration):
 
 ```swift
