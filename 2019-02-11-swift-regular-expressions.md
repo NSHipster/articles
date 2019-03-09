@@ -4,7 +4,7 @@ author: Mattt
 category: Swift
 excerpt: >-
   Regular expressions are a powerful tool for working with text,
-  but it's often a mystery how to get use them in Swift.
+  but it's often a mystery how to use them in Swift.
 status:
   swift: 5.0
 ---
@@ -428,5 +428,5 @@ if let match = regex.firstMatch(in: suggestion,
 ---
 
 Regular expressions are a powerful tool for working with text,
-but it's often a mystery how to get use them in Swift.
+but it's often a mystery how to use them in Swift.
 We hope this article has helped clue you into finding a solution.
