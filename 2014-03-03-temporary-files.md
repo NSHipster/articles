@@ -11,6 +11,7 @@ revisions:
   "2014-03-03": First Publication
   "2018-10-24": Updated for Swift 4.2
   "2018-11-21": Corrected Use of `url(for:in:appropriateFor:create:)`
+  "2019-03-09": Corrected use of deprecated `NSData.WritingOptions.atomicWrite`
 status:
   swift: 4.2
 ---
@@ -202,7 +203,7 @@ is to call the `Data` method `write(to:options)`:
 ```swift
 let data: Data
 try data.write(to: temporaryFileURL,
-               options: .atomicWrite)
+               options: .atomic)
 ```
 
 ```objc
@@ -213,7 +214,7 @@ NSError *error = nil;
            error:&error];
 ```
 
-By passing the `atomicWrite` option,
+By passing the `atomic` option,
 we ensure that either all of the data is written
 or the method returns an error.
 
