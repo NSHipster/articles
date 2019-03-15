@@ -54,41 +54,43 @@ Consider the `dateFormat` property on `DateFormatter`,
 which takes an [`strftime`](https://en.wikipedia.org/wiki/strftime)
 format string.
 If we wanted to create a string representation of a date
-that included its 4-digit year,
-we'd use `"YYYY"`, as in `"Y"` for year
+that included its year,
+we'd use `"Y"`, as in `"Y"` for year
 ..._right?_
 
 ```swift
-let formatter = DateFormatter()
-formatter.dateFormat = "YYYY-MM-dd"
+import Foundation
 
-formatter.string(from: Date()) // 2019-02-04 (🤨)
+let formatter = DateFormatter()
+formatter.dateFormat = "M/d/Y"
+
+formatter.string(from: Date()) // "2/4/2019"
 ```
 
 It sure looks that way,
 at least for the first 360-ish days of the year.
-But what if we jump to the last day of the year?
+But what happens when we jump to the last day of the year?
 
 ```swift
 let dateComponents = DateComponents(year: 2019,
                                     month: 12,
                                     day: 31)
 let date = Calendar.current.date(from: dateComponents)!
-formatter.string(from: date) // 2020-12-31 (😱)
+formatter.string(from: date) // "12/31/2020" (😱)
 ```
 
 _Huh what?_
-Turns out `"YYYY"` is the format for the
+Turns out `"Y"` is the format for the
 [ISO week-numbering year](http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns),
 which returns 2020 for December 31st, 2019
 because the following day is a Wednesday
 in the first week of the new year.
 
-What we _actually_ want is `"yyyy"`.
+What we _actually_ want is `"y"`.
 
 ```swift
-formatter.dateFormat = "yyyy-MM-dd"
-formatter.string(from: date) // 2019-12-31 (😄)
+formatter.dateFormat = "M/d/y"
+formatter.string(from: date) // 12/31/2019 (😄)
 ```
 
 Format strings are the worst kind of hard to use,
@@ -100,8 +102,8 @@ They're _literal_ time bombs in your codebase.
 {% error %}
 Take a moment now,
 if you haven't already,
-to audit your code base for use of `"YYYY"` in date format strings
-when you actually meant to use `"yyyy"`.
+to audit your code base for use of `"Y"` in date format strings
+when you actually meant to use `"y"`.
 {% enderror %}
 
 ---
@@ -154,7 +156,7 @@ as if you were calling a method
 (indeed, that's what you're doing under the hood).
 
 As an example,
-let's revisit the previous mixup of `"YYYY"` and `"yyyy"`
+let's revisit the previous mixup of `"Y"` and `"y"`
 and see how this confusion could be avoided
 with `ExpressibleByStringInterpolation`.
 
@@ -194,14 +196,14 @@ extension DefaultStringInterpolation {
 Now we can interpolate the date for each of the individual components:
 
 ```swift
-"\(date, component: .year)-\(date, component: .month)-\(date, component: .day)"
-// "2019-12-31"
+"\(date, component: .month)/\(date, component: .day)/\(date, component: .year)"
+// "12/31/2019" (😊)
 ```
 
 It's verbose, yes.
 But you'd never mistake `.yearForWeekOfYear`,
-the calendar component equivalent of `"YYYY"`,
-for what you actually want.
+the calendar component equivalent of `"Y"`,
+for what you actually want: `.year`.
 
 But really,
 we shouldn't be formatting dates by hand like this anyway.
@@ -420,7 +422,7 @@ for where it could be used:
   for creating attributed strings for apps
   and terminal output with ANSI control sequences for color and effects,
   or pad unadorned text to match the desired alignment.
-- **Localizating**
+- **Localizing**
   Rather than relying on a a script that scans source code
   looking for matches on "NSLocalizedString",
   string interpolation allows us to build tools that leverage the compiler
