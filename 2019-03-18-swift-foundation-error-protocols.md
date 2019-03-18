@@ -316,6 +316,8 @@ the two remaining error protocols to be discussed.
 
 ## Communicating Errors on macOS
 
+> If at first you don't succeed, try, try again.
+
 Communicating errors to users is significantly easier on macOS than on iOS.
 For example,
 you might construct and pass an `NSError` object
@@ -343,7 +345,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSLocalizedString("The operation couldn’t be completed.",
                           comment: "localizedErrorDescription"),
       NSLocalizedRecoverySuggestionErrorKey:
-        NSLocalizedString("When at first you don't succeed...",
+        NSLocalizedString("If at first you don't succeed...",
                           comment: "localizedErrorRecoverSuggestion")
     ]
 
