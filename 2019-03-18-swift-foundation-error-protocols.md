@@ -42,7 +42,7 @@ Not long after these refinements landed in Swift 3,
 the practice of declaring errors in enumerations
 had become idiomatic.
 
-Yet, for how familiar we've all become with
+Yet for how familiar we've all become with
 `Error` (née `ErrorProtocol`),
 surprisingly few of us are on a first-name basis with
 the other error protocols to come out of SE-0112.
@@ -606,7 +606,7 @@ let's look at our third and final protocol in our discussion.
 
 The `CustomNSError` protocol
 is like an inverted `NSError`:
-it allows an type conforming to `Error`
+it allows a type conforming to `Error`
 to act like it was instead an `NSError` subclass.
 
 ```swift
