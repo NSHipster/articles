@@ -72,6 +72,7 @@ by presenting several potential recovery options to the user.
 A specialized error that provides a
 domain, error code, and user-info dictionary.
 </dd>
+</dl>
 
 If you haven't heard of any of these until now,
 you may be wondering when when you'd ever use them.
