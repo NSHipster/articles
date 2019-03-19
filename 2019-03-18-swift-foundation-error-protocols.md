@@ -83,7 +83,7 @@ This week on NSHipster,
 we'll take a quick look at each of these Swift Foundation error protocols
 and demonstrate how they can make your code ---
 if not _less_ error-prone ---
-than more enjoyable in its folly.
+then more enjoyable in its folly.
 
 ---
 
