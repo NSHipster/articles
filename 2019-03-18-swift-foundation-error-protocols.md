@@ -162,7 +162,7 @@ class ViewController: UIViewController {
 Such an implementation, however,
 is at odds with well-understood boundaries between models and controllers.
 Not only does it create bloat in the controller,
-and it doesn't scale to handling multiple errors
+it also doesn't scale to handling multiple errors
 or handling errors in multiple contexts.
 
 To reconcile these anti-patterns,
