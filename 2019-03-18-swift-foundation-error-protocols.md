@@ -369,7 +369,7 @@ to attempt to resolve the reported issue.
 To turn a conventional `NSError` into
 one that supports recovery,
 you specify values for the `userInfo` keys
-`NSRecoveryAttempterErrorKey` and `NSRecoveryAttempterErrorKey`.
+`NSLocalizedRecoveryOptionsErrorKey` and `NSRecoveryAttempterErrorKey`.
 A great way to do that
 is to override the `application(_:willPresentError:)` delegate method
 and intercept and modify an error before it's presented to the user.
