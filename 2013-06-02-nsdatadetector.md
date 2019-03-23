@@ -307,7 +307,7 @@ it's not a particularly _nice_ API to use.
 With all of the charms of its parent class,
 [`NSRegularExpression`](https://nshipster.com/nsregularexpression/),
 the same, cumbersome initialization pattern of
-[NSLinguisticTagger](https://nshipster.com/nltagger/),
+[NSLinguisticTagger](https://nshipster.com/nslinguistictagger/),
 and an
 [incomplete Swift interface](https://developer.apple.com/documentation/foundation/nstextcheckingtypes),
 `NSDataDetector` has an interface that only a mother could love.
