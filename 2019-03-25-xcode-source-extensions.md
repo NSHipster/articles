@@ -4,7 +4,7 @@ author: Zoë Smith
 category: Xcode
 excerpt: >-
   When we last wrote about extending Xcode, 
-  we were living in a golden age, and didn’t even know it.
+  we were living in a golden age, and didn't even know it.
   Plugins allowed us to tweak pretty much everything about Xcode;
   Source Editor Extensions? Not so much.
 status:
@@ -12,26 +12,26 @@ status:
 ---
 
 When we last [wrote about extending Xcode](/xcode-plugins/) in 2014,
-we were living in a golden age, and didn’t even know it.
+we were living in a golden age, and didn't even know it.
 
 Back then,
 Xcode was a supposedly impenetrable castle that we'd leaned a couple of ladders against.
 Like a surprisingly considerate horde,
 we scaled the walls and got to work on some much-needed upkeep.
 Those were heady days of
-in-process code injection, an informally sanctioned and thriving ecosystem of third-party plugins,
+in-process code injection, an informally sanctioned and thriving ecosystem of third-party plugins ---
 all backed up by an in-app package manager.
 For a while, Apple tolerated it all.
-But when Xcode was included in [System Integrity Protection](https://support.apple.com/en-us/HT204899) in 2016,
+But with the introduction of [System Integrity Protection](https://support.apple.com/en-us/HT204899) in 2016,
 the ladders were abruptly kicked away.
-(Pour one out for [Alcatraz](https://github.com/alcatraz/Alcatraz) why don’t we,
+(Pour one out for [Alcatraz](https://github.com/alcatraz/Alcatraz) why don't we,
 with a chaser for [XcodeColors](https://github.com/robbiehanson/XcodeColors).
 Miss you buddy.)
 
 Plugins allowed us to tweak pretty much everything about Xcode:
 window layout, syntactic and semantic highlighting, changing UI elements,
 boilerplate generation, project analysis, bindings for something called Vim (?).
-Looking back at NSHipster’s favorites, some are now thankfully included as a standard feature:
+Looking back at NSHipster's favorites, some are now thankfully included as a standard feature:
 inserting documentation comments,
 `switch` statement autocompletion
 or --- astonishingly --- line breaks in the issue navigator.
@@ -52,7 +52,7 @@ They allow
 none of the fun stuff, in other words.
 
 Source Editor Extensions have remained unchanged since introduction.
-We’ll discuss signs that _might_ point to interesting future developments.
+We'll discuss signs that _might_ point to interesting future developments.
 But if IDEs with an open attitude are more your thing,
 there's not much to see here yet.
 
@@ -75,7 +75,7 @@ restart Xcode
 and it should manifest itself as a menu item.  
 (App Store reviewers _love_ this process.)
 
-That's the finished result...
+That's the finished result.
 To understand how you get to that point,
 let's create a simple extension of our own.
 This [sample project](https://github.com/zoejessica/marked)
@@ -92,16 +92,20 @@ and add a new target using the Xcode Source Editor Extension template.
 
 {% info %}
 In [Apple's terminology](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html#//apple_ref/doc/uid/TP40014214-CH2-SW2),
-the <dfn>host</dfn> app is the application that _calls_ your extension to do some useful work:
-in this case the host is Xcode.
-The <dfn>containing</dfn> app is the new application that _you_ create to wrap extensions which can't stand by themselves.
+the <dfn>host</dfn> app is
+the application that _calls_ your extension to do some useful work:
+in this case,
+the host is Xcode.
+The <dfn>containing</dfn> app is
+the new application that _you_ create to wrap extensions
+which can't stand by themselves.
 {% endinfo %}
 
 The target contains ready-made `XCSourceEditorExtension` and `XCSourceEditorCommand` subclasses,
-with a configured plist.
+with a configured property list.
 
 Both of those superclasses are part of the [XcodeKit framework](https://developer.apple.com/documentation/xcodekit)
-(hence the XC prefix),
+(hence the `XC` prefix),
 which provides extensions the ability to modify the text and selections of a source file.
 
 ### Display Names
@@ -123,11 +127,11 @@ Xcode's one affordance to users is that keybindings can be assigned to extension
 just as for other menu items.
 
 Each command gets a stringly-typed identifier, display text, and a class to handle it,
-which are each defined in the extension target’s `Info.plist`.
+which are each defined in the extension target's `Info.plist`.
 Alternatively,
 we can override these at runtime
 by providing a `commandDefinitions` property on the `XCSourceEditorExtension` subclass.
-The commands can all be funnelled to a single `XCSourceEditorCommand` subclass,
+The commands can all be funneled to a single `XCSourceEditorCommand` subclass
 or split up to be handled by multiple classes --- whichever you prefer.
 
 In our extension, we just define a single "Format Marks" menu item:
@@ -146,7 +150,7 @@ In our extension, we just define a single "Format Marks" menu item:
 {% warning %}
 There is no way to dynamically _disable_ individual menu commands,
 for example, if an extension wanted to offer different functionality according to the type of source file.
-The extension is kept running for Xcode’s lifetime,
+The extension is kept running for Xcode's lifetime,
 and menu items are determined at launch.
 Nor is there a way to suggest default key bindings.
 {% endwarning %}
@@ -181,7 +185,8 @@ Mutating one changes the other,
 and Xcode applies those changes once the completion handler is called.
 Modifying the `selections` property updates the user's selection in the same way.
 
-In our example, we first loop over the `lines` of code array.
+In our example,
+we first loop over the `lines` of code.
 For each line,
 we use a [regular expression](/swift-regular-expressions/)
 to determine if it has a code mark that needs reformatting.
@@ -191,16 +196,19 @@ and call the completion handler to signal that we're done:
 
 ```swift
 func perform(with invocation: XCSourceEditorCommandInvocation,
-            completionHandler: @escaping (Error?) -> Void ) -> Void {
+             completionHandler: @escaping (Error?) -> Void ) -> Void
+{
     replaceLines(in: invocation.buffer.lines, by: formattingMarks)
     completionHandler(nil)
 }
 
 func replaceLines(in lines: NSMutableArray,
-              by replacing: @escaping (String) -> String?) {
+                  by replacing: @escaping (String) -> String?)
+{
     guard let strings = lines as? [String] else {
         return
     }
+
     let newStrings: [(Int, String)] = strings.enumerated().compactMap {
         let (index, line) = $0
         guard let replacementLine = replacing(line) else {
@@ -208,6 +216,7 @@ func replaceLines(in lines: NSMutableArray,
         }
         return (index, replacementLine)
     }
+
     newStrings.forEach {
         let (index, newString) = $0
         lines[index] = newString
@@ -215,19 +224,21 @@ func replaceLines(in lines: NSMutableArray,
 }
 
 func formattingMarks(in string: String) -> String? {
-  // Regex magic transforms
-  // "// fixme here be 🐉" to
-  // "// FIXME: here be 🐉"
+  /* Regex magic transforms:
+     "// fixme here be 🐉"
+     to
+     "// FIXME: here be 🐉"
+  */
 }
 ```
 
 {% info %}
-It’s worth remembering that extensions can deal with all sorts of text, not just Swift or Objective-C.
+It's worth remembering that extensions can deal with all sorts of text, not just Swift or Objective-C.
 Even files that ordinarily open with specialized viewers in Xcode can instead be viewed as Source Code,
 which makes extension commands available.
 So if we need a transformation of Metal, Markdown, GPX, string dictionaries and the like,
 this is possible via an extension.
-The buffer’s `contentUTI` property reports back specific file types,
+The buffer's `contentUTI` property reports back specific file types,
 which can be interrogated for conformance to more abstract types with [`UTTypeConformsTo`](https://developer.apple.com/documentation/coreservices/1444079-uttypeconformsto).
 {% endinfo %}
 
@@ -244,15 +255,15 @@ and it's a [good idea](https://ericasadun.com/2016/07/21/explorations-into-the-x
 to set a log or audible breakpoint to track this:
 
 ```swift
-    func extensionDidFinishLaunching() {
-        os_log("Extension ready", type: .debug)
-    }
+func extensionDidFinishLaunching() {
+    os_log("Extension ready", type: .debug)
+}
 ```
 
 #### Extension Scheme Setup
 
 [Two suggestions from Daniel Jalkut](https://academy.realm.io/posts/jalkut-extending-xcode-8/#hot-tips-1532) to make life easier.  
-Firstly add Xcode as the default executable in the Extension scheme’s Run/Info pane:
+Firstly add Xcode as the default executable in the Extension scheme's Run/Info pane:
 
 {% asset "xcode-source-editor-extension-target-default-executable.png" alt="Screenshot showing Xcode set as default executable in extension scheme" %}
 
@@ -350,7 +361,7 @@ Could they be using SourceKit directly?
 Well, where the extension is on the App Store, we know that they're not.
 **The extension must be sandboxed just to be loaded by Xcode**,
 whereas calls to SourceKit needs to be un-sandboxed,
-which of course won’t fly in the App Store.
+which of course won't fly in the App Store.
 We _could_ distribute independently and use an un-sandboxed [XPC service](/inter-process-communication/) embedded in the extension.
 Or more likely, we can write our own single-purpose code to get the job done.
 The power of Xcode's compiler is tantalizingly out of reach here.
@@ -360,25 +371,25 @@ and check out [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)'s beaut
 
 ### Context-free Source Code
 
-Once we have some way to analyse source code,
+Once we have some way to analyze source code,
 how sophisticated an extension can we then write?
 Let's remember that the current API gives us access to a file of text,
 but not any of its _context_ within a project.
 
 As an example,
-say we want to implement an extension that quickly modifies the access level of Swift code to make it part of a framework’s API.
-So an `internal` class’s `internal` properties and functions get changed to `public`,
+say we want to implement an extension that quickly modifies the access level of Swift code to make it part of a framework's API.
+So an `internal` class's `internal` properties and functions get changed to `public`,
 but `private` or `fileprivate` implementation details are left alone.
 
 We can get most of the way there,
 lexing and parsing the file to figure out where to make appropriate changes,
-taking into account Swift’s rules about access inheritance.
+taking into account Swift's rules about access inheritance.
 But what happens if one of these transformed methods turns out to have a parameter with an `internal` type?
-If that type is declared in a different file, there’s no way for our extension to know,
+If that type is declared in a different file, there's no way for our extension to know,
 and making the method `public` will cause a build error:
 “Method cannot be declared public because its parameter uses an internal type”.
 
-In this example, we’re missing type declarations in other files.
+In this example, we're missing type declarations in other files.
 But complex refactorings can need information about how an entire codebase fits together.
 Metadata could also be useful,
 for example,
@@ -392,17 +403,16 @@ once any _semantics_ come into play we quickly bump up against that missing cont
 
 You can only output transformed text back _to the same source file_ using the extension API.
 If you were hoping to generate extensive boilerplate and insert project files automatically,
-this isn’t supported,
-and would be fragile to manage via the containing app.
-Anonymous source file in/out sure is secure, but it isn’t powerful.
+this isn't supported and would be fragile to manage via the containing app.
+Anonymous source file in/out sure is secure, but it isn't powerful.
 
 ### Heavyweight Architecture; Lightweight Results
 
-Most extensions’ containing apps are hollow shells
+Most extensions' containing apps are hollow shells
 with installation instructions and some global preferences.
 Why?
 Well, a Cocoa app _can_ do anything,
-but the extension doesn’t give us a lot to work with:
+but the extension doesn't give us a lot to work with:
 
 - As creators, we must deal with
   sandboxed communications to the containing app, the limited API and entitlements.
@@ -412,7 +422,8 @@ but the extension doesn’t give us a lot to work with:
   and managing preferences for each extension separately in the containing apps.
 
 It's all, effectively, for the privilege of a menu item.
-And the upshot is apparent from a [prominent](https://itunes.apple.com/us/story/id1437719440) example in the Mac App Store, Swiftify:
+And the upshot is apparent from a prominent example in the Mac App Store,
+[Swiftify](https://itunes.apple.com/us/story/id1437719440):
 they suggest no fewer than [four superior ways](https://support.swiftify.com/hc/en-us/articles/360000109571-How-would-this-work-with-the-h-and-m-files-Do-you-have-to-convert-code-piece-by-piece-) to access their service,
 over using their own native extension.
 
@@ -431,20 +442,21 @@ And Apple's "best software for most" credo doesn't mean they always get the IDE 
 _cough image literals autocompletion cough_,
 or make us optimistic that Xcode will become truly extensible in the style of [VSCode](https://code.visualstudio.com).
 
-But let’s swirl some tea leaves and see where Apple _could_ take us, if they so wished:
+But let's swirl some tea leaves and see where Apple _could_ take us
+if they so wished:
 
 - Imagine a world where Xcode is using [SwiftSyntax](/swiftsyntax/) directly to represent the syntax of a file
   (a [stated goal of the project](https://lists.swift.org/pipermail/swift-dev/Week-of-Mon-20170206/004066.html)).
-  Let’s imagine that XcodeKit exposes `Syntax` nodes in some way through the extension API.
+  Let's imagine that XcodeKit exposes `Syntax` nodes in some way through the extension API.
   We would be working with _exactly_ the same representation as Xcode —
   no hand-written parsers needed.
   [Tools are already being written](https://github.com/apple/swift-syntax#some-example-users) against this library —
   it would be so neat to get them directly in Xcode.
-- Let’s imagine we have specific [read](https://openradar.appspot.com/26823522)/[write access](http://www.openradar.me/35194855) to the current project directory and metadata.
+- Let's imagine we have specific [read](https://openradar.appspot.com/26823522)/[write access](http://www.openradar.me/35194855) to the current project directory and metadata.
   Perhaps this leverages the robust entitlements system, with approval through App Review.
   That sounds good to create extensive boilerplate.
-- Let’s expand our vision:
-  there’s a way to access fuller semantic information about our code,
+- Let's expand our vision:
+  there's a way to access fuller semantic information about our code,
   maybe driven via the [LSP protocol](/language-server-protocol/).
   Given a better way to output changes too,
   we could use that information for complex, custom refactorings.
@@ -459,11 +471,19 @@ _Whew_.
 That magic tea is strong stuff.
 In _that_ world, extensions look a lot more
 fun, powerful, and worth the architectural hassles.
-Of course this is [rank speculation](https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024/37?u=zoe), and yet…
-The open-source projects Apple is committed to working on will — eventually — change the internal architecture of Xcode,
+Of course,
+this is [rank speculation](https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024/37?u=zoe),
+and yet...
+The open-source projects Apple is committed to working on will --- eventually ---
+change the internal architecture of Xcode,
 and surely stranger things are happening.
 
 For now, though, if any of this potential excites you,
-please write or tweet about it, [submit enhancement requests](/bug-reporting/), get involved on the [relevant](https://forums.swift.org/c/development/sourcekit-lsp) [forums](https://forums.swift.org/search?q=swiftsyntax) or contribute directly.
-We’re still hoping the Xcode team renders this article comprehensively obsolete,
+please write or tweet about it,
+[submit enhancement requests](/bug-reporting/),
+get involved on the
+[relevant](https://forums.swift.org/c/development/sourcekit-lsp)
+[forums](https://forums.swift.org/search?q=swiftsyntax)
+or contribute directly.
+We're still hoping the Xcode team renders this article comprehensively obsolete,
 sooner rather than later 🤞.
