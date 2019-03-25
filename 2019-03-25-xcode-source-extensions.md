@@ -3,9 +3,12 @@ title: XcodeKit and Xcode Source Editor Extensions
 author: Zoë Smith
 category: Xcode
 excerpt: >-
-  .
+  When we last wrote about extending Xcode, 
+  we were living in a golden age, and didn’t even know it.
+  Plugins allowed us to tweak pretty much everything about Xcode;
+  Source Editor Extensions? Not so much.
 status:
-  swift: n/a
+  swift: 5.0
 ---
 
 When we last [wrote about extending Xcode](https://nshipster.com/xcode-plugins/) in 2014,
@@ -63,7 +66,7 @@ but not distributable without a containing app.
 
 Compared to using a tool like Homebrew, installation is undoubtedly a pain:
 
-![Flow diagram for extension installation process](extension-installation-flow.png)
+{% asset "xcode-source-editor-extension-installation-flow.png" alt="Flow diagram for extension installation process" %}
 
 After finding, downloading and launching the containing app,
 the extension shows up in the Extensions pane of System Preferences.
@@ -85,7 +88,7 @@ so Xcode can recognize them and add them to the quick navigation bar.
 Create a new Cocoa app as the containing app,
 and add a new target using the Xcode Source Editor Extension template.
 
-![Screenshot of adding Source Editor Extension target to Xcode project](target-screenshot.png)
+{% asset "xcode-source-editor-add-extension-target" alt="Screenshot of adding Source Editor Extension target to Xcode project" %}
 
 {% info %}
 [In Apple's terminology](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html#//apple_ref/doc/uid/TP40014214-CH2-SW2),
@@ -234,7 +237,7 @@ which can be interrogated for conformance to more abstract types with [`UTTypeCo
 
 Debugging the extension target launches it in a separate Xcode instance, with a dark status bar and icon:
 
-![Screenshot showing macOS dock with blue and grey Xcode icons](dark-xcode-dock.png)
+{% asset "xcode-source-editor-dark-xcode-dock.png" alt="Screenshot showing macOS dock with blue and grey Xcode icons" %}
 
 Sometimes attaching to the debugger fails silently,
 and it's a [good idea](https://ericasadun.com/2016/07/21/explorations-into-the-xcode-source-editor-extensions-underbelly-part-1/)
@@ -251,12 +254,12 @@ to set a log or audible breakpoint to track this:
 [Two suggestions from Daniel Jalkut](https://academy.realm.io/posts/jalkut-extending-xcode-8/#hot-tips-1532) to make life easier.  
 Firstly add Xcode as the default executable in the Extension scheme’s Run/Info pane:
 
-![Screenshot showing Xcode set as default executable in extension scheme](extension-target-default-executable.png)
+{% asset "xcode-source-editor-extension-target-default-executable.png" alt="Screenshot showing Xcode set as default executable in extension scheme" %}
 
 Secondly, add a path to a file or project containing some good code to test against,
 in the Run/Arguments panel of the extension's scheme, under Arguments Passed On Launch:
 
-![Screenshot showing path to sample code under argument passed on launch in extension scheme](extension-target-launch-arguments.png)
+{% asset "xcode-source-editor-extension-target-launch-arguments.png" alt="Screenshot showing path to sample code under argument passed on launch in extension scheme" %}
 
 #### Testing XcodeKit
 
@@ -264,7 +267,7 @@ Make sure the test target knows how to find the XcodeKit framework,
 if you need to write tests against it.
 Add `${DEVELOPER_FRAMEWORKS_DIR}` as both a Runpath and a Framework Search Path in Build Settings:
 
-![Screenshot showing Developer Frameworks Directory added to Runpath and Framework Search Paths in test target's build settings](test-target-build-settings.png)
+{% asset "xcode-source-editor-test-target-build-settings.png" alt="Screenshot showing Developer Frameworks Directory added to Runpath and Framework Search Paths in test target's build settings" %}
 
 ### Using `pluginkit`
 
