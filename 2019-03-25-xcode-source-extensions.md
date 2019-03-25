@@ -11,7 +11,7 @@ status:
   swift: 5.0
 ---
 
-When we last [wrote about extending Xcode](https://nshipster.com/xcode-plugins/) in 2014,
+When we last [wrote about extending Xcode](/xcode-plugins/) in 2014,
 we were living in a golden age, and didn’t even know it.
 
 Back then,
@@ -91,10 +91,10 @@ and add a new target using the Xcode Source Editor Extension template.
 {% asset "xcode-source-editor-add-extension-target" alt="Screenshot of adding Source Editor Extension target to Xcode project" %}
 
 {% info %}
-[In Apple's terminology](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html#//apple_ref/doc/uid/TP40014214-CH2-SW2),
-the _host_ app is the application that _calls_ your extension to do some useful work:
+In [Apple's terminology](https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/ExtensionOverview.html#//apple_ref/doc/uid/TP40014214-CH2-SW2),
+the <dfn>host</dfn> app is the application that _calls_ your extension to do some useful work:
 in this case the host is Xcode.
-The _containing_ app is the new application that _you_ create to wrap extensions which can't stand by themselves.
+The <dfn>containing</dfn> app is the new application that _you_ create to wrap extensions which can't stand by themselves.
 {% endinfo %}
 
 The target contains ready-made `XCSourceEditorExtension` and `XCSourceEditorCommand` subclasses,
@@ -183,7 +183,7 @@ Modifying the `selections` property updates the user's selection in the same way
 
 In our example, we first loop over the `lines` of code array.
 For each line,
-we use a [regular expression](https://nshipster.com/swift-regular-expressions/)
+we use a [regular expression](/swift-regular-expressions/)
 to determine if it has a code mark that needs reformatting.
 If so, we note the index number and the replacement line.
 Finally we mutate the `lines` property to update the source file,
@@ -277,7 +277,7 @@ This allows us to query the private PluginKit framework that manages all system 
 
 Here we're matching by the `NSExtensionPointIdentifier` for Source Editor extensions:
 
-```
+```terminal
 $ pluginkit -m -p com.apple.dt.Xcode.extension.source-editor
 
 +    com.apple.dt.XCDocumenter.XCDocumenterExtension(1.0)
@@ -288,19 +288,21 @@ $ pluginkit -m -p com.apple.dt.Xcode.extension.source-editor
 ```
 
 The leading flags in the output can give you some clues as to what might be happening:
-an `+` [seems to indicate](https://openradar.appspot.com/radar?id=4976827063861248) a specifically enabled extension,
-`-` disabled
-and `!` some form of conflict.
+
+- `+` [seems to indicate](https://openradar.appspot.com/radar?id=4976827063861248)
+  a specifically enabled extension
+- `-` indicates a disabled extension
+- `!` indicates some form of conflict
 
 For extra verbose output that lists any duplicates:
 
-```
+```terminal
 $ pluginkit -m -p com.apple.dt.Xcode.extension.source-editor -A -D -vvv
 ```
 
 If you spot an extension that might be causing an issue, you can try manually removing it:
 
-```
+```terminal
 $ pluginkit -r path/to/extension
 ```
 
@@ -308,7 +310,7 @@ Finally, when multiple copies of Xcode are on the same machine, extensions can s
 In this case, Apple Developer Relations suggests re-registering your main copy of Xcode with Launch Services
 (it's easiest to temporarily add `lsregister`'s location to `PATH` first):
 
-```
+```terminal
 $ PATH=/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support:"$PATH"
 $ lsregister -f /Applications/Xcode.app
 ```
@@ -318,9 +320,12 @@ What are those two `com.apple.dt...` plugins in the output above?
 Well, it seems like the Developer Tools team are using Source Editor extensions inside Xcode itself.
 Looking at the [strings in the binaries](https://github.com/keith/Xcode.app-strings/tree/master/Xcode.app/Contents/PlugIns)
 we get confirmation of information found elsewhere:
-XcodeBuiltInExtensions handles comment toggling,
-and XCDocumenterExtension inserts documentation comments
-(and turns out to be the former Alcatraz plugin [VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode), slurped into Xcode).
+
+`XcodeBuiltInExtensions` handles comment toggling, and
+`XCDocumenterExtension` inserts documentation comments
+(and turns out to be the former Alcatraz plugin
+[VVDocumenter](https://github.com/onevcat/VVDocumenter-Xcode),
+slurped into Xcode).
 Some sort of internal privileging must then happen as they get more appropriate menu locations,
 but the basic mechanism looks the same.
 {% endinfo %}
@@ -346,11 +351,11 @@ Well, where the extension is on the App Store, we know that they're not.
 **The extension must be sandboxed just to be loaded by Xcode**,
 whereas calls to SourceKit needs to be un-sandboxed,
 which of course won’t fly in the App Store.
-We _could_ distribute independently and use an un-sandboxed [XPC service](https://nshipster.com/inter-process-communication/) embedded in the extension.
+We _could_ distribute independently and use an un-sandboxed [XPC service](/inter-process-communication/) embedded in the extension.
 Or more likely, we can write our own single-purpose code to get the job done.
 The power of Xcode's compiler is tantalizingly out of reach here.
 An opportunity, though, if writing a mini-parser sounds like fun
-(🙋🏼‍♀️,
+(🙋🏼,
 and check out [SwiftFormat](https://github.com/nicklockwood/SwiftFormat)'s beautiful lexer implementation for Swift).
 
 ### Context-free Source Code
@@ -428,7 +433,7 @@ or make us optimistic that Xcode will become truly extensible in the style of [V
 
 But let’s swirl some tea leaves and see where Apple _could_ take us, if they so wished:
 
-- Imagine a world where Xcode is using [SwiftSyntax](https://nshipster.com/swiftsyntax/) directly to represent the syntax of a file
+- Imagine a world where Xcode is using [SwiftSyntax](/swiftsyntax/) directly to represent the syntax of a file
   (a [stated goal of the project](https://lists.swift.org/pipermail/swift-dev/Week-of-Mon-20170206/004066.html)).
   Let’s imagine that XcodeKit exposes `Syntax` nodes in some way through the extension API.
   We would be working with _exactly_ the same representation as Xcode —
@@ -440,7 +445,7 @@ But let’s swirl some tea leaves and see where Apple _could_ take us, if they s
   That sounds good to create extensive boilerplate.
 - Let’s expand our vision:
   there’s a way to access fuller semantic information about our code,
-  maybe driven via the [LSP protocol](https://nshipster.com/language-server-protocol/).
+  maybe driven via the [LSP protocol](/language-server-protocol/).
   Given a better way to output changes too,
   we could use that information for complex, custom refactorings.
 - Imagine invoking extensions [automatically](http://openradar.appspot.com/27045243),
@@ -459,6 +464,6 @@ The open-source projects Apple is committed to working on will — eventually �
 and surely stranger things are happening.
 
 For now, though, if any of this potential excites you,
-please write or tweet about it, [submit enhancement requests](https://nshipster.com/bug-reporting/), get involved on the [relevant](https://forums.swift.org/c/development/sourcekit-lsp) [forums](https://forums.swift.org/search?q=swiftsyntax) or contribute directly.
+please write or tweet about it, [submit enhancement requests](/bug-reporting/), get involved on the [relevant](https://forums.swift.org/c/development/sourcekit-lsp) [forums](https://forums.swift.org/search?q=swiftsyntax) or contribute directly.
 We’re still hoping the Xcode team renders this article comprehensively obsolete,
 sooner rather than later 🤞.
