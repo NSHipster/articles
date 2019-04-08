@@ -307,12 +307,12 @@ final class SectionHeaderView: UITableViewHeaderFooterView {
 }
 ```
 
-{% important %}
+{% warning %}
 This step isn't required for using
 `UITableViewHeaderFooterView` with Interface Builder.
 As an alternative to overriding `textLabel`,
 you can declare a new label property to use instead.
-{% endimportant %}
+{% endwarning %}
 
 Now, when you register your subclass for reuse with the table view controller,
 pass a `UINib` (provided here in a type property)
