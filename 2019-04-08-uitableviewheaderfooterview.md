@@ -26,7 +26,7 @@ up hill, both ways, in the snow)_
 
 At the time,
 the highest praise a developer could receive for their efforts
-was to have someone describe their as "buttery":
+was to have someone describe theirs as "buttery":
 smooth, responsive, without any jitter.
 And we milked that hardware for all it was worth to make that happen.
 
@@ -94,7 +94,7 @@ still build and run on iOS 12!
 ---
 
 What better way to demonstrate this obscure technique for buttery performance
-create an app to display per-capita dairy product consumption statistics
+than to create an app to display per-capita dairy product consumption statistics
 from the <abbr title="United States Department of Agriculture">USDA</abbr>?
 _(That was a hypothetical question.)_
 
