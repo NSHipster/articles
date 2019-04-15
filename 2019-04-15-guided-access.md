@@ -158,6 +158,8 @@ you can trace regions of the screen
 for which user interaction is disabled,
 and configure which of the aforementioned features are allowed.
 
+{% asset guided-access-restrictions.jpg width=400 %}
+
 ---
 
 As far as accessibility features are concerned,
@@ -313,7 +315,15 @@ which notifies our app when access restrictions are turned on and off.
     }
 ```
 
-Really, though, most of the responsibility falls on each view controller
+{% info %}
+The `@unknown default` case seen here
+has to do with the new
+[non-frozen enumerations](https://github.com/apple/swift-evolution/blob/master/proposals/0192-non-exhaustive-enums.md)
+introduced in Swift 5 for C language interoperability
+(though it's hard to imagine any other future cases beyond `allow` and `deny`...)
+{% endinfo %}
+
+Most of the responsibility falls on each view controller
 in determining how to respond to this kind of change.
 So here, we'll rebroadcast the message as a notification.
 
