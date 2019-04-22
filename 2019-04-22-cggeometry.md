@@ -39,12 +39,12 @@ the drawing system used by Apple platforms:
 - A <dfn>`CGPoint`</dfn>
   represents a location in a two-dimensional coordinate system
   and is defined by `x` and `y` scalar components.
-- A <dfn>`CGSize`</dfn>
-  represents the extent of a figure in 2D space
-  and is defined by `width` and `height` scalar components.
 - A <dfn>`CGVector`</dfn>
   represents a change in position in 2D space
   and is defined by `dx` and `dy` scalar components.
+- A <dfn>`CGSize`</dfn>
+  represents the extent of a figure in 2D space
+  and is defined by `width` and `height` scalar components.
 - A <dfn>`CGRect`</dfn>
   represents a rectangle
   and is defined by an origin point (`CGPoint`) and a size (`CGSize`).
@@ -54,8 +54,8 @@ import CoreGraphics
 
 let float: CGFloat = 1.0
 let point = CGPoint(x: 1.0, y: 2.0)
-let size = CGSize(width: 4.0, height: 3.0)
 let vector = CGVector(dx: 4.0, dy: 3.0)
+let size = CGSize(width: 4.0, height: 3.0)
 var rectangle = CGRect(origin: point, size: size)
 ```
 
