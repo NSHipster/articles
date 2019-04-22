@@ -371,8 +371,9 @@ CGRect.infinite // {x -∞ y -∞ w +∞ h +∞}
 CGRect.null // {x +∞ y +∞ w 0 h 0}
 ```
 
-But to fully appreciate why these values exist and how they're used,
-let's talk about geometric relationships:
+`CGRect.null` is conceptually similar to `NSNotFound`,
+in that it represents the absence of an expected value,
+and does so using the largest representable number to exclude all other values.
 
 `CGRect.infinite` has even more interesting properties,
 as it intersects with all points and rectangles,
@@ -390,6 +391,9 @@ Use `isInfinite` to determine whether a rectangle is, indeed, infinite.
 ```swift
 CGRect.infinite.isInfinite // true
 ```
+
+But to fully appreciate why these values exist and how they're used,
+let's talk about geometric relationships:
 
 ## Relationships
 
@@ -424,10 +428,6 @@ the `intersection(_:)` method produces `CGRect.null`:
 rectangle.intersects(.zero) // false
 rectangle.intersection(.zero) // CGRect.null
 ```
-
-`CGRect.null` is conceptually similar to `NSNotFound`,
-in that it represents the absence of an expected value,
-and does so using the largest representable number to exclude all other values.
 
 ### Union
 
