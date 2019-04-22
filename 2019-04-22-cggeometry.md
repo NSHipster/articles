@@ -408,6 +408,14 @@ Two rectangles <dfn>intersect</dfn> if they overlap.
 Their <dfn>intersection</dfn> is the smallest rectangle
 that encompasses all points contained by both rectangles.
 
+{::nomarkdown}
+
+<figure>
+{% asset core-graphics-intersection.svg width=400 %}
+<figcaption hidden>CoreGraphics CGRect Intersection (iOS)</figcaption>
+</figure>
+{:/}
+
 In Swift,
 you can use the `intersects(_:)` and `intersection(_:)` methods
 to efficiently compute the intersection of two `CGRect` values:
@@ -434,6 +442,15 @@ rectangle.intersection(.zero) // CGRect.null
 The <dfn>union</dfn> of two rectangles
 is the smallest rectangle that encompasses all of the points
 contained by either rectangle.
+
+{::nomarkdown}
+
+<figure>
+{% asset core-graphics-union.svg width=400 %}
+<figcaption hidden>CoreGraphics CGRect Union (iOS)</figcaption>
+</figure>
+{:/}
+
 In Swift,
 the aptly-named `union(_:)` method does just this for two `CGRect` values:
 
