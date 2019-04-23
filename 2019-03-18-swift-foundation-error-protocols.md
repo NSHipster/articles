@@ -293,8 +293,8 @@ extension UIAlertController {
      .joined(separator: "\n\n")
 
     self.init(title: title,
-                message: message,
-                preferredStyle: .alert)
+              message: message,
+              preferredStyle: preferredStyle)
   }
 }
 ```
