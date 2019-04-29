@@ -161,7 +161,7 @@ func makeAvatar(from user: Data) -> Result<UIImage, Error> {
   <#or return failure...#>
 }
 
-func save(image: NSImage) -> Result<Void, Error> {
+func save(image: UIImage) -> Result<Void, Error> {
   <#Save image and return success...#>
   <#or returns failure...#>
 }
@@ -284,7 +284,7 @@ do {
 
 The first thing that might stand out is how similar these two pieces of code are. They both have a section up top for executing our operations. And both have a section down below for matching errors and handling them.
 
-{% info %} This similarity is not accidental. Much of Swift’s error handling [is sugar around returning and unwrapping `Result`-like types](#).  As we’ll see more of in a bit… {% endinfo %}
+{% info %} This similarity is not accidental. Much of Swift’s error handling [is sugar around returning and unwrapping `Result`-like types](https://twitter.com/jckarter/status/608137115545669632).  As we’ll see more of in a bit… {% endinfo %}
 
 Whereas the `Result` version has us piping operations through chained calls to `flatMap`,
 we write the `do/catch` code more or less exactly as we would if no error handling were involved.
@@ -413,7 +413,7 @@ userData(for: "jemmons") { result in
 
 Ah ha!
 So we see that the `Result` type can serve as a concrete [reification](https://en.wikipedia.org/wiki/Reification_%28computer_science%29) of Swift’s abstract idea of 
-_"that thing that’s returned when a function is marked as `throws`"_.
+_“that thing that’s returned when a function is marked as `throws`”_.
 And as such, we can use it to deal with asynchronous operations that require concrete types for parameters passed to their completion handlers.
 
 {% info %}
@@ -481,7 +481,7 @@ userData(for: "jemmons") { userResult in
 }
 ```
 
-{% info %} There is, actually, a `flatMap`-like way of handling this called the [Continuation Monad](#). It’s complicated enough, though, that it probably warrants a few blog posts all unto itself. {% endinfo %}
+{% info %} There is, actually, a `flatMap`-like way of handling this called the [Continuation Monad](https://en.wikipedia.org/wiki/Monad_%28functional_programming%29#Continuation_monad). It’s complicated enough, though, that it probably warrants a few blog posts all unto itself. {% endinfo %}
 
 ## Awaiting the Future
 
