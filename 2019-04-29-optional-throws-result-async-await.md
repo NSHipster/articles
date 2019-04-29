@@ -168,7 +168,7 @@ func save(image: UIImage) -> Result<Void, Error> {
 
 {% info %}
 Note the return type of `save(image:)` — its success type is defined as `Void`.
-[We don't always have to return a value with our successes.](https://nshipster.com/never/#eliminating-impossible-states-in-generic-types)
+We don't always have to return a value with our successes.
 Sometimes just knowing it succeeded is enough.
 {% endinfo %}
 
