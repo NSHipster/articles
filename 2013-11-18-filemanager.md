@@ -173,7 +173,7 @@ don't simply take the last path component.
 Instead, call the method `displayName(atPath:)`:
 
 ```swift
-let directoryURL: URL
+let directoryURL: URL = <#/path/to/directory#>
 
 // Bad
 let filename = directoryURL.pathComponents.last
@@ -191,12 +191,12 @@ or want to avoid overwriting an existing one.
 To do this, call the `fileExists(atPath:)` method:
 
 ```swift
-let fileURL: URL
+let fileURL: URL = <#/path/to/file#>
 let fileExists = FileManager.default.fileExists(atPath: fileURL.path)
 ```
 
 ```objc
-NSURL *fileURL;
+NSURL *fileURL = <#/path/to/file#>;
 NSFileManager *fileManager = [NSFileManager defaultManager];
 BOOL fileExists = [fileManager fileExistsAtPath:[fileURL path]];
 ```
@@ -210,14 +210,14 @@ The resulting dictionary contains attributes keyed by `FileAttributeKey` values,
 including `.creationDate`:
 
 ```swift
-let fileURL: URL
+let fileURL: URL = <#/path/to/file#>
 let attributes =
     FileManager.default.attributesOfItem(atPath: fileURL.path)
 let creationDate = attributes[.creationDate]
 ```
 
 ```objc
-NSURL *fileURL;
+NSURL *fileURL = <#/path/to/file#>;
 NSFileManager *fileManager = [NSFileManager defaultManager];
 
 NSError *error = nil;
@@ -246,7 +246,7 @@ The `options` parameter of this method allows you to skip
 hidden files and/or descendants.
 
 ```swift
-let directoryURL: URL
+let directoryURL: URL = <#/path/to/directory#>
 let contents =
     try FileManager.default.contentsOfDirectory(at: directoryURL,
                                                 includingPropertiesForKeys: nil,
@@ -277,7 +277,7 @@ you can do so by creating a `FileManager.DirectoryEnumerator` object
 with the `enumerator(atPath:)` method:
 
 ```swift
-let directoryURL: URL
+let directoryURL: URL = <#/path/to/directory#>
 
 if let enumerator =
     FileManager.default.enumerator(atPath: directoryURL.path)
@@ -362,7 +362,7 @@ If you want to delete a file or directory,
 call `removeItem(at:)`:
 
 ```swift
-let fileURL: URL
+let fileURL: URL = <#/path/to/file#>
 try FileManager.default.removeItem(at: fileURL)
 ```
 
