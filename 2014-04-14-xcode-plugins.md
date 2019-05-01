@@ -2,11 +2,22 @@
 title: Xcode Plugins
 author: Mattt
 category: Xcode
-tags: popular
 excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
+revisions:
+  "2014-04-14": First Publication
+  "2019-03-25": Added Deprecation Notice
 status:
-    swift: n/a
+  swift: n/a
 ---
+
+{% error do %}
+As of 2016,
+Xcode Plugins are no longer supported.
+Please see our
+[follow-up article](https://nshipster.com/xcode-source-extensions/)
+for more information about their successors:
+<dfn>Xcode Source Extensions</dfn>.
+{% enderror %}
 
 Apple is nothing if not consistent. From [Pentalobular screws](https://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
 
@@ -21,10 +32,11 @@ Xcode has had a plugin architecture going back to when Interface Builder was its
 This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!
 
 > And since these question come up every time there's an article with pictures:
+>
 > 1. The color scheme is [Tomorrow Night](https://github.com/ChrisKempson/Tomorrow-Theme)
 > 2. The app used to make animated GIFs is [LICEcap](http://www.cockos.com/licecap/)
 
-* * *
+---
 
 ## Making Xcode More Like `X`
 
@@ -41,7 +53,7 @@ Finding it _too easy_ to quit Xcode? Try [XVim](https://github.com/JugglerShu/XV
 
 ![SCXcodeMiniMap]({% asset scxcodeminimap.png @path %})
 
-Do you miss having a code minimap along the right gutter of your editor to put things into perspective? Install  [SCXcodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap) and never again miss the tree nodes for the forest.
+Do you miss having a code minimap along the right gutter of your editor to put things into perspective? Install [SCXcodeMiniMap](https://github.com/stefanceriu/SCXcodeMiniMap) and never again miss the tree nodes for the forest.
 
 ### Atom
 
@@ -57,7 +69,7 @@ Rather than waiting with crossed fingers and clenched teeth each June, as Apple 
 
 ![BBUFullIssueNavigator]({% asset bbufullissuenavigator.png @path %})
 
-An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by surprise ellipses when compiler warnings were just starting to get interesting, with  [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
+An annoyance going back to Xcode 4 has been the truncation of items in the Issues Navigator. Never again be frustrated by surprise ellipses when compiler warnings were just starting to get interesting, with [BBUFullIssueNavigator](https://github.com/neonichu/BBUFullIssueNavigator).
 
 ### Dismiss Debugging Console When Typing
 
@@ -145,8 +157,7 @@ Any editor worth its salt is expected to have some form of syntax highlighting. 
 
 It's no secret that NSHipster has [a soft spot for localization](https://nshipster.com/nslocalizedstring/). For this reason, this publication is emphatic in its recommendation of [Lin](https://github.com/questbeat/Lin-Xcode5), a clever Xcode plugin that brings the localization editor to your code.
 
-
-* * *
+---
 
 Xcode's plugin architecture is based on a number of private frameworks specific to Xcode, including DVTKit & IDEKit. A [complete list](https://github.com/luisobo/Xcode5-RuntimeHeaders) can be derived by running [`class-dump`](http://stevenygard.com/projects/class-dump/) on the Xcode app bundle.
 
