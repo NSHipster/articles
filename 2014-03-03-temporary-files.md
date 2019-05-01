@@ -75,7 +75,7 @@ the preferred (albeit more complicated) approach
 is to call the `FileManager` method `uri(for:in:appropriateFor:create:)`.
 
 ```swift
-let destinationURL: URL
+let destinationURL: URL = <#/path/to/destination#>
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
                                 in: .userDomainMask,
@@ -84,7 +84,7 @@ let temporaryDirectoryURL =
 ```
 
 ```objc
-NSURL *destinationURL;
+NSURL *destinationURL = <#/path/to/destination#>;
 
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
@@ -155,7 +155,7 @@ Now that we have an appropriate directory and a unique filename,
 let's put them together to create our temporary file:
 
 ```swift
-let destinationURL: URL
+let destinationURL: URL = <#/path/to/destination#>
 
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
@@ -170,7 +170,7 @@ let temporaryFileURL =
 ```
 
 ```objc
-NSURL *destinationURL;
+NSURL *destinationURL = <#/path/to/destination#>;
 
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
@@ -200,13 +200,13 @@ The simplest way to write data to a file
 is to call the `Data` method `write(to:options)`:
 
 ```swift
-let data: Data
+let data: Data = <#some data#>
 try data.write(to: temporaryFileURL,
                options: .atomicWrite)
 ```
 
 ```objc
-NSData *data;
+NSData *data = <#some data#>;
 NSError *error = nil;
 [data writeToURL:temporaryFileURL
          options:NSDataWritingAtomic
@@ -291,7 +291,7 @@ If you already know where the file's going to live,
 you can use `FileManager` to move it to its permanent home:
 
 ```swift
-let fileURL: URL
+let fileURL: URL = <#/path/to/file#>
 try FileManager.default.moveItem(at: temporaryFileURL,
                                  to: fileURL)
 ```
@@ -299,7 +299,7 @@ try FileManager.default.moveItem(at: temporaryFileURL,
 ```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 
-NSURL *fileURL;
+NSURL *fileURL = <#/path/to/file#>;
 NSError *error = nil;
 [fileManager moveItemAtURL:temporaryFileURL
                      toURL:fileURL
