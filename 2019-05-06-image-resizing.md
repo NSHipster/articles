@@ -70,23 +70,20 @@ from [<abbr title="National Aeronautics and Space Administration">NASA</abbr>'s 
 
 At its full resolution,
 this image measures 12,000 px square
-and weighs in at a whopping 20 MB of JPEG data.
-20MB of memory is nothing on today's hardware,
+and weighs in at a whopping 20 MB.
+You might not think much of a few megabytes given today's hardware,
 but that's just its compressed size.
 To display it,
-the `UIImageView` needs to decode that JPEG into a bitmap.
-Set that full-sized image on an image view as-is,
-and your app's memory usage will balloon to
-**hundreds of Megabytes of memory**,
+a `UIImageView` needs to first decode that JPEG into a bitmap.
+If you were to set this full-sized image on an image view as-is,
+your app's memory usage would balloon to
+**hundreds of Megabytes of memory**
 with no appreciable benefit to the user
 (a screen can only display so many pixels, after all).
-Not only that,
-because that's happening on the main thread,
-it can cause your app to freeze for a couple seconds.
 
 By simply resizing that image to the size of the image view
 before setting its `image` property,
-you can use an order-of-magnitude less RAM and CPU time:
+you can use an order-of-magnitude less RAM:
 
 |                      | Memory Usage _(MB)_ |
 | -------------------- | ------------------- |
@@ -103,8 +100,8 @@ please refer to
 
 Now,
 few apps would ever try to load an image this large...
-but it's not _too_ far off from some of the assets I've gotten back from design.
-_(Seriously, a 10MB PNG of a color gradient?)_
+but it's not _too_ far off from some of the assets I've gotten back from designer.
+_(Seriously, a 3MB PNG for a color gradient?)_
 So with that in mind,
 let's take a look at the various ways that you can go about
 resizing and downsampling images.
@@ -114,7 +111,7 @@ resizing and downsampling images.
 This should go without saying,
 but all of the examples loading images from a URL are for **local** files.
 Remember, it's **never** a good idea to do networking
-synchronously on the main thread.
+synchronously on the main thread of your app.
 
 {% enderror %}
 
