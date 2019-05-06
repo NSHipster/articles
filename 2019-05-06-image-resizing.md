@@ -91,7 +91,7 @@ you can use an order-of-magnitude less RAM and CPU time:
 |                      | Memory Usage _(MB)_ |
 | -------------------- | ------------------- |
 | Without Downsampling | 220.2               |
-| With Downsampling    | 14                  |
+| With Downsampling    | 23.7                |
 
 This technique is known as <dfn>downsampling</dfn>,
 and can significantly improve the performance of your app
