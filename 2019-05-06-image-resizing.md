@@ -535,7 +535,7 @@ Setting `kCIContextUseSoftwareRenderer` to `true` on the options passed on `CICo
   according to Apple's
   [_Performance Best Practices section of the Core Image Programming Guide_](https://developer.apple.com/library/mac/documentation/graphicsimaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1),
   you should use Core Graphics or Image I/O functions
-  to crop and downsampling images instead of Core IMage.
+  to crop and downsampling images instead of Core Image.
 - Unless you're already working with **`vImage`**,
   the extra work necessary to use the low-level Accelerate APIs
   probably isn't justified in most circumstances.
