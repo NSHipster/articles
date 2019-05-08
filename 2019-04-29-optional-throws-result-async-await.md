@@ -139,8 +139,8 @@ switch keychainData(service: "My Service") {
 case .success(let data):
   <#do something with data...#>
 case .failure(KeychainError.notFound(let name)):
-  print(""\(name)" not found in keychain.")
-case .failure(KeychainError.io):
+  print("\(name) not found in keychain.")
+case .failure(KeychainError.ioWentBad):
   print("Error reading from the keychain.")
 case .failure(KeychainError.notData):
   print("Keychain is broken.")
