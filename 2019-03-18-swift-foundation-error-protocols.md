@@ -75,7 +75,7 @@ domain, error code, and user-info dictionary.
 </dl>
 
 If you haven't heard of any of these until now,
-you may be wondering when when you'd ever use them.
+you may be wondering when you'd ever use them.
 Well, as the adage goes,
 _"There's no time like the present"_.
 
