@@ -8,7 +8,7 @@ excerpt: >-
   both files and directories,
   whether they're on local or networked drives or iCloud ubiquitous containers.
 revisions:
-  "2013-11-18": First Publication
+  "2013-11-18": Original publication
   "2018-10-29": Updated for Swift 4.2
 status:
   swift: 4.2

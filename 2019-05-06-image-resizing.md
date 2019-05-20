@@ -7,7 +7,7 @@ status:
   swift: 5.0
   reviewed: May 6, 2019
 revisions:
-  "2014-09-15": Original publication.
+  "2014-09-15": Original publication
   "2015-09-30": Updated for Swift 2.0
   "2019-05-06": Updated for Swift 5.0
 ---

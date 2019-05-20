@@ -2,20 +2,20 @@
 title: guard & defer
 author: Mattt & Nate Cook
 authors:
-    - Nate Cook
-    - Mattt
+  - Nate Cook
+  - Mattt
 category: Swift
 excerpt: >
-    Swift 2.0 introduced two new control statements
-    that aimed to simplify and streamline the programs we write.
-    While the former by its nature makes our code more linear,
-    the latter does the opposite by delaying execution of its contents.
+  Swift 2.0 introduced two new control statements
+  that aimed to simplify and streamline the programs we write.
+  While the former by its nature makes our code more linear,
+  the latter does the opposite by delaying execution of its contents.
 revisions:
-    "2015-10-05": First Publication
-    "2018-08-01": Updated for Swift 4.2
+  "2015-10-05": Original publication
+  "2018-08-01": Updated for Swift 4.2
 status:
-    swift: 4.2
-    reviewed: August 1, 2018
+  swift: 4.2
+  reviewed: August 1, 2018
 ---
 
 > "We should do (as wise programmers aware of our limitations)

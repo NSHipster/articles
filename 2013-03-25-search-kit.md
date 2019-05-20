@@ -4,11 +4,11 @@ author: Mattt
 category: Cocoa
 excerpt: "Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."
 status:
-    swift: 2.0
-    reviewed: November 24, 2015
+  swift: 2.0
+  reviewed: November 24, 2015
 revisions:
-    "2013-03-25": Original publication.
-    "2015-11-24": Revised for Swift 2.0.
+  "2013-03-25": Original publication
+  "2015-11-24": Revised for Swift 2.0
 ---
 
 NSHipsters love irony, right? How about this for irony:
@@ -61,7 +61,7 @@ After repeating this process for each document or record in the corpus until, ea
 
 ### Creating an Index
 
-`SKIndexRef` is the central data type in Search Kit, containing all of the information needed to process and fulfill searches, and add information from new documents. Indexes can be persistent / file-based or ephemeral / in-memory. Indexes can either be created from scratch, or loaded from an existing file or data object—and once 
+`SKIndexRef` is the central data type in Search Kit, containing all of the information needed to process and fulfill searches, and add information from new documents. Indexes can be persistent / file-based or ephemeral / in-memory. Indexes can either be created from scratch, or loaded from an existing file or data object—and once
 an index is finished being used, like many other C APIs, the index is closed.
 
 When starting a new in-memory index, use an empty `NSMutableData` instance as the data store:
@@ -70,6 +70,7 @@ When starting a new in-memory index, use an empty `NSMutableData` instance as th
 let mutableData = NSMutableData()
 let index = SKIndexCreateWithMutableData(mutableData, nil, SKIndexType(kSKIndexInverted.rawValue), nil).takeRetainedValue()
 ```
+
 ```objc
 NSMutableData *mutableData = [NSMutableData data];
 SKIndexRef index = SKIndexCreateWithMutableData((__bridge CFMutableDataRef)mutableData, NULL, kSKIndexInverted, NULL);
@@ -87,6 +88,7 @@ For documents on the file system, the URI is simply the location of the file on 
 let fileURL = NSURL(fileURLWithPath: "/path/to/document")
 let document = SKDocumentCreateWithURL(fileURL).takeRetainedValue()
 ```
+
 ```objc
 NSURL *fileURL = [NSURL fileURLWithPath:@"/path/to/document"];
 SKDocumentRef document = SKDocumentCreateWithURL((__bridge CFURLRef)fileURL);
@@ -98,6 +100,7 @@ For Core Data managed objects, the `NSManagedObjectID -URIRepresentation` can be
 let objectURL = objectID.URIRepresentation()
 let document = SKDocumentCreateWithURL(objectURL).takeRetainedValue()
 ```
+
 ```objc
 NSURL *objectURL = [objectID URIRepresentation];
 SKDocumentRef document = SKDocumentCreateWithURL((__bridge CFURLRef)objectURL);
@@ -111,6 +114,7 @@ When adding the contents of a `SKDocumentRef` to an `SKIndexRef`, the text can e
 let string = "Lorem ipsum dolar sit amet"
 SKIndexAddDocumentWithText(index, document, string, true)
 ```
+
 ```objc
 NSString *string = @"Lorem ipsum dolar sit amet";
 SKIndexAddDocumentWithText(index, document, (__bridge CFStringRef)string, true);
@@ -122,6 +126,7 @@ SKIndexAddDocumentWithText(index, document, (__bridge CFStringRef)string, true);
 let mimeTypeHint = "text/rtf"
 SKIndexAddDocument(index, document, mimeTypeHint, true)
 ```
+
 ```objc
 NSString *mimeTypeHint = @"text/rtf";
 SKIndexAddDocument(index, document, (__bridge CFStringRef)mimeTypeHint, true);
@@ -142,6 +147,7 @@ let properties: [NSObject: AnyObject] = [
 
 let index = SKIndexCreateWithURL(url, nil, SKIndexType(kSKIndexInverted.rawValue), properties).takeRetainedValue()
 ```
+
 ```objc
 NSSet *stopwords = [NSSet setWithObjects:@"all", @"and", @"its", @"it's", @"the", nil];
 
@@ -158,7 +164,6 @@ SKIndexRef index = SKIndexCreateWithURL((CFURLRef)url, NULL, kSKIndexInverted, (
 
 After adding to or modifying an index's documents, you'll need to commit the changes to the backing store via `SKIndexFlush()` to make your changes available to a search.
 
-
 ### Searching
 
 `SKSearchRef` is the data type constructed to perform a search on an `SKIndexRef`. It contains a reference to the index, a query string, and a set of options:
@@ -168,6 +173,7 @@ let query = "kind of blue"
 let options = SKSearchOptions(kSKSearchOptionDefault)
 let search = SKSearchCreate(index, query, options).takeRetainedValue()
 ```
+
 ```objc
 NSString *query = @"kind of blue";
 SKSearchOptions options = kSKSearchOptionDefault;
@@ -195,22 +201,23 @@ let time: NSTimeInterval = ... // Maximum time to get results, in seconds
 
 var documentIDs: [SKDocumentID] = Array(count: limit, repeatedValue: 0)
 var urls: [Unmanaged<CFURL>?] = Array(count: limit, repeatedValue: nil)
-var scores: [Float] = Array(count: limit, repeatedValue: 0)    
+var scores: [Float] = Array(count: limit, repeatedValue: 0)
 var foundCount = 0
 
 let hasMoreResults = SKSearchFindMatches(search, limit, &documentIDs, &scores, time, &count)
 
 SKIndexCopyDocumentURLsForDocumentIDs(index, foundCount, &documentIDs, &urls)
-    
+
 let results: [NSURL] = zip(urls[0 ..< foundCount], scores).flatMap({
     (cfurl, score) -> NSURL? in
     guard let url = cfurl?.takeRetainedValue() as NSURL?
         else { return nil }
-    
+
     print("- \(url): \(score)")
     return url
 })
 ```
+
 ```objc
 NSUInteger limit = ...; // Maximum number of results
 NSTimeInterval time = ...; // Maximum time to get results, in seconds

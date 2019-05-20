@@ -8,9 +8,9 @@ excerpt: >-
   there is very little to go on for Cocoa. 
   (Or if there has, perhaps it was poetically ephemeral itself).
 revisions:
-  "2014-03-03": First Publication
+  "2014-03-03": Original publication
   "2018-10-24": Updated for Swift 4.2
-  "2018-11-21": Corrected Use of `url(for:in:appropriateFor:create:)`
+  "2018-11-21": Corrected use of `url(for:in:appropriateFor:create:)`
 status:
   swift: 4.2
 ---

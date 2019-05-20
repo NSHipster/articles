@@ -9,7 +9,7 @@ excerpt: >-
   and how it makes them available ---
   has a profound impact on how we write and think about code.
 revisions:
-  "2014-08-18": First Publication
+  "2014-08-18": Original publication
   "2018-08-22": Updated for Swift 4.2
 status:
   swift: 4.2

@@ -9,7 +9,7 @@ excerpt: >-
   It's a big deal for app developers,
   and it's an even bigger deal for Swift developers on other platforms.
 revisions:
-  "2018-11-05": First Publication
+  "2018-11-05": Original publication
   "2018-11-19": Updated
 status:
   swift: n/a

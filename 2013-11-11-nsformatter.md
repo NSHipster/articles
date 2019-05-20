@@ -60,14 +60,14 @@ To illustrate the differences between each style, here is how the number `12345.
 | ----------------- | ------------------------------------------------------------------- |
 | `NoStyle`         | 12346                                                               |
 | `DecimalStyle`    | 12345.6789                                                          |
-| `CurrencyStyle`   | $12345.68                                                           |
+| `CurrencyStyle`   | \$12345.68                                                          |
 | `PercentStyle`    | 1234567%                                                            |
 | `ScientificStyle` | 1.23456789E4                                                        |
 | `SpellOutStyle`   | twelve thousand three hundred forty-five point six seven eight nine |
 
 ### Locale Awareness
 
-By default, `NSNumberFormatter` will format according to the current locale settings, which determines things like currency symbol ($, £, €, etc.) and whether to use "," or "." as the decimal separator.
+By default, `NSNumberFormatter` will format according to the current locale settings, which determines things like currency symbol (\$, £, €, etc.) and whether to use "," or "." as the decimal separator.
 
 ```swift
 let formatter = NSNumberFormatter()
@@ -91,7 +91,7 @@ for (NSString *identifier in @[@"en_US", @"fr_FR", @"ja_JP"]) {
 
 | Locale  | Formatted Number |
 | ------- | ---------------- |
-| `en_US` | $1,234.57        |
+| `en_US` | \$1,234.57       |
 | `fr_FR` | 1 234,57 €       |
 | `ja_JP` | ￥ 1,235         |
 

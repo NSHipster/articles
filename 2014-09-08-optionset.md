@@ -9,7 +9,7 @@ excerpt: >-
   conforming to the `OptionSet` protocol.
   But could new language features in Swift provide a better option?
 revisions:
-  "2014-09-09": First Publication
+  "2014-09-09": Original publication
   "2018-11-07": Updated for Swift 4.2
 status:
   swift: 4.2

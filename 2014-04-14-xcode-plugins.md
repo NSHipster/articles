@@ -4,8 +4,8 @@ author: Mattt
 category: Xcode
 excerpt: "This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!"
 revisions:
-  "2014-04-14": First Publication
-  "2019-03-25": Added Deprecation Notice
+  "2014-04-14": Original publication
+  "2019-03-25": Added deprecation notice
 status:
   swift: n/a
 ---

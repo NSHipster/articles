@@ -9,8 +9,8 @@ excerpt: >-
   But in another context,
   the same object might instead be used as a duration of time.
 revisions:
-  "2012-07-31": First Publication
-  "2018-10-10": Expanded Details
+  "2012-07-31": Original Publication
+  "2018-10-10": Expanded details
 status:
   swift: 4.2
   reviewed: October 10, 2018

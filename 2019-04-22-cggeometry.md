@@ -9,6 +9,7 @@ excerpt: >-
   who dutifully programmed all of those necessary formulæ
   into your TI-8X calculator to avoid rote memorization.
 revisions:
+  "2012-12-17": Original publication
   "2015-02-17": Updated for Swift 2
   "2019-04-22": Updated for Swift 5
 status:

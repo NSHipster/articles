@@ -9,7 +9,7 @@ excerpt: >-
   To the relief of any developer less inclined towards discursive treatises, 
   this is not as much the case for Swift.
 revisions:
-  "2014-09-22": First Publication
+  "2014-09-22": Original publication
   "2018-12-19": Updated for Swift 4.2
 status:
   swift: 4.2

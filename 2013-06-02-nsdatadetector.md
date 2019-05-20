@@ -8,7 +8,7 @@ excerpt: >-
   computers will have to work overtime 
   to figure out what the heck we're all talking about.
 revisions:
-  "2013-06-02": First Publication
+  "2013-06-02": Original publication
   "2018-08-29": Updated for Swift 4.2
 status:
   swift: 4.2

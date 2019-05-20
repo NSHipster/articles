@@ -7,7 +7,7 @@ excerpt: >
   an array of sensors sits nestled on the logic board,
   sending a steady stream of data to a motion coprocessor.
 revisions:
-  "2014-10-28": First Publication
+  "2014-10-28": Original publication
   "2018-09-12": Updated for Swift 4.2
 status:
   swift: 4.2
