@@ -3,7 +3,7 @@ title: Swift Code Formatters
 author: Mattt
 category: Swift
 excerpt: >-
-  Over the past few days,
+  Lately,
   the Swift community has been buzzing about the latest pitch
   to adopt an an official style guide and formatting tool for the language.
   Let's take a look at where we're at today,
@@ -11,6 +11,9 @@ excerpt: >-
   and what we might expect in the future.
 status:
   swift: 5.0
+revisions:
+  "2019-03-04": Original publication
+  "2019-05-20": Updated and expanded
 ---
 
 > I just left a hipster coffee shop.
@@ -19,14 +22,16 @@ status:
 > they can't wait for Apple to release
 > an official style guide and formatter for Swift.
 
-Over the past few days,
+Lately,
 the community has been buzzing about
-the latest pitch from
+the proposal from
 [Tony Allevato](https://github.com/allevato) and
 [Dave Abrahams](https://github.com/dabrahams)
 to adopt an official style guide and formatting tool for the Swift language.
 
-[Dozens of community members have already weighed in on the draft proposal](https://forums.swift.org/t/pitch-an-official-style-guide-and-formatter-for-swift/21025).
+Hundreds of community members have weighed in on the
+[initial pitch](https://forums.swift.org/t/pitch-an-official-style-guide-and-formatter-for-swift/21025)
+and [proposal](https://forums.swift.org/t/se-0250-swift-code-style-guidelines-and-formatter/21795/39).
 As with all matters of style,
 opinions are strong, and everybody has one.
 Fortunately,
@@ -34,18 +39,18 @@ the discourse from the community
 has been generally constructive and insightful,
 articulating a diversity of viewpoints, use cases, and concerns.
 
-At the time of writing,
-it appears that a plurality, if not an outright majority of respondents
-are +1 (or more)
-for some degree of official guidance on formatting conventions.
-And those in favor of a sanctioned style guide
-would also like for there to be a tool
-that automatically diagnoses and fixes violations of these guidelines.
-However, others have expressed concerns about
-the extent to which these guidelines are applicable and configurable.
+Since our article was first published back in March,
+the proposal,
+["SE-0250: Swift Code Style Guidelines and Formatter"](https://github.com/apple/swift-evolution/blob/master/proposals/0250-swift-style-guide-and-formatter.md)
+started formal review;
+that process was later
+[suspended](https://forums.swift.org/t/se-0250-swift-code-style-guidelines-and-formatter/21795/217),
+to be reconsidered sometime in the future.
 
-This week on NSHipster,
-we'll take a look at the current field of
+In spite of this,
+Swift code formatting remains a topic of interest to many developers.
+So this week on NSHipster,
+we're taking another look at the current field of
 Swift formatters available today ---
 including the `swift-format` tool released as part of the proposal ---
 and see how they all stack up.
@@ -111,15 +116,15 @@ Style guides have existed from the very first days of Swift,
 as have various open source tools to automate the process
 of formatting code to match them.
 
-In order to get a sense of the current state of Swift code formatters,
+To get a sense of the current state of Swift code formatters,
 we'll take a look at the following four tools:
 
-| Project                                                   | Repository URL                                |
-| --------------------------------------------------------- | --------------------------------------------- |
-| [SwiftFormat](#swiftformat)                               | <https://github.com/nicklockwood/SwiftFormat> |
-| [SwiftLint](#swiftlint)                                   | <https://github.com/realm/SwiftLint>          |
-| [Prettier with Swift Plugin](#prettier-with-swift-plugin) | <https://github.com/prettier/prettier>        |
-| [swift-format (proposed)](#swift-format)                  | <https://github.com/google/swift/tree/format> |
+| Project                                                                 | Repository URL                                |
+| ----------------------------------------------------------------------- | --------------------------------------------- |
+| [SwiftFormat](#swiftformat)                                             | <https://github.com/nicklockwood/SwiftFormat> |
+| [SwiftLint](#swiftlint)                                                 | <https://github.com/realm/SwiftLint>          |
+| [Prettier with Swift Plugin <sup>\*</sup>](#prettier-with-swift-plugin) | <https://github.com/prettier/prettier>        |
+| [swift-format](#swift-format)                                           | <https://github.com/google/swift/tree/format> |
 
 {% info %}
 
@@ -137,7 +142,8 @@ we've contrived the following code sample to evaluate each tool
 (using their default configuration):
 
 ```swift
-struct ShippingAddress : Codable  {
+
+        struct ShippingAddress : Codable  {
  var recipient: String
   var streetAddress : String
    var locality :String
@@ -155,6 +161,7 @@ locality: String,region: String,postalCode: String,country:String               
     self.country=country}}
 
 let applePark = ShippingAddress(recipient:"Apple, Inc.", streetAddress:"1 Apple Park Way", locality:"Cupertino", region:"CA", postalCode:"95014", country:"US")
+
 ```
 
 Although code formatting encompasses a wide range of possible
@@ -215,7 +222,8 @@ Running the `swiftformat` command on our example
 using the default set of rules produces the following result:
 
 ```swift
-// swiftformat version 0.39.5
+// swiftformat version 0.40.8
+
 struct ShippingAddress: Codable {
     var recipient: String
     var streetAddress: String
@@ -247,6 +255,14 @@ and the newline in the initializer parameters are preserved;
 as might be expected</del>
 <ins>this is [fixed in 0.39.5](https://twitter.com/nicklockwood/status/1103595525792845825).
 Great work, [Nick](https://github.com/nicklockwood)!</ins>
+
+{% warning %}
+In version 0.38.0 and later,
+`swiftformat` emits a warning if no Swift version is specified.
+You can specify a version either by
+passing the `--swiftversion` command line option or
+adding a `.swift-version` file to the current directory.
+{% endwarning %}
 
 #### Performance
 
@@ -309,7 +325,7 @@ Running the previous command on our example
 yields the following:
 
 ```swift
-// swiftlint version 0.31.0
+// swiftlint version 0.32.0
 struct ShippingAddress: Codable {
     var recipient: String
     var streetAddress: String
@@ -327,10 +343,12 @@ struct ShippingAddress: Codable {
         self.country=country}}
 
 let applePark = ShippingAddress(recipient: "Apple, Inc.", streetAddress: "1 Apple Park Way", locality: "Cupertino", region: "CA", postalCode: "95014", country: "US")
+
 ```
 
 SwiftLint cleans up the worst of the indentation and inter-spacing issues
-but leaves other, extraneous whitespace intact.
+but leaves other, extraneous whitespace intact
+(though it does strip the file's leading newline, which is nice).
 Again, it's worth noting that formatting isn't SwiftLint's primary calling;
 if anything, it's merely incidental to providing actionable code diagnostics.
 And taken from the perspective of _"first, do no harm"_,
@@ -344,10 +362,32 @@ completing in a fraction of a second for our example.
 
 ```terminal
 $ time swiftlint autocorrect --quiet --format --path Example.swift
-        0.11 real         0.05 user         0.02 sys
+        0.09 real         0.04 user         0.01 sys
 ```
 
+---
+
 ### Prettier with Swift Plugin
+
+{% error %}
+
+<sup>\*</sup>
+We included the
+[Prettier plugin for Swift](https://github.com/prettier/plugin-swift)
+in the first publication of this article.
+Despite its instability and limitations as a work-in-progress,
+we were nonetheless taken by its beautiful output.
+However,
+without support for Swift 5
+or [any plans for further development](https://twitter.com/sirlantis/status/1102842678130151424),
+its unlikely to be a viable option going forward.
+
+For anyone who's curious,
+you can see the details from our initial write-up by expanding the section below.
+
+{% enderror %}
+
+{% capture markdown %}
 
 If you've mostly shied away from JavaScript
 (as discussed in [last week's article](/javascriptcore/)),
@@ -365,15 +405,6 @@ wrapping lines of code onto newlines as if they were poetry.
 Thanks to its (in-development) [plugin architecture](https://prettier.io/docs/en/plugins.html),
 the same line-breaking behavior can be applied to other languages,
 [including Swift](https://github.com/prettier/plugin-swift).
-
-{% error %}
-The Prettier plugin for Swift is very much a work-in-progress
-and crashes when it encounters a syntax token it doesn't have rules for
-(like `EnumDecl` 😩).
-However, as you'll see below,
-the results so far are too good to ignore,
-which is why we thought it worthwhile to include it in this round-up.
-{% enderror %}
 
 #### Installation
 
@@ -403,7 +434,8 @@ Here's the result of running the latest build of the Swift plugin with Prettier
 on our example from before:
 
 ```swift
-// prettier version 1.16.4
+// Swift version 4.2
+// prettier version 1.17.1
 // prettier/plugin-swift version 0.0.0 (bdf8726)
 struct ShippingAddress: Codable {
     var recipient: String
@@ -461,12 +493,12 @@ Also, there's the matter of performance...
 #### Performance
 
 To put it bluntly:
-Prettier is one or two orders of magnitude slower
+Prettier is an order of magnitude slower
 than every other tool discussed in this article.
 
 ```terminal
 $ time prettier Example.swift
-1.14 real         0.56 user         0.38 sys
+        0.60 real         0.40 user         0.18 sys
 ```
 
 It's unclear whether this is
@@ -477,6 +509,16 @@ but Prettier is slow enough to cause problems at scale.
 For now,
 we recommend using Prettier only for one-off formatting tasks,
 such as writing code for articles and books.
+{% endcapture %}
+
+{::nomarkdown}
+
+<details>
+<summary>Installation, Usage, Example Output, and Performance</summary>
+{{ markdown | markdownify }}
+</details>
+
+{:/}
 
 ### swift-format
 
@@ -538,9 +580,52 @@ with the following JSON:
   "indentation": {
     "spaces": 2
   },
+  "lineBreakBeforeControlFlowKeywords": false,
+  "lineBreakBeforeEachArgument": true,
   "lineLength": 100,
   "maximumBlankLines": 1,
   "respectsExistingLineBreaks": true,
+  "rules": {
+    "AllPublicDeclarationsHaveDocumentation": true,
+    "AlwaysUseLowerCamelCase": true,
+    "AmbiguousTrailingClosureOverload": true,
+    "AvoidInitializersForLiterals": true,
+    "BeginDocumentationCommentWithOneLineSummary": true,
+    "BlankLineBetweenMembers": true,
+    "CaseIndentLevelEqualsSwitch": true,
+    "DoNotUseSemicolons": true,
+    "DontRepeatTypeInStaticProperties": true,
+    "FullyIndirectEnum": true,
+    "GroupNumericLiterals": true,
+    "IdentifiersMustBeASCII": true,
+    "MultiLineTrailingCommas": true,
+    "NeverForceUnwrap": true,
+    "NeverUseForceTry": true,
+    "NeverUseImplicitlyUnwrappedOptionals": true,
+    "NoAccessLevelOnExtensionDeclaration": true,
+    "NoBlockComments": true,
+    "NoCasesWithOnlyFallthrough": true,
+    "NoEmptyAssociatedValues": true,
+    "NoEmptyTrailingClosureParentheses": true,
+    "NoLabelsInCasePatterns": true,
+    "NoLeadingUnderscores": true,
+    "NoParensAroundConditions": true,
+    "NoVoidReturnOnFunctionSignature": true,
+    "OneCasePerLine": true,
+    "OneVariableDeclarationPerLine": true,
+    "OnlyOneTrailingClosureArgument": true,
+    "OrderedImports": true,
+    "ReturnVoidInsteadOfEmptyTuple": true,
+    "UseEnumForNamespacing": true,
+    "UseLetInEveryBoundCaseVariable": true,
+    "UseOnlyUTF8": true,
+    "UseShorthandTypeNames": true,
+    "UseSingleLinePropertyGetter": true,
+    "UseSpecialEscapeSequences": true,
+    "UseSynthesizedInitializer": true,
+    "UseTripleSlashForDocumentationComments": true,
+    "ValidateDocumentationComments": true
+  },
   "tabWidth": 8,
   "version": 1
 }
@@ -560,20 +645,23 @@ Using its default configuration,
 here's how `swift-format` formats our example:
 
 ```swift
-// swift-format version 0.0.1
+// swift-format 0.0.1 (2019-05-15, 115870c)
 struct ShippingAddress: Codable {
   var recipient: String
   var streetAddress: String
   var locality: String
-  var region   :String;
+  var region: String;
   var postalCode: String
   var country: String
 
   init(
-    recipient: String, streetAddress: String,
-    locality: String, region: String, postalCode: String, country: String
-  )
-  {
+    recipient: String,
+    streetAddress: String,
+    locality: String,
+    region: String,
+    postalCode: String,
+    country: String
+  ) {
     self.recipient = recipient
     self.streetAddress = streetAddress
     self.locality = locality
@@ -587,37 +675,370 @@ struct ShippingAddress: Codable {
 }
 
 let applePark = ShippingAddress(
-  recipient: "Apple, Inc.", streetAddress: "1 Apple Park Way", locality: "Cupertino", region: "CA",
-  postalCode: "95014", country: "US")
+  recipient: "Apple, Inc.",
+  streetAddress: "1 Apple Park Way",
+  locality: "Cupertino",
+  region: "CA",
+  postalCode: "95014",
+  country: "US"
+)
+
 ```
 
-For a version `0.0.1` release,
-this is promising!
-We could do without the original semicolon
-and don't much care for the colon placement for the `region` property, either,
+_Be still my heart!_ 😍
+We could do without the original semicolon,
 but overall, this is pretty unobjectionable ---
 which is exactly what you'd want from an official code style tool.
+
+<div media="screen and (hover: hover)">
+
+### Flexible Output
+
+But in order to fully appreciate the elegance of `swift-format`'s output,
+we must compare it across a multitude of different column widths.
+
+Let's see how it handles this new code sample,
+replete with cumbersome `UIApplicationDelegate` methods
+and `URLSession` construction:
+
+{% info %}
+**Hint**:
+Try resizing the container below
+by clicking and dragging the control at the bottom right corner
+_(this feature is only available in [supported browsers](https://caniuse.com/#feat=css-resize))_.
+{% endinfo %}
+
+<div class="variable-width">
+
+<div data-width="40">
+
+#### 40 Columns
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder,
+  UIApplicationDelegate
+{
+  var window: UIWindow?
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions
+      launchOptions:
+      [UIApplication.LaunchOptionsKey:
+      Any]?
+  ) -> Bool {
+
+    let url = URL(
+      string:
+        "https://nshipster.com/swift-format"
+    )!
+    URLSession.shared.dataTask(
+      with: url,
+      completionHandler: {
+        (data, response, error) in
+        guard error == nil,
+          let data = data,
+          let response = response
+          as? HTTPURLResponse,
+          (200..<300).contains(
+          response.statusCode
+        ) else {
+          fatalError(
+            error?.localizedDescription
+              ?? "Unknown error"
+          )
+        }
+
+        if let html = String(
+          data: data,
+          encoding: .utf8
+        ) {
+          print(html)
+        }
+      }
+    ).resume()
+
+    // Override point for customization after application launch.
+    return true
+  }
+}
+```
+
+</div>
+
+<div data-width="50">
+
+#### 50 Columns
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder,
+  UIApplicationDelegate
+{
+  var window: UIWindow?
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions:
+      [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+
+    let url = URL(
+      string: "https://nshipster.com/swift-format"
+    )!
+    URLSession.shared.dataTask(
+      with: url,
+      completionHandler: {
+        (data, response, error) in
+        guard error == nil, let data = data,
+          let response = response
+          as? HTTPURLResponse,
+          (200..<300).contains(
+          response.statusCode
+        ) else {
+          fatalError(
+            error?.localizedDescription
+              ?? "Unknown error"
+          )
+        }
+
+        if let html = String(
+          data: data,
+          encoding: .utf8
+        ) {
+          print(html)
+        }
+      }
+    ).resume()
+
+    // Override point for customization after application launch.
+    return true
+  }
+}
+```
+
+</div>
+
+<div data-width="60">
+
+#### 60 Columns
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions:
+      [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+
+    let url = URL(
+      string: "https://nshipster.com/swift-format"
+    )!
+    URLSession.shared.dataTask(
+      with: url,
+      completionHandler: { (data, response, error) in
+        guard error == nil, let data = data,
+          let response = response as? HTTPURLResponse,
+          (200..<300).contains(response.statusCode) else {
+          fatalError(
+            error?.localizedDescription ?? "Unknown error"
+          )
+        }
+
+        if let html = String(data: data, encoding: .utf8) {
+          print(html)
+        }
+      }
+    ).resume()
+
+    // Override point for customization after application launch.
+    return true
+  }
+}
+
+```
+
+</div>
+
+<div data-width="70">
+
+#### 70 Columns
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions:
+      [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+
+    let url = URL(string: "https://nshipster.com/swift-format")!
+    URLSession.shared.dataTask(
+      with: url,
+      completionHandler: { (data, response, error) in
+        guard error == nil, let data = data,
+          let response = response as? HTTPURLResponse,
+          (200..<300).contains(response.statusCode) else {
+          fatalError(error?.localizedDescription ?? "Unknown error")
+        }
+
+        if let html = String(data: data, encoding: .utf8) {
+          print(html)
+        }
+      }
+    ).resume()
+
+    // Override point for customization after application launch.
+    return true
+  }
+}
+
+```
+
+</div>
+
+<div data-width="90">
+
+#### 90 Columns
+
+```swift
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  var window: UIWindow?
+
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+  ) -> Bool {
+
+    let url = URL(string: "https://nshipster.com/swift-format")!
+    URLSession.shared.dataTask(
+      with: url,
+      completionHandler: { (data, response, error) in
+        guard error == nil, let data = data, let response = response as? HTTPURLResponse,
+          (200..<300).contains(response.statusCode) else {
+          fatalError(error?.localizedDescription ?? "Unknown error")
+        }
+
+        if let html = String(data: data, encoding: .utf8) {
+          print(html)
+        }
+      }
+    ).resume()
+
+    // Override point for customization after application launch.
+    return true
+  }
+}
+```
+
+</div>
+</div>
+
+This kind of flexibility isn't particularly helpful in engineering contexts,
+where developers can and should make full use of their screen real estate.
+But for those of us who do technical writing
+and have to wrestle with things like mobile viewports and page margins,
+this is a killer feature.
 
 #### Performance
 
 In terms of performance,
-`swift-format` is currently in the middle of the pack:
-not so fast as to feel instantaneous,
+`swift-format` isn't so fast as to feel instantaneous,
 but not so slow as to be an issue.
 
 ```terminal
 $ time swift-format Example.swift
-        0.51 real         0.20 user         0.27 sys
+        0.24 real         0.16 user         0.14 sys
 ```
+
+{% info %}
+Since our initial analysis,
+In Swift 5.1,
+[SwiftSyntax](https://nshipster.com/swiftsyntax/)
+(the parser used by `swift-format`)
+has been updated with significantly improved performance,
+as described in
+[this forum post](https://forums.swift.org/t/speeding-up-swiftsyntax-by-using-the-parser-directly/18493).
+
+Our initial benchmarks reflected the Swift 4.2 version of SwiftSyntax,
+which predate these optimizations.
+Using the latest Swift 5.1 Snapshot
+(2019-05-09, LLVM 59470d46d5, Swift 6d7f3f61d9),
+we didn't see a significant performance improvement from before,
+but we're eager to re-evaluate these results
+with future releases of `swift-format` and Swift 5.1.
+{% endinfo %}
 
 ---
 
-Based on our initial investigation (albeit limited),
-`swift-format` appears to offer a reasonable set of formatting conventions.
-Going forward, it will be helpful to create more motivated examples
-to help inform our collective beliefs about the contours
-of such a tool.
+## Conclusion: You Don't Need To Wait to Start Using a Code Formatting Tool
 
-No matter what,
-it'll be interesting to see how the proposal changes
-and the discussion evolves around these issues.
+Deciding which conventions we want to adopt as a community
+is an important conversation to have,
+worthy of the thoughtful and serious consideration we give
+to any proposed change to the language.
+However,
+the question of whether there should be official style guidelines
+or an authoritative code formatting tool
+shouldn't stop you from taking steps today for your own projects!
+
+We're strongly of the opinion that
+**most projects would be improved by the adoption of a code formatting tool**,
+provided that it meets the following criteria:
+
+- It's stable
+- It's fast (enough)
+- It produces reasonable output
+
+And based on our survey of the tools currently available,
+we can confidently say that
+[SwiftFormat](https://github.com/nicklockwood/SwiftFormat)
+and
+[`swift-format`](https://github.com/google/swift/tree/format)
+both meet these criteria,
+and are suitable for use in production.
+
+_(If we had to choose between the two,
+we'd probably go with `swift-format` on aesthetic grounds.
+But each developer has different preferences
+and each team has different needs,
+and you may prefer something else.)_
+
+While you're evaluating tools to incorporate into your workflow,
+you'd do well to try out
+[SwiftLint](https://github.com/realm/swiftlint),
+if you haven't already.
+In its linting capacity,
+SwiftLint can go a long way to systematically improving code quality ---
+especially for projects that are
+older and larger and have a large number of contributors.
+
+---
+
+The trouble with the debate about code style is that its large and subjective.
+By adopting these tools in our day-to-day workflows today,
+we not only benefit from better, more maintainable code today,
+but we can help move the debate forward,
+from vague feelings to precise observations about any gaps that still remain.
+
+{% asset 'vendor/resize-observer.min.js' defer="defer" %}
+{% asset 'articles/swift-format.js' defer="defer" %}
+{% asset 'articles/swift-format.css' %}
