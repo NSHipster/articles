@@ -406,13 +406,13 @@ extension ViewController: UITableViewDelegate {
 }
 ```
 
-{% note %}
+{% info %}
 If you find that your self-sizing section header or footer views
 are bleeding into their adjacent cells,
 make sure to provide an estimated row height as well,
 either in your Storyboard
 or by implementing the `tableView(_:estimatedHeightForRowAt:)` delegate method.
-{% endnote %}
+{% endinfo %}
 
 ---
 
