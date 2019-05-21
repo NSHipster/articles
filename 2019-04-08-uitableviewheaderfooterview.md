@@ -375,6 +375,34 @@ extension ViewController: UITableViewDelegate {
 
         return view
     }
+
+    <#...#>
+}
+```
+
+### Self-Sizing Header and Footer Views
+
+Using Auto Layout constraints to layout your reusable section views?
+If so,
+you can take advantage of the same self-sizing behavior of table view cells
+to accommodate trait variations and text spanning multiple lines
+in your headers and footers.
+The trick is to specify an automatic height and provide an estimate.
+This can be done in a Storyboard or in the code for your table view delegate:
+
+```swift
+extension ViewController: UITableViewDelegate {
+    <#...#>
+
+    func tableView(_ tableView: UITableView,
+                   heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+
+    func tableView(_ tableView: UITableView,
+                   estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        return 50.0
+    }
 }
 ```
 
