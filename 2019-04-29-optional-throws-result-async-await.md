@@ -1,5 +1,5 @@
 ---
-title: Optional, throws, Result, and async/await
+title: Optional, throws, Result, async/await
 author: jemmons
 category: Swift
 excerpt: "An exploration of error handling in Swift: then, now, and soon."

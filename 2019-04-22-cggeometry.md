@@ -1,5 +1,5 @@
 ---
-title: CoreGraphics Geometry Primitives and Functions
+title: CoreGraphics Geometry Primitives
 author: Mattt
 category: Cocoa
 excerpt: >-
