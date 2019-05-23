@@ -5,7 +5,7 @@ category: Swift
 excerpt: >-
   Lately,
   the Swift community has been buzzing about the latest pitch
-  to adopt an an official style guide and formatting tool for the language.
+  to adopt an official style guide and formatting tool for the language.
   Let's take a look at where we're at today,
   how the proposed `swift-format` tool stacks up,
   and what we might expect in the future.
