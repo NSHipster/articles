@@ -1039,6 +1039,5 @@ we not only benefit from better, more maintainable code today,
 but we can help move the debate forward,
 from vague feelings to precise observations about any gaps that still remain.
 
-{% asset 'vendor/resize-observer.min.js' defer="defer" %}
 {% asset 'articles/swift-format.js' defer="defer" %}
 {% asset 'articles/swift-format.css' %}
