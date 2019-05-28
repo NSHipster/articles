@@ -63,17 +63,17 @@ All told, here's what a typical table view data source implementation looks like
 
 ```swift
 class ObjectTableViewController: UITableViewController {
-    let collation = UILocalizedIndexedCollation.currentCollation()
+    let collation = UILocalizedIndexedCollation.current()
     var sections: [[AnyObject]] = []
     var objects: [AnyObject] = [] {
         didSet {
-            let selector: Selector = "localizedTitle"
-            sections = Array(count: collation.sectionTitles.count, repeatedValue: [])
+            let selector = #selector(getter: UIApplicationShortcutItem.localizedTitle)
+            sections = Array(repeating: [], count: collation.sectionTitles.count)
 
-            let sortedObjects = collation.sortedArrayFromArray(objects, collationStringSelector: selector)
+            let sortedObjects = collation.sortedArray(from: objects, collationStringSelector: selector)
             for object in sortedObjects {
-                let sectionNumber = collation.sectionForObject(object, collationStringSelector: selector)
-                sections[sectionNumber].append(object)
+                let sectionNumber = collation.section(for: object, collationStringSelector: selector)
+                sections[sectionNumber].append(object as AnyObject)
             }
 
             self.tableView.reloadData()
@@ -82,16 +82,16 @@ class ObjectTableViewController: UITableViewController {
 
     // MARK: UITableViewDelegate
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return collation.sectionTitles[section]
     }
 
-    override func sectionIndexTitlesForTableView(tableView: UITableView) -> [String] {
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         return collation.sectionIndexTitles
     }
 
-    override func tableView(tableView: UITableView, sectionForSectionIndexTitle title: String, atIndex index: Int) -> Int {
-        return collation.sectionForSectionIndexTitleAtIndex(index)
+    override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return collation.section(forSectionIndexTitle: index)
     }
 }
 ```
