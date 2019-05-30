@@ -1,6 +1,6 @@
 ---
 title: CMDeviceMotion
-author: Nate Cook, Mattt Zmuda
+author: Nate Cook, Mattt
 category: Cocoa
 excerpt: >
   Beneath the smooth glass of each iPhone
