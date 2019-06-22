@@ -566,7 +566,7 @@ is to dump the default configuration to a file
 and go from there.
 
 ```terminal
-$ swift-format -m dump-configuration .swift-format.json
+$ swift-format -m dump-configuration > .swift-format.json
 ```
 
 Running the command above populates the specified file
