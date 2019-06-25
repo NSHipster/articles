@@ -104,7 +104,7 @@ struct <#Structure#> {
 [SE-0258: Property Wrappers](https://github.com/apple/swift-evolution/blob/master/proposals/0258-property-wrappers.md)
 is currently in its third review
 (scheduled to end yesterday, at the time of publication),
-and it promises to make open up functionality like `lazy`
+and it promises to open up functionality like `lazy`
 so that library authors can implement similar functionality themselves.
 
 The proposal does an excellent job outlining its design and implementation.
@@ -132,7 +132,7 @@ But the one we were most excited about
 was that of the `@Constrained` property wrapper.
 
 Swift's standard library offer [correct](https://en.wikipedia.org/wiki/IEEE_754),
-performant floating-point number types,
+performant, floating-point number types,
 and you can have it in any size you want ---
 so long as it's
 [32](https://developer.apple.com/documentation/swift/float) or
@@ -329,7 +329,7 @@ struct Post {
 From there,
 you may have realized the potential of `didSet`
 as an avenue for greatness...
-only to realize later that `didSet` isn't called for
+only to realize later that `didSet` isn't called
 during initial property assignment.
 
 ```swift
@@ -757,7 +757,7 @@ so we'd be very interested by any proposal that addresses this issue.
 ### Wrapped Properties Can't Be Aliased
 
 Another limitation of the current proposal is that
-you can't create use instances of property wrappers as property wrappers.
+you can't use instances of property wrappers as property wrappers.
 
 Our `UnitInterval` example from before,
 which constrains wrapped values between 0 and 1 (inclusive),
@@ -931,7 +931,7 @@ Alright, let's try to wrap this thing up ---
 Swift property wrappers allow library authors access to the kind of
 higher-level behavior previously reserved for language features.
 Their potential for improving safety and reducing complexity of code is immense,
-and we've only yet to scratch the surface of what's possible.
+and we've only begun to scratch the surface of what's possible.
 
 Yet, for all of their promise,
 property wrappers and its cohort of language features debuted alongside SwiftUI
