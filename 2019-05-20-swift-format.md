@@ -535,6 +535,7 @@ You can check it out and build it from source by running the following commands:
 ```terminal
 $ git clone https://github.com/google/swift.git swift-format
 $ cd swift-format
+$ git checkout format
 $ git submodule update --init
 $ swift build
 ```
