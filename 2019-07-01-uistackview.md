@@ -330,7 +330,7 @@ and X axis for vertical stacks.
 You can set it to one of the following values for both vertical and horizontal stacks:
 
 - `fill` (default): The stack view ensures that the arranged views fill _all_ the available space on the cross axis.
-- `leading`/`trailing`: All subviews are aligned to the leading or trailing edge of the stack view along the cross axis. For vertical stacks, these correspond to the top edge and bottom edge respectively. For horizontal stacks, the language direction will affect the outcome: in left-to-right languages the leading edge will correspond to the left, while the trailing one will correspond to the right. The reverse is true for right-to-left languages.
+- `leading`/`trailing`: All subviews are aligned to the leading or trailing edge of the stack view along the cross axis. For horizontal stacks, these correspond to the top edge and bottom edge respectively. For vertical stacks, the language direction will affect the outcome: in left-to-right languages the leading edge will correspond to the left, while the trailing one will correspond to the right. The reverse is true for right-to-left languages.
 - `center`: The arranged subviews are centered along the cross axis.
 
 For horizontal stacks, four additional options are available, two of which are redundant:
