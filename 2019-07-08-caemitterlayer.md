@@ -19,8 +19,8 @@ in another sense, _"to celebrate"_.
 
 Confetti gets tossed around a lot these days,
 but not nearly as in the 20<sup>th</sup> century
-and its iconic ticker-tape parades
-down the streets of New York City
+with its iconic ticker-tape parades
+down the streets of New York City,
 like the one [welcoming home the Apollo 11 astronauts](https://en.wikipedia.org/wiki/Ticker_tape_parade#/media/File:Apollo_11_ticker_tape_parade_1.jpg)
 50 years ago.
 Alas, the rise of digital technology made obsolete the stock tickers
@@ -32,7 +32,7 @@ And as a result, the tradition has become much less commonplace today.
 As it were,
 _The Washington Post_ just reported today
 that Monday's ticker-tape parade
-celebrating the U.S. women’s soccer team World Cup victory
+celebrating the U.S. women’s soccer team on their World Cup victory
 was
 [_"The 207th time New Yorkers have dumped office trash on their heroes"_](https://www.washingtonpost.com/history/2019/07/09/uswnts-parade-th-time-new-yorkers-have-dumped-office-trash-their-heroes/).
 
