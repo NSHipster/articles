@@ -430,7 +430,7 @@ final class ConfettiView: UIView {
             transition.type = .fade
             transition.duration = 1
             transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
-    <#❹#>  transition.setValue(layer, forKey: kAnimationLayerKey)
+            transition.setValue(layer, forKey: kAnimationLayerKey) <#❹#>
             transition.isRemovedOnCompletion = false
 
             layer.add(transition, forKey: nil)
