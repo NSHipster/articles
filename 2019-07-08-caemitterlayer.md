@@ -679,7 +679,7 @@ CGAnimateImageAtURLWithBlock(imageURL, options) { (index, cgimage, stop) in
 ---
 
 Meanwhile, animated PNGs have been supported in Safari for ages,
-with a far simpler API:
+and with a far simpler API:
 
 ```html
 <img src="animated.png" />
