@@ -694,10 +694,9 @@ let's talk about a shiny, new(-ish) web standard called
 [WebGL](https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API).
 
 With just [a few hundred lines of JavaScript and GL shader language]({% asset 'articles/caemitterlayer.js' @path %}),
-you too can render confetti to your very own
+you too can render confetti to your very own blog about
 <del>web development</del>
-<ins>Objective-C, Swift, and Cocoa</ins>
-blog.
+<ins>Objective-C, Swift, and Cocoa</ins>.
 
 <picture id="webgl-confetti">
 <canvas width="500" height="500"></canvas>
