@@ -196,7 +196,7 @@ let contents: [Content] = [
 For brevity,
 we're skipping over how we build shape paths
 or render emoji characters as images,
-but there's some good stuff there, too.
+but there's some good stuff about `UIGraphicsImageRenderer` in there, too.
 
 <details>
 
