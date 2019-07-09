@@ -631,7 +631,7 @@ and composite it directly to your app or on the web.
 
 For more details,
 check out
-[WWDC 2019 Session 506](https://developer.apple.com/videos/play/wwdc2019/506/)
+[WWDC 2019 Session 506](https://developer.apple.com/videos/play/wwdc2019/506/).
 
 ### Animated PNGs
 
