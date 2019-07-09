@@ -320,7 +320,7 @@ private final class Layer: CAEmitterLayer {
 }
 ```
 
-We'll call this `configure(with:)` from our confetti view,
+We'll call this `configure(with:)` method from our confetti view,
 which will be our next and final step.
 
 {% info %}
