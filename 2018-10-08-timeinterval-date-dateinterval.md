@@ -50,10 +50,10 @@ Seconds are the fundamental unit of time.
 They're also the only unit that has a fixed duration.
 
 Months vary in length
-(_30 days hath September..._),
+(_"30 days hath September..."_),
 as do years
-(_53 weeks hath 71 years every cycle of 400..._)
-certain years pick up an extra day
+(_"53 weeks hath 71 years every cycle of 400..."_).
+Certain years pick up an extra day
 (_leap years are misnamed if you think about it_),
 and days gain and lose an hour from daylight saving time
 (_thanks, Benjamin Franklin_).
