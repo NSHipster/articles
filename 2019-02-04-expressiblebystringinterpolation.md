@@ -174,10 +174,6 @@ that we'll use to specify which
 ```swift
 import Foundation
 
-#if swift(<5)
-#error("Download Xcode 10.2 Beta 2 to see this in action")
-#endif
-
 extension DefaultStringInterpolation {
     mutating func appendInterpolation(_ value: Date,
                                       component: Calendar.Component)
