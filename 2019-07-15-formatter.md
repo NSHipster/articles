@@ -1068,10 +1068,10 @@ listFormatter.string(from: [1, 2, 3])
 {% warning %}
 
 If you set a custom locale on your list formatter,
-be sure to set that locale for the underlying formatter
-(and be mindful of value semantics, too ---
+be sure to set that locale for the underlying formatter.
+And be mindful of value semantics, too ---
 without the re-assignment to `itemFormatter` in the example below,
-you'd get a French list of English ordinals instead).
+you'd get a French list of English ordinals instead.
 
 ```swift
 let 🇫🇷 = Locale(identifier: "fr_FR")
