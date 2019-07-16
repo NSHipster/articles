@@ -1020,7 +1020,7 @@ This is `joined(by:)` with locale-aware serial and penultimate delimiters.
 
 For simple lists of strings,
 you don't even need to bother with instantiating `ListFormatter` ---
-simply call the `localizedString(byJoining:)` class method.
+just call the `localizedString(byJoining:)` class method.
 
 ```swift
 import Foundation
