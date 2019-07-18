@@ -198,7 +198,7 @@ unlike other implementations such CSS _flexbox_ and its `flex-wrap` property.
 {% info %}
 
 This property is often called `orientation` in other platforms,
-including Apple's own `NSSTackView`.
+including Apple's own `NSStackView`.
 Notwithstanding,
 both iOS and macOS use `vertical`/`horizontal` for the values,
 instead of the less intuitive `row`/`column` that you may come across elsewhere.
