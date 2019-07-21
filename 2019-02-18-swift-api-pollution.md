@@ -280,7 +280,7 @@ dump("🏭💨" as CustomStringConvertible) // "🏭💨"
 ### <del>Scoped Import Declarations</del>
 
 {% warning %}
-As discussed in [a previous article](/swift-import-declarations)
+As discussed in [a previous article](/import)
 you can use Swift import declarations to resolve naming collisions.
 
 Unfortunately,

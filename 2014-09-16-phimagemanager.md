@@ -3,16 +3,17 @@ title: PHImageManager
 author: Mattt
 category: Cocoa
 excerpt: "Yesterday's article described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you."
+retired: true
 status:
-    swift: 2.0
-    reviewed: September 15, 2015
+  swift: 2.0
+  reviewed: September 15, 2015
 ---
 
 [Yesterday's article](https://nshipster.com/image-resizing/) described various techniques for resizing images using APIs from the UIKit, Core Graphics, Core Image, and Image I/O frameworks. However, that article failed to mention some rather extraordinary functionality baked into the new Photos framework which takes care of all of this for you.
 
 For anyone developing apps that manage photos or videos, meet your new best friend: `PHImageManager`.
 
-* * *
+---
 
 New in iOS 8, the Photos framework is something of a triumph for the platform. Photography is one of the key verticals for the iPhone: in addition to being the [most popular cameras in the world](https://www.flickr.com/cameras), photo & video apps are regularly featured on the App Store. This framework goes a long way to empower apps to do even more, with a shared set of tools and primitives.
 
@@ -315,7 +316,7 @@ The initial request attempts to get the most readily available representation of
 
 > `normalizedCropRect` is normalized for `origin` and `size` components within the inclusive range `0.0` to `1.0`. An affine transformation scaling on the inverse of the original frame makes for an easy calculation.
 
-* * *
+---
 
 From its very inception, iOS has been a balancing act between functionality and integrity. And with every release, a combination of thoughtful affordances and powerful APIs have managed to expand the role third-party applications without compromising security or performance.
 

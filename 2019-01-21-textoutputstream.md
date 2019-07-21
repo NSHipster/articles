@@ -62,7 +62,7 @@ The last parameter, `output`
 takes a mutable instance of a generic `Target` type
 that conforms to the `TextOutputStream` protocol.
 
-An instance of a type adopting to `TextOutputStream`
+An instance of a type conforming to `TextOutputStream`
 can be passed to the `print(_:to:)` function
 to capture and redirect strings from standard output.
 

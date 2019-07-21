@@ -3,9 +3,10 @@ title: "@"
 author: Mattt
 category: Objective-C
 tags: nshipster
-excerpt: "If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and `@`'s. \"at\" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C."
+excerpt: >-
+  If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and `@`'s. "at" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
@@ -14,11 +15,11 @@ This term can be appropriated to describe how seasoned individuals might disting
 
 Some just stick out like sore thumbs:
 
-Perl, with all of its short variable names with special characters, reads like [Q\*bert swearing](http://imgur.com/WyG2D).
+Perl, with all of its short variable names with special characters, reads like [Q\*bert swearing]({% asset qbert.png @path %}).
 
 Lisp, whose profusion of parentheses is best captured by [that old joke](http://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) about the Russians in the 1980's proving that they had stolen the source code of some SDI missile interceptor code by showing the last page:
 
-``` lisp
+```lisp
                 )))
               ) )
             ))) ) ))
@@ -147,7 +148,7 @@ The beauty of protocols is that they allow programmers to design contracts that 
 
 ...or at least that's idea, right?
 
-- `@protocol`...`@end`: Defines a set of methods to be implemented by any class  conforming to the protocol, as if they were added to the interface of that class.
+- `@protocol`...`@end`: Defines a set of methods to be implemented by any class conforming to the protocol, as if they were added to the interface of that class.
 
 Architectural stability and expressiveness without the burden of coupling--protocols are awesome.
 

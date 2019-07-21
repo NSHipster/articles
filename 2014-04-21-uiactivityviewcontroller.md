@@ -7,7 +7,7 @@ excerpt: >-
   share and perform actions on strings, images, URLs,
   and other items within an app.
 revisions:
-  "2014-03-31": First Publication
+  "2014-03-31": Original publication
   "2018-12-05": Updated for iOS 12 and Swift 4.2
 status:
   swift: 4.2

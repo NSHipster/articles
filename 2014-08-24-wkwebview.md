@@ -2,15 +2,14 @@
 title: WKWebView
 author: Mattt
 category: Cocoa
-excerpt: 
-    iOS has a complicated relationship with the web. 
-    And it goes back to the very inception of the platform over a decade ago.
+excerpt: iOS has a complicated relationship with the web.
+  And it goes back to the very inception of the platform over a decade ago.
 revisions:
-    "2014-08-24": First Publication
-    "2018-07-25": Updated for iOS 12 and macOS Mojave
+  "2014-08-24": Original publication
+  "2018-07-25": Updated for iOS 12 and macOS Mojave
 status:
-    swift: 4.2
-    reviewed: July 25, 2018
+  swift: 4.2
+  reviewed: July 25, 2018
 ---
 
 iOS has a complicated relationship with the web.

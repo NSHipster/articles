@@ -4,14 +4,14 @@ author: Mattt
 category: Xcode
 tag: popular
 excerpt: >
-    App developers often forget to test how their apps perform
-    under less-than-ideal networking environments.
-    Learn how you can use the Network Link conditioner 
-    to simulate a spotty Internet connection on your device.
+  App developers often forget to test how their apps perform
+  under less-than-ideal networking environments.
+  Learn how you can use the Network Link conditioner 
+  to simulate a spotty Internet connection on your device.
 revisions:
-    "2018-07-18": Updated for Xcode 10
+  "2018-07-18": Updated for Xcode 10
 status:
-    swift: n/a
+  swift: n/a
 ---
 
 Product design is about empathy.

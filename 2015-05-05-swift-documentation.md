@@ -2,21 +2,20 @@
 title: Swift Documentation
 author: Mattt & Nate Cook
 authors:
-    - Nate Cook
-    - Mattt
+  - Nate Cook
+  - Mattt
 category: Swift
 tags: swift
-excerpt: 
-    Code structure and organization is a matter of pride for developers. 
-    Clear and consistent code signifies clear and consistent thought.
+excerpt: Code structure and organization is a matter of pride for developers.
+  Clear and consistent code signifies clear and consistent thought.
 revisions:
-    "2014-07-28": First Publication
-    "2015-05-05": Expanded Details
-    "2015-09-30": Updated for Xcode 7 & Swift 2.0
-    "2018-07-11": Updated for Xcode 10 & Swift 4.2
+  "2014-07-28": Original publication
+  "2015-05-05": Expanded details
+  "2015-09-30": Updated for Xcode 7 & Swift 2.0
+  "2018-07-11": Updated for Xcode 10 & Swift 4.2
 status:
-    swift: 4.2
-    reviewed: July 11, 2018
+  swift: 4.2
+  reviewed: July 11, 2018
 ---
 
 Code structure and organization is a matter of pride for developers.

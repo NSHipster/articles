@@ -8,7 +8,7 @@ excerpt: >-
   computers will have to work overtime 
   to figure out what the heck we're all talking about.
 revisions:
-  "2013-06-02": First Publication
+  "2013-06-02": Original publication
   "2018-08-29": Updated for Swift 4.2
 status:
   swift: 4.2
@@ -307,7 +307,7 @@ it's not a particularly _nice_ API to use.
 With all of the charms of its parent class,
 [`NSRegularExpression`](https://nshipster.com/nsregularexpression/),
 the same, cumbersome initialization pattern of
-[NSLinguisticTagger](https://nshipster.com/nltagger/),
+[NSLinguisticTagger](https://nshipster.com/nslinguistictagger/),
 and an
 [incomplete Swift interface](https://developer.apple.com/documentation/foundation/nstextcheckingtypes),
 `NSDataDetector` has an interface that only a mother could love.

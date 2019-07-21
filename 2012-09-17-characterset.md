@@ -7,7 +7,7 @@ excerpt: >-
   Before we use it to trim, filter, and search through text,
   we should take a closer look to see what's actually going on.
 revisions:
-  "2012-09-17": First Publication
+  "2012-09-17": Original publication
   "2018-12-12": Updated for Swift 4.2
 status:
   swift: 4.2

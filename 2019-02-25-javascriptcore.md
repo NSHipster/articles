@@ -8,7 +8,7 @@ excerpt: >-
   Despite any efforts we may take to change or replace it
   we'd be hard-pressed to deny its usefulness.
 revisions:
-  "2015-01-19": Initial Publication
+  "2015-01-19": Original publication
   "2019-02-25": Updated for Swift 5
 status:
   swift: 5.0

@@ -7,7 +7,7 @@ excerpt: >
   for the broader concept of size classes,
   `UISplitViewController` remains a workhorse API for writing   Universal apps.
 revisions:
-  "2014-11-03": First Publication
+  "2014-11-03": Original publication
   "2018-09-26": Updated for iOS 12 and Swift 4.2
 status:
   swift: 4.2

@@ -10,7 +10,7 @@ excerpt: >-
   spell check, grammar check, and auto-correct to 
   auto-summarization and semantic analysis.
 revisions:
-  "2014-03-10": First Publication
+  "2014-03-10": Original publication
   "2019-01-07": Updated for Swift 4.2
 status:
   swift: 4.2

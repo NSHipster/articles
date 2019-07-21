@@ -8,9 +8,10 @@ excerpt: >-
   there is very little to go on for Cocoa. 
   (Or if there has, perhaps it was poetically ephemeral itself).
 revisions:
-  "2014-03-03": First Publication
+  "2014-03-03": Original publication
   "2018-10-24": Updated for Swift 4.2
-  "2018-11-21": Corrected Use of `url(for:in:appropriateFor:create:)`
+  "2018-11-21": Corrected use of `url(for:in:appropriateFor:create:)`
+  "2018-11-21": Corrected use of `url(for:in:appropriateFor:create:)`
   "2019-03-09": Corrected use of deprecated `NSData.WritingOptions.atomicWrite`
 status:
   swift: 4.2
@@ -76,7 +77,7 @@ the preferred (albeit more complicated) approach
 is to call the `FileManager` method `uri(for:in:appropriateFor:create:)`.
 
 ```swift
-let destinationURL: URL
+let destinationURL: URL = <#/path/to/destination#>
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
                                 in: .userDomainMask,
@@ -85,7 +86,7 @@ let temporaryDirectoryURL =
 ```
 
 ```objc
-NSURL *destinationURL;
+NSURL *destinationURL = <#/path/to/destination#>;
 
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
@@ -156,7 +157,7 @@ Now that we have an appropriate directory and a unique filename,
 let's put them together to create our temporary file:
 
 ```swift
-let destinationURL: URL
+let destinationURL: URL = <#/path/to/destination#>
 
 let temporaryDirectoryURL =
     try FileManager.default.url(for: .itemReplacementDirectory,
@@ -171,7 +172,7 @@ let temporaryFileURL =
 ```
 
 ```objc
-NSURL *destinationURL;
+NSURL *destinationURL = <#/path/to/destination#>;
 
 NSFileManager *fileManager = [NSFileManager defaultManager];
 NSError *error = nil;
@@ -201,13 +202,13 @@ The simplest way to write data to a file
 is to call the `Data` method `write(to:options)`:
 
 ```swift
-let data: Data
+let data: Data = <#some data#>
 try data.write(to: temporaryFileURL,
                options: .atomic)
 ```
 
 ```objc
-NSData *data;
+NSData *data = <#some data#>;
 NSError *error = nil;
 [data writeToURL:temporaryFileURL
          options:NSDataWritingAtomic
@@ -292,7 +293,7 @@ If you already know where the file's going to live,
 you can use `FileManager` to move it to its permanent home:
 
 ```swift
-let fileURL: URL
+let fileURL: URL = <#/path/to/file#>
 try FileManager.default.moveItem(at: temporaryFileURL,
                                  to: fileURL)
 ```
@@ -300,7 +301,7 @@ try FileManager.default.moveItem(at: temporaryFileURL,
 ```objc
 NSFileManager *fileManager = [NSFileManager defaultManager];
 
-NSURL *fileURL;
+NSURL *fileURL = <#/path/to/file#>;
 NSError *error = nil;
 [fileManager moveItemAtURL:temporaryFileURL
                      toURL:fileURL

@@ -8,7 +8,7 @@ excerpt: >-
   They are the very execution of an executable;
   the teleological driver of every process.
 revisions:
-  "2014-08-11": First Publication
+  "2014-08-11": Original publication
   "2018-10-03": Updated for Swift 4.2
 status:
   swift: 4.2
