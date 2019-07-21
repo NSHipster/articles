@@ -148,16 +148,6 @@ Going through all of the necessary methods to override in an `NSIncrementalStore
 
 What makes `NSIncrementalStore` so exciting is that you _can_ build a store on your favorite technology, and drop that into any existing Core Data stack with little to no additional configuration.
 
-So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
-
-## AFIncrementalStore
-
-[`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) is an NSIncrementalStore subclass that uses [AFNetworking](https://github.com/afnetworking/afnetworking) to automatically request resources as properties and relationships are needed.
-
-What this means is that you can now write apps that communicate with a webservice _without exposing any of the details about the underlying API_. Any time a fetch request is made or an attribute or relationship faults, an asynchronous network request will fetch that information from the webservice.
-
-Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.
-
 ---
 
 Even though `NSIncrementalStore` has been around since iOS 5, we're still a long way from even beginning to realize its full potential. The future is insanely bright, so you best don your aviators, grab an iced latte and start coding something amazing.
