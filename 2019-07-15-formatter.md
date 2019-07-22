@@ -845,11 +845,11 @@ formatter.localizedString(from: DateComponents(day: -2)) // "vorgestern"
 
 ## Formatting People and Places
 
-| Class                           | Example Output                              | Availability                 |
-| ------------------------------- | ------------------------------------------- | ---------------------------- |
-| `PersonNameComponentsFormatter` | "J. Appleseed"                              | iOS 9.0+ <br/> macOS 10.11+  |
-| `CNContactFormatter`            | "Applessed, Johnny"                         | iOS 13.0+ <br/> macOS 10.15+ |
-| `CNPostalAddressFormatter`      | "1 Infinite Loop\\n<br/>Cupertino CA 95014" | iOS 13.0+ <br/> macOS 10.15+ |
+| Class                           | Example Output                              | Availability                |
+| ------------------------------- | ------------------------------------------- | --------------------------- |
+| `PersonNameComponentsFormatter` | "J. Appleseed"                              | iOS 9.0+ <br/> macOS 10.11+ |
+| `CNContactFormatter`            | "Applessed, Johnny"                         | iOS 9.0+ <br/> macOS 10.11+ |
+| `CNPostalAddressFormatter`      | "1 Infinite Loop\\n<br/>Cupertino CA 95014" | iOS 9.0+ <br/> macOS 10.11+ |
 
 {% warning %}
 
