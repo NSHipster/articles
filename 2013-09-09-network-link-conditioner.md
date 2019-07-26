@@ -67,6 +67,9 @@ and double-click "Network Link Condition.prefPane".
 
 ![System Preferences]({% asset network-link-conditioner-install.png @path %})
 
+Now you can either access Network Link Condition preference pane from Spotlight Search. If you would like to access it from the System Preferences you would need to move it to the public directory and you can do it with this command from the terminal:
+`sudo mv ~/Library/PreferencePanes/Network\ Link\ Conditioner.prefPane /Library/PreferencePanes/`
+
 Click on the Network Link Conditioner preference pane
 at the bottom of System Preferences.
 
