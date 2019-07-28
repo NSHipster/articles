@@ -166,7 +166,7 @@ format strings are something to be avoided unless absolutely necessary.
 #### Rounding & Significant Digits
 
 To prevent numbers from getting annoyingly pedantic
-_("thirty-two point three three --- repeating, of course…")_,
+_("thirty-three point three three --- repeating, of course…")_,
 you'll want to get a handle on `NumberFormatter`'s rounding behavior.
 Here, you have two options:
 
