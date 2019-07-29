@@ -24,10 +24,10 @@ this is what it takes to make something insanely great.
 
 And so we invest in reaching beyond our own operational model of the world.
 We tailor our experience to
-[different locales](https://nshipster.com/nslocalizedstring/).
+[different locales](/nslocalizedstring/).
 We consider the usability implications of
-[screen readers or other assistive technologies](https://nshipster.com/uiaccessibility/).
-We [continuously evaluate](https://nshipster.com/unit-testing/)
+[screen readers or other assistive technologies](/uiaccessibility/).
+We [continuously evaluate](/unit-testing/)
 our implementation against these expectations.
 
 There is, however,
