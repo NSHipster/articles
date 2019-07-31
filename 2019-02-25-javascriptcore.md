@@ -61,8 +61,8 @@ by calling the corresponding method found in the following table:
 | Class           | `toObject`<br>`toObjectOfClass:`                    | _custom type_                                     | _custom type_                                  |
 
 JavaScript evaluation isn't limited to single statements.
-When you evaluate code that declare a function or variable,
-its saved into the context's object space.
+When you evaluate code that declares a function or variable,
+it’s saved into the context's object space.
 
 ```swift
 context.evaluateScript(#"""
