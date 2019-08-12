@@ -169,7 +169,7 @@ is another matter entirely.
 : Just because the computer can represent and render a character
 doesn't mean that you, as a user,
 can produce that character in the first place.
-Typing on a <span class="small-caps">QWERTY</abbr> keyboard,
+Typing on a <span class="small-caps">QWERTY</span> keyboard,
 we take for granted being able to type the <kbd>j</kbd> key
 to produce the letter "j".
 But what if you wanted to type "ʝ"?
