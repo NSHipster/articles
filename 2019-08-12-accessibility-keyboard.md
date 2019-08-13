@@ -3,8 +3,6 @@ title: macOS Accessibility Keyboard
 author: Mattt
 category: Miscellaneous
 excerpt: >-
-  This week on NSHipster,
-  we're taking a look at the macOS Accessibility Keyboard.
   Beyond its immediate usefulness as an assistive technology,
   the Accessibility Keyboard challenges us to think differently
   about the nature of input methods
