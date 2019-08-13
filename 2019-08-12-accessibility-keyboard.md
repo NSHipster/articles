@@ -170,7 +170,7 @@ can produce that character in the first place.
 Typing on a <span class="small-caps">QWERTY</span> keyboard,
 we take for granted being able to type the <kbd>j</kbd> key
 to produce the letter "j".
-But what if you wanted to type "ʝ"?
+But what if you wanted to type "[ʝ](https://en.wikipedia.org/wiki/Voiced_palatal_fricative)"?
 <br/><br/>
 For all too many people,
 the answer is _"Google and copy-paste"_.
