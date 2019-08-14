@@ -54,7 +54,7 @@ or otherwise superseded by more capable APIs (that are also formatters).
 
 {% error %}
 There are so many formatters in Apple SDKs
-that it's impossible to keep them all working memory.
+that it's impossible to keep them all in working memory.
 Apparently, this is as true of computers as it is for humans;
 at the time of writing,
 [searching for "formatter" on developer.apple.com](https://developer.apple.com/search/?q=formatter&type=Reference)
@@ -848,7 +848,7 @@ formatter.localizedString(from: DateComponents(day: -2)) // "vorgestern"
 | Class                           | Example Output                              | Availability                |
 | ------------------------------- | ------------------------------------------- | --------------------------- |
 | `PersonNameComponentsFormatter` | "J. Appleseed"                              | iOS 9.0+ <br/> macOS 10.11+ |
-| `CNContactFormatter`            | "Applessed, Johnny"                         | iOS 9.0+ <br/> macOS 10.11+ |
+| `CNContactFormatter`            | "Appleseed, Johnny"                         | iOS 9.0+ <br/> macOS 10.11+ |
 | `CNPostalAddressFormatter`      | "1 Infinite Loop\\n<br/>Cupertino CA 95014" | iOS 9.0+ <br/> macOS 10.11+ |
 
 {% warning %}
