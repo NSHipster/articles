@@ -533,15 +533,15 @@ it's as if NSHipster.com were parading down the streets of New York City
 
 ---
 
-I'll post the full sample code later this week,
-once I have a chance to spruce it up,
-get proper tests and documentation,
-and run it through Instruments a few more times.
+The full `ConfettiView` source
+[is available on GitHub](https://github.com/NSHipster/ConfettiView),
+and can be easily integrated into your project using
+[CocoaPods](https://cocoapods.org).
 
-...which doesn't make for a particularly snazzy conclusion.
-
+But ending on such a practical note
+doesn't make for a particularly snazzy conclusion.
 So instead,
-we'll end with a bonus round detailing seven other ways
+how about a quick bonus round detailing seven other ways
 that you could implement confetti instead:
 
 ---
