@@ -67,7 +67,7 @@ struct Parcel: Identifiable {
 {% info %}
 
 Our first introduction to the `Identifiable` actually came by way of SwiftUI;
-its
+it's
 [thanks to the community](https://forums.swift.org/t/move-swiftuis-identifiable-protocol-and-related-types-into-the-standard-library/25713)
 that the type was brought into the fold of the standard library.
 
