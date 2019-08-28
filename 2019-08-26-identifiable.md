@@ -66,15 +66,16 @@ struct Parcel: Identifiable {
 
 {% info %}
 
-Our first introduction to the `Identifiable` actually came by way of SwiftUI;
+Our first introduction to the `Identifiable` protocol 
+actually came by way of SwiftUI; 
 it's
 [thanks to the community](https://forums.swift.org/t/move-swiftuis-identifiable-protocol-and-related-types-into-the-standard-library/25713)
 that the type was brought into the fold of the standard library.
 
 Though
 [as evidenced by GitHub search results](https://github.com/search?q=%22protocol+Identifiable%22&type=Code),
-many of us were already working with `Identifiable` protocols of similar design.
-Which begs the question:
+many of us were already working with `Identifiable` protocols of similar design...
+which prompts the question:
 _When was the `Identifiable` protocol really introduced?_ 🤔
 
 {% endinfo %}
@@ -245,8 +246,8 @@ And if you found yourself using this pattern extensively,
 you might consider factoring everything into a self-contained
 [property wrapper](/propertywrapper/).
 
-Monotonically increasing sequences have a lot of benefits:
-they're easy to implement,
+Monotonically increasing sequences have a lot of benefits, 
+and they're easy to implement.
 
 This kind of approach can provide unique identifiers for records,
 but only within the scope of the device on which the program is being run
@@ -404,7 +405,7 @@ case sensitivity,
 the presence or absence of a trailing slash (`/`),
 and the order of query components
 all affect equality comparison.
-As do extrinsic, semantic concerns like
+So do extrinsic, semantic concerns like
 a server's policy to upgrade `http` to `https`,
 redirect from `www` to the apex domain,
 or replace an IP address with a
@@ -497,7 +498,7 @@ most often this will be declared as a constant (that is, with `let`):
 ```swift
 import Foundation
 
-// Style 3: id requirement fulfilled by stored property
+// Style 1: id requirement fulfilled by stored property
 extension Product: Identifiable {
     let id: UUID
 }
@@ -519,7 +520,7 @@ struct Product {
     var uuid: UUID
 }
 
-// Style 3: id requirement fulfilled by computed property
+// Style 2: id requirement fulfilled by computed property
 extension Product: Identifiable {
     var id { uuid }
 }
