@@ -66,8 +66,8 @@ struct Parcel: Identifiable {
 
 {% info %}
 
-Our first introduction to the `Identifiable` protocol 
-actually came by way of SwiftUI; 
+Our first introduction to the `Identifiable` protocol
+actually came by way of SwiftUI;
 it's
 [thanks to the community](https://forums.swift.org/t/move-swiftuis-identifiable-protocol-and-related-types-into-the-standard-library/25713)
 that the type was brought into the fold of the standard library.
@@ -130,53 +130,22 @@ the very same behavior can lead to confusing results further down the stack,
 where you're not as clear about how different parts work with one another.
 
 ```swift
-var trackedPackages: [Parcel] = <#...#>
+var trackedPackages: Set<Parcel> = <#...#>
 trackedPackages.contains(Parcel(id: "123456789012")) // false (?)
 ```
 
-_But wait, would that `contains` call fail
-if `trackedPackages` were a `Dictionary` instead of an `Array`?_
-
-The answer is... _it depends_!
-
-To find out why,
-we need to talk briefly about the `Hashable` protocol.
+On the subject of `Set`,
+let's take a moment to talk about the `Hashable` protocol.
 
 ## Identifiable vs. Hashable
 
-Recall [our previous article on the subject](/hashable/),
-where we noted that the Swift compile can
-automatically synthesize conformance to `Hashable`.
-
-If `Parcel` were to adopt `Hashable`
-and _not_ provide its own implementation of `hash(into:)`,
-the result of calling `trackedPackages.contains(_:)` would be **false**,
-because the synthesized implementation factors both `id` and `location`
-into the hash value.
-
-If we instead provide our own implementation
-that only considers `id`,
-then `trackedPackages.contains(_:)` would return **true**,
-
-```swift
-extension Parcel: Hashable {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-```
-
-However,
-taking this additional step
-flouts a convention for hash values
-to be state-dependent.
-So long as `Equatable` semantics hold,
-everything should still work as expected,
-albeit somewhat slower from dictionary access no longer being
-a constant-time (`O(1)`) operation.
-
-`Identifiable` and `Hashable` have similar and related semantics,
-but they have some important distinctions:
+In [our article about `Hashable`](/hashable/),
+we described how `Set` and `Dictionary` use a calculated hash value
+to provide constant-time (`O(1)`) access to elements in a collection.
+Although the hash value used to bucket collection elements
+may bear a passing resemblance to identifiers,
+`Hashable` and `Identifiable` have some important distinctions
+in their underlying semantics:
 
 - Unlike identifiers,
   hash values are typically _state-dependent_,
@@ -195,7 +164,7 @@ In short,
 hash values are similar to
 but no replacement for identifiers.
 
-So what makes for a good identifier, anyway?
+_So what makes for a good identifier, anyway?_
 
 ## Choosing ID Types
 
@@ -246,7 +215,7 @@ And if you found yourself using this pattern extensively,
 you might consider factoring everything into a self-contained
 [property wrapper](/propertywrapper/).
 
-Monotonically increasing sequences have a lot of benefits, 
+Monotonically increasing sequences have a lot of benefits,
 and they're easy to implement.
 
 This kind of approach can provide unique identifiers for records,
