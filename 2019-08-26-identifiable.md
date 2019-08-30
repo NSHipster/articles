@@ -468,7 +468,7 @@ most often this will be declared as a constant (that is, with `let`):
 import Foundation
 
 // Style 1: id requirement fulfilled by stored property
-extension Product: Identifiable {
+struct Product: Identifiable {
     let id: UUID
 }
 ```
