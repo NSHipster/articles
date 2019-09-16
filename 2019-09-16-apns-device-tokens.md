@@ -129,7 +129,7 @@ and send it using [`NSURLConnection`](https://developer.apple.com/documentation/
 but you'd probably also want to include some additional information ---
 like a username or email address ---
 to associate it with an account in the app.
-That meant that the `data` you set as a requests HTTP body
+That meant that the `data` you set as a request's HTTP body
 couldn't just be the device token.
 
 Sending an HTTP `POST` body with`application/x-www-form-urlencoded`
