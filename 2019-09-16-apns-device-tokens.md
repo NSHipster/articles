@@ -49,8 +49,8 @@ Of course, there are _many_ other cases
 that offer simpler and more comprehensive illustrations of
 the role of precedent in American jurisprudence,
 but we figured this one would be the least likely to cause readers to think
-that NSHipster got acquired by
-[Lawfare](https://www.lawfareblog.com) or something.
+that NSHipster got acqui-hired by
+[Atrium](https://www.atrium.co) or something.
 
 {% endinfo %}
 
@@ -208,6 +208,22 @@ push notification device token registration.
 
 That was until Swift 3 and iOS 10.
 
+{% info %}
+
+Granted,
+there's no single, canonical way to represent binary data as text ---
+the same token could be represented in Base64 as
+`"llslHGyxkm3jyzZv37Ft3ea5CGqKPKyeX4V2eTduq3w="`
+or in [Ascii85 encoding](https://en.wikipedia.org/wiki/Ascii85) as
+`"Q<PXTCpB.?j3'?!hm%%Sk.(b4MEIu3?\NZK2f>[D"`
+or in [Base🧑 encoding](https://github.com/Flight-School/Guide-to-Swift-Strings-Sample-Code#base-encoding) as
+`"👩🏻‍🦱👩🏻‍🦱👩🏼‍🦳👩🏻‍🦱👨🏻‍🦱👨🏻‍🦰👩🏾👩🏽‍🦳👩🏻‍🦰👩🏻‍🦲👩🏿👩🏻👩🏾👩🏾‍🦰👨🏿👩🏽‍🦱👩🏿👩🏿‍🦳👨🏻👩🏽👩🏿👩👨🏿‍🦰👩🏿‍🦱👨‍🦱👨🏻‍🦰👩🏼‍🦱👨🏼👨🏽👨🏼👩🏾👩👨🏾‍🦲👩🏿‍🦰👨🏾‍🦰👩🏾‍🦳👩👨🏽‍🦳👨🏿‍🦳👩🏽‍🦰👩🏼‍🦱👩🏿👩🏽‍🦲🤡"`.
+But if your push notification service provider expects device tokens
+in its classic, Base16 hexadecimal string representation,
+you should do adopt the approach described above.
+
+{% endinfo %}
+
 ### Relitigating the Past with Swift 3
 
 By 2016,
@@ -269,6 +285,7 @@ If your implementation of
 involves converting `deviceToken` to a `String`
 and calling `replacingOccurrences(of:with:)`,
 this approach won't work in apps compiled with the iOS 13 SDK.
+**This is true whether your app is written in Swift or Objective-C**.
 
 {% endwarning %}
 
@@ -315,30 +332,67 @@ For clarity, let's break this down and explain each part:
   `joined()` concatenates each element into a single string.
 
 {% info %}
-Granted,
-there's no single, canonical way to represent binary data as text ---
-the same token could be represented in Base64 as
-`"llslHGyxkm3jyzZv37Ft3ea5CGqKPKyeX4V2eTduq3w="`
-or in [Ascii85 encoding](https://en.wikipedia.org/wiki/Ascii85) as
-`"Q<PXTCpB.?j3'?!hm%%Sk.(b4MEIu3?\NZK2f>[D"`
-or in [Base🧑 encoding](https://github.com/Flight-School/Guide-to-Swift-Strings-Sample-Code#base-encoding) as
-`"👩🏻‍🦱👩🏻‍🦱👩🏼‍🦳👩🏻‍🦱👨🏻‍🦱👨🏻‍🦰👩🏾👩🏽‍🦳👩🏻‍🦰👩🏻‍🦲👩🏿👩🏻👩🏾👩🏾‍🦰👨🏿👩🏽‍🦱👩🏿👩🏿‍🦳👨🏻👩🏽👩🏿👩👨🏿‍🦰👩🏿‍🦱👨‍🦱👨🏻‍🦰👩🏼‍🦱👨🏼👨🏽👨🏼👩🏾👩👨🏾‍🦲👩🏿‍🦰👨🏾‍🦰👩🏾‍🦳👩👨🏽‍🦳👨🏿‍🦳👩🏽‍🦰👩🏼‍🦱👩🏿👩🏽‍🦲🤡"`.
-But if your push notification service provider expects device tokens
-in its classic, Base16 hexadecimal string representation,
-you should do adopt the approach described above.
+
+We'd have preferred to use the `String(_:radix:)` initializer
+to create a hexadecimal (radix = 16) string representation
+for each `UInt8` byte value,
+but without a built-in [left-pad](https://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/) function
+in the Swift standard library
+to zero-pad to two digits,
+we opted for `printf` format specifiers
+([despite our misgivings](/expressiblebystringinterpolation/)).
+
+On Stack Overflow,
+[the top-rated answer](https://stackoverflow.com/a/24979958/157142)
+advocates for `"%02.2hhx"` instead of `"%02x"`.
+It's easy to get lost in the
+[IEEE specification](http://www.opengroup.org/onlinepubs/009695399/functions/printf.html),
+so here are some minimal code examples to demonstrate the difference
+between the two format specifiers:
+
+```swift
+// Overflow UInt.max (255)
+String(format: "%02.2hhx", 256) // "00"
+String(format: "%02x", 256) // "100"
+
+// Underflow UInt.min (0)
+String(format: "%02.2hhx", -1) // "ff"
+String(format: "%02x", -1) // "ffffffff"
+```
+
+`"%02.2hhx"` guarantees that values beyond the range of `UInt`
+produce two hexadecimal digits
+(though one could argue whether it's better to fail silently here).
+
+But any difference in behavior is moot,
+so long as `Data` is a collection whose `Element` is `UInt8`:
+
+```swift
+(UInt.min...UInt.max).map {
+    String(format: "%02.2hhx", $0) == String(format: "%02x", $0)
+}.contains(false) // false
+```
+
+Oh, and don't worry about any purported performance differences
+between `reduce` and `map` + `join`;
+any Δ is going to be negligible,
+and totally irrelevant for an infrequent operation such as this.
+
 {% endinfo %}
 
 ---
 
-Was Apple irresponsible in making this particular change?
+Was Apple irresponsible in making this particular change? \\
+We'd argue: _No, not really._
 
-No, not really ---
-**developers shouldn't have relied on a specific format for
+**Developers shouldn't have relied on a specific format for
 an object's [`description`](https://developer.apple.com/documentation/objectivec/nsobjectprotocol/1418746-description)**.
 
 Dumping an entire `Data` value's contents becomes untenable at a certain point,
 and this change to a more succinct summary
 makes debugging larger data blobs significantly easier.
+
+---
 
 Like we said about laws at the start of this article,
 precedence is a form of inertia,
