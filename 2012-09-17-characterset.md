@@ -31,49 +31,49 @@ and wanted to see what you thought:
 
 <ruby class="boke">
 Is <code>CharacterSet</code> a <code>Set&lt;Character&gt;</code>?
-<rt>
+<rt lang="ja">
 キャラクターセットではないキャラクターセット？
 </rt>
 </ruby>
 
 <ruby class="tsukkomi">
 Of course not!
-<rt>
+<rt lang="ja">
 もちろん違います！
 </rt>
 </ruby>
 
 <ruby class="boke">
 What about <code>NSCharacterSet</code>?
-<rt>
+<rt lang="ja">
 何エンエスキャラクタセットは？
 </rt>
 </ruby>
 
 <ruby class="tsukkomi">
 That's an old reference.
-<rt>
+<rt lang="ja">
 それは古いリファレンスです。
 </rt>
 </ruby>
 
 <ruby class="boke">
 Then what do you call a collection of characters?
-<rt>
+<rt lang="ja">
 何と呼ばれる文字の集合ですか？
 </rt>
 </ruby>
 
 <ruby class="tsukkomi">
 That would be a <code>String</code>!
-<rt>
+<rt lang="ja">
 それは文字列でしょ！
 </rt>
 </ruby>
 
 <ruby class="boke">
 (╯° 益 °)╯ 彡 ┻━┻
-<rt>
+<rt lang="ja">
 無駄無駄無駄無駄無駄無駄無駄
 </rt>
 </ruby>
@@ -342,7 +342,9 @@ for working with collections of scalar values.
 
 <ruby>
 FIN
-<rt>
+<rt lang="ja">
 おしまい。
 </rt>
 </ruby>
+
+{% asset articles/characterset.css %}
