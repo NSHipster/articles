@@ -13,7 +13,7 @@ status:
 
 When I was a student in Japan,
 I worked part-time at a restaurant ---
-<ruby lang="jp">
+<ruby lang="ja">
 <rb>アルバイト</rb>
 <rp>(</rp><rt>arubaito</rt><rp>)</rp>
 </ruby> as the locals call it ---
