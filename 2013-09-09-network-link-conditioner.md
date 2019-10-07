@@ -166,7 +166,7 @@ To use the Network Link Conditioner on iOS,
 set up your device for development:
 
 1.  Connect your iOS device to your Mac
-2.  In Xcode, navigate to Window > Organizer
+2.  In Xcode, navigate to Window > Devices & Simulators
 3.  Select your device in the sidebar
 4.  Click "Use for Development"
 
