@@ -426,7 +426,7 @@ in addition to their top and bottom edges.
 This comes in handy when trying to maintain a vertical rhythm in text-heavy UIs.
 
 ```swift
-plateStack.isBaselineRelativeArrangement = true // Spacing will be measuerd from the plates' lips, not their wells.
+plateStack.isBaselineRelativeArrangement = true // Spacing will be measured from the plates' lips, not their wells.
 ```
 
 ### <em lang="fr">L’addition s’il vous plaît!</em>
