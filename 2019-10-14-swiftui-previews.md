@@ -76,7 +76,7 @@ The functionality described in this article requires the following:
 
 - **Xcode 11**
 - **macOS Catalina**
-- **iOS 13** set as the **Base SDK** for your app's **Development** configuration
+- **iOS 13** set as the **Base SDK** for your app's **Debug** configuration
 
 Without these three things,
 your code either won't compile or won't render live previews.
