@@ -76,7 +76,10 @@ The functionality described in this article requires the following:
 
 - **Xcode 11**
 - **macOS Catalina**
-- **iOS 13** set as the **Base SDK** for your app's **Debug** configuration
+- **iOS 13** set as the **Deployment Target** for your app's **Debug** configuration \\
+  _(In Xcode, navigate your project's Build Settings;
+  under the Deployment heading,
+  expand the iOS Deployment Target setting and set Debug to iOS 13.0 or later)_
 
 Without these three things,
 your code either won't compile or won't render live previews.
@@ -157,7 +160,7 @@ Feel free to [download the source](https://gist.github.com/mattt/ff6b58af8576c79
 and add it to your project directly.
 
 Incorporating a proper dependency would be complicated by
-the conditional import and iOS 13 Base SDK settings
+the conditional import and iOS 13 Deployment Target settings
 required to make Xcode Previews work for non-SwiftUI apps,
 so in this particular instance,
 we think it's best to embed these files directly.
