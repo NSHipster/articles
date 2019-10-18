@@ -341,7 +341,7 @@ You could verify that your
 ```swift
 let supportedLocales: [Locale] = [
   "en-US", // English (United States)
-  "ar-QA", // Arabid (Qatar)
+  "ar-QA", // Arabic (Qatar)
   "he-IL", // Hebrew (Israel)
   "ur-IN"  // Urdu (India)
 ].map(Locale.init(identifier:))
