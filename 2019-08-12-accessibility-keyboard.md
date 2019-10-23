@@ -63,7 +63,7 @@ and navigate to the first result).
 
 <picture>
     <source srcset="{% asset accessibility-keyboard-system-preferences--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset accessibility-keyboard-system-preferences--light.png @path %}" alt="Accessibility Keyboard Panel Editor" loading=lazy>
+    <img src="{% asset accessibility-keyboard-system-preferences--light.png @path %}" alt="Accessibility Keyboard Panel Editor" loading="lazy">
 </picture>
 
 Click the checkbox labeled "Enable Accessibility Keyboard"
@@ -98,7 +98,7 @@ _the ability to customize and create your own keyboards!_
 <dfn>Panel Editor</dfn> is a built-in app
 that lets you edit Accessibility Keyboard panels.
 
-{% asset accessibility-keyboard-panel-editor.png alt="Accessibility Keyboard Panel Editor window and icon" loading=lazy %}
+{% asset accessibility-keyboard-panel-editor.png alt="Accessibility Keyboard Panel Editor window and icon" loading="lazy" %}
 
 For something so obscure,
 the Panel Editor app is remarkably well made.

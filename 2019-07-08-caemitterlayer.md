@@ -566,7 +566,7 @@ reminiscent of Interface Builder.
 
 <picture>
     <source srcset="{% asset caemitterlayer-spritekit-particle-emitter--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset caemitterlayer-spritekit-particle-emitter--light.png @path %}" alt="Xcode SpriteKit Particle Editor" loading=lazy>
+    <img src="{% asset caemitterlayer-spritekit-particle-emitter--light.png @path %}" alt="Xcode SpriteKit Particle Editor" loading="lazy">
 </picture>
 
 Call up your designed `SKEmitterNode` by name
@@ -587,7 +587,7 @@ right there in your Xcode window.
 
 <picture>
     <source srcset="{% asset caemitterlayer-scenekit-scene-editor--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset caemitterlayer-scenekit-scene-editor--light.png @path %}" alt="Xcode SceneKit Scene Editor" loading=lazy>
+    <img src="{% asset caemitterlayer-scenekit-scene-editor--light.png @path %}" alt="Xcode SceneKit Scene Editor" loading="lazy">
 </picture>
 
 Add in a dynamic physics body and a turbulence effect,
@@ -685,7 +685,7 @@ and with a far simpler API:
 <img src="animated.png" />
 ```
 
-{% asset caemitterlayer-confetti.png loading=lazy %}
+{% asset caemitterlayer-confetti.png loading="lazy" %}
 
 ### WebGL
 

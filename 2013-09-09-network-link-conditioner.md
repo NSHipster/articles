@@ -61,7 +61,7 @@ and select the appropriate release of the package.
 
 <picture>
     <source srcset="{% asset network-link-conditioner-dmg--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset network-link-conditioner-dmg--light.png @path %}" alt="Additional Tools - Hardware" loading=lazy>
+    <img src="{% asset network-link-conditioner-dmg--light.png @path %}" alt="Additional Tools - Hardware" loading="lazy">
 </picture>
 
 Once the download has finished,
@@ -71,7 +71,7 @@ and double-click "Network Link Condition.prefPane".
 
 <picture>
     <source srcset="{% asset network-link-conditioner-install--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset network-link-conditioner-install--light.png @path %}" alt="Install Network Link Conditioner" loading=lazy>
+    <img src="{% asset network-link-conditioner-install--light.png @path %}" alt="Install Network Link Conditioner" loading="lazy">
 </picture>
 
 Click on the Network Link Conditioner preference pane
@@ -79,7 +79,7 @@ at the bottom of System Preferences.
 
 <picture>
     {% comment %}<source srcset="{% network-link-conditioner-preference-pane--dark.png @path %}" media="(prefers-color-scheme: dark)">{% endcomment %}
-    <img src="{% asset network-link-conditioner-preference-pane--light.png @path %}" alt="Network Link Conditioner" loading=lazy>
+    <img src="{% asset network-link-conditioner-preference-pane--light.png @path %}" alt="Network Link Conditioner" loading="lazy">
 </picture>
 
 {% error %}
@@ -94,7 +94,7 @@ and attempting to reinstall results in the following error message:
 
 <picture>
     <source srcset="{% asset network-link-conditioner-installation-error--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset network-link-conditioner-installation-error--light.png @path %}" alt="Network Link Conditioner installation error message" loading=lazy>
+    <img src="{% asset network-link-conditioner-installation-error--light.png @path %}" alt="Network Link Conditioner installation error message" loading="lazy">
 </picture>
 
 <figcaption hidden>
