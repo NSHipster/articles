@@ -89,7 +89,7 @@ than you can through Xcode.
 ## Understanding App Metrics
 
 Metrics can help uncover issues you might not have seen while testing locally,
-and allow you to track and changes across different versions of your app.
+and allow you to track changes across different versions of your app.
 For this initial release,
 Apple has focused on the two metrics that matter most to users:
 <dfn>battery usage</dfn> and <dfn>performance</dfn>.
