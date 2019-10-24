@@ -508,9 +508,9 @@ AS $$
   SELECT
     replace(split_part($1, ' ', 1),',','')::BIGINT *
     CASE split_part($1, ' ', 2)
-        WHEN 'kB' THEN 1024
-        WHEN 'MB' THEN 1024 * 1024
-        WHEN 'GB' THEN 1024 * 1024 * 1024
+        WHEN 'kB' THEN 1000
+        WHEN 'MB' THEN 1000 * 1000
+        WHEN 'GB' THEN 1000 * 1000 * 1000
     END
 $$ LANGUAGE 'sql' STRICT IMMUTABLE;
 ```
