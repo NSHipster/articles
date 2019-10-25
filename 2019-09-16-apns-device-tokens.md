@@ -285,7 +285,7 @@ If your implementation of
 involves converting `deviceToken` to a `String`
 and calling `replacingOccurrences(of:with:)`,
 this approach won't work in apps compiled with the iOS 13 SDK.
-**This is true whether your app is written in Swift or Objective-C**.
+This is true whether your app is written in Swift or Objective-C.
 
 {% endwarning %}
 
