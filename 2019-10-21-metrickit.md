@@ -527,7 +527,6 @@ to project the most important information to you
 in the most convenient representation:
 
 ```sql
-DROP VIEW key_performance_indicators;
 CREATE VIEW key_performance_indicators AS
 SELECT
     id,
