@@ -7,7 +7,6 @@ excerpt: >-
   there's a monster that embodies the anxieties of the age.
 status:
   swift: 5.1
-draft: true
 ---
 
 For every era,
