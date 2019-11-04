@@ -266,6 +266,14 @@ Upon form submission,
 users on iOS will see a deep link to open the Mail app
 to the email containing the "magic sign-in link" ✨.
 
+Other systems might use Message-ID
+to streamline passwordless authentication for their native app or website
+by way of
+[Universal Links](https://developer.apple.com/documentation/uikit/inter-process_communication/allowing_apps_and_websites_to_link_to_your_content),
+or incorporate it as part of a
+<abbr title="Two-Factor Authentication">2FA</abbr> strategy
+(since [<abbr title="short message service">SMS</abbr> is no longer considered to be secure for this purpose](https://pages.nist.gov/800-63-3/sp800-63b.html#ooba)).
+
 {% info %}
 
 If you're using Rails for your web application,
