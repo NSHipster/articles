@@ -468,7 +468,7 @@ but a reasonable estimate would be on the order of 2<sup>6</sup> or 2<sup>7</sup
 
 ### Cellular Network (~2 bits)
 
-Knowing whether someone's phone is on Verizon or Vodaphone
+Knowing whether someone's phone is on Verizon or Vodafone
 can also be factored into a fingerprint.
 You can use the `CTTelephonyNetworkInfo` class from the
 [CoreTelephony framework](https://developer.apple.com/documentation/coretelephony)
