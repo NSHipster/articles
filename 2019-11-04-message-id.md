@@ -26,7 +26,7 @@ a few readers got in touch to explain why
 their use of fingerprinting
 to bridge between Safari and their native app was justified.
 
-At WWDC 2018.
+At WWDC 2018,
 Apple [announced](https://developer.apple.com/videos/play/wwdc2017/702/) that
 starting in iOS 11 apps would no longer have access to a shared cookie store.
 Previously,
