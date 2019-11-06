@@ -211,7 +211,7 @@ _(not that this is a bad thing from the user's perspective!)_
 There's also the curious case of the
 `isAdvertisingTrackingEnabled` property.
 According to
-[the documentation](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614151-advertisingidentifier):
+[the documentation](https://developer.apple.com/documentation/adsupport/asidentifiermanager/1614148-isadvertisingtrackingenabled):
 
 > Check the value of this property
 > before performing any advertising tracking.
