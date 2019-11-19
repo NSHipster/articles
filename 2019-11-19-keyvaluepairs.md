@@ -265,9 +265,9 @@ represents a value as mapping of keys and values like so:
 ```
 
 However, the term
-"dictionary literal" is a slight misnomer,
-since these key-value pairs are passed as a sequence
-to the `ExpressibleByDictionaryLiteral` protocol's required initializer:
+_"dictionary literal"_ is a slight misnomer,
+since a sequence of key-value pairs --- not a `Dictionary` ---
+are passed to the `ExpressibleByDictionaryLiteral` protocol's required initializer:
 
 ```swift
 protocol ExpressibleByDictionaryLiteral {
@@ -279,7 +279,7 @@ protocol ExpressibleByDictionaryLiteral {
 ```
 
 This confusion was amplified by the existence of a `DictionaryLiteral` type,
-which was renamed to `KeyValuePairs` in Swift 5.
+which was only recently renamed to `KeyValuePairs` in Swift 5.
 The name change served to both clarify its true nature
 and bolster use as a public API
 (and not some internal language construct).
@@ -370,7 +370,7 @@ Without any other public initializers,
 and can't be constructed dynamically.
 
 <aside class="parenthetical">
-You could liken it to how 
+Sort of like how
 [one-way streets](https://en.wikipedia.org/wiki/One-way_traffic#Applications) 
 are used to prevent 
 [rat running](https://en.wikipedia.org/wiki/Rat_running) on residential streets.
