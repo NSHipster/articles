@@ -3,7 +3,9 @@ title: KeyValuePairs
 author: Mattt
 category: Swift
 excerpt: >-
-  ./
+  A look at an obscure, little collection type
+  that challenges our fundamental distinctions between
+  `Array`, `Set`, and `Dictionary`.
 status:
   swift: 5.1
 ---
@@ -219,7 +221,7 @@ _(an article in dire need of revision)_.
 
 This week on NSHipster,
 we'll take a look at `KeyValuePairs`,
-a small collection class
+a small collection type
 that challenges our fundamental distinctions between
 `Array`, `Set`, and `Dictionary`.
 In the process,
