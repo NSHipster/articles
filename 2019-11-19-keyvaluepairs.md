@@ -293,9 +293,9 @@ with a dictionary literal
 ```swift
 let pairs: KeyValuePairs<String, String> = [
     "木": "wood",
-    "火", "fire",
-    "土": "ground"
-    "金": "metal"
+    "火": "fire",
+    "土": "ground",
+    "金": "metal",
     "水": "water"
 ]
 ```
