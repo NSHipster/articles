@@ -184,7 +184,7 @@ more closely aligns with a mundane cosmology;
 less <em lang="la">imago universi</em>, more
 <ruby>
 <rb lang="ja-Hira"><a href="https://en.wikipedia.org/wiki/Rock_paper_scissors">じゃんけん</a></rb>
-<rt lang="ja-Latn"><em>jon-ken</em></rt>
+<rt lang="ja-Latn"><em>jan-ken</em></rt>
 <rtc>
 <rp>(</rp>
 <rt lang="en">Rock-Paper-Scissors</rt>
