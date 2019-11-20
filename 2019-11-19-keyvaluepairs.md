@@ -483,10 +483,6 @@ Outside of its narrow application in the standard library,
 `KeyValuePairs` are unlikely to make an appearance in your own codebase.
 You're almost always better off going with a simple `[(Key, Value)]` tuple array.
 
-Like all cosmological exceptions,
-`KeyValuePairs` is uncomfortable --- at times, even unwelcome ---
-but it serves to expand our understanding.
-
 Much as today's [Standard Model](https://en.wikipedia.org/wiki/Standard_Model)
 more closely resembles
 the cacophony of a
