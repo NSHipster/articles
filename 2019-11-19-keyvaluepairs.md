@@ -314,7 +314,7 @@ see
 which allows its contents to be retrieved by _(in this case, `Int`)_ indices.
 In contrast to `Array`,
 `KeyValuePairs` doesn't conform to `RangeReplaceableCollection`,
-so you can't append elements of remove individual elements at indices or ranges.
+so you can't append elements or remove individual elements at indices or ranges.
 This narrowly constrains `KeyValuePairs`,
 such that it's effectively immutable once initialized from a dictionary literal.
 
