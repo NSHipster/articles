@@ -7,6 +7,7 @@ excerpt: Though we're a long way off from Hal or Her,
 revisions:
   "2014-03-31": Original publication
   "2018-08-08": Updated for iOS 12 and macOS Mojave
+  "2019-12-09": Updated for iOS 13
 status:
   swift: 4.2
   reviewed: August 8, 2018
@@ -187,7 +188,7 @@ won't work correctly unless you watched
 
 To get IPA notation that `AVSpeechUtterance` can understand,
 you can open the Settings app,
-navigate to General > Accessibility > Speech > Pronunciations,
+navigate to Accessibility > VoiceOver > Speech > Pronunciations,
 and... say it yourself!
 
 {% asset speech-pronunciation-replacement alt="Speech Pronunciation Replacement" %}
