@@ -397,11 +397,11 @@ let dateComponents =
                              .nanosecond],
                             from: date)
 
-yesterday = calendar.nextDate(after: date,
-                              matching: dateComponents,
-                              matchingPolicy: .nextTime,
-                              repeatedTimePolicy: .first,
-                              direction: .forward)
+tomorrow = calendar.nextDate(after: date,
+                             matching: dateComponents,
+                             matchingPolicy: .nextTime,
+                             repeatedTimePolicy: .first,
+                             direction: .forward)
 ```
 
 {% info %}
