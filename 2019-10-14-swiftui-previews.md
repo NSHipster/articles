@@ -5,7 +5,7 @@ category: Xcode
 excerpt: >-
   Working on a large iOS codebase often involves a lot of waiting.
   But with Xcode 11,
-  our wait is finally over ---
+  our wait is finally over —
   and it's all thanks to SwiftUI.
 status:
   swift: 5.1
