@@ -355,8 +355,8 @@ based on our platform and/or Swift language version.
 
 Similar to how, in Swift,
 [thrown errors must be handled or propagated](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html#ID512),
-use of potentially unavailable APIS
-mist be either annotated and conditionalize code.
+use of potentially unavailable APIs
+must be either annotated or conditionalized code.
 
 When you attempt to call an API that is unavailable
 for at least one of your supported targets,
@@ -534,7 +534,7 @@ from [Clang's diagnostic text](https://clang.llvm.org/docs/DiagnosticsReference.
                     </tr>
                     <tr>
                         <td>
-                            <span>overridding</span>
+                            <span>overriding</span>
                         </td>
                     </tr>
                 </tbody>
@@ -602,7 +602,7 @@ from [Clang's diagnostic text](https://clang.llvm.org/docs/DiagnosticsReference.
                     </tr>
                     <tr>
                         <td>
-                            <span>overridding</span>
+                            <span>overriding</span>
                         </td>
                     </tr>
                 </tbody>
