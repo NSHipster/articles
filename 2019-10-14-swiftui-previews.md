@@ -165,7 +165,10 @@ required to make Xcode Previews work for non-SwiftUI apps,
 so in this particular instance,
 we think it's best to embed these files directly.
 
-{% capture uiviewpreview %}
+{::nomarkdown}
+<details>
+<summary>Expand for the full implementation of <code>UIViewPreview</code>:</summary>
+{:/}
 
 ```swift
 import UIKit
@@ -193,13 +196,7 @@ struct UIViewPreview<View: UIView>: UIViewRepresentable {
 #endif
 ```
 
-{% endcapture %}
-
 {::nomarkdown}
-
-<details>
-<summary>Expand for the full implementation of <code>UIViewPreview</code>:</summary>
-{{ uiviewpreview | markdownify }}
 </details>
 {:/}
 
