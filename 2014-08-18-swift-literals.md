@@ -5,8 +5,8 @@ category: Swift
 tags: swift
 excerpt: >-
   Literals are representations of values in source code.
-  The different kinds of literals that Swift provides ---
-  and how it makes them available ---
+  The different kinds of literals that Swift provides —
+  and how it makes them available —
   has a profound impact on how we write and think about code.
 revisions:
   "2014-08-18": Original publication
