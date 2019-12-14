@@ -221,7 +221,9 @@ struct {
 }
 ```
 
-> Ed. As pointed out by readers [@secboffin](http://twitter.com/secboffin) & [@ameaijou](http://twitter.com/ameaijou), `@defs` is unavailable in the modern Objective-C runtime.
+{% warning %}
+`@defs` is unavailable in the modern Objective-C runtime.
+{% endwarning %}
 
 ## Optimizations
 
