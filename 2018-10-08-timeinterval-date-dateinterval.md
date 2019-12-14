@@ -36,7 +36,6 @@ See the hourglass in his hand and scythe at his feet?
 
 Take a moment, standing in front of this painting,
 to reflect on the enigmatic nature of time.
-
 Think now about how our limited understanding of time
 is reflected in ---
 or perhaps exacerbated by ---
