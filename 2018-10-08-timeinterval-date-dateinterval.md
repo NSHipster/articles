@@ -4,8 +4,8 @@ author: Mattt
 category: Cocoa
 excerpt: >
   Our limited understanding of time
-  is reflected in ---
-  or perhaps exacerbated by ---
+  is reflected in —
+  or perhaps exacerbated by —
   the naming of the Foundation date and time APIs.
   It's about time we got them straight.
 status:
