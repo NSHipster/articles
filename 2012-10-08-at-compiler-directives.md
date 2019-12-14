@@ -72,9 +72,8 @@ Categories allow you to extend the behavior of existing classes by adding new cl
 @end
 ```
 
-Categories are particularly useful for convenience methods on standard framework classes (just don't go overboard with your utility functions).
-
-> Pro Tip: Rather than littering your code with random, arbitrary color values, create an `NSColor` / `UIColor` color palette category that defines class methods like `+appNameDarkGrayColor`. You can then add a semantic layer on top of that by creating method aliases like `+appNameTextColor`, which returns `+appNameDarkGrayColor`.
+Categories are particularly useful for convenience methods on standard framework classes 
+(just don't go overboard with your utility functions).
 
 Extensions look like categories, but omit the category name. These are typically declared before an `@implementation` to specify a private interface, and even override properties declared in the interface:
 
