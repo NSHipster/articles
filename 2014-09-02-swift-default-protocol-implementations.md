@@ -125,7 +125,7 @@ protocol P {
 }
 
 func f<T: P>(_ arg: T) {
-    // ...
+    <#...#>
 }
 ```
 

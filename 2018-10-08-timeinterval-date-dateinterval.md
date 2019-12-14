@@ -100,7 +100,7 @@ public struct Date : ReferenceConvertible, Comparable, Equatable {
 
     fileprivate var _time: TimeInterval
 
-    // ...
+    <#...#>
 }
 ```
 

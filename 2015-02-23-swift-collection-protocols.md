@@ -233,7 +233,7 @@ let imageNames = map(attendees) { $0.lowercaseString }
         .map { "\($0).jpg" }
 // alejandro.jpg
 // eddie.jpg
-// ...
+<#...#>
 ```
 
 _Voila!_ A-list party!

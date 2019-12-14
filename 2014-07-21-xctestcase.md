@@ -272,13 +272,13 @@ Then, at the bottom of the method, add the `waitForExpectationsWithTimeout` meth
 
 ```swift
 waitForExpectationsWithTimeout(10) { error in
-    // ...
+    <#...#>
 }
 ```
 
 ```objc
 [self waitForExpectationsWithTimeout:10 handler:^(NSError *error) {
-    // ...
+    <#...#>
 }];
 ```
 

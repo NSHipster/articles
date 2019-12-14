@@ -50,7 +50,7 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 
         // When swizzling a class method, use the following:
         // Class class = object_getClass((id)self);
-        // ...
+        <#...#>
         // Method originalMethod = class_getClassMethod(class, originalSelector);
         // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
 

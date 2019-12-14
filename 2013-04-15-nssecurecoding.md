@@ -31,7 +31,7 @@ Whereas a standard, secure implementation of `-initWithCoder:` might have a chec
 
 ```swift
 if let object = decoder.decodeObjectForKey("key") as? SomeClass {
-    // ...
+    <#...#>
 }
 ```
 

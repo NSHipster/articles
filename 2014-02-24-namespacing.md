@@ -227,7 +227,7 @@ Not to create a straw man, but an imagined implementation of Objective-C namespa
     - (void)foo {
         F:Array *array = @[@1,@2, @3];
 
-        // ...
+        <#...#>
     }
 
     @end

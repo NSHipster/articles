@@ -317,7 +317,7 @@ while let instruction = scanner.scanCharactersFromSet(instructionSet) {
    
    // new point for bezier path
    switch instruction {
-       // ...
+       <#...#>
    }
 }
 ````

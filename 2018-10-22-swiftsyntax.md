@@ -362,7 +362,7 @@ class SwiftSyntaxHighlighter: SyntaxRewriter {
 
     override func visit(_ token: TokenSyntax) -> Syntax {
         switch token.tokenKind {
-        // ...
+        <#...#>
         case .floatingLiteral(let string):
             html += "<span class=\"mf\">\(string)</span>"
         case .integerLiteral(let string):
@@ -375,7 +375,7 @@ class SwiftSyntaxHighlighter: SyntaxRewriter {
             } else {
                 html += "<span class=\"mi\">\(string)</span>"
             }
-        // ...
+        <#...#>
         default:
             break
         }

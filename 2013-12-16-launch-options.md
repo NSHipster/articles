@@ -90,7 +90,7 @@ Since this introduces two separate code paths for notification handling, a commo
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // ...
+    <#...#>
 
     if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
         [self application:application didReceiveRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
@@ -172,7 +172,7 @@ Here's an example of how an app might go about monitoring for significant locati
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // ...
+    <#...#>
 
     if (![CLLocationManager locationServicesEnabled]) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Location Services Disabled", nil)

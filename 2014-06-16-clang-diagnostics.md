@@ -30,7 +30,7 @@ switch (style) {
     case UITableViewCellStyleValue1:
     case UITableViewCellStyleValue2:
     case UITableViewCellStyleSubtitle:
-        // ...
+        <#...#>
     default:
         return;
 }
@@ -48,7 +48,7 @@ switch (style) {
     case UITableViewCellStyleValue1:
     case UITableViewCellStyleValue2:
     case UITableViewCellStyleSubtitle:
-        // ...
+        <#...#>
     default:
         return;
 }

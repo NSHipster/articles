@@ -188,12 +188,12 @@ lazy var defaultHeaders: [String: String] = {
 
     // Accept-Language HTTP Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.4
     let acceptLanguage: String = {
-        // ...
+        <#...#>
     }()
 
     // User-Agent Header; see http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.43
     let userAgent: String = {
-        // ...
+        <#...#>
     }()
 
     return ["Accept-Encoding": acceptEncoding,

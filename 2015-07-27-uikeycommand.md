@@ -67,11 +67,11 @@ override var keyCommands: [UIKeyCommand]? {
     ]
 }
 
-// ...
+<#...#>
 
 func selectTab(sender: UIKeyCommand) {
     let selectedTab = sender.input
-    // ...
+    <#...#>
 }
 ```
 ```objc
@@ -89,11 +89,11 @@ func selectTab(sender: UIKeyCommand) {
     ];
 }
 
-// ...
+<#...#>
 
 - (void)selectTab:(UIKeyCommand *)sender {
     NSString *selectedTab = sender.input;
-    // ...
+    <#...#>
 }
 ```
 

@@ -37,7 +37,7 @@ let activityViewController =
                              applicationActivities: nil)
 
 present(activityViewController, animated: true) {
-    // ...
+    <#...#>
 }
 ```
 
@@ -311,7 +311,7 @@ class MustachifyActivity: UIActivity {
         return UIImage(named: "mustachify-icon")
     }
 
-    // ...
+    <#...#>
 }
 ```
 
@@ -448,7 +448,7 @@ let activityViewController =
                              applicationActivities: [Mustachify()])
 
 present(activityViewController, animated: true) {
-    // ...
+    <#...#>
 }
 ```
 

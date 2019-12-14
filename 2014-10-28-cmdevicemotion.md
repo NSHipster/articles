@@ -136,7 +136,7 @@ manager.startAccelerometerUpdates(to: .main) { (data, error) in
         return
     }
 
-    // ...
+    <#...#>
 }
 ```
 

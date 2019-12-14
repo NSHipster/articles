@@ -125,7 +125,7 @@ class FooController : UIViewController {
         static let FooDidBazoom = "XXFooDidBazoomNotification"
     }
 
-    // ...
+    <#...#>
 }
 ```
 ```objc

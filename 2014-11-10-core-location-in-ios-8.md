@@ -70,7 +70,7 @@ func locationManager(manager: CLLocationManager!,
 {
     if status == .AuthorizedAlways || status == .AuthorizedWhenInUse {
         manager.startUpdatingLocation()
-        // ...
+        <#...#>
     }
 }
 ```
@@ -94,7 +94,7 @@ Here's an example of how an app that prompts for both kinds of permissions might
 ```swift
 switch CLLocationManager.authorizationStatus() {
     case .AuthorizedAlways:
-        // ...
+        <#...#>
     case .NotDetermined:
         manager.requestAlwaysAuthorization()
     case .AuthorizedWhenInUse, .Restricted, .Denied:

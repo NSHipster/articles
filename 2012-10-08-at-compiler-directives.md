@@ -63,7 +63,7 @@ Categories allow you to extend the behavior of existing classes by adding new cl
 
 @implementation MyObject (CategoryName)
   - (void)foo {
-    // ...
+    <#...#>
   }
 
   - (BOOL)barWithBaz:(NSInteger)baz {
@@ -86,7 +86,7 @@ Extensions look like categories, but omit the category name. These are typically
 @implementation MyObject
 @synthesize name = _name;
 
-// ...
+<#...#>
 
 @end
 ```

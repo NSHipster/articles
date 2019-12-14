@@ -286,7 +286,7 @@ extension AppDelegate: UIGuidedAccessRestrictionDelegate {
         return Restriction(rawValue: restrictionIdentifier)?.text
     }
 
-    // ...
+    <#...#>
 }
 ```
 

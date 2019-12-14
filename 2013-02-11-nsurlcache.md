@@ -134,7 +134,7 @@ func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: 
     var mutableData = NSMutableData(data: cachedResponse.data)
     var storagePolicy: NSURLCacheStoragePolicy = .AllowedInMemoryOnly
 
-    // ...
+    <#...#>
 
     return NSCachedURLResponse(response: cachedResponse.response, data: mutableData, userInfo: mutableUserInfo, storagePolicy: storagePolicy)
 }
@@ -148,7 +148,7 @@ func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: 
     NSMutableData *mutableData = [[cachedResponse data] mutableCopy];
     NSURLCacheStoragePolicy storagePolicy = NSURLCacheStorageAllowedInMemoryOnly;
 
-    // ...
+    <#...#>
 
     return [[NSCachedURLResponse alloc] initWithResponse:[cachedResponse response]
                                                     data:mutableData

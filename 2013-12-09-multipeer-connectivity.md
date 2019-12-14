@@ -230,7 +230,7 @@ stream.delegate = self;
                 forMode:NSDefaultRunLoopMode];
 [stream open];
 
-// ...
+<#...#>
 ```
 
 * * *
@@ -284,7 +284,7 @@ didStartReceivingResourceWithName:(NSString *)resourceName
        fromPeer:(MCPeerID *)peerID
    withProgress:(NSProgress *)progress
 {
-    // ...
+    <#...#>
 }
 
 - (void)session:(MCSession *)session

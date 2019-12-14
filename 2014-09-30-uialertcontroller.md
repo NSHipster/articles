@@ -56,7 +56,7 @@ alertView.show()
 
 func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
     switch buttonIndex {
-        // ...
+        <#...#>
     }
 }
 ```
@@ -67,17 +67,17 @@ func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
 let alertController = UIAlertController(title: "Default Style", message: "A standard alert.", preferredStyle: .Alert)
 
 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-    // ...
+    <#...#>
 }
 alertController.addAction(cancelAction)
 
 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-    // ...
+    <#...#>
 }
 alertController.addAction(OKAction)
 
 self.presentViewController(alertController, animated: true) {
-    // ...
+    <#...#>
 }
 ```
 
@@ -107,12 +107,12 @@ func actionSheet(actionSheet: UIActionSheet, clickedButtonAtIndex buttonIndex: I
 let alertController = UIAlertController(title: nil, message: "Takes the appearance of the bottom bar if specified; otherwise, same as UIActionSheetStyleDefault.", preferredStyle: .ActionSheet)
 
 let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
-    // ...
+    <#...#>
 }
 alertController.addAction(cancelAction)
 
 let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
-    // ...
+    <#...#>
 }
 alertController.addAction(OKAction)
 
@@ -122,7 +122,7 @@ let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (acti
 alertController.addAction(destroyAction)
 
 self.presentViewController(alertController, animated: true) {
-    // ...
+    <#...#>
 }
 ```
 
@@ -156,7 +156,7 @@ let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (acti
 alertController.addAction(destroyAction)
 
 self.presentViewController(alertController, animated: true) {
-    // ...
+    <#...#>
 }
 ```
 

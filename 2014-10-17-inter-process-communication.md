@@ -60,7 +60,7 @@ message.type = (mach_msg_type_descriptor_t) {
 mach_msg_return_t error = mach_msg_send(&message.header);
 
 if (error == MACH_MSG_SUCCESS) {
-    // ...
+    <#...#>
 }
 ```
 
@@ -80,7 +80,7 @@ mach_msg_return_t error = mach_msg_receive(&message.header);
 
 if (error == MACH_MSG_SUCCESS) {
     natural_t data = message.type.pad1;
-    // ...
+    <#...#>
 }
 ```
 
@@ -94,7 +94,7 @@ static CFDataRef Callback(CFMessagePortRef port,
                           CFDataRef data,
                           void *info)
 {
-    // ...
+    <#...#>
 }
 
 CFMessagePortRef localPort =
@@ -132,7 +132,7 @@ SInt32 status =
                              NULL,
                              NULL);
 if (status == kCFMessagePortSuccess) {
-    // ...
+    <#...#>
 }
 ```
 
@@ -153,7 +153,7 @@ static void Callback(CFNotificationCenterRef center,
                      const void *object,
                      CFDictionaryRef userInfo)
 {
-    // ...
+    <#...#>
 }
 
 CFNotificationCenterRef distributedCenter =
@@ -357,7 +357,7 @@ Each XPC connection is one-to-one, meaning that the service operates on distinct
 ```objc
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
 xpc_connection_set_event_handler(c, ^(xpc_object_t event) {
-    // ...
+    <#...#>
 });
 xpc_connection_resume(c);
 ```
@@ -407,7 +407,7 @@ xpc_connection_send_message_with_reply(c, message, queue,
     ^(xpc_object_t reply)
 {
       if (xpc_get_type(event) == XPC_TYPE_DICTIONARY) {
-         // ...
+         <#...#>
       }
 });
 ```

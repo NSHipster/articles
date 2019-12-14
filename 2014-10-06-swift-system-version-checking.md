@@ -24,7 +24,7 @@ In Objective-C, checking for the availability of an API was accomplished through
 #if defined(__IPHONE_OS_VERSION_MAX_ALLOWED) && __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 if ([NSURLSession class] &&
     [NSURLSessionConfiguration respondsToSelector:@selector(backgroundSessionConfigurationWithIdentifier:)]) {
-    // ...
+    <#...#>
 }
 #endif
 ```
