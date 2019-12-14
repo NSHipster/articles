@@ -55,18 +55,12 @@ What you don't learn about until later on, are categories and class extensions.
 
 Categories allow you to extend the behavior of existing classes by adding new class or instance methods. As a convention, categories are defined in their own `.{h,m}` files, like so:
 
-#### MyObject+CategoryName.h
-
 ```objc
 @interface MyObject (CategoryName)
   - (void)foo;
   - (BOOL)barWithBaz:(NSInteger)baz;
 @end
-```
 
-#### MyObject+CategoryName.m
-
-```objc
 @implementation MyObject (CategoryName)
   - (void)foo {
     // ...
