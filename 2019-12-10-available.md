@@ -391,7 +391,7 @@ would need to be conditionalized with `#available`:
 
 ```swift
 @available(iOS 13.0, *)
-final class CustomCompositionalLayout: UICollectionViewCompositionalLayout { <#...> }
+final class CustomCompositionalLayout: UICollectionViewCompositionalLayout { <#...#> }
 
 func createLayout() -> UICollectionViewLayout {
     if #available(iOS 13, *) {
