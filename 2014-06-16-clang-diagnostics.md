@@ -62,7 +62,3 @@ This week, as a public service, we've compiled a (mostly) comprehensive list of 
 **[ClangWarnings.com](https://clangwarnings.com)**
 
 You can also find the compiler and analyzer flags for any warning you might encounter by `^`-Clicking the corresponding entry in the Xcode Issue Navigator and selecting "Reveal in Log". (If this option is disabled, try building the project again).
-
----
-
-Corrections? Additions? Open a [Pull Request](https://github.com/NSHipster/clangwarnings.com/pulls) to submit your change. Any help would be greatly appreciated.
