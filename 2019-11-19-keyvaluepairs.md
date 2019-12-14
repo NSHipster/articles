@@ -109,7 +109,7 @@ will provide the answers that you seek:
   </thead>
   <tbody>
     <tr>
-      <td>Nature</td>
+      <th>Nature</th>
       <td>
       <ruby>
         <rb lang="zh-Hant">天</rb>
