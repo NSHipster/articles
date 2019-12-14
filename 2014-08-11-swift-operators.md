@@ -100,233 +100,233 @@ and precedence level, in descending order:
 
 <table>
     <tr>
-        <th colspan="2"><tt>BitwiseShiftPrecedence</tt></th>
+        <th colspan="2"><code>BitwiseShiftPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>&lt;&lt;</tt></td>
+            <td><code>&lt;&lt;</code></td>
             <td>Bitwise left shift</td>
         </tr>
         <tr>
-            <td><tt>&gt;&gt;</tt></td>
+            <td><code>&gt;&gt;</code></td>
             <td>Bitwise right shift</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>MultiplicationPrecedence</tt></th>
+        <th colspan="2"><code>MultiplicationPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>*</tt></td>
+            <td><code>*</code></td>
             <td>Multiply</td>
         </tr>
         <tr>
-            <td><tt>/</tt></td>
+            <td><code>/</code></td>
             <td>Divide</td>
         </tr>
         <tr>
-            <td><tt>%</tt></td>
+            <td><code>%</code></td>
             <td>Remainder</td>
         </tr>
         <tr>
-            <td><tt>&amp;*</tt></td>
+            <td><code>&amp;*</code></td>
             <td>Multiply, ignoring overflow</td>
         </tr>
         <tr>
-            <td><tt>&amp;/</tt></td>
+            <td><code>&amp;/</code></td>
             <td>Divide, ignoring overflow</td>
         </tr>
         <tr>
-            <td><tt>&amp;%</tt></td>
+            <td><code>&amp;%</code></td>
             <td>Remainder, ignoring overflow</td>
         </tr>
         <tr>
-            <td><tt>&amp;</tt></td>
+            <td><code>&amp;</code></td>
             <td>Bitwise AND</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>AdditionPrecedence</tt></th>
+        <th colspan="2"><code>AdditionPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>+</tt></td>
+            <td><code>+</code></td>
             <td>Add</td>
         </tr>
         <tr>
-            <td><tt>-</tt></td>
+            <td><code>-</code></td>
             <td>Subtract</td>
         </tr>
         <tr>
-            <td><tt>&amp;+</tt></td>
+            <td><code>&amp;+</code></td>
             <td>Add with overflow</td>
         </tr>
         <tr>
-            <td><tt>&amp;-</tt></td>
+            <td><code>&amp;-</code></td>
             <td>Subtract with overflow</td>
         </tr>
         <tr>
-            <td><tt>|</tt></td>
+            <td><code>|</code></td>
             <td>Bitwise OR</td>
         </tr>
         <tr>
-            <td><tt>^</tt></td>
+            <td><code>^</code></td>
             <td>Bitwise XOR</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>RangeFormationPrecedence</tt></th>
+        <th colspan="2"><code>RangeFormationPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>..&lt;</tt></td>
+            <td><code>..&lt;</code></td>
             <td>Half-open range</td>
         </tr>
         <tr>
-            <td><tt>...</tt></td>
+            <td><code>...</code></td>
             <td>Closed range</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>CastingPrecedence</tt></th>
+        <th colspan="2"><code>CastingPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>is</tt></td>
+            <td><code>is</code></td>
             <td>Type check</td>
         </tr>
         <tr>
-            <td><tt>as</tt></td>
+            <td><code>as</code></td>
             <td>Type cast</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>NilCoalescingPrecedence</tt></th>
+        <th colspan="2"><code>NilCoalescingPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>??</tt></td>
-            <td><tt>nil</tt> Coalescing</td>
+            <td><code>??</code></td>
+            <td><code>nil</code> Coalescing</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>ComparisonPrecedence</tt></th>
+        <th colspan="2"><code>ComparisonPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>&lt;</tt></td>
+            <td><code>&lt;</code></td>
             <td>Less than</td>
         </tr>
         <tr>
-            <td><tt>&lt;=</tt></td>
+            <td><code>&lt;=</code></td>
             <td>Less than or equal</td>
         </tr>
         <tr>
-            <td><tt>></tt></td>
+            <td><code>></code></td>
             <td>Greater than</td>
         </tr>
         <tr>
-            <td><tt>>=</tt></td>
+            <td><code>>=</code></td>
             <td>Greater than or equal</td>
         </tr>
         <tr>
-            <td><tt>==</tt></td>
+            <td><code>==</code></td>
             <td>Equal</td>
         </tr>
         <tr>
-            <td><tt>!=</tt></td>
+            <td><code>!=</code></td>
             <td>Not equal</td>
         </tr>
         <tr>
-            <td><tt>===</tt></td>
+            <td><code>===</code></td>
             <td>Identical</td>
         </tr>
         <tr>
-            <td><tt>!==</tt></td>
+            <td><code>!==</code></td>
             <td>Not identical</td>
         </tr>
         <tr>
-            <td><tt>~=</tt></td>
+            <td><code>~=</code></td>
             <td>Pattern match</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>LogicalConjunctionPrecedence</tt></th>
+        <th colspan="2"><code>LogicalConjunctionPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>&amp;&amp;</tt></td>
+            <td><code>&amp;&amp;</code></td>
             <td>Logical AND</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>LogicalDisjunctionPrecedence</tt></th>
+        <th colspan="2"><code>LogicalDisjunctionPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>||</tt></td>
+            <td><code>||</code></td>
             <td>Logical OR</td>
         </tr>
     </tbody>
     <tr>
-        <th colspan="2"><tt>DefaultPrecedence</tt></th>
+        <th colspan="2"><code>DefaultPrecedence</code></th>
     </tr>
     <tbody>
     </tbody>
     <tr>
-        <th colspan="2"><tt>AssignmentPrecedence</tt></th>
+        <th colspan="2"><code>AssignmentPrecedence</code></th>
     </tr>
     <tbody>
         <tr>
-            <td><tt>=</tt></td>
+            <td><code>=</code></td>
             <td>Assign</td>
         </tr>
         <tr>
-            <td><tt>*=</tt></td>
+            <td><code>*=</code></td>
             <td>Multiply and assign</td>
         </tr>
         <tr>
-            <td><tt>/=</tt></td>
+            <td><code>/=</code></td>
             <td>Divide and assign</td>
         </tr>
         <tr>
-            <td><tt>%=</tt></td>
+            <td><code>%=</code></td>
             <td>Remainder and assign</td>
         </tr>
         <tr>
-            <td><tt>+=</tt></td>
+            <td><code>+=</code></td>
             <td>Add and assign</td>
         </tr>
         <tr>
-            <td><tt>-=</tt></td>
+            <td><code>-=</code></td>
             <td>Subtract and assign</td>
         </tr>
         <tr>
-            <td><tt>&lt;&lt;=</tt></td>
+            <td><code>&lt;&lt;=</code></td>
             <td>Left bit shift and assign</td>
         </tr>
         <tr>
-            <td><tt>>>=</tt></td>
+            <td><code>>>=</code></td>
             <td>Right bit shift and assign</td>
         </tr>
         <tr>
-            <td><tt>&amp;=</tt></td>
+            <td><code>&amp;=</code></td>
             <td>Bitwise AND and assign</td>
         </tr>
         <tr>
-            <td><tt>^=</tt></td>
+            <td><code>^=</code></td>
             <td>Bitwise XOR and assign</td>
         </tr>
         <tr>
-            <td><tt>|=</tt></td>
+            <td><code>|=</code></td>
             <td>Bitwise OR and assign</td>
         </tr>
         <tr>
-            <td><tt>&amp;&amp;=</tt></td>
+            <td><code>&amp;&amp;=</code></td>
             <td>Logical AND and assign</td>
         </tr>
         <tr>
-            <td><tt>||=</tt></td>
+            <td><code>||=</code></td>
             <td>Logical OR and assign</td>
         </tr>
     </tbody>

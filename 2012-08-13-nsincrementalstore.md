@@ -103,7 +103,7 @@ This method requires very specific and very different return values depending on
 
 - Result Type: `NSCountResultType`
 
-> **Return**: <del><tt>NSNumber</tt></del><ins><tt>NSArray</tt> containing one <tt>NSNumber</tt> of count of objects matching request</ins>
+> **Return**: <del><code>NSNumber</code></del><ins><code>NSArray</code> containing one <code>NSNumber</code> of count of objects matching request</ins>
 
 #### Request Type: `NSSaveRequestType`
 

@@ -39,7 +39,7 @@ This is as true of humans as it is within a computer process. In Cocoa, there ar
             </td>
             <td>
                 <ul>
-                    <li><tt>Notifications</tt></li>
+                    <li><code>Notifications</code></li>
                 </ul>
             </td>
         </tr>

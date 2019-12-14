@@ -60,7 +60,7 @@ objc_getAssociatedObject(self, &kAssociatedObjectKey);
 
 However, a much simpler solution exists: just use a selector.
 
-<blockquote class="twitter-tweet" lang="en"><p>Since <tt>SEL</tt>s are guaranteed to be unique and constant, you can use <tt>_cmd</tt> as the key for <tt>objc_setAssociatedObject()</tt>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a>
+<blockquote class="twitter-tweet" lang="en"><p>Since <code>SEL</code>s are guaranteed to be unique and constant, you can use <code>_cmd</code> as the key for <code>objc_setAssociatedObject()</code>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a>
 </blockquote>
 
 ## Associative Object Behaviors
@@ -71,17 +71,17 @@ Values can be associated onto objects according to the behaviors defined by the 
     <thead>
         <tr>
             <th>Behavior</th>
-            <th><tt>@property</tt> Equivalent</th>
+            <th><code>@property</code> Equivalent</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_ASSIGN</tt>
+                <code>OBJC_ASSOCIATION_ASSIGN</code>
             </td>
             <td>
-                <tt>@property (assign)</tt> or <tt>@property (unsafe_unretained)</tt>
+                <code>@property (assign)</code> or <code>@property (unsafe_unretained)</code>
             </td>
             <td>
                 Specifies a weak reference to the associated object.
@@ -89,10 +89,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_RETAIN_NONATOMIC</tt>
+                <code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>
             </td>
             <td>
-                <tt>@property (nonatomic, strong)</tt>
+                <code>@property (nonatomic, strong)</code>
             </td>
             <td>
                 Specifies a strong reference to the associated object, and that the association is not made atomically.
@@ -100,10 +100,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_COPY_NONATOMIC</tt>
+                <code>OBJC_ASSOCIATION_COPY_NONATOMIC</code>
             </td>
             <td>
-                <tt>@property (nonatomic, copy)</tt>
+                <code>@property (nonatomic, copy)</code>
             </td>
             <td>
                 Specifies that the associated object is copied, and that the association is not made atomically.
@@ -111,10 +111,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_RETAIN</tt>
+                <code>OBJC_ASSOCIATION_RETAIN</code>
             </td>
             <td>
-                <tt>@property (atomic, strong)</tt>
+                <code>@property (atomic, strong)</code>
             </td>
             <td>
                 Specifies a strong reference to the associated object, and that the association is made atomically.
@@ -122,10 +122,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_COPY</tt>
+                <code>OBJC_ASSOCIATION_COPY</code>
             </td>
             <td>
-                <tt>@property (atomic, copy)</tt>
+                <code>@property (atomic, copy)</code>
             </td>
             <td>
                 Specifies that the associated object is copied, and that the association is made atomically.

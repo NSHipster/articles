@@ -145,58 +145,58 @@ and their associated properties:
   </thead>
   <tbody>
     <tr>
-      <td><tt>.link</tt></td>
+      <td><code>.link</code></td>
       <td>
         <ul>
-          <li><tt>.url</tt></li>
+          <li><code>.url</code></li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>.phoneNumber</tt></td>
+      <td><code>.phoneNumber</code></td>
       <td>
         <ul>
-          <li><tt>.phoneNumber</tt></li>
+          <li><code>.phoneNumber</code></li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>.date</tt></td>
+      <td><code>.date</code></td>
       <td>
         <ul>
-          <li><tt>.date</tt></li>
-          <li><tt>.duration</tt></li>
-          <li><tt>.timeZone</tt></li>
+          <li><code>.date</code></li>
+          <li><code>.duration</code></li>
+          <li><code>.timeZone</code></li>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>.address</tt></td>
+      <td><code>.address</code></td>
       <td>
         <ul>
-          <li><tt>.components</tt></li>
+          <li><code>.components</code></li>
           <ul>
-            <li><tt>.name</tt></li>
-            <li><tt>.jobTitle</tt></li>
-            <li><tt>.organization</tt></li>
-            <li><tt>.street</tt></li>
-            <li><tt>.city</tt></li>
-            <li><tt>.state</tt></li>
-            <li><tt>.zip</tt></li>
-            <li><tt>.country</tt></li>
-            <li><tt>.phone</tt></li>
+            <li><code>.name</code></li>
+            <li><code>.jobTitle</code></li>
+            <li><code>.organization</code></li>
+            <li><code>.street</code></li>
+            <li><code>.city</code></li>
+            <li><code>.state</code></li>
+            <li><code>.zip</code></li>
+            <li><code>.country</code></li>
+            <li><code>.phone</code></li>
           </ul>
         </ul>
       </td>
     </tr>
     <tr>
-      <td><tt>.transitInformation</tt></td>
+      <td><code>.transitInformation</code></td>
       <td>
         <ul>
-          <li><tt>.components</tt></li>
+          <li><code>.components</code></li>
           <ul>
-            <li><tt>.airline</tt></li>
-            <li><tt>.flight</tt></li>
+            <li><code>.airline</code></li>
+            <li><code>.flight</code></li>
           </ul>
         </ul>
       </td>

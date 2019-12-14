@@ -52,52 +52,52 @@ Although each language has a particular inventory of sounds, some of which other
   </thead>
   <tbody>
     <tr>
-      <td><tt>kCFStringTransformLatinArabic</tt></td>
+      <td><code>kCFStringTransformLatinArabic</code></td>
       <td>mrḥbạ</td>
       <td>مرحبا</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinCyrillic</tt></td>
+      <td><code>kCFStringTransformLatinCyrillic</code></td>
       <td>privet</td>
       <td>привет</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinGreek</tt></td>
+      <td><code>kCFStringTransformLatinGreek</code></td>
       <td>geiá sou</td>
       <td>γειά σου</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinHangul</tt></td>
+      <td><code>kCFStringTransformLatinHangul</code></td>
       <td>annyeonghaseyo</td>
       <td>안녕하세요</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinHebrew</tt></td>
+      <td><code>kCFStringTransformLatinHebrew</code></td>
       <td>şlwm</td>
       <td>שלום</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinHiragana</tt></td>
+      <td><code>kCFStringTransformLatinHiragana</code></td>
       <td>hiragana</td>
       <td>ひらがな</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinKatakana</tt></td>
+      <td><code>kCFStringTransformLatinKatakana</code></td>
       <td>katakana</td>
       <td>カタカナ</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformLatinThai</tt></td>
+      <td><code>kCFStringTransformLatinThai</code></td>
       <td>s̄wạs̄dī</td>
       <td>สวัสดี</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformHiraganaKatakana</tt></td>
+      <td><code>kCFStringTransformHiraganaKatakana</code></td>
       <td>にほんご</td>
       <td>ニホンゴ</td>
     </tr>
     <tr>
-      <td><tt>kCFStringTransformMandarinLatin</tt></td>
+      <td><code>kCFStringTransformMandarinLatin</code></td>
       <td>中文</td>
       <td>zhōng wén</td>
     </tr>
