@@ -212,7 +212,7 @@ Did you know that all Objective-C classes and objects are just glorified `struct
 
 For most of us, at least most of the time, coming into this knowledge is but an academic exercise. But for anyone venturing into low-level optimizations, this is simply the jumping-off point.
 
-- `@encode()`: Returns the [type encoding](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at:`.
+- `@encode()`: Returns the [type encoding](/type-encodings/) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at:`.
 - `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
 
 ```objc
