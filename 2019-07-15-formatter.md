@@ -313,6 +313,8 @@ type-safe dimensional calculations:
 
 {:/}
 
+<figure>
+
 | Measure                       | Unit Subclass                     | Base Unit                           |
 | ----------------------------- | --------------------------------- | ----------------------------------- |
 | Acceleration                  | `UnitAcceleration`                | meters per second squared (m/s²)    |
@@ -338,7 +340,12 @@ type-safe dimensional calculations:
 | Temperature                   | `UnitTemperature`                 | kelvin (K)                          |
 | Volume                        | `UnitVolume`                      | liters (L)                          |
 
-<span class="fn"><sup>\*</sup> Follows [ISO/IEC 80000-13 standard](https://en.wikipedia.org/wiki/ISO/IEC_80000); one byte is 8 bits, 1 kilobyte = 1000¹ bytes</span>
+<figcaption>
+<p>Follows [ISO/IEC 80000-13 standard](https://en.wikipedia.org/wiki/ISO/IEC_80000); 
+one byte is 8 bits, 1 kilobyte = 1000¹ bytes</p>
+</figcaption>
+
+</figure>
 
 </details>
 
@@ -738,6 +745,8 @@ it appears at the beginning or middle of a sentence.
 A `context` property is available for `DateComponentsFormatter`,
 as well as `DateFormatter`, `NumberFormatter`, and others.
 
+<figure>
+
 | Formatting Context    | Output               |
 | --------------------- | -------------------- |
 | `standalone`          | "About 2 hours"      |
@@ -746,11 +755,15 @@ as well as `DateFormatter`, `NumberFormatter`, and others.
 | `middleOfSentence`    | "about 2 hours"      |
 | `dynamic`             | Depends<sup>\*</sup> |
 
-<span class="fn"><sup>\*</sup>
+<figcaption>
+<p><sup>\*</sup>
 A `Dynamic` context changes capitalization automatically
 depending on where it appears in the text
 for locales that may position strings differently
-depending on the content.</span>
+depending on the content.</p>
+</figcaption>
+
+</figure>
 
 ### RelativeDateTimeFormatter
 
@@ -796,6 +809,8 @@ formatter.localizedString(from: DateComponents()) // ""
 
 #### Styles
 
+<figure>
+
 | Style         | Example                   |
 | ------------- | ------------------------- |
 | `abbreviated` | "1 mo. ago" <sup>\*</sup> |
@@ -803,7 +818,11 @@ formatter.localizedString(from: DateComponents()) // ""
 | `full`        | "1 month ago"             |
 | `spellOut`    | "one month ago"           |
 
-<span class="fn"><sup>\*</sup>May produce output distinct from `short` for non-English locales.</span>
+<figcaption>
+<p><sup>\*</sup>May produce output distinct from `short` for non-English locales.</p>
+</figcaption>
+
+</figure>
 
 #### Using Named Relative Date Times
 
