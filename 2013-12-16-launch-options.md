@@ -34,7 +34,7 @@ Numerous as they are, `launchOptions` keys can be more easily understood when or
 Apps can launch other apps by passing URLs:
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app://..."]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app:<#...#>"]];
 ```
 
 For example, an `http://` URL would open in Safari, a `mailto://` URL would open in Mail, and a `tel://` URL would open in Phone.
