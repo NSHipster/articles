@@ -445,7 +445,7 @@ to serve as an identifier:
 ```swift
 struct UPC: Hashable {
     var digits: String
-    <#implementation details#>
+    <#...#>
 }
 
 struct Product: Identifiable {
