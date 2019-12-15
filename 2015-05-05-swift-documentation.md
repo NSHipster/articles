@@ -30,7 +30,7 @@ of documentation in Swift.
 
 ---
 
-Since the early 00's,
+Since the early '00s,
 [Headerdoc](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html#//apple_ref/doc/uid/TP40001215-CH345-SW1)
 has been Apple's preferred documentation standard.
 Starting off as little more than a Perl script that parsed trumped-up
