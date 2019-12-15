@@ -136,7 +136,13 @@ Values can be associated onto objects according to the behaviors defined by the 
 
 Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zero `weak` references, but rather follow a behavior similar to `unsafe_unretained`, which means that one should be cautious when accessing weakly associated objects within an implementation.
 
-> According to the Deallocation Timeline described in [WWDC 2011, Session 322](https://developer.apple.com/videos/wwdc/2011/#322-video) (~36:00), associated objects are erased surprisingly late in the object lifecycle, in `object_dispose()`, which is invoked by `NSObject -dealloc`.
+{% info %}
+According to the deallocation timeline described in 
+[WWDC 2011, Session 322](https://asciiwwdc.com/2011/sessions/322) (~36:00), 
+associated objects are erased surprisingly late in the object lifecycle --- 
+`object_dispose()`, 
+which is invoked by `NSObject -dealloc`.
+{% endinfo %}
 
 ## Removing Values
 
