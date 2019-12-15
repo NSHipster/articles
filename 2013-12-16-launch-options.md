@@ -113,14 +113,14 @@ A local notification populates the launch options on `UIApplicationLaunchOptions
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
 ```objc
-// .h
+// AppDelegate.h
 @import AVFoundation;
 
 @interface AppDelegate ()
 @property (readwrite, nonatomic, assign) SystemSoundID localNotificationSound;
 @end
 
-// .m
+// AppDelegate.m
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification
 {
