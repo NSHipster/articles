@@ -157,8 +157,6 @@ Swizzling is widely considered a voodoo technique, prone to unpredictable behavi
 - **Understand what's going on**: Simply copy-pasting swizzling code without understanding how it works is not only dangerous, but is a wasted opportunity to learn a lot about the Objective-C runtime. Read through the [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation) and browse `<objc/runtime.h>` to get a good sense of how and why things happen. _Always endeavor to replace magical thinking with understanding._
 - **Proceed with caution**: No matter how confident you are about swizzling Foundation, UIKit, or any other built-in framework, know that everything could break in the next release. Be ready for that, and go the extra mile to ensure that in playing with fire, you don't get `NSBurned`.
 
-> Feeling gun shy about invoking the Objective-C runtime directly? [Jonathan ‘Wolf’ Rentzsch](https://twitter.com/rentzsch) provides a battle-tested, CocoaPods-ready library called [JRSwizzle](https://github.com/rentzsch/jrswizzle) that will take care of everything for you.
-
 * * *
 
 Like [associated objects](https://nshipster.com/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.
