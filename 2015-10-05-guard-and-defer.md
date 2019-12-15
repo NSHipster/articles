@@ -323,17 +323,21 @@ take out the recycling<br/>
 wash the dishes<br/>
 </samp>
 
-> What happens if you nest `defer` statements, like this?
+{% info %}
+
+What happens if you nest `defer` statements, like this?
 
 ```swift
 defer { defer { print("clean the gutter") } }
 ```
 
-> Your first thought might be that it pushes the statement
-> to the very bottom of the stack.
-> But that's not what happens.
-> Think it through,
-> and then test your hypothesis in a Playground.
+Your first thought might be that it pushes the statement
+to the very bottom of the stack.
+But that's not what happens.
+Think it through,
+and then test your hypothesis in a Playground.
+
+{% endinfo %}
 
 ### Deferring Judgement
 
