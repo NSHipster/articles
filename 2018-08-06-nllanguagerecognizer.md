@@ -3,7 +3,7 @@ title: NLLanguageRecognizer
 author: Mattt
 category: Cocoa
 tags: language
-excerpt: >
+excerpt: >-
   Machine learning has been at the heart of
   natural language processing in Apple platforms for many years,
   but it's only recently that external developers have been able to
