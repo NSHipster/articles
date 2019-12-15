@@ -95,8 +95,9 @@ Let's interrogate each of these points, in order:
 
 ## Regular Expressions without NSRegularExpression
 
-You may be surprised to learn that you can --- in fact ---
-use regular expressions in a Swift one-liner:
+You may be surprised to learn that you can,
+in fact,
+use regular expressions in a Swift one-liner ---
 you just have to bypass `NSRegularExpression` entirely.
 
 ### Matching Strings Against Patterns
