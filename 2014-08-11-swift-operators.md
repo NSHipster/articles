@@ -93,7 +93,7 @@ and forming open or closed ranges (`...`, `..<`).
 ### Infix Operators
 
 Swift uses <dfn>infix</dfn> notation for binary operators
-(as opposed to, say [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)).
+_(as opposed to, say [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation))_.
 The Infix operators are grouped below
 according to their associativity
 and precedence level, in descending order:
