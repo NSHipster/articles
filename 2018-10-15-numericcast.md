@@ -109,7 +109,7 @@ For more information about the changes to how numbers work in Swift 4,
 see [SE-0104: "Protocol-oriented integers"](https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md).
 
 This subject is also discussed at length in the
-[Flight School Guide to Numbers](https://gumroad.com/l/swift-numbers).
+[Flight School Guide to Numbers](https://flight.school/books/numbers).
 
 {% endinfo %}
 
