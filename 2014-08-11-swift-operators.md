@@ -292,6 +292,8 @@ Swift defines a handful of these by default:
 - `-`: Unary minus
 - `!`: Logical NOT
 - `~`: Bitwise NOT
+- `...`: Open-ended partial range
+- `..<`: Closed partial range
 
 For example,
 the `!` prefix operator
