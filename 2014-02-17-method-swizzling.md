@@ -81,13 +81,24 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 @end
 ```
 
-> In computer science, [pointer swizzling](https://en.wikipedia.org/wiki/Pointer_swizzling) is the conversion of references based on name or position to direct pointer references.  While the origins of Objective-C's usage of the term are not entirely known, it's understandable why it was co-opted, since method swizzling involves changing the reference of a function pointer by its selector.
-
 Now, when any instance of `UIViewController`, or one of its subclasses invokes `viewWillAppear:`, a log statement will print out.
 
 Injecting behavior into the view controller lifecycle, responder events, view drawing, or the Foundation networking stack are all good examples of how method swizzling can be used to great effect. There are a number of other occasions when swizzling would be an appropriate technique, and they become increasingly apparent the more seasoned an Objective-C developer becomes.
 
 Regardless of _why_ or _where_ one chooses to use swizzling, the _how_ remains absolute:
+
+{% info %}
+
+In computer science, 
+[pointer swizzling](https://en.wikipedia.org/wiki/Pointer_swizzling) 
+is the conversion of references based on name or position 
+to direct pointer references.
+While the origins of Objective-C's usage of the term are not entirely known, 
+it's understandable why it was co-opted, 
+since method swizzling involves changing the reference of a function pointer 
+by its selector.
+
+{% endinfo %}
 
 ## +load vs. +initialize
 
