@@ -26,11 +26,15 @@ Otherwise, I try to build up a phonetic inventory,
 listening for what kinds of sounds are present.
 For instance,
 is the speaker mostly using
-voiced alveolar trills [`⟨r⟩`](https://en.wikipedia.org/wiki/Dental,_alveolar_and_postalveolar_trills),
-flaps [`⟨ɾ⟩`](https://en.wikipedia.org/wiki/Flap_consonant),
-or postalveolar approximants [`⟨ɹ⟩`](https://en.wikipedia.org/wiki/Alveolar_and_postalveolar_approximants)?
+voiced alveolar trills 
+[⟨r⟩](https://en.wikipedia.org/wiki/Dental,_alveolar_and_postalveolar_trills),
+flaps 
+[⟨ɾ⟩](https://en.wikipedia.org/wiki/Flap_consonant), or 
+postalveolar approximants 
+[⟨ɹ⟩](https://en.wikipedia.org/wiki/Alveolar_and_postalveolar_approximants)?
 Are the vowels mostly open / close; front / back?
-Any unusual sounds, like [`⟨ʇ⟩`](https://en.wikipedia.org/wiki/Dental_clicks)?
+Any unusual sounds, like 
+[⟨ʇ⟩](https://en.wikipedia.org/wiki/Dental_clicks)?
 
 ...or at least that's what I think I do.
 To be honest, all of this happens unconsciously and automatically --
