@@ -70,9 +70,9 @@ To register for remote notifications, `registerForRemoteNotificationTypes:` is c
 
 ```objc
 [application registerForRemoteNotificationTypes:
-	UIRemoteNotificationTypeBadge |
+    UIRemoteNotificationTypeBadge |
     UIRemoteNotificationTypeSound |
-	UIRemoteNotificationTypeAlert];
+    UIRemoteNotificationTypeAlert];
 ```
 
 ...which, if successful, calls  `-application:didRegisterForRemoteNotificationsWithDeviceToken:`. Once the device has been successfully registered, it can receive push notifications at any time.
@@ -206,7 +206,7 @@ This is how you register:
 
 ```objc
 [application registerForRemoteNotificationTypes:
-	UIRemoteNotificationTypeNewsstandContentAvailability];
+    UIRemoteNotificationTypeNewsstandContentAvailability];
 ```
 
 And this is the key to look out for in `launchOptions`:
