@@ -10,7 +10,7 @@ status:
   swift: 5.1
 ---
 
-> What constitutes the identity of an object?
+_What constitutes the identity of an object?_
 
 Philosophers have contemplated such matters throughout the ages.
 Whether it's to do with
