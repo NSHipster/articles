@@ -98,239 +98,167 @@ The Infix operators are grouped below
 according to their associativity
 and precedence level, in descending order:
 
-<table>
-    <tr>
-        <th colspan="2"><code>BitwiseShiftPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>&lt;&lt;</code></td>
-            <td>Bitwise left shift</td>
-        </tr>
-        <tr>
-            <td><code>&gt;&gt;</code></td>
-            <td>Bitwise right shift</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>MultiplicationPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>*</code></td>
-            <td>Multiply</td>
-        </tr>
-        <tr>
-            <td><code>/</code></td>
-            <td>Divide</td>
-        </tr>
-        <tr>
-            <td><code>%</code></td>
-            <td>Remainder</td>
-        </tr>
-        <tr>
-            <td><code>&amp;*</code></td>
-            <td>Multiply, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><code>&amp;/</code></td>
-            <td>Divide, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><code>&amp;%</code></td>
-            <td>Remainder, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><code>&amp;</code></td>
-            <td>Bitwise AND</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>AdditionPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>+</code></td>
-            <td>Add</td>
-        </tr>
-        <tr>
-            <td><code>-</code></td>
-            <td>Subtract</td>
-        </tr>
-        <tr>
-            <td><code>&amp;+</code></td>
-            <td>Add with overflow</td>
-        </tr>
-        <tr>
-            <td><code>&amp;-</code></td>
-            <td>Subtract with overflow</td>
-        </tr>
-        <tr>
-            <td><code>|</code></td>
-            <td>Bitwise OR</td>
-        </tr>
-        <tr>
-            <td><code>^</code></td>
-            <td>Bitwise XOR</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>RangeFormationPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>..&lt;</code></td>
-            <td>Half-open range</td>
-        </tr>
-        <tr>
-            <td><code>...</code></td>
-            <td>Closed range</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>CastingPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>is</code></td>
-            <td>Type check</td>
-        </tr>
-        <tr>
-            <td><code>as</code></td>
-            <td>Type cast</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>NilCoalescingPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>??</code></td>
-            <td><code>nil</code> Coalescing</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>ComparisonPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>&lt;</code></td>
-            <td>Less than</td>
-        </tr>
-        <tr>
-            <td><code>&lt;=</code></td>
-            <td>Less than or equal</td>
-        </tr>
-        <tr>
-            <td><code>></code></td>
-            <td>Greater than</td>
-        </tr>
-        <tr>
-            <td><code>>=</code></td>
-            <td>Greater than or equal</td>
-        </tr>
-        <tr>
-            <td><code>==</code></td>
-            <td>Equal</td>
-        </tr>
-        <tr>
-            <td><code>!=</code></td>
-            <td>Not equal</td>
-        </tr>
-        <tr>
-            <td><code>===</code></td>
-            <td>Identical</td>
-        </tr>
-        <tr>
-            <td><code>!==</code></td>
-            <td>Not identical</td>
-        </tr>
-        <tr>
-            <td><code>~=</code></td>
-            <td>Pattern match</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>LogicalConjunctionPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>&amp;&amp;</code></td>
-            <td>Logical AND</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>LogicalDisjunctionPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>||</code></td>
-            <td>Logical OR</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>DefaultPrecedence</code></th>
-    </tr>
-    <tbody>
-    </tbody>
-    <tr>
-        <th colspan="2"><code>AssignmentPrecedence</code></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><code>=</code></td>
-            <td>Assign</td>
-        </tr>
-        <tr>
-            <td><code>*=</code></td>
-            <td>Multiply and assign</td>
-        </tr>
-        <tr>
-            <td><code>/=</code></td>
-            <td>Divide and assign</td>
-        </tr>
-        <tr>
-            <td><code>%=</code></td>
-            <td>Remainder and assign</td>
-        </tr>
-        <tr>
-            <td><code>+=</code></td>
-            <td>Add and assign</td>
-        </tr>
-        <tr>
-            <td><code>-=</code></td>
-            <td>Subtract and assign</td>
-        </tr>
-        <tr>
-            <td><code>&lt;&lt;=</code></td>
-            <td>Left bit shift and assign</td>
-        </tr>
-        <tr>
-            <td><code>>>=</code></td>
-            <td>Right bit shift and assign</td>
-        </tr>
-        <tr>
-            <td><code>&amp;=</code></td>
-            <td>Bitwise AND and assign</td>
-        </tr>
-        <tr>
-            <td><code>^=</code></td>
-            <td>Bitwise XOR and assign</td>
-        </tr>
-        <tr>
-            <td><code>|=</code></td>
-            <td>Bitwise OR and assign</td>
-        </tr>
-        <tr>
-            <td><code>&amp;&amp;=</code></td>
-            <td>Logical AND and assign</td>
-        </tr>
-        <tr>
-            <td><code>||=</code></td>
-            <td>Logical OR and assign</td>
-        </tr>
-    </tbody>
-</table>
+<section class="infix-operator-precedence-list">
+
+#### BitwiseShiftPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&lt;&lt;</code></dt>
+<dd>Bitwise left shift</dd>
+<dt><code>&gt;&gt;</code></dt>
+<dd>Bitwise right shift</dd>
+</dl>
+{:/}
+
+#### MultiplicationPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>*</code></dt>
+<dd>Multiply</dd>
+<dt><code>/</code></dt>
+<dd>Divide</dd>
+<dt><code>%</code></dt>
+<dd>Remainder</dd>
+<dt><code>&amp;*</code></dt>
+<dd>Multiply, ignoring overflow</dd>
+<dt><code>&amp;/</code></dt>
+<dd>Divide, ignoring overflow</dd>
+<dt><code>&amp;%</code></dt>
+<dd>Remainder, ignoring overflow</dd>
+<dt><code>&amp;</code></dt>
+<dd>Bitwise AND</dd>
+</dl>
+{:/}
+
+#### AdditionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>+</code></dt>
+<dd>Add</dd>
+<dt><code>-</code></dt>
+<dd>Subtract</dd>
+<dt><code>&amp;+</code></dt>
+<dd>Add with overflow</dd>
+<dt><code>&amp;-</code></dt>
+<dd>Subtract with overflow</dd>
+<dt><code>|</code></dt>
+<dd>Bitwise OR</dd>
+<dt><code>^</code></dt>
+<dd>Bitwise XOR</dd>
+</dl>
+{:/}
+
+#### RangeFormationPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>..&lt;</code></dt>
+<dd>Half-open range</dd>
+<dt><code>...</code></dt>
+<dd>Closed range</dd>
+</dl>
+{:/}
+
+#### CastingPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>is</code></dt>
+<dd>Type check</dd>
+<dt><code>as</code></dt>
+<dd>Type cast</dd>
+</dl>
+{:/}
+
+#### NilCoalescingPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>??</code></dt>
+<dd><code>nil</code> Coalescing</dd>
+</dl>
+{:/}
+
+#### ComparisonPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&lt;</code></dt>
+<dd>Less than</dd>
+<dt><code>&lt;=</code></dt>
+<dd>Less than or equal</dd>
+<dt><code>></code></dt>
+<dd>Greater than</dd>
+<dt><code>>=</code></dt>
+<dd>Greater than or equal</dd>
+<dt><code>==</code></dt>
+<dd>Equal</dd>
+<dt><code>!=</code></dt>
+<dd>Not equal</dd>
+<dt><code>===</code></dt>
+<dd>Identical</dd>
+<dt><code>!==</code></dt>
+<dd>Not identical</dd>
+<dt><code>~=</code></dt>
+<dd>Pattern match</dd>
+</dl>
+{:/}
+
+#### LogicalConjunctionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&amp;&amp;</code></dt>
+<dd>Logical AND</dd>
+</dl>
+{:/}
+
+#### LogicalDisjunctionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>||</code></dt>
+<dd>Logical OR</dd>
+</dl>
+{:/}
+
+#### DefaultPrecedence
+
+_(None)_
+
+#### AssignmentPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>=</code></dt>
+<dd>Assign</dd>
+<dt><code>*=</code></dt>
+<dd>Multiply and assign</dd>
+<dt><code>/=</code></dt>
+<dd>Divide and assign</dd>
+<dt><code>%=</code></dt>
+<dd>Remainder and assign</dd>
+<dt><code>+=</code></dt>
+<dd>Add and assign</dd>
+<dt><code>-=</code></dt>
+<dd>Subtract and assign</dd>
+<dt><code>&lt;&lt;=</code></dt>
+<dd>Left bit shift and assign</dd>
+<dt><code>>>=</code></dt>
+<dd>Right bit shift and assign</dd>
+<dt><code>&amp;=</code></dt>
+<dd>Bitwise AND and assign</dd>
+<dt><code>^=</code></dt>
+<dd>Bitwise XOR and assign</dd>
+<dt><code>|=</code></dt>
+<dd>Bitwise OR and assign</dd>
+</dl>
+{:/}
+
+</section>
 
 {% info %}
 
