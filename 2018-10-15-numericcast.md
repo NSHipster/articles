@@ -55,8 +55,8 @@ about what `numericCast(_:)` does by
 [looking at its implementation](https://github.com/apple/swift/blob/7f7b4f12d3138c5c259547c49c3b41415cd4206e/stdlib/public/core/Integers.swift#L3508-L3510):
 
 ```swift
-public func numericCast<T : BinaryInteger, U : BinaryInteger>(_ x: T) -> U {
-  return U(x)
+func numericCast<T: BinaryInteger, U: BinaryInteger>(_ x: T) -> U {
+    return U(x)
 }
 ```
 
@@ -79,17 +79,17 @@ or when a value exceeds the representable range of the destination type
 `BinaryInteger` defines four strategies of conversion between integer types,
 each with different behaviors for handling out-of-range values:
 
-- **Range-Checked Conversion**
-  ([`init(_:)`](https://developer.apple.com/documentation/swift/binaryinteger/2885704-init)):
+- **Range-Checked Conversion** -
+  [`init(_:)`](https://developer.apple.com/documentation/swift/binaryinteger/2885704-init):
   Trigger a runtime error for out-of-range values
-- **Exact Conversion**
-  ([`init?(exactly:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925955-init)):
+- **Exact Conversion** -
+  [`init?(exactly:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925955-init):
   Return `nil` for out-of-range values
-- **Clamping Conversion**
-  ([`init(clamping:)`](https://developer.apple.com/documentation/swift/binaryinteger/2886143-init)):
+- **Clamping Conversion** -
+  [`init(clamping:)`](https://developer.apple.com/documentation/swift/binaryinteger/2886143-init):
   Use the closest representable value for out-of-range values
-- **Bit Pattern Conversion**
-  ([`init(truncatingIfNeeded:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925529-init)):
+- **Bit Pattern Conversion** -
+  [`init(truncatingIfNeeded:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925529-init):
   Truncate to the width of the target integer type
 
 The correct conversion strategy

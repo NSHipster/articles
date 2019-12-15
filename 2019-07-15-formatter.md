@@ -566,7 +566,8 @@ because, as of iOS 10.0 and macOS 10.12,
 
 ```swift
 let formatter = ISO8601DateFormatter()
-formatter.date(from: "2019-07-15T09:41:00-07:00") // Jul 15, 2019 at 9:41 AM
+formatter.date(from: "2019-07-15T09:41:00-07:00") 
+// Jul 15, 2019 at 9:41 AM
 ```
 
 {% info %}
@@ -593,7 +594,8 @@ let decoder = JSONDecoder()
 decoder.dateDecodingStrategy = .iso8601
 
 let comments = try decoder.decode([Comment].self, from: json)
-comments.first?.timestamp // Jul 15, 2019 at 9:41 AM
+comments.first?.timestamp 
+// Jul 15, 2019 at 9:41 AM
 ```
 
 {% endinfo %}

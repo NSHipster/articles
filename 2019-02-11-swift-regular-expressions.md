@@ -69,11 +69,11 @@ I have a suggestion:
 In any other language,
 regular expressions are something you can sling around in one-liners.
 
-- _Need to substitute one word for another?_
+- _Need to substitute one word for another?_<br/>
   **Boom**: regular expression.
-- _Need to extract a value from a templated string?_
+- _Need to extract a value from a templated string?_<br/>
   **Boom**: regular expression.
-- _Need to parse XML?_
+- _Need to parse XML?_<br/>
   **Boom**: <del>regular expression</del>
   <ins>actually, you should really use an XML parser in this case</ins>
 

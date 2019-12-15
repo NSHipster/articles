@@ -30,7 +30,8 @@ For example, let's say we wanted to track how many times each view controller is
 
 Each view controller could add tracking code to its own implementation of `viewDidAppear:`, but that would make for a ton of duplicated boilerplate code. Subclassing would be another possibility, but it would require subclassing `UIViewController`, `UITableViewController`, `UINavigationController`, and every other view controller class—an approach that would also suffer from code duplication.
 
-Fortunately, there is another way: **method swizzling** from a category. Here's how to do it:
+Fortunately, there is another way: **method swizzling** from a category. 
+Here's how to do it:
 
 ```objc
 #import <objc/runtime.h>

@@ -22,7 +22,7 @@ status:
 > our utmost best to … make the correspondence between the program
 > (spread out in text space) and the process
 > (spread out in time) as trivial as possible."
-
+> <br/>
 > —[Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra),
 > ["Go To Considered Harmful"](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)
 
