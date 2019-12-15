@@ -159,4 +159,4 @@ Swizzling is widely considered a voodoo technique, prone to unpredictable behavi
 
 * * *
 
-Like [associated objects](https://nshipster.com/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.
+Like [associated objects](/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.
