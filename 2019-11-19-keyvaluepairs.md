@@ -454,7 +454,7 @@ Dictionary<String, Int>(uniqueKeysWithValues: Array(pairsWithDuplicateKey))
 ```
 
 Instead, you must either specify which value to map
-or map
+or map each key to an array of values:
 
 ```swift
 Dictionary(Array(pairsWithDuplicateKey),
