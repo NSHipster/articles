@@ -336,12 +336,23 @@ resembles that of an `@available` attribute:
 <#if | guard | while#> #available(<#platform#> <#version#> <#, [platform version] ...#>, *) <#...#>
 ```
 
-{% warning %}
+{% info %}
 
-You can’t combine `#available` expressions
-with other conditions using logical operators like `&&` and `||`.
+You can’t combine multiple `#available` expressions
+using logical operators like `&&` and `||`,
+but you can use commas,
+which are equivalent to `&&`.
+In practice, 
+this is only useful for conditioning
+Swift language version and the availability of a single platform
+_(since a check for more than one would be either redundant or impossible)_.
 
-{% endwarning %}
+```swift
+// Require Swift 5 and iOS 13
+guard #available(swift 5.0), #available(iOS 13.0) else { return }
+```
+
+{% endinfo %}
 
 ---
 
