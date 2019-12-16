@@ -286,7 +286,7 @@ The name change served to both clarify its true nature
 and bolster use as a public API
 (and not some internal language construct).
 
-You can create a `KeyValuesPairs` object
+You can create a `KeyValuePairs` object
 with a dictionary literal
 (in fact, this is the only way to create one):
 
@@ -398,7 +398,7 @@ let arrayOfPairs: [(Key, Value)] = Array(pairs)
 
 Though,
 if you just want to iterate over each key-value pair,
-it's conformance to `Sequence` means that you can pass it directly to a `for-in` loop:
+its conformance to `Sequence` means that you can pass it directly to a `for-in` loop:
 
 ```swift
 for (key, value) in pairs {
@@ -407,7 +407,7 @@ for (key, value) in pairs {
 ```
 
 You can always create an `Array` from a `KeyValuePairs` object,
-but creating `Dictionary` is more complicated.
+but creating a `Dictionary` is more complicated.
 
 ## Converting to Dictionaries
 
