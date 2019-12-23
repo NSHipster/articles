@@ -394,7 +394,7 @@ import SwiftUI
 
 let deviceNames: [String] = [
     "iPhone SE",
-    "iPad 11 Pro Max",
+    "iPhone 11 Pro Max",
     "iPad Pro (11-inch)"
 ]
 
