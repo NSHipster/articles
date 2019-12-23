@@ -41,54 +41,45 @@ Or you could carve things into five,
 [like the Chinese](https://en.wikipedia.org/wiki/Wuxing_%28Chinese_philosophy%29)
 with
 <ruby>
-<rbc>
 <rtc lang="en">Wood</rtc>
 <rp>(</rp>
 <rb lang="zh-Hant">木</rb>
 <rt lang="zh-Latn">mù</rt>
 <rp>)</rp>
-</rbc>
 </ruby>,
-<ruby><rbc>
+<ruby>
 <rtc lang="en">Fire</rtc>
 <rp>(</rp>
 <rb lang="zh-Hant">火</rb>
 <rt lang="zh-Latn">huǒ</rt>
 <rp>)</rp>
-</rbc>
 </ruby>,
 <ruby>
-<rbc>
 <rtc lang="en">Earth</rtc>
 <rp>(</rp>
 <rb lang="zh-Hant">土</rb>
 <rt lang="zh-Latn">tǔ</rt>
 <rp>)</rp>
-</rbc>
 </ruby>,
 <ruby>
-<rbc>
 <rtc lang="en">Metal</rtc>
 <rp>(</rp>
 <rb lang="zh-Hant">金</rb>
 <rt lang="zh-Latn">jīn</rt>
 <rp>)</rp>
-</rbc>
 </ruby>,
 and
 <ruby>
-<rbc>
 <rtc lang="en">Water</rtc>
 <rp>(</rp>
 <rb lang="zh-Hant">水</rb>
 <rt lang="zh-Latn">shuǐ</rt>
 <rp>)</rp>
-</rbc>
 </ruby>.
 Still not satisfied?
 Perhaps the eight-part
 <ruby>
-<rbc><rb lang="zh-Hant"><a href="https://en.wikipedia.org/wiki/Bagua">八卦</a></rb></rbc>
+<rb lang="zh-Hant"><a href="https://en.wikipedia.org/wiki/Bagua">八卦</a></rb>
 <rtc><rp>(</rp><rt lang="zh-Latn">bāguà</rt><rp>)</rp></rtc>
 </ruby>
 will provide the answers that you seek:
