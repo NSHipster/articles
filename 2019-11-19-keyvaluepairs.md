@@ -243,7 +243,7 @@ This truncated declaration highlights the defining features of `KeyValuePairs`:
 - Its ability to be expressed by a dictionary literal
 - Its capabilities as a random-access collection
 
-### Dictionary Literals
+## KeyValuePairs as Expressible by Dictionary Literal
 
 [Literals](/swift-literals/)
 allow us to represent values directly in source code,
@@ -299,7 +299,7 @@ see
 
 {% endinfo %}
 
-### Random-Access Collections
+## KeyValuePairs as Random-Access Collection
 
 `KeyValuePairs` conforms to `RandomAccessCollection`,
 which allows its contents to be retrieved by _(in this case, `Int`)_ indices.
