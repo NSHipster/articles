@@ -26,7 +26,7 @@ but create a similar distinction between raindrops and puddles.
 Over time,
 this simple empirical observation
 has warped into an awful cliché that
-"Eskimos [sic] have 50 different words for snow" ---
+"Eskimos _\[sic\]_ have 50 different words for snow" ---
 which is unfortunate,
 because Boas' original observation was empirical,
 and the resulting weak claim of linguistic relativity is uncontroversial:
