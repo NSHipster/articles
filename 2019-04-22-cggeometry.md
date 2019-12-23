@@ -474,4 +474,4 @@ and you may encounter the best arithmetic problem of all:
 adding up all the money you've made with your awesome new app.
 _Mathematical!_
 
-[quartz-2d]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066
+[quartz-2d]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html
