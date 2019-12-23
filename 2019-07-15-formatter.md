@@ -446,10 +446,6 @@ for common formats.
     <thead>
         <tr>
             <th>Style</th>
-            <th colspan="2">Example Output</th>
-        </tr>
-        <tr>
-            <th></th>
             <th>Date</th>
             <th>Time</th>
         </tr>
@@ -636,10 +632,6 @@ NSLog(@"%@", [formatter stringFromDate:fromDate toDate:toDate]);
     <thead>
         <tr>
             <th>Style</th>
-            <th colspan="2">Example Output</th>
-        </tr>
-        <tr>
-            <th></th>
             <th>Date</th>
             <th>Time</th>
         </tr>
