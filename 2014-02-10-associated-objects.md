@@ -27,17 +27,11 @@ Associated Objects—or Associative References, as they were originally known—
 
 Why is this useful? It allows developers to **add custom properties to existing classes in categories**, which [is an otherwise notable shortcoming for Objective-C](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html).
 
-#### NSObject+AssociatedObject.h
-
 ```objc
 @interface NSObject (AssociatedObject)
 @property (nonatomic, strong) id associatedObject;
 @end
-```
 
-#### NSObject+AssociatedObject.m
-
-```objc
 @implementation NSObject (AssociatedObject)
 @dynamic associatedObject;
 
