@@ -14,8 +14,8 @@ Years ago,
 we [remarked](/at-compiler-directives/) that the "at sign" (`@`) ---
 along with square brackets and ridiculously-long method names ---
 was as characteristic of Objective-C
-as parentheses are to [Lisp](https://en.wikipedia.org/wiki/Lisp_%28programming_language%29)
-or punctuation is to [Perl]({% asset qbert.png @path %}).
+as parentheses are to Lisp
+or punctuation is to Perl.
 
 Then came Swift,
 and with it an end to these curious little 🥨-shaped glyphs.<br/>
