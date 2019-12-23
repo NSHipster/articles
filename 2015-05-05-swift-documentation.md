@@ -367,13 +367,13 @@ class Bicycle {
 Option-click on the initializer declaration,
 and the description renders beautifully with a bulleted list:
 
-{% asset swift-documentation-initializer-declaration.png title="Swift enum Declaration Documentation" %}
+{% asset swift-documentation-initializer-declaration.png alt="Swift enum Declaration Documentation" %}
 
 Open Quick Documentation for the method `travel`,
 and the parameter is parsed out into a separate field,
 as expected:
 
-{% asset swift-documentation-method-declaration.png title="Swift func Declaration Documentation" %}
+{% asset swift-documentation-method-declaration.png alt="Swift func Declaration Documentation" %}
 
 ## MARK / TODO / FIXME
 
@@ -403,7 +403,7 @@ here's how the `Bicycle` class could be extended to adopt
 the `CustomStringConvertible` protocol,
 and implement the `description` property.
 
-{% asset swift-documentation-xcode-source-navigator.png title="Xcode Documentation Source Navigator MARK / TODO / FIXME" %}
+{% asset swift-documentation-xcode-source-navigator.png alt="Xcode Documentation Source Navigator MARK / TODO / FIXME" %}
 
 ```swift
 // MARK: - CustomStringConvertible

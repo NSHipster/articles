@@ -44,7 +44,7 @@ both internally and externally.
 To understand how SwiftSyntax works,
 let's take a step back and look at the Swift compiler architecture:
 
-{% asset swift-compilation-diagram.png %}
+{% asset swift-compilation-diagram.png alt="Swift Compiler Architecture Diagram"%}
 
 The Swift compiler is primarily responsible for
 turning Swift code into executable machine code.
@@ -398,7 +398,7 @@ Anyway, after a few hours of development,
 I was able to generate reasonable colorized output
 for a wide range of Swift syntactic features:
 
-{% asset swiftsyntaxhightlighter-example-output.png width=500 %}
+{% asset swiftsyntaxhightlighter-example-output.png width="500" alt="SwiftSyntaxHighlighter Example Output" %}
 
 The project comes with a library and a command line tool.
 Go ahead and [try it out](https://github.com/NSHipster/SwiftSyntaxHighlighter)

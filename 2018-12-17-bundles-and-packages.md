@@ -50,7 +50,7 @@ The following diagram illustrates the relationship between bundles and packages,
 as well as things like apps, frameworks, plugins, and documents
 that fall into either or both categories:
 
-{% asset packages-and-bundles-diagram.svg %}
+{% asset packages-and-bundles-diagram.svg alt="Packages and Bundles Diagram" %}
 
 {% info %}
 If you're still fuzzy on these distinctions,
@@ -216,7 +216,7 @@ If an item is a package,
 "Show Package Contents" will appear at the top,
 under "Open".
 
-{% asset show-package-contents.png %}
+{% asset show-package-contents.png alt="Show Package Contents" %}
 
 Selecting this menu item will open a new Finder window
 from the package directory.

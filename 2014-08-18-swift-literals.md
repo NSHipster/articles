@@ -131,7 +131,7 @@ that provides a visual representation of the referenced color, image, or file.
 🏽
 ```
 
-{% asset color-literal-picker.png %}
+{% asset color-literal-picker.png alt="Swift Playgrounds Color Literal Picker"%}
 
 This control also makes it easy for new values to be chosen:
 instead of entering RGBA values or file paths,
