@@ -4,20 +4,39 @@ author: Mattt
 category: Objective-C
 tags: nshipster
 excerpt: >-
-  If we were to go code-watching for Objective-C, what would we look for? Square brackets, ridiculously-long method names, and `@`'s. "at" sign compiler directives are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.
+  If we were to go code-watching for Objective-C, 
+  what would we look for? 
+  Square brackets, ridiculously-long method names, and `@`'s. 
+  "at" sign compiler directives are as central to 
+  understanding Objective-C's gestalt as its ancestry and underlying mechanisms. 
+  It's the sugary glue that allows Objective-C to be such an expressive language, 
+  and yet still compile all the way down to C.
 status:
   swift: n/a
 ---
 
-Birdwatchers refer to it as (and I swear I'm not making this up) ["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): those indefinable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as _(and I swear I'm not making this up)_ 
+["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): 
+Those indefinable characteristics unique to a particular kind of thing.
 
-This term can be appropriated to describe how seasoned individuals might distinguish [Rust](http://www.rust-lang.org) from [Go](http://golang.org), or [Ruby](http://www.ruby-lang.org) from [Elixir](http://elixir-lang.org) at a glance.
+This term can be appropriated to describe how seasoned developers might distinguish 
+[Rust](http://www.rust-lang.org) from 
+[Go](http://golang.org), or 
+[Ruby](http://www.ruby-lang.org) from 
+[Elixir](http://elixir-lang.org) at a glance.
 
 Some just stick out like sore thumbs:
 
-Perl, with all of its short variable names with special characters, reads like [Q\*bert swearing]({% asset qbert.png @path %}).
+Perl, 
+with all of its short variable names with special characters, 
+reads like Q\*bert swearing.
 
-Lisp, whose profusion of parentheses is best captured by [that old joke](http://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) about the Russians in the 1980's proving that they had stolen the source code of some SDI missile interceptor code by showing the last page:
+Lisp, 
+whose profusion of parentheses is best captured by 
+[that old joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
+about Russians in the 1980s 
+proving that they had stolen the source code of some SDI missile interceptor
+by showing the last page:
 
 ```lisp
                 )))
@@ -32,21 +51,37 @@ Lisp, whose profusion of parentheses is best captured by [that old joke](http://
 )
 ```
 
-So if we were to go code-watching for the elusive Objective-C species, what would we look for? That's right:
+So if we were to go code-watching for the elusive Objective-C species, 
+what would we look for? 
+That's right:
 
 - Square brackets
 - Ridiculously-long method names
 - `@`'s
 
-`@`, or "at" sign compiler directives, are as central to understanding Objective-C's gestalt as its ancestry and underlying mechanisms. It's the sugary glue that allows Objective-C to be such a powerful, expressive language, and yet still compile all the way down to C.
+`@`, or "at" sign compiler directives, 
+are as central to understanding Objective-C's gestalt 
+as its ancestry and underlying mechanisms. 
+It's the sugary glue that allows Objective-C to be such an expressive language, 
+and yet still compile all the way down to C.
 
-Its uses are varied and disparate, to the point that the only accurate way to describe what `@` means by itself is "shorthand for something to do with Objective-C". They cover a broad range in usefulness and obscurity, from staples like `@interface` and `@implementation` to ones you could go your whole career without running into, like `@defs` and `@compatibility_alias`.
+Its uses are varied and disparate, 
+to the point that the only accurate way to describe what `@` means by itself is 
+"shorthand for something to do with Objective-C". 
+They cover a broad range in usefulness and obscurity, 
+from staples like `@interface` and `@implementation` 
+to ones you could go your whole career without running into, 
+like `@defs` and `@compatibility_alias`.
 
-But to anyone aspiring to be an NSHipster, intimate familiarity with `@` directives is tantamount to a music lover's ability to enumerate the entire Beatles catalog in chronological order (and most importantly, having unreasonably strong opinions about each of them).
+But to anyone aspiring to be an NSHipster, 
+intimate familiarity with `@` directives is tantamount to
+a music lover's ability to enumerate the entire Beatles catalog in chronological order 
+(and most importantly, having unreasonably strong opinions about each of them).
 
 ## Interface & Implementation
 
-`@interface` and `@implementation` are the first things you learn about when you start Objective-C:
+`@interface` and `@implementation` are the first things you encounter 
+when you start learning Objective-C:
 
 ```objc
 // MyObject.h
@@ -60,9 +95,12 @@ But to anyone aspiring to be an NSHipster, intimate familiarity with `@` directi
 @end
 ```
 
-What you don't learn about until later on, are categories and class extensions.
+What you don't learn about until later on are categories and class extensions.
 
-Categories allow you to extend the behavior of existing classes by adding new class or instance methods. As a convention, categories are defined in their own `.{h,m}` files, like so:
+Categories allow you to extend the behavior of existing classes 
+by adding new class or instance methods. 
+As a convention, 
+categories are defined in their own `.{h,m}` files:
 
 ```objc
 // MyObject+CategoryName.h
@@ -112,15 +150,27 @@ Property directives are likewise concepts learned early on:
 - `@synthesize`
 - `@dynamic`
 
-One interesting note with properties is that as of Xcode 4.4, it is no longer necessary to explicitly synthesize properties. Properties declared in an `@interface` are automatically synthesized (with leading underscore ivar name, i.e. `@synthesize propertyName = _propertyName`) in the implementation.
+{% info %}
+
+Though,
+since Xcode introduced automatic property synthesis in version 4.4,
+`@synthesize` has become less relevant to Objective-C code bases.
+
+{% endinfo %}
 
 ### Forward Class Declarations
 
-Occasionally, `@interface` declarations will reference an external class in a property or as a parameter type. Rather than adding `#import` statements for each class, it's good practice to use forward class declarations in the header, and import them in the implementation.
+Occasionally,
+`@interface` declarations will reference an external type in a property or as a parameter. 
+Rather than adding an `#import` statement in the interface, 
+you can use a forward class declaration in the header
+and import the necessary in the implementation.
 
 - `@class`
 
-Shorter compile times, less chance of cyclical references; you should definitely get in the habit of doing this if you aren't already.
+Shorter compile times, 
+less chance of cyclical references; 
+you should definitely get in the habit of doing this if you aren't already.
 
 ### Instance Variable Visibility
 
@@ -144,23 +194,34 @@ Nonetheless, in cases where ivars _are_ directly manipulated, there are the foll
   @private
   int salary;
 }
+@end
 ```
 
 ## Protocols
 
-There's a distinct point early in an Objective-C programmer's evolution, when she realizes that she can define her own protocols.
+There's a distinct point early in an Objective-C programmer's evolution
+when they realize that they can define their own protocols.
 
-The beauty of protocols is that they allow programmers to design contracts that can be adopted outside of a class hierarchy. It's the egalitarian mantra at the heart of the American Dream: that it doesn't matter who you are, or where you come from: anyone can achieve anything if they work hard enough.
+The beauty of protocols is that they let you design contracts 
+that can be adopted outside of a class hierarchy. 
+It's the egalitarian mantra at the heart of the American Dream: 
+It doesn't matter who you are or where you come from; 
+anyone can achieve anything if they work hard enough.
 
-...or at least that's idea, right?
+`@protocol`...`@end`
+defines a set of methods to be implemented by any conforming class, 
+as if they were added to the interface of that class directly.
 
-- `@protocol`...`@end`: Defines a set of methods to be implemented by any class conforming to the protocol, as if they were added to the interface of that class.
-
-Architectural stability and expressiveness without the burden of coupling--protocols are awesome.
+Architectural stability and expressiveness without the burden of coupling?
+Protocols are awesome.
 
 ### Requirement Options
 
-You can further tailor a protocol by specifying methods as required or optional. Optional methods are stubbed in the interface, so as to be auto-completed in Xcode, but do not generate a warning if the method is not implemented. Protocol methods are required by default.
+You can further tailor a protocol by specifying methods as required or optional. 
+Optional methods are stubbed in the interface, 
+so as to be auto-completed in Xcode, 
+but do not generate a warning if the method is not implemented. 
+Protocol methods are required by default.
 
 The syntax for `@required` and `@optional` follows that of the visibility macros:
 
@@ -174,7 +235,9 @@ The syntax for `@required` and `@optional` follows that of the visibility macros
 
 ## Exception Handling
 
-Objective-C communicates unexpected state primarily through `NSError`. Whereas other languages would use exception handling for this, Objective-C relegates exceptions to truly exceptional behavior, including programmer error.
+Objective-C communicates unexpected state primarily through `NSError`. 
+Whereas other languages would use exception handling for this, 
+Objective-C relegates exceptions to truly exceptional behavior.
 
 `@` directives are used for the traditional convention of `try/catch/finally` blocks:
 
@@ -273,67 +336,6 @@ Using this clever combination of macros, a developer can develop with `UICollect
 
 ---
 
-So to review:
-
-**Interfaces & Implementation**
-
-- `@interface`...`@end`
-- `@implementation`...`@end`
-- `@class`
-
-**Instance Variable Visibility**
-
-- `@public`
-- `@package`
-- `@protected`
-- `@private`
-
-**Properties**
-
-- `@property`
-- `@synthesize`
-- `@dynamic`
-
-**Protocols**
-
-- `@protocol`
-- `@required`
-- `@optional`
-
-**Exception Handling**
-
-- `@try`
-- `@catch`
-- `@finally`
-- `@throw`
-
-**Object Literals**
-
-- `@""`
-- `@42`, `@3.14`, `@YES`, `@'Z'`
-- `@[]`
-- `@{}`
-- `@()`
-
-**Objective-C Literals**
-
-- `@selector()`
-- `@protocol()`
-
-**C Literals**
-
-- `@encode()`
-- `@defs()`
-
-**Optimizations**
-
-- `@autoreleasepool{}`
-- `@synchronized{}`
-
-**Compatibility**
-
-- `@compatibility_alias`
-
-Thus concludes this exhaustive rundown of the many faces of `@`. It's a versatile, power-packed character, that embodies the underlying design and mechanisms of the language.
-
-> This should be a complete list, but there's always a chance that some new or long-forgotten ones slipped between the cracks. If you know of any `@` directives that were left out, be sure to let [@NSHipster](https://twitter.com/nshipster) know.
+Thus concludes this exhaustive rundown of the many faces of `@`. 
+It's a versatile, power-packed character 
+that embodies the underlying design and mechanisms of the language.
