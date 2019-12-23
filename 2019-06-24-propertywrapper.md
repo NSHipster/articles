@@ -145,11 +145,11 @@ that enforced a valid range of values,
 this has been possible since
 [Swift 3](https://github.com/apple/swift-evolution/blob/master/proposals/0067-floating-point-protocols.md).
 However, doing so would require conformance to a
-labyrinth of protocol requirements:
+labyrinth of protocol requirements.
 
 {::nomarkdown}
 
-<figure>
+<figure id="swift-number-protocols">
 
 {% asset swift-property-wrappers-number-protocols.svg @inline %}
 
