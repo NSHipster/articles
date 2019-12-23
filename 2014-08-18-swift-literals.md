@@ -40,7 +40,7 @@ It's in this framing that you're invited to consider
 how the different kinds of literals in Swift
 shape the way we reason about code.
 
----
+## Standard Literals
 
 A <dfn>literal</dfn> is a representation of a value in source code,
 such as a number or a string.
@@ -107,7 +107,7 @@ let dictionary: [String: [Int]] = [
 ]
 ```
 
-### Playground Literals
+## Playground Literals
 
 In addition to the standard literals listed above,
 there are a few additional literal types for code in Playgrounds:
