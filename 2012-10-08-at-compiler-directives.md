@@ -48,19 +48,30 @@ But to anyone aspiring to be an NSHipster, intimate familiarity with `@` directi
 
 `@interface` and `@implementation` are the first things you learn about when you start Objective-C:
 
-- `@interface`...`@end`
-- `@implementation`...`@end`
+```objc
+// MyObject.h
+@interface MyObject
+<#...#>
+@end
+
+// MyObject.m
+@implementation MyObject
+<#...#>
+@end
+```
 
 What you don't learn about until later on, are categories and class extensions.
 
 Categories allow you to extend the behavior of existing classes by adding new class or instance methods. As a convention, categories are defined in their own `.{h,m}` files, like so:
 
 ```objc
+// MyObject+CategoryName.h
 @interface MyObject (CategoryName)
   - (void)foo;
   - (BOOL)barWithBaz:(NSInteger)baz;
 @end
 
+// MyObject+CategoryName.m
 @implementation MyObject (CategoryName)
   - (void)foo {
     <#...#>
@@ -73,21 +84,23 @@ Categories allow you to extend the behavior of existing classes by adding new cl
 ```
 
 Categories are particularly useful for convenience methods on standard framework classes 
-(just don't go overboard with your utility functions).
+_(just don't go overboard with your utility functions)_.
 
-Extensions look like categories, but omit the category name. These are typically declared before an `@implementation` to specify a private interface, and even override properties declared in the interface:
+Extensions look like categories, 
+but omit the category name. 
+These're typically declared before an `@implementation` 
+to specify a private interface
+or override properties declared in the public interface:
 
 ```objc
+// MyObject.m
 @interface MyObject ()
 @property (readwrite, nonatomic, strong) NSString *name;
-- (void)doSomething;
+- (void)somePrivateMethod;
 @end
 
 @implementation MyObject
-@synthesize name = _name;
-
 <#...#>
-
 @end
 ```
 
@@ -175,9 +188,9 @@ Objective-C communicates unexpected state primarily through `NSError`. Whereas o
     @throw exception;
   }
 } @catch(NSException *e) {
-  // ...handle the exception here
-}  @finally {
-  // always execute this at the end of either the @try or @catch block
+  <#...#>
+} @finally {
+  // always executed after @try or @catch
   [self cleanup];
 }
 ```
