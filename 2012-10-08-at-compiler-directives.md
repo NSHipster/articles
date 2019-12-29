@@ -6,37 +6,41 @@ tags: nshipster
 excerpt: >-
   If we were to go code-watching for Objective-C, 
   what would we look for? 
-  Square brackets, ridiculously-long method names, and `@`'s. 
-  "at" sign compiler directives are as central to 
-  understanding Objective-C's gestalt as its ancestry and underlying mechanisms. 
-  It's the sugary glue that allows Objective-C to be such an expressive language, 
-  and yet still compile all the way down to C.
+  Square brackets, 
+  ridiculously-long method names, 
+  and `@`'s. 
 status:
   swift: n/a
+revisions:
+  2019-12-29: Updated for Xcode 11
 ---
 
-Birdwatchers refer to it as _(and I swear I'm not making this up)_ 
-["Jizz"](https://en.wikipedia.org/wiki/Jizz_%28birding%29): 
-Those indefinable characteristics unique to a particular kind of thing.
+Birdwatchers refer to it as 
+_(and I swear I'm not making this up)_ 
+[<dfn>"Jizz"</dfn>](https://en.wikipedia.org/wiki/Jizz_%28birding%29):
+those characteristics that form a general impression of a thing.
 
-This term can be appropriated to describe how seasoned developers might distinguish 
-[Rust](http://www.rust-lang.org) from 
-[Go](http://golang.org), or 
-[Ruby](http://www.ruby-lang.org) from 
-[Elixir](http://elixir-lang.org) at a glance.
+Walking through the forests of the Pacific Northwest,
+a birder would know a nighthawk from other little brown jobs
+from its distinct vocalization,
+or a grey-cheeked thrush by its white-dark-white underwing pattern.
+Looking up in the sky,
+there'd be no mistaking a flying-V formation of migratory geese
+from the undulating murmuration of starlings.
+And while a twitcher would be forgiven for
+mistaking a coot for a duck at the water's edge,
+their scaley, non-webbed feet are an obvious tell to an ornithophile.
 
-Some just stick out like sore thumbs:
+The usefulness of jizz isn't limited to amateur ornithology, either.
+We can distinguish varieties of programming languages
+based on their defining characteristics:
 
-Perl, 
-with all of its short variable names with special characters, 
-reads like Q\*bert swearing.
-
-Lisp, 
-whose profusion of parentheses is best captured by 
-[that old joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
-about Russians in the 1980s 
-proving that they had stolen the source code of some SDI missile interceptor
-by showing the last page:
+Go with its tell-tale couplets of `if err`,
+Rust with its unpronounceable, consonant-laden keywords, `pub`, `fn`, and `mut`,
+Perl with its special characters that read like Q\*bert swearing.
+Lisp's profusion of parentheses is an old cliché at this point,
+like [that one joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
+about stealing the last page of a Lisp program's printed source code:
 
 ```lisp
                 )))
@@ -51,32 +55,33 @@ by showing the last page:
 )
 ```
 
-So if we were to go code-watching for the elusive Objective-C species, 
-what would we look for? 
-That's right:
+* * *
 
-- Square brackets
-- Ridiculously-long method names
-- `@`'s
+If we were to go code-watching for the elusive Objective-C species, 
+what would we look for?
+Square brackets,
+ridiculously-long method names,
+and `@`'s.
 
 `@`, or "at" sign compiler directives, 
 are as central to understanding Objective-C's gestalt 
 as its ancestry and underlying mechanisms. 
-It's the sugary glue that allows Objective-C to be such an expressive language, 
-and yet still compile all the way down to C.
-
-Its uses are varied and disparate, 
-to the point that the only accurate way to describe what `@` means by itself is 
-"shorthand for something to do with Objective-C". 
-They cover a broad range in usefulness and obscurity, 
+Those little cinnamon roll glyphs are the sugary glue 
+that allows Objective-C to be such a powerful, expressive language, 
+and yet still compile down to C.
+So varied and disparate are its uses that 
+the only accurate way to describe what `@` means on its own is 
+_"shorthand for something to do with Objective-C"_. 
+They cover a broad range in usefulness and obscurity,
 from staples like `@interface` and `@implementation` 
-to ones you could go your whole career without running into, 
+to ones you could go your whole career without spotting, 
 like `@defs` and `@compatibility_alias`.
-
 But to anyone aspiring to be an NSHipster, 
-intimate familiarity with `@` directives is tantamount to
-a music lover's ability to enumerate the entire Beatles catalog in chronological order 
-(and most importantly, having unreasonably strong opinions about each of them).
+knowledge of every `@` directives 
+is tantamount to a birder's familiarity with
+the frenetic hovering of a hummigbird,
+the commanding top knot of a Mountain quail, or
+the eponymous "cuckoo" of _Coccyzus americanus_.
 
 ## Interface & Implementation
 
@@ -260,25 +265,58 @@ Objective-C relegates exceptions to truly exceptional behavior.
 
 ## Literals
 
-Literals are shorthand notation for specifying fixed values. Literals are more
--or-less directly correlated with programmer happiness. By this measure, Objective-C has long been a language of programmer misery.
+Literals are shorthand notation for specifying fixed values,
+and their availability in a language 
+is directly correlated with programmer happiness. 
+By that measure, 
+Objective-C has long been a language of programmer misery.
 
 ### Object Literals
 
-Until recently, Objective-C only had literals for `NSString`. But with the release of the [Apple LLVM 4.0 compiler](http://clang.llvm.org/docs/ObjectiveCLiterals.html), literals for `NSNumber`, `NSArray` and `NSDictionary` were added, with much rejoicing.
+For years, 
+Objective-C only had literals for `NSString` values.
+But with the release of the 
+[Apple LLVM 4.0 compiler](http://clang.llvm.org/docs/ObjectiveCLiterals.html), 
+there are now literals for `NSNumber`, `NSArray` and `NSDictionary`.
 
-- `@""`: Returns an `NSString` object initialized with the Unicode content inside the quotation marks.
-- `@42`, `@3.14`, `@YES`, `@'Z'`: Returns an `NSNumber` object initialized with pertinent class constructor, such that `@42` → `[NSNumber numberWithInteger:42]`, or `@YES` → `[NSNumber numberWithBool:YES]`. Supports the use of suffixes to further specify type, like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`.
-- `@[]`: Returns an `NSArray` object initialized with the comma-delimited list of objects as its contents. It uses +arrayWithObjects:count: class constructor method, which is a more precise alternative to the more familiar `+arrayWithObjects:`. For example, `@[@"A", @NO, @2.718]` → `id objects[] = {@"A", @NO, @2.718}; [NSArray arrayWithObjects:objects count:3]`.
-- `@{}`: Returns an `NSDictionary` object initialized with the specified key-value pairs as its contents, in the format: `@{@"someKey" : @"theValue"}`.
-- `@()`: Dynamically evaluates the boxed expression and returns the appropriate object literal based on its value (i.e. `NSString` for `const char*`, `NSNumber` for `int`, etc.). This is also the designated way to use number literals with `enum` values.
+- `@""`: 
+  An `NSString` object initialized with 
+  the text inside the quotation marks.
+- `@42`, `@3.14`, `@YES`, `@'Z'`: 
+  An `NSNumber` object initialized with 
+  the adjacent value using the pertinent class constructor, 
+  such that 
+  `@42` → `[NSNumber numberWithInteger:42]` and 
+  `@YES` → `[NSNumber numberWithBool:YES]`. 
+  _(You can use suffixes to further specify type, 
+  like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`)_
+- `@[]`: 
+  An `NSArray` object initialized with 
+  a comma-delimited list of objects as its contents. 
+  It uses the `+arrayWithObjects:count:` class constructor method, 
+  which is a more precise alternative to the more familiar 
+  `+arrayWithObjects:`. 
+- `@{}`: 
+  An `NSDictionary` object initialized with key-value pairs as its contents 
+  using the format: `@{@"someKey" : @"theValue"}`.
+- `@()`: 
+  A boxed expression using the appropriate object literal for the enclosed value 
+  _(for example, `NSString` for `const char*`, 
+  `NSNumber` for `int`, and so on)_. 
+  This is also the designated way to use number literals with `enum` values.
 
 ### Objective-C Literals
 
-Selectors and protocols can be passed as method parameters. `@selector()` and `@protocol()` serve as pseudo-literal directives that return a pointer to a particular selector (`SEL`) or protocol (`Protocol *`).
+Selectors and protocols can be passed as method parameters.
+`@selector()` and `@protocol()` serve as pseudo-literal directives 
+that return a pointer to a particular selector (`SEL`) or protocol (`Protocol *`).
 
-- `@selector()`: Returns an `SEL` pointer to a selector with the specified name. Used in methods like `-performSelector:withObject:`.
-- `@protocol()`: Returns a `Protocol *` pointer to the protocol with the specified name. Used in methods like `-conformsToProtocol:`.
+- `@selector()`: 
+  Returns an `SEL` pointer to a selector with the specified name. 
+  Used in methods like `-performSelector:withObject:`.
+- `@protocol()`: 
+  Returns a `Protocol *` pointer to the protocol with the specified name. 
+  Used in methods like `-conformsToProtocol:`.
 
 ### C Literals
 
@@ -288,14 +326,15 @@ Did you know that all Objective-C classes and objects are just glorified `struct
 
 For most of us, at least most of the time, coming into this knowledge is but an academic exercise. But for anyone venturing into low-level optimizations, this is simply the jumping-off point.
 
-- `@encode()`: Returns the [type encoding](/type-encodings/) of a type. This type value can be used as the first argument encode in `NSCoder -encodeValueOfObjCType:at:`.
-- `@defs()`: Returns the layout of an Objective-C class. For example, to declare a struct with the same fields as an `NSObject`, you would simply do:
-
-```objc
-struct {
-  @defs(NSObject)
-}
-```
+- `@encode()`: 
+  Provides the [type encoding](/type-encodings/) of a type.
+  This value can be used as the first argument in 
+  `NSCoder -encodeValueOfObjCType:at:`.
+- `@defs()`: 
+  Provides the layout of an Objective-C class. 
+  For example, 
+  `struct { @defs(NSObject) }` 
+  declares a struct with the same fields as an `NSObject`:
 
 {% warning %}
 `@defs` is unavailable in the modern Objective-C runtime.
@@ -303,22 +342,39 @@ struct {
 
 ## Optimizations
 
-There are some `@` compiler directives specifically purposed for providing shortcuts for common optimizations.
+Some `@` compiler directives provide shortcuts for common optimizations.
 
-- `@autoreleasepool{}`: If your code contains a tight loop that creates lots of temporary objects, you can use the `@autoreleasepool` directive to optimize for these short-lived, locally-scoped objects by being more aggressive about how they're deallocated. `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, which is significantly slower, and unavailable with ARC.
-- `@synchronized(){}`: This directive offers a convenient way to guarantee the safe execution of a particular block within a specified context (usually `self`). Locking in this way is expensive, however, so for classes aiming for a particular level of thread safety, a dedicated `NSLock` property or the use of low-level locking functions like `OSAtomicCompareAndSwap32(3)` are recommended.
+- `@autoreleasepool {<#...#>}`: 
+  If your code contains a tight loop that creates lots of temporary objects,
+  you can use the `@autoreleasepool` directive to 
+  aggressively deallocate these short-lived, locally-scoped objects.
+  `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, 
+  which was significantly slower and unavailable with ARC.
+- `@synchronized(<#object#>) {<#...#>}`: 
+  Guarantees the safe execution of a particular block within a specified context 
+  (usually `self`). 
+  Locking in this way is expensive, however, 
+  so for classes aiming for a particular level of thread safety, 
+  a dedicated `NSLock` property 
+  or the use of low-level primitives like GCD
+  are preferred.
 
 ## Compatibility
 
-In case all of the previous directives were old hat for you, there's a strong likelihood that you didn't know about this one:
+When Apple introduces a new API,
+it's typically available for for the latest SDK only.
+If you want to start using these APIs in your app
+without dropping backwards compatibility,
+you can create a <dfn>compatibility alias</dfn>. 
 
-- `@compatibility_alias`: Allows existing classes to be aliased by a different name.
-
-For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) uses `@compatibility_alias` to significantly improve the experience of using the backwards-compatible, drop-in replacement for [UICollectionView](https://nshipster.com/uicollectionview/):
+For example,
+back when [UICollectionView](/uicollectionview/) was first introduced in iOS 6,
+many developers incorporated a 3rd-party library called
+[PSTCollectionView](https://github.com/steipete/PSTCollectionView),
+which uses `@compatibility_alias` to provide a backwards-compatible, 
+drop-in replacement for `UICollectionView`:
 
 ```objc
-// Allows code to just use UICollectionView as if it would be available on iOS SDK 5.
-// http://developer.apple.    com/legacy/mac/library/#documentation/DeveloperTools/gcc-3.   3/gcc/compatibility_005falias.html
 #if __IPHONE_OS_VERSION_MAX_ALLOWED < 60000
 @compatibility_alias UICollectionViewController PSTCollectionViewController;
 @compatibility_alias UICollectionView PSTCollectionView;
@@ -326,16 +382,51 @@ For example [PSTCollectionView](https://github.com/steipete/PSTCollectionView) u
 @compatibility_alias UICollectionViewCell PSTCollectionViewCell;
 @compatibility_alias UICollectionViewLayout PSTCollectionViewLayout;
 @compatibility_alias UICollectionViewFlowLayout PSTCollectionViewFlowLayout;
-@compatibility_alias UICollectionViewLayoutAttributes     PSTCollectionViewLayoutAttributes;
+@compatibility_alias UICollectionViewLayoutAttributes PSTCollectionViewLayoutAttributes;
 @protocol UICollectionViewDataSource <PSTCollectionViewDataSource> @end
 @protocol UICollectionViewDelegate <PSTCollectionViewDelegate> @end
 #endif
 ```
 
-Using this clever combination of macros, a developer can develop with `UICollectionView` by including `PSTCollectionView`--without worrying about the deployment target of the final project. As a drop-in replacement, the same code works more-or-less identically on iOS 6 as it does on iOS 4.3.
+## Availability
+
+Achieving backwards or cross-platform compatibility in your app
+can often feel like a high-wire act.
+If you so much as glance towards an unavailable class or method,
+it could mean curtains for your app.
+That's why the new features in Clang 5.0 came as such a relief.
+Now developers have a compiler-provide safety net
+to warn them whenever an unavailable API is referenced
+for one of your supported targets.
+
+- `@available` 
+  Use in an `if` statement to have the compiler 
+  conditionally execute a code path based on the platform availability.
+
+For example,
+if you wanted to use a `fancyNewMethod` in the latest version of macOS,
+but provide a fallback for older versions of macOS:
+
+```objc
+- (void)performCalculation {
+  if (@available(macOS 10.15, *)) {
+    [self fancyNewMethod];
+  } else {
+    [self oldReliableMethod];
+  }
+}
+```
+
+{% info %}
+
+`@available` expressions in Objective-C
+have the same syntax as their [Swift counterpart](/available/), `#available`.
+
+{% endinfo %}
 
 ---
 
-Thus concludes this exhaustive rundown of the many faces of `@`. 
+Thus concludes this rundown of the many faces of `@`. 
 It's a versatile, power-packed character 
 that embodies the underlying design and mechanisms of the language.
+
