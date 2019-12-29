@@ -27,7 +27,7 @@ First,
 There, they could automatically transform values from one property to another,
 like for negating a boolean or checking whether a value was `nil`,
 without the need of intermediary glue code.
-iOS, of course, doesn't have bindings.
+iOS doesn't have bindings.
 
 The second reason has less to do with iOS than the Objective-C runtime itself.
 With the introduction of blocks,
