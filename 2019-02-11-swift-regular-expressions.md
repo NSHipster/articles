@@ -57,7 +57,7 @@ sharpen your pencils,
 gather your detective notes,
 and warm up your 6-sided dice,
 because this week on NSHipster,
-we crack the case of the cumbersome class known as `NSRegularExpression`.
+we're cracking the case of the cumbersome class known as `NSRegularExpression`.
 
 ---
 
