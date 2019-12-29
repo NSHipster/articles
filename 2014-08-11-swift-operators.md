@@ -68,7 +68,6 @@ If an operator is <dfn>left-associative</dfn>,
 then the operand on the left-hand side is evaluated first: (`(5 - 2) + 3`);
 if <dfn>right-associative</dfn>,
 then the right-hand side operator is evaluated first: `5 - (2 + 3)`.
-
 Arithmetic operators are left-associative,
 so `5 - 2 + 3` evaluates to `6`.
 
