@@ -79,18 +79,23 @@ or when a value exceeds the representable range of the destination type
 `BinaryInteger` defines four strategies of conversion between integer types,
 each with different behaviors for handling out-of-range values:
 
-- **Range-Checked Conversion** -
-  [`init(_:)`](https://developer.apple.com/documentation/swift/binaryinteger/2885704-init):
-  Trigger a runtime error for out-of-range values
-- **Exact Conversion** -
-  [`init?(exactly:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925955-init):
-  Return `nil` for out-of-range values
-- **Clamping Conversion** -
-  [`init(clamping:)`](https://developer.apple.com/documentation/swift/binaryinteger/2886143-init):
-  Use the closest representable value for out-of-range values
-- **Bit Pattern Conversion** -
-  [`init(truncatingIfNeeded:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925529-init):
-  Truncate to the width of the target integer type
+
+{::nomarkdown}
+<dl id="binaryinteger-strategies">
+    <dt>Range-Checked Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2885704-init"><code>init(_:)</code></a></dt>
+    <dd>Trigger a runtime error for out-of-range values</dd>
+    <dt>Exact Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2925955-init"><code>init?(exactly:)</code></a></dt>
+    <dd>Return <code>nil</code> for out-of-range values</dd>
+    <dt>Clamping Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2886143-init"><code>init(clamping:)</code></a></dt>
+    <dd>Use the closest representable value for out-of-range values</dd>
+    <dt>Bit Pattern Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2925529-init"><code>init(truncatingIfNeeded:)</code></a></dt>
+    <dd>Truncate to the width of the target integer type</dd>
+</dl>
+{:/}
 
 The correct conversion strategy
 depends on the situation in which it's being used.
