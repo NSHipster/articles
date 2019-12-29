@@ -279,7 +279,6 @@ and increment its value by one.
 Looking at that,
 you can already extrapolate out to how this might be used
 to create a canonical `swift-format` tool.
-
 But for the moment,
 let's consider a considerably _less_ productive ---
 and more seasonally appropriate (🎃) ---
