@@ -124,7 +124,7 @@ it should conform to `Equatable`.
 
 The Swift standard library and most of the frameworks in Apple SDKs
 do a great job adopting `Equatable` for types that make sense to be.
-So, in practice, you're unlikely to be in a situation
+In practice, you're unlikely to be in a situation
 where the dereliction of a built-in type
 spoils automatic synthesis for your own type.
 

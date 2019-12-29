@@ -83,7 +83,7 @@ _When was the `Identifiable` protocol really introduced?_ 🤔
 The Swift Evolution proposal for `Identifiable`,
 [SE-0261](https://github.com/apple/swift-evolution/blob/master/proposals/0261-identifiable.md),
 was kept small and focused in order to be incorporated quickly.
-So, if you were to ask,
+If you were to ask,
 _"What do you actually get by conforming to `Identifiable`?"_,
 the answer right now is _"Not much."_
 As mentioned in the [future directions](https://github.com/apple/swift-evolution/blob/master/proposals/0261-identifiable.md#future-directions),

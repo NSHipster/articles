@@ -259,7 +259,7 @@ blurry.integral // {x 0 y 0 w 4 h 4}
 {% info %}
 Though keep in mind that CoreGraphics coordinates
 operate in terms of <dfn>points</dfn> not pixels.
-So, for example,
+For example,
 a Retina screen with pixel density of 2
 represents each point with 4 pixels
 and can draw `± 0.5f` point values on odd pixels without blurriness.
