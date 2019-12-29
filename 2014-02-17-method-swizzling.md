@@ -153,10 +153,21 @@ as you would any other contentious category method.
 
 Swizzling is widely considered a voodoo technique, prone to unpredictable behavior and unforeseen consequences. While it is not the safest thing to do, method swizzling is reasonably safe, when the following precautions are taken:
 
-- **Always invoke the original implementation of a method (unless you have a good reason not to)**: APIs provide a contract for input and output, but the implementation in-between is a black box. Swizzling a method and not calling the original implementation may cause underlying assumptions about private state to break, along with the rest of your application.
-- **Avoid collisions**: Prefix category methods, and make damn well sure that nothing else in your code base (or any of your dependencies) are monkeying around with the same piece of functionality as you are.
-- **Understand what's going on**: Simply copy-pasting swizzling code without understanding how it works is not only dangerous, but is a wasted opportunity to learn a lot about the Objective-C runtime. Read through the [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation) and browse `<objc/runtime.h>` to get a good sense of how and why things happen. _Always endeavor to replace magical thinking with understanding._
-- **Proceed with caution**: No matter how confident you are about swizzling Foundation, UIKit, or any other built-in framework, know that everything could break in the next release. Be ready for that, and go the extra mile to ensure that in playing with fire, you don't get `NSBurned`.
+### Always invoke the original implementation of a method (unless you have a good reason not to)
+
+APIs provide a contract for input and output, but the implementation in-between is a black box. Swizzling a method and not calling the original implementation may cause underlying assumptions about private state to break, along with the rest of your application.
+
+### Avoid collisions
+
+Prefix category methods, and make damn well sure that nothing else in your code base (or any of your dependencies) are monkeying around with the same piece of functionality as you are.
+
+### Understand what's going on
+
+Simply copy-pasting swizzling code without understanding how it works is not only dangerous, but is a wasted opportunity to learn a lot about the Objective-C runtime. Read through the [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation) and browse `<objc/runtime.h>` to get a good sense of how and why things happen. _Always endeavor to replace magical thinking with understanding._
+
+### Proceed with caution
+
+No matter how confident you are about swizzling Foundation, UIKit, or any other built-in framework, know that everything could break in the next release. Be ready for that, and go the extra mile to ensure that in playing with fire, you don't get `NSBurned`.
 
 * * *
 
