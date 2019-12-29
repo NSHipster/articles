@@ -338,6 +338,14 @@ resembles that of an `@available` attribute:
 
 {% info %}
 
+`#available` expressions in Swift
+have the same syntax as their 
+[Objective-C counterpart](/at-compiler-directives/#availability), `@available`.
+
+{% endinfo %}
+
+{% warning %}
+
 You can’t combine multiple `#available` expressions
 using logical operators like `&&` and `||`,
 but you can use commas,
@@ -352,7 +360,7 @@ _(since a check for more than one would be either redundant or impossible)_.
 guard #available(swift 5.0), #available(iOS 13.0) else { return }
 ```
 
-{% endinfo %}
+{% endwarning %}
 
 ---
 
