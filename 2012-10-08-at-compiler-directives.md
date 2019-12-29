@@ -18,7 +18,7 @@ revisions:
 Birdwatchers refer to it as 
 _(and I swear I'm not making this up)_ 
 [<dfn>"Jizz"</dfn>](https://en.wikipedia.org/wiki/Jizz_%28birding%29):
-those characteristics that form a general impression of a thing.
+general characteristics that form an overall impression of a thing.
 
 Walking through the forests of the Pacific Northwest,
 a birder would know a nighthawk from other little brown jobs
