@@ -13,13 +13,10 @@ status:
 Years ago,
 we [remarked](/at-compiler-directives/) that the "at sign" (`@`) ---
 along with square brackets and ridiculously-long method names ---
-was as characteristic of Objective-C
-as parentheses are to Lisp
-or punctuation is to Perl.
-
+was a defining characteristic of Objective-C.
 Then came Swift,
-and with it an end to these curious little 🥨-shaped glyphs.<br/>
-Or so we thought.
+and with it an end to these curious little 🥨-shaped glyphs
+...or so we thought.
 
 At first,
 the function of `@` was limited to Objective-C interoperability:
