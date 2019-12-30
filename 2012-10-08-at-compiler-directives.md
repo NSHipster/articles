@@ -25,7 +25,7 @@ a birder would know a nighthawk from other little brown jobs
 from its distinct vocalization,
 or a grey-cheeked thrush by its white-dark-white underwing pattern.
 Looking up in the sky,
-there'd be no mistaking a flying-V formation of migratory geese
+there'd be no mistaking a Flying-V formation of migratory geese
 from the undulating murmuration of starlings.
 And while a twitcher would be forgiven for
 mistaking a coot for a duck at the water's edge,
@@ -34,13 +34,13 @@ their scaley, non-webbed feet are an obvious tell to an ornithophile.
 The usefulness of jizz isn't limited to amateur ornithology, either.
 We can distinguish varieties of programming languages
 based on their defining characteristics:
-
 Go with its tell-tale couplets of `if err`,
 Rust with its unpronounceable, consonant-laden keywords, `pub`, `fn`, and `mut`,
 Perl with its special characters that read like Q\*bert swearing.
-Lisp's profusion of parentheses is an old cliché at this point,
-like [that one joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
-about stealing the last page of a Lisp program's printed source code:
+Lisp's profusion of parentheses is an old cliché at this point;
+our favorite telling is 
+[that one joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
+about stealing the last page of a Lisp program's printed source code.
 
 ```lisp
                 )))
@@ -79,7 +79,7 @@ like `@defs` and `@compatibility_alias`.
 But to anyone aspiring to be an NSHipster, 
 knowledge of every `@` directives 
 is tantamount to a birder's familiarity with
-the frenetic hovering of a hummigbird,
+the frenetic hovering of a hummingbird,
 the commanding top knot of a Mountain quail, or
 the eponymous "cuckoo" of _Coccyzus americanus_.
 
@@ -129,9 +129,9 @@ categories are defined in their own `.{h,m}` files:
 Categories are particularly useful for convenience methods on standard framework classes 
 _(just don't go overboard with your utility functions)_.
 
-Extensions look like categories, 
+Extensions look like categories
 but omit the category name. 
-These're typically declared before an `@implementation` 
+They're typically declared before an `@implementation` 
 to specify a private interface
 or override properties declared in the public interface:
 
@@ -149,7 +149,7 @@ or override properties declared in the public interface:
 
 ### Properties
 
-Property directives are likewise concepts learned early on:
+Property directives are likewise, learned early on:
 
 - `@property`
 - `@synthesize`
@@ -175,20 +175,25 @@ and import the necessary in the implementation.
 
 Shorter compile times, 
 less chance of cyclical references; 
-you should definitely get in the habit of doing this if you aren't already.
+you should get in the habit of doing this if you aren't already.
 
 ### Instance Variable Visibility
 
-It's a matter of general convention that classes provide state and mutating interfaces through properties and methods, rather than directly exposing ivars.
+It's a matter of general convention that 
+classes provide state and mutating interfaces through properties and methods, 
+rather than directly exposing ivars.
+Nonetheless, 
+in cases where ivars _are_ directly manipulated, 
+there are the following visibility directives:
 
-Although ARC makes working with ivars much safer by taking care of memory management, the aforementioned automatic property synthesis removes the one place where ivars would otherwise be declared.
-
-Nonetheless, in cases where ivars _are_ directly manipulated, there are the following visibility directives:
-
-- `@public`: instance variable can be read and written to directly, using the notation `person->age = 32"`
-- `@package`: instance variable is public, except outside of the framework in which it is specified (64-bit architectures only)
-- `@protected`: instance variable is only accessible to its class and derived classes
-- `@private`: instance variable is only accessible to its class
+- `@public`: 
+  Instance variable can be read and written to directly, using the notation `person->age = 32"`
+- `@package`: 
+  Instance variable is public, except outside of the framework in which it is specified (64-bit architectures only)
+- `@protected`: 
+  Instance variable is only accessible to its class and derived classes
+- `@private`: 
+  Instance variable is only accessible to its class
 
 ```objc
 @interface Person : NSObject {
@@ -225,7 +230,7 @@ Protocols are awesome.
 You can further tailor a protocol by specifying methods as required or optional. 
 Optional methods are stubbed in the interface, 
 so as to be auto-completed in Xcode, 
-but do not generate a warning if the method is not implemented. 
+but do not generate a warning if the method isn't implemented. 
 Protocol methods are required by default.
 
 The syntax for `@required` and `@optional` follows that of the visibility macros:
@@ -277,7 +282,7 @@ For years,
 Objective-C only had literals for `NSString` values.
 But with the release of the 
 [Apple LLVM 4.0 compiler](http://clang.llvm.org/docs/ObjectiveCLiterals.html), 
-there are now literals for `NSNumber`, `NSArray` and `NSDictionary`.
+there are now literals for `NSNumber`, `NSArray`, and `NSDictionary`.
 
 - `@""`: 
   An `NSString` object initialized with 
@@ -320,11 +325,19 @@ that return a pointer to a particular selector (`SEL`) or protocol (`Protocol *`
 
 ### C Literals
 
-Literals can also work the other way around, transforming Objective-C objects into C values. These directives in particular allow us to peek underneath the Objective-C veil, to begin to understand what's really going on.
+Literals can also work the other way around, 
+transforming Objective-C objects into C values. 
+These directives in particular allow us to peek underneath the Objective-C veil 
+to see what's really going on.
 
-Did you know that all Objective-C classes and objects are just glorified `struct`s? Or that the entire identity of an object hinges on a single `isa` field in that `struct`?
+Did you know that all Objective-C classes and objects are just glorified `struct`s? 
+Or that the entire identity of an object hinges on a single `isa` field in that `struct`?
 
-For most of us, at least most of the time, coming into this knowledge is but an academic exercise. But for anyone venturing into low-level optimizations, this is simply the jumping-off point.
+For most of us, 
+most of the time, 
+this is an academic exercise. 
+But for anyone venturing into low-level optimizations, 
+this is simply the jumping-off point.
 
 - `@encode()`: 
   Provides the [type encoding](/type-encodings/) of a type.
@@ -362,9 +375,9 @@ Some `@` compiler directives provide shortcuts for common optimizations.
 ## Compatibility
 
 When Apple introduces a new API,
-it's typically available for for the latest SDK only.
+it's typically available for the latest SDK only.
 If you want to start using these APIs in your app
-without dropping backwards compatibility,
+without dropping backward compatibility,
 you can create a <dfn>compatibility alias</dfn>. 
 
 For example,
