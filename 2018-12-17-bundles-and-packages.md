@@ -276,7 +276,8 @@ func filenameExtensionIsPackage(_ filenameExtension: String) -> Bool {
 }
 
 let xcode = URL(fileURLWithPath: "/Applications/Xcode.app")
-directoryIsPackage(xcode) // true
+let appExtension = xcode.pathExtension // "app"
+filenameExtensionIsPackage(appExtension) // true
 ```
 
 {% info %}
