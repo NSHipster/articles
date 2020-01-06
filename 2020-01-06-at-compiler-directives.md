@@ -7,18 +7,16 @@ excerpt: >-
   If we were to go code-watching for Objective-C, 
   what would we look for? 
   Square brackets, 
-  ridiculously-long method names, 
+  ridiculously long method names, 
   and `@`'s. 
-status:
-  swift: n/a
 revisions:
-  2019-12-29: Updated for Xcode 11
+  2020-01-06: Updated for Xcode 11
 ---
 
 Birdwatchers refer to it as 
 _(and I swear I'm not making this up)_ 
 [<dfn>"Jizz"</dfn>](https://en.wikipedia.org/wiki/Jizz_%28birding%29):
-general characteristics that form an overall impression of a thing.
+the general characteristics that form an overall impression of a thing.
 
 Walking through the forests of the Pacific Northwest,
 a birder would know a nighthawk from other little brown jobs
@@ -40,7 +38,7 @@ Perl with its special characters that read like Q\*bert swearing.
 Lisp's profusion of parentheses is an old cliché at this point;
 our favorite telling is 
 [that one joke](https://discuss.fogcreek.com/joelonsoftware3/default.asp?cmd=show&ixPost=94232&ixReplies=38) 
-about stealing the last page of a Lisp program's printed source code.
+about the stolen last page of a Lisp program's printed source code.
 
 ```lisp
                 )))
@@ -60,7 +58,7 @@ about stealing the last page of a Lisp program's printed source code.
 If we were to go code-watching for the elusive Objective-C species, 
 what would we look for?
 Square brackets,
-ridiculously-long method names,
+ridiculously long method names,
 and `@`'s.
 
 `@`, or "at" sign compiler directives, 
@@ -149,19 +147,52 @@ or override properties declared in the public interface:
 
 ### Properties
 
-Property directives are likewise, learned early on:
+Property directives are likewise, 
+learned early on:
 
-- `@property`
-- `@synthesize`
-- `@dynamic`
+`@property`
+: Declares a class or instance property.
+
+`@synthesize`
+: Automatically synthesizes getter / setter methods 
+  to an underlying instance or class variable 
+  for a declared property.
+
+`@dynamic`
+: Instructs the compiler that you'll provide your own 
+  implementation for property getter and/or setter methods.
 
 {% info %}
 
-Though,
-since Xcode introduced automatic property synthesis in version 4.4,
-`@synthesize` has become less relevant to Objective-C code bases.
+All `@property` declarations are now automatically synthesized by default
+(since Xcode 4.4),
+so you're much less likely to find them in Objective-C code bases these days.
 
 {% endinfo %}
+
+### Property Attributes
+
+
+`@property` declarations comprise their own little sub-phylum of syntax,
+with attributes for specifying:
+
+- Accessor names 
+  (`getter` / `setter`)
+- Access types
+  (`readwrite` / `readonly`)
+- [Atomicity](https://en.wikipedia.org/wiki/Linearizability) 
+  (`atomic` / `nonatomic`)
+- [Nullability](https://clang.llvm.org/docs/analyzer/developer-docs/nullability.html)
+  (`nullable` / `nonnullable` / `null_resettable`)
+- [Ownership](https://clang.llvm.org/docs/AutomaticReferenceCounting.html#ownership-qualification)
+  (`weak` / `strong` / `copy` / `retain` / `unsafe_unretained`)
+
+And that's not all ---
+there's also the `class` attribute,
+which lets you declare a class property using 
+the same, familiar instance property syntax,
+as well as [the forthcoming `direct` attribute](/direct/),
+which will let you opt in to direct method dispatch.
 
 ### Forward Class Declarations
 
@@ -171,7 +202,9 @@ Rather than adding an `#import` statement in the interface,
 you can use a forward class declaration in the header
 and import the necessary in the implementation.
 
-- `@class`
+`@class`
+: Creates a forward declaration,
+  allowing a class to be referenced before its actual declaration.
 
 Shorter compile times, 
 less chance of cyclical references; 
@@ -186,14 +219,24 @@ Nonetheless,
 in cases where ivars _are_ directly manipulated, 
 there are the following visibility directives:
 
-- `@public`: 
-  Instance variable can be read and written to directly, using the notation `person->age = 32"`
-- `@package`: 
-  Instance variable is public, except outside of the framework in which it is specified (64-bit architectures only)
-- `@protected`: 
-  Instance variable is only accessible to its class and derived classes
-- `@private`: 
-  Instance variable is only accessible to its class
+`@public`
+: Instance variable can be read and written to directly
+  using the following notation: 
+
+```objc
+object->_ivar = <#...#>
+```
+
+`@package`
+: Instance variable is public, 
+  except outside of the framework in which it is specified 
+  (64-bit architectures only)
+
+`@protected`
+: Instance variable is only accessible to its class and derived classes
+
+`@private`
+: Instance variable is only accessible to its class
 
 ```objc
 @interface Person : NSObject {
@@ -284,28 +327,32 @@ But with the release of the
 [Apple LLVM 4.0 compiler](http://clang.llvm.org/docs/ObjectiveCLiterals.html), 
 there are now literals for `NSNumber`, `NSArray`, and `NSDictionary`.
 
-- `@""`: 
-  An `NSString` object initialized with 
+`@""`
+: An `NSString` object initialized with 
   the text inside the quotation marks.
-- `@42`, `@3.14`, `@YES`, `@'Z'`: 
-  An `NSNumber` object initialized with 
+
+`@42` / `@3.14` / `@YES` / `@'Z'`
+: An `NSNumber` object initialized with 
   the adjacent value using the pertinent class constructor, 
   such that 
   `@42` → `[NSNumber numberWithInteger:42]` and 
   `@YES` → `[NSNumber numberWithBool:YES]`. 
   _(You can use suffixes to further specify type, 
   like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`)_
-- `@[]`: 
-  An `NSArray` object initialized with 
+
+`@[]`
+: An `NSArray` object initialized with 
   a comma-delimited list of objects as its contents. 
   It uses the `+arrayWithObjects:count:` class constructor method, 
   which is a more precise alternative to the more familiar 
   `+arrayWithObjects:`. 
-- `@{}`: 
-  An `NSDictionary` object initialized with key-value pairs as its contents 
+
+`@{}`
+: An `NSDictionary` object initialized with key-value pairs as its contents 
   using the format: `@{@"someKey" : @"theValue"}`.
-- `@()`: 
-  A boxed expression using the appropriate object literal for the enclosed value 
+
+`@()` 
+:  A boxed expression using the appropriate object literal for the enclosed value 
   _(for example, `NSString` for `const char*`, 
   `NSNumber` for `int`, and so on)_. 
   This is also the designated way to use number literals with `enum` values.
@@ -316,11 +363,12 @@ Selectors and protocols can be passed as method parameters.
 `@selector()` and `@protocol()` serve as pseudo-literal directives 
 that return a pointer to a particular selector (`SEL`) or protocol (`Protocol *`).
 
-- `@selector()`: 
-  Returns an `SEL` pointer to a selector with the specified name. 
+`@selector()`
+: Provides an `SEL` pointer to a selector with the specified name. 
   Used in methods like `-performSelector:withObject:`.
-- `@protocol()`: 
-  Returns a `Protocol *` pointer to the protocol with the specified name. 
+
+`@protocol()`
+: Provides a `Protocol *` pointer to the protocol with the specified name. 
   Used in methods like `-conformsToProtocol:`.
 
 ### C Literals
@@ -339,12 +387,13 @@ this is an academic exercise.
 But for anyone venturing into low-level optimizations, 
 this is simply the jumping-off point.
 
-- `@encode()`: 
-  Provides the [type encoding](/type-encodings/) of a type.
+`@encode()`
+: Provides the [type encoding](/type-encodings/) of a type.
   This value can be used as the first argument in 
   `NSCoder -encodeValueOfObjCType:at:`.
-- `@defs()`: 
-  Provides the layout of an Objective-C class. 
+
+`@defs()`
+: Provides the layout of an Objective-C class. 
   For example, 
   `struct { @defs(NSObject) }` 
   declares a struct with the same fields as an `NSObject`:
@@ -357,14 +406,15 @@ this is simply the jumping-off point.
 
 Some `@` compiler directives provide shortcuts for common optimizations.
 
-- `@autoreleasepool {<#...#>}`: 
-  If your code contains a tight loop that creates lots of temporary objects,
+`@autoreleasepool {<#...#>}`
+: If your code contains a tight loop that creates lots of temporary objects,
   you can use the `@autoreleasepool` directive to 
   aggressively deallocate these short-lived, locally-scoped objects.
   `@autoreleasepool` replaces and improves upon the old `NSAutoreleasePool`, 
   which was significantly slower and unavailable with ARC.
-- `@synchronized(<#object#>) {<#...#>}`: 
-  Guarantees the safe execution of a particular block within a specified context 
+
+`@synchronized(<#object#>) {<#...#>}`
+: Guarantees the safe execution of a particular block within a specified context 
   (usually `self`). 
   Locking in this way is expensive, however, 
   so for classes aiming for a particular level of thread safety, 
@@ -401,6 +451,9 @@ drop-in replacement for `UICollectionView`:
 #endif
 ```
 
+You can use the same approach today to strategically adopt new APIs in your app,
+alongside the next and final `@` compiler directive in this week's article:
+
 ## Availability
 
 Achieving backwards or cross-platform compatibility in your app
@@ -412,9 +465,10 @@ Now developers have a compiler-provide safety net
 to warn them whenever an unavailable API is referenced
 for one of your supported targets.
 
-- `@available` 
-  Use in an `if` statement to have the compiler 
+`@available`
+: Use in an `if` statement to have the compiler 
   conditionally execute a code path based on the platform availability.
+
 
 For example,
 if you wanted to use a `fancyNewMethod` in the latest version of macOS,
@@ -439,7 +493,11 @@ have the same syntax as their [Swift counterpart](/available/), `#available`.
 
 ---
 
-Thus concludes this rundown of the many faces of `@`. 
+Much like the familiar call of a warbler
+or the tell-tale plumage of a peacock,
+the `@` sigil plays a central role 
+in establishing Objective-C's unique identity.
 It's a versatile, power-packed character 
 that embodies the underlying design and mechanisms of the language.
-
+So be on the lookout for its many faces 
+as you wander through codebases, new or familiar. 
