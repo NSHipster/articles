@@ -262,11 +262,9 @@ and worked around the issue by recasting to `NSData` and its former behavior:
 ```swift
 // ⚠️ Warning: Don't do this
 let tokenData = deviceToken as NSData
-let token = tokenData.description
-
-let token = "\(deviceToken)".replacingOccurrences(of: " ", with: "")
-                            .replacingOccurrences(of: "<", with: "")
-                            .replacingOccurrences(of: ">", with: "")
+let token = "\(tokenData)".replacingOccurrences(of: " ", with: "")
+                          .replacingOccurrences(of: "<", with: "")
+                          .replacingOccurrences(of: ">", with: "")
 ```
 
 Once again,
