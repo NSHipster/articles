@@ -166,7 +166,7 @@ learned early on:
 
 All `@property` declarations are now automatically synthesized by default
 (since Xcode 4.4),
-so you're much less likely to find them in Objective-C code bases these days.
+so you're much less likely to find `@synthesize` in Objective-C code bases these days.
 
 {% endinfo %}
 
