@@ -31,7 +31,7 @@ the language feature that lets you do this:
 ```swift
 enum Greeting: String {
     case hello = "hello"
-    case goodbye // implicit raw value of "b"
+    case goodbye // implicit raw value of "goodbye"
 }
 
 enum SortOrder: Int {
