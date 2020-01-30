@@ -335,7 +335,7 @@ we can recruit enumerations and raw values for a reasonable approximation:
 
 ```swift
 extension Element: RawRepresentable {
-    init?(rawValue: Element.Type) {
+    init?(rawValue: Elemental.Type) {
         switch rawValue {
         case is Earth.Type:
             self = .earth
@@ -350,7 +350,7 @@ extension Element: RawRepresentable {
         }
     }
 
-    var rawValue: Element.Type {
+    var rawValue: Elemental.Type {
         switch self {
         case .earth: return Earth.self
         case .water: return Water.self
