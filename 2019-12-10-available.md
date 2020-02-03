@@ -694,12 +694,13 @@ would likely annotate the availability of
 platform-specific biometric features like Touch ID and Face ID.
 
 However,
-if your APIs wrap the underlying system call
-in a way that doesn't expose the implementation details,
-you may be able
+if your framework wraps SDK functionality
+in a way that doesn't expose such implementation details,
+you might be able to opt-in to new features
+without affecting the availability for your own APIs.
 For example,
 an <abbr title="natural language processing">NLP</abbr>
-library that previously delegated functionality to
+library that delegates functionality to
 [`NSLinguisticTagger`](/nslinguistictagger/)
 could instead use
 [Natural Language framework](https://developer.apple.com/documentation/naturallanguage/)
