@@ -234,15 +234,20 @@ a misconception we found in the documentation.
 Consider the following from 
 the `RawRepresentable` docs: 
 
-> For any enumeration with a string, integer, or floating-point raw type, 
+> For any enumeration with a string, integer, or floating-point raw type,
 > the Swift compiler automatically adds `RawRepresentable` conformance.
 
 This is, strictly speaking, true.
 But it actually under-sells what the compiler can do.
 The actual requirements for raw values are as follows:
 
-- The raw value for an enumeration case must be a literal
-- A raw value type must be `Equatable` & `RawRepresentable`
+- The raw value type must be `Equatable`
+- The raw value type must be
+  `ExpressibleByIntegerLiteral`,
+  `ExpressibleByFloatLiteral`, or
+  `ExpressibleByStringLiteral`
+- The raw value for each enumeration case must be a literal
+  (or unspecified, in which case the value is inferred)
 
 Let's see what happens if we satisfy that for our `Number` type from before.
 
