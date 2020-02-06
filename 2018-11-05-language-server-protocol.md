@@ -60,6 +60,7 @@ $ sudo xcode-select -switch /Applications/Xcode-beta.app/
 $ xcrun -f sourcekit-lsp
 /Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
 ```
+
 {% endinfo %}
 
 * * *
