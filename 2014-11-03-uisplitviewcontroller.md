@@ -158,7 +158,7 @@ to give us the visual indicator we seek:
 override func viewDidLoad() {
     super.viewDidLoad()
 
-    // ...
+    <#...#>
 
     navigationItem.leftBarButtonItem =
         splitViewController?.displayModeButtonItem
@@ -170,7 +170,7 @@ override func viewDidLoad() {
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    // ...
+    <#...#>
 
     self.navigationItem.leftBarButtonItem =
         self.splitViewController.displayModeButtonItem;
@@ -211,7 +211,7 @@ We can do that using
 class ColorsViewController: UITableViewController {
     var collapseDetailViewController: Bool = true
 
-    // ...
+    <#...#>
 
     // MARK: - UITableViewDelegate
 
@@ -223,7 +223,7 @@ class ColorsViewController: UITableViewController {
 }
 
 class SplitViewDelegate: NSObject, UISplitViewControllerDelegate {
-    // ...
+    <#...#>
 
     func splitViewController(_ splitViewController: UISplitViewController,
                              collapseSecondary secondaryViewController: UIViewController,

@@ -103,7 +103,13 @@ _Example_:
 [products valueForKeyPath:@"@min.launchedOn"]; // June 11, 2012
 ```
 
-> Pro Tip: To get the aggregate value of an array or set of `NSNumber`s, you can simply pass `self` as the key path after the operator, e.g. `[@[@(1), @(2), @(3)] valueForKeyPath:@"@max.self"]` (/via [@davandermobile](http://twitter.com/davandermobile), citing [Objective Sea](http://objectivesea.tumblr.com/post/34552840247/max-value-nsset-kvc))
+{% info %}
+To get the aggregate value of an array or set of `NSNumber` values, 
+you can simply pass `self` as the key path after the operator.
+For example, 
+`[@[@(1), @(2), @(3)] valueForKeyPath:@"@max.self"]`
+produces the value `3`.
+{% endinfo %}
 
 ### Object Operators
 

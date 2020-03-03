@@ -30,60 +30,60 @@ Here's a rundown of all of the different Objective-C Type Encodings:
   </thead>
   <tbody>
     <tr>
-      <td><tt>c</tt></td>
-      <td>A <tt>char</tt></td>
+      <td><code>c</code></td>
+      <td>A <code>char</code></td>
     </tr>
     <tr>
-      <td><tt>i</tt></td>
-      <td>An <tt>int</tt></td></tr>
+      <td><code>i</code></td>
+      <td>An <code>int</code></td></tr>
     <tr>
-      <td><tt>s</tt></td>
-      <td>A <tt>short</tt></td></tr>
+      <td><code>s</code></td>
+      <td>A <code>short</code></td></tr>
     <tr>
-      <td><tt>l</tt></td>
-      <td>A <tt>long</tt><tt>l</tt> is treated as a 32-bit quantity on 64-bit programs.</td></tr>
+      <td><code>l</code></td>
+      <td>A <code>long</code><code>l</code> is treated as a 32-bit quantity on 64-bit programs.</td></tr>
     <tr>
-      <td><tt>q</tt></td>
-      <td>A <tt>long long</tt></td></tr>
+      <td><code>q</code></td>
+      <td>A <code>long long</code></td></tr>
     <tr>
-      <td><tt>C</tt></td>
-      <td>An <tt>unsigned char</tt></td></tr>
+      <td><code>C</code></td>
+      <td>An <code>unsigned char</code></td></tr>
     <tr>
-      <td><tt>I</tt></td>
-      <td>An <tt>unsigned int</tt></td></tr>
+      <td><code>I</code></td>
+      <td>An <code>unsigned int</code></td></tr>
     <tr>
-      <td><tt>S</tt></td>
-      <td>An <tt>unsigned short</tt></td></tr>
+      <td><code>S</code></td>
+      <td>An <code>unsigned short</code></td></tr>
     <tr>
-      <td><tt>L</tt></td>
-      <td>An <tt>unsigned long</tt></td></tr>
+      <td><code>L</code></td>
+      <td>An <code>unsigned long</code></td></tr>
     <tr>
-      <td><tt>Q</tt></td>
-      <td>An <tt>unsigned long long</tt></td></tr>
+      <td><code>Q</code></td>
+      <td>An <code>unsigned long long</code></td></tr>
     <tr>
-      <td><tt>f</tt></td>
-      <td>A <tt>float</tt></td></tr>
+      <td><code>f</code></td>
+      <td>A <code>float</code></td></tr>
     <tr>
-      <td><tt>d</tt></td>
-      <td>A <tt>double</tt></td></tr>
+      <td><code>d</code></td>
+      <td>A <code>double</code></td></tr>
     <tr>
-      <td><tt>B</tt></td>
-      <td>A C++ <tt>bool</tt> or a C99 <tt>_Bool</tt></td></tr>
+      <td><code>B</code></td>
+      <td>A C++ <code>bool</code> or a C99 <code>_Bool</code></td></tr>
     <tr>
-      <td><tt>v</tt></td>
-      <td>A <tt>void</tt></td></tr>
+      <td><code>v</code></td>
+      <td>A <code>void</code></td></tr>
     <tr>
-      <td><tt>*</tt></td>
-      <td>A character string (<tt>char *</tt>)</td></tr>
+      <td><code>*</code></td>
+      <td>A character string (<code>char *</code>)</td></tr>
     <tr>
-      <td><tt>@</tt></td>
-      <td>An object (whether statically typed or typed <tt>id</tt>)</td></tr>
+      <td><code>@</code></td>
+      <td>An object (whether statically typed or typed <code>id</code>)</td></tr>
     <tr>
-      <td><tt>#</tt></td>
-      <td>A class object (<tt>Class</tt>)</td></tr>
+      <td><code>#</code></td>
+      <td>A class object (<code>Class</code>)</td></tr>
     <tr>
-      <td><tt>:</tt></td>
-      <td>A method selector (<tt>SEL</tt>)</td></tr>
+      <td><code>:</code></td>
+      <td>A method selector (<code>SEL</code>)</td></tr>
     <tr>
       <td>[<em>array type</em>] </td>
       <td>An array</td></tr>
@@ -94,19 +94,20 @@ Here's a rundown of all of the different Objective-C Type Encodings:
       <td>(<em>name</em>=<em>type...</em>)</td>
       <td>A union</td></tr>
     <tr>
-      <td><tt>b</tt>num</td>
+      <td><code>b</code>num</td>
       <td>A bit field of <em>num</em> bits</td></tr>
     <tr>
-      <td><tt>^</tt>type</td>
+      <td><code>^</code>type</td>
       <td>A pointer to <em>type</em></td></tr>
     <tr>
-      <td><tt>?</tt></td>
+      <td><code>?</code></td>
       <td>An unknown type (among other things, this code is used for function pointers)</td>
     </tr>
   </tbody>
 </table>
 
-Of course, charts are fine, but experimenting in code is even better:
+Charts are fine, 
+but experimenting in code is even better:
 
 ```objc
 NSLog(@"int        : %s", @encode(int));
@@ -161,7 +162,7 @@ There are some interesting takeaways from this:
 
 - Whereas the standard encoding for pointers is a preceding `^`, `char *` gets its own code: `*`. This makes sense conceptually, as C strings are thought to be entities in and of themselves, rather than a pointer to something else.
 - `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`.
-- Passing `NSObject` directly yields `#`. However, passing `[NSObject class]` yields a struct named `NSObject` with a single class field. That is, of course, the `isa` field, which all `NSObject` instances have to signify their type.
+- Passing `NSObject` directly yields `#`. However, passing `[NSObject class]` yields a struct named `NSObject` with a single class field: `isa`, which `NSObject` instances have to signify their type.
 
 ## Method Encodings
 
@@ -179,32 +180,32 @@ These are the type qualifiers for methods declared in a protocol:
   </thead>
   <tbody>
     <tr>
-      <td><tt>r</tt></td>
-      <td><tt>const</tt></td>
+      <td><code>r</code></td>
+      <td><code>const</code></td>
     </tr>
     <tr>
-      <td><tt>n</tt></td>
-      <td><tt>in</tt></td>
+      <td><code>n</code></td>
+      <td><code>in</code></td>
     </tr>
     <tr>
-      <td><tt>N</tt></td>
-      <td><tt>inout</tt></td>
+      <td><code>N</code></td>
+      <td><code>inout</code></td>
     </tr>
     <tr>
-      <td><tt>o</tt></td>
-      <td><tt>out</tt></td>
+      <td><code>o</code></td>
+      <td><code>out</code></td>
     </tr>
     <tr>
-      <td><tt>O</tt></td>
-      <td><tt>bycopy</tt></td>
+      <td><code>O</code></td>
+      <td><code>bycopy</code></td>
     </tr>
     <tr>
-      <td><tt>R</tt></td>
-      <td><tt>byref</tt></td>
+      <td><code>R</code></td>
+      <td><code>byref</code></td>
     </tr>
     <tr>
-      <td><tt>V</tt></td>
-      <td><tt>oneway</tt></td>
+      <td><code>V</code></td>
+      <td><code>oneway</code></td>
     </tr>
   </tbody>
 </table>

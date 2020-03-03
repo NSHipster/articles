@@ -72,54 +72,54 @@ Here's a list of the various token types associated with each scheme (`NSLinguis
 <table>
   <thead>
     <tr>
-      <th><tt>NSLinguisticTagSchemeTokenType</tt></th>
-      <th><tt>NSLinguisticTagSchemeLexicalClass</tt></th>
-      <th><tt>NSLinguisticTagSchemeNameType</tt></th>
+      <th><code>NSLinguisticTagSchemeTokenType</code></th>
+      <th><code>NSLinguisticTagSchemeLexicalClass</code></th>
+      <th><code>NSLinguisticTagSchemeNameType</code></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>
         <ul>
-          <li><tt>NSLinguisticTagWord</tt></li>
-          <li><tt>NSLinguisticTagPunctuation</tt></li>
-          <li><tt>NSLinguisticTagWhitespace</tt></li>
-          <li><tt>NSLinguisticTagOther</tt></li>
+          <li><code>NSLinguisticTagWord</code></li>
+          <li><code>NSLinguisticTagPunctuation</code></li>
+          <li><code>NSLinguisticTagWhitespace</code></li>
+          <li><code>NSLinguisticTagOther</code></li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><tt>NSLinguisticTagNoun</tt></li>
-          <li><tt>NSLinguisticTagVerb</tt></li>
-          <li><tt>NSLinguisticTagAdjective</tt></li>
-          <li><tt>NSLinguisticTagAdverb</tt></li>
-          <li><tt>NSLinguisticTagPronoun</tt></li>
-          <li><tt>NSLinguisticTagDeterminer</tt></li>
-          <li><tt>NSLinguisticTagParticle</tt></li>
-          <li><tt>NSLinguisticTagPreposition</tt></li>
-          <li><tt>NSLinguisticTagNumber</tt></li>
-          <li><tt>NSLinguisticTagConjunction</tt></li>
-          <li><tt>NSLinguisticTagInterjection</tt></li>
-          <li><tt>NSLinguisticTagClassifier</tt></li>
-          <li><tt>NSLinguisticTagIdiom</tt></li>
-          <li><tt>NSLinguisticTagOtherWord</tt></li>
-          <li><tt>NSLinguisticTagSentenceTerminator</tt></li>
-          <li><tt>NSLinguisticTagOpenQuote</tt></li>
-          <li><tt>NSLinguisticTagCloseQuote</tt></li>
-          <li><tt>NSLinguisticTagOpenParenthesis</tt></li>
-          <li><tt>NSLinguisticTagCloseParenthesis</tt></li>
-          <li><tt>NSLinguisticTagWordJoiner</tt></li>
-          <li><tt>NSLinguisticTagDash</tt></li>
-          <li><tt>NSLinguisticTagOtherPunctuation</tt></li>
-          <li><tt>NSLinguisticTagParagraphBreak</tt></li>
-          <li><tt>NSLinguisticTagOtherWhitespace</tt></li>
+          <li><code>NSLinguisticTagNoun</code></li>
+          <li><code>NSLinguisticTagVerb</code></li>
+          <li><code>NSLinguisticTagAdjective</code></li>
+          <li><code>NSLinguisticTagAdverb</code></li>
+          <li><code>NSLinguisticTagPronoun</code></li>
+          <li><code>NSLinguisticTagDeterminer</code></li>
+          <li><code>NSLinguisticTagParticle</code></li>
+          <li><code>NSLinguisticTagPreposition</code></li>
+          <li><code>NSLinguisticTagNumber</code></li>
+          <li><code>NSLinguisticTagConjunction</code></li>
+          <li><code>NSLinguisticTagInterjection</code></li>
+          <li><code>NSLinguisticTagClassifier</code></li>
+          <li><code>NSLinguisticTagIdiom</code></li>
+          <li><code>NSLinguisticTagOtherWord</code></li>
+          <li><code>NSLinguisticTagSentenceTerminator</code></li>
+          <li><code>NSLinguisticTagOpenQuote</code></li>
+          <li><code>NSLinguisticTagCloseQuote</code></li>
+          <li><code>NSLinguisticTagOpenParenthesis</code></li>
+          <li><code>NSLinguisticTagCloseParenthesis</code></li>
+          <li><code>NSLinguisticTagWordJoiner</code></li>
+          <li><code>NSLinguisticTagDash</code></li>
+          <li><code>NSLinguisticTagOtherPunctuation</code></li>
+          <li><code>NSLinguisticTagParagraphBreak</code></li>
+          <li><code>NSLinguisticTagOtherWhitespace</code></li>
         </ul>
       </td>
       <td>
         <ul>
-          <li><tt>NSLinguisticTagPersonalName</tt></li>
-          <li><tt>NSLinguisticTagPlaceName</tt></li>
-          <li><tt>NSLinguisticTagOrganizationName</tt></li>
+          <li><code>NSLinguisticTagPersonalName</code></li>
+          <li><code>NSLinguisticTagPlaceName</code></li>
+          <li><code>NSLinguisticTagOrganizationName</code></li>
         </ul>
       </td>
     </tr>

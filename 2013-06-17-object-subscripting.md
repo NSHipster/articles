@@ -88,7 +88,7 @@ The whole point in describing all of this is to encourage unconventional thinkin
 
 ```objc
 routes[@"GET /users/:id"] = ^(NSNumber *userID){
-  // ...
+  <#...#>
 }
 ```
 

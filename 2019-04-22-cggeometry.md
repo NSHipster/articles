@@ -30,7 +30,7 @@ the drawing system used by Apple platforms:
 {::nomarkdown}
 
 <figure>
-{% asset core-graphics-primitives.svg width=900 %}
+{% asset core-graphics-primitives.svg width="900" %}
 <figcaption hidden>CoreGraphics Primitives (iOS)</figcaption>
 </figure>
 {:/}
@@ -72,7 +72,7 @@ in the opposite direction along that dimension).
 {::nomarkdown}
 
 <figure>
-{% asset core-graphics-coordinate-systems.svg width=500 %}
+{% asset core-graphics-coordinate-systems.svg width="500" %}
 <figcaption hidden>CoreGraphics Coordinates Systems (iOS)</figcaption>
 </figure>
 {:/}
@@ -170,7 +170,7 @@ in the `x` and `y` dimensions:
 {::nomarkdown}
 
 <figure>
-{% asset core-graphics-cgrect-min-mid-max.svg width=500 %}
+{% asset core-graphics-cgrect-min-mid-max.svg width="500" %}
 <figcaption hidden>CoreGraphics CGRect Properties (iOS)</figcaption>
 </figure>
 {:/}
@@ -259,7 +259,7 @@ blurry.integral // {x 0 y 0 w 4 h 4}
 {% info %}
 Though keep in mind that CoreGraphics coordinates
 operate in terms of <dfn>points</dfn> not pixels.
-So, for example,
+For example,
 a Retina screen with pixel density of 2
 represents each point with 4 pixels
 and can draw `± 0.5f` point values on odd pixels without blurriness.
@@ -412,7 +412,7 @@ that encompasses all points contained by both rectangles.
 {::nomarkdown}
 
 <figure>
-{% asset core-graphics-intersection.svg width=400 %}
+{% asset core-graphics-intersection.svg width="400" %}
 <figcaption hidden>CoreGraphics CGRect Intersection (iOS)</figcaption>
 </figure>
 {:/}
@@ -447,7 +447,7 @@ contained by either rectangle.
 {::nomarkdown}
 
 <figure>
-{% asset core-graphics-union.svg width=400 %}
+{% asset core-graphics-union.svg width="400" %}
 <figcaption hidden>CoreGraphics CGRect Union (iOS)</figcaption>
 </figure>
 {:/}
@@ -474,4 +474,4 @@ and you may encounter the best arithmetic problem of all:
 adding up all the money you've made with your awesome new app.
 _Mathematical!_
 
-[quartz-2d]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066
+[quartz-2d]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html

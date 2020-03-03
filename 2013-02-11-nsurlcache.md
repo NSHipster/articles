@@ -67,27 +67,27 @@ So here's what you _actually_ need to know about `NSURLRequestCachePolicy`:
   </thead>
   <tbody>
     <tr>
-      <td><tt>UseProtocolCachePolicy</tt></td>
+      <td><code>UseProtocolCachePolicy</code></td>
       <td>Default behavior</td>
     </tr>
     <tr>
-      <td><tt>ReloadIgnoringLocalCacheData</tt></td>
+      <td><code>ReloadIgnoringLocalCacheData</code></td>
       <td>Don't use the cache</td>
     </tr>
     <tr>
-      <td><del><tt>ReloadIgnoringLocalAndRemoteCacheData</tt></del></td>
+      <td><del><code>ReloadIgnoringLocalAndRemoteCacheData</code></del></td>
       <td><del>Seriously, don't use the cache</del></td>
     </tr>
     <tr>
-      <td><tt>ReturnCacheDataElseLoad</tt></td>
+      <td><code>ReturnCacheDataElseLoad</code></td>
       <td>Use the cache (no matter how out of date), or if no cached response exists, load from the network</td>
     </tr>
     <tr>
-      <td><tt>ReturnCacheDataDontLoad</tt></td>
+      <td><code>ReturnCacheDataDontLoad</code></td>
       <td>Offline mode: use the cache (no matter how out of date), but <em>don't</em> load from the network</td>
     </tr>
     <tr>
-      <td><del><tt>ReloadRevalidatingCacheData</tt></del></td>
+      <td><del><code>ReloadRevalidatingCacheData</code></del></td>
       <td><del>Validate cache against server before using</del></td>
     </tr>
   </tbody>
@@ -134,7 +134,7 @@ func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: 
     var mutableData = NSMutableData(data: cachedResponse.data)
     var storagePolicy: NSURLCacheStoragePolicy = .AllowedInMemoryOnly
 
-    // ...
+    <#...#>
 
     return NSCachedURLResponse(response: cachedResponse.response, data: mutableData, userInfo: mutableUserInfo, storagePolicy: storagePolicy)
 }
@@ -148,7 +148,7 @@ func connection(connection: NSURLConnection!, willCacheResponse cachedResponse: 
     NSMutableData *mutableData = [[cachedResponse data] mutableCopy];
     NSURLCacheStoragePolicy storagePolicy = NSURLCacheStorageAllowedInMemoryOnly;
 
-    // ...
+    <#...#>
 
     return [[NSCachedURLResponse alloc] initWithResponse:[cachedResponse response]
                                                     data:mutableData

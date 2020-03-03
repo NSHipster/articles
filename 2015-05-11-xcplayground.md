@@ -46,7 +46,7 @@ if let
    jsonData = NSData(contentsOfFile: jsonPath),
    json = NSJSONSerialization.JSONObjectWithData(jsonData, options: nil, error: nil) as? [String: AnyObject]
 {
-    // ...
+    <#...#>
 }
 ```
 
@@ -59,7 +59,7 @@ The contents of a "Shared Playground Data" directory inside your "Documents" fol
 ```swift
 let sharedImagePath = XCPSharedDataDirectoryPath.stringByAppendingPathComponent("image.png")
 if let image = UIImage(contentsOfFile: sharedImagePath) {
-   // ...
+   <#...#>
 }
 ```
 
@@ -101,7 +101,7 @@ let url = NSURL(string: "http://httpbin.org/image/png")!
 let task = NSURLSession.sharedSession().dataTaskWithURL(url) {
     data, _, _ in
     let image = UIImage(data: data)
-    // ...
+    <#...#>
 }
 task.resume()
 ```

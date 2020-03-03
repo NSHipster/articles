@@ -34,7 +34,7 @@ Consider the `Equatable` protocol, used throughout the standard library:
 
 ```swift
 protocol Equatable {
-    func ==(lhs: Self, rhs: Self) -> Bool
+    static func ==(lhs: Self, rhs: Self) -> Bool
 }
 ```
 
@@ -125,7 +125,7 @@ protocol P {
 }
 
 func f<T: P>(_ arg: T) {
-    // ...
+    <#...#>
 }
 ```
 

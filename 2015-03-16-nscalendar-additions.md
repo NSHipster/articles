@@ -181,7 +181,7 @@ cal.enumerateDatesStartingAfterDate(NSDate(), matchingComponents: leapYearCompon
 // 2008-02-29 05:00:00 +0000
 // 2004-02-29 05:00:00 +0000
 // 2000-02-29 05:00:00 +0000
-// ...
+<#...#>
 ```
 ```objc
 NSDateComponents *leapYearComponents = [[NSDateComponents alloc] init];
@@ -202,7 +202,7 @@ __block int dateCount = 0;
 // 2008-02-29 05:00:00 +0000
 // 2004-02-29 05:00:00 +0000
 // 2000-02-29 05:00:00 +0000
-// ...
+<#...#>
 ```
 
 ### Working for the Weekend

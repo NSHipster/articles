@@ -5,6 +5,7 @@ category: Objective-C
 excerpt: "Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent. For us developers, our medium of code informs the production of subsequent code, creating a positive feedback loop that has catapulted the development of technology exponentially over the last half century. For us Objective-C developers specifically, the most effective diagnostics come from Clang."
 status:
     swift: n/a
+retired: true
 ---
 
 Diagnostics combine logic with analytics to arrive at a conclusion. It's science and engineering at their purest. It's human reasoning at its most potent.
@@ -29,7 +30,7 @@ switch (style) {
     case UITableViewCellStyleValue1:
     case UITableViewCellStyleValue2:
     case UITableViewCellStyleSubtitle:
-        // ...
+        <#...#>
     default:
         return;
 }
@@ -47,7 +48,7 @@ switch (style) {
     case UITableViewCellStyleValue1:
     case UITableViewCellStyleValue2:
     case UITableViewCellStyleSubtitle:
-        // ...
+        <#...#>
     default:
         return;
 }
@@ -61,7 +62,3 @@ This week, as a public service, we've compiled a (mostly) comprehensive list of 
 **[ClangWarnings.com](https://clangwarnings.com)**
 
 You can also find the compiler and analyzer flags for any warning you might encounter by `^`-Clicking the corresponding entry in the Xcode Issue Navigator and selecting "Reveal in Log". (If this option is disabled, try building the project again).
-
----
-
-Corrections? Additions? Open a [Pull Request](https://github.com/NSHipster/clangwarnings.com/pulls) to submit your change. Any help would be greatly appreciated.

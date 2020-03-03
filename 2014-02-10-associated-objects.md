@@ -27,17 +27,11 @@ Associated Objects—or Associative References, as they were originally known—
 
 Why is this useful? It allows developers to **add custom properties to existing classes in categories**, which [is an otherwise notable shortcoming for Objective-C](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html).
 
-#### NSObject+AssociatedObject.h
-
 ```objc
 @interface NSObject (AssociatedObject)
 @property (nonatomic, strong) id associatedObject;
 @end
-```
 
-#### NSObject+AssociatedObject.m
-
-```objc
 @implementation NSObject (AssociatedObject)
 @dynamic associatedObject;
 
@@ -60,7 +54,7 @@ objc_getAssociatedObject(self, &kAssociatedObjectKey);
 
 However, a much simpler solution exists: just use a selector.
 
-<blockquote class="twitter-tweet" lang="en"><p>Since <tt>SEL</tt>s are guaranteed to be unique and constant, you can use <tt>_cmd</tt> as the key for <tt>objc_setAssociatedObject()</tt>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a>
+<blockquote class="twitter-tweet" lang="en"><p>Since <code>SEL</code>s are guaranteed to be unique and constant, you can use <code>_cmd</code> as the key for <code>objc_setAssociatedObject()</code>. <a href="https://twitter.com/search?q=%23objective&amp;src=hash">#objective</a>-c <a href="https://twitter.com/search?q=%23snowleopard&amp;src=hash">#snowleopard</a></p>&mdash; Bill Bumgarner (@bbum) <a href="https://twitter.com/bbum/statuses/3609098005">August 28, 2009</a>
 </blockquote>
 
 ## Associative Object Behaviors
@@ -71,17 +65,17 @@ Values can be associated onto objects according to the behaviors defined by the 
     <thead>
         <tr>
             <th>Behavior</th>
-            <th><tt>@property</tt> Equivalent</th>
+            <th><code>@property</code> Equivalent</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_ASSIGN</tt>
+                <code>OBJC_ASSOCIATION_ASSIGN</code>
             </td>
             <td>
-                <tt>@property (assign)</tt> or <tt>@property (unsafe_unretained)</tt>
+                <code>@property (assign)</code> or <code>@property (unsafe_unretained)</code>
             </td>
             <td>
                 Specifies a weak reference to the associated object.
@@ -89,10 +83,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_RETAIN_NONATOMIC</tt>
+                <code>OBJC_ASSOCIATION_RETAIN_NONATOMIC</code>
             </td>
             <td>
-                <tt>@property (nonatomic, strong)</tt>
+                <code>@property (nonatomic, strong)</code>
             </td>
             <td>
                 Specifies a strong reference to the associated object, and that the association is not made atomically.
@@ -100,10 +94,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_COPY_NONATOMIC</tt>
+                <code>OBJC_ASSOCIATION_COPY_NONATOMIC</code>
             </td>
             <td>
-                <tt>@property (nonatomic, copy)</tt>
+                <code>@property (nonatomic, copy)</code>
             </td>
             <td>
                 Specifies that the associated object is copied, and that the association is not made atomically.
@@ -111,10 +105,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_RETAIN</tt>
+                <code>OBJC_ASSOCIATION_RETAIN</code>
             </td>
             <td>
-                <tt>@property (atomic, strong)</tt>
+                <code>@property (atomic, strong)</code>
             </td>
             <td>
                 Specifies a strong reference to the associated object, and that the association is made atomically.
@@ -122,10 +116,10 @@ Values can be associated onto objects according to the behaviors defined by the 
         </tr>
         <tr>
             <td>
-                <tt>OBJC_ASSOCIATION_COPY</tt>
+                <code>OBJC_ASSOCIATION_COPY</code>
             </td>
             <td>
-                <tt>@property (atomic, copy)</tt>
+                <code>@property (atomic, copy)</code>
             </td>
             <td>
                 Specifies that the associated object is copied, and that the association is made atomically.
@@ -136,7 +130,13 @@ Values can be associated onto objects according to the behaviors defined by the 
 
 Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zero `weak` references, but rather follow a behavior similar to `unsafe_unretained`, which means that one should be cautious when accessing weakly associated objects within an implementation.
 
-> According to the Deallocation Timeline described in [WWDC 2011, Session 322](https://developer.apple.com/videos/wwdc/2011/#322-video) (~36:00), associated objects are erased surprisingly late in the object lifecycle, in `object_dispose()`, which is invoked by `NSObject -dealloc`.
+{% info %}
+According to the deallocation timeline described in 
+[WWDC 2011, Session 322](https://asciiwwdc.com/2011/sessions/322) (~36:00), 
+associated objects are erased surprisingly late in the object lifecycle --- 
+`object_dispose()`, 
+which is invoked by `NSObject -dealloc`.
+{% endinfo %}
 
 ## Removing Values
 
@@ -146,15 +146,32 @@ One may be tempted to call `objc_removeAssociatedObjects()` at some point in the
 
 ## Patterns
 
-- **Adding private variables to facilitate implementation details**. When extending the behavior of a built-in class, it may be necessary to keep track of additional state. This is the _textbook_ use case for associated objects. For example, AFNetworking uses associated objects on its `UIImageView` category to [store a request operation object](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.m#L57-L63), used to asynchronously fetch a remote image at a particular URL.
-- **Adding public properties to configure category behavior.** Sometimes, it makes more sense to make category behavior more flexible with a property, than in a method parameter. In these situations, a public-facing property is an acceptable situation to use associated objects. To go back to the previous example of AFNetworking, its category on `UIImageView`, [its `imageResponseSerializer`](https://github.com/AFNetworking/AFNetworking/blob/2.1.0/UIKit%2BAFNetworking/UIImageView%2BAFNetworking.h#L60-L65) allows image views to optionally apply a filter, or otherwise change the rendering of a remote image before it is set and cached to disk.
-- **Creating an associated observer for KVO**. When using [KVO](https://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
+### Adding private variables to facilitate implementation details
+
+When extending the behavior of a built-in class, it may be necessary to keep track of additional state. This is the _textbook_ use case for associated objects.
+
+### Adding public properties to configure category behavior.
+
+Sometimes, it makes more sense to make category behavior more flexible with a property, than in a method parameter. In these situations, a public-facing property is an acceptable situation to use associated objects.
+
+### Creating an associated observer for KVO
+
+When using [KVO](https://nshipster.com/key-value-observing/) in a category implementation, it is recommended that a custom associated-object be used as an observer, rather than the object observing itself.
 
 ## Anti-Patterns
 
-- **Storing an associated object, when the value is not needed**. A common pattern for views is to create a convenience method that populates fields and attributes based on a model object or compound value. If that value does not need to be recalled later, it is acceptable, and indeed preferable, not to associate with that object.
-- **Storing an associated object, when the value can be inferred.** For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can retrieved by calling `cellForRowAtIndexPath:`.
-- **Using associated objects instead of X**, where X is any one the following:
+### Storing an associated object, when the value is not needed
+
+A common pattern for views is to create a convenience method that populates fields and attributes based on a model object or compound value. If that value does not need to be recalled later, it is acceptable, and indeed preferable, not to associate with that object.
+
+### Storing an associated object, when the value can be inferred
+
+For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can retrieved by calling `cellForRowAtIndexPath:`.
+
+### Using associated objects instead of _X_
+
+...where X is any one the following:
+
   - [Subclassing](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) for when inheritance is a more reasonable fit than composition.
   - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.
   - [Gesture Recognizers](https://developer.apple.com/library/ios/documentation/EventHandling/Conceptual/EventHandlingiPhoneOS/GestureRecognizer_basics/GestureRecognizer_basics.html) for any situations when target-action doesn't suffice.

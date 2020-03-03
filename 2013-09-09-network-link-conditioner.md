@@ -3,13 +3,14 @@ title: Network Link Conditioner
 author: Mattt
 category: Xcode
 tag: popular
-excerpt: >
+excerpt: >-
   App developers often forget to test how their apps perform
   under less-than-ideal networking environments.
   Learn how you can use the Network Link conditioner 
   to simulate a spotty Internet connection on your device.
 revisions:
   "2018-07-18": Updated for Xcode 10
+  "2019-07-29": Added note about installation problems in macOS 10.14
 status:
   swift: n/a
 ---
@@ -24,10 +25,10 @@ this is what it takes to make something insanely great.
 
 And so we invest in reaching beyond our own operational model of the world.
 We tailor our experience to
-[different locales](https://nshipster.com/nslocalizedstring/).
+[different locales](/nslocalizedstring/).
 We consider the usability implications of
-[screen readers or other assistive technologies](https://nshipster.com/uiaccessibility/).
-We [continuously evaluate](https://nshipster.com/unit-testing/)
+[screen readers or other assistive technologies](/uiaccessibility/).
+We [continuously evaluate](/unit-testing/)
 our implementation against these expectations.
 
 There is, however,
@@ -58,19 +59,69 @@ page.
 Search for "Additional Tools"
 and select the appropriate release of the package.
 
-![Package]({% asset network-link-conditioner-dmg.png @path %})
+<picture>
+    <source srcset="{% asset network-link-conditioner-dmg--dark.png @path %}" media="(prefers-color-scheme: dark)">
+    <img src="{% asset network-link-conditioner-dmg--light.png @path %}" alt="Additional Tools - Hardware" loading="lazy">
+</picture>
 
 Once the download has finished,
 open the DMG,
 navigate to the "Hardware" directory,
 and double-click "Network Link Condition.prefPane".
 
-![System Preferences]({% asset network-link-conditioner-install.png @path %})
+<picture>
+    <source srcset="{% asset network-link-conditioner-install--dark.png @path %}" media="(prefers-color-scheme: dark)">
+    <img src="{% asset network-link-conditioner-install--light.png @path %}" alt="Install Network Link Conditioner" loading="lazy">
+</picture>
 
 Click on the Network Link Conditioner preference pane
 at the bottom of System Preferences.
 
-![Network Link Conditioner]({% asset network-link-conditioner-system-preference.png @path %})
+<picture>
+    {% comment %}<source srcset="{% network-link-conditioner-preference-pane--dark.png @path %}" media="(prefers-color-scheme: dark)">{% endcomment %}
+    <img src="{% asset network-link-conditioner-preference-pane--light.png @path %}" alt="Network Link Conditioner" loading="lazy">
+</picture>
+
+{% error %}
+
+When you first install Network Link Conditioner on macOS 10.14,
+everything works as expected.
+But if you close and reopen System Preferences,
+the preference pane no longer appears,
+and attempting to reinstall results in the following error message:
+
+<figure>
+
+<picture>
+    <source srcset="{% asset network-link-conditioner-installation-error--dark.png @path %}" media="(prefers-color-scheme: dark)">
+    <img src="{% asset network-link-conditioner-installation-error--light.png @path %}" alt="Network Link Conditioner installation error message" loading="lazy">
+</picture>
+
+<figcaption hidden>
+
+> **You can’t install the “Network Link Conditioner” preferences.**<br/>
+> “Network Link Conditioner” preferences is installed with macOS and can’t be replaced.
+
+</figcaption>
+</figure>
+
+As a workaround,
+you can move the preference pane
+from your user `PreferencePanes` directory to the system-level directory
+by entering the following command in `Terminal.app`
+(you'll be prompted for your password):
+
+```terminal
+$ sudo mv ~/Library/PreferencePanes/Network\ Link\ Conditioner.prefPane /Library/PreferencePanes/
+```
+
+Once you've done this,
+Network Link Conditioner will appear
+the next time you open System Preferences.
+
+{% enderror %}
+
+## Controlling Bandwidth, Latency, and Packet Loss
 
 Enabling the Network Link Conditioner
 changes the network environment system-wide
@@ -115,7 +166,7 @@ To use the Network Link Conditioner on iOS,
 set up your device for development:
 
 1.  Connect your iOS device to your Mac
-2.  In Xcode, navigate to Window > Organizer
+2.  In Xcode, navigate to Window > Devices & Simulators
 3.  Select your device in the sidebar
 4.  Click "Use for Development"
 

@@ -252,7 +252,7 @@ let contents =
                                                 includingPropertiesForKeys: nil,
                                                 options: [.skipsHiddenFiles])
 for file in contents {
-    // ...
+    <#...#>
 }
 ```
 

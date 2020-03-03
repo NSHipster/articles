@@ -1,6 +1,6 @@
 ---
 title: CMDeviceMotion
-author: Nate Cook, Mattt Zmuda
+author: Nate Cook, Mattt
 category: Cocoa
 excerpt: >
   Beneath the smooth glass of each iPhone
@@ -136,7 +136,7 @@ manager.startAccelerometerUpdates(to: .main) { (data, error) in
         return
     }
 
-    // ...
+    <#...#>
 }
 ```
 
@@ -222,7 +222,7 @@ and presents each as its own property of the `CMDeviceMotion` object.
 The code is very similar to our first example:
 
 ```swift
-if manager.isDeviceMotionActive {
+if manager.isDeviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
     manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data, error) in
@@ -259,7 +259,7 @@ that's our cue to pop the view controller from the stack.
 The implementation is only a couple lines different from our previous example:
 
 ```swift
-if manager.isDeviceMotionActive {
+if manager.isDeviceMotionAvailable {
     manager.deviceMotionUpdateInterval = 0.01
     manager.startDeviceMotionUpdates(to: .main) {
         [weak self] (data, error) in
@@ -395,7 +395,7 @@ we calculate the magnitude of the vector described by the three Euler angles
 and use that as a trigger to show or hide the prompt view:
 
 ```swift
-if manager.isDeviceMotionActive {
+if manager.isDeviceMotionAvailable {
     manager.startDeviceMotionUpdates(to: .main) {
         // translate the attitude
         data.attitude.multiply(byInverseOf: initialAttitude)
@@ -453,7 +453,7 @@ A better approach would be to schedule these updates on their own queue
 and dispatch back to main to update the UI.
 
 ```swift
-let queue = DispatchQueue(label: "motion")
+let queue = OperationQueue()
 manager.startDeviceMotionUpdates(to: queue) {
     [weak self] (data, error) in
 

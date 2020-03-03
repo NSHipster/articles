@@ -27,14 +27,6 @@ And on that note, this week's topic has to do with two simple-but-handy macros: 
 
 Introduced in Foundation with iOS 6 / OS X Mountain Lion, the `NS_ENUM` and `NS_OPTIONS` macros are the new, preferred way to declare `enum` types.
 
-> If you'd like to use either macro when targeting a previous version of iOS or OS X, you can simply inline like so:
-
-```objc
-#ifndef NS_ENUM
-#define NS_ENUM(_type, _name) enum _name : _type _name; enum _name : _type
-#endif
-```
-
 `enum`, or enumerated value types, are the C way to define constants for fixed values, like days of the week, or available styles of table view cells. In an `enum` declaration, constants without explicit values will automatically be assigned values sequentially, starting from `0`.
 
 There are several legal ways that `enum`s can be defined. What's confusing is that there are subtle functional differences between each approach, and without knowing any better, someone is just as likely to use them interchangeably.

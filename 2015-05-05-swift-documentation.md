@@ -30,7 +30,7 @@ of documentation in Swift.
 
 ---
 
-Since the early 00's,
+Since the early '00s,
 [Headerdoc](https://developer.apple.com/library/mac/documentation/DeveloperTools/Conceptual/HeaderDoc/intro/intro.html#//apple_ref/doc/uid/TP40001215-CH345-SW1)
 has been Apple's preferred documentation standard.
 Starting off as little more than a Perl script that parsed trumped-up
@@ -41,11 +41,11 @@ Apple's developer documentation online and in Xcode.
 But like so much of the Apple developer ecosystem,
 Swift changed everything.
 In the spirit of
-"Out with the old, in with the new",
+_"Out with the old, in with the new"_,
 Xcode 7 traded Headerdoc
 for fan favorite
 [Markdown](https://daringfireball.net/projects/markdown/) ---
-specifically, _Swift-flavored Markdown_.
+specifically, <dfn>Swift-flavored Markdown</dfn>.
 
 ## Documentation Comments & Swift-Flavored Markdown
 
@@ -85,14 +85,14 @@ Standard Markdown rules apply inside documentation comments:
     ## Unordered Lists
 
     - Lists are great,
-    - but perhaps don't nest
-    - Sub-list formatting
+    - but perhaps don't nest;
+    - Sub-list formatting...
 
-      - isn't the best.
+      - ...isn't the best.
 
     ## Ordered Lists
 
-    1. Ordered lists, too
+    1. Ordered lists, too,
     2. for things that are sorted;
     3. Arabic numerals
     4. are the only kind supported.
@@ -105,9 +105,11 @@ The leading paragraph of a documentation comment
 becomes the documentation _Summary_.
 Any additional content is grouped together into the _Discussion_ section.
 
-> If a documentation comment
-> starts with anything other than a paragraph,
-> all of its content is put into the Discussion.
+{% info %}
+If a documentation comment
+starts with anything other than a paragraph,
+all of its content is put into the Discussion.
+{% endinfo %}
 
 ### Parameters & Return Values
 
@@ -175,11 +177,37 @@ Swift-flavored Markdown
 defines a handful of other fields,
 which can be loosely organized in the following way:
 
-|                                  |                                                                                                                              |
-| -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Algorithm/Safety Information** | `Precondition` <br/> `Postcondition` <br/> `Requires` <br/> `Invariant` <br/> `Complexity` <br/> `Important` <br/> `Warning` |
-| **Metadata**                     | `Author` <br/> `Authors` <br/> `Copyright` <br/>`Date` <br/> `SeeAlso` <br/> `Since` <br/> `Version`                         |
-| **General Notes & Exhortations** | `Attention` <br/> `Bug` <br/> `Experiment` <br/> `Note` <br/> `Remark` <br/> `ToDo`                                          |
+{::nomarkdown}
+<dl class="additional-fields">
+
+<dt>Algorithm/Safety Information</dt>
+<dd><code>Precondition</code></dd>
+<dd><code>Postcondition</code></dd>
+<dd><code>Requires</code></dd>
+<dd><code>Invariant</code></dd>
+<dd><code>Complexity</code></dd>
+<dd><code>Important</code></dd>
+<dd><code>Warning</code></dd>
+
+<dt>Metadata</dt>
+<dd><code>Author</code></dd>
+<dd><code>Authors</code></dd>
+<dd><code>Copyright</code></dd>
+<dd><code>Date</code></dd>
+<dd><code>SeeAlso</code></dd>
+<dd><code>Since</code></dd>
+<dd><code>Version</code></dd>
+
+<dt>General Notes & Exhortations</dt>
+<dd><code>Attention</code></dd> 
+<dd><code>Bug</code></dd>
+<dd><code>Experiment</code></dd>
+<dd><code>Note</code></dd>
+<dd><code>Remark</code></dd>
+<dd><code>ToDo</code></dd>
+
+</dl>
+{:/}
 
 Each of these fields is rendered in Quick Help as a bold header
 followed by a block of text:
@@ -207,26 +235,26 @@ var area: CGFloat { get }
 ```
 
 Fenced code blocks are also recognized,
-delimited by either three backticks (` \``) or tildes ( `~`):
+delimited by either three backticks (<code>&#96;</code>) or tildes (`~`):
 
-````swift
+```swift
 /**
     The perimeter of the `Shape` instance.
 
     Computation depends on the shape of the instance, and is
     equivalent to:
 
-    ```
+    ~~~
     // Circles:
     let perimeter = circle.radius * 2 * Float.pi
 
     // Other shapes:
     let perimeter = shape.sides.map { $0.length }
                                .reduce(0, +)
-    ```
+    ~~~
 */
 var perimeter: CGFloat { get }
-````
+```
 
 ## Documentation Is My New Bicycle
 
@@ -339,44 +367,46 @@ class Bicycle {
 Option-click on the initializer declaration,
 and the description renders beautifully with a bulleted list:
 
-![Swift enum Declaration Documentation]({% asset swift-documentation-initializer-declaration.png @path %})
+{% asset swift-documentation-initializer-declaration.png alt="Swift enum Declaration Documentation" %}
 
 Open Quick Documentation for the method `travel`,
 and the parameter is parsed out into a separate field,
 as expected:
 
-![Swift func Declaration Documentation]({% asset swift-documentation-method-declaration.png @path %})
+{% asset swift-documentation-method-declaration.png alt="Swift func Declaration Documentation" %}
 
 ## MARK / TODO / FIXME
 
 In Objective-C,
-[the pre-processor directive `#pragma mark`](https://nshipster.com/pragma/)
+[the preprocessor directive `#pragma mark`](/pragma/)
 is used to divide functionality into meaningful, easy-to-navigate sections.
-In Swift, there are no pre-processor directives
-(closest are the similarly-octothorp'd
-[build configurations](https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/InteractingWithCAPIs.html#//apple_ref/doc/uid/TP40014216-CH8-XID_25)),
-but the same can be accomplished with the comment `// MARK:`.
+In Swift, the same can be accomplished with the comment `// MARK:`.
 
 The following comments are surfaced in the Xcode source navigator:
 
 - `// MARK:`
-  _(As with `#pragma`, marks followed by a single dash (`-`)
-  are preceded with a horizontal divider)_
 - `// TODO:`
 - `// FIXME:`
 
-> Other conventional comment tags,
-> such as `NOTE` and `XXX` are not recognized by Xcode.
+Other conventional comment tags,
+such as `NOTE` and `XXX` aren't recognized by Xcode.
+
+{% info %}
+
+As with `#pragma`, marks followed by a single dash (`-`)
+are preceded with a horizontal divider
+
+{% endinfo %}
 
 To show these new tags in action,
 here's how the `Bicycle` class could be extended to adopt
 the `CustomStringConvertible` protocol,
 and implement the `description` property.
 
-![Xcode Documentation Source Navigator MARK / TODO / FIXME]({% asset swift-documentation-xcode-source-navigator.png @path %})
+{% asset swift-documentation-xcode-source-navigator.png alt="Xcode Documentation Source Navigator MARK / TODO / FIXME" %}
 
 ```swift
-// MARK: CustomStringConvertible
+// MARK: - CustomStringConvertible
 
 extension Bicycle: CustomStringConvertible {
     public var description: String {

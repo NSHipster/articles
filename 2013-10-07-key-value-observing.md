@@ -91,7 +91,7 @@ A typical implementation of this method looks something like this:
                        context:(void *)context
 {
   if ([keyPath isEqualToString:@"state"]) {
-    // ...
+    <#...#>
   }
 }
 ```
@@ -145,7 +145,7 @@ Since `@selector` looks through all available selectors in the target, this won'
 
         }
     } else if (...) {
-        // ...
+        <#...#>
     }
 }
 ```

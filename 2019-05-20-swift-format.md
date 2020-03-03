@@ -123,7 +123,6 @@ we'll take a look at the following four tools:
 | ----------------------------------------------------------------------- | --------------------------------------------- |
 | [SwiftFormat](#swiftformat)                                             | <https://github.com/nicklockwood/SwiftFormat> |
 | [SwiftLint](#swiftlint)                                                 | <https://github.com/realm/SwiftLint>          |
-| [Prettier with Swift Plugin <sup>\*</sup>](#prettier-with-swift-plugin) | <https://github.com/prettier/prettier>        |
 | [swift-format](#swift-format)                                           | <https://github.com/google/swift/tree/format> |
 
 {% info %}
@@ -132,8 +131,9 @@ For brevity,
 this article discusses only some of the Swift formatting tools available.
 Here are some other ones that you may want to check out:
 [Swimat](https://github.com/Jintin/Swimat),
-[SwiftRewriter](https://github.com/inamiy/SwiftRewriter), and
-[swiftfmt](https://github.com/kishikawakatsumi/swiftfmt).
+[SwiftRewriter](https://github.com/inamiy/SwiftRewriter),
+[swiftfmt](https://github.com/kishikawakatsumi/swiftfmt),
+and [Prettier with Swift Plugin](https://github.com/prettier/prettier).
 
 {% endinfo %}
 
@@ -367,159 +367,6 @@ $ time swiftlint autocorrect --quiet --format --path Example.swift
 
 ---
 
-### Prettier with Swift Plugin
-
-{% error %}
-
-<sup>\*</sup>
-We included the
-[Prettier plugin for Swift](https://github.com/prettier/plugin-swift)
-in the first publication of this article.
-Despite its instability and limitations as a work-in-progress,
-we were nonetheless taken by its beautiful output.
-However,
-without support for Swift 5
-or [any plans for further development](https://twitter.com/sirlantis/status/1102842678130151424),
-its unlikely to be a viable option going forward.
-
-For anyone who's curious,
-you can see the details from our initial write-up by expanding the section below.
-
-{% enderror %}
-
-{% capture markdown %}
-
-If you've mostly shied away from JavaScript
-(as discussed in [last week's article](/javascriptcore/)),
-this may be the first you've heard of
-[Prettier](https://github.com/prettier/prettier).
-On the other hand,
-if you're steeped in the world of ES6, React, and WebPack,
-you've almost certainly come to rely on it.
-
-Prettier is unique among code formatters in that it optimizes ---
-first and foremost ---
-for aesthetics,
-wrapping lines of code onto newlines as if they were poetry.
-
-Thanks to its (in-development) [plugin architecture](https://prettier.io/docs/en/plugins.html),
-the same line-breaking behavior can be applied to other languages,
-[including Swift](https://github.com/prettier/plugin-swift).
-
-#### Installation
-
-To use Prettier and its plugin for Swift,
-you'll have to wade into the murky waters of the Node packaging ecosystem.
-There are a few different approaches to get everything installed
-_(because of course there are)_,
-but [Yarn](https://yarnpkg.com/en/) is our favorite 😻.
-
-```terminal
-$ brew install yarn
-$ yarn global add prettier prettier/plugin-swift
-```
-
-#### Usage
-
-With the `prettier` command-line tool accessible from our `$PATH`,
-run it with one or more file or directory paths.
-
-```terminal
-$ prettier Example.swift
-```
-
-#### Example Output
-
-Here's the result of running the latest build of the Swift plugin with Prettier
-on our example from before:
-
-```swift
-// Swift version 4.2
-// prettier version 1.17.1
-// prettier/plugin-swift version 0.0.0 (bdf8726)
-struct ShippingAddress: Codable {
-    var recipient: String
-    var streetAddress: String
-    var locality: String
-    var region: String
-    var postalCode: String
-    var country: String
-
-    init(
-        recipient: String,
-        streetAddress: String,
-        locality: String,
-        region: String,
-        postalCode: String,
-        country: String
-    ) {
-        self.recipient = recipient
-        self.streetAddress = streetAddress
-        self.locality = locality
-        self.region = region;
-        self.postalCode = postalCode
-        guard country.count == 2, country == country.uppercased() else {
-            fatalError("invalid country code")
-        }
-        self.country = country
-    }
-}
-
-let applePark = ShippingAddress(
-    recipient: "Apple, Inc.",
-    streetAddress: "1 Apple Park Way",
-    locality: "Cupertino",
-    region: "CA",
-    postalCode: "95014",
-    country: "US"
-)
-```
-
-Prettier describes itself to be "An opinionated code formatter".
-In practice, this means that there isn't much in the way of configuration;
-there are only two options: "regular code" and "prettier code".
-
-Now, you may object to the increase in vertical whitespace,
-but you'd be lying if you said this code didn't look _amazing_.
-The way that everything is evenly spaced...
-the way that long lines are wrapped and indented...
-it's almost hard to believe that you achieve something like this automatically.
-
-Of course, our caveat from before still applies:
-This is still very much a work-in-progress
-and isn't suitable for production use yet.
-Also, there's the matter of performance...
-
-#### Performance
-
-To put it bluntly:
-Prettier is an order of magnitude slower
-than every other tool discussed in this article.
-
-```terminal
-$ time prettier Example.swift
-        0.60 real         0.40 user         0.18 sys
-```
-
-It's unclear whether this is
-a consequence of navigating a language barrier or
-an opportunity for optimization,
-but Prettier is slow enough to cause problems at scale.
-
-For now,
-we recommend using Prettier only for one-off formatting tasks,
-such as writing code for articles and books.
-{% endcapture %}
-
-{::nomarkdown}
-
-<details>
-<summary>Installation, Usage, Example Output, and Performance</summary>
-{{ markdown | markdownify }}
-</details>
-
-{:/}
-
 ### swift-format
 
 Having looked at the current landscape of available Swift formatters,
@@ -535,6 +382,7 @@ You can check it out and build it from source by running the following commands:
 ```terminal
 $ git clone https://github.com/google/swift.git swift-format
 $ cd swift-format
+$ git checkout format
 $ git submodule update --init
 $ swift build
 ```
@@ -566,7 +414,7 @@ is to dump the default configuration to a file
 and go from there.
 
 ```terminal
-$ swift-format -m dump-configuration .swift-format.json
+$ swift-format -m dump-configuration > .swift-format.json
 ```
 
 Running the command above populates the specified file

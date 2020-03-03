@@ -123,7 +123,7 @@ if (!error) {
         NSString *name = product[@"name"];
         NSNumber *price = product[@"price"];
 
-        // ...
+        <#...#>
     }
 }
 ```

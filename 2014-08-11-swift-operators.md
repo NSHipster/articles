@@ -68,7 +68,6 @@ If an operator is <dfn>left-associative</dfn>,
 then the operand on the left-hand side is evaluated first: (`(5 - 2) + 3`);
 if <dfn>right-associative</dfn>,
 then the right-hand side operator is evaluated first: `5 - (2 + 3)`.
-
 Arithmetic operators are left-associative,
 so `5 - 2 + 3` evaluates to `6`.
 
@@ -93,244 +92,172 @@ and forming open or closed ranges (`...`, `..<`).
 ### Infix Operators
 
 Swift uses <dfn>infix</dfn> notation for binary operators
-(as opposed to, say [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation)).
+_(as opposed to, say [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation))_.
 The Infix operators are grouped below
 according to their associativity
 and precedence level, in descending order:
 
-<table>
-    <tr>
-        <th colspan="2"><tt>BitwiseShiftPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>&lt;&lt;</tt></td>
-            <td>Bitwise left shift</td>
-        </tr>
-        <tr>
-            <td><tt>&gt;&gt;</tt></td>
-            <td>Bitwise right shift</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>MultiplicationPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>*</tt></td>
-            <td>Multiply</td>
-        </tr>
-        <tr>
-            <td><tt>/</tt></td>
-            <td>Divide</td>
-        </tr>
-        <tr>
-            <td><tt>%</tt></td>
-            <td>Remainder</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;*</tt></td>
-            <td>Multiply, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;/</tt></td>
-            <td>Divide, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;%</tt></td>
-            <td>Remainder, ignoring overflow</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;</tt></td>
-            <td>Bitwise AND</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>AdditionPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>+</tt></td>
-            <td>Add</td>
-        </tr>
-        <tr>
-            <td><tt>-</tt></td>
-            <td>Subtract</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;+</tt></td>
-            <td>Add with overflow</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;-</tt></td>
-            <td>Subtract with overflow</td>
-        </tr>
-        <tr>
-            <td><tt>|</tt></td>
-            <td>Bitwise OR</td>
-        </tr>
-        <tr>
-            <td><tt>^</tt></td>
-            <td>Bitwise XOR</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>RangeFormationPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>..&lt;</tt></td>
-            <td>Half-open range</td>
-        </tr>
-        <tr>
-            <td><tt>...</tt></td>
-            <td>Closed range</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>CastingPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>is</tt></td>
-            <td>Type check</td>
-        </tr>
-        <tr>
-            <td><tt>as</tt></td>
-            <td>Type cast</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>NilCoalescingPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>??</tt></td>
-            <td><tt>nil</tt> Coalescing</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>ComparisonPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>&lt;</tt></td>
-            <td>Less than</td>
-        </tr>
-        <tr>
-            <td><tt>&lt;=</tt></td>
-            <td>Less than or equal</td>
-        </tr>
-        <tr>
-            <td><tt>></tt></td>
-            <td>Greater than</td>
-        </tr>
-        <tr>
-            <td><tt>>=</tt></td>
-            <td>Greater than or equal</td>
-        </tr>
-        <tr>
-            <td><tt>==</tt></td>
-            <td>Equal</td>
-        </tr>
-        <tr>
-            <td><tt>!=</tt></td>
-            <td>Not equal</td>
-        </tr>
-        <tr>
-            <td><tt>===</tt></td>
-            <td>Identical</td>
-        </tr>
-        <tr>
-            <td><tt>!==</tt></td>
-            <td>Not identical</td>
-        </tr>
-        <tr>
-            <td><tt>~=</tt></td>
-            <td>Pattern match</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>LogicalConjunctionPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>&amp;&amp;</tt></td>
-            <td>Logical AND</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>LogicalDisjunctionPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>||</tt></td>
-            <td>Logical OR</td>
-        </tr>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>DefaultPrecedence</tt></th>
-    </tr>
-    <tbody>
-    </tbody>
-    <tr>
-        <th colspan="2"><tt>AssignmentPrecedence</tt></th>
-    </tr>
-    <tbody>
-        <tr>
-            <td><tt>=</tt></td>
-            <td>Assign</td>
-        </tr>
-        <tr>
-            <td><tt>*=</tt></td>
-            <td>Multiply and assign</td>
-        </tr>
-        <tr>
-            <td><tt>/=</tt></td>
-            <td>Divide and assign</td>
-        </tr>
-        <tr>
-            <td><tt>%=</tt></td>
-            <td>Remainder and assign</td>
-        </tr>
-        <tr>
-            <td><tt>+=</tt></td>
-            <td>Add and assign</td>
-        </tr>
-        <tr>
-            <td><tt>-=</tt></td>
-            <td>Subtract and assign</td>
-        </tr>
-        <tr>
-            <td><tt>&lt;&lt;=</tt></td>
-            <td>Left bit shift and assign</td>
-        </tr>
-        <tr>
-            <td><tt>>>=</tt></td>
-            <td>Right bit shift and assign</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;=</tt></td>
-            <td>Bitwise AND and assign</td>
-        </tr>
-        <tr>
-            <td><tt>^=</tt></td>
-            <td>Bitwise XOR and assign</td>
-        </tr>
-        <tr>
-            <td><tt>|=</tt></td>
-            <td>Bitwise OR and assign</td>
-        </tr>
-        <tr>
-            <td><tt>&amp;&amp;=</tt></td>
-            <td>Logical AND and assign</td>
-        </tr>
-        <tr>
-            <td><tt>||=</tt></td>
-            <td>Logical OR and assign</td>
-        </tr>
-    </tbody>
-</table>
+<section class="infix-operator-precedence-list">
+
+#### BitwiseShiftPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&lt;&lt;</code></dt>
+<dd>Bitwise left shift</dd>
+<dt><code>&gt;&gt;</code></dt>
+<dd>Bitwise right shift</dd>
+</dl>
+{:/}
+
+#### MultiplicationPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>*</code></dt>
+<dd>Multiply</dd>
+<dt><code>/</code></dt>
+<dd>Divide</dd>
+<dt><code>%</code></dt>
+<dd>Remainder</dd>
+<dt><code>&amp;*</code></dt>
+<dd>Multiply, ignoring overflow</dd>
+<dt><code>&amp;/</code></dt>
+<dd>Divide, ignoring overflow</dd>
+<dt><code>&amp;%</code></dt>
+<dd>Remainder, ignoring overflow</dd>
+<dt><code>&amp;</code></dt>
+<dd>Bitwise AND</dd>
+</dl>
+{:/}
+
+#### AdditionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>+</code></dt>
+<dd>Add</dd>
+<dt><code>-</code></dt>
+<dd>Subtract</dd>
+<dt><code>&amp;+</code></dt>
+<dd>Add with overflow</dd>
+<dt><code>&amp;-</code></dt>
+<dd>Subtract with overflow</dd>
+<dt><code>|</code></dt>
+<dd>Bitwise OR</dd>
+<dt><code>^</code></dt>
+<dd>Bitwise XOR</dd>
+</dl>
+{:/}
+
+#### RangeFormationPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>..&lt;</code></dt>
+<dd>Half-open range</dd>
+<dt><code>...</code></dt>
+<dd>Closed range</dd>
+</dl>
+{:/}
+
+#### CastingPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>is</code></dt>
+<dd>Type check</dd>
+<dt><code>as</code></dt>
+<dd>Type cast</dd>
+</dl>
+{:/}
+
+#### NilCoalescingPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>??</code></dt>
+<dd><code>nil</code> Coalescing</dd>
+</dl>
+{:/}
+
+#### ComparisonPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&lt;</code></dt>
+<dd>Less than</dd>
+<dt><code>&lt;=</code></dt>
+<dd>Less than or equal</dd>
+<dt><code>></code></dt>
+<dd>Greater than</dd>
+<dt><code>>=</code></dt>
+<dd>Greater than or equal</dd>
+<dt><code>==</code></dt>
+<dd>Equal</dd>
+<dt><code>!=</code></dt>
+<dd>Not equal</dd>
+<dt><code>===</code></dt>
+<dd>Identical</dd>
+<dt><code>!==</code></dt>
+<dd>Not identical</dd>
+<dt><code>~=</code></dt>
+<dd>Pattern match</dd>
+</dl>
+{:/}
+
+#### LogicalConjunctionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>&amp;&amp;</code></dt>
+<dd>Logical AND</dd>
+</dl>
+{:/}
+
+#### LogicalDisjunctionPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>||</code></dt>
+<dd>Logical OR</dd>
+</dl>
+{:/}
+
+#### DefaultPrecedence
+
+_(None)_
+
+#### AssignmentPrecedence
+
+{::nomarkdown}
+<dl>
+<dt><code>=</code></dt>
+<dd>Assign</dd>
+<dt><code>*=</code></dt>
+<dd>Multiply and assign</dd>
+<dt><code>/=</code></dt>
+<dd>Divide and assign</dd>
+<dt><code>%=</code></dt>
+<dd>Remainder and assign</dd>
+<dt><code>+=</code></dt>
+<dd>Add and assign</dd>
+<dt><code>-=</code></dt>
+<dd>Subtract and assign</dd>
+<dt><code>&lt;&lt;=</code></dt>
+<dd>Left bit shift and assign</dd>
+<dt><code>>>=</code></dt>
+<dd>Right bit shift and assign</dd>
+<dt><code>&amp;=</code></dt>
+<dd>Bitwise AND and assign</dd>
+<dt><code>^=</code></dt>
+<dd>Bitwise XOR and assign</dd>
+<dt><code>|=</code></dt>
+<dd>Bitwise OR and assign</dd>
+</dl>
+{:/}
+
+</section>
 
 {% info %}
 
@@ -364,6 +291,8 @@ Swift defines a handful of these by default:
 - `-`: Unary minus
 - `!`: Logical NOT
 - `~`: Bitwise NOT
+- `...`: Open-ended partial range
+- `..<`: Closed partial range
 
 For example,
 the `!` prefix operator

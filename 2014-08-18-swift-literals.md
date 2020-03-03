@@ -5,8 +5,8 @@ category: Swift
 tags: swift
 excerpt: >-
   Literals are representations of values in source code.
-  The different kinds of literals that Swift provides ---
-  and how it makes them available ---
+  The different kinds of literals that Swift provides —
+  and how it makes them available —
   has a profound impact on how we write and think about code.
 revisions:
   "2014-08-18": Original publication
@@ -26,7 +26,7 @@ but create a similar distinction between raindrops and puddles.
 Over time,
 this simple empirical observation
 has warped into an awful cliché that
-"Eskimos [sic] have 50 different words for snow" ---
+"Eskimos _\[sic\]_ have 50 different words for snow" ---
 which is unfortunate,
 because Boas' original observation was empirical,
 and the resulting weak claim of linguistic relativity is uncontroversial:
@@ -40,7 +40,7 @@ It's in this framing that you're invited to consider
 how the different kinds of literals in Swift
 shape the way we reason about code.
 
----
+## Standard Literals
 
 A <dfn>literal</dfn> is a representation of a value in source code,
 such as a number or a string.
@@ -103,11 +103,11 @@ let dictionary: [String: [Int]] = [
     "a": [1, 2],
     "b": [3, 4],
     "c": [5, 6],
-    // ...
+    <#...#>
 ]
 ```
 
-### Playground Literals
+## Playground Literals
 
 In addition to the standard literals listed above,
 there are a few additional literal types for code in Playgrounds:
@@ -131,7 +131,7 @@ that provides a visual representation of the referenced color, image, or file.
 🏽
 ```
 
-{% asset color-literal-picker.png %}
+{% asset color-literal-picker.png alt="Swift Playgrounds Color Literal Picker"%}
 
 This control also makes it easy for new values to be chosen:
 instead of entering RGBA values or file paths,

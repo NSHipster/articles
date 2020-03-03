@@ -90,43 +90,43 @@ A veteran Mac or iOS developer will have likely memorized most if not all of the
         </tr>
     </thead>
     <tbody>
-        <tr><td><tt>AB</tt></td><td>AddressBook / AddressBookUI</td></tr>
-        <tr><td><tt>AC</tt></td><td>Accounts</td></tr>
-        <tr><td><tt>AD</tt></td><td>iAd</td></tr>
-        <tr><td><tt>AL</tt></td><td>AssetsLibrary</td></tr>
-        <tr><td><tt>AU</tt></td><td>AudioUnit</td></tr>
-        <tr><td><tt>AV</tt></td><td>AVFoundation</td></tr>
-        <tr><td><tt>CA</tt></td><td>CoreAnimation</td></tr>
-        <tr><td><tt>CB</tt></td><td>CoreBluetooth</td></tr>
-        <tr><td><tt>CF</tt></td><td>CoreFoundation / CFNetwork</td></tr>
-        <tr><td><tt>CG</tt></td><td>CoreGraphics / QuartzCore / ImageIO</td></tr>
-        <tr><td><tt>CI</tt></td><td>CoreImage</td></tr>
-        <tr><td><tt>CL</tt></td><td>CoreLocation</td></tr>
-        <tr><td><tt>CM</tt></td><td>CoreMedia / CoreMotion</td></tr>
-        <tr><td><tt>CV</tt></td><td>CoreVideo</td></tr>
-        <tr><td><tt>EA</tt></td><td>ExternalAccessory</td></tr>
-        <tr><td><tt>EK</tt></td><td>EventKit / EventKitUI</td></tr>
-        <tr><td><tt>GC</tt></td><td>GameController</td></tr>
-        <tr><td><tt>GLK</tt><sup>*</sup></td><td>GLKit</td></tr>
-        <tr><td><tt>JS</tt></td><td>JavaScriptCore</td></tr>
-        <tr><td><tt>MA</tt></td><td>MediaAccessibility</td></tr>
-        <tr><td><tt>MC</tt></td><td>MultipeerConnectivity</td></tr>
-        <tr><td><tt>MF</tt></td><td>MessageUI*</td></tr>
-        <tr><td><tt>MIDI</tt><sup>*</sup></td><td>CoreMIDI</td></tr>
-        <tr><td><tt>MK</tt></td><td>MapKit</td></tr>
-        <tr><td><tt>MP</tt></td><td>MediaPlayer</td></tr>
-        <tr><td><tt>NK</tt></td><td>NewsstandKit</td></tr>
-        <tr><td><tt>NS</tt></td><td>Foundation, AppKit, CoreData</td></tr>
-        <tr><td><tt>PK</tt></td><td>PassKit</td></tr>
-        <tr><td><tt>QL</tt></td><td>QuickLook</td></tr>
-        <tr><td><tt>SC</tt></td><td>SystemConfiguration</td></tr>
-        <tr><td><tt>Sec</tt><sup>*</sup></td><td>Security*</td></tr>
-        <tr><td><tt>SK</tt></td><td>StoreKit / SpriteKit</td></tr>
-        <tr><td><tt>SL</tt></td><td>Social</td></tr>
-        <tr><td><tt>SS</tt></td><td>Safari Services</td></tr>
-        <tr><td><tt>TW</tt></td><td>Twitter</td></tr>
-        <tr><td><tt>UI</tt></td><td>UIKit</td></tr>
-        <tr><td><tt>UT</tt></td><td>MobileCoreServices</td></tr>
+        <tr><td><code>AB</code></td><td>AddressBook / AddressBookUI</td></tr>
+        <tr><td><code>AC</code></td><td>Accounts</td></tr>
+        <tr><td><code>AD</code></td><td>iAd</td></tr>
+        <tr><td><code>AL</code></td><td>AssetsLibrary</td></tr>
+        <tr><td><code>AU</code></td><td>AudioUnit</td></tr>
+        <tr><td><code>AV</code></td><td>AVFoundation</td></tr>
+        <tr><td><code>CA</code></td><td>CoreAnimation</td></tr>
+        <tr><td><code>CB</code></td><td>CoreBluetooth</td></tr>
+        <tr><td><code>CF</code></td><td>CoreFoundation / CFNetwork</td></tr>
+        <tr><td><code>CG</code></td><td>CoreGraphics / QuartzCore / ImageIO</td></tr>
+        <tr><td><code>CI</code></td><td>CoreImage</td></tr>
+        <tr><td><code>CL</code></td><td>CoreLocation</td></tr>
+        <tr><td><code>CM</code></td><td>CoreMedia / CoreMotion</td></tr>
+        <tr><td><code>CV</code></td><td>CoreVideo</td></tr>
+        <tr><td><code>EA</code></td><td>ExternalAccessory</td></tr>
+        <tr><td><code>EK</code></td><td>EventKit / EventKitUI</td></tr>
+        <tr><td><code>GC</code></td><td>GameController</td></tr>
+        <tr><td><code>GLK</code><sup>*</sup></td><td>GLKit</td></tr>
+        <tr><td><code>JS</code></td><td>JavaScriptCore</td></tr>
+        <tr><td><code>MA</code></td><td>MediaAccessibility</td></tr>
+        <tr><td><code>MC</code></td><td>MultipeerConnectivity</td></tr>
+        <tr><td><code>MF</code></td><td>MessageUI*</td></tr>
+        <tr><td><code>MIDI</code><sup>*</sup></td><td>CoreMIDI</td></tr>
+        <tr><td><code>MK</code></td><td>MapKit</td></tr>
+        <tr><td><code>MP</code></td><td>MediaPlayer</td></tr>
+        <tr><td><code>NK</code></td><td>NewsstandKit</td></tr>
+        <tr><td><code>NS</code></td><td>Foundation, AppKit, CoreData</td></tr>
+        <tr><td><code>PK</code></td><td>PassKit</td></tr>
+        <tr><td><code>QL</code></td><td>QuickLook</td></tr>
+        <tr><td><code>SC</code></td><td>SystemConfiguration</td></tr>
+        <tr><td><code>Sec</code><sup>*</sup></td><td>Security*</td></tr>
+        <tr><td><code>SK</code></td><td>StoreKit / SpriteKit</td></tr>
+        <tr><td><code>SL</code></td><td>Social</td></tr>
+        <tr><td><code>SS</code></td><td>Safari Services</td></tr>
+        <tr><td><code>TW</code></td><td>Twitter</td></tr>
+        <tr><td><code>UI</code></td><td>UIKit</td></tr>
+        <tr><td><code>UT</code></td><td>MobileCoreServices</td></tr>
     </tbody>
 </table>
 
@@ -144,17 +144,17 @@ Because of this, many established libraries still use 2-letter prefixes. Conside
         </tr>
     </thead>
     <tbody>
-        <tr><td><tt>AF</tt></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> ("<a href="https://en.wikipedia.org/wiki/Gowalla">Alamofire</a>")</td></tr>
-        <tr><td><tt>RK</tt></td><td><a href="https://github.com/RestKit/RestKit">RestKit</a></td></tr>
-        <tr><td><tt>GPU</tt></td><td><a href="https://github.com/BradLarson/GPUImage">GPUImage</a></td></tr>
-        <tr><td><tt>SD</tt></td><td><a href="https://github.com/rs/SDWebImage">SDWebImage</a></td></tr>
-        <tr><td><tt>MB</tt></td><td><a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a></td></tr>
-        <tr><td><tt>FB</tt></td><td><a href="https://github.com/facebook/facebook-ios-sdk">Facebook SDK</a></td></tr>
-        <tr><td><tt>FM</tt></td><td><a href="https://github.com/ccgus/fmdb">FMDB</a> ("<a href="http://flyingmeat.com">Flying Meat</a>")</td></tr>
-        <tr><td><tt>JK</tt></td><td><a href="https://github.com/johnezang/JSONKit">JSONKit</a></td></tr>
-        <tr><td><tt>FUI</tt></td><td><a href="https://github.com/Grouper/FlatUIKit">FlatUI</a></td></tr>
-        <tr><td><tt>NI</tt></td><td><a href="https://github.com/jverkoey/nimbus">Nimbus</a></td></tr>
-        <tr><td><tt>RAC</tt></td><td><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">Reactive Cocoa</a></td></tr>
+        <tr><td><code>AF</code></td><td><a href="https://github.com/AFNetworking/AFNetworking">AFNetworking</a> ("<a href="https://en.wikipedia.org/wiki/Gowalla">Alamofire</a>")</td></tr>
+        <tr><td><code>RK</code></td><td><a href="https://github.com/RestKit/RestKit">RestKit</a></td></tr>
+        <tr><td><code>GPU</code></td><td><a href="https://github.com/BradLarson/GPUImage">GPUImage</a></td></tr>
+        <tr><td><code>SD</code></td><td><a href="https://github.com/rs/SDWebImage">SDWebImage</a></td></tr>
+        <tr><td><code>MB</code></td><td><a href="https://github.com/jdg/MBProgressHUD">MBProgressHUD</a></td></tr>
+        <tr><td><code>FB</code></td><td><a href="https://github.com/facebook/facebook-ios-sdk">Facebook SDK</a></td></tr>
+        <tr><td><code>FM</code></td><td><a href="https://github.com/ccgus/fmdb">FMDB</a> ("<a href="http://flyingmeat.com">Flying Meat</a>")</td></tr>
+        <tr><td><code>JK</code></td><td><a href="https://github.com/johnezang/JSONKit">JSONKit</a></td></tr>
+        <tr><td><code>FUI</code></td><td><a href="https://github.com/Grouper/FlatUIKit">FlatUI</a></td></tr>
+        <tr><td><code>NI</code></td><td><a href="https://github.com/jverkoey/nimbus">Nimbus</a></td></tr>
+        <tr><td><code>RAC</code></td><td><a href="https://github.com/ReactiveCocoa/ReactiveCocoa">Reactive Cocoa</a></td></tr>
     </tbody>
 </table>
 
@@ -227,7 +227,7 @@ Not to create a straw man, but an imagined implementation of Objective-C namespa
     - (void)foo {
         F:Array *array = @[@1,@2, @3];
 
-        // ...
+        <#...#>
     }
 
     @end

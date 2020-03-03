@@ -285,8 +285,7 @@ may be inconsistent.
 
 ---
 
-So, to summarize:
-you're likely to encounter `OptionSet`
+You're likely to encounter `OptionSet`
 when working with Apple SDKs in Swift.
 And although you _could_ create your own structure that conforms to `OptionSet`,
 you probably don't need to.

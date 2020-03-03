@@ -97,7 +97,7 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
   NSAssertionHandler *assertionHandler = [[LoggingAssertionHandler alloc] init];
   [[[NSThread currentThread] threadDictionary] setValue:assertionHandler
                                                  forKey:NSAssertionHandlerKey];
-  // ...
+  <#...#>
 
   return YES;
 }

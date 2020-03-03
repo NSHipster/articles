@@ -186,7 +186,7 @@ class RecipePrintPageRenderer: UIPrintPageRenderer {
         addPrintFormatter(formatter, startingAtPageAtIndex: 0)
     }
 
-    // ...
+    <#...#>
 }
 ```
 
@@ -219,7 +219,7 @@ class RecipePrintPageRenderer: UIPrintPageRenderer {
     return self;
 }
 
-// ...
+<#...#>
 
 @end
 ```

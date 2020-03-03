@@ -188,7 +188,7 @@ Messages are received through the `MCSessionDelegate` method `-sessionDidReceive
 Another approach would be to send `NSKeyedArchiver`-encoded objects:
 
 ```objc
-id <NSSecureCoding> object = // ...;
+id <NSSecureCoding> object = <#...#>;
 NSData *data = [NSKeyedArchiver archivedDataWithRootObject:object];
 NSError *error = nil;
 if (![self.session sendData:data
@@ -230,7 +230,7 @@ stream.delegate = self;
                 forMode:NSDefaultRunLoopMode];
 [stream open];
 
-// ...
+<#...#>
 ```
 
 * * *
@@ -284,7 +284,7 @@ didStartReceivingResourceWithName:(NSString *)resourceName
        fromPeer:(MCPeerID *)peerID
    withProgress:(NSProgress *)progress
 {
-    // ...
+    <#...#>
 }
 
 - (void)session:(MCSession *)session

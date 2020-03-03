@@ -57,7 +57,7 @@ sharpen your pencils,
 gather your detective notes,
 and warm up your 6-sided dice,
 because this week on NSHipster,
-we crack the case of the cumbersome class known as `NSRegularExpression`.
+we're cracking the case of the cumbersome class known as `NSRegularExpression`.
 
 ---
 
@@ -69,11 +69,11 @@ I have a suggestion:
 In any other language,
 regular expressions are something you can sling around in one-liners.
 
-- _Need to substitute one word for another?_
+- _Need to substitute one word for another?_<br/>
   **Boom**: regular expression.
-- _Need to extract a value from a templated string?_
+- _Need to extract a value from a templated string?_<br/>
   **Boom**: regular expression.
-- _Need to parse XML?_
+- _Need to parse XML?_<br/>
   **Boom**: <del>regular expression</del>
   <ins>actually, you should really use an XML parser in this case</ins>
 
@@ -95,8 +95,9 @@ Let's interrogate each of these points, in order:
 
 ## Regular Expressions without NSRegularExpression
 
-You may be surprised to learn that you can --- in fact ---
-use regular expressions in a Swift one-liner:
+You may be surprised to learn that you can,
+in fact,
+use regular expressions in a Swift one-liner ---
 you just have to bypass `NSRegularExpression` entirely.
 
 ### Matching Strings Against Patterns

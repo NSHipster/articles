@@ -75,9 +75,9 @@ UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIP
 
 One major downside to `UIAppearance`'s proxy approach is that it's difficult to know which selectors are compatible.
 
-<del>Because <tt>+appearance</tt> returns an <tt>id</tt>, Xcode can't provide any code-completion information. This is a major source of confusion and frustration with this feature.</del>
+<del>Because <code>+appearance</code> returns an <code>id</code>, Xcode can't provide any code-completion information. This is a major source of confusion and frustration with this feature.</del>
 
-<ins>As of iOS 7, UIAppearance now returns <a href="https://nshipster.com/instancetype/"><tt>instancetype</tt></a>, which allows for code completion to work as expected. Huzzah!</ins>
+<ins>As of iOS 7, UIAppearance now returns <a href="https://nshipster.com/instancetype/"><code>instancetype</code></a>, which allows for code completion to work as expected. Huzzah!</ins>
 
 In order to find out what methods work with `UIAppearance`, you have to [look at the headers](http://stackoverflow.com/questions/9424112/what-properties-can-i-set-via-an-uiappearance-proxy):
 

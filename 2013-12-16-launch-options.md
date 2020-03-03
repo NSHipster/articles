@@ -34,7 +34,7 @@ Numerous as they are, `launchOptions` keys can be more easily understood when or
 Apps can launch other apps by passing URLs:
 
 ```objc
-[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app://..."]];
+[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app:<#...#>"]];
 ```
 
 For example, an `http://` URL would open in Safari, a `mailto://` URL would open in Mail, and a `tel://` URL would open in Phone.
@@ -70,9 +70,9 @@ To register for remote notifications, `registerForRemoteNotificationTypes:` is c
 
 ```objc
 [application registerForRemoteNotificationTypes:
-	UIRemoteNotificationTypeBadge |
+    UIRemoteNotificationTypeBadge |
     UIRemoteNotificationTypeSound |
-	UIRemoteNotificationTypeAlert];
+    UIRemoteNotificationTypeAlert];
 ```
 
 ...which, if successful, calls  `-application:didRegisterForRemoteNotificationsWithDeviceToken:`. Once the device has been successfully registered, it can receive push notifications at any time.
@@ -90,7 +90,7 @@ Since this introduces two separate code paths for notification handling, a commo
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // ...
+    <#...#>
 
     if (launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]) {
         [self application:application didReceiveRemoteNotification:launchOptions[UIApplicationLaunchOptionsRemoteNotificationKey]];
@@ -113,14 +113,14 @@ A local notification populates the launch options on `UIApplicationLaunchOptions
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
 ```objc
-// .h
+// AppDelegate.h
 @import AVFoundation;
 
 @interface AppDelegate ()
 @property (readwrite, nonatomic, assign) SystemSoundID localNotificationSound;
 @end
 
-// .m
+// AppDelegate.m
 - (void)application:(UIApplication *)application
 didReceiveLocalNotification:(UILocalNotification *)notification
 {
@@ -172,7 +172,7 @@ Here's an example of how an app might go about monitoring for significant locati
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // ...
+    <#...#>
 
     if (![CLLocationManager locationServicesEnabled]) {
         [[[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Location Services Disabled", nil)
@@ -206,7 +206,7 @@ This is how you register:
 
 ```objc
 [application registerForRemoteNotificationTypes:
-	UIRemoteNotificationTypeNewsstandContentAvailability];
+    UIRemoteNotificationTypeNewsstandContentAvailability];
 ```
 
 And this is the key to look out for in `launchOptions`:

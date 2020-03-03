@@ -44,7 +44,7 @@ both internally and externally.
 To understand how SwiftSyntax works,
 let's take a step back and look at the Swift compiler architecture:
 
-{% asset swift-compilation-diagram.png %}
+{% asset swift-compilation-diagram.png alt="Swift Compiler Architecture Diagram"%}
 
 The Swift compiler is primarily responsible for
 turning Swift code into executable machine code.
@@ -279,7 +279,6 @@ and increment its value by one.
 Looking at that,
 you can already extrapolate out to how this might be used
 to create a canonical `swift-format` tool.
-
 But for the moment,
 let's consider a considerably _less_ productive ---
 and more seasonally appropriate (🎃) ---
@@ -362,7 +361,7 @@ class SwiftSyntaxHighlighter: SyntaxRewriter {
 
     override func visit(_ token: TokenSyntax) -> Syntax {
         switch token.tokenKind {
-        // ...
+        <#...#>
         case .floatingLiteral(let string):
             html += "<span class=\"mf\">\(string)</span>"
         case .integerLiteral(let string):
@@ -375,7 +374,7 @@ class SwiftSyntaxHighlighter: SyntaxRewriter {
             } else {
                 html += "<span class=\"mi\">\(string)</span>"
             }
-        // ...
+        <#...#>
         default:
             break
         }
@@ -398,7 +397,7 @@ Anyway, after a few hours of development,
 I was able to generate reasonable colorized output
 for a wide range of Swift syntactic features:
 
-{% asset swiftsyntaxhightlighter-example-output.png width=500 %}
+{% asset swiftsyntaxhightlighter-example-output.png width="500" alt="SwiftSyntaxHighlighter Example Output" %}
 
 The project comes with a library and a command line tool.
 Go ahead and [try it out](https://github.com/NSHipster/SwiftSyntaxHighlighter)

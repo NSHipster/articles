@@ -163,8 +163,8 @@ Setting `NSZombie`-related environment variables allows you to control the _BRAA
 <th>Name</th><th>Effect</th></tr>
 </thead>
 <tbody>
-<tr><td><tt>NSZombieEnabled</tt></td></td><td>If set to <tt>YES</tt>, deallocated objects are 'zombified'; this allows you to quickly debug problems where you send a message to an object that has already been freed.</td></tr>
-<tr><td><tt>NSDeallocateZombies</tt></td><td>If set to <tt>YES</tt>, the memory for 'zombified' objects is actually freed.</td></tr>
+<tr><td><code>NSZombieEnabled</code></td></td><td>If set to <code>YES</code>, deallocated objects are 'zombified'; this allows you to quickly debug problems where you send a message to an object that has already been freed.</td></tr>
+<tr><td><code>NSDeallocateZombies</code></td><td>If set to <code>YES</code>, the memory for 'zombified' objects is actually freed.</td></tr>
 </tbody>
 </table>
 {:/}
@@ -184,10 +184,10 @@ Here are some of the most useful ones:
 <tr><th>Name</th><th>Effect</th></tr>
 </thead>
 <tbody>
-<tr><td><tt>MallocScribble</tt></td><td>Fill allocated memory with 0xAA and scribble deallocated memory with <tt>0x55</tt>.</td></tr>
-<tr><td><tt>MallocGuardEdges</tt></td><td>Add guard pages before and after large allocations.</td></tr>
-<tr><td><tt>MallocStackLogging</tt></td><td>Record backtraces for each memory block to assist memory debugging tools; if the block is allocated and then immediately freed, both entries are removed from the log, which helps reduce the size of the log.</td></tr>
-<tr><td><tt>MallocStackLoggingNoCompact</tt></td><td>Same as <tt>MallocStackLogging</tt> but keeps all log entries.</td></tr>
+<tr><td><code>MallocScribble</code></td><td>Fill allocated memory with 0xAA and scribble deallocated memory with <code>0x55</code>.</td></tr>
+<tr><td><code>MallocGuardEdges</code></td><td>Add guard pages before and after large allocations.</td></tr>
+<tr><td><code>MallocStackLogging</code></td><td>Record backtraces for each memory block to assist memory debugging tools; if the block is allocated and then immediately freed, both entries are removed from the log, which helps reduce the size of the log.</td></tr>
+<tr><td><code>MallocStackLoggingNoCompact</code></td><td>Same as <code>MallocStackLogging</code> but keeps all log entries.</td></tr>
 </tbody>
 </table>
 {:/}
@@ -203,7 +203,7 @@ Although unlikely, you may come across a situation where you want logging to `st
 <tr><th>Name</th><th>Effect</th></tr>
 </thead>
 <tbody>
-<tr><td><tt>NSUnbufferedIO</tt></td><td>If set to YES, Foundation will use unbuffered I/O for <tt>stdout</tt> (<tt>stderr</tt> is unbuffered by default).</td></tr>
+<tr><td><code>NSUnbufferedIO</code></td><td>If set to YES, Foundation will use unbuffered I/O for <code>stdout</code> (<code>stderr</code> is unbuffered by default).</td></tr>
 </tbody>
 </table>
 {:/}

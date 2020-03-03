@@ -50,7 +50,7 @@ The following diagram illustrates the relationship between bundles and packages,
 as well as things like apps, frameworks, plugins, and documents
 that fall into either or both categories:
 
-{% asset packages-and-bundles-diagram.svg %}
+{% asset packages-and-bundles-diagram.svg alt="Packages and Bundles Diagram" %}
 
 {% info %}
 If you're still fuzzy on these distinctions,
@@ -216,7 +216,7 @@ If an item is a package,
 "Show Package Contents" will appear at the top,
 under "Open".
 
-{% asset show-package-contents.png %}
+{% asset show-package-contents.png alt="Show Package Contents" %}
 
 Selecting this menu item will open a new Finder window
 from the package directory.
@@ -243,24 +243,30 @@ The best option depends on the kind of package:
 Although it's up to the Finder how it wants to represent files and directories,
 most of that is delegated to the operating system
 and the services responsible for managing
-Uniform Type Identifiers (<abbr title="Uniform Type Identifiers">UTI</abbr>).
+Uniform Type Identifiers (<abbr title="Uniform Type Identifiers">UTI</abbr>s).
 
-If you want to determine whether a file extension
+To determine whether a file extension
 is one of the built-in system package types
 or used by an installed app as a registered document type,
-you can use the Core Services functions
-`UTTypeCreatePreferredIdentifierForTag(_:_:_:)` and
-`UTTypeConformsTo(_:_:)`:
+access the URL resource [`isPackageKey`](https://developer.apple.com/documentation/foundation/urlresourcekey/1413867-ispackagekey):
+
+```swift
+let url: URL = <#...#>
+let directoryIsPackage = (try? url.resourceValues(forKeys: [.isPackageKey]).isPackage) ?? false
+```
+
+Or, if you don't have a `URL` handy
+and wanted to check a particular filename extension,
+you could instead use the Core Services framework to make this determination:
 
 ```swift
 import Foundation
 import CoreServices
 
-func directoryIsPackage(_ url: URL) -> Bool {
-    let filenameExtension: CFString = url.pathExtension as NSString
+func filenameExtensionIsPackage(_ filenameExtension: String) -> Bool {
     guard let uti = UTTypeCreatePreferredIdentifierForTag(
                         kUTTagClassFilenameExtension,
-                        filenameExtension, nil
+                        filenameExtension as NSString, nil
                     )?.takeRetainedValue()
     else {
         return false
@@ -270,16 +276,17 @@ func directoryIsPackage(_ url: URL) -> Bool {
 }
 
 let xcode = URL(fileURLWithPath: "/Applications/Xcode.app")
-directoryIsPackage(xcode) // true
+let appExtension = xcode.pathExtension // "app"
+filenameExtensionIsPackage(appExtension) // true
 ```
 
 {% info %}
 
-We couldn't find any documentation describing
-how to set the so-called "package bit" for a file,
-but according to
-[CarbonCore/Finder.h](https://opensource.apple.com/source/CarbonHeaders/CarbonHeaders-8A428/Finder.h),
-this can be accomplished by setting the
+If you want to set the so-called "package bit" for a file the hard way
+(rather than calling `URL.setResourceValues(_:)`),
+spelunking through
+[CarbonCore/Finder.h](https://opensource.apple.com/source/CarbonHeaders/CarbonHeaders-8A428/Finder.h)
+indicates that you can do this by setting the
 `kHasBundle` (`0x2000`) flag
 in the `com.apple.FinderInfo` extended attribute:
 

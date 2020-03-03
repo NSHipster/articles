@@ -33,7 +33,7 @@ search.startWithCompletionHandler { (response, error) in
     }
     
     for item in response.mapItems {
-        // ...
+        <#...#>
     }
 }
 ```

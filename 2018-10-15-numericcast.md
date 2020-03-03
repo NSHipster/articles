@@ -55,8 +55,8 @@ about what `numericCast(_:)` does by
 [looking at its implementation](https://github.com/apple/swift/blob/7f7b4f12d3138c5c259547c49c3b41415cd4206e/stdlib/public/core/Integers.swift#L3508-L3510):
 
 ```swift
-public func numericCast<T : BinaryInteger, U : BinaryInteger>(_ x: T) -> U {
-  return U(x)
+func numericCast<T: BinaryInteger, U: BinaryInteger>(_ x: T) -> U {
+    return U(x)
 }
 ```
 
@@ -79,18 +79,23 @@ or when a value exceeds the representable range of the destination type
 `BinaryInteger` defines four strategies of conversion between integer types,
 each with different behaviors for handling out-of-range values:
 
-- **Range-Checked Conversion**
-  ([`init(_:)`](https://developer.apple.com/documentation/swift/binaryinteger/2885704-init)):
-  Trigger a runtime error for out-of-range values
-- **Exact Conversion**
-  ([`init?(exactly:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925955-init)):
-  Return `nil` for out-of-range values
-- **Clamping Conversion**
-  ([`init(clamping:)`](https://developer.apple.com/documentation/swift/binaryinteger/2886143-init)):
-  Use the closest representable value for out-of-range values
-- **Bit Pattern Conversion**
-  ([`init(truncatingIfNeeded:)`](https://developer.apple.com/documentation/swift/binaryinteger/2925529-init)):
-  Truncate to the width of the target integer type
+
+{::nomarkdown}
+<dl id="binaryinteger-strategies">
+    <dt>Range-Checked Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2885704-init"><code>init(_:)</code></a></dt>
+    <dd>Trigger a runtime error for out-of-range values</dd>
+    <dt>Exact Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2925955-init"><code>init?(exactly:)</code></a></dt>
+    <dd>Return <code>nil</code> for out-of-range values</dd>
+    <dt>Clamping Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2886143-init"><code>init(clamping:)</code></a></dt>
+    <dd>Use the closest representable value for out-of-range values</dd>
+    <dt>Bit Pattern Conversion - 
+        <a href="https://developer.apple.com/documentation/swift/binaryinteger/2925529-init"><code>init(truncatingIfNeeded:)</code></a></dt>
+    <dd>Truncate to the width of the target integer type</dd>
+</dl>
+{:/}
 
 The correct conversion strategy
 depends on the situation in which it's being used.
@@ -109,7 +114,7 @@ For more information about the changes to how numbers work in Swift 4,
 see [SE-0104: "Protocol-oriented integers"](https://github.com/apple/swift-evolution/blob/master/proposals/0104-improved-integers.md).
 
 This subject is also discussed at length in the
-[Flight School Guide to Numbers](https://gumroad.com/l/swift-numbers).
+[Flight School Guide to Numbers](https://flight.school/books/numbers).
 
 {% endinfo %}
 

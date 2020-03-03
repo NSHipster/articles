@@ -1,5 +1,5 @@
 ---
-title: "IBInspectable&nbsp;/ IBDesignable"
+title: "IBInspectable / IBDesignable"
 category: Xcode
 author: Nate Cook
 excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."

@@ -32,11 +32,11 @@ Xcode key bindings and gestures not only shave off seconds of precious work, but
   </thead>
   <tbody>
     <tr>
-      <td><tt>⌘</tt></td>
-      <td><tt>⌃</tt></td>
-      <td><tt>⌥</tt></td>
-      <td><tt>⇧</tt></td>
-      <td><tt>ʘ</tt></td>
+      <td><code>⌘</code></td>
+      <td><code>⌃</code></td>
+      <td><code>⌥</code></td>
+      <td><code>⇧</code></td>
+      <td><code>ʘ</code></td>
     </tr>
   </tbody>
 </table>

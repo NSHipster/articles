@@ -9,14 +9,15 @@ excerpt: >-
   It's a big deal for app developers,
   and it's an even bigger deal for Swift developers on other platforms.
 revisions:
-  "2018-11-05": Original publication
-  "2018-11-19": Updated
+  2018-11-05: Original publication
+  2018-11-19: Updated
+  2020-02-06: Updated for Xcode 11.4
 status:
   swift: n/a
 ---
 
-Last month, Apple
-[announced on the Swift.org forums](https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024)
+In October 2018,
+Apple [announced on the Swift.org forums](https://forums.swift.org/t/new-lsp-language-service-supporting-swift-and-c-family-languages-for-any-editor-and-platform/17024)
 that it was starting work to adopt
 the [Language Server Protocol](https://microsoft.github.io/language-server-protocol/)
 (<abbr title="Language Server Protocol">LSP</abbr>)
@@ -45,11 +46,24 @@ and what its long-term impacts may be.
 
 {% info %}
 **Update**:
-The sourcekit-lsp project is now
-[live on GitHub](https://github.com/apple/sourcekit-lsp).
+Xcode 11.4 includes `sourcekit-lsp` in its default toolchain.
+The sourcekit-lsp project on GitHub has
+[instructions for integrating with your preferred editor](https://github.com/NSHipster/sourcekit-lsp/tree/master/Editors#editor-integration).
+
+While Xcode 11.4 is in beta,
+make sure to select the corresponding toolchain with `xcode-select`.
+Once you've done that,
+use the `xcrun` command to get the path to the language server executable.
+
+```terminal
+$ sudo xcode-select -switch /Applications/Xcode-beta.app/
+$ xcrun -f sourcekit-lsp
+/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
+```
+
 {% endinfo %}
 
----
+* * *
 
 Imagine a grid
 with each row representing a different programming language
@@ -294,11 +308,7 @@ something that would be confirmed 6 months later on the Swift.org forums.
 
 ## Potential Consequences of Apple's Support of Language Server Protocol
 
-According to Apple's LSP announcement from October,
-we should expect to see the first bits of code for the project
-within the coming weeks (as of the time of writing; early to mid-November).
-
-It'll take a bit longer to feel the full impact of these developments,
+It'll take some time to feel the full impact of these developments,
 but believe me: your patience will be rewarded.
 Here are just a few of what I believe will happen as a result of LSP
 in the coming months and years.
@@ -343,6 +353,11 @@ Swift integration,
 and to capitalize on all of the improvements to the language and tooling
 in the four years since its 1.0 release.
 
+Our first glimpse into this overhauled infrastructure comes by way of
+[IndexStoreDB](https://github.com/apple/indexstore-db):
+a powerful new API for querying code symbols in Swift projects
+from a [Clang index](https://docs.google.com/document/d/1cH2sTpgSnJZCkZtJl1aY-rzy4uGPcrI-6RrUpdATO2Q/).
+
 ### Xcode (Eventually) Becomes More Capable
 
 The benefit of LSP isn't limited to Swift and Objective-C;
@@ -357,7 +372,7 @@ The main focus for the current efforts are to improve the story for Swift.
 But once that's done, it should be relatively straightforward
 to have those benefits cascade down to other languages with LSP support.
 
----
+* * *
 
 The architecture of software
 reflects the structure and values of the organizations that create it.

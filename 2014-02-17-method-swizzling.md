@@ -30,7 +30,8 @@ For example, let's say we wanted to track how many times each view controller is
 
 Each view controller could add tracking code to its own implementation of `viewDidAppear:`, but that would make for a ton of duplicated boilerplate code. Subclassing would be another possibility, but it would require subclassing `UIViewController`, `UITableViewController`, `UINavigationController`, and every other view controller class—an approach that would also suffer from code duplication.
 
-Fortunately, there is another way: **method swizzling** from a category. Here's how to do it:
+Fortunately, there is another way: **method swizzling** from a category. 
+Here's how to do it:
 
 ```objc
 #import <objc/runtime.h>
@@ -50,7 +51,7 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 
         // When swizzling a class method, use the following:
         // Class class = object_getClass((id)self);
-        // ...
+        <#...#>
         // Method originalMethod = class_getClassMethod(class, originalSelector);
         // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
 
@@ -81,13 +82,24 @@ Fortunately, there is another way: **method swizzling** from a category. Here's 
 @end
 ```
 
-> In computer science, [pointer swizzling](https://en.wikipedia.org/wiki/Pointer_swizzling) is the conversion of references based on name or position to direct pointer references.  While the origins of Objective-C's usage of the term are not entirely known, it's understandable why it was co-opted, since method swizzling involves changing the reference of a function pointer by its selector.
-
 Now, when any instance of `UIViewController`, or one of its subclasses invokes `viewWillAppear:`, a log statement will print out.
 
 Injecting behavior into the view controller lifecycle, responder events, view drawing, or the Foundation networking stack are all good examples of how method swizzling can be used to great effect. There are a number of other occasions when swizzling would be an appropriate technique, and they become increasingly apparent the more seasoned an Objective-C developer becomes.
 
 Regardless of _why_ or _where_ one chooses to use swizzling, the _how_ remains absolute:
+
+{% info %}
+
+In computer science, 
+[pointer swizzling](https://en.wikipedia.org/wiki/Pointer_swizzling) 
+is the conversion of references based on name or position 
+to direct pointer references.
+While the origins of Objective-C's usage of the term are not entirely known, 
+it's understandable why it was co-opted, 
+since method swizzling involves changing the reference of a function pointer 
+by its selector.
+
+{% endinfo %}
 
 ## +load vs. +initialize
 
@@ -130,19 +142,33 @@ It may appear that the following code will result in an infinite loop:
 
 Surprisingly, it won't. In the process of swizzling, `xxx_viewWillAppear:` has been reassigned to the original implementation of `UIViewController -viewWillAppear:`. It's good programmer instinct for calling a method on `self` in its own implementation to raise a red flag, but in this case, it makes sense if we remember what's _really_ going on. However, if we were to call `viewWillAppear:` in this method, it _would_ cause an infinite loop, since the implementation of this method will be swizzled to the `viewWillAppear:` selector at runtime.
 
-> Remember to prefix your swizzled method name, the same way you might any other contentious category method.
+{% warning %}
+
+Remember to prefix your swizzled method name
+as you would any other contentious category method.
+
+{% endwarning %}
 
 ## Considerations
 
 Swizzling is widely considered a voodoo technique, prone to unpredictable behavior and unforeseen consequences. While it is not the safest thing to do, method swizzling is reasonably safe, when the following precautions are taken:
 
-- **Always invoke the original implementation of a method (unless you have a good reason not to)**: APIs provide a contract for input and output, but the implementation in-between is a black box. Swizzling a method and not calling the original implementation may cause underlying assumptions about private state to break, along with the rest of your application.
-- **Avoid collisions**: Prefix category methods, and make damn well sure that nothing else in your code base (or any of your dependencies) are monkeying around with the same piece of functionality as you are.
-- **Understand what's going on**: Simply copy-pasting swizzling code without understanding how it works is not only dangerous, but is a wasted opportunity to learn a lot about the Objective-C runtime. Read through the [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation) and browse `<objc/runtime.h>` to get a good sense of how and why things happen. _Always endeavor to replace magical thinking with understanding._
-- **Proceed with caution**: No matter how confident you are about swizzling Foundation, UIKit, or any other built-in framework, know that everything could break in the next release. Be ready for that, and go the extra mile to ensure that in playing with fire, you don't get `NSBurned`.
+### Always invoke the original implementation of a method (unless you have a good reason not to)
 
-> Feeling gun shy about invoking the Objective-C runtime directly? [Jonathan ‘Wolf’ Rentzsch](https://twitter.com/rentzsch) provides a battle-tested, CocoaPods-ready library called [JRSwizzle](https://github.com/rentzsch/jrswizzle) that will take care of everything for you.
+APIs provide a contract for input and output, but the implementation in-between is a black box. Swizzling a method and not calling the original implementation may cause underlying assumptions about private state to break, along with the rest of your application.
+
+### Avoid collisions
+
+Prefix category methods, and make damn well sure that nothing else in your code base (or any of your dependencies) are monkeying around with the same piece of functionality as you are.
+
+### Understand what's going on
+
+Simply copy-pasting swizzling code without understanding how it works is not only dangerous, but is a wasted opportunity to learn a lot about the Objective-C runtime. Read through the [Objective-C Runtime Reference](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/method_getImplementation) and browse `<objc/runtime.h>` to get a good sense of how and why things happen. _Always endeavor to replace magical thinking with understanding._
+
+### Proceed with caution
+
+No matter how confident you are about swizzling Foundation, UIKit, or any other built-in framework, know that everything could break in the next release. Be ready for that, and go the extra mile to ensure that in playing with fire, you don't get `NSBurned`.
 
 * * *
 
-Like [associated objects](https://nshipster.com/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.
+Like [associated objects](/associated-objects/), method swizzling is a powerful technique when you need it, but should be used sparingly.

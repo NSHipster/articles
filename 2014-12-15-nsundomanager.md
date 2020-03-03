@@ -108,7 +108,7 @@ class ViewController: UIViewController {
         return true
     }
 
-    // ...
+    <#...#>
 }
 ```
 
@@ -129,7 +129,7 @@ class ViewController: UIViewController {
     return YES;
 }
 
-// ...
+<#...#>
 
 @end
 ```

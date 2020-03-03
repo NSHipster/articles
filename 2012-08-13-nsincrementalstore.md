@@ -3,9 +3,10 @@ title: NSIncrementalStore
 author: Mattt
 category: Cocoa
 excerpt: Even for a blog dedicated to obscure APIs, `NSIncrementalStore` sets a new standard. It was introduced in iOS 5, with no more fanfare than the requisite entry in the SDK changelog. Ironically, it is arguably the most important thing to come out of iOS 5, which will completely change the way we build apps from here on out.
+retired: true
 status:
-    swift: 1.1
-    reviewed: September 8, 2015
+  swift: 1.1
+  reviewed: September 8, 2015
 ---
 
 Even for a blog dedicated to obscure APIs, `NSIncrementalStore` brings a new meaning to the word "obscure".
@@ -102,7 +103,7 @@ This method requires very specific and very different return values depending on
 
 - Result Type: `NSCountResultType`
 
-> **Return**: <del><tt>NSNumber</tt></del><ins><tt>NSArray</tt> containing one <tt>NSNumber</tt> of count of objects matching request</ins>
+> **Return**: <del><code>NSNumber</code></del><ins><code>NSArray</code> containing one <code>NSNumber</code> of count of objects matching request</ins>
 
 #### Request Type: `NSSaveRequestType`
 
@@ -147,16 +148,6 @@ self.newObjectIDForEntity(entity, referenceObject: rowID)
 Going through all of the necessary methods to override in an `NSIncrementalStore` subclass, you may have found your mind racing with ideas about how you might implement a SQL or NoSQL store, or maybe something new altogether.
 
 What makes `NSIncrementalStore` so exciting is that you _can_ build a store on your favorite technology, and drop that into any existing Core Data stack with little to no additional configuration.
-
-So imagine if, instead SQL or NoSQL, we wrote a Core Data store that connected to a webservice. Allow me to introduce [AFIncrementalStore](https://github.com/AFNetworking/AFIncrementalStore).
-
-## AFIncrementalStore
-
-[`AFIncrementalStore`](https://github.com/AFNetworking/AFIncrementalStore) is an NSIncrementalStore subclass that uses [AFNetworking](https://github.com/afnetworking/afnetworking) to automatically request resources as properties and relationships are needed.
-
-What this means is that you can now write apps that communicate with a webservice _without exposing any of the details about the underlying API_. Any time a fetch request is made or an attribute or relationship faults, an asynchronous network request will fetch that information from the webservice.
-
-Since the store abstracts all of the implementation details of the API away, you can write expressive fetch requests and object relationships from the start. No matter how bad or incomplete an API may be, you can change all of that mapping independently of the business logic of the client.
 
 ---
 

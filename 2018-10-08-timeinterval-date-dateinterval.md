@@ -4,8 +4,8 @@ author: Mattt
 category: Cocoa
 excerpt: >
   Our limited understanding of time
-  is reflected in ---
-  or perhaps exacerbated by ---
+  is reflected in —
+  or perhaps exacerbated by —
   the naming of the Foundation date and time APIs.
   It's about time we got them straight.
 status:
@@ -36,7 +36,6 @@ See the hourglass in his hand and scythe at his feet?
 
 Take a moment, standing in front of this painting,
 to reflect on the enigmatic nature of time.
-
 Think now about how our limited understanding of time
 is reflected in ---
 or perhaps exacerbated by ---
@@ -50,10 +49,10 @@ Seconds are the fundamental unit of time.
 They're also the only unit that has a fixed duration.
 
 Months vary in length
-(_30 days hath September..._),
+(_"30 days hath September"_),
 as do years
-(_53 weeks hath 71 years every cycle of 400..._)
-certain years pick up an extra day
+(_"53 weeks hath 71 years every cycle of 400"_).
+Certain years pick up an extra day
 (_leap years are misnamed if you think about it_),
 and days gain and lose an hour from daylight saving time
 (_thanks, Benjamin Franklin_).
@@ -101,7 +100,7 @@ public struct Date : ReferenceConvertible, Comparable, Equatable {
 
     fileprivate var _time: TimeInterval
 
-    // ...
+    <#...#>
 }
 ```
 
@@ -160,7 +159,7 @@ calendar.dateInterval(of: .day,
 // 90000 seconds
 ```
 
-_It's {{ site.time | date: '%Y' }}.
+_It's 2018.
 Don't you think that it's time you stopped hard-coding `secondsInDay = 86400`?_
 
 ## Calculating Intersections of Date Intervals
