@@ -315,6 +315,8 @@ class MustachifyActivity: UIActivity {
 }
 ```
 
+***NOTE FOR activityCategory: Setting this to .action will create the gray rectangle, setting to .share will create the square icon to be shared***
+
 ### Determining Which Items are Actionable
 
 Activities are responsible for determining
