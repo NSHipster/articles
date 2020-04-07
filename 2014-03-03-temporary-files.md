@@ -120,7 +120,7 @@ The resulting directory will have a path that looks something like this:
 
 With a place to call home (at least temporarily),
 the next step is to figure out what to call our temporary file.
-We're not picky about what to it's named ---
+We're not picky about what it's named ---
 just so long as it's unique,
 and doesn't interfere with any other temporary files in the directory.
 
