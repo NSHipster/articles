@@ -196,7 +196,7 @@ $ uuidgen
 Every 24 hours,
 the device takes the Tracing Key and the day number (0, 1, 2, ...)
 and uses
-[<abbr title="HMAC-based Extract-and-Expand Key Derivation Function">HKDF</abbr>][rfc2104]
+[<abbr title="HMAC-based Extract-and-Expand Key Derivation Function">HKDF</abbr>][rfc5869]
 to derive a 16-byte <dfn>Daily Tracing Key</dfn>.
 These keys are uploaded to a central health authority
 for future reference
