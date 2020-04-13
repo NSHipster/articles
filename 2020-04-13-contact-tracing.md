@@ -198,9 +198,8 @@ the device takes the Tracing Key and the day number (0, 1, 2, ...)
 and uses
 [<abbr title="HMAC-based Extract-and-Expand Key Derivation Function">HKDF</abbr>][rfc5869]
 to derive a 16-byte <dfn>Daily Tracing Key</dfn>.
-These keys are uploaded to a central health authority
-for future reference
-(more on that in a moment).
+These keys stay on the device,
+unless you consent to share them.
 
 Every 15 minutes,
 the device takes the Daily Tracing Key and
@@ -211,10 +210,14 @@ to generate a new 16-byte <dfn>Rolling Proximity Identifier</dfn>.
 This identifier is broadcast from the device using
 [Bluetooth <abbr title="Low Energy">LE</abbr>][ble].
 
-If someone were to get a positive diagnosis,
-the central health authority could derive the Daily Tracing Keys
-for all of the days that they were contagious,
-and record those as <dfn>Positive Diagnosis Keys</dfn>.
+If someone using a contact tracing app gets a positive diagnosis,
+the central health authority requests their Daily Tracing Keys
+for the period of time that they were contagious.
+If the patient consents,
+those keys are then added to the health authority's database as
+<dfn>Positive Diagnosis Keys</dfn>.
+Those keys are shared with other devices
+to determine if they've had any contact over that time period.
 
 {% info %}
 
@@ -320,13 +323,14 @@ Your device stores any Rolling Proximity Identifiers it discovers,
 and periodically checks them against
 a list of Positive Diagnosis Keys sent from the central health authority.
 
-Each Positive Diagnosis Key corresponds to someone else's Daily Tracing Key,
-and we can derive all of the possible Rolling Proximity Identifiers
-that it could advertise over the course of that day.
+Each Positive Diagnosis Key corresponds to someone else's Daily Tracing Key.
+we can derive all of the possible Rolling Proximity Identifiers
+that it could advertise over the course of that day
+(using the same <abbr title="Keyed-Hashing for Message Authentication">HMAC</abbr> algorithm
+that we used to derive our own Rolling Proximity Identifiers).
 If any matches were found among
-the local list of Rolling Proximity Identifiers
-discovered during that time period,
-then the device may have been in contact with an infected individual.
+your device's list of Rolling Proximity Identifiers,
+it means that you may have been in contact with an infected individual.
 
 Suffice to say that digital contact tracing is really hard to get right.
 Given the importance of getting it right,
