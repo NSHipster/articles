@@ -3,14 +3,14 @@ title: Contact Tracing
 author: Mattt
 category: Miscellaneous
 excerpt: >-
-    On Friday, 
-    Apple and Google announced a joint initiative 
-    to deploy contact tracing functionality 
-    to the billions of devices running iOS or Android in the coming months.
-    In this article, 
-    we’ll take a first look at these specifications — 
-    particularly, Apple’s proposed ContactTracing framework — 
-    in an effort to anticipate what this will all look like in practice.
+  On Friday, 
+  Apple and Google announced a joint initiative 
+  to deploy contact tracing functionality 
+  to the billions of devices running iOS or Android in the coming months.
+  In this article, 
+  we’ll take a first look at these specifications — 
+  particularly, Apple’s proposed ContactTracing framework — 
+  in an effort to anticipate what this will all look like in practice.
 status:
   swift: 5.2
 ---
@@ -47,10 +47,10 @@ involved in their proposed solution.
 In this article,
 we'll take a first look at these specifications —
 particularly Apple's proposed `ContactTracing` framework —
-and use what we've learned to anticipate what 
+and use what we've learned to anticipate what
 this will all look like in practice.
 
-* * *
+---
 
 ## What is contact tracing?
 
@@ -92,7 +92,7 @@ have proposed standards for contact tracing.
 But the most significant development so far came yesterday
 with Apple and Google's announcement of a joint initiative.
 
-According to the 
+According to the
 <abbr title="United Kingdom National Health Service">NHS</abbr>,
 around 60% of adults in a population
 would need to participate in order for digital contact tracing to be effective.
@@ -130,7 +130,7 @@ and notify all of them within moments of a confirmed, positive diagnosis.
 
 {% info %}
 
-[This infographic][google presentation] 
+[This infographic][google presentation]
 from Google's blog post announcing the partnership
 provides a nice explanation of the technologies involved.
 
@@ -208,7 +208,7 @@ the number of 10-minute intervals since the beginning of the day (0 – 143),
 and uses
 [<abbr title="Keyed-Hashing for Message Authentication">HMAC</abbr>][rfc2104]
 to generate a new 16-byte <dfn>Rolling Proximity Identifier</dfn>.
-This identifier is broadcast from the device using 
+This identifier is broadcast from the device using
 [Bluetooth <abbr title="Low Energy">LE</abbr>][ble].
 
 If someone were to get a positive diagnosis,
@@ -220,7 +220,7 @@ and record those as <dfn>Positive Diagnosis Keys</dfn>.
 
 The [Contact Tracing Cryptography Specification][cryptography specification]
 is concise, clearly written, and remarkably accessible.
-Anyone for whom the name _[Diffie–Hellman][Diffie–Hellman]_ even rings a bell
+Anyone for whom the name _[Diffie–Hellman][diffie–hellman]_ even rings a bell
 are encouraged to give it a quick read.
 
 {% endinfo %}
@@ -241,7 +241,7 @@ a wireless heart rate monitor
 that uses Bluetooth to communicate to your phone
 would have a profile containing two services:
 a primary Heart Rate service and
-a secondary Battery service
+a secondary Battery service.
 
 Apple and Google's Contact Tracing standard
 defines a new Contact Detection service.
@@ -253,7 +253,7 @@ to any other device within range.
 The Rolling Proximity Identifier generated every 15 minutes
 is sent in the advertising packet along with the 16-bit service UUID.
 
-Here's some code for doing this from an iOS device using 
+Here's some code for doing this from an iOS device using
 the [Core Bluetooth framework][core bluetooth]:
 
 ```swift
@@ -445,11 +445,11 @@ which I hope will be addressed in the next update:
 
 - A few APIs refer to a `CTManagerState` enumeration
   that isn't defined in the documentation.
-- The documentation for `CTExposureDetectionSession`'s 
-  `addPositiveDiagnosisKeys` method is missing a word 
+- The documentation for `CTExposureDetectionSession`'s
+  `addPositiveDiagnosisKeys` method is missing a word
   that flips what I believe to be the intended meaning:
 
-  > Each call to this method must <ins>NOT</ins> 
+  > Each call to this method must <ins>NOT</ins>
   > include more keys than specified by the current value of `<maxKeyCount>`.
 
 {% enderror %}
@@ -460,7 +460,7 @@ Many of us have been sheltering in place for weeks, if not months.
 Until a vaccine is developed and made widely available,
 this is the most effective strategy we have for stopping the spread of disease.
 
-But experts are saying that a vaccine 
+But experts are saying that a vaccine
 could be anywhere from 9 to 18 months away.
 _"What will we do until then?_
 
@@ -494,7 +494,7 @@ and it's now more important than ever.
 [cryptography specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-CryptographySpecification.pdf
 [hardware specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-BluetoothSpecificationv1.1.pdf
 [software specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-FrameworkDocumentation.pdf
-[Diffie–Hellman]: https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange
+[diffie–hellman]: https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange
 [rfc2104]: https://tools.ietf.org/html/rfc2104 "HMAC: Keyed-Hashing for Message Authentication"
 [rfc5869]: https://tools.ietf.org/html/rfc5869 "HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"
 [rfc4122]: https://tools.ietf.org/html/rfc4122 "A Universally Unique IDentifier (UUID) URN Namespace"
