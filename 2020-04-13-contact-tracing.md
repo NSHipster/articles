@@ -297,11 +297,10 @@ extension <#DelegateClass#>: CBCentralManagerDelegate {
 ```
 
 Bluetooth is an almost ideal technology for contact tracing.
-It's on every consumer smart phone on the market.
+It's on every consumer smart phone.
 It operates with low power requirement,
 which lets it run continuously without draining your battery.
-And because it operates at a low power,
-it _just_ so happens to have a transmission range
+And it _just_ so happens to have a transmission range
 that approximates the physical proximity required
 for the airborne transmission of infectious disease.
 This last quality is what allows contact tracing to be done
