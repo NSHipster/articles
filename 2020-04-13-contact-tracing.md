@@ -316,7 +316,7 @@ and periodically checks them against
 a list of Positive Diagnosis Keys sent from the central health authority.
 
 Each Positive Diagnosis Key corresponds to someone else's Daily Tracing Key.
-we can derive all of the possible Rolling Proximity Identifiers
+We can derive all of the possible Rolling Proximity Identifiers
 that it could advertise over the course of that day
 (using the same <abbr title="Keyed-Hashing for Message Authentication">HMAC</abbr> algorithm
 that we used to derive our own Rolling Proximity Identifiers).
@@ -399,7 +399,7 @@ manager.delegate = <#DelegateClass#>()
 manager.startContactTracing()
 
 class <#DelegateClass#>: NSObject, ContactTracingManagerDelegate {
-  func contactTacingManager(_ manager: ContactTracingManager,
+  func contactTracingManager(_ manager: ContactTracingManager,
                               didReceiveExposureDetectionSummary summary: CTExposureDetectionSummary) {
       if summary.matchedKeyCount > 1 {
         // ⚠️ Possible exposure!
