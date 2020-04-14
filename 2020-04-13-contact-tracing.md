@@ -100,14 +100,6 @@ Researchers from the aforementioned institutions have noted
 that the limits imposed by iOS on 3rd-party apps
 make this level of participation unlikely.
 
-{% info %}
-
-As of iOS 13.4,
-3rd-party apps lack the ability to
-advertise Bluetooth services in the background.
-
-{% endinfo %}
-
 On the one hand,
 it feels weird to congratulate Apple for stepping in
 to solve a problem it created in the first place.
