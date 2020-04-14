@@ -139,7 +139,7 @@ provides a nice explanation of the technologies involved.
 Apple's CEO, Tim Cook, promises that
 ["Contact tracing can help slow the spread of COVID-19 and can be done without compromising user privacy."](https://twitter.com/tim_cook/status/1248657931433693184).
 The specifications accompanying Friday's announcement
-show how that's possible
+show how that's possible.
 
 Let's take them in turn,
 starting with
@@ -155,7 +155,7 @@ components.
 When you install an app and open it for the first time,
 the ContactTracing framework displays
 a dialog requesting permission
-to enable contact tracing on their device.
+to enable contact tracing on the device.
 
 If the user accepts,
 the framework generates a 32-byte cryptographic random number
@@ -461,11 +461,11 @@ which I hope will be addressed in the next update:
 
 Many of us have been sheltering in place for weeks, if not months.
 Until a vaccine is developed and made widely available,
-this is the most effective strategy we have for stopping the spread of disease.
+this is the most effective strategy we have for stopping the spread of the disease.
 
 But experts are saying that a vaccine
 could be anywhere from 9 to 18 months away.
-_"What will we do until then?_
+_"What will we do until then?"_
 
 At least here in the United States,
 we don't yet have a national plan for getting back to normal,
