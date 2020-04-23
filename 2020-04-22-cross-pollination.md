@@ -111,7 +111,7 @@ Indeed, Apple originally pitched Swift as "Objective-C without the C".
 Last year,
 we saw something similar with at [WWDC 2019](/wwdc-2019/).
 Anyone familiar with [React][react] or [Elm][elm]
-immediately recognized the influences of
+immediately recognized their influence on
 [SwiftUI][swiftui] and [Combine][combine]
 (even if Apple hadn't come out and acknowledged it explicitly).
 
