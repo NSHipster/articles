@@ -9,15 +9,18 @@ excerpt: >-
   to the billions of devices running iOS or Android in the coming months.
   In this article, 
   we’ll take a first look at these specifications — 
-  particularly, Apple’s proposed ContactTracing framework — 
+  particularly, Apple’s proposed ExposureNotification framework — 
   in an effort to anticipate what this will all look like in practice.
 status:
   swift: 5.2
+revisions:
+  "2020-04-13": First Publication
+  "2020-04-29": Updated for Exposure Notification v1.2
 ---
 
 > An ounce of prevention is worth a pound of cure.
 
-Early intervention is among the most effective strategies for treating illness.
+Early intervention is among the most effective strategies for treating illnesses.
 This is true not only for the human body, for society as a whole.
 That's why public health officials use contact tracing
 as their first line of defense against
@@ -31,7 +34,7 @@ we can automate what was — up until now — a labor-intensive, manual process.
 Much like how "computer" used to be a job title held by humans,
 the role of "contact tracer" may soon be filled primarily by apps.
 
-On Friday,
+On April 10th,
 Apple and Google [announced][apple press release] a joint initiative
 to deploy contact tracing functionality
 to the billions of devices running iOS or Android
@@ -46,11 +49,21 @@ involved in their proposed solution.
 
 In this article,
 we'll take a first look at these specifications —
-particularly Apple's proposed `ContactTracing` framework —
+particularly Apple's proposed `ExposureNotification` framework —
 and use what we've learned to anticipate what
 this will all look like in practice.
 
----
+{% warning %}
+
+On April 29th,
+Apple released iOS 13.5 beta 1,
+which includes the first public release of the 
+`ExposureNotification` (previously `ContactTracing`) framework.
+The content in this article has been updated to reflect these changes.
+
+{% endwarning %}
+
+* * *
 
 ## What is contact tracing?
 
@@ -145,7 +158,7 @@ components.
 ### Cryptography
 
 When you install an app and open it for the first time,
-the ContactTracing framework displays
+the Exposure Notification framework displays
 a dialog requesting permission
 to enable contact tracing on the device.
 
@@ -189,12 +202,12 @@ Every 24 hours,
 the device takes the Tracing Key and the day number (0, 1, 2, ...)
 and uses
 [<abbr title="HMAC-based Extract-and-Expand Key Derivation Function">HKDF</abbr>][rfc5869]
-to derive a 16-byte <dfn>Daily Tracing Key</dfn>.
+to derive a 16-byte <dfn><del>Daily Tracing Key</del><ins>Temporary Exposure Key</ins></dfn>.
 These keys stay on the device,
 unless you consent to share them.
 
 Every 15 minutes,
-the device takes the Daily Tracing Key and
+the device takes the Temporary Exposure Key and
 the number of 10-minute intervals since the beginning of the day (0 – 143),
 and uses
 [<abbr title="Keyed-Hashing for Message Authentication">HMAC</abbr>][rfc2104]
@@ -203,7 +216,7 @@ This identifier is broadcast from the device using
 [Bluetooth <abbr title="Low Energy">LE</abbr>][ble].
 
 If someone using a contact tracing app gets a positive diagnosis,
-the central health authority requests their Daily Tracing Keys
+the central health authority requests their Temporary Exposure Keys
 for the period of time that they were contagious.
 If the patient consents,
 those keys are then added to the health authority's database as
@@ -274,6 +287,12 @@ At the same time that the device broadcasts as a peripheral,
 it's also scanning for other devices' Rolling Proximity Identifiers.
 Again, here's how you might do that on iOS using Core Bluetooth:
 
+<aside class="parenthetical">
+
+Conditionally, based on what operations are allowed by the system.
+
+</aside>
+
 ```swift
 let delegate: CBCentralManagerDelegate = <#...#>
 let centralManager = CBCentralManager(delegate: delegate, queue: .main)
@@ -315,7 +334,7 @@ Your device stores any Rolling Proximity Identifiers it discovers,
 and periodically checks them against
 a list of Positive Diagnosis Keys sent from the central health authority.
 
-Each Positive Diagnosis Key corresponds to someone else's Daily Tracing Key.
+Each Positive Diagnosis Key corresponds to someone else's Temporary Exposure Key.
 We can derive all of the possible Rolling Proximity Identifiers
 that it could advertise over the course of that day
 (using the same <abbr title="Keyed-Hashing for Message Authentication">HMAC</abbr> algorithm
@@ -337,42 +356,78 @@ is communicate with the user —
 specifically, requesting their permission to start contact tracing
 and notifying them about a positive diagnosis.
 
-## "Nobody ever got fired for <del>buying IBM</del> <ins>using Objective-C</ins>."
+## ExposureNotification
 
-In our time of crisis,
-what technology did Apple entrust with the fate of humanity?
-_None other than Objective-C._
+When Apple announced the `ContactTracing` framework on April 10th,
+all we had to go on were some annotated Objective-C headers.
+But as of the first public beta of iOS 13.5,
+we now have [official documentation](https://developer.apple.com/documentation/exposurenotification)
+under its name: `ExposureNotification`.
 
-```obj-c
-typedef void (^CTExposureDetectionFinishHandler) (CTExposureDetectionSummary * _Nullable inSummary, NSError * _Nullable inError);
-typedef void ( ^CTExposureDetectionContactHandler )( NSArray <CTContactInfo *> * _Nullable inContacts, NSError * _Nullable inError );
+### Calculating Risk of Exposure
 
-@interface CTExposureDetectionSession : NSObject
-@property dispatch_queue_t dispatchQueue;
-@property (readonly, nonatomic) NSInteger maxKeyCount;
-- (void) activateWithCompletion:(nullable CTErrorHandler) inCompletion;
-- (void) invalidate;
-- (void) addPositiveDiagnosisKeys:(NSArray <CTDailyTracingKey *> *) inKeys completion:(nullable CTErrorHandler) inCompletion;
-- (void) finishedPositiveDiagnosisKeysWithCompletion:(nullable CTExposureDetectionFinishHandler) inFinishHandler;
-- (void) getContactInfoWithHandler:(nullable CTExposureDetectionContactHandler) inHandler;
-@end
-```
+A contact tracing app regularly
+fetches new Positive Diagnosis Keys from the central health authority.
+It then checks those keys
+against the device's Rolling Proximity Identifiers.
+Any matches would indicate a possible risk of exposure.
 
-{% info %}
+In the first version of `ContactTracing`,
+all you could learn about a positive match was
+how long you were exposed _(in 5 minute increments)_
+and when contact occurred _(with an unspecified level of precision)_.
+While we might applaud the level of privacy protections here,
+that doesn't offer much in the way of actionable information.
+Depending on the individual,
+a push notification saying
+"You were in exposed for 5–10 minutes sometime 3 days ago"
+could prompt an hospital visit
+or elicit no more concern than a missed call.
 
-If you're not as well-versed in Objective-C,
-here's the [generated Swift interface][swift interface]
-and some [nicer looking docs][swift docs].
+With `ExposureNotification`,
+you get a lot more information, including:
 
-{% endinfo %}
+- Days since last exposure incident
+- Cumulative duration of the exposure (capped at 30 minutes)
+- Minimum Bluetooth signal strength attenuation
+  _(Transmission Power - RSSI)_,
+  which can tell you how close they got
+- Transmission risk,
+  which is an app-definied value that may be based on
+  symptoms, level of diagnosis verification,
+  or other determination from the app or a health authority
 
-Although we only have the interface right now,
-you can get a reasonable understanding of how everything works
-from the APIs and documentation.
+For each instance of exposure,
+an [`ENExposureInfo`](https://developer.apple.com/documentation/exposurenotification/enexposureinfo)
+object is provided with all of this information,
+as well as an overall risk score
+_([from 1 to 8](https://developer.apple.com/documentation/exposurenotification/enrisklevel))_
+using to 
+[the app's assigned weights for each factor](https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration),
+according to this equation:
 
-The biggest challenge you'll face using the ContactTracing framework API
-is dealing with all of its completion handlers.
-Most of the functionality is provided through asynchronous APIs;
+<figure>
+{% asset contact-tracing-equation.svg width="100%" %}
+
+<figcaption hidden>
+<em>S</em> is a score,
+<em>W</em> is a weighting,
+<em>r</em> is risk,
+<em>d</em> is days since exposure,
+<em>t</em> is duration of exposure,
+<em>ɑ</em> is Bluetooth signal strength attenuation</em>
+</figcaption>
+</figure>
+
+Apple provides this example in their [framework documentation PDF](https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ExposureNotification-FrameworkDocumentationv1.2.pdf):
+
+{% asset contact-tracing-example-equation.png %}
+
+### Managing Permissions and Disclosures
+
+The biggest challenge we found with the original Contact Tracing framework API
+was dealing with all of its completion handlers.
+Most of the functionality was provided through asynchronous APIs;
 without a way to [compose](/optional-throws-result-async-await/) these operations,
 you can easily find yourself nested 4 or 5 closures deep,
 indented to the far side of your editor.
@@ -382,72 +437,29 @@ indented to the far side of your editor.
 If ever there was a need for
 [async/await](https://gist.github.com/lattner/429b9070918248274f25b714dcfc7619)
 in Swift,
-this is it.
+this was it.
 
 </aside>
 
-After some trial and error,
-I managed to come up with a reasonable solution
-following the [delegate pattern][delegate pattern].
-The [end result](https://gist.github.com/mattt/17c880d64c362b923e13c765f5b1c75a)
-should be familiar to anyone who's ever used
-[`CLLocationManager`][cllocationmanager]:
+Fortunately,
+the latest release of Exposure Notification includes a new
+[`ENManager`](https://developer.apple.com/documentation/exposurenotification/enmanager) class,
+which simplifies much of that asynchronous state management.
 
 ```swift
-let manager = ContactTracingManager.shared
-manager.delegate = <#DelegateClass#>()
-manager.startContactTracing()
+let manager = ENManager()
+manager.activate { error in 
+    guard error == nil else { <#...#> }
 
-class <#DelegateClass#>: NSObject, ContactTracingManagerDelegate {
-  func contactTracingManager(_ manager: ContactTracingManager,
-                              didReceiveExposureDetectionSummary summary: CTExposureDetectionSummary) {
-      if summary.matchedKeyCount > 1 {
-        // ⚠️ Possible exposure!
-      }
-  }
+    manager.setExposureNotificationEnabled(true) { error in
+        guard error == nil else { <#...#> }
+
+        // app is now advertising and monitoring for tracing identifiers
+    }
 }
 ```
 
-{% warning %}
-
-To be clear,
-I have no idea if this code actually works.
-Without the actual framework to test against,
-this is all just my best guess.
-
-{% endwarning %}
-
-For something that released under such an unyielding deadline,
-mistakes are inevitable.
-All in all,
-I think the teams responsible for the ContactTracing framework
-did an admirable job, and I extend my most sincere respect and gratitude
-for their work.
-
-<aside class="parenthetical">
-
-For the record,
-the [Android version][android contact tracing] of this functionality
-seems to be _quite_ well-designed
-(to my untrained eye, at least).
-
-</aside>
-
-{% error %}
-
-Here are some problems I encountered during my investigation,
-which I hope will be addressed in the next update:
-
-- A few APIs refer to a `CTManagerState` enumeration
-  that isn't defined in the documentation.
-- The documentation for `CTExposureDetectionSession`'s
-  `addPositiveDiagnosisKeys` method is missing a word
-  that flips what I believe to be the intended meaning:
-
-  > Each call to this method must <ins>NOT</ins>
-  > include more keys than specified by the current value of `<maxKeyCount>`.
-
-{% enderror %}
+* * *
 
 ## Tracing a path back to normal life
 
