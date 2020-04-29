@@ -3,7 +3,6 @@ title: Contact Tracing
 author: Mattt
 category: Miscellaneous
 excerpt: >-
-  On Friday, 
   Apple and Google announced a joint initiative 
   to deploy contact tracing functionality 
   to the billions of devices running iOS or Android in the coming months.
