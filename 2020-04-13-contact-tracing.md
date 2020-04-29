@@ -115,7 +115,7 @@ make this level of participation unlikely.
 On the one hand,
 it feels weird to congratulate Apple for stepping in
 to solve a problem it created in the first place.
-But we can all agree that Friday's announcement
+But we can all agree that this announcement
 is something to celebrate.
 It's no exaggeration to say that
 this wouldn't be possible without their help.
@@ -142,7 +142,7 @@ provides a nice explanation of the technologies involved.
 
 Apple's CEO, Tim Cook, promises that
 ["Contact tracing can help slow the spread of COVID-19 and can be done without compromising user privacy."](https://twitter.com/tim_cook/status/1248657931433693184).
-The specifications accompanying Friday's announcement
+The specifications accompanying the announcement
 show how that's possible.
 
 Let's take them in turn,
@@ -497,9 +497,9 @@ and it's now more important than ever.
 
 [skip]: #tech-talk "Jump to code discussion"
 [apple press release]: https://www.apple.com/newsroom/2020/04/apple-and-google-partner-on-covid-19-contact-tracing-technology/
-[cryptography specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-CryptographySpecification.pdf
-[hardware specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-BluetoothSpecificationv1.1.pdf
-[software specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ContactTracing-FrameworkDocumentation.pdf
+[cryptography specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ExposureNotification-CryptographySpecificationv1.2.pdf
+[hardware specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ExposureNotification-BluetoothSpecificationv1.2.pdf
+[software specification]: https://covid19-static.cdn-apple.com/applications/covid19/current/static/contact-tracing/pdf/ExposureNotification-FrameworkDocumentationv1.2.pdf
 [diffie–hellman]: https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange
 [rfc2104]: https://tools.ietf.org/html/rfc2104 "HMAC: Keyed-Hashing for Message Authentication"
 [rfc5869]: https://tools.ietf.org/html/rfc5869 "HMAC-based Extract-and-Expand Key Derivation Function (HKDF)"
