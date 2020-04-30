@@ -380,7 +380,7 @@ that doesn't offer much in the way of actionable information.
 Depending on the individual,
 a push notification saying
 "You were in exposed for 5–10 minutes sometime 3 days ago"
-could prompt an hospital visit
+could warrant a visit to the hospital
 or elicit no more concern than a missed call.
 
 With `ExposureNotification`,
@@ -398,10 +398,10 @@ you get a lot more information, including:
 
 For each instance of exposure,
 an [`ENExposureInfo`](https://developer.apple.com/documentation/exposurenotification/enexposureinfo)
-object is provided with all of this information,
-as well as an overall risk score
-_([from 1 to 8](https://developer.apple.com/documentation/exposurenotification/enrisklevel))_
-using to 
+object provides all of the aforementioned information
+plus an overall risk score
+_([from 1 to 8](https://developer.apple.com/documentation/exposurenotification/enrisklevel))_,
+which is calculated from
 [the app's assigned weights for each factor](https://developer.apple.com/documentation/exposurenotification/enexposureconfiguration),
 according to this equation:
 
