@@ -143,7 +143,7 @@ when what you actually want is `uppercaseLetters`.
 Unicode actually defines three cases:
 lowercase, uppercase, and <dfn>titlecase</dfn>.
 You can see this in the Latin script used for
-Czech as well as Serbo-Croatian and other South Slavic languages,
+Serbo-Croatian and other South Slavic languages,
 in which digraphs like "dž" are considered single letters,
 and have separate forms for
 lowercase (dž), uppercase (DŽ), and titlecase (ǅ).
