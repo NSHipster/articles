@@ -253,7 +253,7 @@ a secondary Battery service.
 Apple and Google's Contact Tracing standard
 defines a new Contact Detection service.
 
-When a contract tracing app is running (either in the foreground or background),
+When a contact tracing app is running (either in the foreground or background),
 it acts as a <dfn>peripheral</dfn>,
 advertising its support for the Contact Detection service
 to any other device within range.
