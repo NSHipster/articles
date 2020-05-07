@@ -12,6 +12,7 @@ revisions:
   2018-11-05: Original publication
   2018-11-19: Updated
   2020-02-06: Updated for Xcode 11.4
+  2020-05-07: Updated for GitHub Codespaces Announcement
 status:
   swift: n/a
 ---
@@ -45,21 +46,22 @@ how it works,
 and what its long-term impacts may be.
 
 {% info %}
+
 **Update**:
-Xcode 11.4 includes `sourcekit-lsp` in its default toolchain.
-The sourcekit-lsp project on GitHub has
-[instructions for integrating with your preferred editor](https://github.com/NSHipster/sourcekit-lsp/tree/master/Editors#editor-integration).
+GitHub recently announced
+[Codespaces](https://github.com/features/codespaces/),
+an upcoming feature that promises
+_"the full Visual Studio Code experience without leaving GitHub"_.
+Thanks to Swift's support for LSP,
+we'll soon be able to edit Swift code —
+syntax highlighting, autocompletion, and all —
+directly from the browser.
 
-While Xcode 11.4 is in beta,
-make sure to select the corresponding toolchain with `xcode-select`.
-Once you've done that,
-use the `xcrun` command to get the path to the language server executable.
-
-```terminal
-$ sudo xcode-select -switch /Applications/Xcode-beta.app/
-$ xcrun -f sourcekit-lsp
-/Applications/Xcode-beta.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
-```
+Why wait for the
+[rumored](https://twitter.com/jon_prosser/status/1252187152831692800)
+announcement of Xcode for iPad at [WWDC](https://developer.apple.com/wwdc20/)?
+Codespaces turns any iPad into a
+[full-fledged development environment](https://twitter.com/notdetails/status/1258120708212785154)!
 
 {% endinfo %}
 
@@ -305,6 +307,23 @@ with significant contributions from Google and other companies.
 This announcement signals a significant shift
 in the direction of tooling development going forward ---
 something that would be confirmed 6 months later on the Swift.org forums.
+
+## Getting Started with Language Server Protocol
+
+Xcode 11.4 includes `sourcekit-lsp` in its default toolchain.
+You can use the `xcrun` command
+to get the path to the language server executable:
+
+```terminal
+$ xcrun -f sourcekit-lsp
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp
+```
+
+Check out [our article about Visual Studio Code](/vscode/)
+to get started with our go-to editors.
+Beyond that,
+the sourcekit-lsp project on GitHub has
+[instructions for integrating with Sublime Text, Vim, Emacs, and others.](https://github.com/NSHipster/sourcekit-lsp/tree/master/Editors#editor-integration).
 
 ## Potential Consequences of Apple's Support of Language Server Protocol
 
