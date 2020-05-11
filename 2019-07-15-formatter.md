@@ -180,7 +180,7 @@ formatter.usesSignificantDigits = true
 formatter.minimumSignificantDigits = 1 // default
 formatter.maximumSignificantDigits = 6 // default
 
-formatter.string(from: 1234567) // 123457.0
+formatter.string(from: 1234567) // 1234570
 formatter.string(from: 1234.567) // 1234.57
 formatter.string(from: 100.234567) // 100.235
 formatter.string(from: 1.23000) // 1.23
