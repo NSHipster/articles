@@ -101,7 +101,7 @@ the `@available` attribute can take one or two forms:
   to denote the [major, minor, and patch version](https://semver.org).
 - Zero or more versioned platforms in a comma-delimited (`,`) list.
 - An asterisk (`*`),
-  denoting that the API is unavailable for all other platforms.
+  denoting that the API is available for all other platforms.
   An asterisk is always required for platform availability annotations
   to handle potential future platforms
   (_such as the [long-rumored `iDishwasherOS`](https://github.com/apple/swift/commit/0d7996f4ee1ce9b7f9f1ea1d2e3ad71394d91eb1#diff-f142ec4252ddcbeea5be368189f43481R25)_).
