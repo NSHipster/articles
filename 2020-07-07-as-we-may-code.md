@@ -42,7 +42,7 @@ But how far could we take it?
 In this article,
 I'd like to share an idea that I've been kicking around for a while.
 It's something that's come into greater focus with
-my recent with my work on [`swift-doc`][swift-doc],
+my recent work on [`swift-doc`][swift-doc],
 but first started to form during tenure in Apple Developer Publications,
 back in 2015.
 
@@ -58,7 +58,7 @@ Specifically:
 - **Addressability**:
   Packages, modules, and their constituent APIs
   should each have a unique URL identifier.
-- **Decentralization**
+- **Decentralization**:
   Information should be distributed across a federated network of data sources,
   which can cross-reference one another by URL.
 
@@ -96,7 +96,7 @@ globally-distributed, decentralized network of inter-connected documents
 gave rise to the Internet as we know it today.
 But it was also part of an intellectual tradition dating back to the 1940s,
 which includes
-Vannevar Bush's _[Memex]_
+Vannevar Bush's _[Memex]_,
 Ted Nelson's _[Xanadu]_, and
 Doug Engelbart's _[Mother of All Demos]_.
 
@@ -166,7 +166,7 @@ a technique dubbed [AJAX].
 Interacting with a page and seeing results live, without reloading a page?
 This was _huge_.
 Without that,
-social media might not have taken off like as did.
+social media might not have taken off like it did.
 
 Anyway,
 the server-side APIs powering those AJAX interactions on the client,
@@ -293,7 +293,7 @@ Theres so much more that we could be doing.
 
 ## <small>RDF Vocabularies</small> The Owl and The Turtle
 
-At the center of the semantic web something called
+At the center of the semantic web is something called
 <abbr title="Resource Description Framework">[RDF]</abbr>,
 the Resource Description Framework.
 It's a collection of standards for representing and exchanging data.
