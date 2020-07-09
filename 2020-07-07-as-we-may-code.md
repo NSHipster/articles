@@ -166,7 +166,7 @@ a technique dubbed [AJAX].
 Interacting with a page and seeing results live, without reloading a page?
 This was _huge_.
 Without that,
-social media might not have taken off like it did.
+social media might not have taken off as it did.
 
 Anyway,
 the server-side APIs powering those AJAX interactions on the client,
