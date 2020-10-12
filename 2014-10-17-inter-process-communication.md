@@ -99,7 +99,7 @@ static CFDataRef Callback(CFMessagePortRef port,
 
 CFMessagePortRef localPort =
     CFMessagePortCreateLocal(nil,
-                             CFSTR("com.example.app.port.server"),
+                             CFSTR("com.example.app.port"),
                              Callback,
                              nil,
                              nil);
@@ -121,7 +121,7 @@ CFTimeInterval timeout = 10.0;
 
 CFMessagePortRef remotePort =
     CFMessagePortCreateRemote(nil,
-                              CFSTR("com.example.app.port.client"));
+                              CFSTR("com.example.app.port"));
 
 SInt32 status =
     CFMessagePortSendRequest(remotePort,
