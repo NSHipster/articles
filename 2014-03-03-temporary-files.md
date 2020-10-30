@@ -223,21 +223,32 @@ or the method returns an error.
 
 If you're doing anything more complicated
 than writing a single `Data` object to a file,
-consider creating a `FileHandle` instead, like so:
+you might instead create an empty file
+and use a `FileHandle` to write data incrementally.
 
 ```swift
+fileManager.createFile(atPath: temporaryFileURL.path, contents: Data())
+
 let fileHandle = try FileHandle(forWritingTo: temporaryFileURL)
 defer { fileHandle.closeFile() }
 
 fileHandle.write(data)
+
+// ...
 ```
 
 ```objc
+[fileManager createFileAtPath: [temporaryFileURL path]
+                     contents: [NSData data]
+                   attributes: @{}];
+
 NSError *error = nil;
 NSFileHandle *fileHandle =
     [NSFileHandle fileHandleForWritingToURL:temporaryFileURL
                                       error:&error];
 [fileHandle writeData:data];
+
+// ...
 
 [fileHandle closeFile];
 ```
