@@ -54,7 +54,7 @@ Caching policies are specified in both the request (by the client) and in the re
 
 It may not surprise you that these values are poorly understood and often confused with one another.
 
-Adding to the confusion is the fact that `NSURLRequestReloadIgnoringLocalAndRemoteCacheData` and `NSURLRequestReloadRevalidatingCacheData` [_aren't even implemented_](https://gist.github.com/mattt/4753073#file-nsurlrequest-h-L95-L108)! ([Link to Radar](http://openradar.appspot.com/radar?id=1755401)).
+Adding to the confusion is the fact that `NSURLRequestReloadIgnoringLocalAndRemoteCacheData` and `NSURLRequestReloadRevalidatingCacheData` [_were not even implemented until iOS 13_](https://developer.apple.com/documentation/ios-ipados-release-notes/ios-13-release-notes)!
 
 So here's what you _actually_ need to know about `NSURLRequestCachePolicy`:
 
@@ -75,8 +75,8 @@ So here's what you _actually_ need to know about `NSURLRequestCachePolicy`:
       <td>Don't use the cache</td>
     </tr>
     <tr>
-      <td><del><code>ReloadIgnoringLocalAndRemoteCacheData</code></del></td>
-      <td><del>Seriously, don't use the cache</del></td>
+      <td><code>ReloadIgnoringLocalAndRemoteCacheData</code></td>
+      <td>Seriously, don't use any caches along the way</td>
     </tr>
     <tr>
       <td><code>ReturnCacheDataElseLoad</code></td>
@@ -87,8 +87,8 @@ So here's what you _actually_ need to know about `NSURLRequestCachePolicy`:
       <td>Offline mode: use the cache (no matter how out of date), but <em>don't</em> load from the network</td>
     </tr>
     <tr>
-      <td><del><code>ReloadRevalidatingCacheData</code></del></td>
-      <td><del>Validate cache against server before using</del></td>
+      <td><code>ReloadRevalidatingCacheData</code></td>
+      <td>Validate cache against server before using</td>
     </tr>
   </tbody>
 </table>
