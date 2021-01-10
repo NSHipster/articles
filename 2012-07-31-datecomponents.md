@@ -91,7 +91,7 @@ using the `Calendar` method `components(_:from:)`:
 ```swift
 let date = Date() // 2018-10-10T10:00:00+00:00
 let calendar = Calendar.current
-calendar.dateComponents([.year, .month, .day], from: date)
+let components = calendar.dateComponents([.year, .month, .day], from: date)
 // {{ page.updated_on | date: '(year: %Y, month: %-M, day: %-d)' }}
 ```
 
