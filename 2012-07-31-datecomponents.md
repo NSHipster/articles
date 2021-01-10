@@ -376,7 +376,7 @@ calendar.date(byAdding: .year, value: 1, to: date)
 
 // Adding a year and a day
 let dateComponents = DateComponents(year: 1, day: 1)
-calendar.date(byAdding: dateComponents, to: date)
+let anotherDate = calendar.date(byAdding: dateComponents, to: date)!
 ```
 
 If you _really_ want to be pedantic when time traveling, though,
