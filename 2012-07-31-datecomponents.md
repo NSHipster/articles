@@ -333,10 +333,10 @@ let calendar = Calendar.current
 let monthInterval =
     calendar.dateInterval(of: .month, for: date)!
 
-calendar.dateComponents([.hour],
+let hours = calendar.dateComponents([.hour],
                         from: monthInterval.start,
                         to: monthInterval.end)
-        .hour // 744
+                    .hour! // 744
 ```
 
 ## Adding Components to Dates
