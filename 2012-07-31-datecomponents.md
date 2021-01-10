@@ -73,7 +73,7 @@ let dateComponents = DateComponents(calendar: calendar,
 let date = calendar.date(from: dateComponents)! // 2018-10-10
 
 // DateComponents as a duration of time
-calendar.date(byAdding: dateComponents, to: date) // 4037-08-20
+let anotherDate = calendar.date(byAdding: dateComponents, to: date)! // 4037-08-20
 ```
 
 Let's explore both of these contexts individually,
