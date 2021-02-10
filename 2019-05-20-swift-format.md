@@ -375,12 +375,12 @@ proposed by Tony Allevato and Dave Abrahams.
 
 #### Installation
 
-Install using homebrew:
+You can install using [Homebrew](https://brew.sh) with the following command:
 ```terminal
 $ brew install swift-format
 ```
 
-You may also clone and build yourself over at 
+Alternatively, you can clone its [source repository](https://github.com/apple/swift-format) and build it yourself.
 https://github.com/apple/swift-format.
 
 #### Usage
