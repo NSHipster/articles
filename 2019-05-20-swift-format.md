@@ -375,26 +375,13 @@ proposed by Tony Allevato and Dave Abrahams.
 
 #### Installation
 
-The code for `swift-format` is currently hosted on
-[the `format` branch of Google's fork of the Swift project](https://github.com/google/swift/tree/format).
-You can check it out and build it from source by running the following commands:
-
+Install using homebrew:
 ```terminal
-$ git clone https://github.com/google/swift.git swift-format
-$ cd swift-format
-$ git checkout format
-$ git submodule update --init
-$ swift build
+$ brew install swift-format
 ```
 
-For your convenience,
-we're providing a Homebrew formula that builds from
-[our own fork of Google's fork](https://github.com/NSHipster/swift-format),
-which you can install with the following command:
-
-```terminal
-$ brew install nshipster/formulae/swift-format
-```
+You may also clone and build yourself over at 
+https://github.com/apple/swift-format.
 
 #### Usage
 
