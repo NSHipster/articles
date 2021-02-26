@@ -286,7 +286,7 @@ we see that `NSDataDetector` is able to identify each of the types.
 | Transit Information | `nil`, "10"                                                                |
 
 Impressively,
-the date result correctly calculates the 6-hour duration of the flight,
+the date result correctly calculates the 5-hour duration of the flight,
 accommodating for the time zone change.
 However, some information is missing,
 like the name of The Plaza Hotel in the address,
