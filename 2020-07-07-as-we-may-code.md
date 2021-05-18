@@ -899,7 +899,7 @@ I'd like to take this opportunity to extend my sincere gratitude
 to everyone who reads the words I write.
 Thank you.
 It may be a while before I get back into a regular cadence,
-so apologies and in advance. 
+so apologies in advance.
 
 Until next time,
 _May your code continue to compile and inspire._
