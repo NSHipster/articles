@@ -943,6 +943,7 @@ _May your code continue to compile and inspire._
 [Moore's Law]: https://en.wikipedia.org/wiki/Moore%27s_law
 [semantic web]: https://en.wikipedia.org/wiki/Semantic_Web
 [CGI]: https://en.wikipedia.org/wiki/Common_Gateway_Interface
+[CPAN]: https://www.cpan.org/
 [Yahoo!]: https://en.wikipedia.org/wiki/Yahoo!_Directory
 [DMOZ]: https://en.wikipedia.org/wiki/DMOZ
 [yellow pages]: https://en.wikipedia.org/wiki/Yellow_pages
