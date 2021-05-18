@@ -3,7 +3,7 @@ title: As We May Code
 author: Mattt
 category: Miscellaneous
 excerpt: >-
-  What if, instead of lowering source code down for the purpose of execution, 
+  What if, instead of lowering source code down for the purpose of execution,
   we raised it for the purpose of understanding?
 ---
 
@@ -554,7 +554,7 @@ we get the same results:
 The semantic web suffers from an admittedly weak software ecosystem.
 While there are dozens of excellent clients for SQL databases,
 you'd be hard-pressed to find much for SPARQL.
-So I was quite pleased to come across 
+So I was quite pleased to come across
 [this kernel](https://github.com/paulovn/sparql-kernel)
 by Paulo Villegas
 that adds SPARQL support to
