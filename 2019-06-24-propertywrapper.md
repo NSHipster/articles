@@ -180,7 +180,7 @@ struct Clamping<Value: Comparable> {
     var value: Value
     let range: ClosedRange<Value>
 
-    init(initialValue value: Value, _ range: ClosedRange<Value>) {
+    init(wrappedValue value: Value, _ range: ClosedRange<Value>) {
         precondition(range.contains(value))
         self.value = value
         self.range = range
@@ -228,7 +228,7 @@ struct UnitInterval<Value: FloatingPoint> {
     @Clamping(0...1)
     var wrappedValue: Value = .zero
 
-    init(initialValue value: Value) {
+    init(wrappedValue value: Value) {
         self.wrappedValue = value
     }
 }
@@ -372,8 +372,8 @@ struct Trimmed {
         set { value = newValue.trimmingCharacters(in: .whitespacesAndNewlines) }
     }
 
-    init(initialValue: String) {
-        self.wrappedValue = initialValue
+    init(wrappedValue value: String) {
+        self.wrappedValue = value
     }
 }
 ```
@@ -390,7 +390,7 @@ struct Post {
     @Trimmed var body: String
 }
 
-let quine = Post(title: "  Swift Property Wrappers  ", body: "<#...#>")
+var quine = Post(title: "  Swift Property Wrappers  ", body: "<#...#>")
 quine.title // "Swift Property Wrappers" (no leading or trailing spaces!)
 
 quine.title = "      @propertyWrapper     "
@@ -637,7 +637,7 @@ import Foundation
 @propertyWrapper
 struct Versioned<Value> {
     private var value: Value
-    private(set) var timestampedValues: [(Date, Value)] = []
+    private(set) var timestampedValues: [(Date, Value)]
 
     var wrappedValue: Value {
         get { value }
@@ -648,8 +648,9 @@ struct Versioned<Value> {
         }
     }
 
-    init(initialValue value: Value) {
-        self.wrappedValue = value
+    init(wrappedValue value: Value) {
+        self.value = value
+        self.timestampedValues = [(Date(), value)]
     }
 }
 ```
@@ -696,7 +697,7 @@ class ExpenseReport {
     @Versioned var state: State = .submitted {
         willSet {
             if newValue == .approved,
-                $state.timestampedValues.map { $0.1 }.contains(.denied)
+               _state.timestampedValues.map({ $0.1 }).contains(.denied)
             {
                 fatalError("J'Accuse!")
             }
@@ -813,8 +814,8 @@ struct Dasherized {
         set { value = newValue.replacingOccurrences(of: " ", with: "-") }
     }
 
-    init(initialValue: String) {
-        self.wrappedValue = initialValue
+    init(wrappedValue value: String) {
+        self.wrappedValue = value
     }
 }
 
