@@ -50,25 +50,21 @@ Here's how to do it:
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
 
         // When swizzling a class method, use the following:
-        // Class class = object_getClass((id)self);
-        <#...#>
         // Method originalMethod = class_getClassMethod(class, originalSelector);
         // Method swizzledMethod = class_getClassMethod(class, swizzledSelector);
 
-        BOOL didAddMethod =
-            class_addMethod(class,
-                originalSelector,
-                method_getImplementation(swizzledMethod),
-                method_getTypeEncoding(swizzledMethod));
+        IMP originalImp = method_getImplementation(originalMethod);
+        IMP swizzledImp = method_getImplementation(swizzledMethod);
 
-        if (didAddMethod) {
-            class_replaceMethod(class,
+        class_replaceMethod(class,
                 swizzledSelector,
-                method_getImplementation(originalMethod),
+                originalImp,
                 method_getTypeEncoding(originalMethod));
-        } else {
-            method_exchangeImplementations(originalMethod, swizzledMethod);
-        }
+        class_replaceMethod(class,
+                originalSelector,
+                swizzledImp,
+                method_getTypeEncoding(swizzledSelector));
+
     });
 }
 
