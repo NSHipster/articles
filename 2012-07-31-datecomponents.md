@@ -131,11 +131,11 @@ let dateComponents = calendar.dateComponents(
 | `quarter`           | 0                   |
 | `year`              | 2018                |
 | `month`             | 10                  |
-| `day`               | 3                   |
+| `day`               | 10                  |
 | `hour`              | 10                  |
 | `minute`            | 0                   |
 | `second`            | 0                   |
-| `nanosecond`        | 123456789           |
+| `nanosecond`        | 0                   |
 | `weekday`           | 4                   |
 | `weekdayOrdinal`    | 2                   |
 | `weekOfMonth`       | 2                   |
