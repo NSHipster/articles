@@ -73,7 +73,7 @@ let dateComponents = DateComponents(calendar: calendar,
 let date = calendar.date(from: dateComponents)! // 2018-10-10
 
 // DateComponents as a duration of time
-calendar.date(byAdding: dateComponents, to: date) // 4037-08-20
+let anotherDate = calendar.date(byAdding: dateComponents, to: date)! // 4037-08-20
 ```
 
 Let's explore both of these contexts individually,
@@ -91,7 +91,7 @@ using the `Calendar` method `components(_:from:)`:
 ```swift
 let date = Date() // 2018-10-10T10:00:00+00:00
 let calendar = Calendar.current
-calendar.dateComponents([.year, .month, .day], from: date)
+let components = calendar.dateComponents([.year, .month, .day], from: date)
 // {{ page.updated_on | date: '(year: %Y, month: %-M, day: %-d)' }}
 ```
 
@@ -333,10 +333,10 @@ let calendar = Calendar.current
 let monthInterval =
     calendar.dateInterval(of: .month, for: date)!
 
-calendar.dateComponents([.hour],
+let hours = calendar.dateComponents([.hour],
                         from: monthInterval.start,
                         to: monthInterval.end)
-        .hour // 744
+                    .hour! // 744
 ```
 
 ## Adding Components to Dates
@@ -376,7 +376,7 @@ calendar.date(byAdding: .year, value: 1, to: date)
 
 // Adding a year and a day
 let dateComponents = DateComponents(year: 1, day: 1)
-calendar.date(byAdding: dateComponents, to: date)
+let anotherDate = calendar.date(byAdding: dateComponents, to: date)!
 ```
 
 If you _really_ want to be pedantic when time traveling, though,
