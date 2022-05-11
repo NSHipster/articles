@@ -236,6 +236,6 @@ If your test framework runs many tests as a part of one run loop (like Kiwi), cl
 
 ----
 
-There are even more ways to refine behavior with `NSUndoManager`, particularly for grouping actions and managing scope. Apple also provides [usability guidelines](https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/UndoRedo.html) for making undo and redo accessible in an expected and delightful way.
+There are even more ways to refine behavior with `NSUndoManager`, particularly for grouping actions and managing scope. Apple also provides [usability guidelines](https://developer.apple.com/design/human-interface-guidelines/ios/user-interaction/undo-and-redo/) for making undo and redo accessible in an expected and delightful way.
 
 We all may wish to live without mistakes, but Cocoa gives us a way to let our users live with fewer regrets as it makes some actions easily changeable.
