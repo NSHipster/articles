@@ -908,7 +908,7 @@ nameComponents.familyName = "苹果籽"
 formatter.string(from: nameComponents) // "苹果籽约翰尼"
 ```
 
-_'nuf said._
+_’nuf said._
 
 ### CNPostalAddressFormatter
 

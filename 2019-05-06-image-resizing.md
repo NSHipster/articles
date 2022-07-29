@@ -261,7 +261,7 @@ func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
                             width: Int(size.width),
                             height: Int(size.height),
                             bitsPerComponent: image.bitsPerComponent,
-                            bytesPerRow: image.bytesPerRow,
+                            bytesPerRow: 0,
                             space: image.colorSpace ?? CGColorSpace(name: CGColorSpace.sRGB)!,
                             bitmapInfo: image.bitmapInfo.rawValue)
     context?.interpolationQuality = .high

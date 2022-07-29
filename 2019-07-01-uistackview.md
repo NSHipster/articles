@@ -277,7 +277,7 @@ In iOS, setting a custom proportional distribution requires additional constrain
 {% endinfo %}
 
 With that out of the way, let's take a look at the possible outcomes,
-staring the distributions that prioritize preserving the intrinsic content size of each arranged subview:
+starting with the distributions that prioritize preserving the intrinsic content size of each arranged subview:
 
 - `equalSpacing`: The stack view gives every arranged subview its intrinsic size alongside the main axis, then introduces equally-sized paddings if there is extra space.
 - `equalCentering`: Similar to `equalSpacing`, but instead of spacing subviews equally, a variably sized padding is introduced in-between so as the center of each subview alongside the axis is equidistant from the two adjacent subview centers.

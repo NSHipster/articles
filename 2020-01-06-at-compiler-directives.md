@@ -185,7 +185,7 @@ with attributes for specifying:
 - [Nullability](https://clang.llvm.org/docs/analyzer/developer-docs/nullability.html)
   (`nullable` / `nonnullable` / `null_resettable`)
 - [Ownership](https://clang.llvm.org/docs/AutomaticReferenceCounting.html#ownership-qualification)
-  (`weak` / `strong` / `copy` / `retain` / `unsafe_unretained`)
+  (`weak` / `strong` / `copy` / `retain` / `assign` / `unsafe_unretained`)
 
 And that's not all ---
 there's also the `class` attribute,
