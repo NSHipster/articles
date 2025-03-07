@@ -172,7 +172,7 @@ but it's a lot fewer than any of those other languages.
 
 The closest thing Swift has to a mainstream, centralized package registry is
 [CocoaPods](/cocoapods/),
-which reports over 69K entries.
+which reports over 69K _(nice)_ entries.
 But that number includes both Objective-C and Swift libraries,
 and it's unclear what the breakdown is.
 
@@ -194,7 +194,7 @@ exist in their own special circle of
 ["Dependency Hell"](https://en.wikipedia.org/wiki/Dependency_hell).
 But, 
 as the saying goes, 
-<q>“Quantity has a quality all its own”</q>.
+<q>Quantity has a quality all its own</q>.
 Even if you write off 90% of JavaScript packages as garbage,
 you're still more than _twice_ as likely
 to find an existing solution to a problem 
