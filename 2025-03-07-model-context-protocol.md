@@ -326,7 +326,7 @@ which itself was adopted from Old Persian <span title="paridaida">"𐎱𐎼𐎭�
 Ironic how Apple has a way of making your digital life a living hell sometimes.
 
 For many of us who exist in Apple's walled garden, 
-we’re often and frustrated by product design and software quality 
+we’re often frustrated by the product design and software quality 
 that gets between us and our data.
 Spotlight search is stuck in the ‘00s. 
 Apple Intelligence [didn’t live up to the hype](https://nshipster.com/ollama). 
