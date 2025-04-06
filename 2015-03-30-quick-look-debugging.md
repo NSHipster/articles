@@ -92,10 +92,10 @@ What's more, these Quick Look popups often include a button that will open the c
 
 ### Custom Types
 
-For anything beyond these built-in types, Xcode 6 has added Quick Look for custom objects. The implementation couldn't be simpler—add a single `debugQuickLookObject()` method to any `NSObject`-derived class, and you're set. `debugQuickLookObject()` can then return any of the built-in types described above, configured for your custom type's needs:
+For anything beyond these built-in types, Xcode 6 has added Quick Look for custom objects. The implementation couldn't be simpler—add a single `debugQuickLookObject()` method to any `NSObject`. If your class isn't inhrerit `NSObject`, you can add anotation `@objc` for function `debugQuickLookObject`. `debugQuickLookObject()` can then return any of the built-in types described above, configured for your custom type's needs:
 
 ```swift
-func debugQuickLookObject() -> AnyObject {
+@objc func debugQuickLookObject() -> AnyObject {
     let path = buildPathWithRadius(radius, steps: steps, loopCount: loopCount)
     return path
 }
