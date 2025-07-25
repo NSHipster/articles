@@ -121,7 +121,7 @@ scaling up automatically for complex calculations.
 
 ```swift
 // Sampling happens only when we need to evaluate
-if runningSpeed.probability(between: 5.0, and: 8.0) > 0.9 {
+if ~(runningSpeed > 6.0) {
     print("Great pace for a 400m sprint!")
 }
 // SPRT might only need a dozen samples for this simple comparison
