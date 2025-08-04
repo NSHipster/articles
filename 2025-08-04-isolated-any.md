@@ -178,11 +178,11 @@ All of the task creation APIs —
 make use of `@isolated(any)`.
 These are used a lot
 and are usually encountered very early on when learning about concurrency.
-So, it's pretty natural to run into this attribute and think:
+So, it's completely natural to run into this attribute and think:
 
 _"Ugh another thing to understand!"_
 
-This is pretty reasonable because
+It's reasonable because
 the components of a function type dictate how it can be used.
 They are all essential qualities for API consumers.
 They _**are**_ the interface.
@@ -218,7 +218,7 @@ because this is the key component of `@isolated(any)`.
 The attribute gives you access to the isolation of a function argument.
 But what would you use that for?
 
-Did you know that, before Swift 6, the ordering of the following code was undefined?
+Did you know that, before Swift 6.0, the ordering of the following code was undefined?
 
 ```swift
 @MainActor
@@ -317,7 +317,7 @@ I can imagine a future where an explicit `@isolated(any)`
 isn't even necessary for async functions.
 As far as I can tell, there is no downside.
 
-And a little less syntactic noise would be most welcome.
+And a little less syntactic noise would be nice.
 Perhaps one day!
 
 ## isolated(some)
@@ -337,12 +337,12 @@ But accepting an argument leaves the door open
 to more sophisticated features in the future.
 
 And that really fits the spirit of `@isolated(any)`.
-Putting some work now in exchange for flexibility down the road.
+Doing a little work now in exchange for flexibility down the road.
 
 Because you'll see it in many foundational concurrency APIs,
 it's very natural to feel like you must understand `@isolated(any)`.
 I'm 100% behind technical curiosity!
-But, in this case, it is not required.
+In this case, however, it is not required.
 For the most part, you can just ignore this attribute.
 You will rarely, if ever, need to use it yourself.
 
