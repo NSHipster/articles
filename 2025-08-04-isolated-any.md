@@ -266,7 +266,7 @@ nonisolated func dispatchResponders() {
 ```
 
 These are three ways to achieve the same goal.
-But, there is a subtle difference is how the last form is scheduled.
+But, there is a subtle difference in how the last form is scheduled.
 `Task` takes an `@isolated(any)` function
 so it can look at its isolation
 and **synchronously submit it to an actor**.
