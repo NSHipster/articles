@@ -25,13 +25,13 @@ Computers are a long ways off from "understanding" this question literally, but 
 
 ```swift
 let question = "What is the weather in San Francisco?"
-let options: NSLinguisticTaggerOptions = [.OmitWhitespace, .OmitPunctuation, .JoinNames]
-let schemes = NSLinguisticTagger.availableTagSchemesForLanguage("en")
+let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
+let schemes = NSLinguisticTagger.availableTagSchemes(forLanguage: "en")
 let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
 tagger.string = question
-tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
-    let token = (question as NSString).substringWithRange(tokenRange)
-    println("\(token): \(tag)")
+tagger.enumerateTags(in: NSMakeRange(0, (question as NSString).length), scheme: .nameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
+    let token = (question as NSString).substring(with: tokenRange)
+    print("\(token): \(tag?.rawValue ?? "no tag")")
 }
 ```
 ```objc
