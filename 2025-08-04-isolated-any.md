@@ -37,7 +37,7 @@ await respondToEmergency()
 ```
 
 This, of course, makes sense.
-All async functions have been called with `await`.
+All async functions must be called with `await`.
 But! Consider this:
 
 ```swift
@@ -190,7 +190,7 @@ They _**are**_ the interface.
 - Parameters
 - Return value
 - Does it throw?
-- Is is async?
+- Is it async?
 
 This is not an exhaustive list,
 but what's important is all of these are things callers must care about.
