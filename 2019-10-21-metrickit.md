@@ -96,7 +96,7 @@ Apple has focused on the two metrics that matter most to users:
 
 ### Battery Usage
 
-<picture id="battery-usage">
+<picture id="battery-usage-diagram">
     <source srcset="{% asset metrickit-battery-usage--dark.png @path %}" media="(prefers-color-scheme: dark)">
     <img src="{% asset metrickit-battery-usage--light.png @path %}" alt="MetricKit Diagram" loading="lazy"/>
 </picture>
