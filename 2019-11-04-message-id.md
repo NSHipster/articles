@@ -197,7 +197,7 @@ The only trick here is to
 [percent-encode](https://en.wikipedia.org/wiki/Percent-encoding)
 the Message ID in the URL.
 You could do this with the
-[`addingPercentEncoding(withAllowedCharacters:)` method](/character-set/),
+[`addingPercentEncoding(withAllowedCharacters:)` method](/characterset/),
 but we prefer to delegate this all to [`URLComponents`](/nsurl/) instead ---
 which has the further advantage of being able to
 construct the URL full without a

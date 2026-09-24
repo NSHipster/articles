@@ -170,7 +170,7 @@ As mentioned in Apple's ["Objective-C Runtime Programming Guide"](https://develo
 
 These are the type qualifiers for methods declared in a protocol:
 
-<table id="method-encodings">
+<table id="method-encodings-table">
   <caption>Objective-C Method Encodings</caption>
   <thead>
     <tr>
