@@ -27,7 +27,7 @@ the presence or absence of
 a physical keyboard,
 a <abbr title="subscriber identity module">SIM</abbr> card, or
 an <abbr title="Advanced RISC Machines">ARM</abbr> processor
-_(and if the rumors about next year's MacBook models are to believed,
+_(and if the rumors about next year's MacBook models are to be believed,
 those latter two may soon cease to be a distinction)._
 
 For many of us,
@@ -144,8 +144,8 @@ Whereas typical letters may have different pronunciations
 across dialects (/tə.ˈme͡ɪ.do͡ʊ/, /tə.ˈmɑ.to͡ʊ/) ---
 or even within the same word (like the letter "a" in "application") ---
 <abbr>IPA</abbr> symbols represent a single sound, or phoneme;
-the mid-central vowel, "ə" (a.k.a "schwa")
-sounds the same whether its part of
+the mid-central vowel, "ə" (a.k.a. "schwa")
+sounds the same whether it's part of
 an English word or a Japanese word or nonsensical babbling.
 
 Working with IPA on computers has pretty much always been a PITA,
@@ -201,7 +201,7 @@ You could also use
 [IPA Palette](https://github.com/K8TIY/IPAPalette)
 by Brian "Moses" Hall.
 
-But if none of these tick all of your boxes in terms of usability of ergonomics,
+But if none of these tick all of your boxes in terms of usability or ergonomics,
 the Accessibility Keyboard Panel Editor provides an easy way
 for anyone to hand-roll a bespoke solution:
 
@@ -243,7 +243,7 @@ and a Resources directory containing an index of assets
 as well as a file named `PanelDefinitions.plist`.
 
 ```terminal
-$ tree ~/Library/Application Support/com.apple.AssistiveControl/dwellControlUserPanels1.ascconfig/
+$ tree ~/Library/Application\ Support/com.apple.AssistiveControl/dwellControlUserPanels1.ascconfig/
 Contents
 ├── Info.plist
 └── Resources
@@ -311,7 +311,7 @@ of our custom virtual keyboard layout:
 
 The `PanelObjects` key is associated with an array of dictionaries,
 each representing a single button.
-Fortunately, he majority of the key names are self-explanatory:
+Fortunately, the majority of the key names are self-explanatory:
 
 {% raw %}
 
@@ -458,7 +458,7 @@ and a hypothetical <kbd>Party</kbd> button on a virtual keyboard?
 The strong connection between
 the word "computer" and typewriter keyboards
 is merely a historical one.
-The rise of smartphones and smartwatches help illustrate this.
+The rise of smartphones and smartwatches helps illustrate this.
 Any distinction between
 the computers in your hand, on your wrist, or on your desk
 is ultimately insignificant.
