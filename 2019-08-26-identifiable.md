@@ -4,7 +4,7 @@ author: Mattt
 category: Swift
 excerpt: >-
   Swift 5.1 gives us yet another occasion to ponder ontological questions
-  and weigh in the relative merits of various built-in types
+  and weigh the relative merits of various built-in types
   as stable identifiers.
 status:
   swift: 5.1
@@ -95,7 +95,7 @@ But the question remains:
 _"Why bother conforming to `Identifiable`?"_
 
 The functionality you get from adopting `Identifiable` is primarily semantic,
-and require some more explanation.
+and requires some more explanation.
 It's sort of like asking,
 _"Why bother conforming to `Equatable`?"_
 
@@ -118,7 +118,8 @@ var specialDelivery = Parcel(id: "123456789012")
 specialDelivery.location = CLPlacemark(
                              location: CLLocation(latitude: 37.3327,
                                                   longitude: -122.0053),
-                             name: "Cupertino, CA"
+                             name: "Cupertino, CA",
+                             postalAddress: nil
                            )
 
 specialDelivery == Parcel(id: "123456789012") // false
@@ -130,6 +131,8 @@ the very same behavior can lead to confusing results further down the stack,
 where you're not as clear about how different parts work with one another.
 
 ```swift
+extension Parcel: Hashable {}
+
 var trackedPackages: Set<Parcel> = <#...#>
 trackedPackages.contains(Parcel(id: "123456789012")) // false (?)
 ```
@@ -225,7 +228,7 @@ and shared mutable state).
 
 If you want to ensure that an identifier is unique across
 _every_ device that's running your app, then
-congratulations ---you've hit
+congratulations --- you've hit
 [a fundamental problem in computer science](https://en.wikipedia.org/wiki/Consensus_%28computer_science%29).
 But before you start in on
 [vector clocks](https://en.wikipedia.org/wiki/Vector_clock) and
@@ -355,7 +358,7 @@ are arguably the most ubiquitous kind of identifier
 among all of the ones described in this article.
 Every day, billions of people around the world use URLs
 as a way to point to a particular part of the internet.
-So URLs a natural choice for an `id` value
+So URLs are a natural choice for an `id` value
 if your models already include them.
 
 URLs look like strings,
@@ -377,7 +380,7 @@ all affect equality comparison.
 So do extrinsic, semantic concerns like
 a server's policy to upgrade `http` to `https`,
 redirect from `www` to the apex domain,
-or replace an IP address with a
+or replace an IP address with a domain name,
 which might cause different URLs to resolve to the same webpage.
 
 ```swift
@@ -418,11 +421,11 @@ fileprivate extension URL {
 
 struct Whatsit: Identifiable {
     let url: URL
-    var id: { url.normalizedString }
+    var id: String { url.normalizedString }
 }
 
-Whatsit(url: "https://example.com/123").id // example.com/123
-Whatsit(id: "http://Example.com/123/").id // example.com/123
+Whatsit(url: URL(string: "https://example.com/123")!).id // example.com/123
+Whatsit(url: URL(string: "http://Example.com/123/")!).id // example.com/123
 ```
 
 ## Creating Custom Identifier ID Types
@@ -491,7 +494,7 @@ struct Product {
 
 // Style 2: id requirement fulfilled by computed property
 extension Product: Identifiable {
-    var id { uuid }
+    var id: UUID { uuid }
 }
 ```
 
