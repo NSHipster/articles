@@ -19,7 +19,7 @@ Better to be wrong and own it than be right with caveats.
 Hard to build a personal brand out of nuance these days.
 People are attracted to confidence — however misplaced.
 
-But can you blame them? (People, that is)
+But can you blame them? (People, that is.)
 Working in software,
 the most annoying part of reaching Senior level
 is having to say _"it depends"_ all the time.
@@ -55,7 +55,7 @@ In 2014, researchers at the University of Washington and Microsoft Research
 proposed a radical idea:
 What if uncertainty were encoded directly into the type system?
 Their paper,
-_[Uncertain&lt;T&gt;: A First-Order Type for Uncertain Data](https://www.microsoft.com/en-us/research/publication/uncertaint-a-first-order-type-for-uncertain-data-2/)_
+_[Uncertain&lt;T&gt;: A First-Order Type for Uncertain Data](https://www.microsoft.com/en-us/research/publication/uncertaint-a-first-order-type-for-uncertain-data-2/)_,
 introduced a probabilistic programming approach that's both
 mathematically rigorous and surprisingly practical.
 
@@ -106,7 +106,7 @@ let runningSpeed = distance / time // Uncertain<Double>
 
 // How much air resistance?
 let airDensity: Uncertain<Double> = .normal(mean: 1.225, standardDeviation: 0.1) // kg/m³
-let dragCoefficient: Uncertain<Double> = .kumaraswamy(alpha: 9, beta: 3) // slightly right-skewed distribution
+let dragCoefficient: Uncertain<Double> = .kumaraswamy(a: 9, b: 3) // left-skewed distribution
 let frontalArea: Uncertain<Double> = .normal(mean: 0.45, standardDeviation: 0.05) // m²
 let airResistance = 0.5 * airDensity * frontalArea * dragCoefficient * (runningSpeed * runningSpeed)
 ```
@@ -249,7 +249,7 @@ So definitely check that out if you're uninitiated.
 {::nomarkdown }
 <picture id="visualization-screenshot">
     <source srcset="{% asset uncertainty-screenshot--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset uncertainty-screenshot--light.png @path %}" alt="iMCP" onclick="window.location.href='https://iMCP.app';">
+    <img src="{% asset uncertainty-screenshot--light.png @path %}" alt="Uncertain Distribution Visualizer" onclick="window.location.href='https://github.com/mattt/Uncertain-Distribution-Visualizer/';">
 </picture>
 {:/}
 
