@@ -129,7 +129,7 @@ Let's talk about where we are today with Model Context Protocol.
 We've [written previously](https://nshipster.com/language-server-protocol) 
 about Language Server Protocol, 
 and the <dfn>M × N problem</dfn>.
-LSP's challenge was connecting `M` editors with `N` programming languages
+LSP's challenge was connecting `M` editors with `N` programming languages.
 MCP faces a similar challenge, of connecting `M` clients with `N` resources.
 Without MCP, 
 each AI application must implement custom integrations 
@@ -274,15 +274,17 @@ In response, the server sends:
 {
   "jsonrpc":"2.0",
   "id": 2,
-  "content": [
-    {
-      "type": "text",
-      "text": "{\"temperature\": 12, \"conditions\": \"cloudy\", \"humidity\": 85}"
-      "annotations": {
-        "audience": ["assistant"]
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\"temperature\": 12, \"conditions\": \"cloudy\", \"humidity\": 85}",
+        "annotations": {
+          "audience": ["assistant"]
+        }
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
@@ -402,7 +404,7 @@ If you already have a web application with an
 [OpenAPI specification](https://www.openapis.org),
 you can use another tool we built —
 [emcee](https://emcee.sh) —
-to instantly spin up an MCP server to it.
+to instantly spin up an MCP server for it.
 
 <img src="{% asset model-context-protocol-emcee.png @path %}" alt="emcee" onclick="window.location.href='https://emcee.sh';">
 
