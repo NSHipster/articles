@@ -39,7 +39,7 @@ Any unusual sounds, like
 ...or at least that's what I think I do.
 To be honest, all of this happens unconsciously and automatically --
 for all of us, and for all manner of language recognition tasks.
-And have only the faintest idea of how we get from input to output.
+And we have only the faintest idea of how we get from input to output.
 
 Computers operate in a similar manner.
 After many hours of training,
@@ -65,9 +65,9 @@ with a new attitude.
 [`NLTokenizer`](https://developer.apple.com/documentation/naturallanguage/nltokenizer)
 is a replacement for
 [`enumerateSubstrings(in:options:using:)`](https://developer.apple.com/documentation/foundation/nsstring/1416774-enumeratesubstrings)
-(neé [`CFStringTokenizer`](https://developer.apple.com/documentation/corefoundation/cfstringtokenizer-rf8)).
+(née [`CFStringTokenizer`](https://developer.apple.com/documentation/corefoundation/cfstringtokenizer-rf8)).
 [`NLLanguageRecognizer`](https://developer.apple.com/documentation/naturallanguage/nllanguagerecognizer)
-offers an extension of the functionality previously exposted through the
+offers an extension of the functionality previously exposed through the
 `dominantLanguage` in `NSLinguisticTagger`,
 with the ability to provide hints and get additional predictions.
 
@@ -127,7 +127,7 @@ with a handful of words.
 After some trial and error,
 we were finally able to get `NLLanguageRecognizer` to guess incorrectly
 for a string of non-trivial length
-by passing the
+by passing
 [Article I of the Universal Declaration of Human Rights in Norsk, Bokmål](https://www.ohchr.org/EN/UDHR/Pages/Language.aspx?LangID=nrr):
 
 ```swift
@@ -138,13 +138,13 @@ De er utstyrt med fornuft og samvittighet og bør handle mot hverandre i brorska
 
 let languageRecognizer = NLLanguageRecognizer()
 languageRecognizer.processString(string)
-recognizer.dominantLanguage // da (!)
+languageRecognizer.dominantLanguage // da (!)
 ```
 
 {% info do %}
 
-The [Universal Declaration of Human Rights](http://www.un.org/en/universal-declaration-human-rights/),
-is the among the most widely-translated documents in the world,
+The [Universal Declaration of Human Rights](http://www.un.org/en/universal-declaration-human-rights/)
+is among the most widely-translated documents in the world,
 with translations in over 500 different languages.
 For this reason, it's often used for natural language tasks.
 
@@ -237,7 +237,7 @@ repeat {
 } while true
 ```
 
-When passed the [The Funniest Joke in the World](https://en.wikipedia.org/wiki/The_Funniest_Joke_in_the_World),
+When passed [The Funniest Joke in the World](https://en.wikipedia.org/wiki/The_Funniest_Joke_in_the_World),
 the following words are called out for being misspelled:
 
 - Nunstück
