@@ -45,14 +45,14 @@ please refer to Joel Spolsky's
 > _"you’re a fast worker!"_ and pays him a Bitcoin.
 >
 > The next sprint Shlemiel only gets 5 screens done.
-> _"Well, that’s not nearly as good as yesterday,
+> _"Well, that’s not nearly as good as last sprint,
 > but you’re still a fast worker. 5 screens is respectable,"_
 > and pays him a Bitcoin.
 >
 > The next sprint Shlemiel implements 1 screen.
 > _"Only 1!"_ shouts his manager.
 > _"That’s unacceptable!
-> On the first day you did ten times that much work!
+> On the first sprint you did ten times that much work!
 > What’s going on?"_
 >
 > _"I can’t help it,"_ says Shlemiel.
@@ -207,7 +207,7 @@ struct UIViewPreview<View: UIView>: UIViewRepresentable {
 Let's say our app had a `FavoriteButton` ---
 a distant cousin (perhaps by composition) to `BorderedButton`.
 In its default state,
-it shows has the title "Favorite"
+it has the title "Favorite"
 and displays a <span title="Heart">♡</span> icon.
 When its `isFavorited` property is set to `true`,
 the title is set to "Unfavorite"
