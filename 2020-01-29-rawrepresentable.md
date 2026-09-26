@@ -389,7 +389,7 @@ From the earliest days of the language,
 `RawRepresentable` has been relegated to 
 the thankless task of C interoperability.
 But looking now with a fresh set of eyes,
-we can now see it for in all its 
+we can see it in all its 
 [injective](https://en.wikipedia.org/wiki/Injective_function) glory.
 
 So the next time you find yourself with an enumeration

@@ -20,7 +20,7 @@ there are only so many ways to slice the ontological pie.
 
 There are dichotomies like
 <ruby>
-<rb lang="ja-Hira"><a href="https://en.wikipedia.org/wiki/Yin_and_yang">陰陽</a></rb>
+<rb lang="zh-Hant"><a href="https://en.wikipedia.org/wiki/Yin_and_yang">陰陽</a></rb>
 <rp>(</rp>
 <rt lang="zh-Latn">yīnyáng</rt>
 <rp>)</rp>
@@ -422,7 +422,7 @@ _(thanks, [Nate](/authors/nate-cook/)!)_,
 including
 `init(uniqueKeysWithValues:)`,
 `init(_:uniquingKeysWith:)`, and
-`init(grouping:by)`
+`init(grouping:by:)`.
 
 Consider the following example that
 constructs a `KeyValuePairs` object with a duplicate key:
@@ -440,7 +440,7 @@ Attempting to pass this to `init(uniqueKeysWithValues:)`
 results in a fatal error:
 
 ```swift
-Dictionary<String, Int>(uniqueKeysWithValues: Array(pairsWithDuplicateKey))
+Dictionary<String, String>(uniqueKeysWithValues: Array(pairsWithDuplicateKey))
 // Fatal error: Duplicate values for key: '澤'
 ```
 
@@ -457,7 +457,8 @@ Dictionary(Array(pairsWithDuplicateKey),
 // ["澤": "Marsh", <#...#>]
 
 Dictionary(grouping: Array(pairsWithDuplicateKey),
-           by: { (pair) in pair.value })
+           by: { (pair) in pair.key })
+    .mapValues { (pairs) in pairs.map { (pair) in pair.value } }
 // ["澤": ["Lake", "Marsh"], <#...#>]
 ```
 
