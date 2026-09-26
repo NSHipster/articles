@@ -35,7 +35,7 @@ func keychainData(service: String) -> Data? {
 ```
 
 We set up a query,
-pass an an empty `inout` reference to `SecItemCopyMatching` and then,
+pass an empty `inout` reference to `SecItemCopyMatching` and then,
 depending on the status code we get back,
 either return the reference as data
 or `nil` if there was an error.
