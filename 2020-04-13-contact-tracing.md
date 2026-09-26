@@ -20,7 +20,7 @@ revisions:
 > An ounce of prevention is worth a pound of cure.
 
 Early intervention is among the most effective strategies for treating illnesses.
-This is true not only for the human body, for society as a whole.
+This is true not only for the human body, but for society as a whole.
 That's why public health officials use contact tracing
 as their first line of defense against
 the spread of infectious disease in a population.
@@ -73,8 +73,8 @@ in order to slow the spread of that illness within a population.
 When a patient is admitted to a hospital
 and diagnosed with a new, communicable disease,
 they're interviewed by health workers
-to learn who they've interacted recently.
-Any contacts whose interactions with the patient are then evaluated,
+to learn who they've interacted with recently.
+Any contacts who interacted with the patient are then evaluated,
 and if they're diagnosed with the disease,
 the process repeats with their known, recent contacts.
 
@@ -101,7 +101,7 @@ Since the outbreak,
 various [governments](https://www.pepp-pt.org)
 and [academics](https://github.com/DP-3T/documents)
 have proposed standards for contact tracing.
-But the most significant development so far came yesterday
+But the most significant development so far came last week
 with Apple and Google's announcement of a joint initiative.
 
 According to the
@@ -141,7 +141,7 @@ provides a nice explanation of the technologies involved.
 {% endinfo %}
 
 Apple's CEO, Tim Cook, promises that
-["Contact tracing can help slow the spread of COVID-19 and can be done without compromising user privacy."](https://twitter.com/tim_cook/status/1248657931433693184).
+["Contact tracing can help slow the spread of COVID-19 and can be done without compromising user privacy."](https://twitter.com/tim_cook/status/1248657931433693184)
 The specifications accompanying the announcement
 show how that's possible.
 
@@ -173,7 +173,7 @@ it can help to see a few examples of how that information
 can be encoded into a human-readable form.
 
 32 bytes of binary data can be represented by
-44-character-long [Base64-encoded][base64] string
+a 44-character-long [Base64-encoded][base64] string
 or a string of 64 [hexadecimal][hexadecimal] digits.
 You can generate these for yourself from the command line
 with the following commands:
@@ -228,7 +228,7 @@ to determine if they've had any contact over that time period.
 The [Contact Tracing Cryptography Specification][cryptography specification]
 is concise, clearly written, and remarkably accessible.
 Anyone for whom the name _[Diffie–Hellman][diffie–hellman]_ even rings a bell
-are encouraged to give it a quick read.
+is encouraged to give it a quick read.
 
 {% endinfo %}
 
@@ -275,8 +275,8 @@ let identifier: Data = <#...#> // 16 bytes
 let peripheralManager = CBPeripheralManager()
 
 let advertisementData: [String: Any] = [
-    CBAdvertisementDataServiceUUIDsKey: [serviceUUID]
-    CBAdvertisementDataServiceDataKey: identifier
+    CBAdvertisementDataServiceUUIDsKey: [serviceUUID],
+    CBAdvertisementDataServiceDataKey: [serviceUUID: identifier]
 ]
 
 peripheralManager.startAdvertising(advertisementData)
@@ -303,7 +303,8 @@ extension <#DelegateClass#>: CBCentralManagerDelegate {
                       advertisementData: [String : Any],
                       rssi RSSI: NSNumber)
   {
-      let identifier = advertisementData[CBAdvertisementDataServiceDataKey] as! Data
+      let serviceData = advertisementData[CBAdvertisementDataServiceDataKey] as? [CBUUID: Data]
+      let identifier = serviceData?[serviceUUID]
       <#...#>
   }
 }
@@ -379,7 +380,7 @@ While we might applaud the level of privacy protections here,
 that doesn't offer much in the way of actionable information.
 Depending on the individual,
 a push notification saying
-"You were in exposed for 5–10 minutes sometime 3 days ago"
+"You were exposed for 5–10 minutes sometime 3 days ago"
 could warrant a visit to the hospital
 or elicit no more concern than a missed call.
 
@@ -392,7 +393,7 @@ you get a lot more information, including:
   _(Transmission Power - RSSI)_,
   which can tell you how close they got
 - Transmission risk,
-  which is an app-definied value that may be based on
+  which is an app-defined value that may be based on
   symptoms, level of diagnosis verification,
   or other determination from the app or a health authority
 
@@ -414,7 +415,7 @@ according to this equation:
 <em>r</em> is risk,
 <em>d</em> is days since exposure,
 <em>t</em> is duration of exposure,
-<em>ɑ</em> is Bluetooth signal strength attenuation</em>
+<em>ɑ</em> is Bluetooth signal strength attenuation
 </figcaption>
 </figure>
 
