@@ -8,7 +8,7 @@ status:
     swift: 1.2
 ---
 
-> Stop right there! Given the topic, wouldn't you rather read this article as a Playground? **<a href="{% asset  XCPlayground.playground.zip @path %}" onclick="ga('send', 'event', 'link', 'click', 'XCPlayground.playground');">Download Now &rarr;</a>**
+> Stop right there! Given the topic, wouldn't you rather read this article as a Playground? **<a href="{% asset  XCPlayground.playground.zip @path %}">Download Now &rarr;</a>**
 
 _Play._
 

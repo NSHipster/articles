@@ -2,7 +2,7 @@
 title: "IBInspectable / IBDesignable"
 category: Xcode
 author: Nate Cook
-excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be a enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
+excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be an enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
 status:
     swift: 1.0
 ---
@@ -47,7 +47,7 @@ Marked with `@IBInspectable` (or `IBInspectable` in Objective-C), they are easil
 
 Since inspectable properties are simply an interface on top of user-defined runtime attributes, the same list of types is supported: booleans, strings, and numbers (i.e., `NSNumber` or any of the numeric value types), as well as `CGPoint`, `CGSize`, `CGRect`, `UIColor`, and `NSRange`, adding `UIImage` for good measure.
 
-> Those already familiar with runtime attributes will have noticed a bit of trickery in the example above. `UIColor` is the only color type supported, not the `CGColor` native to a view's backing `CALayer`. The `borderColor` computed property maps the `UIColor` (set via runtime attribute) to the layer's required `CGColor`.
+> Those already familiar with runtime attributes will have noticed a bit of trickery in the example above. `UIColor` is the only color type supported, not the `CGColor` native to a view's backing `CALayer`. The `borderColor` property maps the `UIColor` (set via runtime attribute) to the layer's required `CGColor`.
 
 ### Making Existing Types Inspectable
 
