@@ -165,7 +165,7 @@ you'll want to opt for an extended specification instead.
 Unlike shorthand specifications,
 this form allows for only one platform to be specified.
 So if you want to annotate availability for multiple platforms,
-you'll need stack `@available` attributes.
+you'll need to stack `@available` attributes.
 For example,
 here's how the previous shorthand example
 can be expressed in multiple attributes:
@@ -249,7 +249,7 @@ reports availability in
 iOS 13.0+,
 Mac Catalyst 13.0+, and
 tvOS 13.0+
-despite its declaration only mentions `iOS 13.0`.
+despite its declaration only mentioning `iOS 13.0`.
 
 If necessary,
 you can explicitly mark these derived platforms as being unavailable
@@ -346,18 +346,19 @@ have the same syntax as their
 
 {% warning %}
 
-You can’t combine multiple `#available` expressions
+You can't combine multiple `#available` expressions
 using logical operators like `&&` and `||`,
 but you can use commas,
 which are equivalent to `&&`.
 In practice, 
 this is only useful for conditioning
-Swift language version and the availability of a single platform
-_(since a check for more than one would be either redundant or impossible)_.
+the availability of a single platform together with other conditions,
+such as optional binding
+_(since a check for more than one platform would be either redundant or impossible)_.
 
 ```swift
-// Require Swift 5 and iOS 13
-guard #available(swift 5.0), #available(iOS 13.0) else { return }
+// Require iOS 13 and a window scene
+guard #available(iOS 13.0, *), let windowScene = window?.windowScene else { return }
 ```
 
 {% endwarning %}
@@ -387,8 +388,8 @@ Xcode will recommend the following options:
   the current method as well as that method's containing class)_
 
 Following our analogy to error handling,
-the first option is similar to prepending `try` to a function call,
-and the second option is akin to wrapping a statement within `do/catch`.
+the first option is similar to wrapping a statement within `do/catch`,
+and the second option is akin to prepending `try` to a function call.
 
 For example,
 within an app supporting iOS 12 and iOS 13,
@@ -458,7 +459,7 @@ from [Clang's diagnostic text](https://clang.llvm.org/docs/DiagnosticsReference.
     <tr>
         <th>warning:</th>
         <td colspan="7">
-            ‘unavailable’ availability overrides all other availability information</span>
+            <span>‘unavailable’ availability overrides all other availability information</span>
         </td>
     </tr>
     <tr>
@@ -678,7 +679,7 @@ class NewAndImprovedViewController: UIViewController { <#...#> }
 ```
 
 Use of `unavailable` or `deprecated`, however,
-are much less useful for apps;
+is much less useful for apps;
 without any expectation to vend an API outside that context,
 you can simply remove an API outright.
 
@@ -696,7 +697,7 @@ platform-specific biometric features like Touch ID and Face ID.
 However,
 if your framework wraps SDK functionality
 in a way that doesn't expose such implementation details,
-you might be able to opt-in to new features
+you might be able to opt in to new features
 without affecting the availability for your own APIs.
 For example,
 an <abbr title="natural language processing">NLP</abbr>
