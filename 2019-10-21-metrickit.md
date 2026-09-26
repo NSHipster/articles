@@ -80,7 +80,7 @@ You can view them in Xcode 11
 by opening the Organizer (<kbd>⌥</kbd><kbd>⌘</kbd><kbd>⇧</kbd><kbd>O</kbd>)
 and selecting the new Metrics tab.
 
-MetricKit complement Xcode Organizer Metrics by providing a programmatic way to
+MetricKit complements Xcode Organizer Metrics by providing a programmatic way to
 receive daily information about how your app is performing in the field.
 With this information,
 you can collect, aggregate, and analyze on your own in greater detail
@@ -605,19 +605,20 @@ end
 import express from 'express';
 import { Pool } from 'pg';
 
-const db = new Pool(
+const db = new Pool({
     connectionString: process.env.DATABASE_URL,
     ssl: process.env.NODE_ENV === 'production'
-);
+});
 
 const app = express();
+app.use(express.text({ type: '*/*' }));
 app.post('/collect', (request, response) => {
   db.query('INSERT INTO metrics (payload) VALUES ($1)', [request.body], (error, results) => {
     if (error) {
       throw error;
     }
 
-    response.status(204);
+    response.sendStatus(204);
   })
 });
 
