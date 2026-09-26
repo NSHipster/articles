@@ -75,7 +75,7 @@ from staples like `@interface` and `@implementation`
 to ones you could go your whole career without spotting, 
 like `@defs` and `@compatibility_alias`.
 But to anyone aspiring to be an NSHipster, 
-knowledge of every `@` directives 
+knowledge of every `@` directive 
 is tantamount to a birder's familiarity with
 the frenetic hovering of a hummingbird,
 the commanding top knot of a Mountain quail, or
@@ -183,7 +183,7 @@ with attributes for specifying:
 - [Atomicity](https://en.wikipedia.org/wiki/Linearizability) 
   (`atomic` / `nonatomic`)
 - [Nullability](https://clang.llvm.org/docs/analyzer/developer-docs/nullability.html)
-  (`nullable` / `nonnullable` / `null_resettable`)
+  (`nullable` / `nonnull` / `null_resettable`)
 - [Ownership](https://clang.llvm.org/docs/AutomaticReferenceCounting.html#ownership-qualification)
   (`weak` / `strong` / `copy` / `retain` / `assign` / `unsafe_unretained`)
 
@@ -200,7 +200,7 @@ Occasionally,
 `@interface` declarations will reference an external type in a property or as a parameter. 
 Rather than adding an `#import` statement in the interface, 
 you can use a forward class declaration in the header
-and import the necessary in the implementation.
+and import the necessary header in the implementation.
 
 `@class`
 : Creates a forward declaration,
@@ -335,7 +335,7 @@ there are now literals for `NSNumber`, `NSArray`, and `NSDictionary`.
 : An `NSNumber` object initialized with 
   the adjacent value using the pertinent class constructor, 
   such that 
-  `@42` → `[NSNumber numberWithInteger:42]` and 
+  `@42` → `[NSNumber numberWithInt:42]` and 
   `@YES` → `[NSNumber numberWithBool:YES]`. 
   _(You can use suffixes to further specify type, 
   like `@42U` → `[NSNumber numberWithUnsignedInt:42U]`)_
@@ -461,7 +461,7 @@ can often feel like a high-wire act.
 If you so much as glance towards an unavailable class or method,
 it could mean curtains for your app.
 That's why the new features in Clang 5.0 came as such a relief.
-Now developers have a compiler-provide safety net
+Now developers have a compiler-provided safety net
 to warn them whenever an unavailable API is referenced
 for one of your supported targets.
 
