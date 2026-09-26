@@ -138,7 +138,7 @@ anotherPlateStack.arrangedSubviews.count // 3
 ```
 
 {% warning %}
-Stack views don't have an intrinsic content size, so you must set it either implicitly with Auto Layout constraints or explicitly via its `intrinsicContentSize` property. When nested in a scroll view,
+Stack views don't have an intrinsic content size, so you must set it either implicitly with Auto Layout constraints or explicitly by overriding its `intrinsicContentSize` property. When nested in a scroll view,
 constraints between the stack view and the view containing the scroll view are necessary for things to work as expected.
 {% endwarning %}
 
@@ -180,10 +180,10 @@ UIView.animate(withDuration: 0.5, animations: {
 ```
 
 This feature is particularly useful when the stack view is part of a reusable view such as table and collection view cells;
-not having to keep track of which constraints to toggle is a bliss.
+not having to keep track of which constraints to toggle is bliss.
 
 Now, let's resume our plating work, shall we?
-With everything in place, let's see what can do with our arranged plates.
+With everything in place, let's see what we can do with our arranged plates.
 
 ### Arranging Subviews Horizontally and Vertically
 
@@ -193,7 +193,7 @@ that is the axis along which the arranged subviews will be stacked.
 Setting it to either `horizontal` or `vertical` will force all subviews to fit into a single row or a single column,
 respectively.
 This means that stack views in iOS do not allow overflowing subviews to wrap into a new row or column,
-unlike other implementations such CSS _flexbox_ and its `flex-wrap` property.
+unlike other implementations such as CSS _flexbox_ and its `flex-wrap` property.
 
 {% info %}
 
@@ -232,7 +232,7 @@ plateStack.axis = .vertical
 
 ## <small><em lang="fr">Entrée</em> 🍽</small> Configuring the Layout
 
-When we layout views,
+When we lay out views,
 we're accustomed to thinking in terms of _origin_ and _size_.
 Working with stack views, however, requires us to instead think in terms of _main axis_ and _cross axis_.
 
@@ -240,7 +240,7 @@ Consider how a horizontally-oriented stack view works.
 To determine the width _and_ the `x` coordinate of the origin for each of its arranged subviews,
 it refers to a set of properties that affect layout across the horizontal axis.
 Likewise, to determine the height and the `y` coordinate,
-it refers to another set of properties that affects the vertical axis.
+it refers to another set of properties that affect the vertical axis.
 
 The `UIStackView` class provides axis-specific properties to define the layout: `distribution` for the main axis, and `alignment` for the cross axis.
 
@@ -262,7 +262,7 @@ In practice, each distribution option will determine how space along the main ax
 With all distributions,
 save for `fillEqually`, the stack view attempts to find an optimal layout based on the intrinsic sizes of the arranged subviews.
 When it can't fill the available space, it stretches
-the arranged subview with the the lowest _content hugging priority_.
+the arranged subview with the lowest _content hugging priority_.
 When it can't fit all the arranged subviews,
 it shrinks the one with the lowest _compression resistance priority_.
 If the arranged subviews share the same value for content hugging and compression resistance,
@@ -271,7 +271,7 @@ the algorithm will determine their priority based on their indices.
 {% info %}
 
 Some implementations such as CSS _flexbox_ allow setting the weights for each subview manually,
-using the `flex-basis` property.
+using the `flex-grow` and `flex-shrink` properties.
 In iOS, setting a custom proportional distribution requires additional constraints between the subviews.
 
 {% endinfo %}
@@ -315,7 +315,7 @@ On the downside,
 it introduces unnecessary complexity for most use cases.
 
 Without gravity areas,
-there is effectively no way for a `UIStackview` to stack its arranged subviews towards one end of the main axis ---
+there is effectively no way for a `UIStackView` to stack its arranged subviews towards one end of the main axis ---
 a feature that is fairly common elsewhere,
 as is the case with the `flex-start` and `flex-end` values in _flexbox_.
 
@@ -382,7 +382,7 @@ plateStack.spacing = 2 // These plates can float too!
 
 The spacing property applies equally between each pair of arranged subviews.
 To set an explicit spacing between two particular subviews,
-use the `setCustomSpacing(:after:)` method instead.
+use the `setCustomSpacing(_:after:)` method instead.
 When a custom spacing is used alongside the `equalSpacing` distribution,
 it will be applied on all views,
 not just the one specified in the method call.
@@ -396,7 +396,7 @@ plateStack.customSpacing(after: saladPlate) // 4
 
 {% info %}
 
-When trying to retrieve a non-existent custom spacing, the method will peculiarly return `Float.greatestFiniteMagnitude` (3.402823e+38) instead.
+When trying to retrieve a non-existent custom spacing, the method will return the constant `UIStackView.spacingUseDefault` (3.402823e+38) instead.
 
 {% endinfo %}
 
@@ -431,7 +431,7 @@ plateStack.isBaselineRelativeArrangement = true // Spacing will be measured from
 
 ### <em lang="fr">L’addition s’il vous plaît!</em>
 
-The automatic layout calculation that stack views do for us come with a performance cost.
+The automatic layout calculation that stack views do for us comes with a performance cost.
 In most cases,
 it is negligible.
 But when stack views are nested more than two layers deep,
@@ -448,7 +448,7 @@ Apple gave us a sneak peek at how we will be laying out views in the months and 
 `HStack`, `VStack`, and `ZStack`.
 In broad strokes,
 these views are specialized stacking views where the main axis is pre-defined for each subtype and the alignment configuration is restricted to the corresponding cross axis.
-This is a welcome change that alleviates the `UIStackView` API shortcomings highlighted towards the end of cross axis section above.
+This is a welcome change that alleviates the `UIStackView` API shortcomings highlighted towards the end of the cross axis section above.
 There are more interesting tidbits to go over, but we will leave that for another banquet.
 
 ---
