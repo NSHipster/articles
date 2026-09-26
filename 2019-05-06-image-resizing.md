@@ -100,7 +100,7 @@ please refer to
 
 Now,
 few apps would ever try to load an image this large...
-but it's not _too_ far off from some of the assets I've gotten back from designer.
+but it's not _too_ far off from some of the assets I've gotten back from a designer.
 _(Seriously, a 3MB PNG for a color gradient?)_
 So with that in mind,
 let's take a look at the various ways that you can go about
@@ -133,7 +133,7 @@ to Core Image and UIKit:
 5. [Image Scaling with vImage](#technique-5-image-scaling-with-vimage)
 
 For consistency,
-each of the following techniques share a common interface:
+most of the following techniques share a common interface:
 
 ```swift
 func resizedImage(at url: URL, for size: CGSize) -> UIImage? { <#...#> }
@@ -212,7 +212,7 @@ func resizedImage(at url: URL, for size: CGSize) -> UIImage? {
 
 [`UIGraphicsImageRenderer`](https://developer.apple.com/documentation/uikit/uigraphicsimagerenderer)
 is a relatively new API,
-introduced in iOS 10 to replace the older,
+introduced in iOS 10 to replace the older
 `UIGraphicsBeginImageContextWithOptions` / `UIGraphicsEndImageContext` APIs.
 You construct a `UIGraphicsImageRenderer` by specifying a point `size`.
 The `image` method takes a closure argument
@@ -281,7 +281,7 @@ these parameters are fetched from the `CGImage` object.
 Next, setting the `interpolationQuality` property to `.high`
 instructs the context to interpolate pixels at a 👌 level of fidelity.
 The `draw(_:in:)` method
-draws the image at a given size and position, a
+draws the image at a given size and position,
 allowing for the image to be cropped on a particular edge
 or to fit a set of image features, such as faces.
 Finally,
@@ -387,14 +387,14 @@ each of which are pretty self-explanatory.
 More interestingly,
 a `CIContext` is used here to create a `UIImage`
 (by way of a `CGImageRef` intermediary representation),
-since `UIImage(CIImage:)` doesn't often work as expected.
+since `UIImage(ciImage:)` doesn't often work as expected.
 Creating a `CIContext` is an expensive operation,
 so a cached context is used for repeated resizing.
 
 {% info %}
 
 A `CIContext` can be created using either the GPU or the CPU (much slower) for rendering.
-Specify the `.useSoftwareRenderer` the option in the initializer to choose which one to use.
+Specify the `.useSoftwareRenderer` option in the initializer to choose which one to use.
 _(Hint: Use the faster one, maybe?)_
 
 {% endinfo %}
@@ -411,7 +411,7 @@ vImage comes with a
 for scaling an image buffer.
 These lower-level APIs promise high performance with low power consumption,
 but at the cost of managing the buffers yourself
-(not to mention, signficantly more code to write):
+(not to mention, significantly more code to write):
 
 ```swift
 import UIKit
@@ -489,7 +489,7 @@ But get past the unfriendly-looking type and function names,
 and you'll find that this approach is rather straightforward.
 
 - First, create a source buffer from your input image,
-- Then, create a destination buffer to hold the scaled image
+- Then, create a destination buffer to hold the scaled image,
 - Next, scale the image data in the source buffer to the destination buffer,
 - Finally, create an image from the resulting image data in the destination buffer.
 
@@ -535,7 +535,7 @@ Setting `kCIContextUseSoftwareRenderer` to `true` on the options passed on `CICo
   according to Apple's
   [_Performance Best Practices section of the Core Image Programming Guide_](https://developer.apple.com/library/mac/documentation/graphicsimaging/Conceptual/CoreImaging/ci_performance/ci_performance.html#//apple_ref/doc/uid/TP30001185-CH10-SW1),
   you should use Core Graphics or Image I/O functions
-  to crop and downsampling images instead of Core Image.
+  to crop and downsample images instead of Core Image.
 - Unless you're already working with **`vImage`**,
   the extra work necessary to use the low-level Accelerate APIs
   probably isn't justified in most circumstances.
