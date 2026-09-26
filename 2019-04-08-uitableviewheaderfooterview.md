@@ -22,7 +22,7 @@ because compositing subviews was too slow.
 _(Interface Builder? Auto Layout?
 **Phooey!**
 Back in my day, we calculated all of our view frames by hand ---
-up hill, both ways, in the snow)_
+uphill, both ways, in the snow)_
 
 At the time,
 the highest praise a developer could receive for their efforts
@@ -56,17 +56,17 @@ before going into more detail about `UITableViewHeaderFooterView`:
 ## UITableView Review
 
 A `UITableView` consists of <dfn>sections</dfn>,
-each of which containing a number of <dfn>rows</dfn>.
+each of which contains a number of <dfn>rows</dfn>.
 
 For each row,
 the table view's `dataSource` is responsible for returning a `UITableViewCell`
 to represent each section / row <dfn>index path</dfn>
-with the `tableView(_:cellForRowAt:)` delegate method.
+with the `tableView(_:cellForRowAt:)` data source method.
 The table view's `dataSource` may also provide
 a title to be displayed in the header or footer of a section
 by implementing the optional
 `tableView(_:titleForHeaderInSection:)` and
-`tableView(_:titleForFooterInSection:)` delegate methods.
+`tableView(_:titleForFooterInSection:)` data source methods.
 
 To customize the appearance of section headers or footers,
 the table view's `delegate` can implement the optional delegate methods

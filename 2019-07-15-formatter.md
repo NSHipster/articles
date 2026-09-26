@@ -351,11 +351,11 @@ one byte is 8 bits, 1 kilobyte = 1000¹ bytes</p>
 
 ---
 
-`MeasurementFormatter` and its associated APIs are a intuitive ---
+`MeasurementFormatter` and its associated APIs are intuitive ---
 just a delight to work with, honestly.
 The only potential snag for newcomers to Swift
 (or Objective-C old-timers, perhaps)
-are the use of generics to constrain `Measurement` values
+is the use of generics to constrain `Measurement` values
 to a particular `Unit` type.
 
 ```swift
@@ -558,7 +558,7 @@ for parsing timestamps from external data sources.
 Fortunately,
 we no longer need to proffer a third-party solution,
 because, as of iOS 10.0 and macOS 10.12,
-`ISO8601DateFormatter` is now built-in to Foundation.
+`ISO8601DateFormatter` is now built into Foundation.
 
 ```swift
 let formatter = ISO8601DateFormatter()
@@ -777,7 +777,7 @@ and offers some great new functionality to make your app
 more personable and accessible.
 
 (As far as we can tell,)
-`RelativeDatetimeFormatter` takes the most significant date component
+`RelativeDateTimeFormatter` takes the most significant date component
 and displays it in terms of past or future tense
 ("1 day ago" / "in 1 day").
 

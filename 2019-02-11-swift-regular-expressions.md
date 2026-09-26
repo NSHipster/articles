@@ -134,8 +134,8 @@ tells us whether or not a match occurred.
 
 The method itself provides default arguments to the
 `options`, `range`, and `locale` parameters;
-by default, it performs a localized, unqualified search
-over the entire string in the current locale.
+by default, it performs an unqualified search
+over the entire string in the system locale.
 
 Within a regular expression,
 the `?` operator matches the preceding character or group zero or one times.
@@ -242,7 +242,7 @@ A regular expression can match its pattern
 one or more times on a string.
 Within each match,
 there may be one or more <dfn>capture groups</dfn>,
-which are designated by enclosing by parentheses in the regex pattern.
+which are designated by enclosing parentheses in the regex pattern.
 
 For example,
 let's say you wanted to use regular expressions
@@ -276,7 +276,7 @@ The en dash is the correct punctuation
 for denoting a span or range of numbers.
 {% endinfo %}
 
-We can use the `enumerateMatches(in:options:range)` method
+We can use the `enumerateMatches(in:options:range:using:)` method
 to try each match until we find one that
 has three ranges (the entire match and the two capture groups),
 whose captured values can be used to initialize a valid range.
