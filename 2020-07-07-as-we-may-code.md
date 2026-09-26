@@ -13,7 +13,7 @@ Chris Lattner often describes [LLVM] as a process of <dfn>lowering</dfn>.
 
 You start at the highest level of abstraction,
 source code written in a programming language like Swift or Objective-C.
-That code is parsed into an abstract syntax tree,
+That code is parsed into an abstract syntax tree
 (<abbr title="Abstract Syntax Tree">AST</abbr>),
 which is progressively transformed into
 lower-level, intermediate representations
@@ -90,7 +90,7 @@ feel free to [skip ahead to the technical details](#skip).
 ## <small>Web 1.0</small> The Web of Documents
 
 Tim Berners-Lee launched the World Wide Web
-from a NeXT workstation 27 years ago.
+from a NeXT workstation 29 years ago.
 His vision for a
 globally-distributed, decentralized network of inter-connected documents
 gave rise to the Internet as we know it today.
@@ -263,12 +263,12 @@ you see an enormous degree of variance across projects and communities.
 Some are sparse; others are replete with adornment.
 
 And yet,
-no matter what a project’s README looks like,
-onboarding onto a new tool or library entails, well _reading_.
+no matter what a project's README looks like,
+onboarding onto a new tool or library entails, well, _reading_.
 
 <aside class="parenthetical">
 
-I mean, it’s right there in capital letters: "READ ME"
+I mean, it's right there in capital letters: "READ ME"
 
 </aside>
 
@@ -285,7 +285,7 @@ You have to read the README to find out!
 
 The modest capabilities of browsing and searching code today
 more closely resemble [AltaVista] circa 2000 than Google circa 2020.
-Theres so much more that we could be doing.
+There's so much more that we could be doing.
 
 * * *
 
@@ -302,7 +302,7 @@ is called a <dfn>triple</dfn>, which comprises:
 
   - a subject _("the sky")_
   - a predicate _("has the color")_
-  - an object _("blue"_)
+  - an object _("blue")_
 
 You can organize triples according to a
 <dfn>vocabulary</dfn>, or <dfn>ontology</dfn>,
@@ -426,7 +426,7 @@ collector.functions.first?.name // "foo()"
 collector.functions.first?.returns // "Widget"
 ```
 
-Combining this syntactic reading with information from compiler,
+Combining this syntactic reading with information from the compiler,
 we can express facts about the code in the form of RDF triples.
 
 ```json-ld
@@ -694,7 +694,7 @@ but we can go even further.
 Similar to how academic papers contain citations,
 example code can be annotated to include references to
 the canonical APIs it interacts with.
-Strong connections between references and its source material
+Strong connections between references and their source material
 make for easy retrieval later on.
 
 Imagine if,
@@ -709,7 +709,7 @@ just waiting for us to connect the dots.
 
 ### Automatic µDependencies
 
-John D. Cook once
+As John D. Cook once
 [observed](https://www.johndcook.com/blog/2011/02/03/lego-blocks-and-organ-transplants/),
 code reuse is more like an organ transplant
 than snapping LEGO blocks together.
@@ -761,7 +761,7 @@ Today, there's no automatic way to pick and choose what you need.
 But there's no inherent reason why the compiler couldn't do this for you.
 
 Or to go even further:
-If everything compiles down to [web assembly](https://swiftwasm.org),
+If everything compiles down to [WebAssembly](https://swiftwasm.org),
 there's no inherent requirement for that implementation of _k_-means —
 it could be written in Rust or JavaScript,
 and you'd be none the wiser.
