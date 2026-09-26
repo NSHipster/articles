@@ -241,13 +241,13 @@ and is situated at the point `(-3, -1)`:
 
 It's generally a good idea for all `CGRect` values
 to be rounded to the nearest whole point.
-Fractional values can cause the frame to be drawn on a <dfn>pixel boundary</dfn>.
+Fractional values can cause the frame to be drawn off a <dfn>pixel boundary</dfn>.
 Because pixels are atomic units,
 a fractional value causes drawing to be averaged over the neighboring pixels.
 The result: blurry lines that don't look great.
 
-The `integral` property takes the `floor` each origin value
-and the `ceil` each size value.
+The `integral` property takes the `floor` of each origin value
+and the `ceil` of each maximum value.
 This ensures that your drawing code aligns on pixel boundaries crisply.
 
 ```swift
@@ -474,4 +474,4 @@ and you may encounter the best arithmetic problem of all:
 adding up all the money you've made with your awesome new app.
 _Mathematical!_
 
-[quartz-2d]: https://developer.apple.com/library/mac/#documentation/graphicsimaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html
+[quartz-2d]: https://developer.apple.com/library/archive/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html
