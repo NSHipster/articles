@@ -117,7 +117,7 @@ to your editor to create an image literal.
 For everything else,
 `Bundle` provides several instance methods and properties
 that give the location of standard bundle items,
-with variants returning either a `URL` or a `String` paths:
+with variants returning either a `URL` or a `String` path:
 
 | URL                            | Path                            | Description                                      |
 | ------------------------------ | ------------------------------- | ------------------------------------------------ |
@@ -153,8 +153,8 @@ by subscript access to the `infoDictionary` property.
 use the `localizedInfoDictionary` property instead).
 
 ```swift
-bundle.infoDictionary["CFBundleName"] // "Example"
-bundle.localizedInfoDictionary["CFBundleName"] // "Esempio" (`it_IT` locale)
+bundle.infoDictionary?["CFBundleName"] // "Example"
+bundle.localizedInfoDictionary?["CFBundleName"] // "Esempio" (`it_IT` locale)
 ```
 
 ### Getting Localized Strings
@@ -187,12 +187,12 @@ NSLocalizedString("Hello, %@", comment: "Hello, ${username}")
 ```
 
 ```terminal
-$ find . \( -name "*.swift" !           \ # find all Swift files
-            ! -path "./Carthage/*"      \ # ignoring dependencies
-            ! -path "./Pods/*"          \ # from Carthage and CocoaPods
-         \)    |                        \
-  tr '\n' '\0' |                        \ # change delimiter to NUL
-  xargs -0 genstrings -o .              \ # to handle paths with spaces
+$ find . \( -name "*.swift"             \
+            ! -path "./Carthage/*"      \
+            ! -path "./Pods/*"          \
+         \)    |                        # find all Swift files, ignoring dependencies from Carthage and CocoaPods
+  tr '\n' '\0' |                        # change delimiter to NUL
+  xargs -0 genstrings -o .              # to handle paths with spaces
 ```
 
 ## Packages
@@ -235,7 +235,7 @@ The best option depends on the kind of package:
 - Otherwise, you can use
   [`FileWrapper`](https://developer.apple.com/documentation/foundation/filewrapper)
   to navigate directories, files, and symbolic links,
-  and [`FileHandler`](https://developer.apple.com/documentation/foundation/filehandle)
+  and [`FileHandle`](https://developer.apple.com/documentation/foundation/filehandle)
   to read and write to file descriptors.
 
 ### Determining if a Directory is a Package
