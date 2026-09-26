@@ -41,7 +41,7 @@ But this week,
 we wanted to take a closer look at a key language feature for SwiftUI ---
 something that will have arguably the biggest impact on the
 <em lang="fr">«je ne sais quoi»</em> of Swift in version 5.1 and beyond:
-<dfn>property wrappers</dfn>
+<dfn>property wrappers</dfn>.
 
 ---
 
@@ -128,7 +128,7 @@ SE-0258 offers plenty of practical examples, including
 But the one we were most excited about
 was that of the `@Constrained` property wrapper.
 
-Swift's standard library offer [correct](https://en.wikipedia.org/wiki/IEEE_754),
+Swift's standard library offers [correct](https://en.wikipedia.org/wiki/IEEE_754),
 performant, floating-point number types,
 and you can have it in any size you want ---
 so long as it's
@@ -180,7 +180,7 @@ struct Clamping<Value: Comparable> {
     var value: Value
     let range: ClosedRange<Value>
 
-    init(initialValue value: Value, _ range: ClosedRange<Value>) {
+    init(wrappedValue value: Value, _ range: ClosedRange<Value>) {
         precondition(range.contains(value))
         self.value = value
         self.range = range
@@ -196,7 +196,7 @@ struct Clamping<Value: Comparable> {
 You could use `@Clamping`
 to guarantee that a property modeling
 [acidity in a chemical solution](https://en.wikipedia.org/wiki/PH)
-within the conventional range of 0 – 14.
+stays within the conventional range of 0 – 14.
 
 ```swift
 struct Solution {
@@ -211,7 +211,8 @@ results in the closest boundary value (minimum or maximum)
 to be used instead.
 
 ```swift
-let superDuperAcid = Solution(pH: -1)
+var superDuperAcid = Solution()
+superDuperAcid.pH = -1
 superDuperAcid.pH // 0
 ```
 
@@ -228,7 +229,7 @@ struct UnitInterval<Value: FloatingPoint> {
     @Clamping(0...1)
     var wrappedValue: Value = .zero
 
-    init(initialValue value: Value) {
+    init(wrappedValue value: Value) {
         self.wrappedValue = value
     }
 }
@@ -300,7 +301,7 @@ the situation presents another compelling use case for Swift property wrappers.
 Foundation bridges the `trimmingCharacters(in:)` method to Swift strings,
 which provides, among other things,
 a convenient way to lop off whitespace
-from both the front or back of a `String` value.
+from both the front and back of a `String` value.
 Calling this method each time you want to ensure data sanity is, however,
 less convenient.
 And if you've ever had to do this yourself to any appreciable extent,
@@ -372,7 +373,7 @@ struct Trimmed {
         set { value = newValue.trimmingCharacters(in: .whitespacesAndNewlines) }
     }
 
-    init(initialValue: String) {
+    init(wrappedValue initialValue: String) {
         self.wrappedValue = initialValue
     }
 }
@@ -390,7 +391,7 @@ struct Post {
     @Trimmed var body: String
 }
 
-let quine = Post(title: "  Swift Property Wrappers  ", body: "<#...#>")
+var quine = Post(title: "  Swift Property Wrappers  ", body: "<#...#>")
 quine.title // "Swift Property Wrappers" (no leading or trailing spaces!)
 
 quine.title = "      @propertyWrapper     "
@@ -404,7 +405,7 @@ quine.title // "@propertyWrapper" (still no leading or trailing spaces!)
   to incoming string values.
 - A `@Normalized` property wrapper that allows a `String` property
   to customize its [normalization form](https://unicode.org/reports/tr15/#Norm_Forms).
-- A `@Quantized` / `@Rounded` / `@Truncated` property
+- A `@Quantized` / `@Rounded` / `@Truncated` property wrapper
   that quantizes values to a particular degree (e.g. "round up to nearest ½"),
   but internally tracks precise intermediate values
   to prevent cascading rounding errors.
@@ -491,7 +492,7 @@ carries a strong directive to the contrary:
 ### Implementing a case-insensitive property wrapper
 
 The `CaseInsensitive` type below
-implements a property wrapper around a `String` / `SubString` value.
+implements a property wrapper around a `String` / `Substring` value.
 The type conforms to `Comparable` (and by extension, `Equatable`)
 by way of the bridged `NSString` API
 [`caseInsensitiveCompare(_:)`](https://developer.apple.com/documentation/foundation/nsstring/1414769-caseinsensitivecompare):
@@ -557,7 +558,7 @@ struct Account: Equatable {
     @CaseInsensitive var name: String
 
     init(name: String) {
-        $name = CaseInsensitive(wrappedValue: name)
+        _name = CaseInsensitive(wrappedValue: name)
     }
 }
 
@@ -581,7 +582,7 @@ it's a _bona fide_ `String` value.
 
 _That's neat, but what's actually going on here?_
 
-Since Swift 4,
+Since Swift 4.1,
 the compiler automatically synthesizes `Equatable` conformance
 to types that adopt it in their declaration
 and whose stored properties are all themselves `Equatable`.
@@ -593,7 +594,7 @@ rather than their underlying value:
 // Synthesized by Swift Compiler
 extension Account: Equatable {
     static func == (lhs: Account, rhs: Account) -> Bool {
-        lhs.$name == rhs.$name
+        lhs._name == rhs._name
     }
 }
 ```
@@ -605,7 +606,7 @@ extension Account: Equatable {
   are considered equal.
 - A `@Approximate` property wrapper to refine
   equality semantics for floating-point types
-  (See also [SE-0259](https://github.com/apple/swift-evolution/blob/master/proposals/0259-approximately-equal.md))
+  (See also [SE-0259](https://github.com/apple/swift-evolution/blob/master/proposals/0259-approximately-equal.md)).
 - A `@Ranked` property wrapper that takes a function
   that defines strict ordering for, say, enumerated values;
   this could allow, for example,
@@ -625,7 +626,7 @@ and most client developers would like to keep it that way.
 But this is yet another use case too compelling to ignore
 as we start to look at the world through property-wrapped glasses.
 
-### Implementing a Property Value Versioning
+### Implementing Property Value Versioning
 
 The following `Versioned` structure functions as a property wrapper
 that intercepts incoming values and creates a timestamped record
@@ -648,7 +649,8 @@ struct Versioned<Value> {
         }
     }
 
-    init(initialValue value: Value) {
+    init(wrappedValue value: Value) {
+        self.value = value
         self.wrappedValue = value
     }
 }
@@ -696,7 +698,7 @@ class ExpenseReport {
     @Versioned var state: State = .submitted {
         willSet {
             if newValue == .approved,
-                $state.timestampedValues.map { $0.1 }.contains(.denied)
+                _state.timestampedValues.map { $0.1 }.contains(.denied)
             {
                 fatalError("J'Accuse!")
             }
@@ -813,7 +815,7 @@ struct Dasherized {
         set { value = newValue.replacingOccurrences(of: " ", with: "-") }
     }
 
-    init(initialValue: String) {
+    init(wrappedValue initialValue: String) {
         self.wrappedValue = initialValue
     }
 }
@@ -904,11 +906,11 @@ Swift is a much, _much_ more complex language than Objective-C.
 That's been true since Swift 1.0 and has only become more so over time.
 
 The profusion of `@`-prefixed features in Swift ---
-whether it's  
+whether it's
 [`@dynamicMemberLookup`](https://github.com/apple/swift-evolution/blob/master/proposals/0195-dynamic-member-lookup.md)
 and
 [`@dynamicCallable`](https://github.com/apple/swift-evolution/blob/master/proposals/0216-dynamic-callable.md)
-from Swift 4,
+from Swift 4.2 and 5,
 or
 [`@differentiable` and `@memberwise`](https://forums.swift.org/t/pre-pitch-swift-differentiable-programming-design-overview/25992)
 from [Swift for Tensorflow](https://github.com/tensorflow/swift) ---
@@ -931,7 +933,7 @@ Their potential for improving safety and reducing complexity of code is immense,
 and we've only begun to scratch the surface of what's possible.
 
 Yet, for all of their promise,
-property wrappers and its cohort of language features debuted alongside SwiftUI
+property wrappers and their cohort of language features debuted alongside SwiftUI
 introduce tremendous upheaval to Swift.
 
 Or, as Nataliya Patsovska
