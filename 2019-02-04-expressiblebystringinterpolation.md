@@ -4,7 +4,7 @@ author: Mattt
 category: Swift
 excerpt: >-
   Swift 5 overhauls how values in string literals are interpolated,
-  and incidentally overturned several decades' worth 
+  and incidentally overturns several decades' worth 
   of problematic programming conventions.
 status:
   swift: 5.0
@@ -36,7 +36,7 @@ Format strings are _awful_.
 
 After incorrect `NULL` handling, buffer overflows, and uninitialized variables,
 [`printf` / `scanf`](https://en.wikipedia.org/wiki/printf)-style format strings
-are arguably the most problematic holdovers from C-style programming language.
+are arguably the most problematic holdovers from C-style programming languages.
 
 In the past 20 years,
 security professionals have documented
@@ -51,7 +51,7 @@ but they're hard to use.
 Yes, _hard_ to use.
 
 Consider the `dateFormat` property on `DateFormatter`,
-which takes an [`strftime`](https://en.wikipedia.org/wiki/strftime)
+which takes a [Unicode TR35](http://www.unicode.org/reports/tr35/tr35-31/tr35-dates.html#Date_Format_Patterns)
 format string.
 If we wanted to create a string representation of a date
 that included its year,
@@ -131,7 +131,7 @@ let's look at what `ExpressibleByStringInterpolation` is and how it works:
 Types that conform to the `ExpressibleByStringInterpolation` protocol
 can customize how interpolated values
 (that is, values escaped by `\(<#...#>)`)
-in string literals.
+in string literals are handled.
 
 You can take advantage of this new protocol either by
 extending the default `String` interpolation type
@@ -149,7 +149,7 @@ see Swift Evolution proposal
 By default,
 and prior to Swift 5,
 all interpolated values in a string literal
-were sent to directly to a `String` initializer.
+were sent directly to a `String` initializer.
 Now with `ExpressibleByStringInterpolation`,
 you can specify additional parameters
 as if you were calling a method
@@ -162,14 +162,14 @@ with `ExpressibleByStringInterpolation`.
 
 By extending `String`'s default interpolation type
 (aptly-named `DefaultStringInterpolation`),
-we can define a new method called `appendingInterpolation`.
+we can define a new method called `appendInterpolation`.
 The type of the first, unnamed parameter
 determines which interpolation methods are available
 for the value to be interpolated.
 In our case,
 we'll define an `appendInterpolation` method that takes a `Date` argument
 and an additional `component` parameter of type `Calendar.Component`
-that we'll use to specify which
+that we'll use to specify which component to interpolate.
 
 ```swift
 import Foundation
@@ -203,10 +203,10 @@ for what you actually want: `.year`.
 
 But really,
 we shouldn't be formatting dates by hand like this anyway.
-We should be delegating that responsibility to a `DateFormatter`:
+We should be delegating that responsibility to a `DateFormatter`.
 
 You can overload interpolations just like any other Swift method,
-and having multiple with the same name but different type signatures.
+and have multiple with the same name but different type signatures.
 For example,
 we can define interpolators for dates and numbers
 that take a `formatter` of the corresponding type.
@@ -409,7 +409,7 @@ for where it could be used:
   String interpolation offers a safer and easier-to-understand
   alternative to date and number format strings.
 - **Escaping**
-  Whether its escaping entities in
+  Whether it's escaping entities in
   URLs, XML documents, shell command arguments,
   or values in SQL queries,
   extensible string interpolation makes correct behavior seamless and automatic.
@@ -419,7 +419,7 @@ for where it could be used:
   and terminal output with ANSI control sequences for color and effects,
   or pad unadorned text to match the desired alignment.
 - **Localizing**
-  Rather than relying on a a script that scans source code
+  Rather than relying on a script that scans source code
   looking for matches on "NSLocalizedString",
   string interpolation allows us to build tools that leverage the compiler
   to find all instances of localized strings.
