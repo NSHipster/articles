@@ -62,7 +62,7 @@ by calling the corresponding method found in the following table:
 
 JavaScript evaluation isn't limited to single statements.
 When you evaluate code that declares a function or variable,
-it’s saved into the context's object space.
+it's saved into the context's object space.
 
 ```swift
 context.evaluateScript(#"""
@@ -84,7 +84,7 @@ context.evaluateScript("{} + []")?
        .toString() // "0"
 ```
 
-[_Checks out!_](https://www.destroyallsoftware.com/talks/wat).
+[_Checks out!_](https://www.destroyallsoftware.com/talks/wat)
 
 We can verify this for ourselves
 using the `jsc` command-line utility
@@ -130,7 +130,7 @@ context.evaluateScript("**INVALID**")
 You can't tell whether a script evaluated successfully
 based on its return value.
 For instance,
-both variable assignment and syntax errors
+both variable declarations and syntax errors
 produce `undefined` return values.
 {% endwarning %}
 
@@ -215,7 +215,7 @@ triple?.call(withArguments: [9])?
 In this example,
 we access the `triple` function from before by name
 and call it ---
-passing 9 an argument ---
+passing 9 as an argument ---
 to produce the value 27.
 
 A similar limitation exists when you attempt to go the opposite direction,
@@ -249,7 +249,8 @@ context.evaluateScript("quadruple(3)")?
        .toInt32() // 12
 
 context.objectForKeyedSubscript("quadruple")?
-       .call(withArguments: [3]) // 12
+       .call(withArguments: [3])?
+       .toInt32() // 12
 ```
 
 {% warning %}
@@ -265,7 +266,7 @@ instead, you can access it by way of the
 
 ## Passing Swift Objects between Swift and JavaScript
 
-All of the conversion between Swift and Javascript we've seen so far
+All of the conversion between Swift and JavaScript we've seen so far
 has involved manual conversion with intermediary `JSValue` objects.
 To improve interoperability between language contexts,
 JavaScriptCore provides the `JSExport` protocol,
@@ -413,7 +414,7 @@ Going back and forth between languages like this is neat and all,
 but doesn't quite justify all of the effort it took to get to this point.
 
 So let's finish up with some NSHipster-brand _pizazz_,
-and see decorate these aforementioned pioneers of computer science
+and decorate these aforementioned pioneers of computer science
 with a touch of mustache.
 
 ### Showing Off with Mustache
@@ -447,7 +448,7 @@ we can define a mustache template (in all of its curly-braced glory)
 using a Swift multi-line string literal.
 This template ---
 along with the array of `people` from before in a keyed dictionary ---
-are passed as arguments to the `render` method
+is passed as arguments to the `render` method
 found in the `Mustache` object declared in `context`
 after evaluating `mustache.js`.
 
