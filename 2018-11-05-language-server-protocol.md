@@ -5,7 +5,7 @@ category: Open Source
 excerpt: >-
   Apple's adoption of LSP
   is arguably the most important decision they've made for Swift
-  since releasing the language as open source in 2014.
+  since releasing the language as open source in 2015.
   It's a big deal for app developers,
   and it's an even bigger deal for Swift developers on other platforms.
 revisions:
@@ -35,7 +35,7 @@ for Swift and C languages.
 > <cite>Argyrios Kyrtzidis, October 15<sup>th</sup>, 2018</cite>
 
 **This is arguably the most important decision Apple has made for Swift
-since releasing the language as open source in 2014.**
+since releasing the language as open source in 2015.**
 It's a big deal for app developers,
 and it's an even bigger deal for Swift developers on other platforms.
 
@@ -107,7 +107,7 @@ is often referred to as an <dfn>M × N problem</dfn>,
 where the number of integrations is the _product_ of
 `M` editors and `N` languages.
 What the Language Server Protocol does is change this M × N problem
-into a <dfn>M + N problem</dfn>.
+into an <dfn>M + N problem</dfn>.
 
 Rather than an editor having to implement support for each language,
 it only needs to support the LSP.
@@ -323,7 +323,7 @@ Check out [our article about Visual Studio Code](/vscode/)
 to get started with our go-to editors.
 Beyond that,
 the sourcekit-lsp project on GitHub has
-[instructions for integrating with Sublime Text, Vim, Emacs, and others.](https://github.com/NSHipster/sourcekit-lsp/tree/master/Editors#editor-integration).
+[instructions for integrating with Sublime Text, Vim, Emacs, and others.](https://github.com/NSHipster/sourcekit-lsp/tree/master/Editors#editor-integration)
 
 ## Potential Consequences of Apple's Support of Language Server Protocol
 
@@ -387,7 +387,7 @@ The benefit of LSP isn't limited to Swift and Objective-C;
 > and it’s something that we are interested in,
 > but we don’t have specific plans to announce at this moment.
 
-The main focus for the current efforts are to improve the story for Swift.
+The main focus for the current efforts is to improve the story for Swift.
 But once that's done, it should be relatively straightforward
 to have those benefits cascade down to other languages with LSP support.
 
