@@ -58,7 +58,7 @@ We've changed so much that you might find it surprising this even compiles.
 
 Remember what `await` actually does. It allows the current task to suspend. That doesn't just let the task wait for future work to complete. It also is an opportunity to change isolation. This makes async functions very flexible!
 
-Just like a dispatcher doesn't sit there doing nothing while waiting for the ambulance to arrive, a suspended task doesn't block its thread. When the dispatcher puts you on hold to coordinate with the ambulance team, that's the isolation switch - they're transferring your request to a different department that specializes in that type of work.
+Just like a dispatcher doesn't sit there doing nothing while waiting for the ambulance to arrive, a suspended task doesn't block its thread. When the dispatcher puts you on hold to coordinate with the ambulance team, that's the isolation switch — they're transferring your request to a different department that specializes in that type of work.
 
 ## But change to where, exactly?
 
@@ -101,7 +101,7 @@ so the right thing happens at runtime.
 It's just not possible to inspect it statically or even programmatically.
 If you've encountered type erasure before,
 this should seem familiar.
-The flexibility of `async` has come with a price -
+The flexibility of `async` has come with a price —
 a loss of information.
 
 This is where `@isolated(any)` comes in.
@@ -195,7 +195,7 @@ They _**are**_ the interface.
 This is not an exhaustive list,
 but what's important is all of these are things callers must care about.
 Except for `@isolated(any)`, which is the **opposite**.
-It doesn't affect callers at all.
+When it appears on a parameter, it doesn't affect callers of that API at all.
 
 This, I think, is the root of a lot of confusion around `@isolated(any)`.
 Unlike other qualities of a function,
@@ -327,7 +327,7 @@ It's surprising that this attribute requires an argument,
 yet permits only one possible value.
 The reason here comes down to future considerations.
 
-The **concrete** actor type that this `isolation` property returns
+The actor type that this `isolation` property returns
 is always `(any Actor)?`.
 This is the most generic type for isolation and matches the `#isolation` macro.
 Today, there is no way to constrain a function to only **specific** actor types,
