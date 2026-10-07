@@ -24,10 +24,10 @@ status:
 > (spread out in time) as trivial as possible."
 > <br/>
 > —[Edsger W. Dijkstra](https://en.wikipedia.org/wiki/Edsger_W._Dijkstra),
-> ["Go To Considered Harmful"](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)
+> ["Go To Statement Considered Harmful"](https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf)
 
 It's a shame that his essay
-is most remembered for popularizing the "\_\_\_\_ Consider Harmful" meme
+is most remembered for popularizing the "\_\_\_\_ Considered Harmful" meme
 among programmers and their ill-considered online diatribes.
 Because (as usual) Dijkstra was making an excellent point:
 **the structure of code should reflect its behavior**.
@@ -49,7 +49,7 @@ Let's defer `defer` and first take on `guard`.
 ## guard
 
 `guard` is a conditional statement
-requires an expression to evaluate to `true`
+that requires an expression to evaluate to `true`
 for execution to continue.
 If the expression is `false`,
 the mandatory `else` clause is executed instead.
@@ -70,6 +70,7 @@ The `else` clause in a `guard` statement
 must exit the current scope by using
 `return` to leave a function,
 `continue` or `break` to get out of a loop,
+`throw` to raise an error,
 or a function that returns [`Never`](https://nshipster.com/never)
 like `fatalError(_:file:line:)`.
 
@@ -160,11 +161,11 @@ you need to read all the way to the bottom of the method.
 Like a good book,
 code should tell a story:
 with an easy-to-follow plot,
-and clear a beginning, middle, and end.
+and a clear beginning, middle, and end.
 (Just try not to write too much code in the "post-modern" genre).
 
 Strategic use of `guard` statements
-allow us to organize our code to read more linearly.
+allows us to organize our code to read more linearly.
 
 ```swift
 func readBedtimeStory() throws {
@@ -281,7 +282,7 @@ func currentHostName() -> String {
 }
 ```
 
-Even though `defer` comes immediately after the call to `allocate(capacity)`,
+Even though `defer` comes immediately after the call to `allocate(capacity:)`,
 its execution is delayed until the end of the current scope.
 Thanks to `defer`, `buffer` will be properly deallocated
 regardless of where the function returns.
@@ -395,7 +396,7 @@ where a function needs to return a value that should also be modified,
 as in this typical implementation of the postfix `++` operator:
 
 ```swift
-postfix func ++(inout x: Int) -> Int {
+postfix func ++(x: inout Int) -> Int {
     let current = x
     x += 1
     return current
@@ -406,7 +407,7 @@ In this case, `defer` offers a clever alternative.
 Why create a temporary variable when we can just defer the increment?
 
 ```swift
-postfix func ++(inout x: Int) -> Int {
+postfix func ++(x: inout Int) -> Int {
     defer { x += 1 }
     return x
 }
