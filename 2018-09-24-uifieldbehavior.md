@@ -80,7 +80,7 @@ seen in FaceTime calls.
 
 Apple mentions that `UIFieldBehavior` applies "field-based" physics,
 but what does that mean, exactly?
-Thankfully, it's more relatable that one might think.
+Thankfully, it's more relatable than one might think.
 
 There are plenty of examples of field-based physics in the real world,
 whether it's
@@ -91,7 +91,7 @@ Using `UIFieldBehavior`,
 we can designate areas of our view to apply certain physics effects
 whenever an item enters into them.
 
-Its approachable API design allows us to complex physics
+Its approachable API design allows us to model complex physics
 without much more than a factory method:
 
 ```swift
@@ -158,9 +158,9 @@ self.drag = [UIFieldBehavior dragField];
 
 {% warning do %}
 
-Take care to keep a strong reference to you `UIKitDynamicAnimator` object.
+Take care to keep a strong reference to your `UIDynamicAnimator` object.
 You don't typically need to do this for behaviors
-because the animator takes ownership to a behavior once it's added.
+because the animator takes ownership of a behavior once it's added.
 
 {% endwarning %}
 
@@ -187,7 +187,7 @@ as the avatar settles into a corner.
 
 This is a textbook situation for `UIFieldBehavior`'s spring field.
 If we think about how a literal spring works,
-it exerts a linear force equal to the amount of strain that's put on it.
+it exerts a linear force proportional to the amount of strain that's put on it.
 So, if we push down on a coiled spring
 we expect it to snap back into place once we let go.
 
@@ -220,16 +220,14 @@ we can do something clever like this:
 ```swift
 let scale = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-for vertical in [\UIEdgeInsets.left,
-                 \UIEdgeInsets.right]
+for x in [view.layoutMargins.left,
+          view.bounds.maxX - view.layoutMargins.right]
 {
-    for horizontal in [\UIEdgeInsets.top,
-                       \UIEdgeInsets.bottom]
+    for y in [view.layoutMargins.top,
+              view.bounds.maxY - view.layoutMargins.bottom]
     {
         let springField = UIFieldBehavior.springField()
-        springField.position =
-            CGPoint(x: layoutMargins[keyPath: horizontal],
-                    y: layoutMargins[keyPath: vertical])
+        springField.position = CGPoint(x: x, y: y)
         springField.region =
             UIRegion(size: view.bounds.size.applying(scale))
 
@@ -247,7 +245,7 @@ topLeftCornerField.position = CGPointMake(self.layoutMargins.left, self.layoutMa
 topLeftCornerField.region = [[UIRegion alloc] initWithSize:CGSizeMake(self.bounds.size.width/2, self.bounds.size.height/2)];
 
 [self.animator addBehavior:topLeftCornerField];
-[self.topLeftCornerField addItem:self.facetimeAvatar];
+[topLeftCornerField addItem:self.facetimeAvatar];
 
 // Continue to create a spring field for each corner...
 ```
@@ -309,7 +307,7 @@ to deepen our understanding of field physics.
 Currently, we've got a few issues:
 
 1. The avatar could fly off the screen with nothing to keep it constrained
-   aside from spring fields
+   aside from spring fields.
 2. It has a knack for rotating in circles.
 3. Also, it's a tad slow.
 
@@ -321,7 +319,7 @@ To wit, they are rather trivial fixes,
 but it's the _reason_ why they're needed that's key.
 
 The first issue is solved in a rather trivial fashion
-with what is likely UIKit Dynamics most easily understood behavior:
+with what is likely UIKit Dynamics' most easily understood behavior:
 the collision.
 To better hone in on how the avatar view should react
 once it's acted upon by a spring field,
@@ -345,7 +343,7 @@ but have no way to specify the object's mass or density,
 we'd be omitting a critical piece of the puzzle.
 
 ```swift
-let avatarPhysicalProperties= UIDynamicItemBehavior(items: [facetimeAvatar])
+let avatarPhysicalProperties = UIDynamicItemBehavior(items: [facetimeAvatar])
 avatarPhysicalProperties.allowsRotation = false
 avatarPhysicalProperties.resistance = 8
 avatarPhysicalProperties.density = 0.02
@@ -359,10 +357,10 @@ avatarPhysicalProperties.density = 0.02;
 ```
 
 Now the avatar view more closely mirrors real-world physics
-in that it slows down a tinge after pushed by a spring field.
+in that it slows down a tinge after being pushed by a spring field.
 The configurations available from `UIDynamicItemBehavior` are impressive,
 as support for elasticity, charge and anchoring are also available
-to ensure you can continuing tweaking things until they feel right.
+to ensure you can continue tweaking things until they feel right.
 
 Further, it also includes out-of-the-box support
 for attaching linear or angular velocity to an object.
@@ -374,9 +372,9 @@ thus letting the relevant spring field take over:
 
 ```swift
 // Inside a switch for a gesture recognizer...
-case .canceled, .ended:
+case .cancelled, .ended:
 let velocity = panGesture.velocity(in: view)
-facetimeAvatarBehavior.addLinearVelocity(velocity, for: facetimeAvatar)
+avatarPhysicalProperties.addLinearVelocity(velocity, for: facetimeAvatar)
 ```
 
 ```objc
@@ -385,7 +383,7 @@ case UIGestureRecognizerStateCancelled:
 case UIGestureRecognizerStateEnded:
 {
 CGPoint velocity = [panGesture velocityInView:self.view];
-[facetimeAvatarBehavior addLinearVelocity:velocity forItem:self.facetimeAvatar];
+[avatarPhysicalProperties addLinearVelocity:velocity forItem:self.facetimeAvatar];
 break;
 }
 ```
