@@ -27,17 +27,17 @@ project.
 Reading through the code,
 we learn that the Playground logger distinguishes between
 <dfn>structured values</dfn>,
-whose state is disclosed by inspecting its internal members,
+whose state is disclosed by inspecting their internal members,
 and <dfn>opaque values</dfn>,
-which provide a specialized representation of itself.
+which provide a specialized representation of themselves.
 Beyond those two,
 the logger recognizes <dfn>entry and exit points</dfn> for scopes
 (control flow statements, functions, et cetera)
 as well as <dfn>runtime errors</dfn>
-(caused by implicitly unwrapping nil values, `fatalError()`, and the like)
+(caused by implicitly unwrapping nil values, `fatalError()`, and the like).
 Anything else ---
 imports, assignments, blank lines ---
-are considered <dfn>gaps</dfn>
+are considered <dfn>gaps</dfn>.
 
 ### Built-In Opaque Representations
 
@@ -93,8 +93,8 @@ the Swift standard library:
             <th>Numbers</th>
             <td>
                 <ul>
-                    <li><code>Int</code>, <code>UInt</code>, …</code></li>
-                    <li><code>Double</code>, <code>Float</code>, …</code></li>
+                    <li><code>Int</code>, <code>UInt</code>, …</li>
+                    <li><code>Double</code>, <code>Float</code>, …</li>
                     <li><code>CGFloat</code></li>
                     <li><code>NSNumber</code></li>
                 </ul>
@@ -360,7 +360,7 @@ extension CNContact: CustomPlaygroundDisplayConvertible {
 ```
 
 By putting this at the top of our Playground
-(or in a separate file in the Playground's auxilliary sources),
+(or in a separate file in the Playground's auxiliary sources),
 our `contact` from before now provides a much nicer Quick Look representation:
 
 <samp>

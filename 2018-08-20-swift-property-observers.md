@@ -17,9 +17,9 @@ synonymous with the fantastically complicated and whimsical inventions
 depicted in comic strips like
 ["Self-Operating Napkin."](https://upload.wikimedia.org/wikipedia/commons/a/a9/Rube_Goldberg%27s_%22Self-Operating_Napkin%22_%28cropped%29.gif)
 Around the same time,
-Albert Einstein popularized the phrase "spooky action at a distance"
-in his [critique](https://en.wikipedia.org/wiki/EPR_paradox)
-of the prevailing interpretation of quantum mechanics by Niels Bohr.
+Albert Einstein published his [critique](https://en.wikipedia.org/wiki/EPR_paradox)
+of the prevailing interpretation of quantum mechanics by Niels Bohr,
+which he later summed up as "spooky action at a distance."
 
 Nearly a century later,
 modern software development has become what might be seen as
@@ -40,7 +40,7 @@ Such is the focus of this week's article about property observers in Swift,
 which offer a built-in, lightweight alternative
 to more formalized solutions like
 model-view-viewmodel (MVVM)
-functional reactive programming (FRP).
+or functional reactive programming (FRP).
 
 ---
 
@@ -236,7 +236,7 @@ struct NormalizedText {
              throw Error.unsupportedCharacters
         }
 
-        guard value.count < NormalizedText.maximumLength else {
+        guard value.count <= NormalizedText.maximumLength else {
             throw Error.excessiveLength
         }
 
@@ -255,7 +255,7 @@ comes a'knocking,
 we can give him what's for!
 (Which is to say,
 communicate errors to him in a reasonable manner
-rather than failing silently or allowing invalid data)
+rather than failing silently or allowing invalid data.)
 
 ## Propagating Dependent State
 
@@ -311,7 +311,7 @@ You could even cascade this behavior across multiple observed properties a la
 As a general rule,
 side effects are something to avoid when programming,
 because they make it difficult to reason about complex behavior.
-Keep that in mind the next time you reach for this new tool.
+Keep that in mind the next time you reach for this tool.
 
 And yet, from the tippy top of this teetering tower of abstraction,
 it can be tempting --- and perhaps sometimes rewarding ---

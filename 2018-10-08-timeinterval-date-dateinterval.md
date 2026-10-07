@@ -67,7 +67,7 @@ that represents duration as a number of seconds.
 You'll see it as a parameter or return type
 for APIs that deal with a duration of time.
 Being a double-precision floating-point number,
-`TimeInterval` can represent submultiples in its fraction,
+`TimeInterval` can represent submultiples in its fraction
 (though for anything beyond millisecond precision,
 you'll want to use something else).
 
@@ -84,7 +84,7 @@ and contrary to its name represents an absolute point in time.
 
 Why `NSDate` and not `NSTime`?
 Our guess is that the originators of this API wanted
-to match its [counterpart in `java.util.date`](https://docs.oracle.com/javase/7/docs/api/java/util/Date.html)
+to match its [counterpart in `java.util.Date`](https://docs.oracle.com/javase/7/docs/api/java/util/Date.html)
 when <abbr title="Enterprise Objects Framework">EOF</abbr>
 targeted both Java and Objective-C.
 
@@ -92,7 +92,7 @@ targeted both Java and Objective-C.
 
 Another source of confusion for `Date` is that,
 despite representing an absolute point in time,
-it's [defined by a time interval since a reference date](https://github.com/apple/swift-corelibs-foundation/blob/master/Foundation/Date.swift#L17-L20):
+it's [defined by a time interval since a reference date](https://github.com/swiftlang/swift-corelibs-foundation/blob/swift-4.2-RELEASE/Foundation/Date.swift#L17-L20):
 
 ```swift
 public struct Date : ReferenceConvertible, Comparable, Equatable {
@@ -213,7 +213,7 @@ to provide a nice representation of that time period:
 ```swift
 let formatter = DateIntervalFormatter()
 formatter.timeStyle = .none
-formatter.dateTemplate = "%Y"
+formatter.dateTemplate = "y"
 formatter.string(from: overlap)
 // "1590 – 1640"
 ```
