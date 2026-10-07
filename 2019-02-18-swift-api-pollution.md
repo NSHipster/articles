@@ -50,7 +50,7 @@ has to deal with <dfn>naming collisions</dfn> one way or another.
 In the case of Swift,
 you can use <dfn>fully-qualified names</dfn> to distinguish
 between the `Foo` type declared in module `A` (`A.Foo`)
-from the `Foo` type in module `B` (`B.Foo`).
+and the `Foo` type in module `B` (`B.Foo`).
 However, Swift has some unique characteristics
 that cause other ambiguities to go unnoticed by the compiler,
 which may result in a change to existing behavior
@@ -81,7 +81,7 @@ oneTwoThree + fourFiveSix // [1, 2, 3, 4, 5, 6]
 ```
 
 If we look at the operator's
-[declaration in the standard library](https://github.com/apple/swift/blob/master/stdlib/public/core/Array.swift#L1318-L1324),
+[declaration in the standard library](https://github.com/swiftlang/swift/blob/swift-5.0-RELEASE/stdlib/public/core/Array.swift#L1318-L1324),
 we see that it's provided in an unqualified extension on `Array`:
 
 ```swift
@@ -208,10 +208,10 @@ extension DefaultStringInterpolation {
 ```
 
 `StringProtocol` inherits,
-[among other things](https://swiftdoc.org/v4.2/protocol/stringprotocol/)
+[among other things](https://swiftdoc.org/v4.2/protocol/stringprotocol/),
 the `TextOutputStreamable` and `CustomStringConvertible` protocols,
 making it more specific than the
-[`appendInterpolation` method declared by `DefaultStringInterpolation`](https://github.com/apple/swift/blob/master/stdlib/public/core/StringInterpolation.swift#L63)
+[`appendInterpolation` method declared by `DefaultStringInterpolation`](https://github.com/swiftlang/swift/blob/swift-5.0-RELEASE/stdlib/public/core/StringInterpolation.swift#L63)
 that would otherwise be invoked when interpolating `String` values.
 
 ```swift
@@ -264,11 +264,11 @@ but at least there are some remedies available to you.
 
 Often,
 the most effective way to get the compiler to do what you want
-is to explicitly cast an argument down to a type
+is to explicitly cast an argument up to a type
 that matches the method you want to call.
 
 Take our example of the `dump(_:)` method from before:
-by downcasting to `CustomStringConvertible` from `String`,
+by upcasting to `CustomStringConvertible` from `String`,
 we can get the compiler to resolve the call
 to use the standard library function instead.
 
@@ -310,7 +310,7 @@ including the ones in Apple's SDKs.
 _["Radar or GTFO"](/bug-reporting/)_, I suppose.
 {% enderror %}
 
-## Strategies for API Provider
+## Strategies for API Providers
 
 As someone developing an API,
 it's ultimately your responsibility to be deliberate and considerate
@@ -329,7 +329,7 @@ to reduce the chance of overlap with unrelated declarations.
 
 As a general rule,
 code should be organized into modules
-such that module is responsible for a single responsibility.
+such that each module has a single responsibility.
 
 If it makes sense to do so,
 consider packaging functionality provided by types and methods
