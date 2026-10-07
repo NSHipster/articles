@@ -234,7 +234,7 @@ to download the latest data file using `curl`:
 #!/bin/sh
 CURL='/usr/bin/curl'
 URL='https://example.com/path/to/data.json'
-OUTPUT='./Assets.xcassets/Colors.dataset/data.json'
+OUTPUT='./Assets.xcassets/NamedColors.dataset/colors.json'
 
 $CURL -fsSL -o $OUTPUT $URL
 ```
@@ -258,7 +258,7 @@ by piping the output of `curl` to `gzip` before writing to our file:
 CURL='/usr/bin/curl'
 GZIP='/usr/bin/gzip'
 URL='https://example.com/path/to/data.json'
-OUTPUT='./Assets.xcassets/Colors.dataset/data.json.gz'
+OUTPUT='./Assets.xcassets/NamedColors.dataset/colors.json.gz'
 
 $CURL -fsSL $URL | $GZIP -c > $OUTPUT
 ```

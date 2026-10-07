@@ -431,7 +431,7 @@ to delight your throng of fans.
 {% asset accessibility-keyboard-panel-editor-sounds.png %}
 
 ```applescript
-do shell script "afplay /System/Sounds/Sosumi.aiff"
+do shell script "afplay /System/Library/Sounds/Sosumi.aiff"
 ```
 
 ### World Domination

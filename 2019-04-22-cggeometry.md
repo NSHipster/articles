@@ -73,7 +73,7 @@ in the opposite direction along that dimension).
 
 <figure>
 {% asset core-graphics-coordinate-systems.svg width="500" %}
-<figcaption hidden>CoreGraphics Coordinates Systems (iOS)</figcaption>
+<figcaption hidden>CoreGraphics Coordinate Systems (iOS)</figcaption>
 </figure>
 {:/}
 
@@ -286,7 +286,7 @@ rectangle.offsetBy(dx: 2.0, dy: 2.0) // {x 3 y 4 w 4 h 3}
 
 Consider using this method whenever you shift a rectangle's position.
 Not only does it save a line of code,
-but it more semantically represents intended operation
+but it more semantically represents the intended operation
 than manipulating the origin values individually.
 
 ### Contracting and Expanding Rectangles

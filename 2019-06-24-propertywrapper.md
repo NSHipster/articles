@@ -425,7 +425,7 @@ if they are [<dfn>canonically equivalent</dfn>](https://unicode.org/reports/tr15
 By adopting these equality semantics,
 Swift strings behave more or less as you'd expect in most circumstances:
 if two strings comprise the same characters,
-it doesn't matter whether any individual character is composed or precomposed
+it doesn't matter whether any individual character is decomposed or precomposed
 --- that is,
 <span class="nowrap">"é" (`U+00E9 LATIN SMALL LETTER E WITH ACUTE`)</span>
 is equal to
@@ -551,7 +551,7 @@ and all of the other protocols
 to make `CaseInsensitive` start to feel enough like `String`
 to feel good about our approach.
 
-Property wrappers allow us to forego all of this busywork entirely:
+Property wrappers allow us to forgo all of this busywork entirely:
 
 ```swift
 struct Account: Equatable {
@@ -913,7 +913,7 @@ and
 from Swift 4.2 and 5,
 or
 [`@differentiable` and `@memberwise`](https://forums.swift.org/t/pre-pitch-swift-differentiable-programming-design-overview/25992)
-from [Swift for Tensorflow](https://github.com/tensorflow/swift) ---
+from [Swift for TensorFlow](https://github.com/tensorflow/swift) ---
 makes it increasingly difficult
 to come away with a reasonable understanding of Swift APIs
 based on documentation alone.

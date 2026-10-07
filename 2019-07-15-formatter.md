@@ -157,7 +157,7 @@ and set the `numberStyle` property accordingly.
 {% warning %}
 
 `NumberFormatter` also has a `format` property
-that takes a familiar `SPRINTF(3)`-style format string.
+that takes a format pattern string.
 [As we've argued in a previous article](/expressiblebystringinterpolation/),
 format strings are something to be avoided unless absolutely necessary.
 
@@ -190,7 +190,7 @@ formatter.string(from: 0.0000123) // 0.0000123
 - Set `usesSignificantDigits` to `false`
   _(or keep as-is, since that's the default)_
   to format according to specific limits on
-  how many <dfn>decimal</dfn> and <dfn>fraction</dfn> digits to show
+  how many <dfn>integer</dfn> and <dfn>fraction</dfn> digits to show
   (the number of digits leading or trailing the decimal point, respectively).
 
 ```swift
@@ -473,7 +473,7 @@ for common formats.
         </tr>
         <tr>
             <td><code>full</code></td>
-            <td>“Tuesday, November 16, 1937 AD</td>
+            <td>“Tuesday, November 16, 1937 AD”</td>
             <td>“3:30:42 PM EST”</td>
         </tr>
     </tbody>
@@ -487,12 +487,12 @@ formatter.dateStyle = .long
 formatter.timeStyle = .long
 
 formatter.string(from: date)
-// July 15, 2019 at 9:41:00 AM PST
+// July 15, 2019 at 9:41:00 AM PDT
 
 formatter.dateStyle = .short
 formatter.timeStyle = .short
 formatter.string(from: date)
-// "7/16/19, 9:41:00 AM"
+// "7/15/19, 9:41 AM"
 ```
 
 ```objc
@@ -501,13 +501,13 @@ NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 [formatter setTimeStyle:NSDateFormatterLongStyle];
 
 NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
-// July 15, 2019 at 9:41:00 AM PST
+// July 15, 2019 at 9:41:00 AM PDT
 
 [formatter setDateStyle:NSDateFormatterShortStyle];
 [formatter setTimeStyle:NSDateFormatterShortStyle];
 
 NSLog(@"%@", [formatter stringFromDate:[NSDate date]]);
-// 7/16/19, 9:41:00 AM
+// 7/15/19, 9:41 AM
 ```
 
 `dateStyle` and `timeStyle` are set independently.
@@ -539,7 +539,7 @@ As you might expect, each aspect of the date format can alternatively be configu
 {% warning %}
 
 `DateFormatter` also has a `dateFormat` property
-that takes a familiar `STRFTIME(3)`-style format string.
+that takes a Unicode (UTS #35) date format pattern.
 We've already called this out for `NumberFormatter`,
 but it's a point that bears repeating:
 use presets wherever possible and
@@ -551,7 +551,7 @@ only use custom format strings if absolutely necessary.
 
 When we wrote our first article about `NSFormatter` back in 2013,
 we made a point to include discussion of
-[Peter Hosey's ISO8601DateFormatter](https://github.com/boredzo/iso-8601-date-formatter)'s
+[Peter Hosey's ISO8601DateFormatter](https://github.com/boredzo/iso-8601-date-formatter)
 as the essential open-source library
 for parsing timestamps from external data sources.
 
@@ -659,7 +659,7 @@ NSLog(@"%@", [formatter stringFromDate:fromDate toDate:toDate]);
         </tr>
         <tr>
             <td><code>full</code></td>
-            <td>“Monday, June 30, 2014 - Friday, July 11, 2014</td>
+            <td>“Monday, June 30, 2014 - Friday, July 11, 2014”</td>
             <td>“6:03:28 PM Pacific Standard Time - 7:50:08 PM Pacific Standard Time”</td>
         </tr>
     </tbody>
@@ -751,7 +751,7 @@ as well as `DateFormatter`, `NumberFormatter`, and others.
 
 <figcaption>
 <p><sup>\*</sup>
-A `Dynamic` context changes capitalization automatically
+A `dynamic` context changes capitalization automatically
 depending on where it appears in the text
 for locales that may position strings differently
 depending on the content.</p>
@@ -878,7 +878,7 @@ prefer the use of `PersonNameComponentsFormatter` to format personal names.
 
 `PersonNameComponentsFormatter` is a sort of high water mark for Foundation.
 It encapsulates one of the [hardest](https://martinfowler.com/bliki/TwoHardThings.html),
-most personal problems in computer
+most personal problems in computer science
 in such a way to make it accessible to anyone
 without requiring a degree in Ethnography.
 
@@ -1029,7 +1029,7 @@ but the comments in the header file give us enough to go on.
 > and it should only be used in a standalone manner.
 
 _tl;dr_:
-This is `joined(by:)` with locale-aware serial and penultimate delimiters.
+This is `joined(separator:)` with locale-aware serial and penultimate delimiters.
 
 For simple lists of strings,
 you don't even need to bother with instantiating `ListFormatter` ---
@@ -1060,8 +1060,8 @@ ListFormatter.localizedString(byJoining: ["Jobs", "Woz"])
 #### Lists of Formatted Values
 
 `ListFormatter` exposes an underlying `itemFormatter` property,
-which effectively adds a `map(_:)` before calling `joined(by:)`.
-You use `itemFormatter` whenever you'd formatting a list of non-String elements.
+which effectively adds a `map(_:)` before calling `joined(separator:)`.
+You use `itemFormatter` whenever you're formatting a list of non-String elements.
 For example,
 you can set a `NumberFormatter` as the `itemFormatter` for a `ListFormatter`
 to turn an array of cardinals (`Int` values)
@@ -1108,7 +1108,7 @@ in that way only decade-old software can.
 This tradition of excellence is carried by the most recent incarnations as well.
 
 If your app deals in numbers or dates
-(or time intervals or names or lists measurements of any kind),
+(or time intervals or names or lists or measurements of any kind),
 then `NSFormatter` is indispensable.
 
 And if your app _doesn't_...

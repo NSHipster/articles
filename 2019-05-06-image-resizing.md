@@ -382,7 +382,7 @@ func resizedImage(at url: URL, scale: CGFloat, aspectRatio: CGFloat) -> UIImage?
 
 The Core Image filter named `CILanczosScaleTransform`
 accepts an `inputImage`, an `inputScale`, and an `inputAspectRatio` parameter,
-each of which are pretty self-explanatory.
+each of which is pretty self-explanatory.
 
 More interestingly,
 a `CIContext` is used here to create a `UIImage`

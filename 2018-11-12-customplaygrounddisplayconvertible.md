@@ -469,7 +469,7 @@ is the type name (often with cryptic generic constraints):
 let evens = sequence(first: 0, next: {$0 + 2})
 ```
 
-<samp>UnfoldSequence<Int, (Optional<Int>, Bool)>
+<samp>UnfoldSequence&lt;Int, (Optional&lt;Int&gt;, Bool)&gt;</samp>
 
 Iterating a sequence has unknown performance characteristics,
 so it would be inappropriate to include that

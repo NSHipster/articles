@@ -13,10 +13,10 @@ Swift 2 introduced error handling by way of the
 `throws`, `do`, `try` and `catch` keywords.
 It was designed to work hand-in-hand with
 Cocoa [error handling conventions](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/ErrorHandlingCocoa/ErrorHandling/ErrorHandling.html#//apple_ref/doc/uid/TP40001806-CH201-SW1),
-such that any type conforming to the `ErrorProtocol` protocol
+such that any type conforming to the `ErrorType` protocol
 (since renamed to `Error`)
 was implicitly bridged to `NSError` and
-Objective-C methods with an `NSError**` parameter,
+Objective-C methods with an `NSError**` parameter
 were imported by Swift as throwing methods.
 
 ```objc
@@ -43,7 +43,7 @@ the practice of declaring errors in enumerations
 had become idiomatic.
 
 Yet for how familiar we've all become with
-`Error` (née `ErrorProtocol`),
+`Error` (née `ErrorType`),
 surprisingly few of us are on a first-name basis with
 the other error protocols to come out of SE-0112.
 Like, when was the last time you came across `LocalizedError` in the wild?

@@ -39,8 +39,8 @@ Here's an example:
   they may include a list of tools made available to the model.
 - When the AI assistant responds, 
   it may ask to call one or more of those tools.
-- The client asks the user to approve or deny this to request.
-- If approved, the client execute the tool, 
+- The client asks the user to approve or deny this request.
+- If approved, the client executes the tool, 
   and returns the result in a follow up message to the model.
 - The AI assistant generates a response based on this information. 
 -->
@@ -209,7 +209,7 @@ In practice, that's what clients tend to support best
 Our previous example handwaved the existence of a "Get Weather" tool.
 MCP gives our client a standard way to consult various connected services.
 
-To get a list of available tools on an MCP, 
+To get a list of available tools on an MCP server, 
 the client would send a `tools/list` request to the server:
 
 ```json
@@ -312,7 +312,7 @@ Once you have Claude Desktop installed,
 you can peruse the 
 [myriad example servers](https://modelcontextprotocol.io/examples) available.
 
-Or, if you want to skip straight to la <em lang="fr">crème de la crème</em>,
+Or, if you want to skip straight to <em lang="fr">la crème de la crème</em>,
 then have a taste of what we've been cooking up with MCP lately:
 
 ### iMCP
@@ -330,7 +330,7 @@ Ironic how Apple has a way of making your digital life a living hell sometimes.
 For many of us who exist in Apple's walled garden, 
 we’re often frustrated by the product design and software quality 
 that gets between us and our data.
-Spotlight search is stuck in the ‘00s. 
+Spotlight search is stuck in the ’00s. 
 Apple Intelligence [didn’t live up to the hype](https://nshipster.com/ollama). 
 Siri seems doomed to suck forever.
 

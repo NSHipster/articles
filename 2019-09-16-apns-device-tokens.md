@@ -92,7 +92,7 @@ Here's how that works:
   [`registerForRemoteNotifications()`](https://developer.apple.com/documentation/uikit/uiapplication/1623078-registerforremotenotifications),
   which registers the device with APNs.
 - If registration succeeds,
-  the app delegate calls the method
+  the system calls the app delegate method
   [`application(_:didRegisterForRemoteNotificationsWithDeviceToken:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application).
 
 The `deviceToken` parameter in the app delegate method

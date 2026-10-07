@@ -93,7 +93,7 @@ or putting the call on hold by switching to a different app.
 
 The next time you go to hand off your phone to someone else to take a photo,
 give it a quick triple-tap to enter Guided Access mode first
-to forego the whole "Oops, I accidentally locked the device" routine.
+to forgo the whole "Oops, I accidentally locked the device" routine.
 
 {% info %}
 Among the interactions disabled by Guided Access is screen recording,
@@ -114,7 +114,7 @@ there's [Mobile Device Management](https://developer.apple.com/videos/play/wwdc2
 MDM and Guided Access interact in some interesting ways.
 For example,
 education apps can call the
-[requestGuidedAccessSession(enabled:completionHandler:)](https://developer.apple.com/documentation/uikit/uiaccessibility/1615186-requestguidedaccesssession)
+[requestGuidedAccessSession(enabled:completionHandler:)](https://developer.apple.com/documentation/uikit/uiaccessibility/1615186-requestguidedaccesssession) method
 to enter Single App mode while a student takes a test.
 iOS 12.2 extends Guided Access functionality for managed devices,
 although this is [currently undocumented](https://developer.apple.com/documentation/uikit/uiaccessibility/3089195-configureforguidedaccess).

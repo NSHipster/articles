@@ -223,7 +223,7 @@ from Swift to JavaScript:
 JavaScriptCore is limited to passing Objective-C blocks
 to JavaScript contexts.
 In Swift,
-you can use the `@convention(block)` to create a compatible closure.
+you can use the `@convention(block)` attribute to create a compatible closure.
 
 ```swift
 let quadruple: @convention(block) (Int) -> Int = { input in
@@ -260,7 +260,7 @@ which can cause strong reference cycles when stored in a `JSContext`.
 In particular,
 make sure not to reference `context` within your closures;
 instead, you can access it by way of the
-`JSContext.currentContext` type property as necessary.
+`JSContext.current()` type method as necessary.
 
 {% endwarning %}
 
@@ -424,7 +424,7 @@ logic-less templating language,
 with implementations in many languages,
 including [JavaScript](https://github.com/janl/mustache.js).
 We can load up `mustache.js` into our JavaScript context
-using the `evaluateScript(_:withSourceURL:)`
+using the `evaluateScript(_:withSourceURL:)` method
 to make it accessible for subsequent JS invocations.
 
 ```swift

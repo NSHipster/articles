@@ -384,7 +384,7 @@ func burnAfterReading(file url: URL) throws {
 Instead,
 you can either ignore the error by using `try?`
 or simply move the statement out of the `defer` block
-and at the end of the function to execute conventionally.
+to the end of the function to execute conventionally.
 
 ### (Any Other) Defer Considered Harmful
 
@@ -396,6 +396,8 @@ where a function needs to return a value that should also be modified,
 as in this typical implementation of the postfix `++` operator:
 
 ```swift
+postfix operator ++
+
 postfix func ++(x: inout Int) -> Int {
     let current = x
     x += 1

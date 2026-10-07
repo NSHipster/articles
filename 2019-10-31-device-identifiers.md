@@ -557,7 +557,7 @@ if UIDevice.current.isBatteryMonitoringEnabled {
 
 For this reason,
 battery level APIs were
-[removed in Firefox 55](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
+[removed in Firefox 52](https://developer.mozilla.org/en-US/docs/Web/API/Battery_Status_API).
 
 If this seems outlandish,
 consider that Apple recently released a security update for iOS after researchers

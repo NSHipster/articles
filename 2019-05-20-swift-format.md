@@ -276,7 +276,7 @@ $ time swiftformat Example.swift
 
 ### SwiftLint
 
-Next up is,
+Next up is
 [SwiftLint](https://github.com/realm/SwiftLint),
 a mainstay of the Swift open source community.
 With over 100 built-in rules,

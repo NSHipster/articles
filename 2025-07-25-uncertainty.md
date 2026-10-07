@@ -322,14 +322,14 @@ computational overhead for probabilistic accuracy:
 
 ```swift
 // Fast approximation for UI updates
-let quickEstimate = speed.probability(
-    exceeds: walkingSpeed,
+let quickEstimate = (speed > walkingSpeed).probability(
+    exceeds: 0.5,
     maxSamples: 100
 )
 
 // High precision for critical decisions
-let preciseResult = speed.probability(
-    exceeds: walkingSpeed,
+let preciseResult = (speed > walkingSpeed).probability(
+    exceeds: 0.5,
     confidenceLevel: 0.99,
     maxSamples: 10_000
 )

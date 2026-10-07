@@ -26,7 +26,7 @@ Today, I want to talk about one of the most exciting new features in Swift 5:
 an overhaul to how values in string literals are interpolated
 by way of the `ExpressibleByStringInterpolation` protocol.
 A lot of folks are excited about the cool things you can do with it.
-(And rightfully so! We'll get to all of that in just a moment)
+(And rightfully so! We'll get to all of that in just a moment.)
 But I think it's important to take a broader view of this feature
 to understand the full scope of its impact.
 
@@ -310,7 +310,7 @@ In this case,
 both literal and interpolated values are collected into a mutable string.
 
 {% info %}
-The `StringInterpolationProtocol`,
+The `StringInterpolationProtocol`
 requires an initializer, `init(literalCapacity:interpolationCount:)`;
 as an optional optimization,
 the capacity and interpolation counts
@@ -396,7 +396,7 @@ For a more advanced example of `ExpressibleByStringInterpolation`,
 check out the
 [Unicode Styling playground](https://github.com/Flight-School/Guide-to-Swift-Strings-Sample-Code/tree/master/Chapter%203/Unicode%20Styling.playground)
 included in the sample code for the
-[Flight School Guide to Swift Strings](https://flight.school/books/strings)
+[Flight School Guide to Swift Strings](https://flight.school/books/strings).
 {% endinfo %}
 
 ---
