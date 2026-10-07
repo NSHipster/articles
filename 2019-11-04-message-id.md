@@ -3,7 +3,7 @@ title: Message-ID and Mail.app Deep Linking on iOS and macOS
 author: Mattt
 category: Miscellaneous
 excerpt: >-
-  Privacy enhancements to privacy in recent versions of iOS
+  Privacy enhancements in recent versions of iOS
   have afforded users much greater control of how 
   their information is shared.
   However, these improvements have come at a slight cost
@@ -26,7 +26,7 @@ a few readers got in touch to explain why
 their use of fingerprinting
 to bridge between Safari and their native app was justified.
 
-At WWDC 2018,
+At WWDC 2017,
 Apple [announced](https://developer.apple.com/videos/play/wwdc2017/702/) that
 starting in iOS 11 apps would no longer have access to a shared cookie store.
 Previously,
@@ -71,7 +71,7 @@ would mark the first of many mobile features
 that would make their way to the desktop.
 
 If you were to copy this "magic" URL to the pasteboard
-and view in a text editor,
+and view it in a text editor,
 you'd see something like this:
 
 ```swift
@@ -134,7 +134,7 @@ computable from its existing state.
 ### Generating a Deterministic Message ID
 
 Consider a record structure that conforms to
-[`Identifiable` protocol](/identifiable/)
+the [`Identifiable` protocol](/identifiable/)
 and whose associated `ID` type is a
 [UUID](/uuid-udid-unique-identifier/).
 You could generate a Message ID like so:
@@ -170,12 +170,12 @@ nisi ut aliquip ex ea commodo consequat.
 """#
 
 let digest = Data(SHA256.hash(data: body.data(using: .utf8)!))
-                .map { String($0, radix: 16, uppercase: true) }
+                .map { String(format: "%02X", $0) }
                 .joined()
 
-let domain = "ADF"
+let domain = "mail.example.com"
 "<\(digest)@\(domain)>"
-// "<F52380112175FCE8ECF2731C193EB8A7CC8642E53C68D292CD88531D42F145@mail.example.com>"
+// "<F52380112175FCE8ECF2731C1903EB8A7CC8642E53C68D292CD885310D42F145@mail.example.com>"
 ```
 
 {% endinfo %}
@@ -200,7 +200,7 @@ You could do this with the
 [`addingPercentEncoding(withAllowedCharacters:)` method](/characterset/),
 but we prefer to delegate this all to [`URLComponents`](/nsurl/) instead ---
 which has the further advantage of being able to
-construct the URL full without a
+construct the full URL without a
 [format string](/expressiblebystringinterpolation/).
 
 ```swift
@@ -217,7 +217,7 @@ components.string!
 
 As far as we can tell,
 the presence or absence of a double slash after the custom `message:` scheme
-doesn't have any impact on Mail deep links resolution.
+doesn't have any impact on Mail deep link resolution.
 
 {% endinfo %}
 
@@ -259,7 +259,7 @@ we recommend using Mail deep links on iOS only.
 
 As an example,
 [Flight School](https://flight.school/)
-does this with passwordless authentication system.
+does this with its passwordless authentication system.
 To access electronic copies of your books,
 you enter the email address you used to purchase them.
 Upon form submission,
@@ -277,7 +277,7 @@ or incorporate it as part of a
 {% info %}
 
 If you're using Rails for your web application,
-[ActiveMailer interceptors](https://guides.rubyonrails.org/action_mailer_basics.html#intercepting-and-observing-emails)
+[Action Mailer interceptors](https://guides.rubyonrails.org/action_mailer_basics.html#intercepting-and-observing-emails)
 provide a convenient way to inject `Message-ID` fields
 for passwordless authentication flows.
 
