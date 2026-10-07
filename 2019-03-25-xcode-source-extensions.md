@@ -22,7 +22,7 @@ Those were heady days of
 in-process code injection, an informally sanctioned and thriving ecosystem of third-party plugins ---
 all backed up by an in-app package manager.
 For a while, Apple tolerated it all.
-But with the introduction of [System Integrity Protection](https://support.apple.com/en-us/HT204899) in 2016,
+But with the release of Xcode 8 in 2016,
 the ladders were abruptly kicked away.
 (Pour one out for [Alcatraz](https://github.com/alcatraz/Alcatraz) why don't we,
 with a chaser for [XcodeColors](https://github.com/robbiehanson/XcodeColors).
@@ -360,7 +360,7 @@ They'll need some information about the structure of that code to do useful work
 Could they be using SourceKit directly?
 Well, where the extension is on the App Store, we know that they're not.
 **The extension must be sandboxed just to be loaded by Xcode**,
-whereas calls to SourceKit needs to be un-sandboxed,
+whereas calls to SourceKit need to be un-sandboxed,
 which of course won't fly in the App Store.
 We _could_ distribute independently and use an un-sandboxed [XPC service](/inter-process-communication/) embedded in the extension.
 Or more likely, we can write our own single-purpose code to get the job done.
