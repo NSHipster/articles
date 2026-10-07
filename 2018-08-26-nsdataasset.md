@@ -71,7 +71,7 @@ resulting in smaller installations that are optimized for each user's device.
 
 Images are far and away the most common types of assets,
 but as of iOS 9 and macOS El Capitan,
-resources like JSON, XML and other data file can join in the fun by way of
+resources like JSON, XML and other data files can join in the fun by way of
 [`NSDataAsset`](https://developer.apple.com/documentation/uikit/nsdataasset).
 
 ## How to Store and Retrieve Data with Asset Catalog
@@ -96,7 +96,7 @@ it automatically generates an Asset Catalog.
 Select `Assets.xcassets` from the project navigator
 to open the Asset Catalog editor.
 Click the <kbd>+</kbd> icon at the bottom left
-and select "New Data Set"
+and select "New Data Set".
 
 {% asset add-new-data-set.png %}
 
@@ -121,10 +121,10 @@ into the empty field for your data set asset in Xcode.
 {% asset asset-catalog-any-any-universal.png %}
 
 When you do this,
-Xcode copies the file to the the `.dataset` subdirectory
+Xcode copies the file to the `.dataset` subdirectory
 and updates the `contents.json` metadata file
 with the filename and
-[Universal Type Identifier](https://en.wikipedia.org/wiki/Uniform_Type_Identifier).
+[Uniform Type Identifier](https://en.wikipedia.org/wiki/Uniform_Type_Identifier)
 of the file.
 
 ```json
@@ -241,14 +241,14 @@ $CURL -fsSL -o $OUTPUT $URL
 
 ## Wrapping It Up
 
-Although the Assets Catalog performs lossless compression of image assets,
-nothing from the documentation, Xcode Help, or WWDC sessions  
-indicate that any such optimization is done for data assets (at least not yet).
+Although the Asset Catalog performs lossless compression of image assets,
+nothing from the documentation, Xcode Help, or WWDC sessions
+indicates that any such optimization is done for data assets (at least not yet).
 
 For data assets larger than, say, a few hundred kilobytes,
 you should consider using compression.
 This is especially true for text files like JSON, CSV, and XML,
-which typically compress down to 60% — 80% of their original size.
+which typically compress by 60% — 80% of their original size.
 
 We can add compression to our previous shell script
 by piping the output of `curl` to `gzip` before writing to our file:
@@ -323,5 +323,5 @@ and certainly not all the time.
 Take a moment to see what networking calls your app makes at launch,
 and consider if any of these might benefit from being pre-loaded.
 Making a good first impression
-could mean the difference between a long-term active use
+could mean the difference between a long-term active user
 and deletion after a few seconds.
