@@ -36,7 +36,7 @@ Round 1: General Knowledge
 6. When was the Unix Epoch? Hint: NSDate has an initializer referencing this.
 7. What is the current version of Xcode?
 8. What was the first article written on NSHipster?
-9. How many apps were on on the home screen of the first iPhone?
+9. How many apps were on the home screen of the first iPhone?
 
 Round 2: APIs
 -------------

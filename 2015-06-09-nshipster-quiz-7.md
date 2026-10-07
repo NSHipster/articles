@@ -28,7 +28,7 @@ Round 1: General Knowledge
 1. What 1989 movie introduces its protagonist free climbing El Capitan, to disastrous effect?
 2. El Capitan looks down on a river that winds through Yosemite. What is the river’s name?
 3. In the WWDC keynote, Tim Cook showed off a list of demands some Cleveland Indians players were using to ransom their teammate’s 100th home run ball. What item did Apple carefully remove from the list?
-4. With WebKit already using `WK`, WatchKit had to find a different class prefix. What is the unusual prefix used for the most of the WatchKit framework?
+4. With WebKit already using `WK`, WatchKit had to find a different class prefix. What is the unusual prefix used for most of the WatchKit framework?
 5. The name "Swift" can be written using a ligature for its final two letters. What are the five Unicode-standard ligatures beginning with the letter "f"?
 6. The typeface used for Apple Watch (and the new versions of iOS and OS X) is "San Francisco," but it isn’t the first custom font Apple has used by that name. What were the letters of the original "San Francisco" meant to resemble? For a bonus point, name the original font's designer.
 7. What is reportedly the lock screen image on Jony Ive’s iPhone? 
@@ -123,7 +123,7 @@ Round 1: General Knowledge
 4. `WKInterface`
 5. ﬀ, ﬁ, ﬂ, ﬃ, ﬄ
 6. [A ransom note, by Susan Kare](https://en.wikipedia.org/wiki/San_Francisco_(1984_typeface))
-7. [A Playmobile figure of himself](http://www.newyorker.com/magazine/2015/02/23/shape-things-come)
+7. [A Playmobil figure of himself](http://www.newyorker.com/magazine/2015/02/23/shape-things-come)
 8. [A typo in the README.md](https://github.com/ResearchKit/ResearchKit/pull/6)
 9. [ORK: Open Research Kit](https://github.com/ResearchKit/ResearchKit)
 10. [*Fun Home*, based on the memoir by Alison Bechdel](https://en.wikipedia.org/wiki/Fun_Home_(musical))
@@ -145,11 +145,11 @@ Round 2: Name That Framework
 Round 3: Picture Round
 ----------------------
 
-1. [Beyonce](http://www.beyonce.com/my-life-828/)
+1. [Beyoncé](http://www.beyonce.com/my-life-828/)
 2. *Parker Lewis Can't Lose*, "Synchronize Swatches"
 3. [ResEdit](https://en.wikipedia.org/wiki/ResEdit)
-5. [Metamorphabet](http://metamorphabet.com)
-4. [Workflow](https://workflow.is)
+4. [Metamorphabet](http://metamorphabet.com)
+5. [Workflow](https://workflow.is)
 6. [Meerkat](http://meerkatapp.co)
 7. [GIFs](https://github.com/orta/GIFs)
 8. Chris Lattner
