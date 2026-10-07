@@ -33,7 +33,7 @@ The `UIKeyCommand` class is in fact quite simple, with only four properties to c
 
 - `action`: The selector to call when the key command is invoked, called with a `UIKeyCommand` as its only argument. The key event will travel up the responder chain until a matching selector is found.
 
-- `discoverabilityTitle` *(iOS 9 only)*: An optional label to display for the key command in the Discoverability layover. Only key commands with a title set will be listed.
+- `discoverabilityTitle` *(iOS 9 only)*: An optional label to display for the key command in the Discoverability overlay. Only key commands with a title set will be listed.
 
 
 
@@ -97,16 +97,16 @@ func selectTab(sender: UIKeyCommand) {
 }
 ```
 
-In the Discoverability layover, accessed by holding down the Command key, key commands are listed in the order you specified:
+In the Discoverability overlay, accessed by holding down the Command key, key commands are listed in the order you specified:
 
-![Discoverability Layover]({% asset uikeycommand-discoverability.png @path %})
+![Discoverability Overlay]({% asset uikeycommand-discoverability.png @path %})
 
 *Voila!* Secrets, revealed!
 
 
 ### Context Sensitivity
 
-The `keyCommands` property is accessed whenever a key pressed, making it possible to provide context-sensitive responses depending on the state of your application. While this is similar to the way a menu item and its active/inactive state are configured in OS X, the recommendation for iOS is to omit inactive commands completely—that is, there are no grayed out commands in the Discoverability layover.
+The `keyCommands` property is accessed whenever a key is pressed, making it possible to provide context-sensitive responses depending on the state of your application. While this is similar to the way a menu item and its active/inactive state are configured in OS X, the recommendation for iOS is to omit inactive commands completely—that is, there are no grayed out commands in the Discoverability overlay.
 
 Here, a set of commands that are available to logged in users of an app are included only when appropriate:
 

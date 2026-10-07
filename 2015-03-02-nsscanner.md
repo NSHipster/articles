@@ -183,7 +183,7 @@ CGPoint offsetPoint(CGPoint p1, CGPoint p2) {
 
 Note that the point data are fairly irregular. Sometimes the `x` and `y` values of a point are separated by a comma, sometimes not, and likewise with points themselves. Parsing these data with regular expressions could turn into a mess pretty quickly, but with `NSScanner` the code is clear and straightforward.
 
-We'll define a `bezierPathFromSVGPath` function that will convert a string of path data into an `UIBezierPath`. Our scanner is set up to skip commas and whitespace while scanning for values:
+We'll define a `bezierPathFromSVGPath` function that will convert a string of path data into a `UIBezierPath`. Our scanner is set up to skip commas and whitespace while scanning for values:
 
 ````swift
 func bezierPathFromSVGPath(str: String) -> UIBezierPath {
@@ -311,7 +311,7 @@ while let instruction = scanner.scanCharactersFromSet(instructionSet) {
    var points: [CGPoint] = []
    
    // scan for pairs of Double, adding them as CGPoints to the points array
-   while let x = scanner.scanDouble(), y = scanner.scanDouble() {
+   while let x = scanner.scanDouble(), let y = scanner.scanDouble() {
        points.append(CGPoint(x: x, y: y))
    }
    

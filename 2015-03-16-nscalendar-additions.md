@@ -77,7 +77,7 @@ In this case, an example will be worth a thousand words:
 
 ```swift
 // begin with Valentine's Day, 2015 at 9:00am
-let valentines = cal.dateWithEra(1, year: 2015, month: 2, day: 14, hour: 9, minute: 0, second: 0, nanosecond: 0)!
+let valentines = calendar.dateWithEra(1, year: 2015, month: 2, day: 14, hour: 9, minute: 0, second: 0, nanosecond: 0)!
 
 // to find the last day of the month, we'll set up a date components instance with 
 // `day` set to 31:
@@ -135,15 +135,15 @@ date = [calendar nextDateAfterDate:valentines matchingComponents:components opti
 // Feb 28, 2015, 9:00 AM
 ```
 
-Besides the `NDateComponents` version shown here, it's worth noting that `nextDateAfterDate` has two other variations:
+Besides the `NSDateComponents` version shown here, it's worth noting that `nextDateAfterDate` has two other variations:
 
 ```swift
 // matching a particular calendar unit
-cal.nextDateAfterDate(valentines, matchingUnit: .CalendarUnitDay, value: 31, options: .MatchStrictly)
+calendar.nextDateAfterDate(valentines, matchingUnit: .CalendarUnitDay, value: 31, options: .MatchStrictly)
 // March 31, 2015, 12:00 AM
 
 // matching an hour, minute, and second
-cal.nextDateAfterDate(valentines, matchingHour: 15, minute: 30, second: 0, options: .MatchNextTime)
+calendar.nextDateAfterDate(valentines, matchingHour: 15, minute: 30, second: 0, options: .MatchNextTime)
 // Feb 14, 2015, 3:30 PM
 ```
 ```objc
@@ -168,7 +168,7 @@ leapYearComponents.month = 2
 leapYearComponents.day = 29
 
 var dateCount = 0
-cal.enumerateDatesStartingAfterDate(NSDate(), matchingComponents: leapYearComponents, options: .MatchStrictly | .SearchBackwards) 
+calendar.enumerateDatesStartingAfterDate(NSDate(), matchingComponents: leapYearComponents, options: .MatchStrictly | .SearchBackwards) 
 { (date: NSDate!, exactMatch: Bool, stop: UnsafeMutablePointer<ObjCBool>) in
     println(date)
 
@@ -209,8 +209,8 @@ __block int dateCount = 0;
 
 If you're always looking forward to the weekend, look no further than our final two `NSCalendar` methods:
 
-> - `nextWeekendStartDate(_:interval:options:afterDate)`: Returns the starting date and length of the next weekend by reference via the first two parameters. This method will return false if the current calendar or locale doesn't support weekends. The only relevant option here is `.SearchBackwards`. (See below for an example.)
-> - `rangeOfWeekendStartDate(_:interval:containingDate)`: Returns the starting date and length of the weekend *containing* the given date by reference via the first two parameters. This method returns false if the given date is not in fact on a weekend or if the current calendar or locale doesn't support weekends.
+> - `nextWeekendStartDate(_:interval:options:afterDate:)`: Returns the starting date and length of the next weekend by reference via the first two parameters. This method will return false if the current calendar or locale doesn't support weekends. The only relevant option here is `.SearchBackwards`. (See below for an example.)
+> - `rangeOfWeekendStartDate(_:interval:containingDate:)`: Returns the starting date and length of the weekend *containing* the given date by reference via the first two parameters. This method returns false if the given date is not in fact on a weekend or if the current calendar or locale doesn't support weekends.
 
 
 ## Localized Calendar Symbols
@@ -268,13 +268,13 @@ As is fetching the range of the next weekend:
 // built-in
 var startDate: NSDate?
 var interval: NSTimeInterval = 0
-let success = cal.nextWeekendStartDate(&startDate, interval: &interval, options: nil, afterDate: NSDate())
+let success = calendar.nextWeekendStartDate(&startDate, interval: &interval, options: nil, afterDate: NSDate())
 if success, let startDate = startDate {
     println("start: \(startDate), interval: \(interval)")
 }
 
 // swiftified
-if let nextWeekend = cal.nextWeekendAfterDate(NSDate()) {
+if let nextWeekend = calendar.nextWeekendAfterDate(NSDate()) {
     println("start: \(nextWeekend.startDate), interval: \(nextWeekend.interval)")
 }
 ```
