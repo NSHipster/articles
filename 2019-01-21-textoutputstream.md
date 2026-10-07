@@ -152,7 +152,7 @@ print("👨‍👩‍👧‍👧", to: &logger)
 {% info %}
 
 In Swift 5.0,
-you can access the name of a scalar value by
+you can access the name of a scalar value
 through its Unicode `properties` property.
 In the meantime, we can use
 [a string transform](https://nshipster.com/cfstringtransform/)
