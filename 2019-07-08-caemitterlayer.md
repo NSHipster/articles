@@ -3,7 +3,7 @@ title: CAEmitterLayer
 author: Mattt
 category: Cocoa
 excerpt: >-
-  This week mark's NSHipster's 7th anniversary!
+  This week marks NSHipster's 7th anniversary!
   And what better way to celebrate the occasion
   than to implement a fun and flexible confetti view on iOS?
 status:
@@ -12,13 +12,13 @@ status:
 
 Etymologically, <dfn>confetti</dfn> comes from the Italian word
 for the sugar-coated almond sweet thrown at celebrations,
-which, in turn, get their name from the Latin <dfn lang="la">conficio</dfn>:
+which, in turn, gets its name from the Latin <dfn lang="la">conficio</dfn>:
 <span class="nowrap"><dfn lang="la">con-</dfn> ("with, together")</span> +
 <span class="nowrap"><dfn lang="la">facio</dfn> ("do, make")</span>;
 in another sense, _"to celebrate"_.
 
 Confetti gets tossed around a lot these days,
-but not nearly as in the 20<sup>th</sup> century
+but not nearly as much as in the 20<sup>th</sup> century
 with its iconic ticker-tape parades
 down the streets of New York City,
 like the one [welcoming home the Apollo 11 astronauts](https://en.wikipedia.org/wiki/Ticker_tape_parade#/media/File:Apollo_11_ticker_tape_parade_1.jpg)
@@ -31,14 +31,14 @@ And as a result, the tradition has become much less commonplace today.
 
 As it were,
 _The Washington Post_ just reported today
-that Monday's ticker-tape parade
+that Wednesday's ticker-tape parade
 celebrating the U.S. women’s soccer team on their World Cup victory
 was
 [_"The 207th time New Yorkers have dumped office trash on their heroes"_](https://www.washingtonpost.com/history/2019/07/09/uswnts-parade-th-time-new-yorkers-have-dumped-office-trash-their-heroes/).
 
 {% endinfo %}
 
-This week mark's NSHipster's 7<sup>th</sup> anniversary!
+This week marks NSHipster's 7<sup>th</sup> anniversary!
 And what better way to celebrate the occasion
 than to implement a fun and flexible confetti view on iOS?
 
@@ -51,7 +51,7 @@ the difference between views and layers:
 
 On iOS,
 each view is <dfn>backed</dfn> by a layer
-...or perhaps it's more accurate to say that layers are _fronted_ by view.
+...or perhaps it's more accurate to say that layers are _fronted_ by views.
 
 Because despite their reputation as the workhorse of UIKit,
 `UIView` delegates the vast majority of its functionality to `CALayer`.
@@ -144,7 +144,7 @@ generates particles sized between
 0.8× and 1.2× the original `contents` size.
 
 Cell emitter behavior may also have a corresponding _speed_ property,
-which specify the rate of growth or decay over the lifetime of the particle.
+which specifies the rate of growth or decay over the lifetime of the particle.
 For example,
 with the `scaleSpeed` property,
 positive values cause particles to grow over time
@@ -202,7 +202,7 @@ but there's some good stuff about `UIGraphicsImageRenderer` in there, too.
 
 {::nomarkdown}
 
-<summary>Expand for implementation details</em></summary>
+<summary>Expand for implementation details</summary>
 
 {:/}
 
@@ -368,7 +368,7 @@ it'll render with the wrong time space.
 As far as stopping goes:
 you can tell the layer to stop emitting particles
 by setting its `birthRate` property to `0`.
-But if you start it again up
+But if you start it up again
 by resetting that property to `1`,
 you get a flurry of particles filling the screen
 instead of the nice initial burst on the first launch.
@@ -465,7 +465,7 @@ to taper the `birthRate` property down to `0` over the specified duration.
 : Then we add that animation in a transaction
 and use the completion block to set up a fade-out transition.
 (We set the view as the transition's animation delegate,
-as described in the next session)
+as described in the next section)
 
 ❹
 : Finally, we use key-value coding
@@ -601,7 +601,7 @@ complete with a preset for generating confetti!
 Unfortunately,
 we weren't able to get the editor to work.
 And with Xcode 11,
-this template and the `.scnp` file type has been removed.
+this template and the `.scnp` file type have been removed.
 {% enderror %}
 
 ### UIKit Dynamics
@@ -672,7 +672,7 @@ let imageView = UIImageView()
 let imageURL = URL(fileURLWithPath: "path/to/animated.png")
 let options: [String: Any] = [kCGImageAnimationLoopCount: 42]
 CGAnimateImageAtURLWithBlock(imageURL, options) { (index, cgimage, stop) in
-    imageView.image = UIImage(cgImage: cg)
+    imageView.image = UIImage(cgImage: cgimage)
 }
 ```
 
