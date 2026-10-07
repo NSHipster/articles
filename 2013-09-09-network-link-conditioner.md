@@ -67,7 +67,7 @@ and select the appropriate release of the package.
 Once the download has finished,
 open the DMG,
 navigate to the "Hardware" directory,
-and double-click "Network Link Condition.prefPane".
+and double-click "Network Link Conditioner.prefPane".
 
 <picture>
     <source srcset="{% asset network-link-conditioner-install--dark.png @path %}" media="(prefers-color-scheme: dark)">

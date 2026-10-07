@@ -3,7 +3,7 @@ title: "NSNotification &<br/>NSNotificationCenter"
 author: Mattt
 category: Cocoa
 tags: popular
-excerpt: "Any idea is inextricably linked to how its communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
+excerpt: "Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 status:
     swift: 2.0
     reviewed: September 8, 2015
@@ -75,11 +75,11 @@ For example, `UITextField` posts an `NSNotification` with the name `UITextFieldT
 
 All sorts of notifications are constantly passing through `NSNotificationCenter`.<sup>*</sup>  But like a tree falling in the woods, a notification is moot unless there's something listening for it.
 
-The traditional way to add an observer is `–addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
+The traditional way to add an observer is `-addObserver:selector:name:object:`, in which an object (usually `self`) adds itself to have the specified selector performed when a matching notification is posted.
 
-The modern, block-based API for adding notification observers is `–addObserverForName:object:queue:usingBlock:`. Instead of registering an existing object as an observer for a notification, this method creates its own anonymous object to be the observer, which performs a block on the specified queue (or the calling thread, if `nil`) when a matching notification is posted. Unlike its similarly named `@selector`-based counterpart, this method actually returns the constructed observer object, which is necessary for unregistering the observer, as discussed in the next section.
+The modern, block-based API for adding notification observers is `-addObserverForName:object:queue:usingBlock:`. Instead of registering an existing object as an observer for a notification, this method creates its own anonymous object to be the observer, which performs a block on the specified queue (or the calling thread, if `nil`) when a matching notification is posted. Unlike its similarly named `@selector`-based counterpart, this method actually returns the constructed observer object, which is necessary for unregistering the observer, as discussed in the next section.
 
-> Contrary to a recent article claiming otherwise, `–addObserverForName:object:queue:usingBlock:` should _not_ be considered harmful. It's perfectly safe and suitable for use in applications. Just make sure to understand memory management rules when referencing `self` in blocks. Any concerns in this respect are the same as for any other block-based API.
+> Contrary to a recent article claiming otherwise, `-addObserverForName:object:queue:usingBlock:` should _not_ be considered harmful. It's perfectly safe and suitable for use in applications. Just make sure to understand memory management rules when referencing `self` in blocks. Any concerns in this respect are the same as for any other block-based API.
 
 The `name` and `object` parameters of both methods are used to decide whether the criteria of a posted notification match the observer. If `name` is set, only notifications with that name will trigger, but if `nil` is set, then _all_ names will match. The same is true of `object`. So, if both `name` and `object` are set, only notifications with that name _and_ the specified object will trigger. However, if both `name` and `object` are `nil`, then _all_ notifications posted will trigger.
 
@@ -98,7 +98,7 @@ NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
                      queue:nil
                 usingBlock:^(NSNotification *notification)
 {
-     NSLog(@"%@", notification.name);
+     NSLog(@"%@: %@", notification.name, notification.userInfo);
 }];
 ```
 
@@ -106,7 +106,7 @@ NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
 
 It's important for objects to remove observers before they're deallocated, in order to prevent further messages from being sent.
 
-There are two methods for removing observers: `-removeObserver:` and `-removeObserver:name:object:`. Again, just as with adding observers, `name` and `object` are used to define scope. `-removeObserver:`, or `-removeObserver:name:object` with `nil` for both parameters, will remove the observer from the notification center dispatch table entirely, while specifying parameters for `-removeObserver:name:object:` will only remove the observer for registrations with that name and/or object.
+There are two methods for removing observers: `-removeObserver:` and `-removeObserver:name:object:`. Again, just as with adding observers, `name` and `object` are used to define scope. `-removeObserver:`, or `-removeObserver:name:object:` with `nil` for both parameters, will remove the observer from the notification center dispatch table entirely, while specifying parameters for `-removeObserver:name:object:` will only remove the observer for registrations with that name and/or object.
 
 ### Posting Notifications
 
@@ -136,7 +136,7 @@ extern NSString * const XXFooDidBarNotification;
 NSString * const XXFooDidBarNotification = @"XXFooDidBarNotification";
 ```
 
-Notifications are posted with `–postNotificationName:object:userInfo:` or its convenience method `–postNotificationName:object:`, which passes `nil` for `userInfo`. `–postNotification:` is also available, but it's generally preferable to have the notification object creation handled by the method itself.
+Notifications are posted with `-postNotificationName:object:userInfo:` or its convenience method `-postNotificationName:object:`, which passes `nil` for `userInfo`. `-postNotification:` is also available, but it's generally preferable to have the notification object creation handled by the method itself.
 
 Recall from the previous section how `name` and `object` act to scope notification dispatch. Developers are advised to be consistent in how objects are posted with notifications, and to have this behavior documented clearly in the public interface.
 

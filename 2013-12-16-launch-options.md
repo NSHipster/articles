@@ -37,13 +37,13 @@ Apps can launch other apps by passing URLs:
 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"app:<#...#>"]];
 ```
 
-For example, an `http://` URL would open in Safari, a `mailto://` URL would open in Mail, and a `tel://` URL would open in Phone.
+For example, an `http://` URL would open in Safari, a `mailto:` URL would open in Mail, and a `tel:` URL would open in Phone.
 
 In these circumstances, the `UIApplicationLaunchOptionsURLKey` key would be populated in `launchOptions`.
 
 > - `UIApplicationLaunchOptionsURLKey`: Indicates that the app was launched in order to open a URL. The value of this key is an `NSURL` object containing the URL to open.
 
-An app can also be launched through URLs with additional system information. When an app is launched from an `UIDocumentInteractionController` or via AirDrop, the following keys are set in `launchOptions`:
+An app can also be launched through URLs with additional system information. When an app is launched from a `UIDocumentInteractionController` or via AirDrop, the following keys are set in `launchOptions`:
 
 > - `UIApplicationLaunchOptionsSourceApplicationKey`: Identifies the app that requested the launch of your app. The value of this key is an `NSString` object that represents the bundle ID of the app that made the request
 > - `UIApplicationLaunchOptionsAnnotationKey`: Indicates that custom data was provided by the app that requested the opening of the URL. The value of this key is a property-list object containing the custom data.
@@ -106,9 +106,9 @@ Apps can schedule `UILocalNotification`s to trigger at some future time or inter
 
 Unlike remote notifications, `UIApplication` delegate provides a unified code path for handling local notifications. If an app is launched through a local notification, it calls `-application:didFinishLaunchingWithOptions:` followed by `-application:didReceiveLocalNotification:` (that is, there is no need to call it from `-application:didFinishLaunchingWithOptions:` like remote notifications).
 
-A local notification populates the launch options on `UIApplicationLaunchOptionsLocalNotificationKey`, which contains a payload with the same structure as a remote notification:
+A local notification populates the launch options on `UIApplicationLaunchOptionsLocalNotificationKey`, which contains the `UILocalNotification` object that was triggered:
 
-- `UIApplicationLaunchOptionsLocalNotificationKey`: Indicates that a local notification is available for the app to process. The value of this key is an `NSDictionary` containing the payload of the local notification.
+- `UIApplicationLaunchOptionsLocalNotificationKey`: Indicates that a local notification is available for the app to process. The value of this key is the `UILocalNotification` object that was triggered.
 
 In the case where it is desirable to show an alert for a local notification delivered when the app is active in the foreground, and otherwise wouldn't provide a visual indication, here's how one might use the information from `UILocalNotification` to do it manually:
 
@@ -233,7 +233,7 @@ If an app launches, instantiates a `CBCentralManager` or `CBPeripheralManager` w
 @end
 
 // .m
-self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionRestoreIdentifierKey:(launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey] ?: [[NSUUID UUID] UUIDString])}];
+self.centralManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:@{CBCentralManagerOptionRestoreIdentifierKey:([launchOptions[UIApplicationLaunchOptionsBluetoothCentralsKey] firstObject] ?: [[NSUUID UUID] UUIDString])}];
 
 if (self.centralManager.state == CBCentralManagerStatePoweredOn) {
     static NSString * const UID = @"7C13BAA0-A5D4-4624-9397-15BF67161B1C"; // generated with `$ uuidgen`

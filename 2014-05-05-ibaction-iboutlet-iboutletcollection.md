@@ -60,7 +60,7 @@ For example:
                    withEvent:(UIEvent *)event;
 
 // NO
-- (IBAction)peformSomeAction;
+- (IBAction)performSomeAction;
 
 - (IBAction)didTapButton:(id)sender;
 ```
@@ -78,12 +78,12 @@ As with anything in modern Objective-C, **properties are preferred to direct iva
 ```objc
 // YES
 @interface GallantViewController : UIViewController
-@property (nonatomic, weak) IBOutlet UISwitch *switch;
+@property (nonatomic, weak) IBOutlet UISwitch *toggleSwitch;
 @end
 
 // NO
 @interface GoofusViewController : UIViewController {
-    IBOutlet UISwitch *_switch
+    IBOutlet UISwitch *_toggleSwitch;
 }
 @end
 ```
@@ -92,7 +92,7 @@ Since properties are the conventional way to expose and access members of a clas
 
 ### When to use `weak` or `strong`
 
-One unfortunate consequence (if you want to call it that) of ARC is the ambiguity of when a `IBOutlet` `@property` should be declared as `weak` or `strong`. The ambiguity arises from the fact that most outlets have no discernible behavioral differences between `weak` or `strong`—it just works.
+One unfortunate consequence (if you want to call it that) of ARC is the ambiguity of when an `IBOutlet` `@property` should be declared as `weak` or `strong`. The ambiguity arises from the fact that most outlets have no discernible behavioral differences between `weak` or `strong`—it just works.
 
 …except when it doesn't… and things crash, or the compiler warns about `weak` or `strong` use.
 

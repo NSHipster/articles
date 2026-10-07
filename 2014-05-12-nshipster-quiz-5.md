@@ -25,7 +25,7 @@ As always, you can play along at home or at work with your colleagues. Here are 
 
 ## Round 1: General Knowledge
 
-Current events, miscellaneous tidbits, and random trivia. Following a time-honored traditions for NSHipster quizzes, the first round is always a mis-mash of people, places, and pop culture.
+Current events, miscellaneous tidbits, and random trivia. Following a time-honored tradition for NSHipster quizzes, the first round is always a mish-mash of people, places, and pop culture.
 
 1.  In 2011, Apple deprecated OS X's Common Data Security Architecture, leaving them unaffected by what recent vulnerability.
 2.  According to rumors, Apple will be partnering with which company to add song recognition functionality to Siri in iOS 8?
@@ -44,20 +44,20 @@ Current events, miscellaneous tidbits, and random trivia. Following a time-honor
 
 With the fluff out of the way, it's now time to dive into some hardcore Cocoa fundamentals. How well do _you_ know the standard library?
 
-1.  What unit does a Bluetooth peripheral measure RSSI, or received signal strength intensity in?
+1.  What unit does a Bluetooth peripheral measure RSSI, or received signal strength indicator in?
 2.  What is the return value of the following code: `UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, @"image/jpeg", NULL)`?
 3.  What function must be called before calling `SecTrustGetCertificateCount` on a `SecTrustRef`?
 4.  What UIKit class can be used to show the definition of a word?
 5.  An `SCNetworkReachabilityRef` can be created from three different sets of arguments. Fill in the blank `SCNetworkReachabilityCreateWith_______`. (1 pt. each)
 6.  `mach_absolute_time()` returns a count of Mach absolute time units. What function can be used to convert this into something more useful, like nanoseconds?
 7.  How many arguments does `CGRectDivide` take?
-8.  What function would you call to generate a random integer between `1` and `N`
+8.  What function would you call to generate a random integer between `1` and `N`?
 9.  What CoreFoundation function can, among other things, transliterate between different writing systems?
 10. What is LLVM's logo? And, for a bonus point: What is GCC's logo?
 
 ## Activity Sheet: NSAnagram
 
-First introduced in [NSHipster Quiz #4](https://nshipster.com/nshipster-quiz-4/), NSAnagram has become loved and hated, in equal parts, by those who have dared to take the challenge. Each question is an anagram, whose letters can be rearranged to form the name of a class or type in a well-known system framework (hint: Foundation, CoreFoundation, CoreLocation, StoreKit, and UIKit are represented here). Good luck!
+First introduced in [NSHipster Quiz #4](https://nshipster.com/nshipster-quiz-4/), NSAnagram has become loved and hated, in equal parts, by those who have dared to take the challenge. Each question is an anagram, whose letters can be rearranged to form the name of a class or type in a well-known system framework (hint: Foundation, CoreFoundation, CoreGraphics, CoreLocation, StoreKit, and UIKit are represented here). Good luck!
 
 1.  Farms To Rent
 2.  Zest On Mine!
@@ -79,7 +79,7 @@ First introduced in [NSHipster Quiz #4](https://nshipster.com/nshipster-quiz-4/)
 1.  Heartbleed
 2.  Shazam
 3.  Samsung
-4.  Leonardo DiCaprio, previously Christian Bale)
+4.  Leonardo DiCaprio (previously Christian Bale)
 5.  TestFlight
 6.  Dr. Dre, a.k.a Andre Romelle Young
 7.  Secret

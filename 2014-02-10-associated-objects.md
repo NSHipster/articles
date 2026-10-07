@@ -19,7 +19,7 @@ Therefore, it is with great trepidation that we consider this [Faustian bargain]
 
 ---
 
-Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in OS X Snow Leopard (available in iOS 4). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
+Associated Objects—or Associative References, as they were originally known—are a feature of the Objective-C 2.0 runtime, introduced in OS X Snow Leopard (available in iOS 3.1). The term refers to the following three C functions declared in `<objc/runtime.h>`, which allow objects to associate arbitrary values for keys at runtime:
 
 - `objc_setAssociatedObject`
 - `objc_getAssociatedObject`
@@ -42,9 +42,10 @@ Why is this useful? It allows developers to **add custom properties to existing 
 - (id)associatedObject {
     return objc_getAssociatedObject(self, @selector(associatedObject));
 }
+@end
 ```
 
-It is often recommended that they key be a `static char`—or better yet, the pointer to one. Basically, an arbitrary value that is guaranteed to be constant, unique, and scoped for use within getters and setters:
+It is often recommended that the key be a `static char`—or better yet, the pointer to one. Basically, an arbitrary value that is guaranteed to be constant, unique, and scoped for use within getters and setters:
 
 ```objc
 static char kAssociatedObjectKey;
@@ -128,7 +129,7 @@ Values can be associated onto objects according to the behaviors defined by the 
     </tbody>
 </table>
 
-Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zero `weak` references, but rather follow a behavior similar to `unsafe_unretained`, which means that one should be cautious when accessing weakly associated objects within an implementation.
+Weak associations to objects made with `OBJC_ASSOCIATION_ASSIGN` are not zeroing `weak` references, but rather follow a behavior similar to `unsafe_unretained`, which means that one should be cautious when accessing weakly associated objects within an implementation.
 
 {% info %}
 According to the deallocation timeline described in 
@@ -142,7 +143,7 @@ which is invoked by `NSObject -dealloc`.
 
 One may be tempted to call `objc_removeAssociatedObjects()` at some point in their foray into associated objects. However, [as described in the documentation](https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/objc_removeAssociatedObjects), it's unlikely that you would have an occasion to invoke it yourself:
 
-> The main purpose of this function is to make it easy to return an object to a "pristine state”. You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.
+> The main purpose of this function is to make it easy to return an object to a "pristine state". You should not use this function for general removal of associations from objects, since it also removes associations that other clients may have added to the object. Typically you should use objc_setAssociatedObject with a nil value to clear an association.
 
 ## Patterns
 
@@ -166,11 +167,11 @@ A common pattern for views is to create a convenience method that populates fiel
 
 ### Storing an associated object, when the value can be inferred
 
-For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can retrieved by calling `cellForRowAtIndexPath:`.
+For example, one might be tempted to store a reference to a custom accessory view's containing `UITableViewCell`, for use in `tableView:accessoryButtonTappedForRowWithIndexPath:`, when this can be retrieved by calling `cellForRowAtIndexPath:`.
 
 ### Using associated objects instead of _X_
 
-...where X is any one the following:
+...where X is any one of the following:
 
   - [Subclassing](https://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) for when inheritance is a more reasonable fit than composition.
   - [Target-Action](https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html) for adding interaction events to responders.

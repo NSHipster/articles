@@ -43,7 +43,7 @@ in Unix, macOS, and iOS.
 ## Unix
 
 Nearly all Unix distributions include
-a small collection newline-delimited list of words.
+a small collection of newline-delimited lists of words.
 On macOS, these can be found at `/usr/share/dict`:
 
 ```terminal
@@ -126,7 +126,7 @@ $ ls /Library/Dictionaries/
 ```
 
 macOS ships with dictionaries in
-Chinese, English, French, Dutch, Italian, Japanese, and Korean,
+Chinese, English, French, German, Dutch, Italian, Japanese, Korean, and Spanish,
 as well as an English thesaurus
 and a special dictionary for Apple-specific terminology.
 
@@ -160,7 +160,7 @@ A filesystem autopsy reveals some interesting implementation details.
 For New Oxford American Dictionary, in particular,
 its contents include:
 
-- Binary-encoded `KeyText.data`, `KeyText.index`, and `Content.data`
+- Binary-encoded `KeyText.data`, `KeyText.index`, and `Body.data`
 - CSS for styling entries
 - 1207 images, from A-Frame to Zither.
 - Preference to switch between
@@ -189,7 +189,7 @@ func define(_ word: String) -> String? {
         return nil
     }
 
-    return String(definition.takeUnretainedValue())
+    return String(definition.takeRetainedValue())
 }
 
 define("apple") // "apple | ˈapəl | noun 1 the round fruit of a tree..."
@@ -206,7 +206,7 @@ NSLog(@"%@", definition);
 _Wait, where did all of those great dictionaries go?_
 
 Well, they all disappeared into that first `NULL` argument.
-One might expect to provide a `DCSCopyTextDefinition` type here ---
+One might expect to provide a `DCSDictionaryRef` type here ---
 as prescribed by the function definition.
 However, there are no public functions to construct or copy such a type,
 making `nil` the only available option.
@@ -319,8 +319,8 @@ for (NSString *name in availableDictionariesKeyedByName) {
                 NSString *definition = (__bridge_transfer NSString*)DCSCopyTextDefinition((__bridge DCSDictionaryRef)dictionary, (__bridge CFStringRef)headword, CFRangeMake(0, [headword length]));
                 NSLog(@"%@: %@", name, definition);
 
-                NSString *HTML = (__bridge_transfer NSString*)DCSRecordCopyData((__bridge DCSDictionaryRef)dictionary, (__bridge CFStringRef)headword, CFRangeMake(0, [headword length]));
-                NSLog(@"%@: %@", name, definition);
+                NSString *HTML = (__bridge_transfer NSString*)DCSRecordCopyData((__bridge CFTypeRef)record);
+                NSLog(@"%@: %@", name, HTML);
             }
         }
     }
@@ -332,7 +332,7 @@ is the ability to access the raw HTML for entries,
 which --- combined with a dictionary's bundled CSS ---
 produces the result seen in Dictionary.app.
 
-{% asset dictionary.png alt="Entry for "apple" in Dictionary.app" %}
+{% asset dictionary.png alt="Entry for 'apple' in Dictionary.app" %}
 
 {% info %}
 In the process of writing this article,
@@ -352,9 +352,9 @@ Fortunately, a good chunk of functionality is available
 through an obscure UIKit class, `UIReferenceLibraryViewController`.
 
 `UIReferenceLibraryViewController` is similar to an
-`MFMessageComposeViewController` in that provides
+`MFMessageComposeViewController` in that it provides
 a minimally-configurable view controller around system functionality
-that's intended to present modally.
+that's intended to be presented modally.
 
 You initialize it with the desired term:
 

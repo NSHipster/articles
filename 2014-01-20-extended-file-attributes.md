@@ -39,7 +39,7 @@ The extended attributes API, declared in `<sys/xattr.h>`, has functions for gett
 
 ```objc
 ssize_t getxattr(const char *path, const char *name, void *value, size_t size, u_int32_t position, int options);
-int setxattr(const char *path, const char *name, void *value, size_t size, u_int32_t position, int options);
+int setxattr(const char *path, const char *name, const void *value, size_t size, u_int32_t position, int options);
 ssize_t listxattr(const char *path, char *namebuf, size_t size, int options);
 int removexattr(const char *path, const char *name, int options);
 ```
@@ -56,7 +56,7 @@ const char *value = [[response allHeaderFields][@"Etag"] UTF8String];
 int result = setxattr(filePath, name, value, strlen(value), 0, 0);
 ```
 
-As another example, previous to iOS 5.0.1, EAs were the designated way to denote that a particular file should not be synchronized with iCloud (as of iOS 5.1, `NSURL -setResourceValue:forKey:error:` is used, which sets the `com.apple.metadata:com_apple_backup_excludeItem` EA instead):
+As another example, in iOS 5.0.1, EAs were the designated way to denote that a particular file should not be backed up to iCloud (as of iOS 5.1, `NSURL -setResourceValue:forKey:error:` is used, which sets the `com.apple.metadata:com_apple_backup_excludeItem` EA instead):
 
 ```objc
 #include <sys/xattr.h>
@@ -84,4 +84,4 @@ For things like author, file history, window or cursor position, and networking 
 
 Between domestic wiretapping, the botched launch of [healthcare.gov](https://www.healthcare.gov), various stories of retailers leaking customer information, and untold volumes of snark on social networks, our culture has taken a profound shift in its relationship to computers. The average person is more technically savvy, but also harbors a newfound suspicion and mistrust of technology.
 
-Knowing the relationship between data, metadata, and the entities that interact with both offer the best chance at understanding and adapting to whatever the future holds. As programmers, we are the arbiters of digital reality for ourselves and others; it is our responsibility to act in good faith and good conscience. Taking this responsibility seriously is more important than ever before. However this manifests itself in your occupation, take care in what you do.
+Knowing the relationship between data, metadata, and the entities that interact with both offers the best chance at understanding and adapting to whatever the future holds. As programmers, we are the arbiters of digital reality for ourselves and others; it is our responsibility to act in good faith and good conscience. Taking this responsibility seriously is more important than ever before. However this manifests itself in your occupation, take care in what you do.

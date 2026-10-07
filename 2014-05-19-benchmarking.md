@@ -17,7 +17,7 @@ The etymology of the word "benchmark" can be traced back to 19<sup>th</sup> cent
 
 In programming, there is a minor semantic distinction between a _benchmark_ and the act of _benchmarking_:
 
-A _benchmark_ is a program made specifically to measure and compare broad performance characteristics of hardware and software configurations. By contrast, _benchmarking_, is a general term for when code is used to measure the performance of a system.
+A _benchmark_ is a program made specifically to measure and compare broad performance characteristics of hardware and software configurations. By contrast, _benchmarking_ is a general term for when code is used to measure the performance of a system.
 
 ## Benchmarking Performance in Objective-C
 
@@ -57,7 +57,7 @@ id object = @"🐷";
 
 Benchmarking is as simple as taking the time before running, and comparing it against the time after. `CACurrentMediaTime()` is a convenient way to measure time in seconds derived from `mach_absolute_time`.
 
-> Unlike `NSDate` or `CFAbsoluteTimeGetCurrent()` offsets, `mach_absolute_time()` and `CACurrentMediaTime()` are based on the internal host clock, a precise, monotonic measure, and not subject to changes in the external time reference, such as those caused by time zones, daylight savings, or leap seconds
+> Unlike `NSDate` or `CFAbsoluteTimeGetCurrent()` offsets, `mach_absolute_time()` and `CACurrentMediaTime()` are based on the internal host clock, a precise, monotonic measure, and not subject to changes in the external time reference, such as those caused by time zones, daylight savings, or leap seconds.
 
 `for` loops are used to increment `count` and `iterations`. Each iteration is enclosed by an `@autoreleasepool`, to keep the memory footprint low.
 
@@ -79,7 +79,7 @@ CFTimeInterval endTime = CACurrentMediaTime();
 NSLog(@"Total Runtime: %g s", endTime - startTime);
 ```
 
-> The extra code block between `startTime` and `endTime` in the example below is unnecessary, but helps improve legibility and acts as a sanity check for variable scope
+> The extra code block between `startTime` and `endTime` in the example above is unnecessary, but helps improve legibility and acts as a sanity check for variable scope
 
 At this point, your NSHipster sense is probably tingling—as if to say, "Surely, there must be a better, more obscure way to do this!"
 
@@ -165,7 +165,7 @@ NSLog(@"[[NSMutableArray arrayWithCapacity] addObject:] Avg. Runtime: %llu ns", 
 Testing on an iPhone Simulator running iOS 7.1, the results are as follows:
 
 ```
-[[NSMutableArray array] addObject:]: Avg. Runtime 26119 ns
+[[NSMutableArray array] addObject:] Avg. Runtime: 26119 ns
 [[NSMutableArray arrayWithCapacity] addObject:] Avg. Runtime: 24158 ns
 ```
 
