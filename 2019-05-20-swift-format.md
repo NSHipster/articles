@@ -75,7 +75,7 @@ we'll limit our discussion here to whitespace and punctuation.
 Swift, like many other programming languages,
 is quite liberal in its acceptance of newlines, tabs, and spaces.
 Most whitespace is insignificant,
-having no effect on the code around from the compiler's point of view.
+having no effect on the code from the compiler's point of view.
 
 When we use whitespace to make code more comprehensible
 without changing its behavior,
@@ -117,7 +117,7 @@ as have various open source tools to automate the process
 of formatting code to match them.
 
 To get a sense of the current state of Swift code formatters,
-we'll take a look at the following four tools:
+we'll take a look at the following three tools:
 
 | Project                                                                 | Repository URL                                |
 | ----------------------------------------------------------------------- | --------------------------------------------- |
@@ -381,7 +381,6 @@ $ brew install swift-format
 ```
 
 Alternatively, you can clone its [source repository](https://github.com/apple/swift-format) and build it yourself.
-https://github.com/apple/swift-format.
 
 #### Usage
 
@@ -806,7 +805,7 @@ $ time swift-format Example.swift
 
 {% info %}
 Since our initial analysis,
-In Swift 5.1,
+in Swift 5.1,
 [SwiftSyntax](https://nshipster.com/swiftsyntax/)
 (the parser used by `swift-format`)
 has been updated with significantly improved performance,
@@ -814,7 +813,7 @@ as described in
 [this forum post](https://forums.swift.org/t/speeding-up-swiftsyntax-by-using-the-parser-directly/18493).
 
 Our initial benchmarks reflected the Swift 4.2 version of SwiftSyntax,
-which predate these optimizations.
+which predates these optimizations.
 Using the latest Swift 5.1 Snapshot
 (2019-05-09, LLVM 59470d46d5, Swift 6d7f3f61d9),
 we didn't see a significant performance improvement from before,
@@ -868,7 +867,7 @@ older and larger and have a large number of contributors.
 
 ---
 
-The trouble with the debate about code style is that its large and subjective.
+The trouble with the debate about code style is that it's large and subjective.
 By adopting these tools in our day-to-day workflows today,
 we not only benefit from better, more maintainable code today,
 but we can help move the debate forward,
