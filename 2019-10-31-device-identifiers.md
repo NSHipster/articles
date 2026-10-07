@@ -99,7 +99,7 @@ by identifying and communicating with as many potential customers as possible.
 And many ---
 either out of a genuine belief or formulated as a post hoc rationalization ---
 take the potential benefit of their product
-as a license to flouting long-established customs of personal privacy.
+as a license to flout long-established customs of personal privacy.
 So they enlist the help of one or more
 advertising firms,
 who promise to maximize their allocated budget and
@@ -124,20 +124,20 @@ which is why advertisers go to such great lengths to track you.**
 
 ## Apple-Sanctioned Identifiers
 
-Apple's provided various APIS to facilitate user identification
+Apple's provided various APIs to facilitate user identification
 for various purposes:
 
-### Universal Identifiers (UDID)
+### Unique Device Identifiers (UDID)
 
 In the early days of iOS,
 Apple provided a `uniqueIdentifier` property on `UIDevice` ---
 affectionately referred to as a
-<abbr title="Universal Device Identifier">UDID</abbr>
+<abbr title="Unique Device Identifier">UDID</abbr>
 ([not to be confused with a UUID](/uuid-udid-unique-identifier/)).
 Although such functionality seems unthinkable today,
-that property existed until iOS 5,
-until it was
-deprecated and replaced by `identifierForVendor` in iOS 6.
+that property existed until it was
+deprecated in iOS 5
+and replaced by `identifierForVendor` in iOS 6.
 
 ### Vendor Identifiers (IDFV)
 
@@ -157,7 +157,7 @@ let idfv = UIDevice.current.identifierForVendor // BD43813E-CFC5-4EEB-ABE2-94562
 {% warning %}
 
 According to [the documentation](https://developer.apple.com/documentation/uikit/uidevice/1620059-identifierforvendor)
-`identifierForVendor` return `nil`
+`identifierForVendor` returns `nil`
 "after the device has been restarted but before the user has unlocked the device."
 It's unclear when that would be the case,
 but something to keep in mind if your app does anything in the background.
@@ -173,11 +173,11 @@ identification necessary for app functionality
 from anything in the service of advertising.
 
 The resulting
-`advertisingidentifier` property
+`advertisingIdentifier` property
 (affectionately referred to as
 <abbr title="Identifier for Advertisers">IDFA</abbr> by its associates)
 differs from `identifierForVendor`
-by returning the same value for everyone.
+by returning the same value for every app on a device.
 The value can change, for example,
 if the user [resets their Advertising Identifier](https://support.apple.com/en-us/HT205223)
 or erases their device.
@@ -224,7 +224,7 @@ According to
 > advertising fraud detection,
 > and debugging.
 
-This kind of _"honor system"_ approach compliance is confusing.
+This kind of _"honor system"_ approach to compliance is confusing.
 And it makes you wonder what kind of usage
 _wouldn't_ fall within these broad allowances.
 
@@ -299,7 +299,7 @@ and the following JSON payload:
 
 ```json
 {
-   "bit0" : true
+   "bit0" : true,
    "bit1" : false,
    "last_update_time" : "2019-10"
 }
@@ -310,7 +310,7 @@ and the following JSON payload:
 Apple allegedly created the DeviceCheck framework
 to meet the needs of Uber
 in limiting the abuse of promotional codes.
-Although DeviceCheck proports to store _only_ two bits of information
+Although DeviceCheck purports to store _only_ two bits of information
 (just enough to, for example,
 determine whether a device has ever been used to create an account
 and whether the device was ever associated with fraudulent activity),
@@ -330,7 +330,7 @@ Over the years,
 Apple's restricted access to information about
 device hardware,
 [installed apps](https://developer.apple.com/documentation/uikit/uiapplication/1622952-canopenurl),
-[nearby WiFi networks](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info).
+and [nearby WiFi networks](https://developer.apple.com/documentation/bundleresources/entitlements/com_apple_developer_networking_wifi-info).
 They've required apps to request permission to
 get your current location,
 access your camera and microphone,
@@ -413,7 +413,7 @@ UIAccessibility.isReduceTransparencyEnabled
 UIAccessibility.isAssistiveTouchRunning
 ```
 
-Of the approximately ~25% of users who take advantage of
+Of the approximately 25% of users who take advantage of
 [Dynamic Type](https://developer.apple.com/documentation/uikit/uifont/scaling_fonts_automatically)
 by configuring a preferred font size,
 that selection may also be used to fingerprint you:
@@ -455,6 +455,7 @@ You can go a few steps further on macOS,
 to further differentiate hardware by its processor count and amount of RAM:
 
 ```swift
+let processInfo = ProcessInfo.processInfo
 processInfo.processorCount // 8
 
 Measurement<UnitInformationStorage>(value: Double(processInfo.physicalMemory),
@@ -472,7 +473,7 @@ Knowing whether someone's phone is on Verizon or Vodafone
 can also be factored into a fingerprint.
 You can use the `CTTelephonyNetworkInfo` class from the
 [CoreTelephony framework](https://developer.apple.com/documentation/coretelephony)
-to lookup the providers for devices with cellular service:
+to look up the providers for devices with cellular service:
 
 ```swift
 import CoreTelephony
@@ -483,12 +484,12 @@ carriers?.map { ($0.mobileNetworkCode, $0.mobileCountryCode) }
 ```
 
 The number of providers varies per country,
-but using the 4 major carriers in United States
+but using the 4 major carriers in the United States
 as a guideline,
 we can say carrier information would contribute about 2 bits
 (or more if you have multiple SIM cards installed).
 
-## Communication Preferences (2 bits)
+### Communication Preferences (2 bits)
 
 More generally,
 even knowing whether someone can send texts or email at all
@@ -570,7 +571,7 @@ could be used to uniquely identify devices.
 
 Everything from your heartbeat, to your gait, to your
 [butt shape](https://www.wired.co.uk/article/surveillance-technology-biometrics)
-seem capable of leaking your identity.
+seems capable of leaking your identity.
 It can all be quite overwhelming.
 
 I mean,
