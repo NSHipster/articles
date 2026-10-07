@@ -205,7 +205,7 @@ import UIKit
 final class SectionHeaderView: UITableViewHeaderFooterView {
     static let reuseIdentifier: String = String(describing: self)
 
-    var imageView: UIImageView
+    var imageView: UIImageView!
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
@@ -262,7 +262,7 @@ as you can with table view cells.
 
 However,
 we can still use Interface Builder to design our section header and footer views ---
-all it takes a few extra steps.
+all it takes is a few extra steps.
 
 First, create a new Swift file
 that declares your `UITableViewHeaderFooterView` subclass.
@@ -420,7 +420,7 @@ With today's comparatively over-powered iOS hardware,
 such proactive measures may well be unnecessary for achieving
 buttery smooth interactions.
 
-But for those of your with demanding performance requirements,
+But for those of you with demanding performance requirements,
 for anyone yearning to be in the 2%,
 to achieve the <em lang="fr">crème de la crème</em> of responsive interfaces,
 `UITableViewHeaderFooterView` can be a great way to skim some fat off your code.

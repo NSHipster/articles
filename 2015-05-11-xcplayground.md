@@ -4,9 +4,21 @@ author: Nate Cook
 category: Swift
 tags: swift
 excerpt: "Playgrounds aren't a feature of the Swift language *per se*—instead, they are a terrific showcase for all that Swift has to offer, from its efficiency and power to its opacity and depth. Take a look past the surface of Playgrounds, at tools that make them a powerful part of the development process: sources and resources, captured values and extended execution, and integrated rich formatting that can transform a Playground into an interactive teaching tool."
+retired: true
 status:
     swift: 1.2
 ---
+
+{% error do %}
+
+Apple replaced the XCPlayground module
+with the PlaygroundSupport framework in Xcode 8.
+For example,
+use `PlaygroundPage.current.needsIndefiniteExecution = true`
+in place of `XCPSetExecutionShouldContinueIndefinitely(true)`.
+The sections about Sources, Resources, and markup still apply.
+
+{% enderror %}
 
 > Stop right there! Given the topic, wouldn't you rather read this article as a Playground? **<a href="{% asset  XCPlayground.playground.zip @path %}">Download Now &rarr;</a>**
 

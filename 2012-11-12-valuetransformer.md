@@ -32,7 +32,7 @@ iOS doesn't have bindings.
 The second reason has less to do with iOS than the Objective-C runtime itself.
 With the introduction of blocks,
 it got a whole lot easier to pass behavior between objects ---
-significantly easier than, say `ValueTransformer` or `NSInvocation`.
+significantly easier than, say, `ValueTransformer` or `NSInvocation`.
 So even if iOS were to get bindings tomorrow,
 it's unclear whether `ValueTransformer`
 would play a significant role this time around.
@@ -165,7 +165,7 @@ What I came up with was
 [TransformerKit](https://github.com/mattt/TransformerKit).
 
 At the core of the library is some Obj-C runtime hackery
-in an `ValueTransformer` category.
+in a `ValueTransformer` category.
 Also included are some helpful examples,
 like string case transformers
 (i.e. `CamelCase`, `llamaCase`, `snake_case`, and `train-case`).
@@ -191,7 +191,7 @@ before sending it off to the mainframe.
 Unlike blocks, value transformers have the concept of reversibility,
 which enables some interesting use cases.
 
-Say you were wanted to map keys from a REST API representation into a model.
+Say you wanted to map keys from a REST API representation into a model.
 You could create a reversible transformation that converted `snake_case` to `llamaCase` when initializing,
 and `llamaCase` to `snake_case` when serializing back to the server.
 
@@ -212,7 +212,7 @@ It seems to have fallen out of fashion over the years,
 but serializing simple collections in this way
 can be a winning strategy for difficult-to-model data.
 (Just don't use this approach to serialize images or other binary data;
-use external storage instead)
+use external storage instead.)
 
 ---
 
@@ -223,7 +223,7 @@ input goes in, output comes out.
 
 While it's true that Objective-C blocks
 and all of the advanced language features in Swift
-are superior examples of the functional programming paradigm.
+are superior examples of the functional programming paradigm,
 `ValueTransformer` has a special place in Cocoa's history and Xcode's tooling.
 For that reason, object orientation is transformed
 from an embarrassing liability to its greatest asset.

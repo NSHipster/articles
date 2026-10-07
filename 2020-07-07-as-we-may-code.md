@@ -43,7 +43,7 @@ In this article,
 I'd like to share an idea that I've been kicking around for a while.
 It's something that's come into greater focus with
 my recent work on [`swift-doc`][swift-doc],
-but first started to form during tenure in Apple Developer Publications,
+but first started to form during my tenure in Apple Developer Publications,
 back in 2015.
 
 The idea is this: \\
@@ -422,8 +422,8 @@ var collector = DeclarationCollector()
 let tree = try SyntaxParser.parse(source: source)
 collector.walk(tree)
 
-collector.functions.first?.name // "foo()"
-collector.functions.first?.returns // "Widget"
+collector.functions.first?.identifier // "foo"
+collector.functions.first?.signature.output // "Widget"
 ```
 
 Combining this syntactic reading with information from the compiler,
@@ -476,14 +476,14 @@ _:2D1F49FE-86DE-4715-BD59-FA70392E41BE <http://www.swift.org/#returns> _:E83C6A2
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-_:Widget rdf:type :Structure ;
+_:Widget rdf:type swift:Structure ;
          swift:name "Widget"^^xsd:token .
 
-_:foo rdf:type :Function ;
+_:foo rdf:type swift:Function ;
       swift:name "foo()"^^xsd:token ;
       swift:returns _:Widget .
 
-_:bar rdf:type :Function ;
+_:bar rdf:type swift:Function ;
       swift:name "bar()"^^xsd:token ;
       swift:returns _:Widget .
 ```
@@ -525,20 +525,20 @@ RETURN function
 ```sql
 CREATE TABLE symbols (
     id UUID PRIMARY KEY,
-    name TEXT,
+    name TEXT
 );
 
 CREATE TABLE functions (
-    returns_id UUID REFERENCES symbols(id),
+    returns_id UUID REFERENCES symbols(id)
 ) INHERITS (symbols);
 
 --
 
 SELECT f.id, f.name
 FROM functions f
-    INNER JOIN symbols s USING (returns_id);
+    INNER JOIN symbols s ON f.returns_id = s.id
 WHERE s.name = 'Widget'
-ORDER BY name
+ORDER BY f.name
 ```
 
 Whichever route we take,
@@ -546,8 +546,8 @@ we get the same results:
 
 | id                                   | name   |
 |--------------------------------------|--------|
-| 4EAE3E8C-FD96-4664-B7F7-D64D8B75ECEB | foo()  |
 | 2D1F49FE-86DE-4715-BD59-FA70392E41BE | bar()  |
+| 4EAE3E8C-FD96-4664-B7F7-D64D8B75ECEB | foo()  |
 
 {% info %}
 
@@ -645,10 +645,9 @@ created by `@kateinoigakukun` and updated this year
 that contain Swift functions named `record`:
 
 ```sparql
-PREFIX
-    swift: <http://www.swift.org/#>
-    skos: <http://www.w3.org/2004/02/skos/core/#>
-    sdo: <http://schema.org/#>
+PREFIX swift: <http://www.swift.org/#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX sdo: <http://schema.org/>
 SELECT ?url
 WHERE {
     ?function a swift:Function ;

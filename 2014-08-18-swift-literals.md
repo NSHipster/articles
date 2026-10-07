@@ -49,7 +49,7 @@ Swift provides the following kinds of literals:
 
 | Name                      | Default Inferred Type | Examples                          |
 | ------------------------- | --------------------- | --------------------------------- |
-| Integer                   | `Int`                 | `123`, `0b1010`, `0o644`, `0xFF`, |
+| Integer                   | `Int`                 | `123`, `0b1010`, `0o644`, `0xFF`  |
 | Floating-Point            | `Double`              | `3.14`, `6.02e23`, `0xAp-2`       |
 | String                    | `String`              | `"Hello"`, `""" . . . """`        |
 | Extended Grapheme Cluster | `Character`           | `"A"`, `"é"`, `"🇺🇸"`              |
@@ -241,7 +241,7 @@ extension Fuzzy: ExpressibleByBooleanLiteral {
 > In practice,
 > there aren't many situations in which it'd be appropriate
 > for a type to be initialized using Boolean literals.
-> Support for string, integer, and floating-point literals are much more common.
+> Support for string, integer, and floating-point literals is much more common.
 
 Doing so doesn't change the default meaning of `true` or `false`.
 We don't have to worry about existing code breaking
@@ -283,7 +283,7 @@ extension Fuzzy: ExpressibleByFloatLiteral {
 
 With these protocols adopted,
 the `Fuzzy` type now looks and feels like
-a _bona fide_ member of Swift standard library.
+a _bona fide_ member of the Swift standard library.
 
 ```swift
 let completelyTrue: Fuzzy = true
@@ -312,7 +312,7 @@ At the time of writing,
 is in active review.
 If it's accepted,
 future versions of Swift will support "raw" strings,
-or string literals that ignores escape sequences.
+or string literals that ignore escape sequences.
 
 From the proposal:
 
@@ -333,7 +333,7 @@ From the proposal:
 
 This proposal comes as a natural extension of the new multi-line string literals
 added in Swift 4
-([SE-0165](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)),
+([SE-0168](https://github.com/apple/swift-evolution/blob/master/proposals/0168-multi-line-string-literals.md)),
 and would make it even easier to do work with data formats like JSON and XML.
 
 If nothing else,

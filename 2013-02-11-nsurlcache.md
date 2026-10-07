@@ -9,7 +9,7 @@ status:
 
 `NSURLCache` provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i), any request loaded through `NSURLConnection` will be handled by `NSURLCache`.
 
-Network caching reduces the number of requests that need to be made to the server, and improve the experience of using an application offline or under slow network conditions.
+Network caching reduces the number of requests that need to be made to the server, and improves the experience of using an application offline or under slow network conditions.
 
 When a request has finished loading its response from the server, a cached response will be saved locally. The next time the same request is made, the locally-cached response will be returned immediately, without connecting to the server. `NSURLCache` returns the cached response _automatically_ and _transparently_.
 
@@ -17,7 +17,7 @@ As of iOS 5, a shared `NSURLCache` is set for the application by default. [Quoth
 
 > Applications that do not have special caching requirements or constraints should find the default shared cache instance acceptable. An application with more specific needs can create a custom NSURLCache object and set it as the shared cache instance using setSharedURLCache:. The application should do so before any calls to this method.
 
-Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or  `–applicationDidFinishLaunching:` on OS X:
+Those having such special caching requirements can set a shared URL cache in `-application:didFinishLaunchingWithOptions:` on iOS, or `-applicationDidFinishLaunching:` on OS X:
 
 ```swift
 func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
@@ -36,6 +36,8 @@ func application(application: UIApplication!, didFinishLaunchingWithOptions laun
                                                        diskCapacity:20 * 1024 * 1024
                                                            diskPath:nil];
   [NSURLCache setSharedURLCache:URLCache];
+
+  return YES;
 }
 ```
 
@@ -116,15 +118,15 @@ In addition to `Cache-Control`, a server may send additional headers that can be
 
 * `Last-Modified` - The value of this header corresponds to the date and time when the requested resource was last changed. For example, if a client requests a timeline of recent photos, `/photos/timeline`, the `Last-Modified`
 value could be set to when the most recent photo was taken.
-* `Etag` - An abbreviation for "entity tag", this is an identifier that represents the contents requested resource. In practice, an `Etag` header value could be something like the [`MD5`](https://en.wikipedia.org/wiki/MD5) digest of the resource properties. This is particularly useful for dynamically generated resources that may not have an obvious `Last-Modified` value.
+* `Etag` - An abbreviation for "entity tag", this is an identifier that represents the contents of the requested resource. In practice, an `Etag` header value could be something like the [`MD5`](https://en.wikipedia.org/wiki/MD5) digest of the resource properties. This is particularly useful for dynamically generated resources that may not have an obvious `Last-Modified` value.
 
 ## `NSURLConnectionDelegate`
 
 Once the server response has been received, the `NSURLConnection` delegate has an opportunity to specify the cached response in `-connection:willCacheResponse:`.
 
-`NSCachedURLResponse` is a class that contains both an `NSURLResponse` with the cached `NSData` associated with the response.
+`NSCachedURLResponse` is a class that contains both an `NSURLResponse` and the cached `NSData` associated with the response.
 
-In `-connection:willCacheResponse:`, the `cachedResponse` object has been automatically created from the result of the URL connection. Because there is no mutable counterpart to `NSCachedURLResponse`, in order to change anything about `cachedResponse`, a new object must be constructed, passing any modified values into `–initWithResponse:data:userInfo:storagePolicy:`, for instance:
+In `-connection:willCacheResponse:`, the `cachedResponse` object has been automatically created from the result of the URL connection. Because there is no mutable counterpart to `NSCachedURLResponse`, in order to change anything about `cachedResponse`, a new object must be constructed, passing any modified values into `-initWithResponse:data:userInfo:storagePolicy:`, for instance:
 
 ```swift
 // MARK: NSURLConnectionDataDelegate
@@ -187,6 +189,6 @@ As of iOS 5, disk caching is supported, but only for HTTP, not HTTPS, requests (
 
 `NSURLCache` reminds us of how important it is to be familiar with the systems we interact with. Chief among them when developing for iOS or OS X is, of course, the [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i).
 
-Untold numbers of developers have hacked together an awkward, fragile system for network caching functionality, all because they weren't aware that `NSURLCache` could be setup in two lines and do it 100× better. Even more developers have never known the benefits of network caching, and never attempted a solution, causing their apps to make untold numbers of unnecessary requests to the server.
+Untold numbers of developers have hacked together an awkward, fragile system for network caching functionality, all because they weren't aware that `NSURLCache` could be set up in two lines and do it 100× better. Even more developers have never known the benefits of network caching, and never attempted a solution, causing their apps to make untold numbers of unnecessary requests to the server.
 
-So be the change you want to see in the world, and be sure to always start you app on the right foot, by setting a shared `NSURLCache` in `-application:didFinishLaunchingWithOptions:`.
+So be the change you want to see in the world, and be sure to always start your app on the right foot, by setting a shared `NSURLCache` in `-application:didFinishLaunchingWithOptions:`.

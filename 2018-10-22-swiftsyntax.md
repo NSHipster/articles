@@ -55,7 +55,7 @@ which generates an abstract syntax tree,
 (<abbr title="Abstract Syntax Tree">AST</abbr>).
 From there, semantic analysis is performed on the syntax
 to produce a type-checked AST,
-which lowered into
+which is lowered into
 [Swift Intermediate Language](https://github.com/apple/swift/blob/master/docs/SIL.rst);
 the <abbr title="Swift Intermediate Language">SIL</abbr>
 is transformed and optimized and itself lowered into
@@ -260,7 +260,7 @@ This certainly isn't going to replace
 [libSyntax](https://github.com/apple/swift/blob/master/lib/Syntax/SyntaxKind.cpp.gyb)
 and
 [SwiftSyntax](https://github.com/apple/swift-syntax/blob/master/Sources/SwiftSyntax/SyntaxKind.swift.gyb)
-both make extensive use of `gyb` to generate its interfaces.)
+both make extensive use of `gyb` to generate their interfaces.)
 
 But this interface can be quite useful when precision matters.
 For instance,

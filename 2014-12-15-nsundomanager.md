@@ -31,7 +31,7 @@ There are two types of undo operations, "simple" selector-based undo and complex
 
 ### Registering a Simple Undo Operation
 
-To register a simple undo operation, invoke `NSUndoManger -registerUndoWithTarget:selector:object:` on a target which can undo the action. The target is not necessarily the modified object, and is often a utility or container which manages the object's state. Specify the name of the undo action at the same time, using `NSUndoManager -setActionName:`. The undo dialog shows the name of the action, so it should be localized.
+To register a simple undo operation, invoke `NSUndoManager -registerUndoWithTarget:selector:object:` on a target which can undo the action. The target is not necessarily the modified object, and is often a utility or container which manages the object's state. Specify the name of the undo action at the same time, using `NSUndoManager -setActionName:`. The undo dialog shows the name of the action, so it should be localized.
 
 ```swift
 func updateScore(score: NSNumber) {
@@ -57,7 +57,7 @@ Simple undo operations may be too rigid for some uses, as undoing an action may 
 func movePiece(piece: ChessPiece, row:UInt, column:UInt) {
     let undoController : ViewController = undoManager?.prepareWithInvocationTarget(self) as ViewController
     undoController.movePiece(piece, row:piece.row, column:piece.column)
-    undoManager?.setActionName(NSLocalizedString("actions.move-piece", "Move Piece"))
+    undoManager?.setActionName(NSLocalizedString("actions.move-piece", comment: "Move Piece"))
 
     piece.row = row
     piece.column = column
@@ -67,7 +67,7 @@ func movePiece(piece: ChessPiece, row:UInt, column:UInt) {
 
 ```objc
 - (void)movePiece:(ChessPiece*)piece toRow:(NSUInteger)row column:(NSUInteger)column {
-    [[undoManager prepareWithInvocationTarget:self] movePiece:piece ToRow:piece.row column:piece.column];
+    [[undoManager prepareWithInvocationTarget:self] movePiece:piece toRow:piece.row column:piece.column];
     [undoManager setActionName:NSLocalizedString(@"actions.move-piece", @"Move Piece")];
 
     piece.row = row;
@@ -87,7 +87,7 @@ Once undo operations are registered, actions can be undone and redone as needed,
 By default, users trigger an undo operation by shaking the device. If a view controller should handle an undo request, the view controller must:
 
 1. Be able to become first responder
-2. Become first responder once its view appears,
+2. Become first responder once its view appears
 3. Resign first responder when its view disappears
 
 When the view controller then receives the motion event, the operating system presents a dialog to the user when undo or redo actions are available. The `undoManager` property of the view controller will handle the user's choice without further involvement.
@@ -198,7 +198,7 @@ If an action has different names for undo versus redo, check whether an undo ope
 func addItem(item: NSObject) {
     undoManager?.registerUndoWithTarget(self, selector: Selector("removeItem:"), object:item)
     if undoManager?.undoing == false {
-        undoManager?.setActionName(NSLocalizedString("action.add-item", comment: "Add Item"))
+        undoManager?.setActionName(NSLocalizedString("actions.add-item", comment: "Add Item"))
     }
     myArray.append(item)
 }
@@ -207,7 +207,7 @@ func removeItem(item: NSObject) {
     if let index = find(myArray, item) {
         undoManager?.registerUndoWithTarget(self, selector: Selector("addItem:"), object:item)
         if undoManager?.undoing == false {
-            undoManager?.setActionName(NSLocalizedString("action.remove-item", comment: "Remove Item"))
+            undoManager?.setActionName(NSLocalizedString("actions.remove-item", comment: "Remove Item"))
         }
         myArray.removeAtIndex(index)
     }

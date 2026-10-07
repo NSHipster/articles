@@ -10,7 +10,7 @@ status:
   reviewed: June 25, 2015
 ---
 
-Although iOS 8 and Swift has garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
+Although iOS 8 and Swift have garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.
 
 This week, we'll take a look at `XCTest`, the testing framework built into Xcode, as well as the exciting new additions in Xcode 6: `XCTestExpectation` and performance tests.
 
@@ -18,7 +18,7 @@ This week, we'll take a look at `XCTest`, the testing framework built into Xcode
 
 Most Xcode project templates now support testing out-of-the-box. For example, when a new iOS app is created in Xcode with `⇧⌘N`, the resulting project file will be configured with two top-level groups (in addition to the "Products" group): "AppName" & "AppNameTests". The project's auto-generated scheme enables the shortcut `⌘R` to build and run the executable target, and `⌘U` to build and run the test target.
 
-Within the test target is a single file, named "AppNameTests", which contains an example `XCTestCase` class, complete with boilerplate `setUp` & `tearDown` methods, as well as an example functional and performance test cases.
+Within the test target is a single file, named "AppNameTests", which contains an example `XCTestCase` class, complete with boilerplate `setUp` & `tearDown` methods, as well as example functional and performance test cases.
 
 ## XCTestCase
 
@@ -282,7 +282,7 @@ waitForExpectationsWithTimeout(10) { error in
 }];
 ```
 
-Now, the only remaining step is to `fulfill` that `expecation` in the relevant callback of the asynchronous method being tested:
+Now, the only remaining step is to `fulfill` that `expectation` in the relevant callback of the asynchronous method being tested:
 
 ```swift
 expectation.fulfill()
@@ -406,8 +406,8 @@ func testFetchRequestWithMockedManagedObjectContext() {
 
 ---
 
-With Xcode 6, we've finally arrived: **the built-in testing tools are now good enough to use on their own**. That is to say, there are no particularly compelling reasons to use any additional abstractions in order to provide acceptable test coverage for the vast majority apps and libraries. Except in extreme cases that require extensive stubbing, mocking, or other exotic test constructs, XCTest assertions, expectations, and performance measurements should be sufficient.
+With Xcode 6, we've finally arrived: **the built-in testing tools are now good enough to use on their own**. That is to say, there are no particularly compelling reasons to use any additional abstractions in order to provide acceptable test coverage for the vast majority of apps and libraries. Except in extreme cases that require extensive stubbing, mocking, or other exotic test constructs, XCTest assertions, expectations, and performance measurements should be sufficient.
 
-But no matter how good the testing tools have become, they're only good as _how you actually use them_.
+But no matter how good the testing tools have become, they're only as good as _how you actually use them_.
 
 If you're new to testing on iOS or OS X, start by adding a few assertions to that automatically-generated test case file and hitting `⌘U`. You might be surprised at how easy and—dare I say—enjoyable you'll find the whole experience.

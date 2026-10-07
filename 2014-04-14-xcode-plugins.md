@@ -6,6 +6,7 @@ excerpt: "This week on NSHipster: a roundup of some of the most useful and excit
 revisions:
   "2014-04-14": Original publication
   "2019-03-25": Added deprecation notice
+retired: true
 status:
   swift: n/a
 ---
@@ -21,7 +22,7 @@ for more information about their successors:
 
 Apple is nothing if not consistent. From [Pentalobular screws](https://en.wikipedia.org/wiki/Pentalobe_screw) to [Sandboxing](https://developer.apple.com/app-sandboxing/), customers are simply expected to relinquish a fair amount of control when they choose to buy a Mac or iPhone. Whether these design decisions are made to ensure a good user experience, or this control is exercised as an end in itself is debatable, but the reality is that in both hardware and software, Apple prefers an ivory tower to a bazaar.
 
-No better example of this can be found with Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & OS X software, _is itself a closed ecosystem_.
+No better example of this can be found than Xcode: the very software that software developers use to build software for the walled ecosystems of iOS & OS X software, _is itself a closed ecosystem_.
 
 Indeed, significant progress has been made in recent years to break open the developer workflow, from alternative IDEs like [AppCode](http://www.jetbrains.com/objc/?utm_source=nshipster) to build tools like [CocoaPods](http://cocoapods.org), [xctool](https://nshipster.com/xctool/) and [nomad](http://nomad-cli.com). However, the notion that Xcode itself could be customized and extended by mere mortals is extremely recent, and just now starting to pick up steam.
 
@@ -31,7 +32,7 @@ Xcode has had a plugin architecture going back to when Interface Builder was its
 
 This week on NSHipster: a roundup of some of the most useful and exciting plugins for Xcode—ready for you to try out yourself today!
 
-> And since these question come up every time there's an article with pictures:
+> And since these questions come up every time there's an article with pictures:
 >
 > 1. The color scheme is [Tomorrow Night](https://github.com/ChrisKempson/Tomorrow-Theme)
 > 2. The app used to make animated GIFs is [LICEcap](http://www.cockos.com/licecap/)
@@ -99,7 +100,7 @@ Not being the most verbose language in existence, Objective-C can use all the he
 
 ![SCXcodeSwitchExpander]({% asset scxcodeswitchexpander.gif @path %})
 
-Fact: `switch` statements and [`NS_ENUM`](https://nshipster.com/ns_enum-ns_options/) go together like <a href="http://www.thaitable.com/thai/recipe/mango-on-sticky-rice" rel="nofollow">mango and sweet sticky rice</a>. The only way it could be improved would be with [SCXcodeSwitchExpander](https://github.com/stefanceriu/SCXcodeSwitchExpander) with automagically fills out a `case` statement for each value in the enumeration.
+Fact: `switch` statements and [`NS_ENUM`](https://nshipster.com/ns_enum-ns_options/) go together like <a href="http://www.thaitable.com/thai/recipe/mango-on-sticky-rice" rel="nofollow">mango and sweet sticky rice</a>. The only way it could be improved would be with [SCXcodeSwitchExpander](https://github.com/stefanceriu/SCXcodeSwitchExpander), which automagically fills out a `case` statement for each value in the enumeration.
 
 ### Autocomplete Documentation
 
@@ -129,7 +130,7 @@ In a similar vein to what [Bret Victor writes about Learnable Programming](http:
 
 ![ColorSense]({% asset colorsense.png @path %})
 
-Telling what a color is from its RGB values alone is a hard-won skill, so faced with an `NSColor` or `UIColor` value, we have little recourse to know what it'll look like until the code is built and run. Enter [ColorSense for Xcode](https://github.com/omz/ColorSense-for-Xcode)
+Telling what a color is from its RGB values alone is a hard-won skill, so faced with an `NSColor` or `UIColor` value, we have little recourse to know what it'll look like until the code is built and run. Enter [ColorSense for Xcode](https://github.com/omz/ColorSense-for-Xcode).
 
 Quoth the README:
 

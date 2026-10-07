@@ -337,12 +337,12 @@ override func canPerform(withActivityItems activityItems: [Any]) -> Bool {
 ### Preparing for Action
 
 Once an activity has determined that it can work with the specified items,
-it uses the `prepare(withActivityItems:)`
+it uses the `prepare(withActivityItems:)` method
 to get ready to perform the activity.
 
 In the case of our custom activity,
 we take the PNG representation of the first image in the array of items
-and stores that in an instance variable:
+and store that in an instance variable:
 
 ```swift
 var sourceImageData: Data?
@@ -395,7 +395,7 @@ override func perform() {
         } else {
             self.activityDidFinish(false)
         }
-    }
+    }.resume()
 }
 ```
 
@@ -408,7 +408,7 @@ The QuickLook framework provides a simple, built-in way to display images.
 We'll extend our activity to adopt `QLPreviewControllerDataSource`
 and return an instance of `QLPreviewController`,
 with `self` set as the `dataSource`
-for our override of the`activityViewController` method.
+for our override of the `activityViewController` method.
 
 ```swift
 import QuickLook
@@ -440,12 +440,12 @@ extension MustachifyActivity: QLPreviewControllerDataSource {
 
 We can use our brand new mustache activity
 by passing it to the `applicationActivities` parameter
-in the `UIActivityViewController initializer`:
+in the `UIActivityViewController` initializer:
 
 ```swift
 let activityViewController =
     UIActivityViewController(activityItems: [image],
-                             applicationActivities: [Mustachify()])
+                             applicationActivities: [MustachifyActivity()])
 
 present(activityViewController, animated: true) {
     <#...#>

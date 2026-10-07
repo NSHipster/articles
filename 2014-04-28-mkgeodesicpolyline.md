@@ -55,7 +55,7 @@ Although the overlay looks like a smooth curve, it is actually comprised of thou
 print(geodesicPolyline.pointCount) // 3984
 ```
 ```objc
-NSLog(@"%d", geodesicPolyline.pointCount) // 3984
+NSLog(@"%lu", (unsigned long)geodesicPolyline.pointCount); // 3984
 ```
 
 Like any object conforming to the `MKOverlay` protocol, an `MKGeodesicPolyline` instance is displayed by adding it to an `MKMapView` with `addOverlay()` and implementing `mapView(_:rendererForOverlay:)`:
@@ -209,7 +209,7 @@ func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> 
         annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:PinIdentifier];
     }
 
-    annotationView.image = [UIImage imageNamed:@"plane"];
+    annotationView.image = [UIImage imageNamed:@"airplane"];
 
     return annotationView;
 }
@@ -284,7 +284,7 @@ static inline double XXDegreesToRadians(double degrees) {
 }
 ```
 
-That direction is stored in a new property, `var planeDirection: CLLocationDirection`, calculated from `self.planeDirection = directionBetweenPoints(currentMapPoint, nextMapPoint)` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
+That direction is stored in a new property, `var planeDirection: CLLocationDirection`, calculated from `self.planeDirection = directionBetweenPoints(previousMapPoint, nextMapPoint)` in `updatePlanePosition` (ideally renamed to `updatePlanePositionAndDirection` with this addition). To make the annotation rotate, we apply a `transform` on `annotationView`:
 
 ```swift
 annotationView.transform = CGAffineTransformRotate(mapView.transform, 

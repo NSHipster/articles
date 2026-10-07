@@ -96,12 +96,12 @@ Since the custom view won't have the full context of your app when rendered in I
 > - `TARGET_INTERFACE_BUILDER`: The `#if TARGET_INTERFACE_BUILDER` preprocessor macro will work in either Objective-C or Swift to conditionally compile the right code for the situation:
 
 > ````swift
-#if !TARGET_INTERFACE_BUILDER
-    // this code will run in the app itself
-#else
-    // this code will execute only in IB
-#endif
-````
+> #if !TARGET_INTERFACE_BUILDER
+>     // this code will run in the app itself
+> #else
+>     // this code will execute only in IB
+> #endif
+> ````
 
 
 ## IBCalculatorConstructorSet

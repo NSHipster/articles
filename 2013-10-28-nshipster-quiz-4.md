@@ -9,7 +9,7 @@ status:
 
 The fourth and final NSHipster pub quiz of the year was held in the beautiful city of Amsterdam on October 22nd, with help from the good folks at [Appsterdam](http://appsterdam.rs), [The Big Nerd Ranch](http://www.bignerdranch.com/), and [Heroku](http://www.heroku.com).
 
-The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Dúran](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](https://twitter.com/Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](https://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
+The competition was fierce, but ultimately the team of [Mike Lee](https://twitter.com/bmf), [Judy Chen](https://twitter.com/judykitteh), [Eloy Durán](https://twitter.com/alloy), [Alexander Repty](https://twitter.com/arepty), [Maxie Ketschau-Repty](https://twitter.com/Yumyoko), and [Sernin van de Krol](https://twitter.com/paneidos) were victorious. This was, by design, to be the highest-scoring of any pub quiz, with generous portions of extra points, and Team "[Graceful Hoppers](https://en.wikipedia.org/wiki/Grace_Hopper)" came through with an impressive 53 points (which, interestingly enough, only edged out the 2nd place team by ½ of a point).
 
 As always, you can play along at home or at work with your colleagues. Here are the rules:
 
@@ -24,7 +24,7 @@ As always, you can play along at home or at work with your colleagues. Here are 
 Round 1: General Knowledge
 --------------------------
 
-Current events, miscellaneous tidbits, and random trivia. Following a time-honored traditions for NSHipster quizzes, the first round is always a mis-mash of people, places, and pop culture.
+Current events, miscellaneous tidbits, and random trivia. Following a time-honored tradition for NSHipster quizzes, the first round is always a mish-mash of people, places, and pop culture.
 
 1. What hardware products did Apple announce at its October 22nd Media Event? (1pt for each correct answer)
 2. What two products were announced during the _last event_ to be held at the Yerba Buena Center for the Arts, on March 7, 2012? (1pt for each correct answer)
@@ -131,7 +131,7 @@ Round 3: Picture Round
 5. [Chris Liscio](https://twitter.com/liscio) / [Super Mega Ultra Groovy](http://supermegaultragroovy.com/) / [Capo](http://supermegaultragroovy.com/products/Capo/)
 6. [Paul Kafasis](https://twitter.com/PBones) / [Rogue Amoeba](http://rogueamoeba.com/) / [Fission](http://rogueamoeba.com/fission/)
 7. [Loren Brichter](https://twitter.com/lorenb) / [atebits](http://www.atebits.com/) / [Letterpress](http://www.atebits.com/letterpress/)
-8. [Craig Hockenberry](https://twitter.com/chockenberry) / [The Iconfactory](http://iconfactory.com/) / [Twitterific](http://twitterrific.com/ios)
+8. [Craig Hockenberry](https://twitter.com/chockenberry) / [The Iconfactory](http://iconfactory.com/) / [Twitterrific](http://twitterrific.com/ios)
 9. [Daniel Pasco](https://twitter.com/dlpasco) / [Black Pixel](http://blackpixel.com/) / [NetNewsWire](http://netnewswireapp.com/)
 10. [Mike Lee](https://twitter.com/bmf) / [New Lemurs](http://newlemurs.com/) / [Lemurs Chemistry](http://newlemurs.com/)
 

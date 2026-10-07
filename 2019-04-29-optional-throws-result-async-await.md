@@ -54,7 +54,7 @@ if let myData = keychainData(service: "My Service") {
 ## Getting Results
 
 There's a certain binary elegance to the above,
-but it conceals an achilles heel.
+but it conceals an Achilles heel.
 [At its heart](https://github.com/apple/swift/blob/swift-5.0-RELEASE/stdlib/public/core/Optional.swift#L122),
 `Optional` is just an enum that holds either some wrapped value or nothing:
 
@@ -152,7 +152,7 @@ All things considered, `Result` seems like a pretty useful upgrade to `Optional`
 
 ## Three's a Crowd
 
-Alas, `Result` is _also_ cursed with an achilles heel — we just haven't noticed it yet because, up until now, we've only been working with a single call to a single function. But imagine we add two more error-prone operations to our list of `Result`-returning utilities:
+Alas, `Result` is _also_ cursed with an Achilles heel — we just haven't noticed it yet because, up until now, we've only been working with a single call to a single function. But imagine we add two more error-prone operations to our list of `Result`-returning utilities:
 
 ```swift
 func makeAvatar(from user: Data) -> Result<UIImage, Error> {
@@ -206,7 +206,7 @@ case .success(let userData):
   }
 
 case .failure(KeychainError.notFound(let name)):
-  print(""\(name)" not found in keychain.")
+  print("\"\(name)\" not found in keychain.")
 
 <#...#>
 }
@@ -249,7 +249,7 @@ case .success:
   break // continue on with our program...
 
 case .failure(KeychainError.notFound(let name)):
-  print(""\(name)" not found in keychain.")
+  print("\"\(name)\" not found in keychain.")
 case .failure(AvatarError.invalidUserFormat):
   print("Unable to generate avatar from given user.")
 case .failure(FileSystemError.readOnly):
@@ -271,10 +271,10 @@ do {
   try save(image: avatar)
 
 } catch KeychainError.notFound(let name) {
-  print(""\(name)" not found in keychain.")
+  print("\"\(name)\" not found in keychain.")
 
 } catch AvatarError.invalidUserFormat {
-  print("Not enough memory to create avatar.")
+  print("Unable to generate avatar from given user.")
 
 } catch FileSystemError.readOnly {
   print("Could not save avatar to read-only media.")
@@ -298,9 +298,9 @@ Yet here we are, five years later, learning all about it. Why add it now?
 
 ## Error's Ups and Downs
 
-Well, as it should happen, `do/catch` has this little thing we might call an achilles heel…
+Well, as it should happen, `do/catch` has this little thing we might call an Achilles heel…
 
-See, `throw`, like `return`, only works in one direction; up. We can `throw` an error "up" to the _caller_, but we can't `throw` an error "down" as a parameter to another function _we_ call.
+See, `throw`, like `return`, only works in one direction: up. We can `throw` an error "up" to the _caller_, but we can't `throw` an error "down" as a parameter to another function _we_ call.
 
 This "up"-only behavior is typically what we want.
 Our keychain utility,
@@ -356,6 +356,7 @@ func userData(for userID: String, completion: (Data?, Error?) -> Void) {
   <# Fetch data over the network... #>
   guard myError == nil else {
     completion(nil, myError)
+    return
   }
   completion(myData, nil)
 }
@@ -407,6 +408,7 @@ userData(for: "jemmons") { result in
   case (.failure(URLError.timedOut)):
     print("Connection timed out.")
   <#...#>
+  }
 }
 ```
 
@@ -460,9 +462,9 @@ userData(for: "jemmons") { userResult in
 
           switch saveResult {
           case .success:
-            // All done!
+            break // All done!
 
-          case .failure(URLError.timedOut)
+          case .failure(URLError.timedOut):
             print("Operation timed out.")
           <#...#>
         }
@@ -477,6 +479,7 @@ userData(for: "jemmons") { userResult in
   case .failure(URLError.notConnectedToInternet):
     print("No internet detected.")
   <#...#>
+  }
 }
 ```
 

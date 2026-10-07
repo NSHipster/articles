@@ -103,4 +103,4 @@ For additional guidelines, see [Apple's Internationalization and Localization gu
 
 **Always wrap user-facing strings with `NSLocalizedString`.**
 
-Even if you don't plan to localize your app into any other languages, there is _immense_ utility in being able to easily review all of the strings that a user will see. And if localization is in the cards, it's significantly easier to `NSLocalize` your strings as you go along the first time, then try to find all of them after-the-fact.
+Even if you don't plan to localize your app into any other languages, there is _immense_ utility in being able to easily review all of the strings that a user will see. And if localization is in the cards, it's significantly easier to `NSLocalize` your strings as you go along the first time, than try to find all of them after-the-fact.

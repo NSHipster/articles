@@ -53,11 +53,11 @@ UINavigationBar.appearance().tintColor = myColor
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self])
 				.tintColor = myNavBarColor
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UINavigationBar.self, UIPopoverController.self])
-				.tintColor = myNavBarColor
+				.tintColor = myPopoverNavBarColor
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self])
-				.tintColor = myNavBarColor
+				.tintColor = myToolbarColor
 UIBarButtonItem.appearanceWhenContainedInInstancesOfClasses([UIToolbar.self, UIPopoverController.self])
-				.tintColor = myNavBarColor
+				.tintColor = myPopoverToolbarColor
 ```
 
 ```objc

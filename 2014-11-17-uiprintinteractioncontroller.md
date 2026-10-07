@@ -25,7 +25,7 @@ UIKit makes it easy to print straight from a user's device with custom designs t
 
 * * *
 
-At the heart of the [UIKit Printing APIs](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Printing/Printing.html#//apple_ref/doc/uid/TP40010156-CH12-SW3) is `UIPrintInteractionController`. A shared instance of this class manages details of print jobs and configure any UI that will be presented to the user. It also provides three levels of control for the formatting of your content.
+At the heart of the [UIKit Printing APIs](https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Printing/Printing.html#//apple_ref/doc/uid/TP40010156-CH12-SW3) is `UIPrintInteractionController`. A shared instance of this class manages details of print jobs and configures any UI that will be presented to the user. It also provides three levels of control for the formatting of your content.
 
 ## Printing is a Job
 
@@ -67,9 +67,9 @@ Through four different properties of `UIPrintInteractionController`, you can sel
 
 Since Thanksgiving (my favorite holiday) is around the corner, to illustrate these properties we'll add printing to different screens of a hypothetical app for Thanksgiving recipes.
 
-## Printing With `printItem`(`s`)
+## Printing With `printingItem`(`s`)
 
-You can print pre-existing printable content by setting either the `printItem` or `printItems` property of `UIPrintInteractionController`. Images and PDFs can be given either as image data (in a `NSData`, `UIImage`, or `ALAsset` instance) or via any `NSURL` referencing something that can be loaded into an `NSData` object. To be printable, images must be in [a format that `UIImage` supports](https://developer.apple.com/library/ios/documentation/Uikit/reference/UIImage_Class/index.html#//apple_ref/doc/uid/TP40006890-CH3-SW3).
+You can print pre-existing printable content by setting either the `printingItem` or `printingItems` property of `UIPrintInteractionController`. Images and PDFs can be given either as image data (in a `NSData`, `UIImage`, or `ALAsset` instance) or via any `NSURL` referencing something that can be loaded into an `NSData` object. To be printable, images must be in [a format that `UIImage` supports](https://developer.apple.com/library/ios/documentation/Uikit/reference/UIImage_Class/index.html#//apple_ref/doc/uid/TP40006890-CH3-SW3).
 
 Let's walk through a very simple case: showing the UI to print an image when the user taps a button. (We'll look at alternate ways of initiating printing below.) The process will be largely the same, no matter what you're printing—configure your print info, set up the print interaction controller, and provide your content before displaying the UI:
 
@@ -96,10 +96,11 @@ Let's walk through a very simple case: showing the UI to print an image when the
     if ([UIPrintInteractionController canPrintURL:self.imageURL]) {
         UIPrintInfo *printInfo = [UIPrintInfo printInfo];
         printInfo.jobName = self.imageURL.lastPathComponent;
-        printInfo.outputType = UIPrintInfoOutputGeneral;
+        printInfo.outputType = UIPrintInfoOutputPhoto;
 
         UIPrintInteractionController *printController = [UIPrintInteractionController sharedPrintController];
         printController.printInfo = printInfo;
+        printController.showsNumberOfCopies = NO;
 
         printController.printingItem = self.imageURL;
 
@@ -208,7 +209,7 @@ class RecipePrintPageRenderer: UIPrintPageRenderer {
         self.authorName = authorName;
         self.recipe = recipe;
 
-        self.headerHeight = 0.5;
+        self.headerHeight = 0.5 * POINTS_PER_INCH;
         self.footerHeight = 0.0;  // default
 
         UIMarkupTextPrintFormatter *formatter = [[UIMarkupTextPrintFormatter alloc] initWithMarkupText:recipe.html];

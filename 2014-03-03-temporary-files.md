@@ -74,7 +74,7 @@ NSURL *temporaryDirectoryURL = [NSURL fileURLWithPath: NSTemporaryDirectory()
 Alternatively,
 if you intend to move your temporary file to a destination URL,
 the preferred (albeit more complicated) approach
-is to call the `FileManager` method `uri(for:in:appropriateFor:create:)`.
+is to call the `FileManager` method `url(for:in:appropriateFor:create:)`.
 
 ```swift
 let destinationURL: URL = <#/path/to/destination#>
@@ -128,7 +128,7 @@ The best way to generate a unique identifier
 is the `ProcessInfo` property `globallyUniqueString`:
 
 ```swift
-ProcessInfo().globallyUniqueString
+ProcessInfo.processInfo.globallyUniqueString
 ```
 
 ```objc
@@ -165,7 +165,7 @@ let temporaryDirectoryURL =
                                 appropriateFor: destinationURL,
                                 create: true)
 
-let temporaryFilename = ProcessInfo().globallyUniqueString
+let temporaryFilename = ProcessInfo.processInfo.globallyUniqueString
 
 let temporaryFileURL =
     temporaryDirectoryURL.appendingPathComponent(temporaryFilename)
@@ -199,7 +199,7 @@ So let's talk about our options for doing that:
 ### Writing Data to a URL
 
 The simplest way to write data to a file
-is to call the `Data` method `write(to:options)`:
+is to call the `Data` method `write(to:options:)`:
 
 ```swift
 let data: Data = <#some data#>
@@ -227,7 +227,7 @@ you might instead create an empty file
 and use a `FileHandle` to write data incrementally.
 
 ```swift
-fileManager.createFile(atPath: temporaryFileURL.path, contents: Data())
+FileManager.default.createFile(atPath: temporaryFileURL.path, contents: Data())
 
 let fileHandle = try FileHandle(forWritingTo: temporaryFileURL)
 defer { fileHandle.closeFile() }
@@ -264,10 +264,11 @@ is no different than any other kind of file:
 ```swift
 let outputStream =
     OutputStream(url: temporaryFileURL, append: true)!
+outputStream.open()
 defer { outputStream.close() }
 
 data.withUnsafeBytes { bytes in
-    outputStream.write(bytes, maxLength: bytes.count)
+    outputStream.write(bytes, maxLength: data.count)
 }
 ```
 
@@ -275,6 +276,7 @@ data.withUnsafeBytes { bytes in
 NSOutputStream *outputStream =
     [NSOutputStream outputStreamWithURL:temporaryFileURL
                                  append:YES];
+[outputStream open];
 
 [outputStream write:data.bytes
           maxLength:data.length];

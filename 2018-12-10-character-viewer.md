@@ -36,7 +36,7 @@ our ASCII-only information diets.
 This week on NSHipster,
 we'll be looking at a relatively obscure part of macOS
 that will prove essential for developers in today's linguistic landscape:
-<dfn>Character Viewer</dfn>
+<dfn>Character Viewer</dfn>.
 
 ---
 
@@ -164,8 +164,8 @@ like [directional formatting characters](http://unicode.org/reports/tr9/).
 
 #### UTF-8 Code Units
 
-The pairs of hexadecimal digits labeled "UTF8"
-correspond to the code points for the
+The pairs of hexadecimal digits labeled "UTF-8"
+correspond to the code units for the
 [UTF-8](https://unicode.org/faq/utf_bom.html#utf8-1)
 encoded form of the character.
 
@@ -187,7 +187,7 @@ The last piece of information provided by Character Viewer
 is the name of the character "face with tears of joy".
 
 The Swift standard library doesn't currently provide a way to
-initialize Unicode scalar values or named sequences.
+initialize Unicode scalar values or named sequences by name.
 However, you can use the `String` method
 [`applyingTransform(_:reverse:)`](https://developer.apple.com/documentation/foundation/nsstring/1407787-applyingtransform)
 provided by the Foundation framework

@@ -134,7 +134,7 @@ let gasPriceScanner = Scanner(string: "2.09 per gallon")
 gasPriceScanner.scanDouble(&price)
 // 2.09
 
-// use a german locale instead of the default
+// use a German locale instead of the default
 let benzinPriceScanner = Scanner(string: "1,38 pro Liter")
 benzinPriceScanner.locale = Locale(identifier: "de-DE")
 benzinPriceScanner.scanDouble(&price)
@@ -147,7 +147,7 @@ NSScanner *gasPriceScanner = [[NSScanner alloc] initWithString:@"2.09 per gallon
 [gasPriceScanner scanDouble:&price];
 // 2.09
 
-// use a german locale instead of the default
+// use a German locale instead of the default
 NSScanner *benzinPriceScanner = [[NSScanner alloc] initWithString:@"1,38 pro Liter"];
 [benzinPriceScanner setLocale:[NSLocale localeWithLocaleIdentifier:@"de-DE"]];
 [benzinPriceScanner scanDouble:&price];
@@ -213,7 +213,7 @@ func bezierPathFromSVGPath(str: String) -> UIBezierPath {
 With the setup out of the way, it's time to start scanning. We start by scanning for a string made up of characters in the allowed set of instructions:
 
 ````swift
-    // instructions code can be upper- or lower-case
+    // instruction codes can be upper- or lower-case
     let instructionSet = CharacterSet(charactersIn: "MCSQTAmcsqta")
     var instruction: NSString?
 
@@ -221,7 +221,7 @@ With the setup out of the way, it's time to start scanning. We start by scanning
     while scanner.scanCharacters(from: instructionSet, into: &instruction) {
 ````
 ````objc
-    // instructions codes can be upper- or lower-case
+    // instruction codes can be upper- or lower-case
     NSCharacterSet *instructionSet = [NSCharacterSet characterSetWithCharactersInString:@"MCSQTAmcsqta"];
     NSString *instruction;
     
@@ -254,6 +254,7 @@ The next section scans for two `Double` values in a row, converts them to a `CGP
         }
     }
 
+    path.apply(CGAffineTransform(scaleX: 1, y: -1))
     return path
 }
 ````

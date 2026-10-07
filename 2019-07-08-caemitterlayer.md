@@ -449,7 +449,7 @@ so let's focus on its distinct parts:
 
 ❶
 : First, we create an instance of our custom `CAEmitterLayer` subclass
-(creatively named `Layer` here, because it's a private, nested type).
+(creatively named `Layer` here, because it's a private type).
 It's set up with our `configure(with:)` method from before
 and added as a sublayer.
 The `needsDisplayOnBoundsChange` property defaults to `false`
@@ -505,7 +505,7 @@ To extend our overarching metaphor,
 [that little cartoon janitor from _Rocky and Bullwinkle_]({% asset caemitterlayer-janitor.jpg @path %})
 with a push broom at the end of the ticker-tape parade.
 
-The `animationDidStop(_:)` delegate method is called
+The `animationDidStop(_:finished:)` delegate method is called
 when our `CATransition` finishes.
 We then get the reference to the calling layer
 in order to remove all animations and remove it from its superlayer.

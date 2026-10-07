@@ -4,9 +4,21 @@ author: Mattt
 category: Swift
 tags: swift
 excerpt: "Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven't noticed."
+retired: true
 status:
     swift: 1.2
 ---
+
+{% error do %}
+
+This article describes a workaround from Swift 1,
+before protocols could have default implementations.
+Swift 2 added protocol extensions,
+which provide default implementations directly.
+See [Providing Default Implementations](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/#Providing-Default-Implementations)
+in _The Swift Programming Language_.
+
+{% enderror %}
 
 Swift was announced 3 months ago to the day. For many of us, it was among the most shocking and exciting events in our professional lives. In these intervening months, it's safe to say our collective understanding and appreciation of the language has evolved and changed significantly.
 
@@ -14,7 +26,7 @@ First came the infatuation period. We fixated on appearances, on surface-level f
 
 Within a few weeks, though, after having a chance to go through the Swift manual a few times, we started to understand the full implications of this new multi-paradigm language. All of those folks who had affected the zealotry of functional programmers in order to sound smarter (generics!) learned enough to start backing it up. We finally got the distinction between `class` and `struct` down, and picked up a few tricks like [custom operators](https://nshipster.com/swift-operators/) and [literal convertibles](https://nshipster.com/swift-literal-convertible/) along the way. All of that initial excitement could now be channeled productively into apps and libraries and tutorials.
 
-Next week's announcement effectively marks the end of the summer for iOS & OS X developers. It's time to reign in our experimentation and start shipping again.
+Next week's announcement effectively marks the end of the summer for iOS & OS X developers. It's time to rein in our experimentation and start shipping again.
 
 But hey, we have another few days before things get real again. Let's learn a few more things:
 
@@ -145,10 +157,10 @@ func contains<S : SequenceType where S.Generator.Element : Equatable>(seq: S, x:
 
 Because of the constraint on the element of the sequence generator being `Equatable`, this cannot be declared on a generic container, without thereby requiring elements in that collection to conform to `Equatable`.
 
-Relegating behavior like `contains`, `advance`, or `partition` to top-level functions does a  disservice to the standard library. Not only does it hide functionality from method autocompletion, but it fragments the API across a Object-Oriented and Functional paradigms.
+Relegating behavior like `contains`, `advance`, or `partition` to top-level functions does a disservice to the standard library. Not only does it hide functionality from method autocompletion, but it fragments the API across Object-Oriented and Functional paradigms.
 
 Although it's unlikely that this will be resolved in time for 1.0 (and there are certainly more pressing matters), there are a number of ways this could be resolved:
 
-- Provide mixin or trait functionality that extend protocols to allow them to provide default implementations.
+- Provide mixin or trait functionality that extends protocols to allow them to provide default implementations.
 - Allow extensions with generic arguments, such that something like `extension Array<T: Equatable>` could define additional methods, like `func contains(x: T)`, that are only available to associated types that match a particular criteria.
 - Automatically bridge function calls with `Self` as the first argument to be available as methods using implicit `self`.

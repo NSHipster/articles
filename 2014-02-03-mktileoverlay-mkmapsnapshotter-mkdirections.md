@@ -2,7 +2,7 @@
 title: "MKTileOverlay,<br/>MKMapSnapshotter &<br/>MKDirections"
 author: Mattt
 category: Cocoa
-excerpt: "Unless you work with MKMapView. on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
+excerpt: "Unless you work with MKMapView on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise that maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
 status:
     swift: 2.0
     reviewed: November 12, 2015
@@ -10,7 +10,7 @@ status:
 
 Unless you work with `MKMapView` on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been [under the cheeriest of circumstances](http://www.apple.com/letter-from-tim-cook-on-maps/). Even now, years after the ire of armchair usability experts has moved on to iOS 7's distinct "look and feel", the phrase "Apple Maps" still does not inspire confidence in the average developer.
 
-Therefore, it may come as a surprise maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact—especially with the new mapping APIs introduced in iOS 7.  These new APIs not only expose the advanced presentational functionality seen in Maps, but provide workarounds for MapKit's limitations.
+Therefore, it may come as a surprise that maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact—especially with the new mapping APIs introduced in iOS 7.  These new APIs not only expose the advanced presentational functionality seen in Maps, but provide workarounds for MapKit's limitations.
 
 This week on NSHipster, we'll introduce `MKTileOverlay`, `MKMapSnapshotter`, and `MKDirections`: three new MapKit APIs introduced in iOS 7 that unlock a new world of possibilities.
 
@@ -42,7 +42,7 @@ overlay.canReplaceMapContent = YES;
                    level:MKOverlayLevelAboveLabels];
 ```
 
-MKTileOverlay is initialized with a URL template string, with the `x` & `y` tile coordinates within the specified zoom level. [MapBox has a great explanation for this scheme is used to generate tiles](https://www.mapbox.com/developers/guide/):
+MKTileOverlay is initialized with a URL template string, with the `x` & `y` tile coordinates within the specified zoom level. [MapBox has a great explanation for how this scheme is used to generate tiles](https://www.mapbox.com/developers/guide/):
 
 > Each tile has a z coordinate describing its zoom level and x and y coordinates describing its position within a square grid for that zoom level. Hence, the very first tile in the web map system is at 0/0/0.
 
@@ -137,6 +137,18 @@ class MKHipsterTileOverlay : MKTileOverlay {
 
 @implementation XXTileOverlay
 
+- (instancetype)initWithURLTemplate:(NSString *)URLTemplate {
+    self = [super initWithURLTemplate:URLTemplate];
+    if (!self) {
+        return nil;
+    }
+
+    self.cache = [[NSCache alloc] init];
+    self.operationQueue = [[NSOperationQueue alloc] init];
+
+    return self;
+}
+
 - (NSURL *)URLForTilePath:(MKTileOverlayPath)path {
     return [NSURL URLWithString:[NSString stringWithFormat:@"http://tile.example.com/%d/%d/%d", path.z, path.x, path.y]];
 }
@@ -154,6 +166,9 @@ class MKHipsterTileOverlay : MKTileOverlay {
     } else {
         NSURLRequest *request = [NSURLRequest requestWithURL:[self URLForTilePath:path]];
         [NSURLConnection sendAsynchronousRequest:request queue:self.operationQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+            if (data) {
+                [self.cache setObject:data forKey:[self URLForTilePath:path]];
+            }
             result(data, connectionError);
         }];
     }
@@ -224,7 +239,7 @@ Including annotations—or indeed, any additional information to the map snapsho
 snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { snapshot, error in
     guard let snapshot = snapshot else {
         print("Snapshot error: \(error)")
-        fatalError()
+        return
     }
     
     let pin = MKPinAnnotationView(annotation: nil, reuseIdentifier: nil)
@@ -289,9 +304,9 @@ snapshotter.startWithQueue(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEF
 
 The final iOS 7 addition to MapKit that we'll discuss is [`MKDirections`](https://developer.apple.com/library/mac/documentation/MapKit/Reference/MKDirections_class/Reference/Reference.html).
 
-> `MKDirections`' spiritual predecessor (of sorts), [`MKLocalSearch`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html) was discussed in [a previous NSHipster article](https://nshipster.com/mklocalsearch/)
+> `MKDirections`' spiritual predecessor (of sorts), [`MKLocalSearch`](https://developer.apple.com/library/ios/documentation/MapKit/Reference/MKLocalSearch/Reference/Reference.html) was discussed in [a previous NSHipster article](https://nshipster.com/mklocalsearch/).
 
-As its name implies, `MKDirections` fetches routes between two waypoints. A `MKDirectionsRequest` object is initialized with a `source` and `destination`, and is then passed into an `MKDirections` object, which can calculate several possible routes and estimated travel times.
+As its name implies, `MKDirections` fetches routes between two waypoints. An `MKDirectionsRequest` object is initialized with a `source` and `destination`, and is then passed into an `MKDirections` object, which can calculate several possible routes and estimated travel times.
 
 It does so asynchronously, with `calculateDirectionsWithCompletionHandler:`, which returns either an `MKDirectionsResponse` object or an `NSError` describing why the directions request failed. An `MKDirectionsResponse` object contains an array of `routes`: `MKRoute` objects with an array of `MKRouteStep` `steps` objects, a polyline shape that can be drawn on the map, and other information like estimated travel distance and any travel advisories in effect.
 
@@ -312,7 +327,6 @@ directions.calculateDirectionsWithCompletionHandler { response, error in
     }
 
     stepImagesFromDirectionsResponse(response) { stepImages in
-        stepImages.first
         print(stepImages)
     }
 }

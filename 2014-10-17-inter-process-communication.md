@@ -12,7 +12,7 @@ In many ways, the story of Apple has been about fusing together technologies thr
 
 While this is true for many aspects of Apple's technology stack, inter-process communication is a flagrant counter-example.
 
-Rather than taking the best of what was available at each juncture, solutions just kinda piled up. As a result, a handful of overlapping, mutually-incompatible IPC technologies are scattered across various abstraction layers. Whereas all of these are available on OS X, only Grand Central Dispatch and Pasteboard (albeit to a lesser extent) can be used on iOS.[^1]
+Rather than taking the best of what was available at each juncture, solutions just kinda piled up. As a result, a handful of overlapping, mutually-incompatible IPC technologies are scattered across various abstraction layers. Whereas all of these are available on OS X, only Grand Central Dispatch and Pasteboard (albeit to a lesser extent) can be used on iOS.
 
 - Mach Ports
 - Distributed Notifications
@@ -27,7 +27,7 @@ Ranging from low-level kernel abstractions to high-level, object-oriented APIs, 
 
 All inter-process communication ultimately relies on functionality provided by Mach kernel APIs.
 
-Mach ports are light-weight and powerful, but poorly documented
+Mach ports are light-weight and powerful, but poorly documented.
 
 Sending a message over a given Mach port comes down to a single `mach_msg_send` call, but it takes a bit of configuration in order to build the message to be sent:
 
@@ -142,7 +142,7 @@ There are many ways for objects to communicate with one another in Cocoa:
 
 There is, of course, sending a message directly. There are also the target-action, delegate, and callbacks, which are all loosely-coupled, one-to-one design patterns. KVO allows for multiple objects to subscribe to events, but it strongly couples those objects together. Notifications, on the other hand, allow messages to be broadcast globally, and intercepted by any object that knows what to listen for.
 
-Each application manages its own `NSNotificationCenter` instance for infra-application pub-sub. But there is also a lesser-known Core Foundation API, `CFNotificationCenterGetDistributedCenter` that allows notifications to be communicated system-wide as well.
+Each application manages its own `NSNotificationCenter` instance for intra-application pub-sub. But there is also a lesser-known Core Foundation API, `CFNotificationCenterGetDistributedCenter` that allows notifications to be communicated system-wide as well.
 
 To listen for notifications, add an observer to the distributed notification center by specifying the notification name to listen for, and a function pointer to execute each time a notification is received:
 
@@ -190,7 +190,7 @@ Of all of the ways to link up two applications, distributed notifications are by
 
 ## Distributed Objects
 
-Distributed Objects (DO) is a remote messaging feature of Cocoa that had its heyday back in the mid-90's with NeXT. And though its not widely used any more, the dream of totally frictionless IPC is still unrealized in our modern technology stack.
+Distributed Objects (DO) is a remote messaging feature of Cocoa that had its heyday back in the mid-90's with NeXT. And though it's not widely used any more, the dream of totally frictionless IPC is still unrealized in our modern technology stack.
 
 Vending an object with DO is just a matter of setting up an `NSConnection` and registering it with a particular name:
 
@@ -311,11 +311,11 @@ What makes Pasteboard especially compelling as a mechanism for transferring data
 
 These representations can even be provided on an on-demand basis by conforming to the `NSPasteboardItemDataProvider` protocol. This allows derivative representations, such as plain text from rich text, to be generated only as necessary.
 
-Each representation is identified by a Unique Type Identifier (UTI), a concept discussed in greater detail in the next chapter.
+Each representation is identified by a Uniform Type Identifier (UTI), a concept discussed in greater detail in the next chapter.
 
 ## XPC
 
-XPC is the state-of-the-art for inter-process communication in the SDKs. Its architectural goals are to avoid long-running process, to adapt to the available resources, and to lazily initialize wherever possible. The motivation to incorporate XPC into an application is not to do things that are otherwise impossible, but to provide better privilege separation and fault isolation for inter-process communication.
+XPC is the state-of-the-art for inter-process communication in the SDKs. Its architectural goals are to avoid long-running processes, to adapt to the available resources, and to lazily initialize wherever possible. The motivation to incorporate XPC into an application is not to do things that are otherwise impossible, but to provide better privilege separation and fault isolation for inter-process communication.
 
 It's a replacement for `NSTask`, and a whole lot more.
 
@@ -352,7 +352,7 @@ int main(int argc, const char *argv[]) {
 }
 ```
 
-Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer. :
+Each XPC connection is one-to-one, meaning that the service operates on distinct connections, with each call to `xpc_connection_create` creating a new peer:
 
 ```objc
 xpc_connection_t c = xpc_connection_create("com.example.service", NULL);
@@ -367,10 +367,10 @@ When a message is sent over an XPC connection, it is automatically dispatched on
 Each message is a dictionary, with string keys and strongly-typed values:
 
 ```objc
-xpc_dictionary_t message = xpc_dictionary_create(NULL, NULL, 0);
+xpc_object_t message = xpc_dictionary_create(NULL, NULL, 0);
 xpc_dictionary_set_uint64(message, "foo", 1);
 xpc_connection_send_message(c, message);
-xpc_release(message)
+xpc_release(message);
 ```
 
 XPC objects operate on the following primitive types:
@@ -406,7 +406,7 @@ dispatch_queue_t queue;
 xpc_connection_send_message_with_reply(c, message, queue,
     ^(xpc_object_t reply)
 {
-      if (xpc_get_type(event) == XPC_TYPE_DICTIONARY) {
+      if (xpc_get_type(reply) == XPC_TYPE_DICTIONARY) {
          <#...#>
       }
 });
@@ -440,7 +440,7 @@ XPC can also be registered as launchd jobs, configured to automatically start on
 </dict>
 ```
 
-A recent addition to `launchd` property lists is the `ProcessType` key, which describe at a high level the intended purpose of the launch agent. Based on the prescribed contention behavior, the operating system will automatically throttle CPU and I/O bandwidth accordingly.
+A recent addition to `launchd` property lists is the `ProcessType` key, which describes at a high level the intended purpose of the launch agent. Based on the prescribed contention behavior, the operating system will automatically throttle CPU and I/O bandwidth accordingly.
 
 #### Process Types and Contention Behavior
 

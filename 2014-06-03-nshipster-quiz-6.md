@@ -7,7 +7,7 @@ status:
     swift: n/a
 ---
 
-On June 3rd, we organized the second annual WWDC edition of the NSHipster Pub Quiz. Keeping in its tradition, questions ranged from random Apple trivia to obscure technical questions. For the second year in a row, the event was graciously hosted by [New Relic](http://newrelic.com), whose beautiful downtown San Francisco offices gave the event a feeling of distinction and class. We're also very thankful to [Spotify](https://www.spotify.com/) & [thoughtbot](http://thoughtbot.com) sponsor libations for the evening. Cheers!
+On June 3rd, we organized the second annual WWDC edition of the NSHipster Pub Quiz. Keeping in its tradition, questions ranged from random Apple trivia to obscure technical questions. For the second year in a row, the event was graciously hosted by [New Relic](http://newrelic.com), whose beautiful downtown San Francisco offices gave the event a feeling of distinction and class. We're also very thankful to [Spotify](https://www.spotify.com/) & [thoughtbot](http://thoughtbot.com) for sponsoring libations for the evening. Cheers!
 
 With dozens of teams, comprised of developers from all around the world, the competition was fierce. But ultimately, it was a team known simply as `nil` that took the day, with 54 points total.
 
@@ -23,14 +23,14 @@ For everyone that couldn't make it to the event, here's an opportunity to play a
 
 ## Round 1: General Knowledge
 
-Current events, miscellaneous tidbits, and random trivia. Following a time-honored traditions for NSHipster quizzes, the first round is always a mis-mash of people, places, and pop culture.
+Current events, miscellaneous tidbits, and random trivia. Following a time-honored tradition for NSHipster quizzes, the first round is always a mish-mash of people, places, and pop culture.
 
 1.  On iOS 8, what magic phrase can be used to activate Siri, when the device is plugged in?
 2.  What game, crestfallen by the runaway success of its clone, 2048, was at least slightly vindicated last night with an ADA win?
 3.  Which alternative search engine was added to the latest release of Safari?
 4.  Weeks after its announcement, Apple finally confirmed its $3B acquisition of Beats Electronics. What is the name of Dre’s Co-founder?
 5.  Yosemite is, of course, the code name of OS X Yosemite, but this code name was used before. What was the product? _(Hint: It was released in 1999 and had a top clock speed of 450MHz)_
-6.  What is the name of the valley in Yosemite that was flooded after construction of the O'Shaughnessy Dam in 1927, which provides drinking water to San Francisco?
+6.  What is the name of the valley in Yosemite that was flooded after construction of the O'Shaughnessy Dam in 1923, which provides drinking water to San Francisco?
 7.  Much of the reason why Yosemite exists today is thanks to the Sierra Club and a Scottish-born naturalist. What is this gentleman's name?
 8.  20 years ago, Apple launched a new experimental language. It had a syntax like this: `let x :: <integer> = 2;`. What was this language’s name?
 9.  What does a Swift eat?
@@ -49,7 +49,7 @@ For anyone revisiting this quiz months or years after the fact, this should be i
 5.  Declare an optional property of type `Int` named `x`.
 6.  Declare a Highlander `enum` of type `Int`, with an element named "One".
 7.  Override viewDidLoad in a UIViewController Subclass.
-8.  Declare a class C that adopting the NSCoding protocol.
+8.  Declare a class C that adopts the NSCoding protocol.
 9.  Alias `String` as `Rope`.
 10. Declare a protocol method `m`, which returns both an `Int`, and a `Dictionary`, with `String` keys and any value.
 

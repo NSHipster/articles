@@ -148,7 +148,7 @@ for anyone wishing to be prim and proper about it.
 The `\b` metacharacters match if the current position is a word boundary,
 which occurs between word (`\w`) and non-word (`\W`) characters.
 Anchoring our pattern to match on word boundaries
-prevents false positives like "Pseudo-Cluedo".
+prevents false positives like "Clueless".
 
 {% info %}
 The [raw string literals](https://github.com/apple/swift-evolution/blob/master/proposals/0200-raw-string-escaping.md)
@@ -282,7 +282,7 @@ has three ranges (the entire match and the two capture groups),
 whose captured values can be used to initialize a valid range.
 In the midst of all of this,
 we use the new(-ish)
-`NSRange(_: in:)` and `Range(_:in:)` initializers
+`NSRange(_:in:)` and `Range(_:in:)` initializers
 to convert between `String` and `NSString` index ranges.
 Once we find such a match,
 we set the third closure parameter (a pointer to a Boolean value)

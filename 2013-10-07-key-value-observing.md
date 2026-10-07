@@ -14,8 +14,7 @@ When dealing with complicated, stateful systems, dutiful book-keeping is essenti
 
 In Objective-C and Cocoa, there are a number of ways that these events are communicated, each with varying degrees of formality and coupling:
 
-- **`NSNotification`** & **`NSNotificationCenter`** provide a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. The only requirement is to know what to look for, specifically in the name of the notification. For example, `UIApplicationDidReceiveMemoryWarningNotification
-` signals a low memory environment in an application.
+- **`NSNotification`** & **`NSNotificationCenter`** provide a centralized hub through which any part of an application may notify and be notified of changes from any other part of the application. The only requirement is to know what to look for, specifically in the name of the notification. For example, `UIApplicationDidReceiveMemoryWarningNotification` signals a low memory environment in an application.
 - **Key-Value Observing** allows for ad-hoc, evented introspection between specific object instances by listening for changes on a particular key path. For example, a `UIProgressView` might observe the `numberOfBytesRead` of a network request to derive and update its own `progress` property.
 - **Delegates** are a popular pattern for signaling events over a fixed set of methods to a designated handler. For example, `UIScrollView` sends `scrollViewDidScroll:` to its delegate each time its scroll offset changes.
 - **Callbacks** of various sorts, whether block properties like `NSOperation -completionBlock`, which trigger after `isFinished == YES`, or C function pointers passed as hooks into functions like `SCNetworkReachabilitySetCallback(3)`.
@@ -34,7 +33,7 @@ The main value proposition of KVO is rather compelling: any object can subscribe
 
 Objects can have observers added for a particular key path, which, as described in [the KVC operators article](https://nshipster.com/kvc-collection-operators/), are dot-separated keys that specify a sequence of properties. Most of the time with KVO, these are just the top-level properties on the object.
 
-The method used to add an observer is `–addObserver:forKeyPath:options:context:`:
+The method used to add an observer is `-addObserver:forKeyPath:options:context:`:
 
 ```objc
 - (void)addObserver:(NSObject *)observer
@@ -57,9 +56,9 @@ Yuck. What makes this API so unsightly is the fact that those last two parameter
 > - `NSKeyValueObservingOptionNew`: Indicates that the change dictionary should provide the new attribute value, if applicable.
 > - `NSKeyValueObservingOptionOld`: Indicates that the change dictionary should contain the old attribute value, if applicable.
 > - `NSKeyValueObservingOptionInitial`: If specified, a notification should be sent to the observer immediately, before the observer registration method even returns.
-The change dictionary in the notification will always contain an `NSKeyValueChangeNewKey` entry if `NSKeyValueObservingOptionNew` is also specified but will never contain an `NSKeyValueChangeOldKey` entry. (In an initial notification the current value of the observed property may be old, but it's new to the observer.) You can use this option instead of explicitly invoking, at the same time, code that is also invoked by the observer's `observeValueForKeyPath:ofObject:change:context:` method. When this option is used with `addObserver:forKeyPath:options:context:` a notification will be sent for each indexed object to which the observer is being added.
-- `NSKeyValueObservingOptionPrior`: Whether separate notifications should be sent to the observer before and after each change, instead of a single notification after the change.
-The change dictionary in a notification sent before a change always contains an `NSKeyValueChangeNotificationIsPriorKey` entry whose value is `@YES`, but never contains an `NSKeyValueChangeNewKey` entry. When this option is specified the change dictionary in a notification sent after a change contains the same entries that it would contain if this option were not specified. You can use this option when the observer's own key-value observing-compliance requires it to invoke one of the `-willChange...` methods for one of its own properties, and the value of that property depends on the value of the observed object's property. (In that situation it's too late to easily invoke `-willChange...` properly in response to receiving an `observeValueForKeyPath:ofObject:change:context:` message after the change.)
+> The change dictionary in the notification will always contain an `NSKeyValueChangeNewKey` entry if `NSKeyValueObservingOptionNew` is also specified but will never contain an `NSKeyValueChangeOldKey` entry. (In an initial notification the current value of the observed property may be old, but it's new to the observer.) You can use this option instead of explicitly invoking, at the same time, code that is also invoked by the observer's `observeValueForKeyPath:ofObject:change:context:` method. When this option is used with `addObserver:forKeyPath:options:context:` a notification will be sent for each indexed object to which the observer is being added.
+> - `NSKeyValueObservingOptionPrior`: Whether separate notifications should be sent to the observer before and after each change, instead of a single notification after the change.
+> The change dictionary in a notification sent before a change always contains an `NSKeyValueChangeNotificationIsPriorKey` entry whose value is `@YES`, but never contains an `NSKeyValueChangeNewKey` entry. When this option is specified the change dictionary in a notification sent after a change contains the same entries that it would contain if this option were not specified. You can use this option when the observer's own key-value observing-compliance requires it to invoke one of the `-willChange...` methods for one of its own properties, and the value of that property depends on the value of the observed object's property. (In that situation it's too late to easily invoke `-willChange...` properly in response to receiving an `observeValueForKeyPath:ofObject:change:context:` message after the change.)
 
 These options allow an object to get the values before and after the change. In practice, this is usually not necessary, since the new value is generally available from the current value of the property.
 
@@ -80,7 +79,7 @@ Instead, all changes for observers are funneled through a single method—`-obse
                        context:(void *)context
 ```
 
-Those parameters are the same as what were specified in `–addObserver:forKeyPath:options:context:`, with the exception of `change`, which are populated from whichever `NSKeyValueObservingOptions` `options` were used.
+Those parameters are the same as what were specified in `-addObserver:forKeyPath:options:context:`, with the exception of `change`, which are populated from whichever `NSKeyValueObservingOptions` `options` were used.
 
 A typical implementation of this method looks something like this:
 
@@ -96,7 +95,7 @@ A typical implementation of this method looks something like this:
 }
 ```
 
-Depending on how many kinds of objects are being observed by a single class, this method may also introduce `-isKindOfObject:` or `-respondsToSelector:` in order to definitively identify the kind of event being passed. However, the safest method is to do an equality check to `context`—especially when dealing with subclasses whose parents observe the same keypath.
+Depending on how many kinds of objects are being observed by a single class, this method may also introduce `-isKindOfClass:` or `-respondsToSelector:` in order to definitively identify the kind of event being passed. However, the safest method is to do an equality check to `context`—especially when dealing with subclasses whose parents observe the same keypath.
 
 ### Correct Context Declarations
 
@@ -152,11 +151,11 @@ Since `@selector` looks through all available selectors in the target, this won'
 
 ## Unsubscribing
 
-When an observer is finished listening for changes on an object, it is expected to call `–removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc` (or a similar destruction method).
+When an observer is finished listening for changes on an object, it is expected to call `-removeObserver:forKeyPath:context:`. This will often either be called in `-observeValueForKeyPath:ofObject:change:context:`, or `-dealloc` (or a similar destruction method).
 
 ### Safe Unsubscribe with `@try` / `@catch`
 
-Perhaps the most pronounced annoyance with KVO is how it gets you at the end. If you make a call to `–removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place), an exception is thrown. The kicker is that _there's no built-in way to even check if an object is registered_!
+Perhaps the most pronounced annoyance with KVO is how it gets you at the end. If you make a call to `-removeObserver:forKeyPath:context:` when the object is _not_ registered as an observer (whether because it was already unregistered or not registered in the first place), an exception is thrown. The kicker is that _there's no built-in way to even check if an object is registered_!
 
 Which causes one to rely on a rather unfortunate cudgel `@try` with an unhandled `@catch`:
 

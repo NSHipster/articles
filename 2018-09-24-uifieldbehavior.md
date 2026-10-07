@@ -108,7 +108,7 @@ and defining its area of influence.
 
 ```swift
 drag.position = view.center
-drag.region = UIRegion(size: bounds.size)
+drag.region = UIRegion(size: view.bounds.size)
 ```
 
 ```objc
@@ -241,8 +241,8 @@ for x in [view.layoutMargins.left,
 UIFieldBehavior *topLeftCornerField = [UIFieldBehavior springField];
 
 // Top left corner
-topLeftCornerField.position = CGPointMake(self.layoutMargins.left, self.layoutMargins.top);
-topLeftCornerField.region = [[UIRegion alloc] initWithSize:CGSizeMake(self.bounds.size.width/2, self.bounds.size.height/2)];
+topLeftCornerField.position = CGPointMake(self.view.layoutMargins.left, self.view.layoutMargins.top);
+topLeftCornerField.region = [[UIRegion alloc] initWithSize:CGSizeMake(self.view.bounds.size.width/2, self.view.bounds.size.height/2)];
 
 [self.animator addBehavior:topLeftCornerField];
 [topLeftCornerField addItem:self.facetimeAvatar];

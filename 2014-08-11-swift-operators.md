@@ -65,7 +65,7 @@ so `2 * 3` evaluates first.
 Associativity determines the order in which
 operators with the same precedence are resolved.
 If an operator is <dfn>left-associative</dfn>,
-then the operand on the left-hand side is evaluated first: (`(5 - 2) + 3`);
+then the operand on the left-hand side is evaluated first: `(5 - 2) + 3`;
 if <dfn>right-associative</dfn>,
 then the right-hand side operator is evaluated first: `5 - (2 + 3)`.
 Arithmetic operators are left-associative,
@@ -122,10 +122,6 @@ and precedence level, in descending order:
 <dd>Remainder</dd>
 <dt><code>&amp;*</code></dt>
 <dd>Multiply, ignoring overflow</dd>
-<dt><code>&amp;/</code></dt>
-<dd>Divide, ignoring overflow</dd>
-<dt><code>&amp;%</code></dt>
-<dd>Remainder, ignoring overflow</dd>
 <dt><code>&amp;</code></dt>
 <dd>Bitwise AND</dd>
 </dl>
@@ -291,8 +287,8 @@ Swift defines a handful of these by default:
 - `-`: Unary minus
 - `!`: Logical NOT
 - `~`: Bitwise NOT
-- `...`: Open-ended partial range
-- `..<`: Closed partial range
+- `...`: Closed partial range
+- `..<`: Half-open partial range
 
 For example,
 the `!` prefix operator
@@ -335,7 +331,7 @@ fruits[3...] // ["🍊", "🍋"]
 The ternary `?:` operator is special.
 It takes three operands
 and functions like a single-line `if-else` statement:
-evaluate the logical condition on the left side of the `?`
+evaluates the logical condition on the left side of the `?`
 and produces the expression on the left or right-hand side of the `:`
 depending on the result:
 
@@ -383,7 +379,7 @@ func * (lhs: String, rhs: Int) -> String {
 ```
 
 This kind of language use is, however, controversial.
-(Any C++ developer would be all too eager to regale you with horror stories of the non-deterministic havoc this can wreak)
+(Any C++ developer would be all too eager to regale you with horror stories of the non-deterministic havoc this can wreak.)
 
 Consider the following statement:
 

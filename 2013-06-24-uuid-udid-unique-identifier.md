@@ -52,7 +52,7 @@ Users can opt out of ad targeting in a Settings screen added in iOS 6.1, found a
 `NSUUID` was added to Foundation in iOS 6 as a way to easily create UUIDs. How easy?
 
 ```swift
-let UUID = NSUUID.UUID().UUIDString
+let UUID = NSUUID().UUIDString
 ```
 
 ```objc
@@ -67,18 +67,19 @@ let UUID = CFUUIDCreateString(nil, CFUUIDCreate(nil))
 
 ```objc
 CFUUIDRef uuid = CFUUIDCreate(NULL);
-NSString *UUID = CFUUIDCreateString(NULL, uuid);
+NSString *UUID = (__bridge_transfer NSString *)CFUUIDCreateString(NULL, uuid);
+CFRelease(uuid);
 ```
 
 For apps building against a base SDK without the vendor or advertising identifier APIs, a similar effect can be achieved—as recommended in the deprecation notes—by using [`NSUserDefaults`](https://developer.apple.com/library/ios/#documentation/cocoa/reference/foundation/Classes/NSUserDefaults_Class/Reference/Reference.html):
 
 ```swift
-    func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
+func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
 
     let userDefaults = NSUserDefaults.standardUserDefaults()
 
     if userDefaults.objectForKey("ApplicationUniqueIdentifier") == nil {
-        let UUID = NSUUID.UUID().UUIDString
+        let UUID = NSUUID().UUIDString
         userDefaults.setObject(UUID, forKey: "ApplicationUniqueIdentifier")
         userDefaults.synchronize()
     }
@@ -100,10 +101,12 @@ didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
         [[NSUserDefaults standardUserDefaults] setObject:UUID forKey:kApplicationUUIDKey];
         [[NSUserDefaults standardUserDefaults] synchronize];
     }
+
+    return YES;
 }
 ```
 
-This way, a UUID will be generated once when the app is launched for the first time, and then stored in `NSUserDefaults` to be retrieved on each subsequent app launch. Unlike advertising or vendor identifiers, these identifiers would not be shared across other apps, but for most intents and purposes, this is works just fine.
+This way, a UUID will be generated once when the app is launched for the first time, and then stored in `NSUserDefaults` to be retrieved on each subsequent app launch. Unlike advertising or vendor identifiers, these identifiers would not be shared across other apps, but for most intents and purposes, this works just fine.
 
 ---
 

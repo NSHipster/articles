@@ -24,7 +24,7 @@ to offset your world-weariness.
 
 My favorite way to introduce the concept of programming
 is to set out all the ingredients for a peanut butter and jelly sandwich
-and ask the class give me instructions for assembly
+and ask the class to give me instructions for assembly
 as if I were a robot 🤖.
 The punchline is that the computer
 takes every instruction as _literally_ as possible,
@@ -113,7 +113,7 @@ whereas relative URLs begin with
 `FileManager` has methods that accept both paths and URLs ---
 often with variations of the same method for both.
 In general, the use of URLs is preferred to paths,
-as they're more flexible to work with.
+as they're more flexible to work with
 (it's also easier to convert from a URL to a path than vice versa).
 
 ## Locating Files and Directories
@@ -157,8 +157,8 @@ NSString *filePath = [documentsPath stringByAppendingPathComponent:@"file.txt"];
 Files and directories can have alternate names from what's encoded by the path.
 
 For example, most macOS system directories are localized;
-although a user's photos located at `~/Photos`,
-the `~/Photos/.localized` file can change how the folder is named in Finder
+although a user's photos are located at `~/Pictures`,
+the `~/Pictures/.localized` file can change how the folder is named in Finder
 and Open / Save panels.
 An app can also provide locale-specific names for itself
 and directories it creates.
@@ -179,7 +179,7 @@ let directoryURL: URL = <#/path/to/directory#>
 let filename = directoryURL.pathComponents.last
 
 // Good
-let filename = FileManager.default.displayName(atPath: url.path)
+let filename = FileManager.default.displayName(atPath: directoryURL.path)
 ```
 
 {% endinfo %}
@@ -212,7 +212,7 @@ including `.creationDate`:
 ```swift
 let fileURL: URL = <#/path/to/file#>
 let attributes =
-    FileManager.default.attributesOfItem(atPath: fileURL.path)
+    try FileManager.default.attributesOfItem(atPath: fileURL.path)
 let creationDate = attributes[.creationDate]
 ```
 
@@ -392,7 +392,7 @@ There are four operations covered by the
 [`FileManagerDelegate`](https://developer.apple.com/documentation/foundation/filemanagerdelegate) protocol:
 moving, copying, removing, and linking items ---
 each with variations for working with paths and URLs,
-as well as how to proceed after an error occurs:
+as well as how to proceed after an error occurs.
 
 If you were wondering when you might create your own `FileManager`
 rather than using this shared instance,
@@ -431,8 +431,8 @@ NSArray *contents = [fileManager contentsOfDirectoryAtURL:bundleURL
                                                   options:NSDirectoryEnumerationSkipsHiddenFiles
                                                     error:nil];
 
-for (NSString *filePath in contents) {
-    [fileManager removeItemAtPath:filePath error:nil];
+for (NSURL *fileURL in contents) {
+    [fileManager removeItemAtURL:fileURL error:nil];
 }
 
 // CustomFileManagerDelegate.m

@@ -90,8 +90,8 @@ we don't learn a whole lot more about our subject:
 The `.heic` file extension corresponds to image containers
 encoded using the <abbr title="High-Efficiency Image File Format">HEIF</abbr>,
 or High-Efficiency Image File Format
-(which is itself based on <abbr title="High-Efficiency Video Compression">HEVC</abbr>,
-or High-Efficiency Video Compression ---
+(which is itself based on <abbr title="High Efficiency Video Coding">HEVC</abbr>,
+or High Efficiency Video Coding ---
 also known as H.265 video).
 For more information, check out
 [WWDC 2017 Session 503 "Introducing HEIF and HEVC"](https://developer.apple.com/videos/play/wwdc2017/503/)
@@ -198,7 +198,7 @@ if name == "solar" {
 ```
 
 ```
-(
+{
     ap = {
         d = 15;
         l = 0;
@@ -216,7 +216,7 @@ if name == "solar" {
             z = "53.50908581251309";
         }
     )
-)
+}
 ```
 
 _Now we're talking!_
@@ -245,7 +245,7 @@ and its shorter, colder days,
 whereas those of us in the southern hemisphere
 are gearing up for hotter and longer days.
 The changing of the seasons reminds us that
-the duration of a solar day depends where you are on the planet
+the duration of a solar day depends on where you are on the planet
 and where the planet is in its orbit around the sun.
 
 The good news is that astronomers can tell you ---
@@ -288,7 +288,7 @@ At noon on October 1, 2018,
 the sun shines on Apple Park from the south,
 about halfway between the horizon and directly overhead.
 
-If track the position of the sun over an entire day,
+If we track the position of the sun over an entire day,
 we get a sinusoidal shape reminiscent of the Apple Watch "Solar" face.
 
 {% asset solar-position-watch-faces.jpg %}
@@ -481,7 +481,7 @@ extension DynamicDesktop {
 
 Once the for-in loop is exhausted,
 and all images and metadata are written,
-we call `CGImageDestinationFinalize(_:)` to finalize the image source
+we call `CGImageDestinationFinalize(_:)` to finalize the image destination
 and write the image to disk.
 
 ```swift
@@ -519,7 +519,7 @@ By default,
 the camera on most phones captures
 [Exif metadata](https://en.wikipedia.org/wiki/Exif)
 each time a photo is snapped.
-This metadata can include the time which the photo was taken
+This metadata can include the time at which the photo was taken
 and the GPS coordinates of the device at the time.
 
 By reading time and location information directly from image metadata,
@@ -549,7 +549,7 @@ take still photos at predefined intervals.
 ### Generating Landscapes from GIS Data
 
 If you can't stand to be away from your phone for an entire day (sad)
-or don't have anything remarkable to look (also sad),
+or don't have anything remarkable to look at (also sad),
 you could always create your own reality (sounds sadder than it is).
 
 Using an app like
@@ -568,7 +568,7 @@ Or if you have actual work to do
 and can't be bothered to spend your time making pretty pictures,
 you can always just pay someone else to do it for you.
 
-We're personally fans of the the
+We're personally fans of the
 [24 Hour Wallpaper](https://www.jetsoncreative.com/24hourwallpaper/) app.
 If you have any other recommendations,
 [@ us on Twitter!](https://twitter.com/NSHipster/).

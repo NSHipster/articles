@@ -25,7 +25,7 @@ A _provisioning profile_ is used to determine that an app is authorized by the d
 
 Both configuration & provisioning profiles are displayed in similar fashion under `Settings.app > General > Profiles`, which doesn't help with the potential confusion.
 
-Each configuration file includes a number of payloads, each of which can specify configuration, including:
+Each configuration profile includes a number of payloads, each of which can specify configuration, including:
 
 - Whitelisting & Authenticating AirPlay & AirPrint destinations
 - Setting up VPN, HTTP Proxies, WiFi & Cellular Network
@@ -38,7 +38,7 @@ There are several ways to deploy configuration profiles:
 
 - Attaching to an email
 - Linking to one on a webpage
-- Using over-the air configuration
+- Using over-the-air configuration
 - Using Apple Configurator
 
 > In addition to deploying configuration profiles, the [Apple Configurator](https://itunes.apple.com/us/app/apple-configurator/id434433123?mt=12) can generate profiles, as an alternative to hand-writing XML yourself.
@@ -55,7 +55,7 @@ Here are a few ideas to chew on:
 
 ### Distributing Development Builds
 
-If you're ever used a development distribution service like [HockeyApp](http://hockeyapp.net) or [TestFlight](http://testflightapp.com), you've installed a configuration profile—perhaps without knowing it!
+If you've ever used a development distribution service like [HockeyApp](http://hockeyapp.net) or [TestFlight](http://testflightapp.com), you've installed a configuration profile—perhaps without knowing it!
 
 Using a configuration profile, these services can automatically get information like device UDID, model name, and even add a new web clip on the home screen to download available apps.
 
@@ -65,7 +65,7 @@ Although Apple Legal gets twitchy at even the slightest intimation of third-part
 
 A recent addition to configuration profiles is the ability to embed font payloads, allowing for new typefaces to be installed across the system (for example, to be used in Pages or Keynote).
 
-Just as EOF / WOFF / SVG fonts allow typefaces to be distributed over the web, type foundries could similarly offer TTF / OTF files to iOS devices using an app with a configuration profile. Since configuration profiles can be installed from a web page, an app could embed and run an HTTP process to locally serve a webpage with a profile and payload.
+Just as EOT / WOFF / SVG fonts allow typefaces to be distributed over the web, type foundries could similarly offer TTF / OTF files to iOS devices using an app with a configuration profile. Since configuration profiles can be installed from a web page, an app could embed and run an HTTP process to locally serve a webpage with a profile and payload.
 
 ### Enhancing Security
 

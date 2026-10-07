@@ -73,7 +73,7 @@ declarations.
 ### Platform Availability
 
 When used to designate platform availability for an API,
-the `@available` attribute can take one or two forms:
+the `@available` attribute can take one of two forms:
 
 - A <dfn>"shorthand specification"</dfn>
   that lists minimum version requirements for multiple platforms
@@ -120,7 +120,7 @@ The list of available platform names is
 [specified by the Clang compiler front-end](https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/Attr.td#L782-L789).
 
 Look a few lines up, though, and you'll find a curious mention of
-["android"](https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/Attr.td#L756)(introduced by [D7929](https://reviews.llvm.org/D7929)).
+["android"](https://github.com/llvm-mirror/clang/blob/master/include/clang/Basic/Attr.td#L756) (introduced by [D7929](https://reviews.llvm.org/D7929)).
 _Does anyone have more context about why that's in there?_
 
 {% endinfo %}
@@ -212,7 +212,7 @@ open class UICollectionViewCompositionalLayout : UICollectionViewLayout { <#...#
 At the time of writing,
 [the docs for `UICollectionViewCompositionalLayout`](https://developer.apple.com/documentation/uikit/uicollectionviewcompositionallayout) are
 _["No overview available."](https://nooverviewavailable.com/)_ ---
-Which is a real shame
+which is a real shame
 because this is an insanely great addition to UIKit.
 If you haven't already,
 go watch
@@ -307,10 +307,11 @@ import Foundation
 struct WebSocketed<Value: LosslessStringConvertible> {
     private var value: Value
     var wrappedValue: URLSessionWebSocketTask.Message {
-        get { .string(value) }
+        get { .string(value.description) }
         set {
-            if case let .string(description) = newValue {
-                value = Value(description)
+            if case let .string(description) = newValue,
+               let newValue = Value(description) {
+                value = newValue
             }
         }
     }
@@ -376,7 +377,7 @@ based on our platform and/or Swift language version.
 Similar to how, in Swift,
 [thrown errors must be handled or propagated](https://docs.swift.org/swift-book/LanguageGuide/ErrorHandling.html#ID512),
 use of potentially unavailable APIs
-must be either annotated or conditionalized code.
+must be either annotated or conditionalized.
 
 When you attempt to call an API that is unavailable
 for at least one of your supported targets,
@@ -649,7 +650,6 @@ from [Clang's diagnostic text](https://clang.llvm.org/docs/DiagnosticsReference.
         <td>&nbsp;<span>is available</span>
         </td>
     </tr>
-    </tbody>
 </table>
 
 </figure>
@@ -720,7 +720,7 @@ to give a heads-up to consumers about APIs that are on the way out.
 Unfortunately,
 there's currently no way to designate deprecation
 in terms of the library version
-(the list of platforms are hard-coded by the compiler).
+(the list of platforms is hard-coded by the compiler).
 While it's a bit of a hack,
 you could communicate deprecation
 by specifying an obsolete / non-existent Swift language version

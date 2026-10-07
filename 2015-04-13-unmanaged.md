@@ -8,7 +8,7 @@ status:
   swift: 1.2
 ---
 
-APIs do more than just exposing functionality to developers. They also communicate values about how the API should be used and why. This communication is what makes naming things one of the Hard Parts of computer science; it's what separates the good APIs from the great.
+APIs do more than just expose functionality to developers. They also communicate values about how the API should be used and why. This communication is what makes naming things one of the Hard Parts of computer science; it's what separates the good APIs from the great.
 
 A reading of Swift's standard library shows a clear demarcation between the safety and reliability that Swift advertises on one side and the tools necessary for Objective-C interoperability on the other. Types with names like `Int`, `String`, and `Array` let you expect straightforward usage and unsurprising behavior, while it's impossible to create an `UnsafeMutablePointer` or `Unmanaged` instance without thinking "here be dragons."
 
@@ -26,7 +26,7 @@ Now, in this post-ARC world, all Objective-C and Core Foundation types returned 
 
 To help understand whether or not a C function returns objects that are owned by the caller, Apple uses naming conventions defined by the _Create Rule_ and the _Get Rule_:
 
-- The **Create Rule** states that a function with `Create` or `Copy` in its name returns ownerships to the call of the function. That is to say, the caller of a `Create` or `Copy` function will eventually need to call `CFRelease` on the returned object.
+- The **Create Rule** states that a function with `Create` or `Copy` in its name returns ownership to the caller of the function. That is to say, the caller of a `Create` or `Copy` function will eventually need to call `CFRelease` on the returned object.
 
 - The **Get Rule** isn't so much a rule of its own as it is a catch-all for everything that doesn't follow the Create Rule. A function doesn't have `Create` or `Copy` in its name? It follows the Get rule instead, returning _without_ transferring ownership. If you want the returned object to persist, in most cases it's up to you to retain it.
 
@@ -133,4 +133,4 @@ __nonnull CFStringRef MakeJoinedString(__nonnull CFStringRef string1,
 
 ---
 
-One gets that feeling that `Unmanaged` is a stopgap measure—that is, a way to use CoreFoundation while the work of annotating the mammoth API is still in progress. As functions are revised to interoperate more cleanly, each successive Xcode release may allow you to strip `takeRetainedValue()` calls from your codebase. Yet until the sun sets on the last `CFUnannotatedFunctionRef`, `Unmanaged` will be there to help you bridge the gap.
+One gets the feeling that `Unmanaged` is a stopgap measure—that is, a way to use CoreFoundation while the work of annotating the mammoth API is still in progress. As functions are revised to interoperate more cleanly, each successive Xcode release may allow you to strip `takeRetainedValue()` calls from your codebase. Yet until the sun sets on the last `CFUnannotatedFunctionRef`, `Unmanaged` will be there to help you bridge the gap.

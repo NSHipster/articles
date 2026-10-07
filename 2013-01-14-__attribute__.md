@@ -12,7 +12,7 @@ A recurring theme of this publication has been the importance of a healthy relat
 
 `__attribute__` is a compiler directive that specifies characteristics on declarations, which allows for more error checking and advanced optimizations.
 
-The syntax for this keyword is `__attribute__` followed by two sets of parentheses (the double parentheses makes it easy to "macro out", especially with multiple attributes). Inside the parentheses is a comma-delimited list of attributes. `__attribute__` directives are placed after function, variable, and type declarations.
+The syntax for this keyword is `__attribute__` followed by two sets of parentheses (the double parentheses make it easy to "macro out", especially with multiple attributes). Inside the parentheses is a comma-delimited list of attributes. `__attribute__` directives are placed after function, variable, and type declarations.
 
 ```objc
 // Return the square of a number
@@ -89,7 +89,7 @@ For example, AFNetworking [uses the `noreturn` attribute for its network request
 int square(int n) __attribute__((const));
 ```
 
-`pure` and `const` are both attributes that invoke a functional programming paradigm in order to allow for significant performance optimizations. `const` can be thought as a stricter form of `pure` since it doesn't depend on global values or pointers.
+`pure` and `const` are both attributes that invoke a functional programming paradigm in order to allow for significant performance optimizations. `const` can be thought of as a stricter form of `pure` since it doesn't depend on global values or pointers.
 
 For example, because the result of a function declared `const` does not depend on anything other than the arguments passed in, the result of the function can cache that result and return any time the function is called with that same combination of arguments. (i.e. we know that the square of a number is constant, so we only need to compute it once).
 
@@ -124,7 +124,7 @@ void f(void) __attribute__((availability(macosx,introduced=10.4,deprecated=10.6,
 - `deprecated`: The first version in which this declaration was deprecated, meaning that users should migrate away from this API.
 - `obsoleted`: The first version in which this declaration was obsoleted, meaning that it was removed completely and can no longer be used.
 - `unavailable`: This declaration is never available on this platform.
-- `message` Additional message text that Clang will provide when emitting a warning or error about use of a deprecated or obsoleted declaration. Useful to direct users to replacement APIs.
+- `message`: Additional message text that Clang will provide when emitting a warning or error about use of a deprecated or obsoleted declaration. Useful to direct users to replacement APIs.
 
 > Multiple availability attributes can be placed on a declaration, which may correspond to different platforms. Only the availability attribute with the platform corresponding to the target platform will be used; any others will be ignored. If no availability attribute specifies availability for the current target platform, the availability attributes are ignored.
 
@@ -148,8 +148,8 @@ Note that `overloadable` only works for functions. You can overload method decla
 
 ---
 
-Context is king when it comes to compiler optimizations. By providing constraints on how to interpret your code, you're increases the chance that the generated code is as efficient as possible. Meet your compiler half-way, and you'll always be rewarded.
+Context is king when it comes to compiler optimizations. By providing constraints on how to interpret your code, you increase the chance that the generated code is as efficient as possible. Meet your compiler half-way, and you'll always be rewarded.
 
-And `__attribute__` isn't just for the compiler either: The next person to see the code will appreciate the extra context, too. So go the extra mile for the benefit of your collaborator, successor, or just 2-years-from-now-(and-you've-forgotten-everything-about–this-code) you.
+And `__attribute__` isn't just for the compiler either: The next person to see the code will appreciate the extra context, too. So go the extra mile for the benefit of your collaborator, successor, or just 2-years-from-now-(and-you've-forgotten-everything-about-this-code) you.
 
 Because in the end, the love you take is equal to the love you make.

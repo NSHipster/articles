@@ -36,7 +36,7 @@ As we discussed in
 [our article about `Date`, et al.](/timeinterval-date-dateinterval),
 the only unit of time with a constant duration is the second
 (and its subdivisions).
-When you want to express the duration of, 1 day,
+When you want to express the duration of 1 day,
 don't write `60 * 60 * 24`.
 Instead, write `DateComponents(day: 1)`.
 
@@ -86,13 +86,13 @@ starting with date components as a representation of a calendar date:
 ### Extracting Components from a Date
 
 `DateComponents` objects can be created for a particular date
-using the `Calendar` method `components(_:from:)`:
+using the `Calendar` method `dateComponents(_:from:)`:
 
 ```swift
 let date = Date() // 2018-10-10T10:00:00+00:00
 let calendar = Calendar.current
 calendar.dateComponents([.year, .month, .day], from: date)
-// {{ page.updated_on | date: '(year: %Y, month: %-M, day: %-d)' }}
+// {{ page.updated_on | date: '(year: %Y, month: %-m, day: %-d)' }}
 ```
 
 Each property in `DateComponents`
@@ -152,7 +152,7 @@ so let's take a look at some of the more obscure ones:
 ### Era and Year
 
 The Gregorian calendar has two [eras](https://en.wikipedia.org/wiki/Calendar_era):
-BC and AD (alternatively, C.E. and B.C.E).
+BC and AD (alternatively, B.C.E. and C.E.).
 Their respective integer date component values are `0` and `1`.
 No matter what the era is, the `year` component is always a positive number.
 
@@ -160,7 +160,7 @@ No matter what the era is, the `year` component is always a positive number.
 
 In academia and business,
 calendar years are often divided up into
-[quarter](https://en.wikipedia.org/wiki/Calendar_year#Quarters)
+[quarters](https://en.wikipedia.org/wiki/Calendar_year#Quarters)
 (Q1, Q2, Q3, Q4).
 
 {% error %}
@@ -168,7 +168,7 @@ calendar years are often divided up into
 In iOS 12 and macOS Mojave,
 the `dateComponents(_:from:)` method
 doesn't populate the `quarter` property
-for the returned value, even with the unit is specified.  
+for the returned value, even when the unit is specified.  
 See [rdar://35247464](http://www.openradar.me/35247464).
 
 As a workaround,
@@ -220,12 +220,12 @@ For example, October 10th, 2018 occurs on the 41st ISO week.
 
 The `yearForWeekOfYear` component
 is helpful for weeks that span two calendar years.
-For example, New Years Eve this year --- December 31st, 2018 ---
+For example, New Year's Eve this year --- December 31st, 2018 ---
 falls on a Monday.
-Because occurs in the first week of 2019,
+Because it occurs in the first week of 2019,
 its `weekOfYear` value is `1`,
 its `yearForWeekOfYear` value is `2019`,
-and its `year` value is `2018`
+and its `year` value is `2018`.
 
 {% warning %}
 
@@ -294,7 +294,7 @@ but invalid in the Gregorian calendar.
 A common task when working with dates
 is to get the start of day, week, month, or year.
 Although it's possible to do this with `DateComponents`
-creating a new date with a subset of date component values,
+by creating a new date with a subset of date component values,
 a better way would be to use the `Calendar` method `dateInterval(of:for:)`:
 
 ```swift
@@ -317,7 +317,7 @@ beginningOfMonth =
 
 ## Date Components as a Representation of a Duration of Time
 
-## Calculating the Distance Between Two Dates
+### Calculating the Distance Between Two Dates
 
 Picking up from the previous example ---
 you can use the `Calendar` method `dateComponents(_:from:to:)`
@@ -339,7 +339,7 @@ calendar.dateComponents([.hour],
         .hour // 744
 ```
 
-## Adding Components to Dates
+### Adding Components to Dates
 
 Another frequent programming task
 is to calculate a date from an offset
@@ -386,7 +386,7 @@ For example,
 if you wanted to find the date corresponding to the next time
 with the same time components (hour, minute, second, nanosecond)
 and wanted to be specific about how to handle phenomena like
-2:59AM occurring twice on November 4th, 2018,
+1:59AM occurring twice on November 4th, 2018,
 here's how you might do that:
 
 ```swift

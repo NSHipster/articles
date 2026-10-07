@@ -2,7 +2,7 @@
 title: NSURLProtocol
 author: Mattt
 category: Cocoa
-excerpt: "Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."
+excerpt: "Foundation’s URL Loading System is something that every iOS developer would do well to buddy up with. And of all of the networking classes and protocols of Foundation, NSURLProtocol is perhaps the most obscure and powerful."
 status:
   swift: n/a
 ---
@@ -64,7 +64,7 @@ This is especially important for subclasses created to interact with protocols t
 
 The most important methods in your subclass are `-startLoading` and `-stopLoading`. What goes into either of these methods is entirely dependent on what your subclass is trying to accomplish, but there is one commonality: communicating with the protocol client.
 
-Each instance of a `NSURLProtocol` subclass has a `client` property, which is the object that is communicating with the URL Loading system. It's not `NSURLSession`, but the object does conform to a protocol that should look familiar to anyone who has implemented a session delegate.
+Each instance of an `NSURLProtocol` subclass has a `client` property, which is the object that is communicating with the URL Loading system. It's not `NSURLSession`, but the object does conform to a protocol that should look familiar to anyone who has implemented a session delegate.
 
 #### `<NSURLProtocolClient>`
 
@@ -83,7 +83,7 @@ In your implementation of `-startLoading` and `-stopLoading`, you will need to s
 
 Finally, in order to actually use an `NSURLProtocol` subclass, it needs to be registered into the URL Loading System.
 
-When a request is loaded, each registered protocol is asked "hey, can you handle this request?". The first one to respond with `YES` with `+canInitWithRequest:` gets to handle the request. URL protocols are consulted in reverse order of when they were registered, so by calling `[NSURLProtocol registerClass:[MyURLProtocol class]];` in `-application:didFinishLoadingWithOptions:`, your protocol will have priority over any of the built-in protocols.
+When a request is loaded, each registered protocol is asked "hey, can you handle this request?". The first one to respond with `YES` with `+canInitWithRequest:` gets to handle the request. URL protocols are consulted in reverse order of when they were registered, so by calling `[NSURLProtocol registerClass:[MyURLProtocol class]];` in `-application:didFinishLaunchingWithOptions:`, your protocol will have priority over any of the built-in protocols.
 
 ---
 

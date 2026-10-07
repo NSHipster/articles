@@ -40,7 +40,7 @@ Here's a list of all of the properties in `UIAccessibility`:
 
 Before we go any further, take a couple minutes to play with VoiceOver, and understand how accessibility information is conveyed to the user. Open the Settings app, tap General, scroll to the bottom and tap Accessibility. In Accessibility, you'll see settings for assistive technologies grouped by category: Vision, Hearing, Learning, and Physical & Motor.
 
-Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will pop up telling you that enabling VoiceOver changes the way you control your device. Dismiss the alert, and now VoiceOver is now enabled on your device.
+Tap VoiceOver, and then tap the VoiceOver switch to turn it on. An alert will pop up telling you that enabling VoiceOver changes the way you control your device. Dismiss the alert, and VoiceOver is now enabled on your device.
 
 Don't Panic--unlike setting your device to another language, there's no real risk of not being able to figure out how to turn VoiceOver off.
 
@@ -74,21 +74,23 @@ The [Accessibility Programming Guide](https://developer.apple.com/library/ios/#d
 > ### Guidelines for Creating Labels
 >
 > If you provide a custom control or view, or if you display a custom icon in a standard control or view, you need to provide a label that:
-
-- **Very briefly describes the element.** Ideally, the label consists of a single word, such as Add, Play, Delete, Search, Favorites, or Volume.
-- **Does not include the type of the control or view.** The type information is contained in the traits attribute of the element and should never be repeated in the label.
-- **Begins with a capitalized word.** This helps VoiceOver read the label with the appropriate inflection.
-- **Does not end with a period.** The label is not a sentence and therefore should not end with a period.
-- **Is localized.** Be sure to make your application available to as wide an audience as possible by localizing all strings, including accessibility attribute strings. In general, VoiceOver speaks in the language that the user specifies in International settings.
-  > ### Guidelines for Creating Hints
-  >
-  > The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.
-- **Very briefly describes the results.** Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element.
-- **Begins with a verb and omits the subject.** Be sure to use the third-person singular declarative form of a verb, such as “Plays,” and not the imperative, such as “Play.” You want to avoid using the imperative, because using it can make the hint sound like a command.
-- **Begins with a capitalized word and ends with a period.** Even though a hint is a phrase, not a sentence, ending the hint with a period helps VoiceOver speak it with the appropriate inflection.
-- **Does not include the name of the action or gesture.** A hint does not tell users how to perform the action, it tells users what will happen when that action occurs.
-- **Does not include the name of the control or view.** The user gets this information from the label attribute, so you should not repeat it in the hint.
-- **Is localized**. As with accessibility labels, hints should be available in the user’s preferred language.
+>
+> - **Very briefly describes the element.** Ideally, the label consists of a single word, such as Add, Play, Delete, Search, Favorites, or Volume.
+> - **Does not include the type of the control or view.** The type information is contained in the traits attribute of the element and should never be repeated in the label.
+> - **Begins with a capitalized word.** This helps VoiceOver read the label with the appropriate inflection.
+> - **Does not end with a period.** The label is not a sentence and therefore should not end with a period.
+> - **Is localized.** Be sure to make your application available to as wide an audience as possible by localizing all strings, including accessibility attribute strings. In general, VoiceOver speaks in the language that the user specifies in International settings.
+>
+> ### Guidelines for Creating Hints
+>
+> The hint attribute describes the results of performing an action on a control or view. You should provide a hint only when the results of an action are not obvious from the element’s label.
+>
+> - **Very briefly describes the results.** Even though few controls and views need hints, strive to make the hints you do need to provide as brief as possible. Doing so decreases the amount of time users must spend listening before they can use the element.
+> - **Begins with a verb and omits the subject.** Be sure to use the third-person singular declarative form of a verb, such as “Plays,” and not the imperative, such as “Play.” You want to avoid using the imperative, because using it can make the hint sound like a command.
+> - **Begins with a capitalized word and ends with a period.** Even though a hint is a phrase, not a sentence, ending the hint with a period helps VoiceOver speak it with the appropriate inflection.
+> - **Does not include the name of the action or gesture.** A hint does not tell users how to perform the action, it tells users what will happen when that action occurs.
+> - **Does not include the name of the control or view.** The user gets this information from the label attribute, so you should not repeat it in the hint.
+> - **Is localized**. As with accessibility labels, hints should be available in the user’s preferred language.
 
 ## Traits
 

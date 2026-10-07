@@ -53,16 +53,17 @@ Introduced in iOS 7 and available in macOS 10.14 Mojave,
 
 To use it,
 create an `AVSpeechUtterance` object with the text to be spoken
-and pass it to the `speakUtterance(_:)` method:
+and pass it to the `speak(_:)` method:
 
 ```swift
 import AVFoundation
 
 let string = "Hello, World!"
 let utterance = AVSpeechUtterance(string: string)
+utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
 
 let synthesizer = AVSpeechSynthesizer()
-synthesizer.speakUtterance(utterance)
+synthesizer.speak(utterance)
 ```
 
 ```objc
@@ -74,7 +75,7 @@ AVSpeechSynthesizer *synthesizer = [[AVSpeechSynthesizer alloc] init];
 [synthesizer speakUtterance:utterance];
 ```
 
-You can use the adjust the volume, pitch, and rate of speech
+You can adjust the volume, pitch, and rate of speech
 by configuring the corresponding properties on the `AVSpeechUtterance` object.
 
 When speaking,
@@ -82,7 +83,7 @@ a synthesizer can be paused on the next word boundary,
 which makes for a less jarring user experience than stopping mid-vowel.
 
 ```swift
-synthesizer.pauseSpeakingAtBoundary(.word)
+synthesizer.pauseSpeaking(at: .word)
 ```
 
 ```objc
@@ -102,7 +103,7 @@ So instead of asking for "Fred" or "Markus",
 
 VoiceOver supports over 30 different languages.
 For an up-to-date list of what's available,
-call `AVSpeechSynthesisVoice` class method `speechVoices()`
+call the `AVSpeechSynthesisVoice` class method `speechVoices()`
 or check [this support article](https://support.apple.com/en-us/HT206175).
 
 By default,
@@ -110,12 +111,12 @@ By default,
 based on the user's current language preferences.
 To avoid sounding like a
 [stereotypical American in Paris](https://www.youtube.com/watch?v=v-3RZl3YyJw),
-set an explicit language by selecting a `AVSpeechSynthesisVoice`.
+set an explicit language by selecting an `AVSpeechSynthesisVoice`.
 
 ```swift
 let string = "Bonjour!"
 let utterance = AVSpeechUtterance(string: string)
-utterance.voice = AVSpeechSynthesisVoice(language: "fr")
+utterance.voice = AVSpeechSynthesisVoice(language: "fr-FR")
 ```
 
 ```objc
@@ -124,11 +125,11 @@ AVSpeechUtterance *utterance = [[AVSpeechUtterance alloc] initWithString:string]
 utterance.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"fr-FR"];
 ```
 
-Many APIs in foundation and other system frameworks
-use ISO 681 codes to identify languages.
+Many APIs in Foundation and other system frameworks
+use ISO 639 codes to identify languages.
 `AVSpeechSynthesisVoice`, however, takes an
 [IETF Language Tag](http://en.wikipedia.org/wiki/IETF_language_tag),
-as specified [BCP 47 Document Series](http://tools.ietf.org/html/bcp47).
+as specified in the [BCP 47 Document Series](http://tools.ietf.org/html/bcp47).
 If an utterance string and voice aren't in the same language,
 speech synthesis fails.
 
@@ -139,14 +140,15 @@ speech synthesis fails.
 {% comment %}
 
 > [This gist](https://gist.github.com/mattt/9892187)
-> shows how to detect an ISO 681 language code from an arbitrary string,
+> shows how to detect an ISO 639 language code from an arbitrary string,
 > and convert that to an IETF language tag.
-> {% endcomment %}
+
+{% endcomment %}
 
 ## Customizing Pronunciation
 
 A few years after it first debuted on iOS,
-`AVUtterance` added functionality to control
+`AVSpeechUtterance` added functionality to control
 the pronunciation of particular words,
 which is especially helpful for proper names.
 
@@ -213,11 +215,11 @@ var utteranceLabel: UILabel!
 
 // MARK: AVSpeechSynthesizerDelegate
 
-override func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
+func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer,
   willSpeakRangeOfSpeechString characterRange: NSRange,
                                     utterance: AVSpeechUtterance)
 {
-    self.utterranceLabel.attributedText =
+    self.utteranceLabel.attributedText =
         attributedString(from: utterance.speechString,
                          highlighting: characterRange)
 }

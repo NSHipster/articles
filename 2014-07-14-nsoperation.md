@@ -47,7 +47,7 @@ Each property must be mutually exclusive from one another in order to encode a c
 
 - `ready`: Returns `true` to indicate that the operation is ready to execute, or `false` if there are still unfinished initialization steps on which it is dependent.
 - `executing`: Returns `true` if the operation is currently working on its task, or `false` otherwise.
-- `finished` Returns `true` if the operation's task finished execution successfully, or if the operation was cancelled. An `NSOperationQueue` does not dequeue an operation until `finished` changes to `true`, so it is _critical_ to implement this correctly in subclasses to avoid deadlock.
+- `finished`: Returns `true` if the operation's task finished execution successfully, or if the operation was cancelled. An `NSOperationQueue` does not dequeue an operation until `finished` changes to `true`, so it is _critical_ to implement this correctly in subclasses to avoid deadlock.
 
 ## Cancellation
 
@@ -119,7 +119,7 @@ typedef NS_ENUM(NSInteger, NSQualityOfService) {
 } NS_ENUM_AVAILABLE(10_10, 8_0);
 ```
 
-- `.UserInteractive`:UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
+- `.UserInteractive`: UserInteractive QoS is used for work directly involved in providing an interactive UI such as processing events or drawing to the screen.
 - `.UserInitiated`: UserInitiated QoS is used for performing work that has been explicitly requested by the user and for which results must be immediately presented in order to allow for further user interaction.  For example, loading an email after a user has selected it in a message list.
 - `.Utility`: Utility QoS is used for performing work which the user is unlikely to be immediately waiting for the results.  This work may have been requested by the user or initiated automatically, does not prevent the user from further interaction, often operates at user-visible timescales and may have its progress indicated to the user by a non-modal progress indicator.  This work will run in an energy-efficient manner, in deference to higher QoS work when resources are constrained.  For example, periodic content updates or bulk file operations such as media import.
 - `.Background`: Background QoS is used for work that is not user initiated or visible.  In general, a user is unaware that this work is even happening and it will run in the most efficient manner while giving the most deference to higher QoS work.  For example, pre-fetching content, search indexing, backups, and syncing of data with external systems.
@@ -136,7 +136,7 @@ operationQueue.addOperation(backgroundOperation)
 ```objc
 NSOperation *backgroundOperation = [[NSOperation alloc] init];
 backgroundOperation.queuePriority = NSOperationQueuePriorityLow;
-backgroundOperation.qualityOfService = NSOperationQualityOfServiceBackground;
+backgroundOperation.qualityOfService = NSQualityOfServiceBackground;
 
 [[NSOperationQueue mainQueue] addOperation:backgroundOperation];
 ```
@@ -194,7 +194,7 @@ NSOperationQueue.mainQueue().addOperation(operation)
 ```objc
 NSOperation *operation = ...;
 operation.completionBlock = ^{
-    NSLog("Completed");
+    NSLog(@"Completed");
 };
 
 [[NSOperationQueue mainQueue] addOperation:operation];

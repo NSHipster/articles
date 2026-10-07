@@ -94,7 +94,7 @@ These functions take two `NSExpression` objects representing numbers.
 
 ### Functions Shadowing `math.h` Functions
 
-So mentioned, because `ceiling` is easily confused with `ceil(3)`. Whereas `ceiling` acts on an array of numbers, while `ceil(3)` takes a `double` (and doesn't have a corresponding built-in `NSExpression` function). `floor:` here acts the same as `floor(3)`.
+So mentioned, because `ceiling` is easily confused with `ceil(3)`. `ceiling` acts on an array of numbers, while `ceil(3)` takes a `double` (and doesn't have a corresponding built-in `NSExpression` function). `floor:` here acts the same as `floor(3)`.
 
 - `floor:`
 
@@ -152,7 +152,7 @@ extension NSNumber {
 @end
 ```
 
-Then, use the function thusly (the `FUNCTION()` macro in `+expressionWithFormat:` is shorthand for the process of building out with `-expressionForFunction:`, et al.):
+Then, use the function thusly (the `FUNCTION()` macro in `+expressionWithFormat:` is shorthand for the process of building out with `+expressionForFunction:selectorName:arguments:`, et al.):
 
 ```swift
 let functionExpression = NSExpression(format:"FUNCTION(4.2, 'factorial')")
@@ -164,7 +164,7 @@ NSExpression *expression = [NSExpression expressionWithFormat:@"FUNCTION(4.2, 'f
 id value = [expression expressionValueWithObject:nil context:nil]; // 32.578...
 ```
 
-The advantage here, over calling `-factorial` directly is the ability to invoke the function in an `NSPredicate` query. For example, a `location:withinRadius:` method might be defined to easily query managed objects nearby a user's current location.
+The advantage here, over calling `-factorial` directly, is the ability to invoke the function in an `NSPredicate` query. For example, a `location:withinRadius:` method might be defined to easily query managed objects nearby a user's current location.
 
 As Dave mentions in his article, the use cases are rather marginal, but it's certainly an interesting trick to have in your repertoire.
 

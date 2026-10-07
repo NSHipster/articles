@@ -57,13 +57,13 @@ Quick Documentation is probably the first Xcode shortcut developers should learn
 
 ## Jump to Definition (`⌘ʘ` on Symbol)
 
-Also well-know to an expert Xcoder's workflow is Jump to Definition, which opens the editor window to the relevant `@interface` definition or constant declaration in a `.h` file. This is especially useful for getting a raw look at system frameworks like Foundation, to get an idea of what's _really_ going on behind-the-scenes.
+Also well-known to an expert Xcoder's workflow is Jump to Definition, which opens the editor window to the relevant `@interface` definition or constant declaration in a `.h` file. This is especially useful for getting a raw look at system frameworks like Foundation, to get an idea of what's _really_ going on behind-the-scenes.
 
 ## Jump to Next Counterpart (`^⌘↑` / `^⌘↓` / Three-Finger Vertical Swipe)
 
 ![Jump to Next Counterpart]({% asset xcode-shortcuts-counterpart.gif @path %})
 
-Last, but certainly not least, there's Jump to Next Counterpart, which is very likely the shortcut used the most on any given day. Quickly switch between a `.h` header and it's corresponding `.m` implementation with a simple three-finger swipe up or down (or `^⌘↑` / `^⌘↓` if you feel so inclined).
+Last, but certainly not least, there's Jump to Next Counterpart, which is very likely the shortcut used the most on any given day. Quickly switch between a `.h` header and its corresponding `.m` implementation with a simple three-finger swipe up or down (or `^⌘↑` / `^⌘↓` if you feel so inclined).
 
 ---
 
@@ -71,7 +71,7 @@ Last, but certainly not least, there's Jump to Next Counterpart, which is very l
 
 ![Comment Selection]({% asset xcode-shortcuts-comment.gif @path %})
 
-Sure, you _could_ be debugging the "right way" by setting breakpoints and being clever with your code paths, but there's quite so refreshingly simple and powerful as phasing code in and out of computational existence with a comment. Add or remove `//` comments to the current line or selection.
+Sure, you _could_ be debugging the "right way" by setting breakpoints and being clever with your code paths, but there's nothing quite so refreshingly simple and powerful as phasing code in and out of computational existence with a comment. Add or remove `//` comments to the current line or selection.
 
 ## Show Standard Editor (`⌘↵`) <br/> Show Assistant Editor (`⌥⌘↵`) <br/> Show Version Editor (`⌥⇧⌘↵`)
 
@@ -126,7 +126,7 @@ Sandwiching the editors on the left and right flanks, the Navigator and Utilitie
 
 Anyone miss the option in Xcode 3 to have a detached debugger window? Yeah, me too.
 
-Knowing how to toggle the debug area and activate the console in a single keystroke may be a shallow consolation, but it does help take the edge off of the pain or loss.
+Knowing how to toggle the debug area and activate the console in a single keystroke may be a shallow consolation, but it does help take the edge off of the pain of loss.
 
 ---
 

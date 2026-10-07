@@ -27,7 +27,7 @@ there'd be no mistaking a Flying-V formation of migratory geese
 from the undulating murmuration of starlings.
 And while a twitcher would be forgiven for
 mistaking a coot for a duck at the water's edge,
-their scaley, non-webbed feet are an obvious tell to an ornithophile.
+their scaly, non-webbed feet are an obvious tell to an ornithophile.
 
 The usefulness of jizz isn't limited to amateur ornithology, either.
 We can distinguish varieties of programming languages
@@ -147,7 +147,7 @@ or override properties declared in the public interface:
 
 ### Properties
 
-Property directives are likewise, 
+Property directives are likewise 
 learned early on:
 
 `@property`

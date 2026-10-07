@@ -19,7 +19,7 @@ From `@interface` declarations to `if (!self) return nil;` incantations, there i
 
 ## Using Xcode Snippets
 
-To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half the Utilities panel, there will be a horizontal divider with 4 icons.
+To see the available code snippets, show the Utilities panel, to the right of your editor. On the bottom half of the Utilities panel, there will be a horizontal divider with 4 icons.
 
 ![Utilities Divider]({% asset xcode-snippet-utilities-divider.png @path %})
 
@@ -39,7 +39,7 @@ You can drag and drop from the code snippets library into your editor:
 
 To get a sense of what you can do with snippets, here's an overview of the ones built-in to Xcode:
 
-- C `typedef` declarations for `enum`, `struct` `union`, and blocks
+- C `typedef` declarations for `enum`, `struct`, `union`, and blocks
 - C control flow statements like `if`, `if`...`else`, and `switch`
 - C loops, such as `for`, `while`, and `do`...`while`
 - C inline block variable declaration
@@ -48,7 +48,7 @@ To get a sense of what you can do with snippets, here's an overview of the ones 
 - Objective-C boilerplate for Core Data fetches, property accessors, and property validation
 - Objective-C idioms for enumerating [`NSIndexSet`](https://nshipster.com/nsindexset/)
 - Objective-C incantation for `init`, `initWithCoder:` and `initWithFrame:` method implementations
-- Objective-C `@try` / `@catch` / `@finally` and `@autorelease` blocks
+- Objective-C `@try` / `@catch` / `@finally` and `@autoreleasepool` blocks
 - GCD idioms for `dispatch_once` and `dispatch_after`
 
 ## Creating Xcode Snippets

@@ -117,7 +117,7 @@ here's a comparison of the APIs of `UIWebView` and `WKWebView`:
 | `var canGoForward: Bool { get }` | `var canGoForward: Bool { get }`                                             |
 | `var loading: Bool { get }`      | `var loading: Bool { get }`                                                  |
 
-### Javascript Evaluation
+### JavaScript Evaluation
 
 | UIWebView                                                               | WKWebView                                                                                                   |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -218,7 +218,7 @@ window.webkit.messageHandlers.<#name#>.postMessage()
 > What's really great about this API is that JavaScript objects are
 > _automatically serialized_ into native Objective-C or Swift objects.
 
-The name of the handler is configured in `add(_:name)`,
+The name of the handler is configured in `add(_:name:)`,
 which registers a handler conforming to the `WKScriptMessageHandler` protocol:
 
 ```swift
@@ -296,7 +296,8 @@ let json = """
 [
     {
         "trigger": {
-            "if-domain": "*.medium.com"
+            "url-filter": ".*",
+            "if-domain": ["*medium.com"]
         },
         "action": {
             "type": "css-display-none",
@@ -377,7 +378,7 @@ So a clean, single method option is a welcome addition to the API.
 ---
 
 `WKWebView` truly makes the web feel like a first-class citizen.
-Even if you consider yourself native purist,
+Even if you consider yourself a native purist,
 you may be surprised at the power and flexibility afforded by WebKit.
 
 In fact, many of the apps you use every day rely on WebKit

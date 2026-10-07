@@ -29,15 +29,15 @@ Section index titles can be enabled by implementing the following `UITableViewDa
 
 - `-tableView:sectionForSectionIndexTitle:atIndex:` - Returns the section index that the table view should jump to when the user touches a particular section index title.
 
-As longtime readers of NSHipster doubtless have already guessed, the process of generating that alphabetical list is not something you would want to have to generate yourself. What it means to something to be alphabetically sorted, or even what is meant by an "alphabet" varies wildly across different locales.
+As longtime readers of NSHipster doubtless have already guessed, the process of generating that alphabetical list is not something you would want to have to generate yourself. What it means for something to be alphabetically sorted, or even what is meant by an "alphabet" varies wildly across different locales.
 
 Coming to our rescue is `UILocalizedIndexedCollation`.
 
 ---
 
-`UILocalizedIndexedCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexedCollation +currentCollation`
+`UILocalizedIndexedCollation` is a class that helps to organize data in table views with section index titles in a locale-aware manner. Rather than creating the object directly, a shared instance corresponding to the current locale supported by your application is accessed, with `UILocalizedIndexedCollation +currentCollation`.
 
-The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which are can be read from the `sectionIndexTitles` property.
+The first task for `UILocalizedIndexedCollation` is to determine what section index titles to display for the current locale, which can be read from the `sectionIndexTitles` property.
 
 To give you a better idea of how section index titles vary between locales:
 
@@ -48,14 +48,14 @@ To give you a better idea of how section index titles vary between locales:
 | en_US  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, #`                                                                                   |
 | ja_JP  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, あ, か, さ, た, な, は, ま, や, ら, わ, #`                                           |
 | sv_SE  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Å, Ä, Ö, #`                                                                          |
-| ko_KO  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #`                           |
-| AR_sa  | A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, # |
+| ko_KR  | `A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, ㄱ, ㄴ, ㄷ, ㄹ, ㅁ, ㅂ, ㅅ, ㅇ, ㅈ, ㅊ, ㅋ, ㅌ, ㅍ, ㅎ, #`                           |
+| ar_SA  | A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, آ, ب, ت, ث, ج, ح, خ, د, ذ, ر, ز, س, ش, ص, ض, ط, ظ, ع, غ, ف, ق, ك, ل, م, ن, ه, و, ي, # |
 
 Aren't you glad you don't have to do this yourself?
 
 So with the list of section titles laid out before you, the next step is to determine what section each object should be assigned to. This is accomplished with `-sectionForObject:collationStringSelector:`. This method returns the `NSInteger` index corresponding to the string value of the object when performing the specified selector. This selector might be something like `localizedName`, `title`, or even just `description`.
 
-So, as it stands, your table view data source has a NSArray property corresponding to the number of sections in the table view, with each element of the array containing an array representing each row in the section. Since collation was handled by `UILocalizedIndexedCollation`, it makes sense for it to sort the rows in each section as well. `– sortedArrayFromArray:collationStringSelector:` does this in similar fashion to `-sectionForObject:collationStringSelector:`, by sorting the objects in the section by their respective localized title.
+So, as it stands, your table view data source has an NSArray property corresponding to the number of sections in the table view, with each element of the array containing an array representing each row in the section. Since collation was handled by `UILocalizedIndexedCollation`, it makes sense for it to sort the rows in each section as well. `-sortedArrayFromArray:collationStringSelector:` does this in similar fashion to `-sectionForObject:collationStringSelector:`, by sorting the objects in the section by their respective localized title.
 
 Finally, the table view should implement `-tableView:sectionForSectionIndexTitle:atIndex:`, so that touching a section index title jumps to the corresponding section in the table view. `UILocalizedIndexedCollation -sectionForSectionIndexTitleAtIndex:` does the trick.
 
@@ -80,7 +80,7 @@ class ObjectTableViewController: UITableViewController {
         }
     }
 
-    // MARK: UITableViewDelegate
+    // MARK: UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return collation.sectionTitles[section]

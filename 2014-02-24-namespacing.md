@@ -74,7 +74,7 @@ Within the context of the Objective-C runtime, a program is able to differentiat
 
 ## Prefixes
 
-All classes in an Objective-C application must be globally unique. Since many different frameworks are likely have some conceptual overlap—and therefore an overlap in names (users, views, requests / responses, etc.)—convention dictates that class names use 2 or 3 letter prefix.
+All classes in an Objective-C application must be globally unique. Since many different frameworks are likely to have some conceptual overlap—and therefore an overlap in names (users, views, requests / responses, etc.)—convention dictates that class names use a 2 or 3 letter prefix.
 
 ### Class Prefixes
 
@@ -190,7 +190,7 @@ There are many outspoken developers who will passionately argue one side or anot
 
 The main feature of categories is coating useful functionality with syntactic sugar. Any category method could alternatively be implemented as a function taking an explicit argument in place of the implicit `self` of a method.
 
-Collisions can be detected at compile time by setting the `OBJC_PRINT_REPLACED_METHODS` environment variable to `YES`. In practice, collisions are extremely rare, and when they do occur, they're usually an indicator of functionality that is needlessly duplicated across dependencies. Although the worst-case scenario is a runtime exception, it's entirely likely that two methods named the same thing will actually _do_ the same thing, and result in no change in behavior. All of those Swiss Army Knife categories that defined `NSArray -firstObject` continued to march on once the method was officially added.
+Collisions can be detected at runtime by setting the `OBJC_PRINT_REPLACED_METHODS` environment variable to `YES`. In practice, collisions are extremely rare, and when they do occur, they're usually an indicator of functionality that is needlessly duplicated across dependencies. Although the worst-case scenario is a runtime exception, it's entirely likely that two methods named the same thing will actually _do_ the same thing, and result in no change in behavior. All of those Swiss Army Knife categories that defined `NSArray -firstObject` continued to march on once the method was officially added.
 
 Just as with constitutional scholarship, there will be strict and loose interpretations of Apple's programming guidelines. Those that see it as a living document would point out that... actually, you know what? If you've read this far and are still undecided, just prefix your damn category methods. If you choose not to, just be mindful that it could bite you in the ass.
 
@@ -206,6 +206,8 @@ The one case where method prefixing (or suffixing) is absolutely necessary is wh
 
     // Swizzled implementation
 }
+
+@end
 ```
 
 ## Do We _Really_ Need Namespaces?
@@ -216,7 +218,7 @@ With all of the recent talk about replacing / reinventing / reimagining Objectiv
 
 **Semantics?** Start to look closely at any other language, and how they actually use namespaces, and you'll realize that namespaces don't magically solve all matters of ambiguity. If anything, the additional context makes things worse.
 
-Not to create a straw man, but an imagined implementation of Objective-C namespaces probably look a lot like this:
+Not to create a straw man, but an imagined implementation of Objective-C namespaces probably looks a lot like this:
 
 ```objc
 @namespace XX

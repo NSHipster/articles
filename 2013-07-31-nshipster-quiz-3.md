@@ -31,11 +31,11 @@ In honor of hosting this pub quiz in New York City, a couple questions about cit
 3. According to a leaked photo from Chinese site WeiPhone, what is the name of the rumored low-cost, plastic iPhone?
 4. JOBS, starring Ashton Kutcher hits theaters August 16... but which acclaimed screenwriter is behind the other Steve Jobs biopic, currently in production?
 5. Which country has planned 11 "Steve Jobs schools", featuring an iPad-based curriculum, to open in August?
-6. Which computing pioneer, famous for his 1968"Mother of All Demos", passed away on July 2, 2013?
+6. Which computing pioneer, famous for his 1968 "Mother of All Demos", passed away on July 2, 2013?
 7. Which New York-based directions and mapping startup was purchased by Apple in July 2013?
 8. Of the world's major subway systems, London's is the oldest, while Moscow has the greatest ridership. By what measure is the New York subway system #1?
 9. Who is the author of "The Death and Life of Great American Cities", which famously argues against the urban renewal plans for Greenwich Village in the 1950's & 60's?
-10. What 5 channels were Apple TV with the version 5.3 update (1 point each)
+10. What 5 channels were added to Apple TV with the version 5.3 update (1 point each)
 
 
 Round 2: Public, Private, or Fake?
@@ -84,7 +84,7 @@ With over 1 Million iOS & Mac Apps on the App Store, it's clear that the true se
 
 ![Question 6]({% asset quiz-3/question-6.png @path %})
 
-- 7. Which indispensible development tool has this incongruous icon?
+- 7. Which indispensable development tool has this incongruous icon?
 
 ![Question 7]({% asset quiz-3/question-7.png @path %})
 
@@ -170,7 +170,7 @@ Round 3: Picture Round - Name that App!
 Round 4: [REDACTED]
 -------------------
 
-1. `MKMapSnapshot`
+1. `MKMapSnapshotter`
 2. `GCController`
 3. `SKScene`
 4. `UIGravityBehavior`

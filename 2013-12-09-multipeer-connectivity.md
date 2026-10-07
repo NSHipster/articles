@@ -16,7 +16,7 @@ The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the 
 
 * * *
 
-Multipeer Connectivity is a framework that enables nearby devices to communicate over infrastructure Wi-Fi networks, peer-to-peer Wi-Fi, and Bluetooth personal area networks. Connected peers are able securely transmit messages, streams, or file resources to other devices without going through an intermediary web service.
+Multipeer Connectivity is a framework that enables nearby devices to communicate over infrastructure Wi-Fi networks, peer-to-peer Wi-Fi, and Bluetooth personal area networks. Connected peers are able to securely transmit messages, streams, or file resources to other devices without going through an intermediary web service.
 
 ## Advertising & Discovering
 
@@ -36,7 +36,7 @@ Peers are uniquely identified by an `MCPeerID` object, which are initialized wit
 MCPeerID *localPeerID = [[MCPeerID alloc] initWithDisplayName:[[UIDevice currentDevice] name]];
 ```
 
-> Peers can be also be advertised or discovered manually using `NSNetService` or the Bonjour C APIs, but this is a rather advanced and specific concern. Additional information about manual peer management can be found in the `MCSession` documentation.
+> Peers can also be advertised or discovered manually using `NSNetService` or the Bonjour C APIs, but this is a rather advanced and specific concern. Additional information about manual peer management can be found in the `MCSession` documentation.
 
 ### Advertising
 
@@ -92,7 +92,7 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
 }
 ```
 
-> For sake of simplicity, this example contrives a block-based initializer for `UIActionSheet`, which allows for the `invitationHandler` to be passed directly into the action sheet responder in order to avoid the messy business of creating and managing a custom delegate object. This method can be implemented in a category, or adapted from [any of the implementations available on CocoaPods](http://cocoapods.org/?q=uiactionsheet%20blocks)
+> For sake of simplicity, this example contrives a block-based initializer for `UIActionSheet`, which allows for the `invitationHandler` to be passed directly into the action sheet responder in order to avoid the messy business of creating and managing a custom delegate object. This method can be implemented in a category, or adapted from [any of the implementations available on CocoaPods](http://cocoapods.org/?q=uiactionsheet%20blocks).
 
 ### Creating a Session
 
@@ -105,7 +105,7 @@ MCSession *session = [[MCSession alloc] initWithPeer:localPeerID
 session.delegate = self;
 ```
 
-`securityIdentity` is an optional parameter that allows peers to securely identify peers by X.509 certificates. When specified, the first object should be an `SecIdentityRef` identifying the client, followed by one or more `SecCertificateRef` objects than can be used to verify the local peer’s identity.
+`securityIdentity` is an optional parameter that allows peers to securely identify peers by X.509 certificates. When specified, the first object should be an `SecIdentityRef` identifying the client, followed by one or more `SecCertificateRef` objects that can be used to verify the local peer’s identity.
 
 The `encryptionPreference` parameter specifies whether to encrypt communication between peers. Three possible values are provided by the `MCEncryptionPreference` enum:
 
@@ -169,7 +169,7 @@ if (![self.session sendData:data
 
 * * *
 
-Messages are received through the `MCSessionDelegate` method `-sessionDidReceiveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
+Messages are received through the `MCSessionDelegate` method `-session:didReceiveData:fromPeer:`. Here's how one would decode the message sent in the previous code example:
 
 ```objc
 #pragma mark - MCSessionDelegate
@@ -214,21 +214,23 @@ if (![self.session sendData:data
 }
 ```
 
-> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the [NSHipster article on [NSSecureCoding](https://nshipster.com/nssecurecoding/).
+> In order to guard against object substitution attacks, it is important to set `requiresSecureCoding` to `YES`, such that an exception is thrown if the root object class does not conform to `<NSSecureCoding>`.  For more information, see the NSHipster article on [NSSecureCoding](https://nshipster.com/nssecurecoding/).
 
 ### Streams
 
-Streams are created with `-startStreamWithName:toPeer:`:
+Streams are created with `-startStreamWithName:toPeer:error:`:
 
 ```objc
+NSError *error = nil;
 NSOutputStream *outputStream =
     [session startStreamWithName:name
-                          toPeer:peer];
+                          toPeer:peer
+                           error:&error];
 
-stream.delegate = self;
-[stream scheduleInRunLoop:[NSRunLoop mainRunLoop]
-                forMode:NSDefaultRunLoopMode];
-[stream open];
+outputStream.delegate = self;
+[outputStream scheduleInRunLoop:[NSRunLoop mainRunLoop]
+                        forMode:NSDefaultRunLoopMode];
+[outputStream open];
 
 <#...#>
 ```
@@ -294,11 +296,11 @@ didFinishReceivingResourceWithName:(NSString *)resourceName
       withError:(NSError *)error
 {
     NSURL *destinationURL = [NSURL fileURLWithPath:@"/path/to/destination"];
-    NSError *error = nil;
+    NSError *moveError = nil;
     if (![[NSFileManager defaultManager] moveItemAtURL:localURL
                                                  toURL:destinationURL
-                                                 error:&error]) {
-        NSLog(@"[Error] %@", error);
+                                                 error:&moveError]) {
+        NSLog(@"[Error] %@", moveError);
     }
 }
 ```

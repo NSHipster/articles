@@ -59,7 +59,7 @@ Look for class constructors in Foundation to start using `instancetype` in the n
 
 ## Further Implications
 
-Language features are particularly interesting because, again, it's often unclear of what impact they'll have on higher-level aspects of software design.
+Language features are particularly interesting because, again, it's often unclear what impact they'll have on higher-level aspects of software design.
 
 While `instancetype` may seem to be a rather mundane, albeit welcome addition to the compiler, it can be used to some rather clever ends.
 
@@ -77,7 +77,7 @@ NSURL *jonsSite = [sites at:@"jon"]; // => http://www.jonmsterling.com/
 
 Statically-typed collections would make APIs more expressive--no longer would a developer be unsure about what kinds of objects are allowed in a collection parameter.
 
-Whether or not this becomes an accepted convention in Objective-C, it's fascinating to how a low-level feature like `instancetype` can be used to change shape of the language (in this case, making it look more like [C#][1]).
+Whether or not this becomes an accepted convention in Objective-C, it's fascinating to see how a low-level feature like `instancetype` can be used to change the shape of the language (in this case, making it look more like [C#][1]).
 
 ---
 

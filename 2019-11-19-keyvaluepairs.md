@@ -251,7 +251,7 @@ and Swift is rather unique among other languages
 by extending this functionality to our own custom types through protocols.
 
 A <dfn>dictionary literal</dfn>
-represents a value as mapping of keys and values like so:
+represents a value as a mapping of keys and values like so:
 
 ```swift
 ["key": "value"]
@@ -260,7 +260,7 @@ represents a value as mapping of keys and values like so:
 However, the term
 _"dictionary literal"_ is a slight misnomer,
 since a sequence of key-value pairs --- not a `Dictionary` ---
-are passed to the `ExpressibleByDictionaryLiteral` protocol's required initializer:
+is passed to the `ExpressibleByDictionaryLiteral` protocol's required initializer:
 
 ```swift
 protocol ExpressibleByDictionaryLiteral {

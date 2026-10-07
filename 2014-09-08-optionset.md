@@ -4,7 +4,7 @@ author: Mattt
 category: Swift
 excerpt: >-
   Objective-C uses the `NS_OPTIONS` macro
-  to define set of values that may be combined together.
+  to define sets of values that may be combined together.
   Swift imports those types as structures 
   conforming to the `OptionSet` protocol.
   But could new language features in Swift provide a better option?
@@ -97,7 +97,7 @@ view.autoresizingMask = .flexibleHeight
 `OptionSet` conforms to the
 [`SetAlgebra`](https://developer.apple.com/documentation/swift/setalgebra)
 protocol,
-so to you can specify multiple options with an array literal ---
+so you can specify multiple options with an array literal ---
 no bitwise operations required:
 
 ```swift

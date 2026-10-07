@@ -58,8 +58,8 @@ to check hardware availability and access measurements.
 
 - The <dfn>accelerometer</dfn> measures <dfn>acceleration</dfn>,
   or changes in velocity over time.
-- The <dfn>gyroscope</dfn> measures <dfn>attitude</dfn>,
-  or the orientation of the device.
+- The <dfn>gyroscope</dfn> measures <dfn>rotation rate</dfn>,
+  or how quickly the device rotates around each axis.
 - The <dfn>magnetometer</dfn> is essentially a compass,
   and measures the Earth's magnetic field relative to the device.
 
@@ -77,7 +77,7 @@ before attempting to read motion data.
 
 The following examples involve the accelerometer,
 but you could replace the word "accelerometer"
-for the type of motion data that you're interested in
+with the type of motion data that you're interested in
 (such as "gyro", "magnetometer", or "deviceMotion"):
 
 ```swift
@@ -89,7 +89,7 @@ guard manager.isAccelerometerAvailable else {
 
 {% comment %}
 
-> Too keep things concise,
+> To keep things concise,
 > assume that each of the following examples declares
 > a `manager` instance as a view controller property.
 
@@ -100,7 +100,7 @@ guard manager.isAccelerometerAvailable else {
 Core Motion provides both "pull" and "push" access to motion data.
 
 To "pull" motion data,
-you access the current reading from
+you access the current reading
 using one of the read-only properties of `CMMotionManager`.
 
 To receive "pushed" data,
@@ -195,7 +195,7 @@ it would be something like `(0.707, -0.707, 0)` _(dat √2 tho)_.
 We calculate the rotation with the
 [two-argument arctangent function (`atan2`)](https://en.wikipedia.org/wiki/Atan2)
 using the `x` and `y` components from the accelerometer data.
-We then initialize a `CGAffineTransform` using that calculate rotation.
+We then initialize a `CGAffineTransform` using that calculated rotation.
 Our image should stay right-side-up, no matter how the phone is turned ---
 here, it is in a hypothetical app for the _National Air & Space Museum_
 (my favorite museum as a kid):
@@ -268,7 +268,7 @@ if manager.isDeviceMotionAvailable {
             return
         }
         if data.userAcceleration.x < -2.5 {
-            self?.navigationController?.popViewControllerAnimated(true)
+            self?.navigationController?.popViewController(animated: true)
         }
     }
 }

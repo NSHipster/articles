@@ -58,7 +58,7 @@ both of which have default values.
 - `terminator` is the string appended to the end of the printed representation.
   By default, this is a newline (`"\n"`).
 
-The last parameter, `output`
+The last parameter, `output`,
 takes a mutable instance of a generic `Target` type
 that conforms to the `TextOutputStream` protocol.
 

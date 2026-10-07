@@ -24,7 +24,7 @@ For the first twenty or so years of its existence, Objective-C was not a widely 
 
 ### Objective-C and the iPhone
 
-This went on until the summer of 2008, when iPhone OS was first opened up to third party developers. Almost overnight, Objective-C went from being an obscure C++/C# also-ran to the one of the most sought-after programmer qualifications. Millions of developers flocked from all walks of code, bringing an influx of new ideas and influences to the language.
+This went on until the summer of 2008, when iPhone OS was first opened up to third party developers. Almost overnight, Objective-C went from being an obscure C++/C# also-ran to one of the most sought-after programmer qualifications. Millions of developers flocked from all walks of code, bringing an influx of new ideas and influences to the language.
 
 Around this same time, GitHub had just launched, and was starting to change the way we thought about open source by enabling a new distributed, collaborative workflow.
 
@@ -156,7 +156,7 @@ $ pod try Ono
 
 ## Creating a CocoaPod
 
-Being the de facto standard for Objective-C software distribution, CocoaPods is pretty much a requirement for open source projects with the intention of being used by others
+Being the de facto standard for Objective-C software distribution, CocoaPods is pretty much a requirement for open source projects with the intention of being used by others.
 
 Yes, it raises the barrier to entry for sharing your work, but the effort is minimal, and more than justifies itself. Taking a couple minutes to create a `.podspec` file saves every user at least that much time attempting to integrate it into their own projects.
 
@@ -207,7 +207,7 @@ pod 'Z', :path => 'path/to/directory/with/podspec'
 
 New in CocoaPods 0.33 is [the new Trunk service](http://guides.cocoapods.org/making/getting-setup-with-trunk).
 
-Although it worked brilliantly at first, the process of using Pull Requests on GitHub for managing new pods became something of a chore, both for library authors and spec organizers like [Keith Smiley](https://twitter.com/SmileyKeith). Sometimes podspecs would be submitted without passing `$ pod lint`, causing the specs repo build to break. Other times, rogue commits from people other than the original library author would break things unexpectedly.
+Although it worked brilliantly at first, the process of using Pull Requests on GitHub for managing new pods became something of a chore, both for library authors and spec organizers like [Keith Smiley](https://twitter.com/SmileyKeith). Sometimes podspecs would be submitted without passing `$ pod spec lint`, causing the specs repo build to break. Other times, rogue commits from people other than the original library author would break things unexpectedly.
 
 The CocoaPods Trunk service solves a lot of this, making the process nicer for everyone involved. Being a centralized service, it also has the added benefit of being able to get analytics for library usage, and other metrics.
 
@@ -231,7 +231,7 @@ Authors of existing CocoaPods can claim their libraries [with a few simple steps
 
 CocoaPods exemplifies the compounding effect of infrastructure on a community. In a few short years, the Objective-C community has turned into something that we can feel proud to be part of.
 
-CocoaPods is just one example of the great work being done on Objective-C infrastructure. Other community tools, like [Travis CI](http://blog.travis-ci.com/introducing-mac-ios-rubymotion-testing/), [CocoaDocs](http://cocoadocs.org), and [Nomad](http://nomad-cli.com) have dramatically improved the everyday experience iOS and OS X development for the community.
+CocoaPods is just one example of the great work being done on Objective-C infrastructure. Other community tools, like [Travis CI](http://blog.travis-ci.com/introducing-mac-ios-rubymotion-testing/), [CocoaDocs](http://cocoadocs.org), and [Nomad](http://nomad-cli.com) have dramatically improved the everyday experience of iOS and OS X development for the community.
 
 It can be tempting to be snarky, contrarian, or grumpy about the direction of a community. No matter what, though, let us all try our best to enter into dialogue in good faith, offering constructive criticism where we can. We should help each other to be good [stewards](https://nshipster.com/stewardship/) of what we share, and strive towards [empathy](https://nshipster.com/empathy/) in all our interactions.
 

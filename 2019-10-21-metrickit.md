@@ -496,7 +496,7 @@ FROM metrics;
 {% info %}
 
 The JSON representation of metrics stores measurements for time and memory
-as strings with units (such as `"100 ms"` and `500 kB`).
+as strings with units (such as `"100 ms"` and `"500 kB"`).
 In Postgres, you can cast time measurements directly to the
 [`INTERVAL` type](https://www.postgresql.org/docs/current/datatype-datetime.html#DATATYPE-INTERVAL-INPUT),
 however you'll need to create a function to convert to byte counts:

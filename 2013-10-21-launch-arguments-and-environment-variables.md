@@ -62,7 +62,7 @@ According to [IBM's Globalization Guidelines _(Archived)_](https://web.archive.o
 <tr><td>21 – 30</td><td>60% to 80%</td></tr>
 <tr><td>31 – 50</td><td>40% to 60%</td></tr>
 <tr><td>51 – 70</td><td>31% to 40%</td></tr>
-<tr><td>70</td><td>30%</td></tr>
+<tr><td>&gt; 70</td><td>30%</td></tr>
 </tbody>
 </table>
 {:/}
@@ -99,7 +99,7 @@ Normally, one would have to manually go through Settings > General > Internation
 
 ### Core Data
 
-Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzlingly fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments:
+Of all of the system frameworks, Core Data may be the most in need of debugging. Managed objects passing across contexts and threads, and notifications firing with dazzling fervor, there's too much going on to keep track of yourself. Call in reinforcements with these essential launch arguments:
 
 #### SQL Debug
 
@@ -136,7 +136,7 @@ Want your debug statements to be _even spicier_? Toss `com.apple.CoreData.Syntax
 In any other persistence layer, migrations are a blessing. Yet, for some reason, Core Data manages to make them into something out of a nightmare. When things go wrong and you have no one to blame except your own ignorant self, unworthy of such an intuitive and well-designed <del>ORM</del> <ins>graph persistence framework</ins>, then here's an argument you'll want to pass at launch:
 
 ```
--com.apple.CoreData.MigrationDebug
+-com.apple.CoreData.MigrationDebug 1
 ```
 
 ---
@@ -145,7 +145,7 @@ In any other persistence layer, migrations are a blessing. Yet, for some reason,
 
 Whereas launch arguments are specific to the executable, environment variables have a wider scope, more along the lines of a global variable (but without all of the knee-jerk derision from programmers).
 
-Configure your environment with the following settings to shape the memory management policies to aide in debugging.
+Configure your environment with the following settings to shape the memory management policies to aid in debugging.
 
 > Unless otherwise specified, environment variables are passed `YES` or `NO` to enable or disable a particular feature.
 
@@ -163,7 +163,7 @@ Setting `NSZombie`-related environment variables allows you to control the _BRAA
 <th>Name</th><th>Effect</th></tr>
 </thead>
 <tbody>
-<tr><td><code>NSZombieEnabled</code></td></td><td>If set to <code>YES</code>, deallocated objects are 'zombified'; this allows you to quickly debug problems where you send a message to an object that has already been freed.</td></tr>
+<tr><td><code>NSZombieEnabled</code></td><td>If set to <code>YES</code>, deallocated objects are 'zombified'; this allows you to quickly debug problems where you send a message to an object that has already been freed.</td></tr>
 <tr><td><code>NSDeallocateZombies</code></td><td>If set to <code>YES</code>, the memory for 'zombified' objects is actually freed.</td></tr>
 </tbody>
 </table>

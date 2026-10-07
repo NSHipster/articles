@@ -10,7 +10,7 @@ status:
 
 `UICollectionView` is the new `UITableView`. It's that important.
 
-This is not to say that collection views are in any way unknown or obscure--anyone who went to any of the WWDC sessions about it, or got to play with in the iOS 6 beta already know what's up.
+This is not to say that collection views are in any way unknown or obscure--anyone who went to any of the WWDC sessions about it, or got to play with it in the iOS 6 beta already knows what's up.
 
 Remember, being an NSHipster isn't just about knowing obscure gems in the rough. Sometimes, it's about knowing about up-and-comers before they become popular and sell out. So before everybody else finds out for themselves, here's the skinny on the next big thing:
 
@@ -56,7 +56,7 @@ The whole point is that with supplementary views, even the most complex layout c
 
 ### Decoration Views
 
-In addition to cell views and supplementary views, collections also have _decoration views_. A decoration view, as the name implies, is something that without a functional purpose... other than to perhaps [spurn the hatred of anti-skeuomorphic zealots](http://skeu.it) across the interwebs. But really, if you're resigned to imbue your virtual book collection app with immaculately-textured wood-grained shelves, it might as well be easy to do, _right_?
+In addition to cell views and supplementary views, collections also have _decoration views_. A decoration view, as the name implies, is something without a functional purpose... other than to perhaps [spur the hatred of anti-skeuomorphic zealots](http://skeu.it) across the interwebs. But really, if you're resigned to imbue your virtual book collection app with immaculately-textured wood-grained shelves, it might as well be easy to do, _right_?
 
 One thing to remember about decoration views is that they are entirely managed by the layout, unlike cell or supplementary views, which are under the jurisdiction of the collection view data source.
 
@@ -68,7 +68,7 @@ Layouts are at the heart of what makes `UICollectionView` so magical. Think of t
 
 Until you're comfortable enough to understand the limitations of flow layouts, it's generally a safe bet to just start with that.
 
-Each cell view, supplemental view, and decoration view have layout attributes. To get an idea of how flexible layouts are, look no further than the properties of an `UICollectionViewLayoutAttributes` object:
+Each cell view, supplemental view, and decoration view has layout attributes. To get an idea of how flexible layouts are, look no further than the properties of a `UICollectionViewLayoutAttributes` object:
 
 - `frame`
 - `center`
