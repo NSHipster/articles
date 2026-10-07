@@ -87,14 +87,14 @@ manager.startActivityUpdates(to: .main) { (activity) in
 ```
 
 `CMMotionActivityManager` is provided by the Core Motion framework.
-Devices that support Core Motion are equipped with a motion coprocessor.
+Devices that support motion activity are equipped with a motion coprocessor.
 By using dedicated hardware,
 the system can offload all sensor processing from the CPU
 and minimize energy usage.
 
 The first of the _M-series_ coprocessors was the M7,
 which arrived in September 2013 with the iPhone 5S.
-This coincided with the release of iOS 7 and the Core Motion APIs.
+This coincided with the release of iOS 7 and the `CMMotionActivityManager` APIs.
 
 ## Feature Drivers
 
@@ -120,7 +120,7 @@ according to the current mode of transportation.
 For example,
 a delivery service app might relay changes in motion activity to a server
 to recalculate estimated ETA or change the UI to communicate
-that the courier has parked their vehicle and are now approaching by foot.
+that the courier has parked their vehicle and is now approaching by foot.
 
 ## Traveling Without Moving
 

@@ -277,7 +277,7 @@ That's all! When you're finished, scroll down a bit for the answers.
 6.  EventKit
 7.  MapKit
 8.  Contacts
-9.  GamePlayKit
+9.  GameplayKit
 10. Intents
 
 ## Round 3: Who _Is_ That?

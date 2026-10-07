@@ -394,7 +394,7 @@ such as `NOTE` and `XXX` aren't recognized by Xcode.
 {% info %}
 
 As with `#pragma`, marks followed by a single dash (`-`)
-are preceded with a horizontal divider
+are preceded with a horizontal divider.
 
 {% endinfo %}
 
@@ -473,7 +473,7 @@ print(bike)
 At the time of writing,
 there's no official tool for transforming documentation comments
 into something more tangible
-than Quick Help panels in Xcode,
+than Quick Help panels in Xcode.
 
 Fortunately,
 where necessity arises,
@@ -503,7 +503,7 @@ jam out ♪♫ to your fresh new docs in `docs`
 ```
 
 [Take a peek](https://swift-documentation-example.nshipster.com/classes/bicycle)
-at a Jazzy-generated documentation for the `Bicycle` class.
+at Jazzy-generated documentation for the `Bicycle` class.
 
 ---
 

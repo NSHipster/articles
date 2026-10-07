@@ -16,7 +16,7 @@ Swift certainly draws inspiration from Haskell, Rust, Python, D, and other moder
 - C has **undefined behavior**. Swift has **well-defined behavior**.
 - C uses **preprocessor directives capable of unspeakable evil**. Swift has a **safe subset of preprocessor directives**.
 
-> One could go as far to say that Swift's type system was specifically designed out of _spite_ for C++.
+> One could go as far as to say that Swift's type system was specifically designed out of _spite_ for C++.
 
 In Objective-C, checking for the availability of an API was accomplished through a combination of C preprocessor directives, conditionals on `class`, `respondsToSelector:`, and `instancesRespondToSelector:`:
 
@@ -33,7 +33,7 @@ However, as noted previously, Swift's compiler directives are [extremely constra
 
 ```swift
 #if DEBUG
-     println("OTHER_SWIFT_FLAGS = -D DEBUG")
+     print("OTHER_SWIFT_FLAGS = -D DEBUG")
 #endif
 ```
 
@@ -81,20 +81,20 @@ For more involved version comparison, the `operatingSystemVersion` can be inspec
 let os = ProcessInfo().operatingSystemVersion
 switch (os.majorVersion, os.minorVersion, os.patchVersion) {
 case (8, 0, _):
-    println("iOS >= 8.0.0, < 8.1.0")
+    print("iOS >= 8.0.0, < 8.1.0")
 case (8, _, _):
-    println("iOS >= 8.1.0, < 9.0")
+    print("iOS >= 8.1.0, < 9.0")
 case (9, _, _):
-    println("iOS >= 9.0.0")
+    print("iOS >= 9.0.0")
 default:
     // this code will have already crashed on iOS 7, so >= iOS 10.0
-    println("iOS >= 10.0.0")
+    print("iOS >= 10.0.0")
 }
 ```
 
 ## UIDevice systemVersion
 
-As an alternative, one can use the `systemVersion` property `UIDevice`:
+As an alternative, one can use the `systemVersion` property of `UIDevice`:
 
 ```swift
 switch UIDevice.current.systemVersion.compare("8.0.0", options: .numeric) {
@@ -116,8 +116,8 @@ Another approach to determining API availability is to check framework version n
 This is a dead-end for iOS, but macOS can pretty reliably check against the version of AppKit, with `NSAppKitVersion`:
 
 ```swift
-if NSAppKitVersion.current.rawValue >= .macOS10_10.rawValue {
-    println("macOS >= 10.10")
+if NSAppKitVersion.current.rawValue >= NSAppKitVersion.macOS10_10.rawValue {
+    print("macOS >= 10.10")
 }
 ```
 

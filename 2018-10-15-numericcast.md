@@ -42,7 +42,7 @@ and thought
 "I wish these warnings would go away and my code would finally compile."
 
 If that sounds familiar,
-you'll happy to learn about `numericCast(_:)`,
+you'll be happy to learn about `numericCast(_:)`,
 a small utility function in the Swift Standard Library
 that may be exactly what you were hoping for.
 But be careful what you wish for,
@@ -99,7 +99,7 @@ each with different behaviors for handling out-of-range values:
 
 The correct conversion strategy
 depends on the situation in which it's being used.
-Sometimes it's desireable to clamp values to a representable range;
+Sometimes it's desirable to clamp values to a representable range;
 other times, it's better to get no value at all.
 In the case of `numericCast(_:)`,
 range-checked conversion is used for convenience.
@@ -221,7 +221,7 @@ The [example in the official docs](https://developer.apple.com/documentation/swi
 should be familiar to many of us:
 
 Prior to [SE-0202](https://github.com/apple/swift-evolution/blob/master/proposals/0202-random-unification.md),
-the standard practice for generating numbers in Swift (on Apple platforms)
+the standard practice for generating random numbers in Swift (on Apple platforms)
 involved importing the `Darwin` framework
 and calling the `arc4random_uniform(3)` function:
 

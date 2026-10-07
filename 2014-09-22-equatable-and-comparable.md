@@ -117,7 +117,7 @@ another important type in Swift.
 
 This is all to say that
 if a type has equality semantics ---
-if two values of that type can be considered equal or unequal --
+if two values of that type can be considered equal or unequal ---
 it should conform to `Equatable`.
 
 ### The Limits of Automatic Synthesis
@@ -171,10 +171,10 @@ Can `Quantity` conform to `Equatable`?
 We know that integers are equatable,
 so it really depends on what kind of `Thing` we're talking about.
 
-What conditional conformance Swift 4.1 allows us to do is
+What conditional conformance in Swift 4.1 allows us to do is
 create an extension on a type with a conditional clause.
 We can use that here to programmatically express that
-\_"a quantity of a thing is equatable if the thing itself is equatable":
+_"a quantity of a thing is equatable if the thing itself is equatable"_:
 
 ```swift
 extension Quantity: Equatable where Thing: Equatable {}
@@ -290,7 +290,7 @@ all of that functionality is made available automatically through type inference
 {% info %}
 Contrast this with how Ruby and other languages derive
 equality and comparison operators from a single operator,
-`<=>` _(a.k.a the "UFO operator")_.
+`<=>` _(a.k.a. the "UFO operator")_.
 A few pitches to bring formalized ordering to Swift
 have floated around over the years,
 [such as this one](https://gist.github.com/CodaFi/f0347bd37f1c407bf7ea0c429ead380e),
@@ -309,7 +309,7 @@ If a type has more than one stored property,
 there's no way to determine how they're compared relative to one another.
 And even if a type had only a single property whose type was `Comparable`,
 there's no guarantee how the ordering of that property
-would relate to the ordering of the value as a whole
+would relate to the ordering of the value as a whole.
 
 ### Comparable Benefits
 

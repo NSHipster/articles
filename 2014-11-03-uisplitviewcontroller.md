@@ -5,7 +5,7 @@ category: Cocoa
 excerpt: >
   Although user interface idioms have made way
   for the broader concept of size classes,
-  `UISplitViewController` remains a workhorse API for writing   Universal apps.
+  `UISplitViewController` remains a workhorse API for writing Universal apps.
 revisions:
   "2014-11-03": Original publication
   "2018-09-26": Updated for iOS 12 and Swift 4.2
@@ -58,9 +58,9 @@ However, the view doesn't split when the iPhone is in _Zoomed_ Display mode.
 {% info do %}
 
 You can change between Standard and Zoomed Display Mode in Settings
-by going to General → Accessibility → Zoom,
-enabling the Zoom option
-and selecting Full Screen Zoom for Zoom Region.
+by going to Display & Brightness → View
+(under Display Zoom)
+and selecting Standard or Zoomed.
 
 {% endinfo %}
 
@@ -68,7 +68,7 @@ This is one instance of how split views automatically determine when to show spl
 
 ## Split View Controller, from Start to Finish
 
-The best way to understand how to use `UISplitViewController` works
+The best way to understand how `UISplitViewController` works
 is to show a complete example.
 The source code for the example project in this post
 [can be found here](https://github.com/NSHipster/UISplitViewControllerDemo).
@@ -117,7 +117,7 @@ At this point,
 you might be wondering:
 _Why do the master and detail view controllers
 have to be navigation controllers ---
-especially when there's already a "Show Detail" segue?_.
+especially when there's already a "Show Detail" segue?_
 
 Well, let's see what happens
 when the detail view controller
@@ -131,9 +131,9 @@ On a large iPhone,
 the only difference is the lack of a navigation bar
 when the phone is in landscape mode:
 
-{% asset uisplitviewcontroller-no-navigation-bar.png alt="UISplitViewController No Navigation Bar" %})
+{% asset uisplitviewcontroller-no-navigation-bar.png alt="UISplitViewController No Navigation Bar" %}
 
-It's not a big deal unless want your navigation bar to show a title.
+It's not a big deal unless you want your navigation bar to show a title.
 But this is a deal-breaker on an iPad:
 
 <video preload="none" poster="{% asset ipad-split-view-no-navigation-bar.jpg @path %}" width="540" controls>
@@ -179,7 +179,7 @@ override func viewDidLoad() {
 ```
 
 _Build and Run_ on the iPad again,
-and now you get a nice indication of how access the rest of the app:
+and now you get a nice indication of how to access the rest of the app:
 
 <video preload="none" poster="{% asset ipad-navigation-bar-with-button.jpg @path %}" width="540" controls>
     <source src="{% asset ipad-navigation-bar-with-button.mov @path %}" type="video/quicktime"/>
@@ -300,7 +300,7 @@ When larger iPhones were introduced,
 developers could no longer assume a single screen size.
 
 Today, we're responsible for accommodating several generations
-or iPhones and iPads, as well as external displays
+of iPhones and iPads, as well as external displays
 and various accessibility features.
 This would be a nightmare if it weren't for the powerful and thoughtful APIs
 provided in iOS.

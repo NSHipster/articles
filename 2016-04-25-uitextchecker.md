@@ -72,7 +72,7 @@ The returned array of strings _might_ look like this one:
 ["hipster", "hip star", "hip-star", "hips tar", "hips-tar"]
 ```
 
-Or it might not---`UITextChecker` produces context- and device-specific guesses. According to the documentation, `guessesForWordRange(_:inString:language:)` "returns an array of strings, in the order in which they should be presented, representing guesses for words that might have been intended in place of the misspelled word at the given range in the given string."
+Or it might not---`UITextChecker` produces context- and device-specific guesses. According to the documentation, `guesses(forWordRange:in:language:)` "returns an array of strings, in the order in which they should be presented, representing guesses for words that might have been intended in place of the misspelled word at the given range in the given string."
 
 So no guarantee of idempotence or correctness, which makes sense for a method with `guesses...` in the name. How can NSHipsters trust a method that changes its return value? We'll find the answer if we dig further.
 
@@ -132,7 +132,7 @@ NSArray *completions = [textChecker
                         completionsForPartialWordRange:NSMakeRange(0, [partial length])
                         inString:partial
                         language:@"en_US"];
-// completions == ["hipster", "hipsters"]
+// completions == ["hipster", "hipsters", "hipster's"]
 ```
 
 `completionsForPartialWordRange` gives you an array of possible words from a group of initial characters. Although the documentation states that the returned array of strings will be sorted by probability, `UITextChecker` only sorts the completions alphabetically. `UITextChecker`'s OS X-based sibling, `NSSpellChecker`, does behave as it describes.

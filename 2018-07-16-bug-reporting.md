@@ -81,9 +81,9 @@ I think you'll agree that this is a huge improvement.
 Choose the product related to the problem you're reporting
 and enter a descriptive title.
 If it's a bug,
-specify whether the kind of bug
+specify the kind of bug
 (Performance, Crash/Hang/Data Loss, UI/Usability, etc.)
-and how often you can produce it.
+and how often you can reproduce it.
 Finally,
 write a description of the problem,
 including a summary,
@@ -150,7 +150,7 @@ for us to coordinate our bug reports.
 
 {% asset open-radar.png %}
 
-When you file a Radar with apple,
+When you file a Radar with Apple,
 you're encouraged to also
 [file it with Open Radar](https://openradar.appspot.com/myradars/add)
 (unless it's something that shouldn't be disclosed publicly).
@@ -206,7 +206,7 @@ is to surface the most important information in the title.
 
 - For problems about an API,
   put the fully-qualified symbol name in the title
-  (for example, `URLSession.dataTaskWithRequest(_:)`).
+  (for example, `URLSession.dataTask(with:)`).
 - For problems related to documentation,
   include the full list of navigation breadcrumbs in the title
   (for example,
@@ -292,7 +292,7 @@ that one engineer to take another look.
 ---
 
 Speaking from my personal experience working at Apple,
-Radar is far and away the best bug tracking systems I've ever used.
+Radar is far and away the best bug tracking system I've ever used.
 So it can be frustrating to be back on the outside looking in,
 knowing full well what we're missing out on as external developers.
 
@@ -309,7 +309,7 @@ and the process itself appears to be moving towards greater transparency:
 > Encouraging change on @apple’s bug reporter…
 > I’ve been hearing of people now getting notified
 > when an original is “awaiting verification”,
-> and not just “closed”"
+> and not just “closed”
 > <cite>Dave DeLong ([@davedelong](https://twitter.com/davedelong))
 > [via Twitter](https://twitter.com/davedelong/status/1017853619717079040)</cite>
 

@@ -8,7 +8,7 @@ excerpt: >-
 ---
 
 As someone born between 1981 and 1996,
-I fall into the widely accepted definition of a "Millenial",
+I fall into the widely accepted definition of a "Millennial",
 the generation so named for coming of age around the year 2000.
 
 I remember staying up to watch the ball drop in 1999,
@@ -53,7 +53,7 @@ So when the announcement came,
 each of us had a choice to make: 
 Either full-throated support or irrelevance.
 Many of us at the time were all too eager to jump in head-first
-and discounted criticism as a form of apostacy, of heresy, of being a buzz-kill.
+and discounted criticism as a form of apostasy, of heresy, of being a buzz-kill.
 For anyone who missed this the first time around,
 you can see pretty much the same dynamic playing out now with SwiftUI.
 
@@ -100,7 +100,7 @@ among respondents who described themselves as professional developers.
 
 On 
 [GitHub's ranking of Top languages over time](https://octoverse.github.com/#top-languages-over-time)
-Swift isn't ranked among the most popular language on GitHub 
+Swift isn't ranked among the most popular languages on GitHub 
 by repository contributors
 _(though Swift's influence can be felt through
 Objective-C's disappearance after 2015)._
@@ -109,7 +109,7 @@ Swift did manage to snag the #10 spot in the latest
 [TIOBE Index](https://www.tiobe.com/tiobe-index/) update.
 However, this achievement is undercut by the fact that
 TIOBE twice named Objective-C its "Programming Language of the Year" 
-(in 2010 and 2011),
+(in 2011 and 2012),
 which peaked at position #3 in March 2015.
 
 {% info %}
@@ -157,9 +157,9 @@ Last year,
 [npm](https://npmjs.com), the largest registry for Node.js packages,
 [crossed the 1 million mark](https://snyk.io/blog/npm-passes-the-1-millionth-package-milestone-what-can-we-learn/).
 Some other points of comparison:
-[Maven Centeral](https://search.maven.org) (Java),
+[Maven Central](https://search.maven.org) (Java),
 [nuget](https://www.nuget.org/packages) (.NET),
-[CPAN](https://www.cpan.org) (Perl)
+[CPAN](https://www.cpan.org) (Perl),
 [PyPI](https://pypistats.org) (Python), and
 [RubyGems](https://rubygems.org/stats) (Ruby),
 each have a total package count in the low 6 figures.
@@ -178,12 +178,12 @@ and it's unclear what the breakdown is.
 
 We can use GitHub search to establish some general parameters 
 for what the real count is.
-As a lower bounds,
-searching GitHub for projects with a `Package.swift` files in their root directory
+As a lower bound,
+searching GitHub for projects with a `Package.swift` file in their root directory
 [returns around twenty thousand results](https://github.com/search?utf8=✓&q=path%3A%2F+filename%3APackage.swift&type=Code&ref=advsearch&l=&l=).
-As an upper bounds,
+As an upper bound,
 searching all Swift projects with more than 1★ (excluding forks),
-[the count is closer to fifty thousand](https://github.com/search?l=&p=99&q=stars%3A%3E3+language%3ASwift&ref=advsearch&type=Repositories&utf8=✓)
+[the count is closer to fifty thousand](https://github.com/search?l=&p=99&q=stars%3A%3E3+language%3ASwift&ref=advsearch&type=Repositories&utf8=✓).
 
 {% endinfo %}
 
@@ -242,7 +242,7 @@ But it's not unreasonable to see the unique peril of our current age.
 and this whole time has been an incredible lucky streak for civilization. -->
 
 When recruiting John Sculley, then CEO of PepsiCo,
-to become the new CEO of Apple in the early 1980's,
+to become the new CEO of Apple in the early 1980s,
 Steve Jobs famously asked him:
 
 > Do you want to spend the rest of your life selling sugared water, 
