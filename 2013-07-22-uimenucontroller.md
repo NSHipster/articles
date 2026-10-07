@@ -4,10 +4,20 @@ author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population."
+retired: true
 status:
     swift: 2.0
     reviewed: September 8, 2015
 ---
+
+{% error do %}
+
+Apple deprecated `UIMenuController` in iOS 16.
+Use [`UIEditMenuInteraction`](https://developer.apple.com/documentation/uikit/uieditmenuinteraction)
+to show an edit menu instead.
+The `UIResponderStandardEditActions` methods described below still apply.
+
+{% enderror %}
 
 Mobile usability today is truly quite remarkable—especially considering how far it's come in just the last decade. What was once a clumsy technology relegated to the tech elite has now become the primary mode of computation for a significant portion of the general population.
 

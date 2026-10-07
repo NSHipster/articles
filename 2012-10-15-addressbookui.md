@@ -3,9 +3,21 @@ title: AddressBookUI
 author: Mattt
 category: Cocoa
 excerpt: "Address Book UI is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the Message UI framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface."
+retired: true
 status:
     swift: 1.1
 ---
+
+{% error do %}
+
+Apple deprecated the Address Book UI framework in iOS 9.
+To format a postal address today,
+use `CNPostalAddressFormatter` from the Contacts framework,
+which works on both iOS and macOS.
+Our article about [`Formatter`](/formatter/#cnpostaladdressformatter)
+shows how.
+
+{% enderror %}
 
 [Address Book UI](https://developer.apple.com/LIBRARY/ios/documentation/AddressBookUI/Reference/AddressBookUI_Framework/index.html) is an iOS framework for displaying, selecting, editing, and creating contacts in a user's Address Book. Similar to the [Message UI](https://developer.apple.com/library/IOs/documentation/MessageUI/Reference/MessageUI_Framework_Reference/index.html) framework, Address Book UI contains a number of controllers that can be presented modally, to provide common system functionality in a uniform interface.
 

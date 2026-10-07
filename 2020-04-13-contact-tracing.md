@@ -10,12 +10,26 @@ excerpt: >-
   we’ll take a first look at these specifications — 
   particularly, Apple’s proposed ExposureNotification framework — 
   in an effort to anticipate what this will all look like in practice.
+retired: true
 status:
   swift: 5.2
 revisions:
   "2020-04-13": First Publication
   "2020-04-29": Updated for Exposure Notification v1.2
 ---
+
+{% error do %}
+
+This article describes the Exposure Notification system
+that Apple and Google built in 2020
+to help with COVID-19 contact tracing.
+Both companies ended support for the system in 2023,
+and there is no replacement API.
+We keep this article as a historical record.
+Its cryptography section describes an early draft of the specification,
+which changed before release.
+
+{% enderror %}
 
 > An ounce of prevention is worth a pound of cure.
 

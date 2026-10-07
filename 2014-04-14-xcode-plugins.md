@@ -6,6 +6,7 @@ excerpt: "This week on NSHipster: a roundup of some of the most useful and excit
 revisions:
   "2014-04-14": Original publication
   "2019-03-25": Added deprecation notice
+retired: true
 status:
   swift: n/a
 ---

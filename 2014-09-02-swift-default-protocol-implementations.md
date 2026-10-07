@@ -4,9 +4,21 @@ author: Mattt
 category: Swift
 tags: swift
 excerpt: "Protocols are the foundation of generics in Swift, but suffer from the lack of a built-in way to provide default implementations for methods. However, there is an interesting workaround in Swift that you probably haven't noticed."
+retired: true
 status:
     swift: 1.2
 ---
+
+{% error do %}
+
+This article describes a workaround from Swift 1,
+before protocols could have default implementations.
+Swift 2 added protocol extensions,
+which provide default implementations directly.
+See [Providing Default Implementations](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/protocols/#Providing-Default-Implementations)
+in _The Swift Programming Language_.
+
+{% enderror %}
 
 Swift was announced 3 months ago to the day. For many of us, it was among the most shocking and exciting events in our professional lives. In these intervening months, it's safe to say our collective understanding and appreciation of the language has evolved and changed significantly.
 

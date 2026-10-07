@@ -4,9 +4,20 @@ author: Mattt
 category: Swift
 tags: swift
 excerpt: "C uses preprocessor directives capable of unspeakable evil. Swift has a safe subset of preprocessor directives. So how do we check system version for API compatibility?"
+retired: true
 status:
     swift: 4.0
 ---
+
+{% error do %}
+
+Swift 2 added the `#available` condition and the `@available` attribute,
+which let the compiler check API availability for you.
+Use those instead of the runtime checks described below.
+Our article about [Swift API availability](/available/)
+covers them in detail.
+
+{% enderror %}
 
 While it's not accurate to say that Swift is "Objective-C without the C", it's for lack of resemblance to Objective-C, not the absence of C. Swift is _vehemently_ **_not_** C.
 

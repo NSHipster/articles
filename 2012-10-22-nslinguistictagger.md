@@ -4,10 +4,23 @@ author: Mattt
 category: Cocoa
 tags: nshipster
 excerpt: "NSLinguisticTagger is a veritable Swiss Army Knife of linguistic functionality, with the ability to tokenize natural language strings into words, determine their part-of-speech & stem, extract names of people, places, & organizations, and tell you the languages & respective writing system used in the string."
+retired: true
 status:
     swift: 2.0
     reviewed: September 8, 2015
 ---
+
+{% error do %}
+
+Apple deprecated `NSLinguisticTagger` in iOS 14 and macOS 11.
+Use the Natural Language framework instead:
+`NLTagger` for tagging,
+`NLTokenizer` for tokenization, and
+`NLLanguageRecognizer` for language identification.
+See our article about [`NLLanguageRecognizer`](/nllanguagerecognizer/)
+to get started.
+
+{% enderror %}
 
 `NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](https://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](https://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](https://en.wikipedia.org/wiki/Writing_system) used in the string.
 

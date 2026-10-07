@@ -3,9 +3,23 @@ title: Unit Testing
 author: Mattt
 category: Objective-C
 excerpt: "Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. Cargo Cults like TDD stake their reputation on unit testing to the point of co-opting and conflating utility with morality."
+retired: true
 status:
     swift: n/a
 ---
+
+{% error do %}
+
+The tools described in this article are no longer available.
+Apple replaced OCUnit with XCTest in Xcode 5,
+and services like HockeyApp and the free macOS builds on Travis CI
+have since shut down.
+For current guidance,
+see our article about [`XCTestCase`](/xctestcase/)
+and Apple's documentation for
+[Swift Testing](https://developer.apple.com/xcode/swift-testing/).
+
+{% enderror %}
 
 Unit Testing is an emotional topic for developers. It inspires a sense of superiority to its most zealous adherents, and evokes a feeling of inadequacy to non-practitioners. [Cargo Cults like TDD](http://ntoll.org/article/tdd-cargo-cult) stake their reputation on unit testing to the point of co-opting and conflating utility with morality.
 
