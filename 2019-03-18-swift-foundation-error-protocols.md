@@ -34,7 +34,7 @@ For the most part,
 these changes offered a dramatic improvement over the status quo
 (namely, _no error handling conventions in Swift at all_).
 However, there were still a few gaps to fill
-to make Swift errors fully interoperable with Objective-C types.
+to make Swift errors fully interoperable with Objective-C types,
 as described by Swift Evolution proposal
 [SE-0112: "Improved NSError Bridging"](https://github.com/apple/swift-evolution/blob/master/proposals/0112-nserror-bridging.md).
 
@@ -98,7 +98,7 @@ and throws an error if that number is inadvisably large:
 
 ```swift
 struct Broth {
-  enum Error {
+  enum Error: Swift.Error {
     case tooManyCooks(Int)
   }
 
@@ -116,7 +116,7 @@ struct Broth {
 If an iOS app were to communicate an error
 resulting from broth spoiled by multitudinous cooks,
 it might do so
-with by presenting a `UIAlertController`
+by presenting a `UIAlertController`
 in a `catch` statement like this:
 
 ```swift
@@ -127,7 +127,7 @@ class ViewController: UIViewController {
     super.viewDidAppear(animated)
 
     do {
-      self.broth = try Broth(numberOfCooks: 100)
+      _ = try Broth(numberOfCooks: 100)
     } catch let error as Broth.Error {
       let title: String
       let message: String
@@ -237,7 +237,7 @@ Note also how pattern matching is used
 to bind the `numberOfCooks` constant to the associated value
 only when it's necessary.
 
-Now we can
+Now we can present any `LocalizedError` from the controller:
 
 ```swift
 import UIKit
@@ -247,7 +247,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
 
         do {
-            try makeBroth(numberOfCooks: 100)
+            _ = try Broth(numberOfCooks: 100)
         } catch let error as LocalizedError {
             let title = error.errorDescription
             let message = [
@@ -382,7 +382,7 @@ extension AppDelegate {
     var userInfo: [String: Any] = (error as NSError).userInfo
     userInfo[NSLocalizedRecoveryOptionsErrorKey] =  [
       NSLocalizedString("Try, try again",
-                        comment: "tryAgain")
+                        comment: "tryAgain"),
       NSLocalizedString("Give up too easily",
                         comment: "giveUp")
     ]
@@ -397,7 +397,7 @@ extension AppDelegate {
 
 For `NSLocalizedRecoveryOptionsErrorKey`,
 specify an array of one or more localized strings
-for each recovery option available the user.
+for each recovery option available to the user.
 
 For `NSRecoveryAttempterErrorKey`,
 set an object that implements the
@@ -472,7 +472,7 @@ these requirements map onto error `userInfo` keys
 | Requirement                                                             | User Info Key                               |
 | ----------------------------------------------------------------------- | ------------------------------------------- |
 | `recoveryOptions`                                                       | `NSLocalizedRecoveryOptionsErrorKey`        |
-| `attemptRecovery(optionIndex:_:)` <br/> `attemptRecovery(optionIndex:)` | `NSRecoveryAttempterErrorKey` <sup>\*</sup> |
+| `attemptRecovery(optionIndex:resultHandler:)` <br/> `attemptRecovery(optionIndex:)` | `NSRecoveryAttempterErrorKey` |
 
 The `recoveryOptions` property requirement
 is equivalent to the `NSLocalizedRecoveryOptionsErrorKey`:
@@ -675,7 +675,7 @@ Useful AF, amiright?
 Then again,
 _"Familiarity breeds contempt"_;
 so often,
-what initially endears one to ourselves
+what initially endears something to us
 is what ultimately causes us to revile it.
 
 Such is the error of our ways.
