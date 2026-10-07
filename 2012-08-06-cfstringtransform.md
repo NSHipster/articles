@@ -19,7 +19,7 @@ But as powerful as `NSString` / `NSMutableString` are, one would be remiss not t
 
 As denoted by the `CF` prefix, `CFStringTransform` is part of Core Foundation. The function takes the following arguments, and returns a `Boolean` for whether or not the transform was successful:
 
-- `string`: The string to be transformed. Since this argument is a `CFMutableStringRef`, an `NSMutableString` can be passed using toll-free bridging cast.
+- `string`: The string to be transformed. Since this argument is a `CFMutableStringRef`, an `NSMutableString` can be passed using a toll-free bridging cast.
 - `range`: The range of the string over which the transformation should be applied. This argument is a `CFRange`, rather than an `NSRange` value.
 - `transform`: The transformation to apply. This argument takes an [ICU transform string](http://userguide.icu-project.org/transforms/general), including any one of the string constants described below.
 - `reverse`: Whether to run the transformation in reverse, where applicable.
@@ -104,7 +104,7 @@ Although each language has a particular inventory of sounds, some of which other
   </tbody>
 </table>
 
-> And that's only using the constants defined in Core Foundation! By passing an [ICU transform](http://userguide.icu-project.org/transforms/general#TOC-ICU-Transliterators) directly, `CFStringTransform` can transliterate between Latin and Arabic, Armenian, Bopomofo, Cyrillic, Georgian, Greek, Han, Hangul, Hebrew, Hiragana, Indic ( Devanagari, Gujarati, Gurmukhi, Kannada, Malayalam, Oriya, Tamil, & Telegu), Jamo, Katakana, Syriac, Thaana, & Thai.
+> And that's only using the constants defined in Core Foundation! By passing an [ICU transform](http://userguide.icu-project.org/transforms/general#TOC-ICU-Transliterators) directly, `CFStringTransform` can transliterate between Latin and Arabic, Armenian, Bopomofo, Cyrillic, Georgian, Greek, Han, Hangul, Hebrew, Hiragana, Indic (Devanagari, Gujarati, Gurmukhi, Kannada, Malayalam, Oriya, Tamil, & Telugu), Jamo, Katakana, Syriac, Thaana, & Thai.
 
 ## Normalize User-Generated Content
 
@@ -137,6 +137,8 @@ CFStringTransform(mutableString, nil, kCFStringTransformStripCombiningMarks, Boo
 - Finally, downcase the text with `CFStringLowercase`, and split the text into tokens with [`CFStringTokenizer`](https://developer.apple.com/library/mac/#documentation/CoreFoundation/Reference/CFStringTokenizerRef/Reference/reference.html) to use as an index for the text.
 
 ```swift
+CFStringLowercase(mutableString, nil)
+
 let tokenizer = CFStringTokenizerCreate(nil, mutableString, CFRangeMake(0, CFStringGetLength(mutableString)), 0, CFLocaleCopyCurrent())
 
 var mutableTokens: [String] = []

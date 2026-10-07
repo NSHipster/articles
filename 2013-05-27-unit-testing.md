@@ -27,7 +27,7 @@ It's a simple enough premise: write code to construct environments that exercise
 
 [OCUnit](http://www.sente.ch/software/ocunit/), a.k.a. SenTestingKit, was integrated into Xcode 2.1 circa WWDC 2005, [as a result of its use in the development of Core Data 1.0](http://www.friday.com/bbum/2005/09/24/unit-testing). Developed by [Sen:te](http://www.sente.ch), OCUnit is actually one of the first unit testing libraries written for any language.
 
-Unit Tests were added into a separate testing target in the Xcode Project. Each test file defines an `SenTestCase` subclass, which implements a series of methods beginning with the word `test`. C `assert`-style macros are used to fail tests if the specified condition is not met. Each test is run in sequence, independently of one another, with the results logged afterwards:
+Unit Tests were added into a separate testing target in the Xcode Project. Each test file defines a `SenTestCase` subclass, which implements a series of methods beginning with the word `test`. C `assert`-style macros are used to fail tests if the specified condition is not met. Each test is run in sequence, independently of one another, with the results logged afterwards:
 
 ```objc
 #import <SenTestingKit/SenTestingKit.h>
@@ -43,6 +43,7 @@ Unit Tests were added into a separate testing target in the Xcode Project. Each 
    person.lastName = @"Picasso";
    STAssertEqualObjects([person fullName], @"Pablo Picasso", nil);
 }
+@end
 ```
 
 The SenTestingKit assertions are about what you'd expect, offering bread-and-butter equality, existence, and truth checks:
@@ -144,7 +145,7 @@ Aside from the fact that it's _kinda the worst thing ever to set-up_, [you can d
 
 ### Travis
 
-Until recently, automated unit testing for Objective-C was the privilege of projects that could dedicate the time and money to setup a CI server. [Travis CI](https://travis-ci.org) made CI available to the masses.
+Until recently, automated unit testing for Objective-C was the privilege of projects that could dedicate the time and money to set up a CI server. [Travis CI](https://travis-ci.org) made CI available to the masses.
 
 CI for Objective-C is more difficult than for other languages, because it needs to be done on a Mac. For economic reasons, there just isn't a market for cloud-based OS X environments like there is for Linux. Fortunately, [SauceLabs](https://saucelabs.com) has built such a virtualized Mac cloud, and is graciously donating some of it to run tests for open source Objective-C projects on Travis-CI.
 

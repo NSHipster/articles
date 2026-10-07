@@ -17,13 +17,13 @@ A short post for this week: everything you need to know about `NSSecureCoding`.
 
 By conforming to `NSSecureCoding` and returning `YES` for `+supportsSecureCoding`, a class declares that it handles encoding and decoding of instances of itself in a way that guards against substitution attacks.
 
-Specifically, classes that override `-initWithCoder` and conform to `NSSecureCoding` should use `-decodeObjectOfClass:forKey:` rather than `-decodeObjectForKey:`.
+Specifically, classes that override `-initWithCoder:` and conform to `NSSecureCoding` should use `-decodeObjectOfClass:forKey:` rather than `-decodeObjectForKey:`.
 
 Why is this important? Recall that `NSCoding` is Foundation's way of marshaling objects to be either archived on a file system, or copied to another address space. When `-decodeObjectForKey:` is used to decode representations of objects into actual objects, there is no guarantee that the result of creating the object will be what was expected. If that representation is corrupted—specifically, in changing the target class (and thus designated initializer)—the application runs the risk of constructing unknown objects. Whether by malicious intent or an incidental coding error, this can cause serious problems.
 
-It's not an apples-to-apples comparison, but it's somewhat similar to [recent YAML exploit found in Rails](http://tenderlovemaking.com/2013/02/06/yaml-f7u12.html).
+It's not an apples-to-apples comparison, but it's somewhat similar to the [recent YAML exploit found in Rails](http://tenderlovemaking.com/2013/02/06/yaml-f7u12.html).
 
-For an [XPC service](https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html), which is designed with security in mind, data integrity of this nature is especially important. It's a safe bet that XPC will only wax influence in subsequent iOS and OS X releases, so it's good to keep this all in mind.
+For an [XPC service](https://developer.apple.com/library/mac/#documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html), which is designed with security in mind, data integrity of this nature is especially important. It's a safe bet that XPC will only wax in influence in subsequent iOS and OS X releases, so it's good to keep this all in mind.
 
 Anyway, `NSSecureCoding` patches this vulnerability by establishing a contract for best practices. Now, decoding an object requires the class to be known ahead of time.
 

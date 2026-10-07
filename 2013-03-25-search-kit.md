@@ -55,7 +55,7 @@ Along the same lines, words that mean basically the same thing should be reduced
 
 The end result of extracting, filtering, and reducing content into an array of normalized tokens is to form an [inverted index](https://en.wikipedia.org/wiki/Inverted_index), such that each token points to its origin in the index.
 
-After repeating this process for each document or record in the corpus until, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.
+After repeating this process for each document or record in the corpus, each token can point to many different articles. In the process of searching, a query is mapped onto one or many of these tokens, retrieving the union of the articles associated with each token.
 
 ## Using Search Kit
 
@@ -111,12 +111,12 @@ SKDocumentRef document = SKDocumentCreateWithURL((__bridge CFURLRef)objectURL);
 When adding the contents of a `SKDocumentRef` to an `SKIndexRef`, the text can either be specified manually:
 
 ```swift
-let string = "Lorem ipsum dolar sit amet"
+let string = "Lorem ipsum dolor sit amet"
 SKIndexAddDocumentWithText(index, document, string, true)
 ```
 
 ```objc
-NSString *string = @"Lorem ipsum dolar sit amet";
+NSString *string = @"Lorem ipsum dolor sit amet";
 SKIndexAddDocumentWithText(index, document, (__bridge CFStringRef)string, true);
 ```
 
@@ -159,7 +159,7 @@ NSDictionary *properties = @{
   @"kSKStopWords":stopwords
 };
 
-SKIndexRef index = SKIndexCreateWithURL((CFURLRef)url, NULL, kSKIndexInverted, (CFDictionaryRef)properties);
+SKIndexRef index = SKIndexCreateWithURL((__bridge CFURLRef)url, NULL, kSKIndexInverted, (__bridge CFDictionaryRef)properties);
 ```
 
 After adding to or modifying an index's documents, you'll need to commit the changes to the backing store via `SKIndexFlush()` to make your changes available to a search.
@@ -177,7 +177,7 @@ let search = SKSearchCreate(index, query, options).takeRetainedValue()
 ```objc
 NSString *query = @"kind of blue";
 SKSearchOptions options = kSKSearchOptionDefault;
-SKSearchRef search = SKSearchCreate(index, (CFStringRef)query, options);
+SKSearchRef search = SKSearchCreate(index, (__bridge CFStringRef)query, options);
 ```
 
 `SKSearchOptions` is a bitmask with the following possible values:
@@ -204,7 +204,7 @@ var urls: [Unmanaged<CFURL>?] = Array(count: limit, repeatedValue: nil)
 var scores: [Float] = Array(count: limit, repeatedValue: 0)
 var foundCount = 0
 
-let hasMoreResults = SKSearchFindMatches(search, limit, &documentIDs, &scores, time, &count)
+let hasMoreResults = SKSearchFindMatches(search, limit, &documentIDs, &scores, time, &foundCount)
 
 SKIndexCopyDocumentURLsForDocumentIDs(index, foundCount, &documentIDs, &urls)
 
@@ -230,14 +230,14 @@ Boolean hasMoreResults = SKSearchFindMatches(search, limit, documentIDs, scores,
 SKIndexCopyDocumentURLsForDocumentIDs(index, foundCount, documentIDs, urls);
 
 NSMutableArray *mutableResults = [NSMutableArray array];
-[[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, count)] enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
+[[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, foundCount)] enumerateIndexesUsingBlock:^(NSUInteger idx, BOOL *stop) {
     CFURLRef url = urls[idx];
     float relevance = scores[idx];
 
     NSLog(@"- %@: %f", url, relevance);
 
-    if (objectID) {
-      [mutableResults addObject:(NSURL *)url];
+    if (url) {
+      [mutableResults addObject:(__bridge NSURL *)url];
     }
 
     CFRelease(url);

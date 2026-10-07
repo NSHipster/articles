@@ -28,7 +28,7 @@ This article will cover all of the different ways collections are enumerated in 
 ```objc
 for (NSUInteger i = 0; i < [array count]; i++) {
   id object = array[i];
-  NSLog(@"%@", object)
+  NSLog(@"%@", object);
 }
 ```
 
@@ -121,7 +121,7 @@ for (id object in enumerator) {
 
 If you're looking for a convenient way to add fast enumeration to your own non-collection-class-backed objects, `NSEnumerator` is likely a much more palatable option than getting your hands messy with `NSFastEnumeration`'s implementation details.
 
-Some quick points of interest about `NSEnumeration`:
+Some quick points of interest about `NSEnumerator`:
 
 - Reverse an array in one line of code with (and excuse the excessive dot syntax) `array.reverseObjectEnumerator.allObjects`.
 - Add LINQ-style operations with [`NSEnumeratorLinq`](https://github.com/k06a/NSEnumeratorLinq), a third-party library using chained `NSEnumerator` subclasses.
@@ -171,4 +171,4 @@ So there you have all of the conventional forms of enumeration in Objective-C an
 
 What's especially interesting is that in looking at these approaches, we learn a lesson about the power of abstraction. Higher levels of abstraction are not just easier to write and comprehend, but can often be much faster than doing it the "hard way".
 
-High-level commands that declare intention, like "iterate through all of the elements of this collection" lend themselves to high-level compiler optimization in a way that just isn't possible with pointer arithmetic in a loop. Context is a powerful thing, and designing APIs and functionality accordingly ultimately fulfill that great promise of abstraction: to solve larger problems more easily.
+High-level commands that declare intention, like "iterate through all of the elements of this collection" lend themselves to high-level compiler optimization in a way that just isn't possible with pointer arithmetic in a loop. Context is a powerful thing, and designing APIs and functionality accordingly ultimately fulfills that great promise of abstraction: to solve larger problems more easily.

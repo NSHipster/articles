@@ -41,7 +41,7 @@ Here's a rundown of all of the different Objective-C Type Encodings:
       <td>A <code>short</code></td></tr>
     <tr>
       <td><code>l</code></td>
-      <td>A <code>long</code><code>l</code> is treated as a 32-bit quantity on 64-bit programs.</td></tr>
+      <td>A <code>long</code>. <code>l</code> is treated as a 32-bit quantity on 64-bit programs.</td></tr>
     <tr>
       <td><code>q</code></td>
       <td>A <code>long long</code></td></tr>
@@ -151,8 +151,8 @@ Result:
 | `void`       | `v`                |
 | `void *`     | `^v`               |
 | `NSObject *` | `@`                |
-| `NSObject`   | `#`                |
-| `[NSObject]` | `{NSObject=#}`     |
+| `NSObject`   | `{NSObject=#}`     |
+| `[NSObject]` | `#`                |
 | `NSError **` | `^@`               |
 | `int[]`      | `[5i]`             |
 | `float[]`    | `[3f]`             |
@@ -162,7 +162,7 @@ There are some interesting takeaways from this:
 
 - Whereas the standard encoding for pointers is a preceding `^`, `char *` gets its own code: `*`. This makes sense conceptually, as C strings are thought to be entities in and of themselves, rather than a pointer to something else.
 - `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`.
-- Passing `NSObject` directly yields `#`. However, passing `[NSObject class]` yields a struct named `NSObject` with a single class field: `isa`, which `NSObject` instances have to signify their type.
+- Passing `[NSObject class]` yields `#`. However, passing `NSObject` directly yields a struct named `NSObject` with a single class field: `isa`, which `NSObject` instances have to signify their type.
 
 ## Method Encodings
 
@@ -223,5 +223,5 @@ Honestly, not that much (unless you're doing any crazy metaprogramming).
 
 But as we said from the very outset, there is wisdom in the pursuit of deciphering secret messages.
 
-Looking at type encodings reveals details about Objective-C runtime internals, which is a noble pursuit in and of itself. Going further down the rabbit hole, and we come to the secret history of Distributed Objects, and the obscure parameter qualifiers that [still linger around to this day](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22).
+Looking at type encodings reveals details about Objective-C runtime internals, which is a noble pursuit in and of itself. Go further down the rabbit hole, and we come to the secret history of Distributed Objects, and the obscure parameter qualifiers that [still linger around to this day](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/Foundation/Classes/NSNumberFormatter_Class/Reference/Reference.html%23jumpTo_22).
 

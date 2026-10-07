@@ -65,7 +65,7 @@ NSMutableOrderedSet* mutable = [immutable mutableCopy];
 [mutable isKindOfClass:[NSMutableSet class]]; // NO (!)
 ```
 
-{% asset nsorderedset-case-1.svg %}"
+{% asset nsorderedset-case-1.svg %}
 
 That's no good... since `NSMutableOrderedSet` couldn't be used as a method parameter of type `NSMutableSet`. So what happens if we make `NSMutableOrderedSet` a subclass of `NSMutableSet` as well?
 
@@ -99,7 +99,7 @@ This is perhaps even worse, as now `NSMutableOrderedSet` couldn't be used as a m
 
 No matter how we approach it, we can't stack a mutable / immutable class pair on top of another existing mutable / immutable class pair. It just won't work in Objective-C.
 
-Rather than subject ourselves to the perils of [multiple inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as it does every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
+Rather than subject ourselves to the perils of [multiple inheritance](https://en.wikipedia.org/wiki/Multiple_inheritance), we could use Protocols to get us out of this pickle (as they do every other time the spectre of multiple inheritance is raised). Indeed, Foundation's collection classes _could_ become more aspect-oriented by adding protocols:
 
 - `NSArray : NSObject <NSOrderedCollection>`
 - `NSSet : NSObject <NSUniqueCollection>`
@@ -119,10 +119,10 @@ In this way, `NSOrderedSet` is an _answer to our [prayers](http://bugreport.appl
 
 Unfortunately, its very existence in Foundation has created something between an attractive nuisance and a red herring for API designers.
 
-Although it is perfectly suited to that one particular use case in Core Data, `NSOrderedSet` is probably not a great choice for the majority of APIs that could potentially use it. In cases where a simple collection of objects is passed as a parameter, a simple `NSArray` does the trick--even if there is an implicit understanding that you shouldn't have duplicate entries. This is even more the case when order matters for a collection parameter--just use `NSArray` (there should be code to deal with duplicates in the implementation anyway). If uniqueness does matter, or the semantics of sets makes sense for a particular method, `NSSet` has and remains a great choice.
+Although it is perfectly suited to that one particular use case in Core Data, `NSOrderedSet` is probably not a great choice for the majority of APIs that could potentially use it. In cases where a simple collection of objects is passed as a parameter, a simple `NSArray` does the trick--even if there is an implicit understanding that you shouldn't have duplicate entries. This is even more the case when order matters for a collection parameter--just use `NSArray` (there should be code to deal with duplicates in the implementation anyway). If uniqueness does matter, or the semantics of sets makes sense for a particular method, `NSSet` has been and remains a great choice.
 
 ---
 
-So, as a general rule: **`NSOrderedSet` is useful for intermediary and internal representations, but you probably shouldn't introduce it as a method parameters unless it's particularly well-suited to the semantics of the data model.**
+So, as a general rule: **`NSOrderedSet` is useful for intermediary and internal representations, but you probably shouldn't introduce it as a method parameter unless it's particularly well-suited to the semantics of the data model.**
 
-If nothing else, `NSOrderedSet` illuminates some of the fascinating implications of Foundation's use of the class cluster design pattern. In doing so, it allows us better understand the trade-off between simplicity and extensibility as we make these choices in our own application designs.
+If nothing else, `NSOrderedSet` illuminates some of the fascinating implications of Foundation's use of the class cluster design pattern. In doing so, it allows us to better understand the trade-off between simplicity and extensibility as we make these choices in our own application designs.

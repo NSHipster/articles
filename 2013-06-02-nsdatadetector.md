@@ -20,7 +20,7 @@ Text means nothing without context.
 What gives weight to our words
 is their relation to one another,
 to ourselves,
-and to our location space-time.
+and to our location in space-time.
 
 Consider
 <dfn>endophoric</dfn> expressions
@@ -30,7 +30,7 @@ whose meaning is dependent on who the speaker is,
 where they are, and when they said it.
 Now consider how difficult it would be
 for a computer to make sense of an utterance like
-_"I'll be home in 5 minutes"_?
+_"I'll be home in 5 minutes"_.
 (And that's to say nothing of the challenges of
 ambiguity and variation
 in representations of dates, addresses, and other information.)
@@ -55,7 +55,7 @@ On other platforms,
 you might delegate this task to a web service
 or hack something together that works well enough.
 Fortunately for us Cocoa developers,
-Foundation us covered with `NSDataDetector`.
+Foundation has us covered with `NSDataDetector`.
 
 You can use `NSDataDetector` to extract
 dates, links, phone numbers, addresses, and transit information
@@ -72,6 +72,7 @@ let string = "123 Main St. / (555) 555-1234"
 
 let types: NSTextCheckingResult.CheckingType = [.phoneNumber, .address]
 let detector = try NSDataDetector(types: types.rawValue)
+let range = NSRange(string.startIndex..<string.endIndex, in: string)
 detector.enumerateMatches(in: string,
                           options: [],
                           range: range) { (result, _, _) in
@@ -280,7 +281,7 @@ we see that `NSDataDetector` is able to identify each of the types.
 | Type                | Output                                                                     |
 | ------------------- | -------------------------------------------------------------------------- |
 | Date                | "2018-08-31 04:00:00 +0000", "America/Los_Angeles", 18000.0                |
-| Address             | `nil`, `nil`, `nil` "768 5th Ave", "New York", "NY", "10019", `nil`, `nil` |
+| Address             | `nil`, `nil`, `nil`, "768 5th Ave", "New York", "NY", "10019", `nil`, `nil` |
 | Link                | "mailto:me@example.com"                                                    |
 | Phone Number        | "555-555-1234"                                                             |
 | Transit Information | `nil`, "10"                                                                |

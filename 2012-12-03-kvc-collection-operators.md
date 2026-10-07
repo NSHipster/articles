@@ -3,7 +3,7 @@ title: KVC Collection Operators
 author: Mattt
 category: Cocoa
 tags: nshipster
-excerpt: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeves."
+excerpt: "Rubyists laugh at Objective-C’s bloated syntax. Although we lost a few pounds over the summer with our sleek new object literals, those Red-headed bullies still taunt us with their map one-liners and their fancy Symbol#to_proc. Fortunately, Key-Value Coding has an ace up its sleeve."
 status:
     swift: t.b.c.
     reviewed: August 12, 2015
@@ -33,7 +33,7 @@ Fortunately, [Key-Value Coding](https://developer.apple.com/library/mac/document
 [employees valueForKeyPath:@"@avg.salary"];
 ```
 
-[KVC Collection Operators](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html) allows actions to be performed on a collection using key path notation in `valueForKeyPath:`. Any time you see `@` in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.
+[KVC Collection Operators](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/KeyValueCoding/Articles/CollectionOperators.html) allow actions to be performed on a collection using key path notation in `valueForKeyPath:`. Any time you see `@` in a key path, it denotes a particular aggregate function whose result can be returned or chained, just like any other key path.
 
 Collection Operators fall into one of three different categories, according to the kind of value they return:
 
@@ -179,4 +179,4 @@ Is this insanely cool? You bet! This clever example has shown a possible directi
 
 KVC Collection Operators are a must-know for anyone who wants to save a few extra lines of code and look cool in the process.
 
-While scripting languages like Ruby boast considerably more flexibility in its one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;
+While scripting languages like Ruby boast considerably more flexibility in their one-liner capability, perhaps we should take a moment to celebrate the restraint built into Objective-C and Collection Operators. After all, Ruby is hella slow, amiright? &lt;/troll&gt;

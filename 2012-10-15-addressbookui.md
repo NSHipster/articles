@@ -26,7 +26,7 @@ The first argument for the function is a dictionary containing the address compo
 - `kABPersonAddressCountryKey`
 - `kABPersonAddressCountryCodeKey`
 
-> `kABPersonAddressCountryCodeKey` is an especially important attribute, as it determines which locale used to format the address string. If you are unsure of the country code, or one isn't provided with your particular data set, `NSLocale` may be able to help you out:
+> `kABPersonAddressCountryCodeKey` is an especially important attribute, as it determines which locale is used to format the address string. If you are unsure of the country code, or one isn't provided with your particular data set, `NSLocale` may be able to help you out:
 
 ```swift
 let countryCode: String = NSLocale(localeIdentifier: "en_US").objectForKey(NSLocaleCountryCode) as String
@@ -36,7 +36,7 @@ let countryCode: String = NSLocale(localeIdentifier: "en_US").objectForKey(NSLoc
 [mutableAddressComponents setValue:[[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"] objectForKey:NSLocaleCountryCode] forKey:(__bridge NSString *)kABPersonAddressCountryCodeKey];
 ```
 
-The second argument is a boolean flag, `addCountryName`. When `YES`, the name of the country corresponding to the specified country code will be automatically appended to the address. This should only used when the country code is known.
+The second argument is a boolean flag, `addCountryName`. When `YES`, the name of the country corresponding to the specified country code will be automatically appended to the address. This should only be used when the country code is known.
 
 ```swift
 let addressComponents = [
@@ -77,4 +77,4 @@ Street Address
 Country
 ```
 
-This is at least as jarring a difference in localization as [swapping periods for commas the radix point](https://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system), so make sure to use this function anytime you're displaying an address from its components.
+This is at least as jarring a difference in localization as [swapping periods for commas as the radix point](https://en.wikipedia.org/wiki/Decimal_mark#Hindu.E2.80.93Arabic_numeral_system), so make sure to use this function anytime you're displaying an address from its components.

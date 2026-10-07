@@ -109,7 +109,7 @@ Immutable collections, `NSArray` & `NSSet`, have the methods `filteredArrayUsing
 
 Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUsingPredicate:`, which removes any objects that evaluate to `FALSE` when running the predicate on the receiver.
 
-`NSDictionary` can use predicates by filtering its keys or values (both `NSArray` objects). `NSOrderedSet` can either create new ordered sets from a filtered `NSArray` or `NSSet`, or alternatively, `NSMutableSet` can simply `removeObjectsInArray:`, passing objects filtered with the _negated_ predicate.
+`NSDictionary` can use predicates by filtering its keys or values (both `NSArray` objects). `NSOrderedSet` can either create new ordered sets from a filtered `NSArray` or `NSSet`, or alternatively, `NSMutableOrderedSet` can simply `removeObjectsInArray:`, passing objects filtered with the _negated_ predicate.
 
 ## Using `NSPredicate` with Core Data
 
@@ -123,7 +123,7 @@ Mutable collections, `NSMutableArray` & `NSMutableSet` have the method `filterUs
 > - `%K` is a var arg substitution for a key path.
 
 ```swift
-let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", "33")
+let ageIs33Predicate = NSPredicate(format: "%K = %@", "age", 33 as NSNumber)
 
 people.filtered(using: ageIs33Predicate)
 // ["Charlie Smith"]
@@ -243,7 +243,9 @@ Analyzing its class constructor provides a glimpse into the way `NSPredicate` fo
 ```swift
 init(leftExpression lhs: NSExpression,
     rightExpression rhs: NSExpression,
-customSelector selector: Selector)
+               modifier: NSComparisonPredicate.Modifier,
+                   type: NSComparisonPredicate.Operator,
+                options: NSComparisonPredicate.Options)
 ```
 
 #### Parameters
@@ -289,7 +291,7 @@ enum {
    NSEndsWithPredicateOperatorType,
    NSInPredicateOperatorType,
    NSCustomSelectorPredicateOperatorType,
-   NSContainsPredicateOperatorType,
+   NSContainsPredicateOperatorType = 99,
    NSBetweenPredicateOperatorType
 };
 
@@ -327,7 +329,7 @@ NSLog(@"Short Names: %@", [people filteredArrayUsingPredicate:shortNamePredicate
 
 ...Alright, that whole dig on `predicateWithBlock:` as being the lazy way out wasn't _entirely_ charitable.
 
-Actually, since blocks can encapsulate any kind of calculation, there is a whole class of queries that can't be expressed with the `NSPredicate` format string (such as evaluating against values dynamically calculated at run-time). And while its possible to accomplish the same using an `NSExpression` with a custom selector, blocks provide a convenient interface to get the job done.
+Actually, since blocks can encapsulate any kind of calculation, there is a whole class of queries that can't be expressed with the `NSPredicate` format string (such as evaluating against values dynamically calculated at run-time). And while it's possible to accomplish the same using an `NSExpression` with a custom selector, blocks provide a convenient interface to get the job done.
 
 One important note: **`NSPredicate`s created with `predicateWithBlock:` cannot be used for Core Data fetch requests backed by a `SQLite` store.**
 

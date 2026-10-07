@@ -212,7 +212,7 @@ encode non-ASCII characters using
 instead of percent-encoding
 (for example,
 [NSHipster.中国](https://nshipster.cn) would be
-[NSHipster.xn--fiqy6j](https://nshipster.cn))
+[NSHipster.xn--fiqs8s](https://nshipster.cn)).
 Punycode encoding / decoding isn't currently provided by Apple SDKs.
 {% endwarning %}
 
@@ -260,8 +260,8 @@ you may consider caching its `bitmapRepresentation`
 for later reuse.
 
 For example,
-if you wanted to create `CharacterSet` for Emoji,
-you might do so by enumerating over the Unicode code space (U+0000 – U+1F0000)
+if you wanted to create a `CharacterSet` for Emoji,
+you might do so by enumerating over the Unicode code space (U+0000 – U+10FFFF)
 and inserting the scalar values for any characters with
 [Emoji properties](https://www.unicode.org/reports/tr51/#Emoji_Properties)
 using the `properties` property added in Swift 5 by
@@ -272,7 +272,7 @@ import Foundation
 
 var emoji = CharacterSet()
 
-for codePoint in 0x0000...0x1F0000 {
+for codePoint in 0x0000...0x10FFFF {
     guard let scalarValue = Unicode.Scalar(codePoint) else {
         continue
     }

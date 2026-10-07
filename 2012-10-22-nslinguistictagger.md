@@ -11,7 +11,7 @@ status:
 
 `NSLinguisticTagger` is a veritable Swiss Army Knife of linguistic functionality, with the ability to [tokenize](https://en.wikipedia.org/wiki/Tokenization) natural language strings into words, determine their part-of-speech & [stem](https://en.wikipedia.org/wiki/Word_stem), extract names of people, places, & organizations, and tell you the languages & respective [writing system](https://en.wikipedia.org/wiki/Writing_system) used in the string.
 
-For most of us, this is far more power than we know what to do with. But perhaps this is just for lack sufficient opportunity to try. After all, almost every application deals with natural language in one way or another--perhaps `NSLinguisticTagger` could add a new level of polish, or enable brand new features entirely.
+For most of us, this is far more power than we know what to do with. But perhaps this is just for lack of sufficient opportunity to try. After all, almost every application deals with natural language in one way or another--perhaps `NSLinguisticTagger` could add a new level of polish, or enable brand new features entirely.
 
 ---
 
@@ -31,7 +31,7 @@ let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawVal
 tagger.string = question
 tagger.enumerateTagsInRange(NSMakeRange(0, (question as NSString).length), scheme: NSLinguisticTagSchemeNameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
     let token = (question as NSString).substringWithRange(tokenRange)
-    println("\(token): \(tag)")
+    print("\(token): \(tag)")
 }
 ```
 ```objc
@@ -130,8 +130,8 @@ So for basic tokenization, use `NSLinguisticTagSchemeTokenType`, which will allo
 
 Continuing with the tagging schemes:
 
-- `NSLinguisticTagSchemeLemma`: This tag scheme supplies a stem forms of the words, if known.
-- `NSLinguisticTagSchemeLanguage`: Tags tokens according to their script. The tag values will be standard language abbreviations such as `"en"`, `"fr"`, `"de"`, etc., as used with the `NSOrthography` class. _Note that the tagger generally attempts to determine the language of text at the level of an entire sentence or paragraph, rather than word by word._
+- `NSLinguisticTagSchemeLemma`: This tag scheme supplies stem forms of the words, if known.
+- `NSLinguisticTagSchemeLanguage`: Tags tokens according to their language. The tag values will be standard language abbreviations such as `"en"`, `"fr"`, `"de"`, etc., as used with the `NSOrthography` class. _Note that the tagger generally attempts to determine the language of text at the level of an entire sentence or paragraph, rather than word by word._
 - `NSLinguisticTagSchemeScript`: Tags tokens according to their script. The tag values will be standard script abbreviations such as `"Latn"`, `"Cyrl"`, `"Jpan"`, `"Hans"`, `"Hant"`, etc.
 
 As demonstrated in the example above, first you initialize an `NSLinguisticTagger` with an array of all of the different schemes that you wish to use, and then assign or enumerate each of the tags after specifying the tagger's input string.
@@ -145,13 +145,13 @@ In addition to the available tagging schemes, there are several options you can 
 - `NSLinguisticTaggerOmitWhitespace`
 - `NSLinguisticTaggerOmitOther`
 
-Each of these options omit the broad categories of tags described. For example, `NSLinguisticTagSchemeLexicalClass`, which distinguishes between many different kinds of punctuation, all of those would be omitted with `NSLinguisticTaggerOmitPunctuation`. This is preferable to manually filtering these tag types in enumeration blocks or with predicates.
+Each of these options omits the broad categories of tags described. For example, `NSLinguisticTagSchemeLexicalClass`, which distinguishes between many different kinds of punctuation, all of those would be omitted with `NSLinguisticTaggerOmitPunctuation`. This is preferable to manually filtering these tag types in enumeration blocks or with predicates.
 
 The last option is specific to `NSLinguisticTagSchemeNameType`:
 
 - `NSLinguisticTaggerJoinNames`
 
-By default, each token in a name is treated as separate instances. In many circumstances, it makes sense to treat names like "San Francisco" as a single token, rather than two separate tokens. Passing this token makes this so.
+By default, each token in a name is treated as separate instances. In many circumstances, it makes sense to treat names like "San Francisco" as a single token, rather than two separate tokens. Passing this option makes this so.
 
 ---
 

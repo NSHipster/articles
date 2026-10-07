@@ -13,13 +13,13 @@ Mobile usability today is truly quite remarkable—especially considering how fa
 
 Yet despite its advances, one can't help but feel occasionally... trapped.
 
-All too often, there will be information on the screen that you _just can't access_. Whether its flight information stuck in a table view cell or an unlinked URL, users are forced to solve problems creatively for lack of a provided solution.
+All too often, there will be information on the screen that you _just can't access_. Whether it's flight information stuck in a table view cell or an unlinked URL, users are forced to solve problems creatively for lack of a provided solution.
 
 In the past, we've mentioned [localization](https://nshipster.com/nslocalizedstring) and [accessibility](https://nshipster.com/uiaccessibility) as two factors that distinguish great apps from the rest of the pack. This week, we'll add another item to that list: **Edit Actions**.
 
 ### Copy, Cut, Paste, Delete, Select
 
-iOS 3's killer feature was undoubtedly push notifications, but the ability to copy-paste is probably a close second. For how much we use it everyday, it's difficult to imagine how we got along without it. And yet, it remains a relatively obscure feature for 3rd-party apps.
+iOS 3's killer feature was undoubtedly push notifications, but the ability to copy-paste is probably a close second. For how much we use it every day, it's difficult to imagine how we got along without it. And yet, it remains a relatively obscure feature for 3rd-party apps.
 
 This may be due to how cumbersome it is to implement. Let's look at a simple implementation, and then dive into some specifics about the APIs. First the label itself:
 
@@ -86,16 +86,19 @@ override func viewDidLoad() {
 func handleLongPressGesture(recognizer: UIGestureRecognizer) {
 	if let recognizerView = recognizer.view,
 		recognizerSuperView = recognizerView.superview
+		where recognizer.state == .Began
 	{
+		recognizerView.becomeFirstResponder()
 		let menuController = UIMenuController.sharedMenuController()
 		menuController.setTargetRect(recognizerView.frame, inView: recognizerSuperView)
 		menuController.setMenuVisible(true, animated:true)
-		recognizerView.becomeFirstResponder()
 	}
 }
 ```
 ```objc
 - (void)viewDidLoad {
+    [super viewDidLoad];
+
 	HipsterLabel *label = ...;
 	label.userInteractionEnabled = YES;
     [self.view addSubview:label];
@@ -107,7 +110,7 @@ func handleLongPressGesture(recognizer: UIGestureRecognizer) {
 #pragma mark - UIGestureRecognizer
 
 - (void)handleLongPressGesture:(UIGestureRecognizer *)recognizer  {
-    if (recognizer.state == UIGestureRecognizerStateRecognized) {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
         [recognizer.view becomeFirstResponder];
         UIMenuController *menuController = [UIMenuController sharedMenuController];
         [menuController setTargetRect:recognizer.view.frame inView:recognizer.view.superview];
@@ -151,7 +154,7 @@ If you're wondering why, _oh why_, this isn't just built into `UILabel`, well...
 
 > `selectAll:` This method is invoked when the user taps the Select All command of the editing menu.
 
-In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionLeftToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
+In addition to these basic editing commands, there are commands that deal with rich text editing (`toggleBoldface:`, `toggleItalics:`, and `toggleUnderline:`) and writing direction changes (`makeTextWritingDirectionRightToLeft:` & `makeTextWritingDirectionLeftToRight:`). As these are not generally applicable outside of writing an editor, we'll just mention them in passing.
 
 ## `UIMenuItem`
 
@@ -169,6 +172,6 @@ As you develop your app, take to heart the following guidelines:
 - Any time information is shown to the user, consider whether it should be copyable.
 - With formatted or multi-faceted information, consider whether multiple kinds of copy commands are appropriate.
 - When implementing `copy:` make sure to copy only valuable information to the pasteboard.
-- For editable controls, ensure that your implementation `paste:` can handle a wide range of valid and invalid input.
+- For editable controls, ensure that your implementation of `paste:` can handle a wide range of valid and invalid input.
 
 If mobile is to become most things to most people, the least we can do is make our best effort to allow users to be more productive. Your thoughtful use of `UIMenuController` will not go unnoticed.
