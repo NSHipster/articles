@@ -61,11 +61,11 @@ and allow or deny any combination of the following features:
   Disable hardware volume buttons
 - **Motion**:
   Ignore device rotation and shake gestures
-- **Keyboards**
+- **Keyboards**:
   Don't show the keyboard
-- **Touch**
+- **Touch**:
   Ignore screen touches
-- **Time Limit**
+- **Time Limit**:
   Enforce a given time limit for using the app
 
 ## Why is Guided Access Useful?
@@ -103,7 +103,7 @@ in-person user testing sessions.
 
 ### "Crowd-Proof Mode": Displaying a Device in Kiosk Mode
 
-Have a spare iPad that you want to allows guests to sign-in at an event?
+Have a spare iPad that you want to allow guests to sign in at an event?
 Guided Access offers a quick and effective way to keep things moving.
 
 {% warning %}
@@ -198,7 +198,7 @@ NotificationCenter.default.addObserver(
 ```
 
 All of that said:
-most apps won't really be an actionable response
+most apps won't really have an actionable response
 to Guided Access sessions starting or ending ---
 at least not unless they extend this functionality
 by adding custom restrictions.
@@ -211,7 +211,7 @@ you might consider providing a <dfn>custom restriction</dfn>.
 
 To get a sense of what these might entail,
 think back to the previous use-cases for Guided Access and consider:
-_Which functionality would I **might not** want to expose to a toddler / stranger / crowd_?
+_Which functionality would I **not** want to expose to a toddler / stranger / crowd_?
 Some ideas that quickly come to mind are
 deleting a photo from Camera Roll,
 overwriting game save data,
@@ -350,7 +350,7 @@ we'll register for all of the guided access notifications we're interested in,
 and define a convenience method to respond to them.
 
 For example,
-`ProductViewController` has a `puchaseButton` outlet
+`ProductViewController` has a `purchaseButton` outlet
 that's configured according to the custom `.purchase` restriction
 defined by the app:
 
@@ -362,13 +362,10 @@ class ProductViewController: UIViewController {
 
     // MARK: UIViewController
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.updateViewForGuidedAccess()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.updateViewForGuidedAccess()
 
         let selector = #selector(updateViewForGuidedAccess)
 
@@ -386,7 +383,11 @@ class ProductViewController: UIViewController {
     // MARK: -
 
     @objc private func updateViewForGuidedAccess() {
-        guard UIAccessibility.isGuidedAccessEnabled else { return }
+        guard UIAccessibility.isGuidedAccessEnabled else {
+            purchaseButton.isEnabled = true
+            purchaseButton.isHidden = false
+            return
+        }
 
         switch UIAccessibility.guidedAccessRestrictionState(forIdentifier: Restriction.purchase.rawValue) {
         case .allow:
@@ -409,9 +410,9 @@ especially for mobile and web developers,
 who are responsible for designing and implementing
 the digital interfaces on which we increasingly depend.
 
-Each of us,
-(if we're fortunate to live so long),
-are almost certain to have our ability to
+Each of us
+(if we're fortunate to live so long)
+is almost certain to have our ability to
 see or hear diminish over time.
 _"Accessibility is designing for our future selves"_,
 as the popular saying goes.
@@ -422,7 +423,7 @@ _"Accessibility is designing for <del>our future selves</del> <ins>our day-to-da
 Even if you don't identify as someone who's differently-abled,
 there are frequently situations in which you might be temporarily impaired,
 whether it's trying to
-read in low-light setting
+read in a low-light setting
 or listen to someone in a loud environment
 or interact with a device while holding a squirming toddler.
 
