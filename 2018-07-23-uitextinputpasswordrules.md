@@ -38,7 +38,7 @@ Anything more elaborate, be it
 pre-selected security questions,
 periodic password expiration,
 or arcane character requirements
-do little more than annoy the people these policies try to protect.
+does little more than annoy the people these policies try to protect.
 
 {% warning do %}
 
@@ -82,7 +82,7 @@ the WebKit team
 [announced Safari Technology Preview Release 58](https://webkit.org/blog/8327/safari-technology-preview-58-with-safari-12-features-is-now-available/),
 with support for strong password generation
 using the new `passwordrules` attribute.
-This announcement coincided with the release iOS 12 beta SDKs at WWDC,
+This announcement coincided with the release of iOS 12 beta SDKs at WWDC,
 which included a new `UITextInputPasswordRules` API,
 along with a number of other password management features,
 including Security Code AutoFill and federated authentication.
@@ -122,8 +122,8 @@ as their value.
 
 - `upper` (`A-Z`)
 - `lower` (`a-z`)
-- `digits` (`0-9`)
-- `special` (`` -~!@#$%^&\*\_+=`|(){}[:;"'<>,.? ] `` and space)
+- `digit` (`0-9`)
+- `special` (`` -~!@#$%^&*_+=`|(){}[:;"'<>,.? ] `` and space)
 - `ascii-printable` (U+0020 — 007f)
 - `unicode` (U+0 — 10FFFF)
 
@@ -228,7 +228,7 @@ extension PasswordRule.CharacterClass: CustomStringConvertible {
         switch self {
         case .upper: return "upper"
         case .lower: return "lower"
-        case .digits: return "digits"
+        case .digits: return "digit"
         case .special: return "special"
         case .asciiPrintable: return "ascii-printable"
         case .unicode: return "unicode"
@@ -252,7 +252,7 @@ let rules: [PasswordRule] = [ .required(.upper),
 let descriptor = rules.map{ "\($0.description);" }
                       .joined(separator: " ")
 
-// "required: upper; required: lower; required: special; max-consecutive: 3;"
+// "required: upper; required: lower; required: special; minlength: 20;"
 ```
 
 If you feel so inclined,
