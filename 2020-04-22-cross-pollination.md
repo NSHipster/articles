@@ -33,7 +33,7 @@ But even they would typically benefit from cross-pollination.
 <!-- diagram -->
 
 When fertilized by the pollen of Fuji apple blossoms
-(or those of Braeburn, Honey Crisp, or McIntosh varieties),
+(or those of Braeburn, Honeycrisp, or McIntosh varieties),
 a Gala apple tree can yield 20 kilograms of fruit each season.
 Those Gala trees, in return, endow their pollen on the Fuji apple trees
 so that they too may blossom and bear one or two bushels of fruit, each.
@@ -53,11 +53,11 @@ which is inadvertently spread as they move from plant to plant.
 
 When a scout bee encounters a food source,
 she flies back to the hive
-and communicates the location of that food source to male worker bees
+and communicates the location of that food source to other worker bees
 by performing what's called a <dfn>waggle dance</dfn>.
 Performed in darkness on the vertical honeycomb surface in the hive,
 she's able to convey the precise location of new food sources to them
-by flying a coffee bean-shaped pattern oriented in the direction of the sun.
+by tracing a coffee bean-shaped pattern oriented in the direction of the sun.
 It's an incredible feat,
 made all the more remarkable by the fact that bees are not, individually,
 very intelligent.
@@ -70,12 +70,12 @@ But move it _just_ past some critical point,
 and the dance becomes something entirely different:
 instead of the waggle dance,
 the bee performs a <dfn>round dance</dfn>
-with a totally different cadence and flight path.
+with a totally different cadence and path.
 
 <!-- diagram -->
 
 For many years,
-the dance language of the bumblebee eluded all those who studied it.
+the dance language of the honey bee eluded all those who studied it.
 That is until 
 a mathematician named Barbara Shipman 
 made the connection between a bee's dance language
@@ -109,7 +109,7 @@ Indeed, Apple originally pitched Swift as "Objective-C without the C".
 </aside>
 
 Last year,
-we saw something similar with at [WWDC 2019](/wwdc-2019/).
+we saw something similar at [WWDC 2019](/wwdc-2019/).
 Anyone familiar with [React][react] or [Elm][elm]
 immediately recognized their influence on
 [SwiftUI][swiftui] and [Combine][combine]
@@ -134,7 +134,7 @@ being criticized and mocked until they're incorporated into an Apple product:
   (a core feature in Swift, 
   [later added to Objective-C][objective-c lightweight generics])
 - [JSX][jsx]-style <abbr title="domain-specific languages">DSL</abbr>s
-  declarative UI 
+  for declarative UI 
   ([function builders][function builders] in SwiftUI)
 
 All of which begs the question:
@@ -153,7 +153,7 @@ Often the "other" isn't even distinguished beyond a negative definition —
 </aside>
 
 Whenever a company writes some blog post about React Native,
-what inevitably follows is chorus of developers who either
+what inevitably follows is a chorus of developers who either
 praise the decision as courageous (if switching away)
 or call it idiotic (if adopting it).
 
