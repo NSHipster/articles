@@ -107,7 +107,7 @@ that can integrate directly with your development workflow.
 You can do all the 
 <abbr title="Create-Read-Update-Delete">CRUD</abbr>
 operations you'd expect for items in your vault.
-But its killer features is the `op run` subcommand,
+But its killer feature is the `op run` subcommand,
 which can dynamically inject secrets from your 1Password vault
 into your application's environment.
 
@@ -145,7 +145,7 @@ $ swift run
 But by prepending `op run`
 we read in that `.env` file,
 resolve each vault item reference,
-and injects those values into the evironment:
+and inject those values into the environment:
 
 ```terminal
 $ op run -- swift run
@@ -155,7 +155,7 @@ hunter2
 {% warning %}
 
 The double dash (`--`) after `op run` is important!
-It tells the shell to pass all subsequent arguments to the command being run,
+It tells `op` to pass all subsequent arguments to the command being run,
 rather than interpreting them as options to `op run` itself.
 
 {% endwarning %}
@@ -166,7 +166,7 @@ You're even prompted to authorize with Touch ID the first time you invoke `op ru
 <figure>
 <picture>
     <source srcset="{% asset 1password-authorize--dark.png @path %}" media="(prefers-color-scheme: dark)">
-    <img src="{% asset 1password-authorize--light.png @path %}" alt="1Password Create Vault dialog" loading="lazy" style="width: 400px;">
+    <img src="{% asset 1password-authorize--light.png @path %}" alt="1Password Access Requested dialog" loading="lazy" style="width: 400px;">
 </picture>
 </figure>
 {:/}
@@ -296,7 +296,7 @@ For example, here's how you might reference credentials for various services:
 ```shell
 # Reference by item name (case-insensitive)
 AWS_ACCESS_KEY_ID=op://development/AWS/username
-AWS_SECRET_ACCESS_KEY=op://development/WorkOS/credential
+AWS_SECRET_ACCESS_KEY=op://development/AWS/credential
 
 # Reference by item UUID
 STRIPE_SECRET_KEY=op://development/abc123xyz789defghijklmnop/password
@@ -331,7 +331,7 @@ since they're guaranteed to be unique and won't change if you rename the item.
 
 Once you've replaced all sensitive values with `op://` references,
 you can safely commit your `.env` file to version control.
-The references themselves don't contain any sensitive information –
+The references themselves don't contain any sensitive information —
 they're just pointers to your 1Password vault.
 
 {% info %}
@@ -349,7 +349,7 @@ allowing you to explicitly include a file that would otherwise be ignored.
 
 {% endinfo %}
 
-### Step 5. Update Your Development Script
+### Step 5: Update Your Development Script
 
 Whatever command you normally run to kick off your development server,
 you'll need to prepend `op run --` to that.
@@ -367,8 +367,7 @@ you'd update `script/start` like so:
 
 {% info %}
 
-`op run` does a neat trick by creating a 
-[pseudoterminal (PTY)](https://en.wikipedia.org/wiki/Pseudoterminal) pair
+`op run` does a neat trick by intercepting the command's output
 to redact secrets if printed out directly to `stdout`:
 
 ```terminal
@@ -431,7 +430,7 @@ Change for change's sake is rarely helpful.
 
 Next, figure out who you need to get buy-in from.
 Talk to them.
-Articulate specific pain point that everyone recognizes,
+Articulate a specific pain point that everyone recognizes,
 like the frustration of onboarding new team members
 or the time wasted debugging configuration-related issues.
 <aside class="parenthetical">
