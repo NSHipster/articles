@@ -11,7 +11,7 @@ status:
 ---
 
 In law,
-the latin phrase
+the Latin phrase
 <dfn lang="la">stare decisis</dfn> (_"to stand by things decided"_)
 is often used to refer to the doctrine of precedent ---
 the idea that,
@@ -37,7 +37,7 @@ by a case known as [_Illinois Brick_][illinois brick],
 which itself affirmed a ruling made a decade earlier
 in a case called [_Hanover Shoe_][hanover shoe].
 On its face,
-iPhones in 2010's would seem to have little to do with bricks from the 1970's
+iPhones in the 2010s would seem to have little to do with bricks from the 1970s
 _(aside from the [obvious connotation](https://www.theiphonewiki.com/wiki/Brick))_,
 but within the context of
 [United States antitrust law](https://en.wikipedia.org/wiki/United_States_antitrust_law),
@@ -54,13 +54,13 @@ that NSHipster got acqui-hired by
 
 {% endinfo %}
 
-Adherence to precedence confers inertia in the decision-making process.
+Adherence to precedent confers inertia in the decision-making process.
 It promotes stability throughout the legal system
 and the institutions that rely on a consistent application of laws.
 
 However,
 like inertia,
-precedence can also be overcome with sufficiently compelling reasons;
+precedent can also be overcome with sufficiently compelling reasons;
 we are bound by the past only insofar as to give it due consideration.
 
 ---
@@ -82,7 +82,7 @@ Unlike SMS or email,
 which allows a sender to communicate with a recipient directly
 using a unique identifier (a phone number and email address, respectively),
 communication between the app's remote server and the user's local device
-are facilitated by the Apple Push Notification service
+is facilitated by the Apple Push Notification service
 (<abbr title="Apple Push Notification service">APNs</abbr>).
 
 Here's how that works:
@@ -90,8 +90,8 @@ Here's how that works:
 - After launching an app,
   the app calls the method
   [`registerForRemoteNotifications()`](https://developer.apple.com/documentation/uikit/uiapplication/1623078-registerforremotenotifications),
-  prompting the user to grant the app permission to send push notifications.
-- In response to permission being granted,
+  which registers the device with APNs.
+- If registration succeeds,
   the app delegate calls the method
   [`application(_:didRegisterForRemoteNotificationsWithDeviceToken:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622958-application).
 
@@ -112,7 +112,7 @@ this API design decision has been the source of untold amounts of heartache.
 
 When the app delegate receives its `deviceToken`,
 that's not the end of the story.
-In order for its to be used to send push notifications,
+In order for it to be used to send push notifications,
 it needs to be sent from the client to the server.
 
 The question is, _"How"_?
@@ -123,7 +123,7 @@ when push notifications were first introduced:
 
 ### _"Back in My Day..."_
 
-You could create an [`NSURLRequest`](https://developer.apple.com/documentation/foundation/nsurlrequest) object,
+You could create an [`NSMutableURLRequest`](https://developer.apple.com/documentation/foundation/nsmutableurlrequest) object,
 set its `httpBody` property to the `deviceToken`,
 and send it using [`NSURLConnection`](https://developer.apple.com/documentation/foundation/nsurlconnection),
 but you'd probably also want to include some additional information ---
@@ -132,7 +132,7 @@ to associate it with an account in the app.
 That meant that the `data` you set as a request's HTTP body
 couldn't just be the device token.
 
-Sending an HTTP `POST` body with`application/x-www-form-urlencoded`
+Sending an HTTP `POST` body with `application/x-www-form-urlencoded`
 (e.g. `username=jappleseed&deviceToken=____`)
 is one possibility for encoding multiple fields into a single payload,
 but then the question becomes,
@@ -178,7 +178,7 @@ would most likely have passed it into an `NSLog` statement:
 
 ```obj-c
 NSLog(@"%@", deviceToken);
-// Prints "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7C>"
+// Prints "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7c>"
 ```
 
 Unfortunately,
@@ -220,7 +220,7 @@ or in [Base🧑 encoding](https://github.com/Flight-School/Guide-to-Swift-String
 `"👩🏻‍🦱👩🏻‍🦱👩🏼‍🦳👩🏻‍🦱👨🏻‍🦱👨🏻‍🦰👩🏾👩🏽‍🦳👩🏻‍🦰👩🏻‍🦲👩🏿👩🏻👩🏾👩🏾‍🦰👨🏿👩🏽‍🦱👩🏿👩🏿‍🦳👨🏻👩🏽👩🏿👩👨🏿‍🦰👩🏿‍🦱👨‍🦱👨🏻‍🦰👩🏼‍🦱👨🏼👨🏽👨🏼👩🏾👩👨🏾‍🦲👩🏿‍🦰👨🏾‍🦰👩🏾‍🦳👩👨🏽‍🦳👨🏿‍🦳👩🏽‍🦰👩🏼‍🦱👩🏿👩🏽‍🦲🤡"`.
 But if your push notification service provider expects device tokens
 in its classic, Base16 hexadecimal string representation,
-you should do adopt the approach described above.
+you should adopt the approach described below.
 
 {% endinfo %}
 
@@ -228,7 +228,7 @@ you should do adopt the approach described above.
 
 By 2016,
 Swift had stabilized and matured to the point that
-most if not many developers were choosing to write new apps in Swift,
+many if not most developers were choosing to write new apps in Swift,
 or at least write all new code in Swift for existing apps.
 
 For those who did,
@@ -236,8 +236,8 @@ the transition to Swift 3
 was most memorable for its painful migration from Swift 2.
 As part of ["the grand API renaming"](https://github.com/apple/swift-evolution/blob/master/proposals/0005-objective-c-name-translation.md)
 common Foundation types, including `NSData`,
-dropped their `NS` prefix in APIs,
-using a bridged, Swift value type in its place.
+[dropped their `NS` prefix](https://github.com/apple/swift-evolution/blob/master/proposals/0086-drop-foundation-ns.md) in APIs,
+using a bridged, Swift [value type](https://github.com/apple/swift-evolution/blob/master/proposals/0069-swift-mutability-for-foundation.md) in its place.
 For the most part,
 things worked as expected.
 But there were a few differences in behavior ---
@@ -249,7 +249,7 @@ consider the following change in
 
 ```swift
 // Swift 2: deviceToken is NSData
-deviceToken.description // "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7C>"
+deviceToken.description // "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7c>"
 
 // Swift 3: deviceToken is Data
 deviceToken.description // "32 bytes"
@@ -295,7 +295,7 @@ including `NSData`:
 
 ```swift
 // iOS 12
-(deviceToken as NSData).description // "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7C>"
+(deviceToken as NSData).description // "<965b251c 6cb1926d e3cb366f dfb16ddd e6b9086a 8a3cac9e 5f857679 376eab7c>"
 
 // iOS 13
 (deviceToken as NSData).description // "{length = 32, bytes = 0x965b251c 6cb1926d e3cb366f dfb16ddd ... 5f857679 376eab7c }"
@@ -349,16 +349,16 @@ so here are some minimal code examples to demonstrate the difference
 between the two format specifiers:
 
 ```swift
-// Overflow UInt.max (255)
+// Overflow UInt8.max (255)
 String(format: "%02.2hhx", 256) // "00"
 String(format: "%02x", 256) // "100"
 
-// Underflow UInt.min (0)
+// Underflow UInt8.min (0)
 String(format: "%02.2hhx", -1) // "ff"
 String(format: "%02x", -1) // "ffffffff"
 ```
 
-`"%02.2hhx"` guarantees that values beyond the range of `UInt`
+`"%02.2hhx"` guarantees that values beyond the range of `UInt8`
 produce two hexadecimal digits
 (though one could argue whether it's better to fail silently here).
 
@@ -366,13 +366,13 @@ But any difference in behavior is moot,
 so long as `Data` is a collection whose `Element` is `UInt8`:
 
 ```swift
-(UInt.min...UInt.max).map {
+(UInt8.min...UInt8.max).map {
     String(format: "%02.2hhx", $0) == String(format: "%02x", $0)
 }.contains(false) // false
 ```
 
 Oh, and don't worry about any purported performance differences
-between `reduce` and `map` + `join`;
+between `reduce` and `map` + `joined()`;
 any Δ is going to be negligible,
 and totally irrelevant for an infrequent operation such as this.
 
@@ -393,12 +393,12 @@ makes debugging larger data blobs significantly easier.
 ---
 
 Like we said about laws at the start of this article,
-precedence is a form of inertia,
+precedent is a form of inertia,
 not an immutable truth.
 
 <em lang="la">Stare decisis</em> plays an important role
 throughout software engineering.
-Examples like the ["Referer" \[sic\] header"](https://en.wikipedia.org/wiki/HTTP_referer) ---
+Examples like the ["Referer" \[sic\] header](https://en.wikipedia.org/wiki/HTTP_referer) ---
 even the conventions we have about
 [the direction of electricity flow](https://en.wikipedia.org/wiki/Electric_current#Conventions) ---
 demonstrate the value of sticking to decisions,
