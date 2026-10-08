@@ -3,10 +3,26 @@ title: "IBInspectable / IBDesignable"
 category: Xcode
 author: Nate Cook
 excerpt: "Replacing an interface that requires us to memorize and type with one we can see and manipulate can be an enormous improvement. With `IBInspectable` and `IBDesignable`, Xcode 6 makes just such a substitution, building new interactions on top of old technologies."
+retired: true
 status:
     swift: 1.0
     reviewed: October 7, 2026
 ---
+
+{% error do %}
+
+Xcode 16 deprecated `@IBDesignable` views
+and no longer renders them in the Interface Builder canvas,
+and the Xcode 16.1 release notes list a known issue
+in which `@IBInspectable` properties no longer appear in Interface Builder.
+To see a custom view while you design it,
+use the `#Preview` macro introduced in Xcode 15,
+which works with UIKit and AppKit views as well as SwiftUI.
+Apple's guide to
+[previewing your app's interface in Xcode](https://developer.apple.com/documentation/xcode/previewing-your-apps-interface-in-xcode)
+explains how.
+
+{% enderror %}
 
 Show, don't tell. Seeing is believing. A picture is worth a thousand <del>emails</del> words. 
 
