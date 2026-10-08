@@ -357,43 +357,39 @@ override func prepare(withActivityItems activityItems: [Any]) {
 
 ### Performing the Activity
 
-The `perform()` method is the most important part of your activity.
+The `perform()` method is usually the most important part of your activity.
 Because processing can take some time,
 this is an asynchronous method.
 However, for lack of a completion handler,
 you signal that work is done by calling the `activityDidFinish(_:)` method.
 
+But if an activity provides a view controller
+(as ours will, to show the result),
+UIKit presents that view controller instead of calling `perform()`,
+so the work has to happen there.
+
 Our custom activity delegates the mustachification process to a web app
 using a data task sent from the shared `URLSession`.
-If all goes well, the `mustachioedImage` property is set
-and `activityDidFinish(_:)` is called with `true`
-to indicate that the activity finished successfully.
-If an error occurred in the request
-or we can't create an image from the provided data,
-we call `activityDidFinish(_:)` with `false` to indicate failure.
+The `mustachify(completion:)` method calls its completion handler
+on the main queue with the resulting image,
+or with `nil` if an error occurred in the request
+or we can't create an image from the provided data.
 
 ```swift
-var mustachioedImage: UIImage?
-
-override func perform() {
+func mustachify(completion: @escaping (UIImage?) -> Void) {
     let url = URL(string: "https://mustachify.app/")!
     var request = URLRequest(url: url)
     request.httpMethod = "POST"
     request.httpBody = self.sourceImageData
 
     URLSession.shared.dataTask(with: request) { (data, _, error) in
-        guard error == nil else {
-            self.activityDidFinish(false)
-            return
+        var image: UIImage?
+        if error == nil, let data = data {
+            image = UIImage(data: data)
         }
 
-        if let data = data,
-            let image = UIImage(data: data)
-        {
-            self.mustachioedImage = image
-            self.activityDidFinish(true)
-        } else {
-            self.activityDidFinish(false)
+        DispatchQueue.main.async {
+            completion(image)
         }
     }.resume()
 }
@@ -404,34 +400,66 @@ override func perform() {
 The final step is to provide a view controller
 to be presented with the result of our activity.
 
-The QuickLook framework provides a simple, built-in way to display images.
-We'll extend our activity to adopt `QLPreviewControllerDataSource`
-and return an instance of `QLPreviewController`,
-with `self` set as the `dataSource`
-for our override of the `activityViewController` method.
+We override the `activityViewController` property
+to return a navigation controller
+containing a simple view controller that displays the image:
 
 ```swift
-import QuickLook
+override var activityViewController: UIViewController? {
+    let viewController = MustachifyViewController(activity: self)
+    return UINavigationController(rootViewController: viewController)
+}
+```
 
-extension MustachifyActivity: QLPreviewControllerDataSource {
-    override var activityViewController: UIViewController? {
-        guard let image = self.mustachioedImage else {
-            return nil
+When its view loads,
+the view controller asks the activity to mustachify the image
+and shows the result in an image view.
+When the user taps "Done",
+it calls `activityDidFinish(_:)` with `true`
+to indicate that the activity finished successfully,
+and UIKit dismisses it.
+If the image couldn't be mustachified,
+it calls `activityDidFinish(_:)` with `false` to indicate failure.
+
+```swift
+class MustachifyViewController: UIViewController {
+    let activity: MustachifyActivity
+    let imageView = UIImageView()
+
+    init(activity: MustachifyActivity) {
+        self.activity = activity
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = .white
+        self.imageView.frame = self.view.bounds
+        self.imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        self.imageView.contentMode = .scaleAspectFit
+        self.view.addSubview(self.imageView)
+
+        self.navigationItem.rightBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .done,
+                            target: self,
+                            action: #selector(done))
+
+        self.activity.mustachify { image in
+            if let image = image {
+                self.imageView.image = image
+            } else {
+                self.activity.activityDidFinish(false)
+            }
         }
-
-        let viewController = QLPreviewController()
-        viewController.dataSource = self
-        return viewController
     }
 
-    // MARK: QLPreviewControllerDataSource
-
-    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
-        return self.mustachioedImage != nil ? 1 : 0
-    }
-
-    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
-        return self.mustachioedImage!
+    @objc func done() {
+        self.activity.activityDidFinish(true)
     }
 }
 ```
