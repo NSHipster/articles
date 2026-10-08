@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "In this season of giving, let's stop to consider one of the greatest gifts given to us by modern computer systems: the gift of abstraction."
 status:
   swift: "4.2"
+  reviewed: October 7, 2026
 ---
 
 In this season of giving,

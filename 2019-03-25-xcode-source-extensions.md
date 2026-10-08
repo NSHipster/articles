@@ -9,6 +9,7 @@ excerpt: >-
   Source Editor Extensions? Not so much.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 When we last [wrote about extending Xcode](/xcode-plugins/) in 2014,

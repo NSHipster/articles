@@ -9,6 +9,7 @@ excerpt: >-
   you can leverage this introspection for your own types.
 status:
   swift: "4.2"
+  reviewed: October 7, 2026
 ---
 
 Playgrounds allow you to see what your Swift code is doing

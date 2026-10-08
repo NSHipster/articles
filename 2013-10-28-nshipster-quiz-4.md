@@ -5,6 +5,7 @@ category: Trivia
 excerpt: "The fourth and final quiz of the year. Do you have what it takes to be the `NSArray -firstObject` among your peers?"
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 The fourth and final NSHipster pub quiz of the year was held in the beautiful city of Amsterdam on October 22nd, with help from the good folks at [Appsterdam](http://appsterdam.rs), [The Big Nerd Ranch](http://www.bignerdranch.com/), and [Heroku](http://www.heroku.com).

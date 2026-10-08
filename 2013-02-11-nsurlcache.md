@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "NSURLCache provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's URL Loading System, any request loaded through NSURLConnection will be handled by NSURLCache."
 status:
     swift: 1.1
+    reviewed: October 7, 2026
 ---
 
 `NSURLCache` provides a composite in-memory and on-disk caching mechanism for URL requests to your application. As part of Foundation's [URL Loading System](https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/URLLoadingSystem/URLLoadingSystem.html#//apple_ref/doc/uid/10000165i), any request loaded through `NSURLConnection` will be handled by `NSURLCache`.

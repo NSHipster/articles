@@ -5,6 +5,7 @@ category: Trivia
 excerpt: "Our fourth annual WWDC NSHipster Pub Quiz! Nearly two hundred developers, teamed up and competing with themselves and each other for a chance to ask: \"Wait, what?\" It's time for the home edition—sharpen your pencil and give it your best!"
 status:
     swift: n/a
+    reviewed: October 8, 2026
 ---
 
 This year's WWDC edition of the NSHipster Pub Quiz was held on June 14th, once again testing the assembled developers with questions both random and obscure. We're enormously grateful to [Realm](https://realm.io), who hosted the quiz for the second year in a row, with delicious food and drink and enough tables to seat nearly two hundred contestants.

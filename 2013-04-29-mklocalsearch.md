@@ -5,7 +5,7 @@ category: Cocoa
 excerpt: "In all of the hubbub of torch burning and pitchfork raising, you may have completely missed a slew of additions to MapKit in iOS 6.1."
 status:
     swift: 2.0
-    reviewed: November 12, 2015
+    reviewed: October 7, 2026
 ---
 
 Look, we get it: people are upset about Apple Maps.

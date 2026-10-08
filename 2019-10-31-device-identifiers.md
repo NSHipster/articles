@@ -7,6 +7,7 @@ excerpt: >-
   there's a monster that embodies the anxieties of the age.
 status:
   swift: 5.1
+  reviewed: October 8, 2026
 ---
 
 For every era,

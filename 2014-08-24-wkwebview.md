@@ -9,7 +9,7 @@ revisions:
   "2018-07-25": Updated for iOS 12 and macOS Mojave
 status:
   swift: 4.2
-  reviewed: July 25, 2018
+  reviewed: October 7, 2026
 ---
 
 iOS has a complicated relationship with the web.

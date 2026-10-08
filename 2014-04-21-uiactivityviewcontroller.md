@@ -11,7 +11,7 @@ revisions:
   "2018-12-05": Updated for iOS 12 and Swift 4.2
 status:
   swift: 4.2
-  reviewed: December 5, 2018
+  reviewed: October 8, 2026
 ---
 
 On iOS,

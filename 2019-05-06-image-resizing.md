@@ -5,7 +5,7 @@ category: Miscellaneous
 excerpt: "Since time immemorial, iOS developers have been perplexed by a singular question: 'How do you resize an image?' This article endeavors to provide a clear answer to this eternal question."
 status:
   swift: 5.0
-  reviewed: May 6, 2019
+  reviewed: October 7, 2026
 revisions:
   "2014-09-15": Original publication
   "2015-09-30": Updated for Swift 2.0

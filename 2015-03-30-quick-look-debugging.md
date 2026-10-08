@@ -5,6 +5,7 @@ category: "Xcode"
 excerpt: "Debugging can be an exercise in irony. We create programs that tell our pint-sized supercomputers to complete infinitely varied and incalculable tasks on our behalf, yet when trying to understand those same programs, we tell the computers to wait for *us.*"
 status:
     swift: 1.2
+    reviewed: October 7, 2026
 ---
 
 Debugging can be an exercise in irony. We create programs that tell our pint-sized supercomputers to complete infinitely varied and incalculable tasks on our behalf, yet when trying to understand those same programs, we tell the computers to wait for *us.* 

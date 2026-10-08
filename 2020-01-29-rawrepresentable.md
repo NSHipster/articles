@@ -8,6 +8,7 @@ excerpt: >-
     in both senses of the word.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 Programming is about typing.

@@ -5,6 +5,7 @@ category: Objective-C
 excerpt: "Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace."
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 Xcode 4.4 quietly introduced a syntactic revolution to Objective-C. Like all revolutions, however, its origins and agitators require some effort to trace: Xcode 4.4 shipped with Apple LLVM Compiler 4.0, which incorporated changes effective in the Clang front-end as of version 3.1.

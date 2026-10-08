@@ -15,6 +15,7 @@ revisions:
   2020-05-07: Updated for GitHub Codespaces Announcement
 status:
   swift: n/a
+  reviewed: October 7, 2026
 ---
 
 In October 2018,

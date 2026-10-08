@@ -14,7 +14,7 @@ revisions:
   "2019-04-22": Updated for Swift 5
 status:
   swift: 5.0
-  reviewed: April 22, 2019
+  reviewed: October 7, 2026
 ---
 
 Unless you were a Math Geek or an Ancient Greek,

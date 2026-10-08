@@ -9,6 +9,7 @@ excerpt: >
   may do more to clarify rather than confound.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 By the 1930's,

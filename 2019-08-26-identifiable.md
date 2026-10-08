@@ -8,6 +8,7 @@ excerpt: >-
   as stable identifiers.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 _What constitutes the identity of an object?_

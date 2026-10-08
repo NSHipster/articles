@@ -7,6 +7,7 @@ excerpt: >
   But sometimes it takes the former to ultimately get to the latter.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 Everyone has their favorite analogy to describe programming.

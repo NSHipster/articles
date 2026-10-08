@@ -8,6 +8,7 @@ excerpt: >-
   than to implement a fun and flexible confetti view on iOS?
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Etymologically, <dfn>confetti</dfn> comes from the Italian word

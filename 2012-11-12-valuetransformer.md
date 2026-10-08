@@ -13,7 +13,7 @@ revisions:
   "2018-10-17": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: October 17, 2018
+  reviewed: October 7, 2026
 ---
 
 Of all the Foundation classes,

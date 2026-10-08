@@ -6,6 +6,7 @@ excerpt: If you've ever been told to "file a Radar"
   and wondered what that meant, this week's article has just the fix.
 status:
   swift: n/a
+  reviewed: October 7, 2026
 ---
 
 "File a radar."

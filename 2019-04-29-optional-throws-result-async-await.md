@@ -5,6 +5,7 @@ category: Swift
 excerpt: "An exploration of error handling in Swift: then, now, and soon."
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Back in the early days of Swift 1, we didn't have much in the way of error handling.

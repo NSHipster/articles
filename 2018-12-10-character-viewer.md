@@ -9,6 +9,7 @@ excerpt: >-
   at the bottom of the Edit menu in macOS.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 Emoji is a conspiracy by the Unicode® Consortium

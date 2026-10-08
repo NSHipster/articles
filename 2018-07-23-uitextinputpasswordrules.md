@@ -7,6 +7,7 @@ excerpt: Unless it's the title of a hacker movie from the 90's
   a password should be utterly devoid of meaning.
 status:
   swift: "4.2"
+  reviewed: October 7, 2026
 ---
 
 It's no wonder why hipsters obsess over artisanal _this_ and handcrafted _that_.

@@ -9,6 +9,7 @@ excerpt: >-
   and any remaining distinction between mobile and desktop computers.
 status:
   swift: n/a
+  reviewed: October 7, 2026
 ---
 
 For a while now,

@@ -7,6 +7,7 @@ excerpt: >-
   But did you know that you can do the same for section headers and footers?
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 `UITableView` is the bread and butter of iOS apps.

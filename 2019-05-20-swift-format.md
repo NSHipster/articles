@@ -11,6 +11,7 @@ excerpt: >-
   and what we might expect in the future.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 revisions:
   "2019-03-04": Original publication
   "2019-05-20": Updated and expanded

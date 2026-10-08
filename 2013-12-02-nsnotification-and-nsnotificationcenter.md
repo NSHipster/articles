@@ -6,7 +6,7 @@ tags: popular
 excerpt: "Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message."
 status:
     swift: 2.0
-    reviewed: September 8, 2015
+    reviewed: October 7, 2026
 ---
 
 Any idea is inextricably linked to how it's communicated. A medium defines the form and scale of significance in such a way to shape the very meaning of an idea. Very truly, the medium is the message.

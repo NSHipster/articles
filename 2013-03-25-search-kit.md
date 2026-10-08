@@ -5,7 +5,7 @@ category: Cocoa
 excerpt: "Search Kit is a C framework for searching and indexing content in human languages. It supports matching on phrase or partial word, including logical & wildcard operators, and can rank results by relevance. Search Kit also provides document summarization, which is useful for generating representative excerpts. And best of all: it's thread-safe."
 status:
   swift: 2.0
-  reviewed: November 24, 2015
+  reviewed: October 7, 2026
 revisions:
   "2013-03-25": Original publication
   "2015-11-24": Revised for Swift 2.0

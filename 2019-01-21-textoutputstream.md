@@ -9,6 +9,7 @@ excerpt: >-
   So it's surprising how few of us are familiar with its other forms.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 `print` is among the most-used functions in the Swift standard library.

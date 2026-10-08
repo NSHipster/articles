@@ -7,6 +7,7 @@ excerpt: >-
   but have you met these related Swift Foundation error protocols?
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Swift 2 introduced error handling by way of the

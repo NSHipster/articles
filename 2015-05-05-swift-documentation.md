@@ -15,7 +15,7 @@ revisions:
   "2018-07-11": Updated for Xcode 10 & Swift 4.2
 status:
   swift: 4.2
-  reviewed: July 11, 2018
+  reviewed: October 7, 2026
 ---
 
 Code structure and organization is a matter of pride for developers.

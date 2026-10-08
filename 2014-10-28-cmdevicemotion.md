@@ -11,7 +11,7 @@ revisions:
   "2018-09-12": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: September 12, 2018
+  reviewed: October 8, 2026
 ---
 
 Beneath the smooth glass of each iPhone

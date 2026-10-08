@@ -13,7 +13,7 @@ revisions:
   "2018-12-19": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: December 19, 2018
+  reviewed: October 7, 2026
 ---
 
 Objective-C required us to

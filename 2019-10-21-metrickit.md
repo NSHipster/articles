@@ -9,6 +9,7 @@ excerpt: >-
   about how their apps are performing in the field.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 As an undergraduate student,

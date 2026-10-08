@@ -9,6 +9,7 @@ excerpt: >-
   aims to do the same for a new generation of AI tools.
 status:
   swift: 6.0
+  reviewed: October 8, 2026
 ---
 
 Language Server Protocol (LSP)

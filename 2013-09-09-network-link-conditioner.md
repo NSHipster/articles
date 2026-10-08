@@ -13,6 +13,7 @@ revisions:
   "2019-07-29": Added note about installation problems in macOS 10.14
 status:
   swift: n/a
+  reviewed: October 7, 2026
 ---
 
 Product design is about empathy.

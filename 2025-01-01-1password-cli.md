@@ -9,6 +9,7 @@ excerpt: >-
   the 1Password CLI (`op`) might be just what you need.
 status:
   swift: 6.0
+  reviewed: October 8, 2026
 ---
 
 `.env` files.

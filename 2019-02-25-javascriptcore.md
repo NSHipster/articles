@@ -12,7 +12,7 @@ revisions:
   "2019-02-25": Updated for Swift 5
 status:
   swift: 5.0
-  reviewed: February 25, 2019
+  reviewed: October 7, 2026
 ---
 
 Whether you love it or hate it,

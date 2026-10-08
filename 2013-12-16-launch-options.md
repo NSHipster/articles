@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "AppDelegate is the dumping ground for functionality in iOS."
 status:
     swift: t.b.c.
+    reviewed: October 7, 2026
 ---
 
 AppDelegate is the dumping ground for functionality in iOS.

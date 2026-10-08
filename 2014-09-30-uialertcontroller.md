@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "Did you know that `UIAlertView` and `UIActionSheet` (as well as their respective delegate protocols) are deprecated in iOS 8? It's true."
 status:
     swift: 1.0
+    reviewed: October 8, 2026
 ---
 
 Did you know that `UIAlertView` and `UIActionSheet` (as well as their respective delegate protocols) are deprecated in iOS 8?

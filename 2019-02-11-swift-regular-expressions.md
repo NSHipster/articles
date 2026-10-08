@@ -7,6 +7,7 @@ excerpt: >-
   but it's often a mystery how to use them in Swift.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Like everyone else in the Pacific Northwest,

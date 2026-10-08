@@ -9,6 +9,7 @@ excerpt: >-
   and it's all thanks to SwiftUI.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 Working on a large iOS codebase often involves a lot of waiting:

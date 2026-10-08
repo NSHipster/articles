@@ -6,7 +6,7 @@ tags: nshipster
 excerpt: "UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a cat playing Fruit Ninja in order to get at what they want... you may want to rethink your UI approach."
 status:
     swift: 2.0
-    reviewed: September 8, 2015
+    reviewed: October 7, 2026
 ---
 
 UITableView starts to become unwieldy once it gets to a few hundred rows. If users are reduced to frantically scratching at the screen like a [cat playing Fruit Ninja](https://www.youtube.com/watch?v=CdEBgZ5Y46U) in order to get at what they want... you may want to rethink your UI approach.
