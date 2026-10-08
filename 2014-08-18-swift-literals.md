@@ -13,6 +13,7 @@ revisions:
   "2018-08-22": Updated for Swift 4.2
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 In 1911,

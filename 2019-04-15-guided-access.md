@@ -7,6 +7,7 @@ excerpt: >-
   with this one weird accessibility trick.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Accessibility features on iOS are more like superpowers

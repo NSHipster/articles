@@ -5,7 +5,7 @@ category: Cocoa
 excerpt: "We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery. For many iOS developers, though, a flat MKMapView was a necessary conceit until recently."
 status:
     swift: 2.0
-    reviewed: November 12, 2015
+    reviewed: October 7, 2026
 ---
 
 We knew that the Earth was not flat long before 1492. Early navigators observed the way ships would dip out of view over the horizon many centuries before the Age of Discovery.

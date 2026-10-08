@@ -9,6 +9,7 @@ excerpt: >-
   fiddling with Auto Layout constraints yourself ever again.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 When I was a student in Japan,

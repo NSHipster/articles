@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "We all make mistakes. Thankfully, Foundation comes to our rescue for more than just our misspellings. Cocoa includes a simple yet robust API for undoing or redoing actions through NSUndoManager."
 status:
     swift: 1.0
+    reviewed: October 7, 2026
 ---
 
 We all make mistakes. Thankfully, Foundation comes to our rescue for more than just our misspellings. Cocoa includes a simple yet robust API for undoing or redoing actions through `NSUndoManager`.

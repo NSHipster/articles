@@ -10,6 +10,7 @@ excerpt: >-
   harness it directly.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 One of my favorite activities,

@@ -8,6 +8,7 @@ excerpt: >-
   have to say about Apple's API design decisions?
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 In law,

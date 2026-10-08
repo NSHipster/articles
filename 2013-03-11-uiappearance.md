@@ -6,7 +6,7 @@ tags: nshipster
 excerpt: "UIAppearance allows the appearance of views and controls to be consistently defined across the entire application."
 status:
   swift: 2.0
-  reviewed: September 8, 2015
+  reviewed: October 7, 2026
 ---
 
 Style vs. Substance.

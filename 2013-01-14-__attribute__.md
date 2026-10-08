@@ -6,6 +6,7 @@ tags: nshipster
 excerpt: "A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you."
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 A recurring theme of this publication has been the importance of a healthy relationship with the compiler. Like any craft, one's effectiveness as a practitioner is contingent on how they treat their tools. Take good care of them, and they'll take good care of you.

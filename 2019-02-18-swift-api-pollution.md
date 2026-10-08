@@ -8,6 +8,7 @@ excerpt: >-
   But as we'll see, this isn't always the case.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 When you import a module into Swift code,

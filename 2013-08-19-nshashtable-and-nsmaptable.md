@@ -6,7 +6,7 @@ tags: nshipster
 excerpt: "NSSet and NSDictionary, along with NSArray are the workhorse collection classes of Foundation. Unlike other standard libraries, implementation details are hidden from developers, allowing them to write simple code and trust that it will be (reasonably) performant."
 status:
     swift: 2.0
-    reviewed: September 11, 2015
+    reviewed: October 7, 2026
 ---
 
 `NSSet` and `NSDictionary`, along with `NSArray` are the workhorse collection classes of Foundation. Unlike [other standard libraries](https://en.wikipedia.org/wiki/Java_collections_framework), implementation details are [hidden](http://ridiculousfish.com/blog/posts/array.html) from developers, allowing them to write simple code and trust that it will be (reasonably) performant.

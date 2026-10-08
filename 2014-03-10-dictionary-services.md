@@ -14,6 +14,7 @@ revisions:
   "2019-01-07": Updated for Swift 4.2
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 This week's article is about dictionaries.

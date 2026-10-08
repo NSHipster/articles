@@ -13,7 +13,7 @@ revisions:
   "2018-10-10": Expanded details
 status:
   swift: 4.2
-  reviewed: October 10, 2018
+  reviewed: October 8, 2026
 ---
 
 There are as many mnemonic devices for making sense of time

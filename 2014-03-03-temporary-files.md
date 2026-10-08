@@ -14,6 +14,7 @@ revisions:
   "2019-03-09": Corrected use of deprecated `NSData.WritingOptions.atomicWrite`
 status:
   swift: 4.2
+  reviewed: October 8, 2026
 ---
 
 Volumes have been written about persisting data,

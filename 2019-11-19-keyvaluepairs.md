@@ -8,6 +8,7 @@ excerpt: >-
   `Array`, `Set`, and `Dictionary`.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 Cosmologies seek to create order

@@ -15,7 +15,7 @@ revisions:
   "2018-08-01": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: August 1, 2018
+  reviewed: October 7, 2026
 ---
 
 > "We should do (as wise programmers aware of our limitations)

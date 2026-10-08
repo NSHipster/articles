@@ -5,6 +5,7 @@ category: Trivia
 excerpt: "This fifth incarnation of the NSHipster Quiz took on a distinct North-of-the-Border flavor, as part of the NSNorth conference in Ottawa, Ontario. Think you're up to the challenge, eh?"
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 This past weekend, I had the honor of speaking at [NSNorth](http://nsnorth.ca/), in Ottawa, Ontario. The conference focused on the aspects of community, culture, and family in programming, and I cannot think of a conference in recent memory that better exemplified these themes, both in its speakers and attendees.

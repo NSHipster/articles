@@ -5,6 +5,7 @@ category: Cocoa
 excerpt: "Make no mistake, a tiny keyboard on a slab of glass doesn't always lend itself to perfect typing. Whether for accuracy or hilarity, anyone typing on an iOS device notices when autocorrect steps in to help out. You might not know, however, that UIKit includes a class to help you with your user's typing inside your app."
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 Make no mistake, a tiny keyboard on a slab of glass doesn't always lend itself to perfect typing. Whether for accuracy or hilarity, anyone typing on an iOS device notices when autocorrect steps in to help out. You might not know, however, that UIKit includes a class to help you with your user's typing inside your app.

@@ -5,6 +5,7 @@ category: Trivia
 excerpt: "Our second annual WWDC Pub Quiz! With dozens of teams, comprised of developers from all around the world, the competition was fierce. How will you stack up?"
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 On June 3rd, we organized the second annual WWDC edition of the NSHipster Pub Quiz. Keeping in its tradition, questions ranged from random Apple trivia to obscure technical questions. For the second year in a row, the event was graciously hosted by [New Relic](http://newrelic.com), whose beautiful downtown San Francisco offices gave the event a feeling of distinction and class. We're also very thankful to [Spotify](https://www.spotify.com/) & [thoughtbot](http://thoughtbot.com) for sponsoring libations for the evening. Cheers!

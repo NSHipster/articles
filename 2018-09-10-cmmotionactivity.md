@@ -10,6 +10,7 @@ excerpt: >
   often by means quite similar to our own biomechanical processes.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 Humans perceive self-motion using a combination of

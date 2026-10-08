@@ -8,6 +8,7 @@ excerpt: >-
   in shaping the future of the language as a whole.
 status:
   swift: 5.1
+  reviewed: October 8, 2026
 ---
 
 Years ago,

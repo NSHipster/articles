@@ -13,7 +13,7 @@ revisions:
   "2019-07-15": Updated for iOS 13 & macOS 10.15
 status:
   swift: 5.1
-  reviewed: July 15, 2019
+  reviewed: October 7, 2026
 ---
 
 Conversion is a tireless errand in software development.

@@ -6,6 +6,7 @@ tags: cfhipsterref
 excerpt: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
 status:
   swift: n/a
+  reviewed: October 7, 2026
 ---
 
 Civilization is built on infrastructure: roads, bridges, canals, sewers, pipes, wires, fiber. When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. But when such formative structures are absent or ad hoc, it feels as if progress is made _in spite of_ the situation.

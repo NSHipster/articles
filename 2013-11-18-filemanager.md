@@ -12,7 +12,7 @@ revisions:
   "2018-10-29": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: October 29, 2018
+  reviewed: October 7, 2026
 ---
 
 One of the most rewarding experiences you can have as a developer

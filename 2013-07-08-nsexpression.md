@@ -6,7 +6,7 @@ tags: nshipster
 excerpt: "Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With NSPredicate, NSSortDescriptor, and an occasional NSFetchRequest, even the most complex data tasks can be reduced into just a few, extremely-understandable lines of code."
 status:
     swift: 2.0
-    reviewed: September 8, 2015
+    reviewed: October 7, 2026
 ---
 
 Cocoa is the envy of other standard libraries when it comes to querying and arranging information. With `NSPredicate`, [`NSSortDescriptor`](https://nshipster.com/nssortdescriptor/), and an occasional `NSFetchRequest`, even the most complex data tasks can be reduced into just a few, _extremely-understandable_ lines of code.

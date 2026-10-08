@@ -8,6 +8,7 @@ excerpt: >-
   of problematic programming conventions.
 status:
   swift: 5.0
+  reviewed: October 7, 2026
 ---
 
 Swift is designed ---

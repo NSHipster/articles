@@ -12,7 +12,7 @@ revisions:
   "2018-08-29": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: August 29, 2018
+  reviewed: October 7, 2026
 ---
 
 Text means nothing without context.

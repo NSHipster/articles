@@ -11,6 +11,7 @@ excerpt: >
   rather than simply look like them.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 The decade mark for iOS has come and gone.

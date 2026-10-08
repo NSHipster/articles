@@ -14,6 +14,7 @@ excerpt: >
   _not making the request in the first place_.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 On the web,

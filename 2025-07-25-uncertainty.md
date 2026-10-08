@@ -10,6 +10,7 @@ excerpt: >-
   forcing messy real-world data through clean Boolean logic.
 status:
   swift: 6.0
+  reviewed: October 7, 2026
 ---
 
 You know what's wrong with people?

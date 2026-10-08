@@ -10,6 +10,7 @@ excerpt: >-
   we often find ourselves constrained by circumstances beyond us.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 Code exists in a world of infinite abundance.

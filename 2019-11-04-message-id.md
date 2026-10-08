@@ -13,6 +13,7 @@ excerpt: >-
   we can instead rely on a longtime system integration with email.
 status:
   swift: 5.1
+  reviewed: October 7, 2026
 ---
 
 [Last week](/device-identifiers/),

@@ -10,6 +10,7 @@ excerpt: >
   It's about time we got them straight.
 status:
   swift: 4.2
+  reviewed: October 7, 2026
 ---
 
 Nestled between Madrid's Centro and Salamanca districts,

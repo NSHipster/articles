@@ -11,7 +11,7 @@ revisions:
   "2018-12-12": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: December 12, 2018
+  reviewed: October 7, 2026
 ---
 
 In Japan,

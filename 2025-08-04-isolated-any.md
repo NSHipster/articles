@@ -7,6 +7,7 @@ excerpt: >-
   schedule asynchronous work can make all the difference.
 status:
   swift: 6.0
+  reviewed: October 7, 2026
 ---
 
 Ahh, `@isolated(any)`.

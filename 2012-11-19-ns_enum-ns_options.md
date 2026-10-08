@@ -6,6 +6,7 @@ tags: nshipster, popular
 excerpt: "A skilled Objective-C developer is able to gracefully switch between Objective and Procedural paradigms, and use each to their own advantage."
 status:
     swift: n/a
+    reviewed: October 7, 2026
 ---
 
 When everything is an object, nothing is.

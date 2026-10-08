@@ -12,7 +12,7 @@ revisions:
   "2018-10-03": Updated for Swift 4.2
 status:
   swift: 4.2
-  reviewed: October 3, 2018
+  reviewed: October 7, 2026
 ---
 
 What would a program be without operators?

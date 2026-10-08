@@ -10,7 +10,7 @@ revisions:
   "2019-12-09": Updated for iOS 13
 status:
   swift: 4.2
-  reviewed: August 8, 2018
+  reviewed: October 7, 2026
 ---
 
 Though we're a long way off from
