@@ -128,7 +128,7 @@ changes the network environment system-wide
 according to the selected configuration,
 limiting uplink or download
 [bandwidth](https://en.wikipedia.org/wiki/Bandwidth_%28computing%29),
-[latency](https://en.wikipedia.org/wiki/Latency_%28engineering%29#Communication_latency), and rate of
+[latency](https://en.wikipedia.org/wiki/Latency_%28engineering%29#Communications), and rate of
 [packet loss](https://en.wikipedia.org/wiki/Packet_loss).
 
 You can choose from one of the following presets:
