@@ -381,7 +381,9 @@ func magnitude(from attitude: CMAttitude) -> Double {
 }
 
 // initial configuration
-var initialAttitude = manager.deviceMotion.attitude
+guard let initialAttitude = manager.deviceMotion?.attitude else {
+    return
+}
 var showingPrompt = false
 
 // trigger values - a gap so there isn't a flicker zone
@@ -397,14 +399,20 @@ and use that as a trigger to show or hide the prompt view:
 ```swift
 if manager.isDeviceMotionAvailable {
     manager.startDeviceMotionUpdates(to: .main) {
+        [weak self] (data, error) in
+
+        guard let data = data, error == nil else {
+            return
+        }
+
         // translate the attitude
         data.attitude.multiply(byInverseOf: initialAttitude)
 
         // calculate magnitude of the change from our initial attitude
-        let magnitude = magnitude(from: data.attitude) ?? 0
+        let change = magnitude(from: data.attitude)
 
         // show the prompt
-        if !showingPrompt && magnitude > showPromptTrigger {
+        if !showingPrompt && change > showPromptTrigger {
             if let promptViewController =
                 self?.storyboard?.instantiateViewController(
                     withIdentifier: "PromptViewController"
@@ -419,7 +427,7 @@ if manager.isDeviceMotionAvailable {
         }
 
         // hide the prompt
-        if showingPrompt && magnitude < showAnswerTrigger {
+        if showingPrompt && change < showAnswerTrigger {
             showingPrompt = false
             self?.dismiss(animated: true, completion: nil)
         }
