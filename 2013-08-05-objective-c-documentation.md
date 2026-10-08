@@ -3,9 +3,23 @@ title: Objective-C Documentation
 author: Mattt
 category: Objective-C
 excerpt: "There's an adage among Cocoa developers that Objective-C's verbosity lends its code to being effectively self-documenting. Between longMethodNamesWithNamedParameters: and the explicit typing of those parameters, Objective-C methods don't leave much to the imagination."
+retired: true
 status:
   swift: n/a
 ---
+
+{% error do %}
+
+The tools described in this article are no longer maintained.
+CocoaDocs stopped generating documentation in 2017,
+VVDocumenter was discontinued once Xcode 8 could add documentation comments itself,
+and appledoc hasn't been updated since 2021.
+The comment syntax still applies,
+but for current guidance,
+see our article about [Swift Documentation](/swift-documentation/)
+and Apple's documentation for [DocC](https://www.swift.org/documentation/docc/).
+
+{% enderror %}
 
 There's an adage among Cocoa developers that Objective-C's verbosity lends its code to being effectively self-documenting. Between `longMethodNamesWithNamedParameters:` and the explicit typing of those parameters, Objective-C methods don't leave much to the imagination.
 
