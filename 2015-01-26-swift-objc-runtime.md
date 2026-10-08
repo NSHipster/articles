@@ -5,7 +5,7 @@ category: "Swift"
 tags: swift
 excerpt: "Even when written without a single line of Objective-C code, every Swift app executes inside the Objective-C runtime, opening up a world of dynamic dispatch and associated runtime manipulation. To be sure, this may not always be the case—Swift-only frameworks, whenever they come, may lead to a Swift-only runtime. But as long as the Objective-C runtime is with us, let's use it to its fullest potential."
 status:
-    swift: 2.0
+    swift: 4.2
     reviewed: September 19, 2015
 ---
 
@@ -54,40 +54,32 @@ extension UIViewController {
 
 Sometimes for convenience, sometimes to work around a bug in a framework, or sometimes because there's just no other way, you need to modify the behavior of an existing class's methods. Method swizzling lets you swap the implementations of two methods, essentially overriding an existing method with your own while keeping the original around.
 
-In this example, we swizzle `UIViewController`'s `viewWillAppear` method to print a message any time a view is about to appear on screen. The swizzling happens in the special class method `initialize` (see note below); the replacement implementation is in the `nsh_viewWillAppear` method:
+In this example, we swizzle `UIViewController`'s `viewWillAppear` method to print a message any time a view is about to appear on screen. The swizzling happens in the initializer of the static property `swizzleViewWillAppear`, which runs only once (see note below); the replacement implementation is in the `nsh_viewWillAppear` method:
 
 ````swift
 extension UIViewController {
-    public override class func initialize() {
-        struct Static {
-            static var token: dispatch_once_t = 0
-        }
+    static let swizzleViewWillAppear: Void = {
+        let originalSelector = #selector(UIViewController.viewWillAppear(_:))
+        let swizzledSelector = #selector(UIViewController.nsh_viewWillAppear(_:))
 
-        // make sure this isn't a subclass
-        if self !== UIViewController.self {
+        guard let originalMethod = class_getInstanceMethod(UIViewController.self, originalSelector),
+              let swizzledMethod = class_getInstanceMethod(UIViewController.self, swizzledSelector)
+        else {
             return
         }
 
-        dispatch_once(&Static.token) {
-            let originalSelector = Selector("viewWillAppear:")
-            let swizzledSelector = Selector("nsh_viewWillAppear:")
+        let didAddMethod = class_addMethod(UIViewController.self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
 
-            let originalMethod = class_getInstanceMethod(self, originalSelector)
-            let swizzledMethod = class_getInstanceMethod(self, swizzledSelector)
-
-            let didAddMethod = class_addMethod(self, originalSelector, method_getImplementation(swizzledMethod), method_getTypeEncoding(swizzledMethod))
-
-            if didAddMethod {
-                class_replaceMethod(self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
-            } else {
-                method_exchangeImplementations(originalMethod, swizzledMethod);
-            }
+        if didAddMethod {
+            class_replaceMethod(UIViewController.self, swizzledSelector, method_getImplementation(originalMethod), method_getTypeEncoding(originalMethod))
+        } else {
+            method_exchangeImplementations(originalMethod, swizzledMethod)
         }
-    }
+    }()
 
     // MARK: - Method Swizzling
 
-    func nsh_viewWillAppear(animated: Bool) {
+    @objc dynamic func nsh_viewWillAppear(_ animated: Bool) {
         self.nsh_viewWillAppear(animated)
         if let name = self.descriptiveName {
             print("viewWillAppear: \(name)")
@@ -103,13 +95,17 @@ extension UIViewController {
 
 The Objective-C runtime typically calls two class methods automatically when loading and initializing classes in your app's process: `load` and `initialize`. In the full article on [method swizzling](/method-swizzling/), Mattt writes that swizzling should *always* be done in `load()`, for safety and consistency. `load` is called only once per class and is called on each class that is loaded. On the other hand, a single `initialize` method can be called on a class and all its subclasses, which are likely to exist for `UIViewController`, or not called at all if that particular class isn't ever messaged.
 
-Unfortunately, a `load` class method implemented in Swift is *never* called by the runtime, rendering that recommendation an impossibility. Instead, we're left to pick among second-choice options:
+Unfortunately, Swift doesn't allow either one: overriding `load` or `initialize` in a Swift class or extension is a compile-time error. Instead, the swizzling must be triggered explicitly, as early as possible, such as from `application(_:didFinishLaunchingWithOptions:)` in the app delegate:
 
-- **Implement method swizzling in `initialize`**   
-This can be done safely, so long as you check the type at execution time and wrap the swizzling in `dispatch_once` (which you should be doing anyway).
+````swift
+func application(_ application: UIApplication,
+                 didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+    _ = UIViewController.swizzleViewWillAppear
+    return true
+}
+````
 
-- **Implement method swizzling in the app delegate**  
-Instead of adding method swizzling via a class extension, simply add a method to the app delegate to be executed when `application(_:didFinishLaunchingWithOptions:)` is called. Depending on the classes you're modifying, this may be sufficient and should guarantee your code is executed every time.
+Because a `static let` is initialized lazily and exactly once, even when accessed from multiple threads, the implementations can't accidentally be swapped back by a second call. Depending on the classes you're modifying, swizzling at launch may be sufficient and should guarantee your code is executed every time.
 
 
 * * *
