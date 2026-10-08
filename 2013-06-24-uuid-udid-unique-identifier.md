@@ -3,9 +3,22 @@ title: "NSUUID /<br/>CFUUIDRef /<br/>UIDevice -uniqueIdentifier /<br/>-identifie
 author: Mattt
 category: Cocoa
 excerpt: "Until recently, it was trivial to uniquely identify devices between application launches, and even across applications: a simple call to UIDevice -uniqueIdentifier, and you were all set."
+retired: true
 status:
     swift: 1.1
 ---
+
+{% error do %}
+
+This article is out of date.
+Its advice about the advertising identifier predates App Tracking Transparency:
+since iOS 14.5,
+`advertisingIdentifier` returns all zeros
+unless the user grants your app permission to track them.
+For current guidance,
+see our article about [Device Identifiers](/device-identifiers/).
+
+{% enderror %}
 
 Let's say you're making privacy software that also prevents piracy. I mean, it's an obvious idea—[someone's going to do it](http://www.fakeblock.com). You're just trying to be _that_ person.
 
