@@ -308,6 +308,8 @@ _If you listed multiple versions, all must be correct for the answer to score._
 9.  Swift 2
 10. Initial beta release of Swift
 
+_These answers reflect the Swift 3 beta that was current at the time (June 2016)._
+
 ---
 
 How'd you do? [Tweet out your score](http://twitter.com/share?text=Woohoo @NSHipster Pub Quiz! 🤓✍️🍻🎉) to see how you stack up to your peers!
