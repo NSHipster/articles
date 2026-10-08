@@ -91,7 +91,7 @@ int square(int n) __attribute__((const));
 
 `pure` and `const` are both attributes that invoke a functional programming paradigm in order to allow for significant performance optimizations. `const` can be thought of as a stricter form of `pure` since it doesn't depend on global values or pointers.
 
-For example, because the result of a function declared `const` does not depend on anything other than the arguments passed in, the result of the function can cache that result and return any time the function is called with that same combination of arguments. (i.e. we know that the square of a number is constant, so we only need to compute it once).
+For example, because the result of a function declared `const` does not depend on anything other than the arguments passed in, the compiler can replace repeated calls that have the same arguments with a single call. (i.e. in `square(n) + square(n)`, the square only needs to be computed once). This is an optimization at compile time; the result isn't cached between calls at runtime.
 
 ### `unused`
 

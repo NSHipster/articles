@@ -46,7 +46,7 @@ NSHashTable *hashTable = [NSHashTable hashTableWithOptions:NSPointerFunctionsCop
 NSLog(@"Members: %@", [hashTable allObjects]);
 ```
 
-`NSHashTable` objects are initialized with an option for any of the following behaviors. Deprecated enum values are due to `NSHashTable` being ported from Garbage-Collected OS X to ARC-ified iOS. Other values are aliased to options defined by [NSPointerFunctions](https://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html), which will be covered next week on NSHipster.
+`NSHashTable` objects are initialized with an option for any of the following behaviors. Deprecated enum values are due to `NSHashTable` being ported from Garbage-Collected OS X to ARC-ified iOS. Other values are aliased to options defined by [NSPointerFunctions](https://developer.apple.com/library/ios/DOCUMENTATION/Cocoa/Reference/Foundation/Classes/NSPointerFunctions_Class/Introduction/Introduction.html).
 
 > - `NSHashTableStrongMemory`: Equal to `NSPointerFunctionsStrongMemory`. This is the default behavior, equivalent to `NSSet` member storage.
 > - `NSHashTableWeakMemory`: Equal to `NSPointerFunctionsWeakMemory`. Uses weak read and write barriers. Using `NSPointerFunctionsWeakMemory`, object references will turn to `NULL` on last release.

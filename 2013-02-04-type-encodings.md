@@ -16,7 +16,7 @@ It is in this spirit that we take a look at [Objective-C Type Encodings](https:/
 
 [Last week](https://nshipster.com/nsvalue/), in a discussion about `NSValue`, there was mention of `+valueWithBytes:objCType:`, whose second parameter should be created with the Objective-C `@encode()` compiler directive.
 
-`@encode`, one of the [`@` Compiler Directives](https://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the ANSI C `typeof` operator. Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
+`@encode`, one of the [`@` Compiler Directives](https://nshipster.com/at-compiler-directives/), returns a C string that encodes the internal representation of a given type (e.g., `@encode(int)` → `i`), similar to the `typeof` operator (a GNU C extension, standardized in C23). Apple's Objective-C runtime uses type encodings internally to help facilitate message dispatching.
 
 Here's a rundown of all of the different Objective-C Type Encodings:
 
