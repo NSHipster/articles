@@ -9,7 +9,7 @@ status:
 
 On April 9th, the first-ever [NSHipster Pub Quiz](http://www.uikonf.com/2013/04/11/nshipster-pub-quiz.html) was held in Berlin. Think of your traditional pub quiz crossed with "Stump the Experts", with questions about things that you know and care about: computers, programming, Apple trivia—that sort of thing. The event was hosted by [UIKonf](http://www.uikonf.com), and made possible by its organizers [Chris Eidhof](http://twitter.com/chriseidhof), [Matt Patterson](http://twitter.com/fidothe), and [Peter Bihr](http://twitter.com/peterbihr). Thanks again to Chris, Matt, and Peter, and everyone who came out to make it such an amazing event.
 
-All told, a whopping 50-some folks came out, composing a dozen or so teams of up to 6 people, with names such as "NSBeep", "alloc] win_it]", & "- Bug Fixes / - Performance Improvements". At the end of the evening, it was the [CodeKollectiv](http://codekollektiv.com) team that claimed top prize, with a score of 30pts.
+All told, a whopping 50-some folks came out, composing a dozen or so teams of up to 6 people, with names such as "NSBeep", "alloc] win_it]", & "- Bug Fixes / - Performance Improvements". At the end of the evening, it was the [CodeKollektiv](http://codekollektiv.com) team that claimed top prize, with a score of 30pts.
 
 Here are the rules to play along at home:
 

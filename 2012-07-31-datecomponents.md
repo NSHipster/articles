@@ -192,8 +192,8 @@ and ending with 7 for Saturday.
 
 But the first weekday varies across different locales.
 The first weekday in the calendar depends on your current locale.
-The United States, China, and other countries begin their weeks on Sunday.
-Most countries in Europe, as well as India, Australia, and elsewhere
+The United States, India, and other countries begin their weeks on Sunday.
+Most countries in Europe, as well as China, Australia, and elsewhere
 typically designate Monday as their first weekday.
 Certain locales in the Middle East and North Africa
 use Saturday as the start of their week.
