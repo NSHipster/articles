@@ -258,7 +258,7 @@ let cornflowerBlue = RGB(red: 0.392, green: 0.584, blue: 0.929)
   that provides the unsigned guarantees to signed integer types.
 - A `@NonZero` property wrapper
   that ensures that a number value is either greater than or less than `0`.
-- `@Validated` or `@Whitelisted` / `@Blacklisted` property wrappers
+- `@Validated` or `@Allowlisted` / `@Denylisted` property wrappers
   that restrict which values can be assigned.
 
 ## Transforming Values on Property Assignment
