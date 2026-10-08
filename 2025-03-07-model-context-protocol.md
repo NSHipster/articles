@@ -165,14 +165,18 @@ MCP follows a client-server architecture similar to LSP:
 Requests and responses are encoded according to the
 [JSON-RPC](https://www.jsonrpc.org/) 2.0 specification.
 Communication between client and server happens over 
-Stdio (`stdin`/`stdout`) or HTTP with Server-Sent Events 
-[transports](https://modelcontextprotocol.io/docs/concepts/architecture#transport-layer).
+Stdio (`stdin`/`stdout`) or Streamable HTTP
+[transports](https://modelcontextprotocol.io/specification/2026-07-28/basic/transports).
 
 Like LSP, MCP has clients and servers negotiate a set of capabilities.
-When a client connects to a server, it sends an 
-[`initialize` message](https://spec.modelcontextprotocol.io/specification/2024-11-05/basic/lifecycle/#initialization),
-with information about what protocol version it supports.
-The server responds in kind.
+As of the [2026-07-28 specification](https://modelcontextprotocol.io/specification/2026-07-28),
+every request carries the client's protocol version and capabilities in its `_meta` field,
+and a client can send a
+[`server/discover` request](https://modelcontextprotocol.io/specification/2026-07-28/server/discover)
+to learn which versions and capabilities a server supports up front.
+(Earlier versions of the spec had the client send an
+[`initialize` message](https://modelcontextprotocol.io/specification/2024-11-05/basic/lifecycle#initialization)
+when it connected, and the server respond in kind.)
 
 From there, the client can ask the server about what features it has.
 MCP describes three different kinds of features that a server can provide:
