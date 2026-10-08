@@ -11,7 +11,6 @@ revisions:
   "2014-03-03": Original publication
   "2018-10-24": Updated for Swift 4.2
   "2018-11-21": Corrected use of `url(for:in:appropriateFor:create:)`
-  "2018-11-21": Corrected use of `url(for:in:appropriateFor:create:)`
   "2019-03-09": Corrected use of deprecated `NSData.WritingOptions.atomicWrite`
 status:
   swift: 4.2
