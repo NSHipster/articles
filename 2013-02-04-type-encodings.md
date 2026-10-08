@@ -147,7 +147,7 @@ Result:
 | `float *`    | `^f`               |
 | `char`       | `c`                |
 | `char *`     | `*`                |
-| `BOOL`       | `c`                |
+| `BOOL`       | `c` or `B`         |
 | `void`       | `v`                |
 | `void *`     | `^v`               |
 | `NSObject *` | `@`                |
@@ -161,7 +161,7 @@ Result:
 There are some interesting takeaways from this:
 
 - Whereas the standard encoding for pointers is a preceding `^`, `char *` gets its own code: `*`. This makes sense conceptually, as C strings are thought to be entities in and of themselves, rather than a pointer to something else.
-- `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`.
+- `BOOL` is `c`, rather than `i`, as one might expect. Reason being, `char` is smaller than an `int`, and when Objective-C was originally designed in the 80's, bits (much like the dollar) were more valuable than they are today. `BOOL` is specifically a `signed char` (even if `-funsigned-char` is set), to ensure a consistent type between compilers, since `char` could be either `signed` or `unsigned`. That's still true on Intel-based Macs, but on 64-bit iOS and on Macs with Apple silicon, `BOOL` is C's `bool`, and `@encode(BOOL)` returns `B`.
 - Passing `[NSObject class]` yields `#`. However, passing `NSObject` directly yields a struct named `NSObject` with a single class field: `isa`, which `NSObject` instances have to signify their type.
 
 ## Method Encodings
