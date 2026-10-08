@@ -420,6 +420,7 @@ it calls `activityDidFinish(_:)` with `true`
 to indicate that the activity finished successfully,
 and UIKit dismisses it.
 If the image couldn't be mustachified,
+or if the user taps "Cancel",
 it calls `activityDidFinish(_:)` with `false` to indicate failure.
 
 ```swift
@@ -450,8 +451,13 @@ class MustachifyViewController: UIViewController {
                             target: self,
                             action: #selector(done))
         self.navigationItem.rightBarButtonItem?.isEnabled = false
+        self.navigationItem.leftBarButtonItem =
+            UIBarButtonItem(barButtonSystemItem: .cancel,
+                            target: self,
+                            action: #selector(cancel))
 
-        self.activity.mustachify { image in
+        self.activity.mustachify { [weak self] image in
+            guard let self = self else { return }
             if let image = image {
                 self.imageView.image = image
                 self.navigationItem.rightBarButtonItem?.isEnabled = true
@@ -463,6 +469,10 @@ class MustachifyViewController: UIViewController {
 
     @objc func done() {
         self.activity.activityDidFinish(true)
+    }
+
+    @objc func cancel() {
+        self.activity.activityDidFinish(false)
     }
 }
 ```
