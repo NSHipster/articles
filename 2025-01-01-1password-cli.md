@@ -143,12 +143,12 @@ $ swift run
 ```
 
 But by prepending `op run`
-we read in that `.env` file,
-resolve each vault item reference,
+and passing that `.env` file with the `--env-file` option,
+we resolve each vault item reference,
 and inject those values into the environment:
 
 ```terminal
-$ op run -- swift run
+$ op run --env-file=.env -- swift run
 hunter2
 ```
 
@@ -352,7 +352,7 @@ allowing you to explicitly include a file that would otherwise be ignored.
 ### Step 5: Update Your Development Script
 
 Whatever command you normally run to kick off your development server,
-you'll need to prepend `op run --` to that.
+you'll need to prepend `op run --env-file=.env --` to that.
 
 For example, if you follow the 
 ["Scripts to Rule Them All"](https://github.com/github/scripts-to-rule-them-all) pattern,
@@ -362,7 +362,7 @@ you'd update `script/start` like so:
 #!/bin/sh
 
 - swift run
-+ op run -- swift run
++ op run --env-file=.env -- swift run
 ```
 
 {% info %}
@@ -371,7 +371,7 @@ you'd update `script/start` like so:
 to redact secrets if printed out directly to `stdout`:
 
 ```terminal
-$ op run -- env
+$ op run --env-file=.env -- env
 LANG=en_US.UTF-8
 IRC_USERNAME=<concealed by 1Password>
 IRC_PASSWORD=<concealed by 1Password>
