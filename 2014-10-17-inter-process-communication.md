@@ -329,7 +329,7 @@ By surveying the inventory of XPC services in the wild, one can get a much bette
 
 XPC takes responsibility for both inter-process communication and service lifecycle management. Everything from registering a service, getting it running, and communicating with other services is handled by `launchd`. An XPC service can be launched on demand, or restarted if they crash, or terminated if they idle. As such, services should be designed to be completely stateless, so as to allow for sudden termination at any point of execution.
 
-As part of the new security model adopted by iOS and backported in OS X, XPC services are run with the most restricted environment possible by default: no file system access, no network access, and no root privilege escalation. Any capabilities must be whitelisted by a set of entitlements.
+As part of the new security model adopted by iOS and backported in OS X, XPC services are run with the most restricted environment possible by default: no file system access, no network access, and no root privilege escalation. Any capabilities must be allowlisted by a set of entitlements.
 
 XPC can be accessed through either the `libxpc` C API, or the `NSXPCConnection` Objective-C API.
 
