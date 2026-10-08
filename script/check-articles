@@ -1,0 +1,108 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Checks article files for problems that break the site build:
+# front matter that does not parse as YAML,
+# Liquid blocks that are not closed,
+# and code fences that are not balanced.
+#
+# Usage: script/check-articles [FILE ...]
+# With no arguments, checks every Markdown file in the repository root.
+
+require "date"
+require "yaml"
+
+BLOCK_TAGS = %w[info warning error comment raw capture].freeze
+TAG_PATTERN = /\{%-?\s*(end)?(#{BLOCK_TAGS.join("|")})\b.*?-?%\}/
+FENCE_PATTERN = /\A {0,3}(`{3,}|~{3,})(.*)\z/
+
+def check_front_matter(path, lines, errors)
+  unless lines.first&.chomp == "---"
+    errors << "#{path}:1: missing front matter"
+    return 0
+  end
+
+  closing = lines[1..].index { |line| line.chomp == "---" }
+  if closing.nil?
+    errors << "#{path}:1: front matter is not closed"
+    return 0
+  end
+
+  yaml = lines[1..closing].join
+  begin
+    data = YAML.safe_load(yaml, permitted_classes: [Date, Time])
+    errors << "#{path}:1: front matter is not a mapping" unless data.is_a?(Hash)
+  rescue Psych::Exception => e
+    errors << "#{path}:1: front matter does not parse: #{e.message}"
+  end
+
+  closing + 2
+end
+
+def check_body(path, lines, offset, errors)
+  stack = []
+  fence = nil
+
+  lines.each_with_index do |line, index|
+    next if index < offset
+
+    lineno = index + 1
+    text = line.chomp
+
+    if (match = FENCE_PATTERN.match(text))
+      marker, rest = match.captures
+      if fence.nil?
+        fence = { char: marker[0], length: marker.length, line: lineno }
+      elsif marker[0] == fence[:char] && marker.length >= fence[:length] && rest.strip.empty?
+        fence = nil
+      end
+    end
+
+    text.scan(TAG_PATTERN) do |closing, name|
+      in_raw = stack.last && stack.last[:name] == "raw"
+      next if in_raw && !(closing && name == "raw")
+
+      if closing
+        if stack.empty?
+          errors << "#{path}:#{lineno}: {% end#{name} %} has no matching {% #{name} %}"
+        elsif stack.last[:name] != name
+          open = stack.last
+          errors << "#{path}:#{lineno}: {% end#{name} %} closes {% #{open[:name]} %} from line #{open[:line]}"
+          stack.pop
+        else
+          stack.pop
+        end
+      else
+        stack << { name: name, line: lineno }
+      end
+    end
+  end
+
+  stack.each do |open|
+    errors << "#{path}:#{open[:line]}: {% #{open[:name]} %} is not closed"
+  end
+
+  errors << "#{path}:#{fence[:line]}: code fence is not closed" if fence
+end
+
+if ARGV.empty?
+  Dir.chdir(File.expand_path("..", __dir__))
+  paths = Dir.glob("*.md").sort - ["LICENSE.md"]
+else
+  paths = ARGV
+end
+
+errors = []
+paths.each do |path|
+  lines = File.readlines(path, encoding: "UTF-8")
+  offset = check_front_matter(path, lines, errors)
+  check_body(path, lines, offset, errors)
+end
+
+if errors.empty?
+  puts "Checked #{paths.count} articles. No problems found."
+else
+  warn errors
+  warn "Found #{errors.count} problems in #{paths.count} articles."
+  exit 1
+end
