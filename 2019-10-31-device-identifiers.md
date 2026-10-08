@@ -435,8 +435,12 @@ you can get the current model and amount of storage of a user's device:
 ```swift
 import UIKit
 
-let device = UIDevice.current
-device.name // "iPhone 11 Pro"
+var systemInfo = utsname()
+uname(&systemInfo)
+let model = withUnsafeBytes(of: &systemInfo.machine) { buffer in
+    String(decoding: buffer.prefix(while: { $0 != 0 }), as: UTF8.self)
+}
+model // "iPhone12,3" (iPhone 11 Pro)
 
 let fileManager = FileManager.default
 if let path = fileManager.urls(for: .libraryDirectory, in: .systemDomainMask).last?.path,
