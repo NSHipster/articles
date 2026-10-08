@@ -8,7 +8,6 @@ excerpt: >
   Let's see how you can use it to build a code formatter and syntax highlighter.
 status:
   swift: 4.2
-  reviewed: October 7, 2026
 ---
 
 [SwiftSyntax](https://github.com/apple/swift-syntax) is a Swift library

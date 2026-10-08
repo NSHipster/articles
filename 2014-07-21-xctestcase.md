@@ -7,7 +7,7 @@ revisions:
   "2015-04-07": Added note about location of call to `fulfill()`; new Objective-C examples
 status:
   swift: 1.2
-  reviewed: October 7, 2026
+  reviewed: June 25, 2015
 ---
 
 Although iOS 8 and Swift have garnered the lion's share of attention of the WWDC 2014 announcements, the additions and improvements to testing in Xcode 6 may end up making some of the most profound impact in the long-term.

@@ -5,7 +5,6 @@ category: Cocoa
 excerpt: "With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper."
 status:
     swift: 1.0
-    reviewed: October 7, 2026
 ---
 
 With all the different means to comment, mark up, save, and share right at our fingertips, it's easy to overlook the value of a printed sheet of paper.

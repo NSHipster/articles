@@ -5,7 +5,7 @@ category: Cocoa
 excerpt: "Unless you work with MKMapView on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been under the cheeriest of circumstances. Therefore, it may come as a surprise that maps on iOS have gotten quite a bit better in the intervening releases. Quite good, in fact."
 status:
     swift: 2.0
-    reviewed: October 7, 2026
+    reviewed: November 12, 2015
 ---
 
 Unless you work with `MKMapView` on a regular basis, the last you may have heard about the current state of cartography on iOS may not have been [under the cheeriest of circumstances](http://www.apple.com/letter-from-tim-cook-on-maps/). Even now, years after the ire of armchair usability experts has moved on to iOS 7's distinct "look and feel", the phrase "Apple Maps" still does not inspire confidence in the average developer.
