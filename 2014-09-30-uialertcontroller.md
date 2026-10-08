@@ -121,10 +121,15 @@ let destroyAction = UIAlertAction(title: "Destroy", style: .Destructive) { (acti
 }
 alertController.addAction(destroyAction)
 
+alertController.popoverPresentationController?.sourceView = self.view
+alertController.popoverPresentationController?.sourceRect = CGRect(x: CGRectGetMidX(self.view.bounds), y: CGRectGetMidY(self.view.bounds), width: 0, height: 0)
+
 self.presentViewController(alertController, animated: true) {
     <#...#>
 }
 ```
+
+On iPad, an action sheet is presented in a popover, so its `popoverPresentationController` needs a `sourceView` (with a `sourceRect` in its coordinates) or a `barButtonItem` to anchor to, such as the control that triggered it; without either, presenting the action sheet raises an exception.
 
 ## New Functionality
 
