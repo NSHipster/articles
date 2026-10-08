@@ -414,7 +414,8 @@ override var activityViewController: UIViewController? {
 When its view loads,
 the view controller asks the activity to mustachify the image
 and shows the result in an image view.
-When the user taps "Done",
+The "Done" button stays disabled until the image arrives.
+When the user taps it,
 it calls `activityDidFinish(_:)` with `true`
 to indicate that the activity finished successfully,
 and UIKit dismisses it.
@@ -448,10 +449,12 @@ class MustachifyViewController: UIViewController {
             UIBarButtonItem(barButtonSystemItem: .done,
                             target: self,
                             action: #selector(done))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
 
         self.activity.mustachify { image in
             if let image = image {
                 self.imageView.image = image
+                self.navigationItem.rightBarButtonItem?.isEnabled = true
             } else {
                 self.activity.activityDidFinish(false)
             }
