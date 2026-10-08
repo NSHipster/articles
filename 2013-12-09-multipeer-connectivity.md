@@ -4,9 +4,28 @@ author: Mattt
 category: Cocoa
 tags: popular
 excerpt: "As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices. The Multipeer Connectivity APIs, introduced in iOS 7, therefore may well be the most significant for the platform."
+retired: true
 status:
     swift: t.b.c.
 ---
+
+{% error do %}
+
+Apple deprecated Multipeer Connectivity in iOS 27 and Xcode 27,
+and recommends the Network framework instead.
+[TN3213](https://developer.apple.com/documentation/technotes/tn3213-moving-from-multipeer-connectivity-to-network-framework)
+explains how to migrate,
+including how Wi-Fi Aware and DeviceDiscoveryUI fit in,
+and Quinn "The Eskimo!"'s
+[forum post](https://developer.apple.com/forums/thread/776069)
+covers systems earlier than iOS 26.
+If you still use Multipeer Connectivity,
+note that since iOS 14,
+apps must declare `NSLocalNetworkUsageDescription` and `NSBonjourServices`
+in their `Info.plist`,
+or discovery fails.
+
+{% enderror %}
 
 As consumer web technologies and enterprises race towards cloud infrastructure, there is a curious and significant counter-movement towards connected devices.
 
@@ -84,7 +103,7 @@ didReceiveInvitationFromPeer:(MCPeerID *)peerID
 
         MCSession *session = [[MCSession alloc] initWithPeer:localPeerID
                                             securityIdentity:nil
-                                        encryptionPreference:MCEncryptionNone];
+                                        encryptionPreference:MCEncryptionRequired];
         session.delegate = self;
 
         invitationHandler(acceptedInvitation, (acceptedInvitation ? session : nil));
@@ -101,7 +120,7 @@ As in the example above, sessions are created by advertisers, and passed to peer
 ```objc
 MCSession *session = [[MCSession alloc] initWithPeer:localPeerID
                                     securityIdentity:nil
-                                encryptionPreference:MCEncryptionNone];
+                                encryptionPreference:MCEncryptionRequired];
 session.delegate = self;
 ```
 
@@ -113,7 +132,7 @@ The `encryptionPreference` parameter specifies whether to encrypt communication 
 - `MCEncryptionRequired`: The session requires encryption.
 - `MCEncryptionNone`: The session should not be encrypted.
 
-> Enabling encryption can significantly reduce transfer rates, so unless your application specifically deals with user-sensitive information, `MCEncryptionNone` is recommended.
+> Enabling encryption can significantly reduce transfer rates, but unless your application has a specific reason not to, `MCEncryptionRequired` is recommended.
 
 The `MCSessionDelegate` protocol will be covered in the section on sending and receiving information.
 
