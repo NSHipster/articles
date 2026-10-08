@@ -70,7 +70,7 @@ And while Foundation assertion macros are extremely useful in their own right—
                    lineNumber:(NSInteger)line
                   description:(NSString *)format, ...
 {
-  NSLog(@"NSAssert Failure: Method %@ for object %@ in %@#%i", NSStringFromSelector(selector), object, fileName, line);
+  NSLog(@"NSAssert Failure: Method %@ for object %@ in %@#%ld", NSStringFromSelector(selector), object, fileName, (long)line);
 }
 
 - (void)handleFailureInFunction:(NSString *)functionName
@@ -78,7 +78,7 @@ And while Foundation assertion macros are extremely useful in their own right—
                      lineNumber:(NSInteger)line
                     description:(NSString *)format, ...
 {
-  NSLog(@"NSCAssert Failure: Function (%@) in %@#%i", functionName, fileName, line);
+  NSLog(@"NSCAssert Failure: Function (%@) in %@#%ld", functionName, fileName, (long)line);
 }
 
 @end
