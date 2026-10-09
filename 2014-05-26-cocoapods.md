@@ -4,10 +4,22 @@ author: Mattt
 category: Open Source
 tags: cfhipsterref
 excerpt: "When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. In the case of Objective-C, CocoaPods has provided a much-needed tool for channeling and organizing open source participation."
+retired: true
 status:
   swift: n/a
   reviewed: October 7, 2026
 ---
+
+{% error do %}
+
+CocoaPods trunk became read-only on December 2, 2026,
+so it no longer accepts new pods or new versions of existing ones.
+This article describes CocoaPods 0.33,
+and its instructions for publishing to trunk no longer work.
+For new projects,
+use [Swift Package Manager](https://www.swift.org/documentation/package-manager/) instead.
+
+{% enderror %}
 
 Civilization is built on infrastructure: roads, bridges, canals, sewers, pipes, wires, fiber. When well thought-out and implemented, infrastructure is a multiplying force that drives growth and development. But when such formative structures are absent or ad hoc, it feels as if progress is made _in spite of_ the situation.
 
