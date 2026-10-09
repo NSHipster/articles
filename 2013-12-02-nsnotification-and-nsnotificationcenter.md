@@ -496,8 +496,8 @@ Foundation's `TimeZone.SystemTimeZoneDidChangeMessage`
 carries the `previousTimeZone` that you once dug out of `userInfo`:
 
 ```swift
-token = NotificationCenter.default.addObserver(of: TimeZone.self,
-                                               for: .systemTimeZoneDidChange) { message in
+let token = NotificationCenter.default.addObserver(of: TimeZone.self,
+                                                   for: .systemTimeZoneDidChange) { message in
     let identifier = message.previousTimeZone?.identifier ?? "(unknown)"
     print("Time zone changed from \(identifier).")
 }
