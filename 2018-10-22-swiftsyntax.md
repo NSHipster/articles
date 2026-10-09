@@ -10,9 +10,9 @@ excerpt: >
   and use it to write a linter, a rewriter, and a syntax highlighter.
 revisions:
   "2018-10-22": Original publication
-  "2026-10-09": Rewritten for swift-syntax 604 and Swift 6.2
+  "2026-10-09": Rewritten for swift-syntax 604 and Swift 6.4
 status:
-  swift: 6.2
+  swift: 6.4
   reviewed: October 9, 2026
 ---
 
@@ -33,8 +33,8 @@ _Reader, it was subject to API changes._
 
 Nearly every API from the original version of this article is gone.
 libSyntax is gone too.
-In its place is a package written entirely in Swift,
-with its own parser,
+In its place is a package with its own parser
+and syntax tree, both written in Swift,
 and a release schedule tied to the language itself.
 Today, swift-syntax is what [swift-format](/swift-format/) and
 [SwiftLint](https://github.com/realm/SwiftLint) use to read your code,
@@ -109,6 +109,7 @@ targets: [
             .product(name: "SwiftSyntax", package: "swift-syntax"),
             .product(name: "SwiftParser", package: "swift-syntax"),
             .product(name: "SwiftSyntaxBuilder", package: "swift-syntax"),
+            .product(name: "SwiftIDEUtils", package: "swift-syntax"),
         ]
     )
 ]
