@@ -45,13 +45,13 @@ to adapt our UI to a variety of screen sizes.
 Let's start with an example of `UISplitViewController`
 working its magic on a large iPhone:
 
-<video preload="none" poster="{% asset split-view-demo.jpg @path %}" width="640" controls>
+<video aria-label="Screen recording of a split view app on a large iPhone in landscape, with a list of colors beside the selected color" preload="none" poster="{% asset split-view-demo.jpg @path %}" width="640" controls>
     <source src="{% asset split-view-demo.mov @path %}" type="video/quicktime"/>
 </video>
 
 However, the view doesn't split when the iPhone is in _Zoomed_ Display mode.
 
-<video preload="none" poster="{% asset split-view-zoomed-demo.jpg @path %}" width="640" controls>
+<video aria-label="Screen recording of the same app in Zoomed Display mode, where the list of colors and the selected color take turns filling the screen" preload="none" poster="{% asset split-view-zoomed-demo.jpg @path %}" width="640" controls>
     <source src="{% asset split-view-zoomed-demo.mov @path %}" type="video/quicktime"/>
 </video>
 
@@ -136,7 +136,7 @@ when the phone is in landscape mode:
 It's not a big deal unless you want your navigation bar to show a title.
 But this is a deal-breaker on an iPad:
 
-<video preload="none" poster="{% asset ipad-split-view-no-navigation-bar.jpg @path %}" width="540" controls>
+<video aria-label="Screen recording of the app on an iPad, which launches to an empty detail view with no navigation bar or button to show the list of colors" preload="none" poster="{% asset ipad-split-view-no-navigation-bar.jpg @path %}" width="540" controls>
     <source src="{% asset ipad-split-view-no-navigation-bar.mov @path %}" type="video/quicktime"/>
 </video>
 
@@ -181,14 +181,14 @@ override func viewDidLoad() {
 _Build and Run_ on the iPad again,
 and now you get a nice indication of how to access the rest of the app:
 
-<video preload="none" poster="{% asset ipad-navigation-bar-with-button.jpg @path %}" width="540" controls>
+<video aria-label="Screen recording of the app on an iPad, with a navigation bar button that shows the list of colors" preload="none" poster="{% asset ipad-navigation-bar-with-button.jpg @path %}" width="540" controls>
     <source src="{% asset ipad-navigation-bar-with-button.mov @path %}" type="video/quicktime"/>
 </video>
 
 The `displayModeButtonItem` property lends some nice usability
 to apps running on large iPhones in landscape mode, too:
 
-<video preload="none" poster="{% asset iphone-displayModeButtonItem.jpg @path %}" width="640" controls>
+<video aria-label="Screen recording of the app on a large iPhone in landscape, where the display mode button expands the selected color to fill the screen" preload="none" poster="{% asset iphone-displayModeButtonItem.jpg @path %}" width="640" controls>
     <source src="{% asset iphone-displayModeButtonItem.mov @path %}" type="video/quicktime"/>
 </video>
 
@@ -287,7 +287,7 @@ Once the user selects a color
 `ColorsViewController` is collapsed again,
 and `ColorViewController` is displayed:
 
-<video preload="none" poster="{% asset iphone-primary-view-controller-rotation.jpg @path %}" width="640" controls>
+<video aria-label="Screen recording of the app in the iOS Simulator as an iPhone 6 Plus rotates between portrait and landscape orientations" preload="none" poster="{% asset iphone-primary-view-controller-rotation.jpg @path %}" width="640" controls>
     <source src="{% asset iphone-primary-view-controller-rotation.mov @path %}" type="video/quicktime"/>
 </video>
 
