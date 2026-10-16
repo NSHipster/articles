@@ -432,7 +432,7 @@ self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 By aggregating several behaviors to work as one,
 we can now bask in our work:
 
-<video preload="none" src="{% asset uifieldbehavior-demo.mp4 @path %}" poster="{% asset uifieldbehavior-demo.png @path %}" width="320" controls></video>
+<video aria-label="Screen recording of a red view that springs to the nearest corner of the screen after each flick" preload="none" src="{% asset uifieldbehavior-demo.mp4 @path %}" poster="{% asset uifieldbehavior-demo.png @path %}" width="320" controls></video>
 
 <br/>
 

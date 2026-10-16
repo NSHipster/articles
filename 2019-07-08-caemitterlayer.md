@@ -528,7 +528,7 @@ The end result:
 it's as if NSHipster.com were parading down the streets of New York City
 (or rather, Brooklyn, if you really wanted to lean into the hipster thing)
 
-<video preload="none" poster="{% asset caemitterlayer-final-product.png @path %}" width="300" controls loop>
+<video aria-label="Screen recording of confetti falling over the NSHipster home page on an iPhone" preload="none" poster="{% asset caemitterlayer-final-product.png @path %}" width="300" controls loop>
     <source src="{% asset caemitterlayer-final-product.m4v @path %}" type="video/x-m4v" style="object-fit: cover;"/>
 </video>
 
