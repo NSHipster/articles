@@ -63,34 +63,34 @@ Many Apple advertisements over the years have featured celebrity voiceovers into
 
 <ol>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4_dddBsNeSE?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 1" width="560" height="315" src="https://www.youtube-nocookie.com/embed/4_dddBsNeSE" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fGvmZsAuhK4?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 2" width="560" height="315" src="https://www.youtube-nocookie.com/embed/fGvmZsAuhK4" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/Xvbuwfawqcc?showinfo=0&start=21" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 3" width="560" height="315" src="https://www.youtube-nocookie.com/embed/Xvbuwfawqcc?start=21" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/oU-_O9gslgo?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 4" width="560" height="315" src="https://www.youtube-nocookie.com/embed/oU-_O9gslgo" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/prImvDVHzTM?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 5" width="560" height="315" src="https://www.youtube-nocookie.com/embed/prImvDVHzTM" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/1mYCIKTX0ug?showinfo=0&start=11" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 6" width="560" height="315" src="https://www.youtube-nocookie.com/embed/1mYCIKTX0ug?start=11" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ibklpzKai-o?showinfo=0&start=15" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 7" width="560" height="315" src="https://www.youtube-nocookie.com/embed/ibklpzKai-o?start=15" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/a1ml3fyYZaw?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 8" width="560" height="315" src="https://www.youtube-nocookie.com/embed/a1ml3fyYZaw" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/tjgtLSHhTPg?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 9" width="560" height="315" src="https://www.youtube-nocookie.com/embed/tjgtLSHhTPg" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
     <li><div style="display: inline-block; position: relative; width: 560px; height: 25px; overflow: hidden;"><div style="position: absolute; top: -285px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/dQmK1CnwOUI?showinfo=0" frameborder="0"></iframe>
+        <iframe title="Voiceover round, ad 10" width="560" height="315" src="https://www.youtube-nocookie.com/embed/dQmK1CnwOUI" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0"></iframe>
     </div></div></li>
 </ol>
 

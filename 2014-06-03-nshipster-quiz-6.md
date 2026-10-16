@@ -63,16 +63,16 @@ The theme of this music round is—you guessed it—songs used in Apple commerci
 > Due to the peculiarities of embedded video, you may have to click through in order to hear the song. Don't worry—the link is to the song itself, not the Apple ad, so you'll at least have something to puzzle over.
 
 <ol>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/tuK6n2Lkza0?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/fjwWjx7Cw8I?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/4B1ZQcbSvdU?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/qzuGDxJ0wTs?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/98W9QuMq-2k?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/i3vWOV8ppBQ?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/Dd8WjeK8riE?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/Nx_SKiSmvdc?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/F3W_alUuFkA?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
-    <li><iframe width="560" height="24" src="https://www.youtube.com/embed/CSS9PnU6T8s?showinfo=0" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 1" width="560" height="24" src="https://www.youtube-nocookie.com/embed/tuK6n2Lkza0" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 2" width="560" height="24" src="https://www.youtube-nocookie.com/embed/fjwWjx7Cw8I" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 3" width="560" height="24" src="https://www.youtube-nocookie.com/embed/4B1ZQcbSvdU" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 4" width="560" height="24" src="https://www.youtube-nocookie.com/embed/qzuGDxJ0wTs" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 5" width="560" height="24" src="https://www.youtube-nocookie.com/embed/98W9QuMq-2k" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 6" width="560" height="24" src="https://www.youtube-nocookie.com/embed/i3vWOV8ppBQ" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 7" width="560" height="24" src="https://www.youtube-nocookie.com/embed/Dd8WjeK8riE" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 8" width="560" height="24" src="https://www.youtube-nocookie.com/embed/Nx_SKiSmvdc" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 9" width="560" height="24" src="https://www.youtube-nocookie.com/embed/F3W_alUuFkA" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
+    <li><iframe title="Music round, song 10" width="560" height="24" src="https://www.youtube-nocookie.com/embed/CSS9PnU6T8s" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe></li>
 </ol>
 
 ---
