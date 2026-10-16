@@ -95,9 +95,9 @@ Round 4: Anagrammable
 *For timing, listen to these three songs play back to back:* 
 
 <div>
-<iframe width="560" height="24" src="https://www.youtube.com/embed/e-ORhEE9VVg?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="https://www.youtube.com/embed/nfWlot6h_JM?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
-<iframe width="560" height="24" src="https://www.youtube.com/embed/4m1EFMoRFvY?showinfo=0" frameborder="0" allowfullscreen></iframe><br />
+<iframe title="Timing song 1 of 3" width="560" height="24" src="https://www.youtube-nocookie.com/embed/e-ORhEE9VVg" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe><br />
+<iframe title="Timing song 2 of 3" width="560" height="24" src="https://www.youtube-nocookie.com/embed/nfWlot6h_JM" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe><br />
+<iframe title="Timing song 3 of 3" width="560" height="24" src="https://www.youtube-nocookie.com/embed/4m1EFMoRFvY" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" frameborder="0" allowfullscreen></iframe><br />
 </div>
 
 1. Be Loud!
