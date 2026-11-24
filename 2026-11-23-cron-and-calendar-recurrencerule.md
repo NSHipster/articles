@@ -11,17 +11,9 @@ status:
   swift: 6.1
 ---
 
-In high school,
-I spent Sunday nights listening to _This American Life_
-and feeling anxious about the week ahead.
-Sometimes that was because of homework I'd forgotten to do.
-Usually it was just because I was a teenager
-who was still figuring himself out.
-
-Taking stock on Sundays is a habit I've had since I was a kid,
-and these days I have software for it.
-It's a bespoke little thing that I vibe-coded for myself:
-every Sunday it walks me through a review of the week,
+I have a bespoke little piece of software
+that I vibecoded for myself.
+Every Sunday, it walks me through a review of the week,
 and on the first Sunday of the month,
 a review of the month.
 
@@ -33,8 +25,10 @@ checks the date,
 and quits unless it's one of the first seven days of the month.
 This past Sunday, November 22, it did just that.
 
-With American Thanksgiving a few days away,
-it seemed like the right week to find out why.
+American Thanksgiving is this Thursday:
+the fourth Thursday of November,
+which is to say, another date that cron can't write down.
+It seemed like the right week to find out why.
 
 ---
 
@@ -59,8 +53,9 @@ Here's what `crontab(5)` has to say about that:
 > If both fields are restricted (ie, are not \*),
 > the command will be run when either field matches the current time.
 
-Either.
-So that expression doesn't wait for the first Sunday.
+_Either._
+
+In fact, that expression doesn't wait for the first Sunday.
 In November 2026, it runs on the 1st through the 7th,
 and then on the 8th, the 15th, the 22nd, and the 29th:
 eleven times, when you asked for one.
@@ -79,7 +74,9 @@ Which is what mine does, more or less.
 
 {% info %}
 
-Some schedulers, like Quartz, extend the syntax
+Some schedulers, like [Quartz](https://en.wikipedia.org/wiki/Quartz_%28scheduler%29)
+(no, not _that_ [Quartz](https://en.wikipedia.org/wiki/Quartz_%28graphics_layer%29)),
+extend the syntax
 so that `FRI#3` means the third Friday of the month.
 The cron on your Mac doesn't.
 It does have a loophole, though.
@@ -102,10 +99,15 @@ and ignored the day of the month.
 ## The Fourth Thursday of November
 
 Thanksgiving is the fourth Thursday of November.
-It wasn't always.
-(How the holiday came to be at all is another story,
+But it wasn't always.
+
+<aside class="parenthetical">
+
+How the holiday came to be at all is another story,
 and Philip Deloria tells it in
-["The Invention of Thanksgiving"](https://www.newyorker.com/magazine/2019/11/25/the-invention-of-thanksgiving).)
+["The Invention of Thanksgiving"](https://www.newyorker.com/magazine/2019/11/25/the-invention-of-thanksgiving).
+
+</aside>
 
 In 1863,
 Abraham Lincoln proclaimed a day of thanksgiving
@@ -207,10 +209,10 @@ And `recurrences(of:)` returns a sequence,
 so a rule with no end is fine,
 as long as you don't ask for all of it.
 
-There's a catch, though.
+There's a catch, though:
 The documentation says that the calculations
 "are implemented according to RFC-5545",
-and for some rules, they aren't.
+and for some rules, they... aren't?
 Take the last weekday of the month:
 
 ```swift
@@ -247,7 +249,7 @@ Foundation is missing a couple of other things, too.
 so it can't read the rules in that table up there,
 and it has no way to describe itself to a person.
 
-[RRULE](https://github.com/mattt/swift-rrule) is a small package that covers all three.
+[RRULE](https://github.com/mattt/swift-rrule) is a small package I cooked up that covers all three.
 It parses RFC 5545 recurrence rules,
 describes them in English, German, Spanish, or French,
 and works out their dates itself,
@@ -286,7 +288,7 @@ FREQ=YEARLY;INTERVAL=4;BYMONTH=11;BYDAY=TU;BYMONTHDAY=2,3,4,5,6,7,8
 ```
 
 And then there's Easter,
-which no recurrence rule can express.
+which **no** recurrence rule can express.
 That's a little awkward for a calendar format,
 because Easter is the reason our calendar is the way it is.
 
@@ -297,8 +299,8 @@ but an _ecclesiastical_ full moon:
 the fourteenth day of a lunar month that's reckoned from tables.
 The calculation has a name, _computus_,
 and according to Donald Knuth,
-"there are many indications that the sole nontrivial application of arithmetic
-in Europe during the Middle Ages was the calculation of Easter date".
+<q>there are many indications that the sole nontrivial application of arithmetic
+in Europe during the Middle Ages was the calculation of Easter date</q>.
 
 By the sixteenth century,
 the tables and the sky had come apart.
@@ -321,7 +323,6 @@ is there to keep Easter in its place.
 
 Great Britain and its colonies held out until 1752,
 by which time there were eleven days to drop.
-Unix remembers.
 The manual page for `cal` in Seventh Edition Unix notes that
 "the calendar produced is that for England and her colonies",
 and then, in a paragraph of its own:
@@ -360,7 +361,7 @@ one for each year through 2029.
 
 For Easter, you still have to write code.
 Fortunately, someone did that in 1876,
-when "a New York correspondent" sent this algorithm to the journal _Nature_:
+when "a New York correspondent" sent [this algorithm](https://doi.org/10.1038/013487a0) to the journal _Nature_:
 
 ```swift
 func easter(in year: Int) -> DateComponents {
@@ -380,10 +381,7 @@ func easter(in year: Int) -> DateComponents {
 easter(in: 2026) // April 5
 ```
 
-Your Mac agrees.
-Try `ncal -e`.
-
-There is one other way out.
+There is another way out.
 In 1928, Parliament passed the Easter Act,
 which sets Easter as
 "the first Sunday after the second Saturday in April".
@@ -393,7 +391,21 @@ That one's easy:
 FREQ=YEARLY;BYMONTH=4;BYDAY=SU;BYMONTHDAY=9,10,11,12,13,14,15
 ```
 
-It has never come into force.
+But that caught on about as well as
+that one time a state legislature tried to redefine π as 3.
+Which is to say, it didn't:
+nearly a century later,
+the Act still hasn't come into force.
+
+<aside class="parenthetical">
+
+EDIT: The one about π = 3 turns out to be
+[an April Fools' joke](https://en.wikipedia.org/wiki/Mark_Boslough) from 1998.
+The real one happened [in Indiana, in 1897](https://en.wikipedia.org/wiki/Indiana_pi_bill).
+The number was 3.2,
+and the House passed it without a dissenting vote.
+
+</aside>
 
 ---
 
