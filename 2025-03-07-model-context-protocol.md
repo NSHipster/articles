@@ -351,7 +351,7 @@ That was our motivation for building [iMCP](https://iMCP.app).
 iMCP is a macOS app for connecting your digital life with AI. 
 It works with Claude Desktop and a growing list of clients that support MCP.
 It gives MCP access to your calendars, contacts, even messages —
-[no small feat](https://github.com/loopwork-ai/iMCP?tab=readme-ov-file#imessage-database-access)!
+[no small feat](https://github.com/mattt/iMCP?tab=readme-ov-file#imessage-database-access)!
 
 [Download it today](https://iMCP.app/download)
 and get a taste of some _real_ Apple intelligence.
@@ -359,7 +359,7 @@ and get a taste of some _real_ Apple intelligence.
 ### mcp-swift-sdk
 
 In the process of building iMCP,
-we built a [Swift SDK](https://github.com/loopwork-ai/mcp-swift-sdk)
+we built a [Swift SDK](https://github.com/modelcontextprotocol/swift-sdk)
 for Model Context Protocol servers and clients.
 
 If you're inspired to build your own MCP app
@@ -370,7 +370,7 @@ definitely give this a try!
 
 If, however, you have accepted Python into your heart as I have,
 then I'd recommend checking out another project I've been working on:
-[hype](https://github.com/loopwork-ai/hype).
+[hype](https://github.com/mattt/hype).
 
 My goal with hype is to eliminate every barrier between writing Python code
 and calling it in a way that's useful.
